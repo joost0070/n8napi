@@ -1,0 +1,17 @@
+# Bline API app (bestaande custom app in het Dev Dashboard)
+client_id = "6e7fddf0aaf25bf5c7d6edda021eb642"
+name = "Bline API"
+application_url = "https://example.com"
+embedded = false
+
+[access_scopes]
+scopes = "write_discounts,read_products"
+
+[auth]
+redirect_urls = ["https://example.com"]
+
+[webhooks]
+api_version = "2026-04"
+
+[build]
+include_config_on_deploy = true
