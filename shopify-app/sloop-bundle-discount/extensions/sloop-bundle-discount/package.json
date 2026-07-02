@@ -2,8 +2,20 @@
   "name": "sloop-bundle-discount",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "build": "shopify app function build",
-    "typegen": "shopify app function typegen"
+  "scripts": {},
+  "dependencies": {
+    "@shopify/shopify_function": "~2.0.0"
+  },
+  "codegen": {
+    "schema": "schema.graphql",
+    "documents": "src/*.graphql",
+    "generates": {
+      "generated/api.ts": {
+        "plugins": [
+          "typescript",
+          "typescript-operations"
+        ]
+      }
+    }
   }
 }

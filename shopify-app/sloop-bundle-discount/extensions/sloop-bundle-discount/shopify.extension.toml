@@ -3,6 +3,7 @@ api_version = "2026-04"
 [[extensions]]
 name = "Sloop bundelkorting"
 handle = "sloop-bundle-discount"
+uid = "1a3ab0f2-324e-6013-0e00-5995e1b96161dafc16c8"
 type = "function"
 description = "33% korting op alle slopen zodra er een leeskussen in de winkelwagen zit"
 
