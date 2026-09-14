@@ -413,3 +413,55 @@ Voor de Circulator maakt het voor het oordeel niet uit: bij 54 paar per jaar en
 860 op voorraad is het zestien jaar dekking, of die stapel er nu een dag ligt of
 drie jaar. Als hij gisteren binnenkwam is dat geen reden om hem te houden, maar
 een inkoopfout om bij de bron aan te pakken.
+
+---
+
+## 17. De voorraadhistorie is er wél — via ShopifyQL
+
+In hoofdstuk 16 stond dat de ouderdom van voorraad niet te achterhalen was. Dat
+klopte niet. De `inventory`-dataset van ShopifyQL is in augustus 2023 uit
+ShopifyQL Notebooks gehaald, maar werkt via de Admin GraphQL API nog steeds —
+en de tokens hebben de benodigde scope `read_analytics`.
+
+```
+FROM inventory
+SHOW ending_inventory_units, inventory_units_sold
+GROUP BY month, product_variant_sku
+WHERE product_variant_sku = '<ean>'
+SINCE -400d UNTIL today
+```
+
+Dat is de month-end snapshot, per artikel, per maand. `scripts/ql_voorraad.py`
+haalt hem op, zowel voor één artikel als in bulk (1.000 regels per query).
+
+### Wat dat oplevert
+
+**1. Ouderdom van de voorraad.** Circulator Heren Klasse 1 Black Stripe 39-43:
+
+| | | | | | | |
+|---|---|---|---|---|---|---|
+| 2025-08 | 1.074 | 2025-12 | 944 | 2026-04 | 978 | 2026-08 · 834 |
+| 2025-09 | 945 | 2026-01 | 971 | 2026-05 | 924 | 2026-09 · **860** |
+| 2025-10 | 1.023 | 2026-02 | 907 | 2026-06 | 921 | |
+| 2025-11 | 949 | 2026-03 | 940 | 2026-07 | 845 | |
+
+Dertien maanden tussen 834 en 1.074, `days_out_of_stock = 0`. Niet vandaag
+bijgevuld — deze stapel ligt er al meer dan een jaar en zakt met ongeveer 15
+paar per maand. Bij dat tempo duurt het bijna vijftig jaar.
+
+**2. `days_out_of_stock` per artikel.** Dit is de juiste noemer voor het
+verkooptempo. Tot nu toe werd "dagen leverbaar" benaderd met eerste tot laatste
+verkoopdatum; nu is het meetbaar. Van 999 gescande Sockwell-artikelen waren er
+**750 ooit uit voorraad** in de afgelopen 365 dagen.
+
+**3. Leveringen.** Een stijging van de maandeindstand is een binnengekomen
+levering. Daarmee zijn levertijd en leverritme per merk achteraf af te leiden,
+zonder ERP-export en zonder te wachten op wekelijkse snapshots.
+
+### Wat dit nog niet is
+
+De cijfers komen per shop. Omdat de voorraad gespiegeld wordt, geeft één shop de
+centrale stand — maar `inventory_units_sold` is wél alleen die shop
+(22 stuks voor de Circulator in sockwell.nl, tegen 54 over alle kanalen). Voor
+voorraadstanden één shop nemen; voor vraag de bestaande optelling over alle
+kanalen aanhouden.
