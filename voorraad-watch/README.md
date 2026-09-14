@@ -190,3 +190,83 @@ een synchronisatieprobleem en horen op een aparte lijst, niet in een inkoopadvie
 (`analyse.py` → basis, `analyse2.py` → maatcurve/overstock, `stockage.py` → laatste
 mutatie en de opruimlijst, `export.py` → dashboard-data). De productieversie is de n8n-workflow; deze
 scripts zijn handig om ad-hoc een merk uit te pluizen.
+
+---
+
+## 12. Correctie: vraag meten, niet verkopen tellen
+
+De eerste versie van de bijbestel-analyse mat de verkeerde grootheid, op twee
+manieren tegelijk.
+
+**Verkochte aantallen zijn gecensureerd.** Een maat die na drie weken uitverkocht
+raakte verkocht minder stuks dan een maat die een jaar stond te druppelen. In de
+data ziet de eerste er dus uit als de slechtste. Voorbeeld uit de eigen cijfers:
+Sockwell Heartlink Klasse 2 Light 39-43 verkocht 19 paar — in twaalf dagen, en
+staat sindsdien leeg. Dat is 11,1 paar per week, de op één na hardste loper in
+de hele Sockwell-range.
+
+**En de lijst filterde op `voorraad > 0`.** Alle 1.005 maten die nu op nul staan
+met recente vraag — precies de nee-verkopen — stonden er niet in. Van de
+oorspronkelijke 205 regels overlapten er 3 met de gecorrigeerde lijst.
+
+### Wat er nu gemeten wordt
+
+```
+tempo(SKU)   = stuks verkocht / dagen dat het artikel daadwerkelijk verkocht  x 7
+```
+
+Dat tempo heeft zijn eigen valkuil: een artikel dat één paar in een week verkocht
+en daarna leegstond krijgt "1 per week". Drie correcties houden dat in toom:
+
+1. **Krimp naar modelniveau** — `w = n / (n + 8)`. Pas bij acht verkochte stuks
+   weegt de eigen meting van een maat vol mee; daaronder telt het tempo van het
+   model als geheel, verdeeld over de maatcurve.
+2. **Plafond op modelniveau** — de maten samen mogen nooit sneller lopen dan het
+   model zelf ooit liep.
+3. **Bewijsdrempel** — minimaal 10 stuks per maat of 30 per model. Daaronder gaat
+   het op een aparte lijst "te weinig data" en leidt het niet tot een bestelling.
+
+Zonder deze drie kwam er 11,8 miljoen euro aan "te redden omzet" uit. Met alle
+drie: 2.518 maten, 35.664 paar, en een bovengrens van 1,67 miljoen over het
+resterende seizoen — een prioriteringsscore, geen begrotingsregel. De top-50 is
+190k en dat is het deel dat deze week telt.
+
+Daarbovenop geldt de prijsregel nog steeds, nu per artikel in plaats van per merk:
+staat er een streepprijs op, dan gaat het niet op de bestellijst. Dat haalde de
+helft van de top-150 eruit.
+
+## 13. Wat Shopify zelf kan
+
+Alle 17 shops draaien op het Grow-plan (intern `professional`).
+
+**Ingebouwde voorraadrapporten** (Analytics → Reports → Inventory): *Products by
+sell-through rate*, *Inventory remaining per product* (dagen tot leeg op basis van
+verkoopsnelheid), *Inventory sold daily by product*, *ABC product analysis*,
+*Products by percentage sold*, *Month-end inventory snapshot*. Dat laatste is
+waardevol: Shopify bewaart wél een maandelijkse voorraadfoto, ChannelEngine niet.
+
+**Shopify Flow** zit op dit plan. Bruikbare automatiseringen:
+
+| Trigger | Conditie | Actie |
+|---|---|---|
+| Product variant inventory quantity changed | voorraad < drempel | mail/Slack naar inkoop, tag `bijbestellen` |
+| Product variant out of stock | — | tag `nee-verkoop`, datum vastleggen in metafield |
+| Product variant back in stock | — | tag verwijderen, leverdatum vastleggen |
+
+Die laatste twee zijn precies het halverwege-inzicht: door uit-voorraad en
+terug-op-voorraad te loggen, weet je per maat hoeveel dagen hij écht leverbaar
+was. Dat is de teller waar het tempo op gebaseerd hoort te zijn, in plaats van
+op de benadering die nu gebruikt wordt.
+
+**Wat Shopify niet kan**, en waarom de n8n-job blijft: de rapporten zijn per shop.
+Met 17 shops plus de marktplaatsen op één centrale voorraad geeft geen enkele
+shop het juiste beeld — Sockwell NL ziet niet wat Sockwell DE verkoopt, en geen
+van beide ziet bol.com. Ook seizoensvensters, afprijsregimes en de maatcurve over
+alle kanalen heen zitten niet in Shopify.
+
+**Verdeling van het werk:**
+
+- *Shopify Flow, per shop* — signaleren op het moment zelf: drempelalarm,
+  out/back-in-stock loggen. Snel, realtime, geen bouwwerk.
+- *n8n, centraal, wekelijks* — de vraag over alle kanalen optellen, tempo
+  schatten, seizoen en prijsregime wegen, en één bestellijst produceren.
