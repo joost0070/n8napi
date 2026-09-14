@@ -1,0 +1,20 @@
+SHOPS = [
+ ("Bartogi NL","bartogi-nl","SHOPIFY_TOKEN_BARTOGI_NL"),
+ ("Bartogi DE","bartogi-de","SHOPIFY_TOKEN_BARTOGI_DE"),
+ ("KEEN NL","keen-nl","SHOPIFY_TOKEN_KEEN_NL"),
+ ("Jan Jansen NL","jan-jansen-nl","SHOPIFY_TOKEN_JAN_JANSEN_NL"),
+ ("HEYDUDE NL","heydude-nl","SHOPIFY_TOKEN_HEYDUDE_NL"),
+ ("Hunter Boots NL","rge9fj-je","SHOPIFY_TOKEN_HUNTER_BOOTS_NL"),
+ ("Lazamani NL","lazamani-nl","SHOPIFY_TOKEN_LAZAMANI_NL"),
+ ("Lazamani DE","lazamani-de","SHOPIFY_TOKEN_LAZAMANI_DE"),
+ ("Lazamani COM","lazamani-en","SHOPIFY_TOKEN_LAZAMANI_EN"),
+ ("Toni Pons NL","toni-pons-nl","SHOPIFY_TOKEN_TONI_PONS_NL"),
+ ("Tofvel NL","tofvel-nl","SHOPIFY_TOKEN_TOFVEL_NL"),
+ ("Tofvel DE","tofvel-de","SHOPIFY_TOKEN_TOFVEL_DE"),
+ ("Tofvel EU","tofvel-en","SHOPIFY_TOKEN_TOFVEL_EN"),
+ ("Sockwell NL","sockwell-b2c-nl","SHOPIFY_TOKEN_SOCKWELL_B2C_NL"),
+ ("Sockwell DE","sockwell-b2c-de","SHOPIFY_TOKEN_SOCKWELL_B2C_DE"),
+ ("Sockwell EU","sockwell-b2c-en","SHOPIFY_TOKEN_SOCKWELL_B2C_EN"),
+ ("Piedi Nudi NL","ns3a4j-i1","SHOPIFY_TOKEN_PIEDI_NUDI_NL"),
+]
+API = "2024-10"

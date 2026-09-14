@@ -218,24 +218,6 @@
     },
     {
       "parameters": {
-        "resource": "order",
-        "operation": "getAll",
-        "returnAll": true,
-        "options": {}
-      },
-      "id": "shopify-orders",
-      "name": "Shopify: orders (NL/DE/EN)",
-      "type": "n8n-nodes-base.shopify",
-      "typeVersion": 1,
-      "position": [
-        -240,
-        860
-      ],
-      "disabled": true,
-      "notes": "UITGESCHAKELD tot de .myshopify.com-adressen bekend zijn. De toegangstokens bestaan al (19 stuks, per merk en land). Zonder deze node blijft het aantal verkochte paren per maat onzichtbaar voor alles wat buiten de marktplaatsen loopt."
-    },
-    {
-      "parameters": {
         "url": "https://hooijerfootwear.channelengine.net/api/v2/offer/stock",
         "sendHeaders": true,
         "headerParameters": {
@@ -287,7 +269,7 @@
       "typeVersion": 4.4,
       "position": [
         -240,
-        1060
+        1240
       ],
       "notes": "Let op: dit endpoint pagineert op 'pageIndex', niet op 'page'. Levert per artikel de datum van de laatste voorraadmutatie - het enige signaal dat ook webshopverkoop meeneemt."
     },
@@ -295,7 +277,7 @@
       "parameters": {
         "mode": "runOnceForAllItems",
         "language": "javaScript",
-        "jsCode": "// ============================================================\n// Voorraad Watch - kernberekening\n// Input: producten, orders, retouren, merk-config\n// Output: 1 item per maat-SKU met signaal\n// ============================================================\nconst cfgRows   = $('Merk-config').all().map(i => i.json);\nconst prodPages = $('CE: producten (alle maten)').all().map(i => i.json);\nconst ordPages  = $('CE: orders 53 weken').all().map(i => i.json);\nconst retPages  = $('CE: retouren 53 weken').all().map(i => i.json);\nconst stkPages  = $('CE: voorraadmutaties').all().map(i => i.json);\n\nconst flat = (pages, k = 'Content') => pages.flatMap(p => p[k] || []);\nconst today = new Date();\nconst isoWeek = (d) => { const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); t.setUTCDate(t.getUTCDate() + 4 - (t.getUTCDay() || 7)); const y = new Date(Date.UTC(t.getUTCFullYear(), 0, 1)); return Math.ceil(((t - y) / 86400000 + 1) / 7); };\nconst WEEK_NU = isoWeek(today);\n\n// ---- merk-config indexeren ----\nconst cfg = {};\nfor (const r of cfgRows) if (r.merk) cfg[String(r.merk).trim().toLowerCase()] = r;\nconst DEFAULT = { levertijd_dagen: 30, veiligheidsvoorraad_weken: 2, max_woc: 26, seizoen_type: 'ALL', nabestellen_mogelijk: 'ja', doel_sell_through_pct: 70 };\nconst cfgFor = (merk) => ({ ...DEFAULT, ...(cfg[String(merk || '').trim().toLowerCase()] || {}) });\n\n// ---- vraag opbouwen ----\nconst sold = {};   // mpn -> {w4, w13, w52, vorigJaarZelfdePeriode}\nconst bump = (mpn, veld, q) => { sold[mpn] = sold[mpn] || { w4: 0, w13: 0, w52: 0, ly: 0 }; sold[mpn][veld] += q; };\nfor (const o of flat(ordPages)) {\n  const d = new Date(o.OrderDate); const dagen = (today - d) / 86400000;\n  for (const l of o.Lines || []) {\n    if (l.Status === 'CANCELED') continue;\n    const q = l.Quantity || 0, mpn = l.MerchantProductNo;\n    if (!mpn) continue;\n    if (dagen <= 28)  bump(mpn, 'w4', q);\n    if (dagen <= 91)  bump(mpn, 'w13', q);\n    if (dagen <= 365) bump(mpn, 'w52', q);\n    if (dagen > 337 && dagen <= 365) bump(mpn, 'ly', q);   // zelfde 4 weken vorig jaar\n  }\n}\n// ---- laatste voorraadmutatie per artikel (vangt ook webshopverkoop) ----\nconst muteerde = {};\nfor (const s of flat(stkPages)) {\n  const d = new Date(s.UpdatedAt);\n  if (!isNaN(d)) muteerde[s.MerchantProductNo] = d;\n}\nconst dagenStil = (mpn) => {\n  const d = muteerde[mpn];\n  return d ? Math.round((today - d) / 86400000) : null;\n};\n\nconst retour = {};\nfor (const r of flat(retPages)) for (const l of r.Lines || []) { const m = l.MerchantProductNo; if (m) retour[m] = (retour[m] || 0) + (l.Quantity || 1); }\n\n// ---- producten normaliseren (alleen varianten = maat-niveau) ----\nconst varianten = flat(prodPages).filter(p => p.ParentMerchantProductNo);\nconst ex = (p, k) => (p.ExtraData || []).find(e => e.Key === k)?.Value ?? null;\nconst seizoenVan = (s) => { s = (s || '').toLowerCase(); if (/herfst|winter|autumn/.test(s)) return 'FW'; if (/lente|zomer|spring|summer/.test(s)) return 'SS'; if (/alle|all/.test(s)) return 'ALL'; return 'ONBEKEND'; };\n\n// ---- maatcurve per merk uit eigen verkoop ----\nconst curve = {};   // merk -> maat -> verkocht\nfor (const p of varianten) { const q = sold[p.MerchantProductNo]?.w52 || 0; if (!q) continue; const b = p.Brand || '?'; curve[b] = curve[b] || {}; curve[b][p.Size] = (curve[b][p.Size] || 0) + q; }\n\nconst out = [];\nfor (const p of varianten) {\n  const c = cfgFor(p.Brand);\n  const s = sold[p.MerchantProductNo] || { w4: 0, w13: 0, w52: 0, ly: 0 };\n  const voorraad = p.Stock || 0;\n  const inkoop = p.PurchasePrice || (p.Price || 0) * 0.45;\n  const seizoen = seizoenVan(ex(p, 'seizoen_NL') || ex(p, 'seizoen_EN'));\n\n  // vraag per week: 13 weken is de basis, 4 weken weegt zwaarder (recent signaal)\n  const perWeek = (s.w13 / 13) * 0.6 + (s.w4 / 4) * 0.4;\n  const woc = perWeek > 0 ? voorraad / perWeek : (voorraad > 0 ? 999 : 0);\n\n  // hoeveel weken heeft dit artikel nog in zijn seizoen?\n  const eindWeek = seizoen === 'FW' ? Number(c.fw_eind_week || 8) : seizoen === 'SS' ? Number(c.ss_eind_week || 30) : null;\n  const weken_tot_eind = eindWeek === null ? null : ((eindWeek - WEEK_NU) + 52) % 52;\n\n  // signaalhorizon = levertijd + veiligheid\n  const horizon = Number(c.signaal_horizon_weken || (Number(c.levertijd_dagen) / 7 + Number(c.veiligheidsvoorraad_weken)));\n\n  const stil = dagenStil(p.MerchantProductNo);\n\n  let signaal = 'OK', actie = '', prioriteit = 0;\n  if (voorraad === 0 && s.w13 > 0) {\n    signaal = 'NEE-VERKOOP'; prioriteit = (s.w13 / 13) * (p.Price || 0) * 8;\n    actie = c.nabestellen_mogelijk === 'nee' ? 'Niet nabestelbaar - vraag verplaatsen naar alternatief model' : `Bestellen: ~${Math.ceil(perWeek * horizon)} st`;\n  } else if (woc < horizon && perWeek > 0) {\n    signaal = 'TE-WEINIG'; prioriteit = (horizon - woc) * perWeek * (p.Price || 0);\n    actie = `Bijbestellen ~${Math.ceil((horizon - woc) * perWeek)} st (dekking ${woc.toFixed(1)} wk < ${horizon.toFixed(1)} wk)`;\n  } else if (weken_tot_eind !== null && perWeek > 0 && voorraad > perWeek * weken_tot_eind * 1.3) {\n    const rest = Math.round(voorraad - perWeek * weken_tot_eind);\n    signaal = 'TE-VEEL-SEIZOEN'; prioriteit = rest * inkoop;\n    actie = `Blijft ~${rest} st over bij einde seizoen (wk ${eindWeek}) - nu afprijzen/spreiden`;\n  } else if (woc > Number(c.max_woc)) {\n    signaal = 'TE-VEEL'; prioriteit = (voorraad - perWeek * Number(c.max_woc)) * inkoop;\n    actie = `Dekking ${woc >= 999 ? '>999' : woc.toFixed(0)} wk - kapitaal vast`;\n  } else if (voorraad > 0 && s.w52 === 0 && stil !== null && stil > 90) {\n    signaal = 'STIL'; prioriteit = voorraad * inkoop;\n    actie = `Geen verkoop en ${stil} dagen geen voorraadmutatie - uitfaseren`;\n  }\n\n  out.push({ json: {\n    peildatum: today.toISOString().slice(0, 10), week: WEEK_NU,\n    merk: p.Brand, model: ex(p, 'model'), artikel: p.Name, parent: p.ParentMerchantProductNo,\n    ean: p.MerchantProductNo, maat: p.Size, kleur: p.Color,\n    seizoen, seizoensjaar: ex(p, 'Seizoensjaar'),\n    voorraad, verkocht_4w: s.w4, verkocht_13w: s.w13, verkocht_52w: s.w52, vorig_jaar_4w: s.ly,\n    retour_52w: retour[p.MerchantProductNo] || 0,\n    retour_pct: s.w52 ? Math.round(100 * (retour[p.MerchantProductNo] || 0) / s.w52) : null,\n    dagen_sinds_mutatie: stil,\n    vraag_per_week: Number(perWeek.toFixed(2)),\n    weken_voorraad: woc >= 999 ? null : Number(woc.toFixed(1)),\n    weken_tot_seizoenseinde: weken_tot_eind,\n    signaal_horizon_weken: Number(horizon.toFixed(1)),\n    verkoopprijs: p.Price, inkoopprijs: Number(inkoop.toFixed(2)),\n    voorraadwaarde: Number((voorraad * inkoop).toFixed(2)),\n    signaal, actie, prioriteit_eur: Math.round(prioriteit),\n  } });\n}\n\nout.sort((a, b) => b.json.prioriteit_eur - a.json.prioriteit_eur);\nreturn out;"
+        "jsCode": "// ============================================================\n// Voorraad Watch - vooruitkijkende seizoensberekening\n// Kernvraag per maat: haal ik het einde van dit seizoen met wat er ligt?\n// ============================================================\nconst cfgRows   = $('Merk-config').all().map(i => i.json);\nconst prodPages = $('CE: producten (alle maten)').all().map(i => i.json);\nconst ordPages  = $('CE: orders 53 weken').all().map(i => i.json);\nconst retPages  = $('CE: retouren 53 weken').all().map(i => i.json);\nconst stkPages  = $('CE: voorraadmutaties').all().map(i => i.json);\nconst shopOrd   = $('Shopify: orders').all().map(i => i.json);\nconst shopProd  = $('Shopify: producten').all().map(i => i.json);\n\nconst flat = (pages, k = 'Content') => pages.flatMap(p => p[k] || []);\nconst today = new Date();\nconst isoWeek = (d) => { const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));\n  t.setUTCDate(t.getUTCDate() + 4 - (t.getUTCDay() || 7));\n  const y = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));\n  return Math.ceil(((t - y) / 86400000 + 1) / 7); };\nconst NU = isoWeek(today);\nconst HORIZON_NOOS = 26;          // doorlopende artikelen: geen seizoenseinde\n\n// ---- merk-config ----\nconst cfg = {};\nfor (const r of cfgRows) if (r.merk) cfg[String(r.merk).trim().toLowerCase()] = r;\nconst DEFAULT = { levertijd_dagen: 30, veiligheidsvoorraad_weken: 2, nabestellen_mogelijk: 'ja' };\nconst cfgFor = (m) => ({ ...DEFAULT, ...(cfg[String(m || '').trim().toLowerCase()] || {}) });\n\n// ---- artikelstam uit ChannelEngine (alleen maatvarianten) ----\nconst ex = (p, k) => (p.ExtraData || []).find(e => e.Key === k)?.Value ?? null;\nconst seizoenVan = (s) => { s = (s || '').toLowerCase();\n  if (/herfst|winter|autumn/.test(s)) return 'FW';\n  if (/lente|zomer|spring|summer/.test(s)) return 'SS';\n  return 'ONBEKEND'; };\nconst art = {}, eanNaar = {};\nfor (const p of flat(prodPages)) {\n  if (!p.ParentMerchantProductNo) continue;\n  const jaar = String(ex(p, 'Seizoensjaar') || '').toUpperCase();\n  const a = { mpn: p.MerchantProductNo, merk: p.Brand, maat: p.Size, naam: p.Name,\n    parent: p.ParentMerchantProductNo, voorraad: p.Stock || 0, prijs: p.Price || 0,\n    inkoop: p.PurchasePrice || (p.Price || 0) * 0.45,\n    type: jaar === 'NOOS' ? 'NOOS' : seizoenVan(ex(p, 'seizoen_NL') || ex(p, 'seizoen_EN')) };\n  art[a.mpn] = a;\n  if (p.Ean) eanNaar[p.Ean] = a.mpn;\n}\nconst naarMpn = (sku) => (art[sku] ? sku : eanNaar[sku]);\n\n// ---- vraag: webshop + marktplaats, per artikel per week ----\nconst vraag = {}, curve = {}, prijsMax = {}, betaald = [];\nconst tel = (mpn, w, q) => { (vraag[mpn] = vraag[mpn] || {})[w] = (vraag[mpn][w] || 0) + q; };\nconst telCurve = (sleutel, w, q) => { (curve[sleutel] = curve[sleutel] || {})[w] = (curve[sleutel][w] || 0) + q; };\n\nfor (const o of shopOrd) {\n  if (o.cancelled_at) continue;\n  const d = new Date(o.created_at); const w = isoWeek(d);\n  const oud = (today - d) / 86400000;\n  for (const li of o.line_items || []) {\n    const mpn = naarMpn(li.sku); const q = li.quantity || 0;\n    if (!mpn || q <= 0) continue;\n    const a = art[mpn];\n    const stuk = Number(li.price) || 0;\n    prijsMax[mpn] = Math.max(prijsMax[mpn] || 0, stuk);\n    betaald.push({ mpn, merk: a.merk, w, q, netto: stuk - (Number(li.total_discount) || 0) / q });\n    telCurve(`${a.merk}|${a.type}`, w, q);\n    if (oud <= 182) tel(mpn, w, q);\n  }\n}\nfor (const o of flat(ordPages)) {\n  const d = new Date(o.OrderDate); const w = isoWeek(d);\n  const oud = (today - d) / 86400000;\n  for (const l of o.Lines || []) {\n    if (l.Status === 'CANCELED') continue;\n    const mpn = l.MerchantProductNo, q = l.Quantity || 0;\n    if (!art[mpn] || q <= 0) continue;\n    telCurve(`${art[mpn].merk}|${art[mpn].type}`, w, q);\n    if (oud <= 182) tel(mpn, w, q);\n  }\n}\n\n// ---- seizoensindex + seizoensdal per merk x type ----\nconst idx = {}, dal = {};\nfor (const [sleutel, c] of Object.entries(curve)) {\n  const tot = Object.values(c).reduce((a, b) => a + b, 0);\n  if (tot < 150) continue;\n  const glad = {}, i = {};\n  for (let w = 1; w <= 53; w++) {\n    glad[w] = [-1, 0, 1].reduce((s, d) => s + (c[((w - 1 + d + 53) % 53) + 1] || 0), 0) / 3;\n    i[w] = (c[w] || 0) / tot;\n  }\n  idx[sleutel] = i;\n  dal[sleutel] = Object.keys(glad).reduce((a, b) => glad[a] <= glad[b] ? a : b);\n}\n// aandeel van de jaarvraag dat nog tussen nu en het seizoensdal valt\nconst restAandeel = (sleutel) => {\n  if (!idx[sleutel]) return null;\n  const d = Number(dal[sleutel]); let s = 0, w = NU, n = 0;\n  while (w !== d && n < 53) { s += idx[sleutel][w]; w = (w % 53) + 1; n++; }\n  return { aandeel: s, weken: n };\n};\n// aandeel van de jaarvraag in de afgelopen 26 weken (om de run-rate te schalen)\nconst verstreken = (sleutel) => {\n  if (!idx[sleutel]) return null;\n  let s = 0, w = NU;\n  for (let k = 0; k < 26; k++) { w = ((w - 2 + 53) % 53) + 1; s += idx[sleutel][w]; }\n  return s;\n};\n\n// ---- prijsregime per merk ----\n// Een afprijzing in Shopify is meestal een lagere prijs, geen kortingscode.\n// Daarom: aandeel stuks dat onder 92% van de eigen hoogste prijs wegging.\nconst perWeek = {};\nfor (const b of betaald) {\n  const ref = prijsMax[b.mpn] || 0; if (ref <= 0) continue;\n  const k = `${b.merk}|${b.w}`;\n  const a = perWeek[k] = perWeek[k] || [0, 0];\n  a[1] += b.q; if (b.netto < ref * 0.92) a[0] += b.q;\n}\nconst liveSale = {};\nfor (const v of shopProd) {\n  for (const va of v.variants || [v]) {\n    const mpn = naarMpn(va.sku); if (!mpn) continue;\n    const m = art[mpn].merk;\n    const a = liveSale[m] = liveSale[m] || [0, 0];\n    a[1]++;\n    if (va.compare_at_price && Number(va.compare_at_price) > Number(va.price) * 1.02) a[0]++;\n  }\n}\nconst regime = {};\nfor (const m of new Set(Object.values(art).map(a => a.merk))) {\n  const ws = [];\n  for (let w = 1; w <= 53; w++) { const a = perWeek[`${m}|${w}`]; if (a && a[1] >= 20) ws.push([w, a[0] / a[1]]); }\n  if (ws.length < 25) { regime[m] = { inSale: false, onbekend: true }; continue; }\n  const gesorteerd = ws.map(x => x[1]).sort((a, b) => a - b);\n  const basis = gesorteerd[Math.floor(gesorteerd.length / 2)];\n  const nu = (ws.find(x => x[0] === NU) || [, null])[1];\n  const lv = liveSale[m];\n  const livePct = lv && lv[1] ? lv[0] / lv[1] : null;\n  regime[m] = {\n    basis: Math.round(100 * basis),\n    nu: nu == null ? null : Math.round(100 * nu),\n    live: livePct == null ? null : Math.round(100 * livePct),\n    inSale: (nu != null && nu >= Math.max(0.30, basis + 0.20)) || (livePct != null && livePct >= 0.45),\n  };\n}\n\n// ---- laatste voorraadmutatie (vangt ook verkoop die nergens als order landt) ----\nconst muteerde = {};\nfor (const s of flat(stkPages)) { const d = new Date(s.UpdatedAt); if (!isNaN(d)) muteerde[s.MerchantProductNo] = d; }\nconst stilDagen = (mpn) => muteerde[mpn] ? Math.round((today - muteerde[mpn]) / 86400000) : null;\n\nconst retour = {};\nfor (const r of flat(retPages)) for (const l of r.Lines || []) {\n  if (l.MerchantProductNo) retour[l.MerchantProductNo] = (retour[l.MerchantProductNo] || 0) + (l.Quantity || 1);\n}\n\n// ---- besluit per maat ----\nconst out = [];\nfor (const a of Object.values(art)) {\n  if (a.voorraad <= 0) continue;\n  const c = cfgFor(a.merk), sleutel = `${a.merk}|${a.type}`;\n  const v = vraag[a.mpn] || {};\n  const recent = Object.values(v).reduce((x, y) => x + y, 0);   // 26 weken, alle kanalen\n  const deel = verstreken(sleutel);\n  if (!deel) continue;\n  const jaarvraag = recent / deel;\n\n  let rest, weken;\n  if (a.type === 'NOOS') { weken = HORIZON_NOOS; rest = HORIZON_NOOS / 52; }\n  else { const r = restAandeel(sleutel); if (!r) continue; rest = r.aandeel; weken = r.weken; }\n  const restvraag = jaarvraag * rest;\n  const projectie = a.voorraad - restvraag;\n\n  const rg = regime[a.merk] || {};\n  const horizon = Number(c.signaal_horizon_weken ||\n    (Number(c.levertijd_dagen) / 7 + Number(c.veiligheidsvoorraad_weken)));\n  const cutoff = c[a.type === 'FW' ? 'order_cutoff_fw' : 'order_cutoff_ss'];\n  const nogTeBestellen = !cutoff || new Date(cutoff) > today;\n  const stil = stilDagen(a.mpn);\n\n  let signaal = 'OK', actie = '', prioriteit = 0;\n  if (projectie < -0.5 && rg.inSale) {\n    signaal = 'NIET-BIJBESTELLEN'; prioriteit = -projectie * a.prijs * 0.3;\n    actie = 'Tekort, maar het merk zit al in de sale - vraag naar een lopend model sturen';\n  } else if (projectie < -0.5 && c.nabestellen_mogelijk === 'nee') {\n    signaal = 'TEKORT-NIET-LEVERBAAR'; prioriteit = -projectie * a.prijs * 0.5;\n    actie = `Tekort van ${Math.ceil(-projectie)} st, maar dit merk levert niet na`;\n  } else if (projectie < -0.5 && !nogTeBestellen) {\n    signaal = 'TEKORT-NA-CUTOFF'; prioriteit = -projectie * a.prijs * 0.5;\n    actie = `Tekort van ${Math.ceil(-projectie)} st, maar de order-cutoff (${cutoff}) is voorbij`;\n  } else if (projectie < -0.5) {\n    signaal = 'BIJBESTELLEN'; prioriteit = -projectie * a.prijs;\n    actie = `Bestellen ~${Math.ceil(-projectie)} st - restvraag ${restvraag.toFixed(0)} st in ${weken} wk, `\n          + `voorraad ${a.voorraad} st. Levertijd ${c.levertijd_dagen} dgn (horizon ${horizon.toFixed(1)} wk)`;\n  } else if (a.type !== 'NOOS' && projectie > 0.5 && restvraag > 0.2 && !rg.inSale) {\n    signaal = 'NU-AFPRIJZEN'; prioriteit = projectie * a.inkoop;\n    actie = `Blijft ~${Math.round(projectie)} st over bij seizoenseinde (over ${weken} wk), nu nog volle prijs`;\n  } else if (a.type !== 'NOOS' && projectie > 0.5 && rg.inSale) {\n    signaal = 'KORTING-VERDIEPEN'; prioriteit = projectie * a.inkoop * 0.7;\n    actie = `Blijft ~${Math.round(projectie)} st over en de sale loopt al - korting verdiepen of spreiden`;\n  } else if (a.type === 'NOOS' && projectie > 0.5) {\n    signaal = 'NOOS-TE-RUIM'; prioriteit = projectie * a.inkoop;\n    const jaren = jaarvraag > 0 ? a.voorraad / jaarvraag : 99;\n    actie = `${jaren > 99 ? '>99' : jaren.toFixed(1)} jaar voorraad tegen de huidige snelheid - inkoop stoppen`;\n  } else if (recent === 0 && stil !== null && stil > 90) {\n    signaal = 'STIL'; prioriteit = a.voorraad * a.inkoop;\n    actie = `Geen verkoop en ${stil} dagen geen voorraadmutatie - uitfaseren`;\n  }\n\n  out.push({ json: {\n    peildatum: today.toISOString().slice(0, 10), week: NU,\n    merk: a.merk, artikel: a.naam, parent: a.parent, ean: a.mpn, maat: a.maat, type: a.type,\n    voorraad: a.voorraad, verkocht_26w: recent,\n    jaarvraag: Number(jaarvraag.toFixed(1)),\n    restvraag: Number(restvraag.toFixed(1)), weken_tot_seizoenseinde: weken,\n    projectie: Number(projectie.toFixed(1)),\n    prijsregime: rg.inSale ? 'sale' : 'volle prijs',\n    sale_nu_pct: rg.nu ?? null, sale_live_pct: rg.live ?? null,\n    dagen_sinds_mutatie: stil,\n    retour_52w: retour[a.mpn] || 0,\n    verkoopprijs: a.prijs, inkoopprijs: Number(a.inkoop.toFixed(2)),\n    voorraadwaarde: Number((a.voorraad * a.inkoop).toFixed(2)),\n    signaal, actie, prioriteit_eur: Math.round(prioriteit),\n  } });\n}\nout.sort((x, y) => y.json.prioriteit_eur - x.json.prioriteit_eur);\nreturn out;\n"
       },
       "id": "analyse",
       "name": "Analyse: signaal per maat",
@@ -304,7 +286,8 @@
       "position": [
         120,
         460
-      ]
+      ],
+      "notes": "Schat per maat de resterende seizoensvraag en vergelijkt die met de voorraad. Het prijsregime van het merk bepaalt of dat een bestel- of een afprijsactie wordt."
     },
     {
       "parameters": {
@@ -362,6 +345,124 @@
         580,
         560
       ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Eén item per webshop. Geox staat er niet bij: dat token geeft 401.\nreturn [{\"json\": {\"naam\": \"Bartogi NL\", \"domein\": \"bartogi-nl\", \"token\": \"SHOPIFY_TOKEN_BARTOGI_NL\"}}, {\"json\": {\"naam\": \"Bartogi DE\", \"domein\": \"bartogi-de\", \"token\": \"SHOPIFY_TOKEN_BARTOGI_DE\"}}, {\"json\": {\"naam\": \"KEEN NL\", \"domein\": \"keen-nl\", \"token\": \"SHOPIFY_TOKEN_KEEN_NL\"}}, {\"json\": {\"naam\": \"Jan Jansen NL\", \"domein\": \"jan-jansen-nl\", \"token\": \"SHOPIFY_TOKEN_JAN_JANSEN_NL\"}}, {\"json\": {\"naam\": \"HEYDUDE NL\", \"domein\": \"heydude-nl\", \"token\": \"SHOPIFY_TOKEN_HEYDUDE_NL\"}}, {\"json\": {\"naam\": \"Hunter Boots NL\", \"domein\": \"rge9fj-je\", \"token\": \"SHOPIFY_TOKEN_HUNTER_BOOTS_NL\"}}, {\"json\": {\"naam\": \"Lazamani NL\", \"domein\": \"lazamani-nl\", \"token\": \"SHOPIFY_TOKEN_LAZAMANI_NL\"}}, {\"json\": {\"naam\": \"Lazamani DE\", \"domein\": \"lazamani-de\", \"token\": \"SHOPIFY_TOKEN_LAZAMANI_DE\"}}, {\"json\": {\"naam\": \"Lazamani COM\", \"domein\": \"lazamani-en\", \"token\": \"SHOPIFY_TOKEN_LAZAMANI_EN\"}}, {\"json\": {\"naam\": \"Toni Pons NL\", \"domein\": \"toni-pons-nl\", \"token\": \"SHOPIFY_TOKEN_TONI_PONS_NL\"}}, {\"json\": {\"naam\": \"Tofvel NL\", \"domein\": \"tofvel-nl\", \"token\": \"SHOPIFY_TOKEN_TOFVEL_NL\"}}, {\"json\": {\"naam\": \"Tofvel DE\", \"domein\": \"tofvel-de\", \"token\": \"SHOPIFY_TOKEN_TOFVEL_DE\"}}, {\"json\": {\"naam\": \"Tofvel EU\", \"domein\": \"tofvel-en\", \"token\": \"SHOPIFY_TOKEN_TOFVEL_EN\"}}, {\"json\": {\"naam\": \"Sockwell NL\", \"domein\": \"sockwell-b2c-nl\", \"token\": \"SHOPIFY_TOKEN_SOCKWELL_B2C_NL\"}}, {\"json\": {\"naam\": \"Sockwell DE\", \"domein\": \"sockwell-b2c-de\", \"token\": \"SHOPIFY_TOKEN_SOCKWELL_B2C_DE\"}}, {\"json\": {\"naam\": \"Sockwell EU\", \"domein\": \"sockwell-b2c-en\", \"token\": \"SHOPIFY_TOKEN_SOCKWELL_B2C_EN\"}}, {\"json\": {\"naam\": \"Piedi Nudi NL\", \"domein\": \"ns3a4j-i1\", \"token\": \"SHOPIFY_TOKEN_PIEDI_NUDI_NL\"}}];"
+      },
+      "id": "shoplijst",
+      "name": "Webshops",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -680,
+        900
+      ],
+      "notes": "17 Shopify-shops, per merk en land."
+    },
+    {
+      "parameters": {
+        "url": "={{ 'https://' + $json.domein + '.myshopify.com/admin/api/2024-10/orders.json' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Shopify-Access-Token",
+              "value": "={{ $env[$json.token] }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "status",
+              "value": "any"
+            },
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "created_at_min",
+              "value": "={{ $now.minus(800, 'days').toISO() }}"
+            },
+            {
+              "name": "fields",
+              "value": "id,created_at,cancelled_at,line_items"
+            }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "nextURL": "={{ ($response.headers.link || '').match(/<([^>]+)>;\\s*rel=\"next\"/)?.[1] || '' }}",
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ !($response.headers.link || '').includes('rel=\"next\"') }}",
+              "limitPagesFetched": true,
+              "maxRequests": 400,
+              "requestInterval": 600
+            }
+          }
+        }
+      },
+      "id": "shop-orders",
+      "name": "Shopify: orders",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -460,
+        880
+      ],
+      "notes": "Shopify pagineert op een cursor in de link-header, niet op een paginanummer."
+    },
+    {
+      "parameters": {
+        "url": "={{ 'https://' + $json.domein + '.myshopify.com/admin/api/2024-10/products.json' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Shopify-Access-Token",
+              "value": "={{ $env[$json.token] }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "nextURL": "={{ ($response.headers.link || '').match(/<([^>]+)>;\\s*rel=\"next\"/)?.[1] || '' }}",
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ !($response.headers.link || '').includes('rel=\"next\"') }}",
+              "limitPagesFetched": true,
+              "maxRequests": 400,
+              "requestInterval": 600
+            }
+          }
+        }
+      },
+      "id": "shop-products",
+      "name": "Shopify: producten",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -460,
+        1060
+      ],
+      "notes": "Levert per variant de huidige prijs en compare_at_price - de directe meting of een artikel nu in de sale staat."
     }
   ],
   "connections": {
@@ -390,6 +491,11 @@
           },
           {
             "node": "CE: voorraadmutaties",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Webshops",
             "type": "main",
             "index": 0
           }
@@ -468,6 +574,44 @@
       ]
     },
     "CE: voorraadmutaties": {
+      "main": [
+        [
+          {
+            "node": "Analyse: signaal per maat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webshops": {
+      "main": [
+        [
+          {
+            "node": "Shopify: orders",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Shopify: producten",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shopify: orders": {
+      "main": [
+        [
+          {
+            "node": "Analyse: signaal per maat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shopify: producten": {
       "main": [
         [
           {

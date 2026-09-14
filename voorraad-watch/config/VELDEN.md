@@ -1,8 +1,16 @@
 # Merk-configuratie: uitleg per veld
 
-Dit bestand vult de "business-kennis" aan die niet uit ChannelEngine of Shopify
-te halen is. Zonder deze regels kan het systeem wel *tellen*, maar niet
-*oordelen*. Eén regel per merk.
+Dit bestand vult de kennis aan die niet uit data te halen is. Eén regel per merk.
+
+**Wat het systeem inmiddels zelf afleidt** (en dus niet meer ingevuld hoeft te
+worden): het seizoensvenster per merk, de normale sale-periodes, de maatcurve,
+en of een artikel doorlopend (NOOS) of seizoensgebonden is. Dat komt uit 26
+maanden verkoophistorie over alle 17 webshops plus de marktplaatsen.
+
+**Wat wél handwerk blijft:** levertijd, of het merk naleveren kan, en de
+order-cutoff. Die staan nergens in een systeem, en zonder die drie kan het
+systeem wel zeggen *dát* je te weinig hebt, maar niet of je er nog iets aan
+kunt doen.
 
 | Veld | Wat vul je in | Waarom het systeem dit nodig heeft |
 |---|---|---|
