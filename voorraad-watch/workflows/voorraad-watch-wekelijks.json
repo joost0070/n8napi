@@ -1,0 +1,230 @@
+{
+  "name": "Voorraad Watch - wekelijkse merk/maat-analyse",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            { "field": "weeks", "triggerAtDay": [1], "triggerAtHour": 7, "triggerAtMinute": 0 }
+          ]
+        }
+      },
+      "id": "trigger-weekly",
+      "name": "Elke maandag 07:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [-460, 300]
+    },
+    {
+      "parameters": {
+        "documentId": { "__rl": true, "value": "VUL_SPREADSHEET_ID_IN", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "merk-config", "mode": "name" },
+        "options": {}
+      },
+      "id": "merk-config",
+      "name": "Merk-config",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [-240, 60],
+      "notes": "Eén regel per merk: seizoensvenster, levertijd, kernmaten, drempels."
+    },
+    {
+      "parameters": {
+        "url": "https://hooijerfootwear.channelengine.net/api/v2/products",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "X-CE-KEY", "value": "={{ $env.CE_API_KEY }}" }]
+        },
+        "sendQuery": true,
+        "queryParameters": { "parameters": [{ "name": "page", "value": "1" }] },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "paginationMode": "updateAParameterInEachRequest",
+              "parameters": {
+                "parameters": [
+                  { "type": "qs", "name": "page", "value": "={{ $pageCount + 1 }}" }
+                ]
+              },
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ $response.body.Content.length === 0 }}",
+              "limitPagesFetched": true,
+              "maxRequests": 1000,
+              "requestInterval": 200
+            }
+          }
+        }
+      },
+      "id": "ce-products",
+      "name": "CE: producten (alle maten)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-240, 260],
+      "notes": "~78k SKU's, 100/pagina. Levert merk, maat, voorraad, prijs, inkoopprijs, seizoen."
+    },
+    {
+      "parameters": {
+        "url": "https://hooijerfootwear.channelengine.net/api/v2/orders",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "X-CE-KEY", "value": "={{ $env.CE_API_KEY }}" }]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "fromDate", "value": "={{ $now.minus(371, 'days').toISO() }}" },
+            { "name": "page", "value": "1" }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "paginationMode": "updateAParameterInEachRequest",
+              "parameters": {
+                "parameters": [
+                  { "type": "qs", "name": "page", "value": "={{ $pageCount + 1 }}" }
+                ]
+              },
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ $response.body.Content.length === 0 }}",
+              "limitPagesFetched": true,
+              "maxRequests": 400,
+              "requestInterval": 200
+            }
+          }
+        }
+      },
+      "id": "ce-orders",
+      "name": "CE: orders 53 weken",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-240, 460],
+      "notes": "Marketplace-vraag. 53 weken zodat je dezelfde week vorig jaar kunt vergelijken."
+    },
+    {
+      "parameters": {
+        "url": "https://hooijerfootwear.channelengine.net/api/v2/returns",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "X-CE-KEY", "value": "={{ $env.CE_API_KEY }}" }]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "fromDate", "value": "={{ $now.minus(371, 'days').toISO() }}" },
+            { "name": "page", "value": "1" }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "paginationMode": "updateAParameterInEachRequest",
+              "parameters": {
+                "parameters": [
+                  { "type": "qs", "name": "page", "value": "={{ $pageCount + 1 }}" }
+                ]
+              },
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ $response.body.Content.length === 0 }}",
+              "limitPagesFetched": true,
+              "maxRequests": 200,
+              "requestInterval": 200
+            }
+          }
+        }
+      },
+      "id": "ce-returns",
+      "name": "CE: retouren 53 weken",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-240, 660],
+      "notes": "Retour per maat verraadt pasvormproblemen: hoge retour = geen echte vraag."
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "shopify-orders",
+      "name": "Shopify: orders (NL/DE/EN)",
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [-240, 860],
+      "disabled": true,
+      "notes": "UITGESCHAKELD tot Shopify-credentials er zijn. Zonder deze node mist ~het grootste deel van de vraag en zijn alle 'weken voorraad' te hoog."
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// ============================================================\n// Voorraad Watch - kernberekening\n// Input: producten, orders, retouren, merk-config\n// Output: 1 item per maat-SKU met signaal\n// ============================================================\nconst cfgRows   = $('Merk-config').all().map(i => i.json);\nconst prodPages = $('CE: producten (alle maten)').all().map(i => i.json);\nconst ordPages  = $('CE: orders 53 weken').all().map(i => i.json);\nconst retPages  = $('CE: retouren 53 weken').all().map(i => i.json);\n\nconst flat = (pages, k = 'Content') => pages.flatMap(p => p[k] || []);\nconst today = new Date();\nconst isoWeek = (d) => { const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); t.setUTCDate(t.getUTCDate() + 4 - (t.getUTCDay() || 7)); const y = new Date(Date.UTC(t.getUTCFullYear(), 0, 1)); return Math.ceil(((t - y) / 86400000 + 1) / 7); };\nconst WEEK_NU = isoWeek(today);\n\n// ---- merk-config indexeren ----\nconst cfg = {};\nfor (const r of cfgRows) if (r.merk) cfg[String(r.merk).trim().toLowerCase()] = r;\nconst DEFAULT = { levertijd_dagen: 30, veiligheidsvoorraad_weken: 2, max_woc: 26, seizoen_type: 'ALL', nabestellen_mogelijk: 'ja', doel_sell_through_pct: 70 };\nconst cfgFor = (merk) => ({ ...DEFAULT, ...(cfg[String(merk || '').trim().toLowerCase()] || {}) });\n\n// ---- vraag opbouwen ----\nconst sold = {};   // mpn -> {w4, w13, w52, vorigJaarZelfdePeriode}\nconst bump = (mpn, veld, q) => { sold[mpn] = sold[mpn] || { w4: 0, w13: 0, w52: 0, ly: 0 }; sold[mpn][veld] += q; };\nfor (const o of flat(ordPages)) {\n  const d = new Date(o.OrderDate); const dagen = (today - d) / 86400000;\n  for (const l of o.Lines || []) {\n    if (l.Status === 'CANCELED') continue;\n    const q = l.Quantity || 0, mpn = l.MerchantProductNo;\n    if (!mpn) continue;\n    if (dagen <= 28)  bump(mpn, 'w4', q);\n    if (dagen <= 91)  bump(mpn, 'w13', q);\n    if (dagen <= 365) bump(mpn, 'w52', q);\n    if (dagen > 337 && dagen <= 365) bump(mpn, 'ly', q);   // zelfde 4 weken vorig jaar\n  }\n}\nconst retour = {};\nfor (const r of flat(retPages)) for (const l of r.Lines || []) { const m = l.MerchantProductNo; if (m) retour[m] = (retour[m] || 0) + (l.Quantity || 1); }\n\n// ---- producten normaliseren (alleen varianten = maat-niveau) ----\nconst varianten = flat(prodPages).filter(p => p.ParentMerchantProductNo);\nconst ex = (p, k) => (p.ExtraData || []).find(e => e.Key === k)?.Value ?? null;\nconst seizoenVan = (s) => { s = (s || '').toLowerCase(); if (/herfst|winter|autumn/.test(s)) return 'FW'; if (/lente|zomer|spring|summer/.test(s)) return 'SS'; if (/alle|all/.test(s)) return 'ALL'; return 'ONBEKEND'; };\n\n// ---- maatcurve per merk uit eigen verkoop ----\nconst curve = {};   // merk -> maat -> verkocht\nfor (const p of varianten) { const q = sold[p.MerchantProductNo]?.w52 || 0; if (!q) continue; const b = p.Brand || '?'; curve[b] = curve[b] || {}; curve[b][p.Size] = (curve[b][p.Size] || 0) + q; }\n\nconst out = [];\nfor (const p of varianten) {\n  const c = cfgFor(p.Brand);\n  const s = sold[p.MerchantProductNo] || { w4: 0, w13: 0, w52: 0, ly: 0 };\n  const voorraad = p.Stock || 0;\n  const inkoop = p.PurchasePrice || (p.Price || 0) * 0.45;\n  const seizoen = seizoenVan(ex(p, 'seizoen_NL') || ex(p, 'seizoen_EN'));\n\n  // vraag per week: 13 weken is de basis, 4 weken weegt zwaarder (recent signaal)\n  const perWeek = (s.w13 / 13) * 0.6 + (s.w4 / 4) * 0.4;\n  const woc = perWeek > 0 ? voorraad / perWeek : (voorraad > 0 ? 999 : 0);\n\n  // hoeveel weken heeft dit artikel nog in zijn seizoen?\n  const eindWeek = seizoen === 'FW' ? Number(c.fw_eind_week || 8) : seizoen === 'SS' ? Number(c.ss_eind_week || 30) : null;\n  const weken_tot_eind = eindWeek === null ? null : ((eindWeek - WEEK_NU) + 52) % 52;\n\n  // signaalhorizon = levertijd + veiligheid\n  const horizon = Number(c.signaal_horizon_weken || (Number(c.levertijd_dagen) / 7 + Number(c.veiligheidsvoorraad_weken)));\n\n  let signaal = 'OK', actie = '', prioriteit = 0;\n  if (voorraad === 0 && s.w13 > 0) {\n    signaal = 'NEE-VERKOOP'; prioriteit = (s.w13 / 13) * (p.Price || 0) * 8;\n    actie = c.nabestellen_mogelijk === 'nee' ? 'Niet nabestelbaar - vraag verplaatsen naar alternatief model' : `Bestellen: ~${Math.ceil(perWeek * horizon)} st`;\n  } else if (woc < horizon && perWeek > 0) {\n    signaal = 'TE-WEINIG'; prioriteit = (horizon - woc) * perWeek * (p.Price || 0);\n    actie = `Bijbestellen ~${Math.ceil((horizon - woc) * perWeek)} st (dekking ${woc.toFixed(1)} wk < ${horizon.toFixed(1)} wk)`;\n  } else if (weken_tot_eind !== null && perWeek > 0 && voorraad > perWeek * weken_tot_eind * 1.3) {\n    const rest = Math.round(voorraad - perWeek * weken_tot_eind);\n    signaal = 'TE-VEEL-SEIZOEN'; prioriteit = rest * inkoop;\n    actie = `Blijft ~${rest} st over bij einde seizoen (wk ${eindWeek}) - nu afprijzen/spreiden`;\n  } else if (woc > Number(c.max_woc)) {\n    signaal = 'TE-VEEL'; prioriteit = (voorraad - perWeek * Number(c.max_woc)) * inkoop;\n    actie = `Dekking ${woc >= 999 ? '>999' : woc.toFixed(0)} wk - kapitaal vast`;\n  } else if (voorraad > 0 && s.w52 === 0) {\n    signaal = 'DEAD'; prioriteit = voorraad * inkoop;\n    actie = 'Geen verkoop in 12 mnd - uitfaseren';\n  }\n\n  out.push({ json: {\n    peildatum: today.toISOString().slice(0, 10), week: WEEK_NU,\n    merk: p.Brand, model: ex(p, 'model'), artikel: p.Name, parent: p.ParentMerchantProductNo,\n    ean: p.MerchantProductNo, maat: p.Size, kleur: p.Color,\n    seizoen, seizoensjaar: ex(p, 'Seizoensjaar'),\n    voorraad, verkocht_4w: s.w4, verkocht_13w: s.w13, verkocht_52w: s.w52, vorig_jaar_4w: s.ly,\n    retour_52w: retour[p.MerchantProductNo] || 0,\n    retour_pct: s.w52 ? Math.round(100 * (retour[p.MerchantProductNo] || 0) / s.w52) : null,\n    vraag_per_week: Number(perWeek.toFixed(2)),\n    weken_voorraad: woc >= 999 ? null : Number(woc.toFixed(1)),\n    weken_tot_seizoenseinde: weken_tot_eind,\n    signaal_horizon_weken: Number(horizon.toFixed(1)),\n    verkoopprijs: p.Price, inkoopprijs: Number(inkoop.toFixed(2)),\n    voorraadwaarde: Number((voorraad * inkoop).toFixed(2)),\n    signaal, actie, prioriteit_eur: Math.round(prioriteit),\n  } });\n}\n\nout.sort((a, b) => b.json.prioriteit_eur - a.json.prioriteit_eur);\nreturn out;"
+      },
+      "id": "analyse",
+      "name": "Analyse: signaal per maat",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [120, 460]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "VUL_SPREADSHEET_ID_IN", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "snapshots", "mode": "name" },
+        "options": {}
+      },
+      "id": "snapshot",
+      "name": "Snapshot wegschrijven",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [360, 340],
+      "notes": "ChannelEngine bewaart geen historie. Deze wekelijkse snapshot is je enige bron voor trends."
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Bouwt het weekrapport per merk\nconst rows = $input.all().map(i => i.json);\nconst perMerk = {};\nfor (const r of rows) {\n  const m = perMerk[r.merk] = perMerk[r.merk] || { merk: r.merk, waarde: 0, teweinig: 0, teveel: 0, dead: 0, nee_verkoop: 0, top: [] };\n  m.waarde += r.voorraadwaarde;\n  if (r.signaal === 'TE-WEINIG') m.teweinig++;\n  if (r.signaal === 'TE-VEEL' || r.signaal === 'TE-VEEL-SEIZOEN') m.teveel += r.prioriteit_eur;\n  if (r.signaal === 'DEAD') m.dead += r.prioriteit_eur;\n  if (r.signaal === 'NEE-VERKOOP') m.nee_verkoop++;\n  if (r.signaal !== 'OK' && m.top.length < 10) m.top.push(r);\n}\nconst merken = Object.values(perMerk).sort((a, b) => b.waarde - a.waarde);\nconst eur = n => '\\u20ac ' + Math.round(n).toLocaleString('nl-NL');\nlet html = `<h2>Voorraad Watch \\u2013 week ${rows[0]?.week}</h2>`;\nhtml += '<table border=1 cellpadding=6 style=\"border-collapse:collapse\"><tr><th>Merk</th><th>Voorraadwaarde</th><th>Maten te weinig</th><th>Nul-voorraad met vraag</th><th>Overstock \\u20ac</th><th>Dead \\u20ac</th></tr>';\nfor (const m of merken) html += `<tr><td>${m.merk}</td><td>${eur(m.waarde)}</td><td>${m.teweinig}</td><td>${m.nee_verkoop}</td><td>${eur(m.teveel)}</td><td>${eur(m.dead)}</td></tr>`;\nhtml += '</table><h3>Top acties deze week</h3><ol>';\nfor (const r of rows.filter(r => r.signaal !== 'OK').slice(0, 25)) html += `<li><b>${r.merk}</b> \\u2013 ${r.artikel} maat ${r.maat}: <b>${r.signaal}</b> \\u2013 ${r.actie} <i>(${eur(r.prioriteit_eur)})</i></li>`;\nhtml += '</ol>';\nreturn [{ json: { html, week: rows[0]?.week } }];"
+      },
+      "id": "rapport",
+      "name": "Weekrapport bouwen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [360, 560]
+    },
+    {
+      "parameters": {
+        "sendTo": "VUL_EMAIL_IN",
+        "subject": "=Voorraad Watch – week {{ $json.week }}",
+        "emailType": "html",
+        "message": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "mail",
+      "name": "Mail het weekrapport",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [580, 560]
+    }
+  ],
+  "connections": {
+    "Elke maandag 07:00": { "main": [[
+      { "node": "Merk-config", "type": "main", "index": 0 },
+      { "node": "CE: producten (alle maten)", "type": "main", "index": 0 },
+      { "node": "CE: orders 53 weken", "type": "main", "index": 0 },
+      { "node": "CE: retouren 53 weken", "type": "main", "index": 0 }
+    ]] },
+    "Merk-config": { "main": [[{ "node": "Analyse: signaal per maat", "type": "main", "index": 0 }]] },
+    "CE: producten (alle maten)": { "main": [[{ "node": "Analyse: signaal per maat", "type": "main", "index": 0 }]] },
+    "CE: orders 53 weken": { "main": [[{ "node": "Analyse: signaal per maat", "type": "main", "index": 0 }]] },
+    "CE: retouren 53 weken": { "main": [[{ "node": "Analyse: signaal per maat", "type": "main", "index": 0 }]] },
+    "Analyse: signaal per maat": { "main": [[
+      { "node": "Snapshot wegschrijven", "type": "main", "index": 0 },
+      { "node": "Weekrapport bouwen", "type": "main", "index": 0 }
+    ]] },
+    "Weekrapport bouwen": { "main": [[{ "node": "Mail het weekrapport", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}

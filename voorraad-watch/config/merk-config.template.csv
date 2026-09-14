@@ -1,0 +1,10 @@
+merk;seizoen_type;fw_start_week;fw_eind_week;ss_start_week;ss_eind_week;levertijd_dagen;nabestellen_mogelijk;order_cutoff_fw;order_cutoff_ss;min_order_eenheid;signaal_horizon_weken;veiligheidsvoorraad_weken;kernmaten;maatcurve_bron;markdown_week_fw;markdown_week_ss;noos_lijst;doel_sell_through_pct;max_woc;retour_norm_pct;opmerking
+Keen;FW+SS;34;8;6;30;;ja/nee;;;;;;38-44;verkoop;;;;;;;
+Crocs;ALL;;;;;;;;;;;;36-43;verkoop;;;;;;;
+Hunter;FW;34;10;;;;;;;;;;37-41;verkoop;;;;;;;
+Sockwell;ALL;;;;;;;;;;;;M/L;verkoop;;;;;;;
+Tofvel;ALL;;;;;;;;;;;;;verkoop;;;;;;;
+HEYDUDE;SS;;;6;30;;;;;;;;40-45;verkoop;;;;;;;
+Toni Pons;SS;;;10;32;;;;;;;;37-41;verkoop;;;;;;;
+Lazamani;FW+SS;34;8;6;30;;;;;;;;37-41;verkoop;;;;;;;
+Jan Jansen;FW+SS;;;;;;;;;;;;;verkoop;;;;;;;
