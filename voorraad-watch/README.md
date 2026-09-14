@@ -654,3 +654,84 @@ op piek wk 37 met een aflopend seizoen. De klok gebruikt nu dezelfde curves als
 de motor: Hunter FW piekt in wk 34, dal in wk 14, **56% van de jaarvraag nog te
 gaan over 29 weken**. Het gearceerde vlak toont wat er nog komt in plaats van de
 oude sale-periodes, die nu in de collectietabel staan waar ze horen.
+
+---
+
+## 21. Wat er nog niet klopt
+
+Eerlijke stand van zaken, gerangschikt naar hoeveel een fout een beslissing kan
+verdraaien. Dit is geen bestelsysteem maar een rangschikkingsmotor: de lijst zet
+de juiste twintig regels bovenaan, hij is niet blind te tekenen.
+
+### 1. De seizoenscurve is gebouwd op gecensureerde verkopen
+
+Het ernstigst, en tot nu toe over het hoofd gezien. Het *tempo* is gecorrigeerd
+voor `days_out_of_stock`, de *curve* niet. Die wordt nog steeds opgebouwd uit
+verkochte stuks per week — en in weken dat een artikel leegstond is dat nul.
+
+Tofvel Mula Marbled Brown stond 322 van de 365 dagen leeg. Zijn jaarcurve is dus
+gebouwd uit 43 dagen. Als een artikel juist in zijn piekweken leeg stond, zegt de
+curve dat die piek er niet is, en dan zakt "% nog te gaan" precies waar het
+ertoe doet.
+
+Dit is de vraag "hadden we vorig jaar wel genoeg voorraad", en die zit nergens in
+het model. **Oplosbaar:** ShopifyQL kan `GROUP BY week` met `days_out_of_stock`.
+Daarmee is per week te bepalen of een artikel leverbaar was, en kan de curve
+alleen uit leverbare weken worden opgebouwd.
+
+### 2. Retouren worden nergens afgetrokken
+
+De vraag in het model is bruto verkoop. Gemeten retourpercentages:
+
+| Kanaal / merk | Retour |
+|---|---|
+| Marktplaatsen (alle merken) | 27% |
+| Lazamani webshop | 10,7% |
+| HEYDUDE webshop | 3,6% |
+| Sockwell webshop | 2,2% |
+
+Een Lazamani-laars en een Sockwell-sok worden dus hetzelfde behandeld terwijl de
+netto vraag een factor vijf verschilt. Bestelhoeveelheden zijn systematisch te
+hoog, en ongelijk per merk en kanaal. De webshopcijfers hierboven komen uit
+`refunds` en zijn een ondergrens: een omgeruild paar zit er niet in.
+
+### 3. Momentum is per merk, seizoen is per model
+
+Inconsistent. De curve wordt op kleurvariant- of modelniveau gekozen, maar het
+momentum is merkbreed. HEYDUDE's +81% komt van de zomermodellen en wordt
+vervolgens op Bradley Leather (winter) losgelaten. Momentum hoort minstens per
+merk × seizoen.
+
+### 4. De collectie-indeling leunt op labels die onbetrouwbaar bleken
+
+Het prijsregime draait op merk × seizoen × seizoensjaar uit ChannelEngine. Maar
+1.258 SKU's met voorraad hebben geen seizoensjaar en 1.259 staan op NOOS — en
+juist dat NOOS-label bleek fout bij Wally Braided. Voor de curve gaat de meting
+vóór het label; voor de collectie-indeling nog niet.
+
+### 5. Eén foto, geen film
+
+Alles wordt beoordeeld op de voorraad van vandaag. Vooruit lost de wekelijkse
+snapshot dat op, achteruit de maandstanden uit ShopifyQL — maar nu is het één
+moment.
+
+### 6. Nieuwe modellen zonder historie
+
+Een model dat er vorig seizoen nog niet was heeft geen curve en geen tempo, en
+valt terug op de modelfamilie of het merk. Dat is precies de categorie waar een
+inkoper het meest aan een oordeel heeft, en waar het model het minst te zeggen
+heeft.
+
+### 7. De levertijd is een aanname
+
+Zes weken, vlak over alle merken. Dat bepaalt zowel de bestelhoeveelheid als wat
+"nog te redden" is.
+
+---
+
+**Wat wel hard is,** omdat het metingen zijn en geen model: de maatcurve-afwijking
+(verkoopaandeel tegen voorraadaandeel), de spiegelcontrole tussen kanalen, de
+voorraadouderdom, `days_out_of_stock`, en het prijsregime per collectie.
+
+**Volgorde van aanpakken:** eerst de curve op leverbare weken (1), dan retouren
+(2), dan momentum per seizoen (3). Punt 4 tot 7 vragen invoer of tijd.
