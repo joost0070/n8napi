@@ -87,6 +87,9 @@ def aandeel(p,m):
     return (mm.get(str(info[m]['size']),0)/t2) if t2 else 1/max(len(msku[p]),1)
 
 # ---- live webshop ----
+# De fysieke voorraad is het hoogste van ChannelEngine en de webshops: 210 SKU's
+# lopen uiteen, en een besteladvies op een te lage stand kost dubbel geld.
+shopvrd={}
 live={}
 for f in glob.glob(f'{B}/shop/*_products.json'):
     for v in json.load(open(f)):
@@ -96,6 +99,7 @@ for f in glob.glob(f'{B}/shop/*_products.json'):
         if v.get('gepubliceerd'): cur['pub']=True
         if (v.get('vrd') or 0)>=cur['vrd']:
             cur.update({'prijs':v['prijs'],'vanaf':v.get('vanaf'),'vrd':v.get('vrd') or 0})
+        shopvrd[m]=max(shopvrd.get(m,-10**9), v.get('vrd') or 0)
 laatste={}
 for f in glob.glob(f'{B}/shop/*_orders.json'):
     for r in json.load(open(f)):
@@ -120,7 +124,8 @@ for m,t in tempo.items():
     schat=w*t['tempo_wk']+(1-w)*mtempo[p]*aandeel(p,m)
     lv=live.get(m,{})
     rij.append({'mpn':m,'merk':r['brand'],'naam':fix(r['name']),'maat':fix(r['size']),
-      'vrd':r['stock'] or 0,'n12':n,'schat':schat,'rest':rest,'weken':weken,'niveau':niv,
+      'vrd':max(r['stock'] or 0, shopvrd.get(m,-10**9)),'ce_vrd':r['stock'] or 0,
+      'shop_vrd':shopvrd.get(m),'n12':n,'schat':schat,'rest':rest,'weken':weken,'niveau':niv,
       'piek':cv['piek'],'top13':round(100*cv['top13']),'najaar':round(100*cv['najaar']),
       'doorlopend':doorlopend,'prijs':r['price'],'inkoop':r['purchase'] or (r['price'] or 0)*0.45,
       'live':lv.get('pub',False),'shopprijs':lv.get('prijs'),'vanaf':lv.get('vanaf'),

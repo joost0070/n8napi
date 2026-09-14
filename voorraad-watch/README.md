@@ -335,3 +335,81 @@ het veld staat.
 
 De lijst is een zesde van wat hij was. Dat is het punt: de eerdere versie
 bestelde zomerschoenen bij in september.
+
+---
+
+## 15. Spiegelcontrole: één voorraad, achttien verkoopkanalen
+
+Een paar schoenen ligt één keer in het magazijn, maar wordt getoond in tot vijf
+webshops én op bol.com, Amazon, Kaufland en ANWB.
+
+**Shopify deelt die voorraad niet.** Elke shop heeft een eigen
+`inventory_item_id` met een eigen teller, allemaal op `management: shopify`.
+Circulator Heren Klasse 1 Black Stripe 39-43 (EAN 0845028010323) staat in vijf
+shops, met vijf verschillende product- en variant-id's, en overal op 860. Dat
+komt niet van Shopify maar van een extern systeem dat hetzelfde getal rondstuurt.
+
+Optellen is dus fout:
+
+| | |
+|---|---|
+| Voorraad, per SKU één keer geteld | 104.058 paar |
+| Voorraad, alle shops opgeteld | 357.795 paar |
+
+### Wat de controle meet
+
+`scripts/spiegel.py` legt per EAN alle webshopstanden naast die van
+ChannelEngine. Eerste meting:
+
+| | |
+|---|---|
+| SKU's in meer dan één shop | 38.448 |
+| Shops onderling gelijk | 38.421 (99,9%) |
+| Shops lopen uiteen | 27 — waarvan **16 met 10 stuks of minder** |
+| ChannelEngine wijkt af van de webshops | 210 |
+
+De 27 afwijkingen zijn klein (1 à 2 stuks) maar zitten bijna allemaal op lage
+voorraad. Dat is precies waar synchronisatievertraging geld kost: twee kanalen
+verkopen hetzelfde laatste paar. In ChannelEngine staan over dertien maanden
+107 MANCO-orders, waarvan 71 op bol.com. Niet bewezen dat die hieruit
+voortkomen, maar het is de eerste plek om te kijken.
+
+De 210 afwijkingen tussen ChannelEngine en de webshops lopen twee kanten op.
+HEYDUDE Wally Braided Off White 43: CE 0, webshops 93 — de marktplaatsen
+verkopen dan voorraad die er wel is. Lazamani Belle Mocassins Navy 39: CE 37,
+webshops 0 — omgekeerd, en dat is het risico.
+
+Daarom neemt de motor nu de **hoogste** stand van ChannelEngine en de webshops
+als fysieke voorraad. Op de huidige bestellijst scheelde dat één regel van de
+200 (20 paar), maar op een advieslijst hoort geen enkele regel op een verkeerde
+voorraadstand te staan.
+
+## 16. Hoe lang ligt een artikel er al?
+
+Niet te achterhalen via de API's. Getest en afgevallen:
+
+- Shopify Admin REST en GraphQL geven alleen de **huidige** voorraad.
+  `inventoryItem.createdAt` is de aanmaakdatum van het artikel (2021-08-03 voor
+  de Circulator), niet van de levering.
+- `shopifyqlQuery` bestaat op het Grow-plan en kent een `inventory`-dataset,
+  maar geen kolom die maandstanden teruggeeft.
+- ChannelEngine geeft `UpdatedAt` per artikel — de laatste mutatie, zonder
+  onderscheid tussen een verkoop en een levering.
+
+Wat wél bruikbaar is: `quantities` in de Shopify GraphQL geeft
+`available`, `on_hand`, `committed` en `incoming`. Voor de Circulator:
+on_hand 864, committed 4, available 860, **incoming 0**.
+
+`incoming` zou de openstaande inkooporders zijn. Over 2.953 gescande varianten
+in drie shops staat die op nul — het veld wordt niet gevuld. `committed` wél
+(312, 96 en 82 varianten), en dat is bruikbaar voor de spiegelcontrole.
+
+**Conclusie voor het beoordelen van een artikel:** de ouderdom van de voorraad
+is niet te meten tot de wekelijkse snapshots lopen. De maandelijkse
+voorraadfoto's die Shopify zelf bewaart (*Month-end inventory snapshot* in de
+admin) gaan wel terug — die zijn alleen niet via de API te lezen.
+
+Voor de Circulator maakt het voor het oordeel niet uit: bij 54 paar per jaar en
+860 op voorraad is het zestien jaar dekking, of die stapel er nu een dag ligt of
+drie jaar. Als hij gisteren binnenkwam is dat geen reden om hem te houden, maar
+een inkoopfout om bij de bron aan te pakken.
