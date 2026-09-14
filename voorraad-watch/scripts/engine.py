@@ -7,7 +7,11 @@ LEVERTIJD=6; K=8; MIN_CURVE=150
 C1=(dt.date(2024,9,2),dt.date(2025,8,31)); C2=(dt.date(2025,9,1),dt.date(2026,8,30))
 ce=json.load(open(f'{B}/rows.json')); info={r['mpn']:r for r in ce}
 ean2={r['ean']:r['mpn'] for r in ce if r.get('ean')}
-tempo={x['mpn']:x for x in json.load(open(f'{B}/tempo.json'))}
+# Verkooptempo op gemeten leverbaarheid waar die er is (tempo_ql.json),
+# anders de oude benadering op eerste-tot-laatste-verkoopdatum.
+import os.path as _p
+_tf = f'{B}/tempo_ql.json' if _p.exists(f'{B}/tempo_ql.json') else f'{B}/tempo.json'
+tempo={x['mpn']:x for x in json.load(open(_tf))}
 def stype(r): return 'NOOS' if str(r.get('season_year') or '').upper()=='NOOS' else r['season_code']
 def fix(s):
     s=str(s or '')
@@ -74,7 +78,9 @@ for m,t in tempo.items():
     r=info.get(m)
     if not r: continue
     p=r['parent'] or r['name']
-    mstuks[p]+=t['stuks_jaar']; mdagen[p]=max(mdagen[p],t['dagen_actief']); msku[p].append(m)
+    # Zelfde noemer als de maten zelf: gemeten leverbaarheid waar die er is.
+    dg = t.get('dagen_lever') or t['dagen_actief']
+    mstuks[p]+=t['stuks_jaar']; mdagen[p]=max(mdagen[p],dg); msku[p].append(m)
 mtempo={p: mstuks[p]/max(mdagen[p],7)*7 for p in mstuks}
 merkmaat=defaultdict(lambda: defaultdict(float))
 for m,t in tempo.items():
@@ -128,6 +134,7 @@ for m,t in tempo.items():
       'shop_vrd':shopvrd.get(m),'n12':n,'schat':schat,'rest':rest,'weken':weken,'niveau':niv,
       'piek':cv['piek'],'top13':round(100*cv['top13']),'najaar':round(100*cv['najaar']),
       'doorlopend':doorlopend,'prijs':r['price'],'inkoop':r['purchase'] or (r['price'] or 0)*0.45,
+      'dagen_uit':t.get('dagen_uit'),'tempo_bron':t.get('bron','benadering'),
       'live':lv.get('pub',False),'shopprijs':lv.get('prijs'),'vanaf':lv.get('vanaf'),
       'laatste':str(laatste[m]) if m in laatste else None,'parent':p})
 per=defaultdict(list)

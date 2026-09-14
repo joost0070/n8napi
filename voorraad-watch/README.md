@@ -465,3 +465,67 @@ centrale stand — maar `inventory_units_sold` is wél alleen die shop
 (22 stuks voor de Circulator in sockwell.nl, tegen 54 over alle kanalen). Voor
 voorraadstanden één shop nemen; voor vraag de bestaande optelling over alle
 kanalen aanhouden.
+
+---
+
+## 18. Verkooptempo op gemeten leverbaarheid
+
+De laatste benadering in het model is eruit. Tot nu toe werd "dagen leverbaar"
+geschat met de eerste tot de laatste verkoopdatum; nu komt hij uit
+`days_out_of_stock` van ShopifyQL.
+
+```
+tempo = stuks verkocht (12 mnd, alle kanalen) / (365 - days_out_of_stock) x 7
+```
+
+`scripts/pull_ql.py` haalt dat voor alle 17 shops op — één query per shop,
+ongeveer een minuut elk. `scripts/tempo2.py` voegt samen en rekent om.
+
+### Wat het opleverde
+
+| | |
+|---|---|
+| Artikelen met gemeten historie | 36.222 |
+| Tempo nu gemeten | 9.737 maten |
+| Tempo nog benaderd (geen historie) | 14 maten |
+| **Meer dan 25% verschoven** | **7.909 maten** |
+
+Vier op de vijf maten stonden dus meetbaar verkeerd. Een paar voorbeelden:
+
+| Artikel | Maat | 12 mnd | Uit voorraad | Oud/wk | Nieuw/wk |
+|---|---|---|---|---|---|
+| Tofvel Mula Wolvilt Marbled Brown | 39 | 96 | 322 d | 2,15 | 15,63 |
+| Sockwell Full Floral Klasse 1 | 39-43 | 38 | 336 d | 0,83 | 9,17 |
+| Hunter Downpour Tall Dark Olive | 38 | 14 | 331 d | 0,29 | 2,88 |
+
+Dit is exact het sokkenprobleem: wie na drie weken uitverkocht raakt verkoopt
+minder stuks dan wie een jaar staat te druppelen, en oogt daardoor als de
+slechtste van de twee.
+
+### Drie remmen blijven staan
+
+De nieuwe noemer kan ook doorschieten, dus de bestaande waarborgen blijven:
+
+1. **Krimp naar modelniveau** bij weinig waarneming (`w = n/(n+8)`).
+2. **Plafond op modelniveau** — de maten samen kunnen niet sneller lopen dan het
+   model zelf. Dit rekent nu op dezelfde noemer, anders drukte het oude plafond
+   de correctie meteen weer weg. Tofvel Marbled Brown 39 gaat daardoor niet naar
+   15,63 maar naar 3,85.
+3. **Ondergrens van 28 dagen** als een artikel 330+ dagen uit voorraad stond en
+   tóch verkocht — die twee spreken elkaar tegen (nalevering, of een dag met
+   kortstondige voorraad), en zonder ondergrens schiet het tempo omhoog op een
+   enkele verkoop.
+
+Verder is 93% van de shops het eens over het aantal dagen uit voorraad; bij de
+overige 7% wordt de mediaan genomen.
+
+### Effect op de lijst
+
+| | Voor | Na |
+|---|---|---|
+| Bijbestellen | 312 maten · 6.406 paar · € 190k | **307 maten · 6.978 paar · € 210k** |
+| Nu afprijzen | 557 maten · € 472k | 618 maten · € 476k |
+
+Ongeveer evenveel regels, maar de aantallen per regel kloppen nu: waar een maat
+chronisch leegstond gaat de bestelling omhoog. In het dashboard staat
+`dagen uit voorraad` als kolom, zodat elke regel narekenbaar is.

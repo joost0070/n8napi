@@ -11,7 +11,8 @@ def rij(x):
             'bestel':x.get('bestel'),'proj':x.get('projectie'),'restvraag':x.get('restvraag'),
             'eur':x.get('eur'),'prijs':x.get('shopprijs') or x.get('prijs'),
             'vanaf':x.get('vanaf'),'laatste':x.get('laatste'),'basis':x['niveau'],
-            'ean':x['mpn'],'doorlopend':x.get('doorlopend')}
+            'ean':x['mpn'],'doorlopend':x.get('doorlopend'),
+            'dagen_uit':x.get('dagen_uit'),'bron':x.get('tempo_bron')}
 out={'kpi':E['kpi'],
      'bij':[rij(x) for x in E['bij'][:18]],
      'afp':[rij(x) for x in E['afp'][:18]],
