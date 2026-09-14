@@ -270,3 +270,68 @@ alle kanalen heen zitten niet in Shopify.
   out/back-in-stock loggen. Snel, realtime, geen bouwwerk.
 - *n8n, centraal, wekelijks* — de vraag over alle kanalen optellen, tempo
   schatten, seizoen en prijsregime wegen, en één bestellijst produceren.
+
+---
+
+## 14. Correctie: seizoen per model, niet per merk
+
+Drie fouten, alle drie gevonden doordat iemand met kennis van de collectie naar
+de uitkomst keek.
+
+### De jaarcurve telde twee ongelijke jaren bij elkaar op
+
+De index werd gebouwd door weeknummers over 26 maanden te sommeren. 2026 loopt
+harder dan 2025, en het lopende jaar is onvolledig — dus voor de weken vóór nu
+telden twee jaren mee en voor de weken erna één. Gevolg: **elk merk leek precies
+deze week zijn seizoen af te sluiten**, wat "nu afprijzen" massaal onterecht
+aanzette.
+
+Hunter is het voorbeeld: het oude model zette de piek op wk 37 met een aflopend
+seizoen, terwijl het seizoen net begonnen was. Na de correctie — twee volledige
+cycli van 52 weken (sep–aug), elk afzonderlijk genormaliseerd, dan gemiddeld —
+staat Hunter FW op piek wk 34, dal wk 14, en **57% van de jaarvraag nog te gaan
+over 29 weken**.
+
+### Eén curve per merk deugt niet als een merk twee seizoenen heeft
+
+HEYDUDE Wally Braided doet 74% van zijn jaar in dertien zomerweken en **2% in
+wk 38-52**. HEYDUDE Bradley Leather piekt in wk 48 met 45% in diezelfde weken.
+Een merkcurve middelt die twee tot iets wat voor geen van beide klopt, en zette
+zomermodellen op de bestellijst terwijl hun seizoen voorbij was.
+
+De curve wordt nu gekozen op het fijnste niveau met genoeg historie:
+kleurvariant (`parent`) → modelfamilie → merk×seizoenstype. Van de gebruikte
+curves zit het overgrote deel op kleurvariant-niveau.
+
+Daar bovenop een harde regel: een artikel komt alleen op de bestellijst als
+**minstens 12% van zijn jaarvraag nog in wk 38-52 valt**. Dat weerde 651 maten,
+waaronder 273 HEYDUDE-zomermaten. HEYDUDE ging van 80 naar 13 maten op de lijst.
+
+### Het NOOS-label in ChannelEngine is niet betrouwbaar
+
+Wally Braided staat daar als NOOS en werd daardoor als doorlopend behandeld —
+en doorlopende artikelen kennen geen seizoenseinde, dus glipte het langs de
+seizoensfilter. De gemeten curve gaat nu vóór op het label: doorlopend is wat
+minder dan 33% van zijn jaar in de beste dertien weken doet, ongeacht wat er in
+het veld staat.
+
+### Verder aangescherpt
+
+- **Levenscyclus** — geen besteladvies voor artikelen die niet meer in een
+  webshop gepubliceerd staan (148), zelf al afgeprijsd zijn (4.787), of 120
+  dagen geen verkoop hadden (4.825). Oude collectie wordt niet opnieuw ingekocht.
+- **Volledige artikelnaam inclusief kleur** in elke regel. De afgekapte naam
+  "Circulator Heren Compressiekousen Klasse 1 Bla" was niet te controleren: de
+  regel gaat over *Black Stripe* (860 paar, 54 verkocht per jaar), niet over
+  *Black* (273 paar, 195 per jaar). Zonder kleur is geen enkele regel te toetsen.
+- **Mojibake** in maten (`48â50`) hersteld.
+
+### Wat het met de cijfers deed
+
+| | Voor | Na |
+|---|---|---|
+| Bijbestellen | 2.518 maten · 35.664 paar | 313 maten · 6.410 paar |
+| Nu afprijzen | 763 maten | 541 maten |
+
+De lijst is een zesde van wat hij was. Dat is het punt: de eerdere versie
+bestelde zomerschoenen bij in september.
