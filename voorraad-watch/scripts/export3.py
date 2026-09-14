@@ -14,8 +14,10 @@ def rij(x):
             'ean':x['mpn'],'doorlopend':x.get('doorlopend'),
             'dagen_uit':x.get('dagen_uit'),'bron':x.get('tempo_bron'),
             'mom':x.get('mom'),'horizon':x.get('horizon'),
-            'verwacht':x.get('verwacht_horizon')}
-out={'kpi':E['kpi'],
+            'verwacht':x.get('verwacht_horizon'),
+            'col':x.get('col'),'col_pct':x.get('col_pct'),'col_bron':x.get('col_bron')}
+out={'kpi':E['kpi'],'collecties':E.get('collecties',[]),
+     'verdiep':[rij(x) for x in E.get('verdiep',[])[:12]],
      'bij':[rij(x) for x in E['bij'][:18]],
      'afp':[rij(x) for x in E['afp'][:18]],
      'doorl':[rij(x) for x in E['doorl'][:10]]}

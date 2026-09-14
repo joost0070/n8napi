@@ -127,6 +127,32 @@ for f in glob.glob(f'{B}/shop/*_orders.json'):
             d=dt.date.fromisoformat(r['d'])
             if m not in laatste or d>laatste[m]: laatste[m]=d
 
+# ---- prijsregime per COLLECTIE, niet per merk ----
+# Een merk heeft zelden een prijsregime: de zomercollectie wordt opgeruimd terwijl
+# de nieuwe wintercollectie op volle prijs staat. De eenheid is merk x seizoen x
+# seizoensjaar. Elke FW2026-collectie staat op 0% afprijzing; Lazamani FW2024 op 97%.
+col=defaultdict(lambda:[0,0]); merkcol=defaultdict(lambda:[0,0])
+for m,lv in live.items():
+    r=info.get(m)
+    if not r or lv.get('prijs') is None: continue
+    sale = bool(lv.get('vanaf') and lv['vanaf']>lv['prijs']*1.02)
+    k=(r['brand'], r['season_code'], str(r['season_year'] or '?'))
+    col[k][1]+=1; merkcol[r['brand']][1]+=1
+    if sale: col[k][0]+=1; merkcol[r['brand']][0]+=1
+DREMPEL=0.45; MINV=40
+def collectie(r):
+    return (r['brand'], r['season_code'], str(r['season_year'] or '?'))
+def col_pct(r):
+    a,b=col.get(collectie(r),[0,0])
+    if b>=MINV: return a/b, 'collectie'
+    a,b=merkcol.get(r['brand'],[0,0])
+    if b>=MINV: return a/b, 'merk'
+    return None, None
+def col_in_sale(r):
+    p,_=col_pct(r)
+    return p is not None and p>=DREMPEL
+
+
 rij=[]
 for m,t in tempo.items():
     r=info.get(m)
@@ -146,7 +172,10 @@ for m,t in tempo.items():
       'vrd':max(r['stock'] or 0, shopvrd.get(m,-10**9)),'ce_vrd':r['stock'] or 0,
       'shop_vrd':shopvrd.get(m),'n12':n,'schat':schat,'rest':rest,'weken':weken,'niveau':niv,
       'piek':cv['piek'],'top13':round(100*cv['top13']),'najaar':round(100*cv['najaar']),
-      '_cv':cv,'doorlopend':doorlopend,'mom':momentum(r['Brand'] if 'Brand' in r else r['brand']),
+      '_cv':cv,'col':'|'.join(collectie(r)),
+      'col_pct':(lambda p: round(100*p) if p is not None else None)(col_pct(r)[0]),
+      'col_bron':col_pct(r)[1],'col_sale':col_in_sale(r),
+      'doorlopend':doorlopend,'mom':momentum(r['Brand'] if 'Brand' in r else r['brand']),
       'prijs':r['price'],'inkoop':r['purchase'] or (r['price'] or 0)*0.45,
       'dagen_uit':t.get('dagen_uit'),'tempo_bron':t.get('bron','benadering'),
       'live':lv.get('pub',False),'shopprijs':lv.get('prijs'),'vanaf':lv.get('vanaf'),
@@ -174,8 +203,10 @@ vers=lambda x: x['laatste'] and (TODAY-dt.date.fromisoformat(x['laatste'])).days
 MIN_NAJAAR=12   # minstens 12% van de jaarvraag moet nog in wk38-52 vallen
 
 DEKKING=8   # weken voorraad die je wilt hebben bovenop de levertijd
+# Niet bijbestellen in een collectie die wordt opgeruimd, ook al is dit ene
+# artikel nog niet afgeprijsd: je koopt dan in om straks met korting te verkopen.
 bij=[x for x in rij if x['projectie']<-0.5 and genoeg(x) and x['live'] and not afgeprijsd(x)
-     and vers(x) and x['schat']>0.1 and x['najaar']>=MIN_NAJAAR]
+     and not x['col_sale'] and vers(x) and x['schat']>0.1 and x['najaar']>=MIN_NAJAAR]
 for x in bij:
     # Bestel wat je nodig hebt tot de volgende levering kan landen: levertijd plus
     # een dekkingsperiode, seizoensgewogen en met het momentum erop. Niet het hele
@@ -192,7 +223,11 @@ for x in bij:
 bij=[x for x in bij if x['bestel']>=3]; bij.sort(key=lambda x:-x['eur'])
 
 afp=[x for x in rij if not x['doorlopend'] and x['projectie']>0.5 and x['restvraag']>0.2
-     and not afgeprijsd(x) and x['vrd']>0 and genoeg(x)]
+     and not afgeprijsd(x) and not x['col_sale'] and x['vrd']>0 and genoeg(x)]
+verdiep=[x for x in rij if x['projectie']>0.5 and x['col_sale'] and not afgeprijsd(x)
+         and x['vrd']>0 and genoeg(x)]
+for x in verdiep: x['eur']=round(x['projectie']*x['inkoop'])
+verdiep.sort(key=lambda x:-x['eur'])
 for x in afp: x['eur']=round(x['projectie']*x['inkoop'])
 afp.sort(key=lambda x:-x['eur'])
 doorl=[x for x in rij if x['doorlopend'] and x['projectie']>0.5 and x['vrd']>0 and genoeg(x)]
@@ -203,7 +238,11 @@ geweerd=[x for x in rij if x['projectie']<-0.5 and genoeg(x) and x['live'] and n
          and vers(x) and x['najaar']<MIN_NAJAAR]
 print(f"\nBIJBESTELLEN : {len(bij):,} maten | {sum(x['bestel'] for x in bij):,} paar | EUR {sum(x['eur'] for x in bij):,}")
 print(f"  geweerd omdat het seizoen voorbij is (<{MIN_NAJAAR}% vraag in wk38-52): {len(geweerd):,} maten")
-print(f"NU AFPRIJZEN : {len(afp):,} | EUR {sum(x['eur'] for x in afp):,}")
+print(f"NU AFPRIJZEN : {len(afp):,} | EUR {sum(x['eur'] for x in afp):,}   (collectie nog op volle prijs)")
+print(f"KORTING VERDIEPEN : {len(verdiep):,} | EUR {sum(x['eur'] for x in verdiep):,}   (collectie loopt al in de sale)")
+geblokt=[x for x in rij if x['projectie']<-0.5 and genoeg(x) and x['live'] and not afgeprijsd(x)
+         and vers(x) and x['najaar']>=MIN_NAJAAR and x['col_sale']]
+print(f"  niet besteld omdat de COLLECTIE in de sale loopt: {len(geblokt):,} maten")
 print(f"DOORLOPEND TE RUIM: {len(doorl):,} | EUR {sum(x['eur'] for x in doorl):,}")
 print("\nTOP BIJBESTELLEN — met de curve waarop het gebaseerd is")
 print(f"{'merk':9s} {'artikel + kleur':50s} {'mt':>6s} {'vrd':>4s} {'12m':>4s} {'/wk':>5s} {'piek':>5s} {'najaar':>7s} {'bestel':>6s} {'basis':>9s}")
@@ -217,10 +256,14 @@ print("\nHEYDUDE geweerd (zomermodellen):")
 hg=[x for x in geweerd if x['merk']=='HEYDUDE']
 print(f"  {len(hg)} maten: " + ', '.join(sorted({x['naam'].split(' Heren')[0].split(' Dames')[0] for x in hg})[:8]))
 for x in rij: x.pop('_cv',None)
-json.dump({'bij':bij[:200],'afp':afp[:200],'doorl':doorl[:120],
+json.dump({'bij':bij[:200],'afp':afp[:200],'doorl':doorl[:120],'verdiep':verdiep[:60],
+  'collecties':[{'merk':k[0],'seizoen':k[1],'jaar':k[2],'sale':a,'totaal':b,'pct':round(100*a/b)}
+                for k,(a,b) in sorted(col.items(), key=lambda x:(x[0][0],x[0][2])) if b>=MINV],
   'kpi':{'bij_n':len(bij),'bij_st':sum(x['bestel'] for x in bij),'bij_eur':sum(x['eur'] for x in bij),
          'afp_n':len(afp),'afp_eur':sum(x['eur'] for x in afp),
          'doorl_n':len(doorl),'doorl_eur':sum(x['eur'] for x in doorl),
          'geweerd':len(geweerd),'uit_niet_live':sum(1 for x in rij if not x['live']),
+         'verdiep_n':len(verdiep),'verdiep_eur':sum(x['eur'] for x in verdiep),
+         'col_geblokt':len(geblokt),
          'uit_sale':sum(1 for x in rij if afgeprijsd(x)),'uit_stil':sum(1 for x in rij if not vers(x))}},
   open(f'{B}/engine_data.json','w'), ensure_ascii=False)

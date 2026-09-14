@@ -601,3 +601,56 @@ en verhoogt dus wat er blijft liggen — precies de richting die klopt.
 Minder en gerichter aan beide kanten. De afprijslijst krimpt het hardst, omdat
 de groei van de meeste merken de verwachte restvraag omhoog haalt — wat eerder
 als overschot gold, verkoopt bij het huidige momentum alsnog.
+
+---
+
+## 20. Prijsregime per collectie, niet per merk
+
+"Lazamani staat in de sale" is een betekenisloze uitspraak. Bij dat merk staat de
+zomercollectie voor 62% afgeprijsd en de wintercollectie 2026 op nul — en dat is
+geen tegenstrijdigheid maar precies hoe het hoort in september. Het merkgemiddelde
+van 69% middelde die twee tot een getal dat voor geen van beide geldt.
+
+De eenheid is de collectie: **merk × seizoen × seizoensjaar**. Gemeten aan de
+live streepprijzen in de webshops.
+
+| Merk | Collectie | Varianten | In de sale |
+|---|---|---|---|
+| Hunter | FW 2026 | 245 | **0%** |
+| HEYDUDE | FW 2026 | 555 | **0%** |
+| Keen | FW 2026 | 614 | **0%** |
+| Lazamani | FW 2026 | 1.190 | **0%** |
+| Toni Pons | FW 2026 | 531 | **0%** |
+| Keen | SS 2026 | 1.621 | 48% |
+| Lazamani | SS 2026 | 4.024 | 62% |
+| Lazamani | FW 2024 | 1.669 | 97% |
+| Jan Jansen | FW 2023 | 96 | 100% |
+
+Het patroon is volstrekt regelmatig: elke FW 2026 staat op nul, de zomercollectie
+wordt opgeruimd, en oude jaargangen zijn diep afgeprijsd. Precies wat je verwacht,
+en precies wat een merkgemiddelde onzichtbaar maakte.
+
+### Wat het in de beslissing doet
+
+Vanaf 45% afgeprijsde varianten geldt een collectie als opgeruimd (minimaal 40
+varianten, anders valt hij terug op het merkniveau).
+
+- **Niet bijbestellen** in zo'n collectie, ook al is dit ene artikel nog niet
+  afgeprijsd — je koopt dan in om straks met korting te verkopen. Dat weerde 49
+  maten.
+- **Overschot in een opgeruimde collectie** is geen "nu afprijzen" maar
+  **korting verdiepen**: 132 maten, € 45.891.
+
+| | Voor | Na |
+|---|---|---|
+| Bijbestellen | 284 maten · 5.695 paar | **266 maten · 5.545 paar** |
+| Nu afprijzen | 420 · € 348k | **354 · € 322k** |
+| Korting verdiepen | — | **132 · € 46k** |
+
+### Ook hersteld: de seizoensklok in het dashboard
+
+Die stond nog op de oude merkcurves, mét de optelfout uit hoofdstuk 14 — Hunter
+op piek wk 37 met een aflopend seizoen. De klok gebruikt nu dezelfde curves als
+de motor: Hunter FW piekt in wk 34, dal in wk 14, **56% van de jaarvraag nog te
+gaan over 29 weken**. Het gearceerde vlak toont wat er nog komt in plaats van de
+oude sale-periodes, die nu in de collectietabel staan waar ze horen.
