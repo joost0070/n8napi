@@ -12,6 +12,13 @@ ean2={r['ean']:r['mpn'] for r in ce if r.get('ean')}
 import os.path as _p
 _tf = f'{B}/tempo_ql.json' if _p.exists(f'{B}/tempo_ql.json') else f'{B}/tempo.json'
 tempo={x['mpn']:x for x in json.load(open(_tf))}
+# Momentum per merk: laatste 13 weken tegen dezelfde weken vorig jaar, begrensd
+# op 0,70-1,50. Het tempo meet de afgelopen 12 maanden en bevat de groei die al
+# gebeurd is; deze factor projecteert de beweging vooruit.
+MOM=json.load(open(f'{B}/momentum.json'))
+def momentum(merk):
+    v=MOM.get(merk) or MOM['_groep']
+    return v.get('factor') or MOM['_groep']['factor']
 def stype(r): return 'NOOS' if str(r.get('season_year') or '').upper()=='NOOS' else r['season_code']
 def fix(s):
     s=str(s or '')
@@ -64,6 +71,12 @@ def maakidx(cycli):
 IDX={niv:{k:maakidx(v) for k,v in c[niv].items()} for niv in niveaus}
 for niv in niveaus: IDX[niv]={k:v for k,v in IDX[niv].items() if v}
 print(f"curves: parent {len(IDX['parent']):,} | familie {len(IDX['familie']):,} | merk×type {len(IDX['merktype']):,}")
+
+def aandeel_komende(cv, n):
+    """Aandeel van de jaarvraag in de eerstvolgende n weken - seizoensgewogen."""
+    i=cv['idx']; s=0.0; w=NU
+    for _ in range(int(n)): s+=i[w]; w=w%53+1
+    return s
 
 def curve_voor(r):
     for niv,sleutel in (('parent',r['parent'] or r['name']),('familie',familie(r)),
@@ -133,7 +146,8 @@ for m,t in tempo.items():
       'vrd':max(r['stock'] or 0, shopvrd.get(m,-10**9)),'ce_vrd':r['stock'] or 0,
       'shop_vrd':shopvrd.get(m),'n12':n,'schat':schat,'rest':rest,'weken':weken,'niveau':niv,
       'piek':cv['piek'],'top13':round(100*cv['top13']),'najaar':round(100*cv['najaar']),
-      'doorlopend':doorlopend,'prijs':r['price'],'inkoop':r['purchase'] or (r['price'] or 0)*0.45,
+      '_cv':cv,'doorlopend':doorlopend,'mom':momentum(r['Brand'] if 'Brand' in r else r['brand']),
+      'prijs':r['price'],'inkoop':r['purchase'] or (r['price'] or 0)*0.45,
       'dagen_uit':t.get('dagen_uit'),'tempo_bron':t.get('bron','benadering'),
       'live':lv.get('pub',False),'shopprijs':lv.get('prijs'),'vanaf':lv.get('vanaf'),
       'laatste':str(laatste[m]) if m in laatste else None,'parent':p})
@@ -146,7 +160,11 @@ for p,xs in per.items():
         for x in xs: x['schat']*=f
 for x in rij:
     x['schat']=round(x['schat'],2)
-    x['restvraag']=round(x['schat']*x['weken'],1)
+    # Seizoensgewogen: het tempo is een jaargemiddelde, dus vermenigvuldigen met
+    # het aantal resterende weken telt piek- en dalweken even zwaar. Het aandeel
+    # van de jaarvraag dat nog komt is de juiste maat. Daarna het momentum erop.
+    x['restvraag']=round(x['schat']*52*x['rest']*x['mom'],1)
+    x['vlak_restvraag']=round(x['schat']*x['weken'],1)
     x['projectie']=round(x['vrd']-x['restvraag'],1)
     x['weken_leeg']=round(x['vrd']/x['schat'],1) if x['schat']>0 else None
 
@@ -155,13 +173,22 @@ genoeg=lambda x: x['n12']>=10 or mstuks[x['parent']]>=30
 vers=lambda x: x['laatste'] and (TODAY-dt.date.fromisoformat(x['laatste'])).days<=120
 MIN_NAJAAR=12   # minstens 12% van de jaarvraag moet nog in wk38-52 vallen
 
+DEKKING=8   # weken voorraad die je wilt hebben bovenop de levertijd
 bij=[x for x in rij if x['projectie']<-0.5 and genoeg(x) and x['live'] and not afgeprijsd(x)
      and vers(x) and x['schat']>0.1 and x['najaar']>=MIN_NAJAAR]
 for x in bij:
+    # Bestel wat je nodig hebt tot de volgende levering kan landen: levertijd plus
+    # een dekkingsperiode, seizoensgewogen en met het momentum erop. Niet het hele
+    # seizoen in een keer - daar kun je tussendoor op bijsturen.
+    cv=x['_cv']
+    horizon=min(LEVERTIJD+DEKKING, x['weken'])
+    verwacht = x['schat']*52*aandeel_komende(cv, horizon)*x['mom']
+    x['horizon']=horizon
+    x['verwacht_horizon']=round(verwacht,1)
+    x['bestel']=int(round(max(0, verwacht - x['vrd'])))
     wz=max(0,x['weken']-(x['weken_leeg'] or 0))
-    x['redbaar']=round(max(0,wz-LEVERTIJD)*x['schat'],1)
+    x['redbaar']=round(max(0,min(wz,x['weken'])-LEVERTIJD)*x['schat']*x['mom'],1)
     x['eur']=round(x['redbaar']*(x['prijs'] or 0))
-    x['bestel']=int(round(min(wz*x['schat'], x['schat']*x['weken'])))
 bij=[x for x in bij if x['bestel']>=3]; bij.sort(key=lambda x:-x['eur'])
 
 afp=[x for x in rij if not x['doorlopend'] and x['projectie']>0.5 and x['restvraag']>0.2
@@ -189,6 +216,7 @@ print(f"  {len(hd)} maten: " + ', '.join(sorted({x['naam'].split(' Heren')[0].sp
 print("\nHEYDUDE geweerd (zomermodellen):")
 hg=[x for x in geweerd if x['merk']=='HEYDUDE']
 print(f"  {len(hg)} maten: " + ', '.join(sorted({x['naam'].split(' Heren')[0].split(' Dames')[0] for x in hg})[:8]))
+for x in rij: x.pop('_cv',None)
 json.dump({'bij':bij[:200],'afp':afp[:200],'doorl':doorl[:120],
   'kpi':{'bij_n':len(bij),'bij_st':sum(x['bestel'] for x in bij),'bij_eur':sum(x['eur'] for x in bij),
          'afp_n':len(afp),'afp_eur':sum(x['eur'] for x in afp),

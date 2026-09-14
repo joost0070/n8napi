@@ -12,7 +12,9 @@ def rij(x):
             'eur':x.get('eur'),'prijs':x.get('shopprijs') or x.get('prijs'),
             'vanaf':x.get('vanaf'),'laatste':x.get('laatste'),'basis':x['niveau'],
             'ean':x['mpn'],'doorlopend':x.get('doorlopend'),
-            'dagen_uit':x.get('dagen_uit'),'bron':x.get('tempo_bron')}
+            'dagen_uit':x.get('dagen_uit'),'bron':x.get('tempo_bron'),
+            'mom':x.get('mom'),'horizon':x.get('horizon'),
+            'verwacht':x.get('verwacht_horizon')}
 out={'kpi':E['kpi'],
      'bij':[rij(x) for x in E['bij'][:18]],
      'afp':[rij(x) for x in E['afp'][:18]],
@@ -39,6 +41,12 @@ for merk,ms in per.items():
     uit[merk]={'najaarsvraag':tot_n,'voorraad':tot_v,
       'modellen':[{'naam':m['naam'],'piek':m['piek'],'najaar':m['najaar'],
                    'vraag':m['najaarsvraag'],'vrd':m['vrd'],'skus':m['skus']} for m in ms[:6]]}
+mom=json.load(open(f'{B}/momentum.json'))
+for merk,v in uit.items():
+    m=mom.get(merk) or {}
+    v['mom']=m.get('factor') or mom['_groep']['factor']
+    v['mom_ruw']=m.get('ruw'); v['mom_ly']=m.get('ly'); v['mom_nu']=m.get('nu')
+out['momentum']=mom
 out['vooruitzicht']=dict(sorted(uit.items(), key=lambda x:-x[1]['najaarsvraag'])[:8])
 json.dump(out,open(f'{B}/dash3.json','w'),ensure_ascii=False)
 d=json.load(open(f'{B}/dashboard_data.json'))

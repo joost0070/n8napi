@@ -529,3 +529,75 @@ overige 7% wordt de mediaan genomen.
 Ongeveer evenveel regels, maar de aantallen per regel kloppen nu: waar een maat
 chronisch leegstond gaat de bestelling omhoog. In het dashboard staat
 `dagen uit voorraad` als kolom, zodat elke regel narekenbaar is.
+
+---
+
+## 19. Seizoensweging en merkmomentum
+
+Twee dingen die er nog niet in zaten, en één die er verkeerd in zat.
+
+### De seizoenscurve werd berekend maar niet gebruikt
+
+`restvraag` was `tempo x resterende weken`. Het tempo is een jaargemiddelde, dus
+dat telt piekweken en dalweken even zwaar. De curve werd wel afgeleid maar
+vervolgens genegeerd. Nu:
+
+```
+restvraag = tempo x 52 x aandeel van de jaarvraag dat nog komt x momentum
+```
+
+### De bestelhoeveelheid was het hele seizoen
+
+Ook fout: je kunt tussentijds bijbestellen. De hoeveelheid is nu de verwachte
+vraag over **levertijd (6 wk) + dekking (8 wk) = 14 weken**, seizoensgewogen over
+de curve van dat model, min wat er ligt.
+
+Het verschil is precies wat het moet zijn:
+
+| Artikel | Piek | Oud | Nieuw |
+|---|---|---|---|
+| Sockwell Full Heart Klasse 1 Charcoal | wk 7 | 133 | **27** |
+| Sockwell Featherweight Fancy | wk 48 | 167 | 87 |
+| Tofvel Mula Olive Green 39 | wk 48 | 210 | 228 |
+
+Een voorjaarsmodel krijgt in september bijna niets meer; een winterartikel
+waarvan de piek eraan komt juist meer.
+
+### Merkmomentum
+
+Groei over twee volledige cycli (sep24-aug25 tegen sep25-aug26) is +48% over de
+hele groep. Maar het tempo meet al de laatste twaalf maanden en bevat die groei
+dus grotendeels. Wat vooruit telt is de **recente beweging**: de laatste dertien
+weken tegen exact dezelfde weken vorig jaar.
+
+| Merk | Vorig jaar | Nu | Momentum | Gerekend |
+|---|---|---|---|---|
+| Keen | 406 | 1.281 | +216% | 1,50x |
+| Tofvel | 321 | 745 | +132% | 1,50x |
+| Hunter | 677 | 1.428 | +111% | 1,50x |
+| HEYDUDE | 4.398 | 7.960 | +81% | 1,50x |
+| Toni Pons | 820 | 1.135 | +38% | 1,38x |
+| Sockwell | 4.415 | 5.423 | +23% | 1,23x |
+| Lazamani | 7.803 | 8.691 | +11% | 1,11x |
+| **Crocs** | 876 | 509 | **−42%** | **0,70x** |
+| Groep | 19.993 | 27.349 | +37% | 1,37x |
+
+Begrensd op 0,70 tot 1,50: een merk dat verdubbelt blijft dat zelden doen, en
+een ongeremde factor op een kwartaalcijfer is geen prognose maar een gok. Merken
+met minder dan 120 stuks vorig jaar krijgen de groepsfactor.
+
+Crocs is het interessante geval: het enige krimpende merk, en tegelijk de
+zwaarste overstockpost. Dat momentum van 0,70x verlaagt de verwachte restvraag
+en verhoogt dus wat er blijft liggen — precies de richting die klopt.
+
+### Effect op de lijst
+
+| | Voor | Na |
+|---|---|---|
+| Bijbestellen | 307 maten · 6.978 paar · € 210k | **284 maten · 5.695 paar · € 266k** |
+| Nu afprijzen | 618 maten · € 476k | **420 maten · € 348k** |
+| Seizoen voorbij, geweerd | 512 | 104 |
+
+Minder en gerichter aan beide kanten. De afprijslijst krimpt het hardst, omdat
+de groei van de meeste merken de verwachte restvraag omhoog haalt — wat eerder
+als overschot gold, verkoopt bij het huidige momentum alsnog.
