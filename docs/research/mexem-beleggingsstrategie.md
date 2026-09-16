@@ -398,3 +398,96 @@ Belasting en ETF-keuze (NL)
 - [Mr FOB: Kostenberekening beste ETF](https://www.financieelonafhankelijkblog.nl/kostenberekening-beste-etf/)
 - [Mr FOB: Wat is dividendlekkage](https://www.financieelonafhankelijkblog.nl/fob-kennisbank/wat-is-dividendlekkage/)
 - [Beleggen.co: VWCE dividendlekkage en box 3](https://beleggen.co/fondsen/kosten-rendement/vwce-dividendlekkage-box-3-belasting/)
+
+---
+
+## 9. Het "overnight effect": kopen bij close, verkopen bij open
+
+Populair op TikTok: houd aandelen alleen 's nachts aan. Het fenomeen is echt en
+al sinds 2008 academisch beschreven (Cooper, Cliff & Gulen; Lou, Polk & Skouras
+2019 in de Journal of Financial Economics; Knuteson 2020). De bruto cijfers zijn
+spectaculair:
+
+| Instrument | Periode | Alleen 's nachts (close→open) | Alleen overdag (open→close) | Kopen en houden (product) |
+|---|---|---|---|---|
+| SPY (S&P 500) | 30 jaar | $1 → $17,27 | $1 → $1,20 | ≈ $1 → $20,7 |
+| Tesla | 5 jaar | $1 → $10,08 | $1 → $0,59 | ≈ $1 → $5,9 |
+| Nvidia | 5 jaar | $1 → $9,18 | $1 → $1,98 | ≈ $1 → $18,2 |
+| AMC | 5 jaar | $1 → $102 | $1 → $0,0005 | ≈ $1 → $0,05 |
+
+Bron: Elm Wealth, "Still Working the Night Shift" (2025).
+
+Drie dingen vallen op als je verder kijkt dan het plaatje:
+
+1. **Voor de index is "alleen 's nachts" niet beter dan kopen en houden.** SPY
+   deed 17x 's nachts tegen ruwweg 21x kopen-en-houden. Het rendement zit in de
+   nacht, maar je krijgt het ook gewoon door te blijven zitten. Bij Nvidia was
+   overdag ook positief, dus daar verloor de nachtstrategie zelfs de helft.
+2. **De winnaars zijn achteraf gekozen.** Tesla en AMC zijn de extreemste
+   voorbeelden uit duizenden aandelen. Lou, Polk & Skouras laten zien dat het
+   nachtrendement vooral hoog is bij aandelen die overdag door instellingen
+   worden verkocht en waar particulieren op afkomen. Welke aandelen dat de
+   komende vijf jaar zijn, weet je niet vooraf.
+3. **Het is structureel niet exploiteerbaar door de kosten.** Je doet 252
+   rondjes per jaar. Bij Tesla was de bruto extra opbrengst boven kopen-en-houden
+   ca. 11% per jaar. Dat is 0,044% per rondje, ofwel 0,022% per transactie.
+   Daarboven is alles weg.
+
+### 9.1 Wat het bij Mexem zou kosten
+
+| Kostenpost | Per transactie | Per jaar (504 transacties) |
+|---|---|---|
+| Commissie VS-aandelen, minimum USD 1 | USD 1 | USD 504 |
+| Idem op een positie van EUR 5.000 | 0,02% | ca. 10% van de positie |
+| Idem op een positie van EUR 50.000 | 0,002% | ca. 1% van de positie |
+| Halve spread mega-cap bij opening (breedste moment van de dag) | 0,01 tot 0,05% | 5 tot 25% |
+| Slippage in de openingsveiling | onbekend, niet nul | |
+
+Zelfs met een grote positie en market-on-close/market-on-open orders (die de
+spread deels vermijden) kom je in de buurt van of boven de 0,022% per
+transactie die de hele Tesla-meevaller opsnoept. Bij een kleine positie is het
+minimumtarief alleen al fataal.
+
+### 9.2 De praktijktest is al gedaan
+
+NightShares lanceerde in 2022 twee ETF's die precies dit deden (NSPY op de
+S&P 500, NIWM op de Russell 2000), met institutionele uitvoeringskosten. Na
+één jaar: NSPY -6,9% tegenover +22% voor de S&P 500; NIWM -10% tegenover +16%
+voor de Russell 2000. Beide fondsen zijn in augustus 2023 geliquideerd. Het
+effect draaide in 2022-2023 om (overdag was beter) en de kosten deden de rest.
+Elm Wealth, dat het effect het grondigst heeft doorgerekend, schrijft letterlijk
+dat het de strategie niet aanbeveelt omdat "transactiekosten inclusief
+marktimpact het grootste deel of de volledige verwachte winst wegvagen".
+
+### 9.3 Nederlandse complicaties
+
+- Amerikaanse ETF's zoals SPY zijn voor Nederlandse particulieren niet te
+  kopen (PRIIPs/KID-regels). Een Europese UCITS-ETF op de S&P 500 sluit om 17:30
+  CET terwijl Wall Street tot 22:00 CET handelt; de "nacht" van die ETF bevat
+  dus 4,5 uur Amerikaanse dagsessie. Het effect vertaalt zich niet netjes.
+- Voor losse Amerikaanse aandelen werkt het mechanisch wel, met alle kosten van
+  hierboven. Box 3 straft de omzet op dit moment niet, maar een
+  vermogenswinstbelasting vanaf ca. 2028 zou dat wel doen.
+
+### 9.4 Oordeel
+
+Het overnight effect is een echte anomalie en een van de interessantste open
+puzzels in de financiële literatuur. Maar: voor de brede markt levert het niets
+extra op boven kopen en houden, voor losse aandelen weet je pas achteraf welke
+het waren, en de kosten van 500 transacties per jaar maken het voor een
+particulier bij vrijwel elke aanname verliesgevend tegenover simpel blijven
+zitten. Wie het toch wil zien: bouw het in paper trading met MOC- en MOO-orders
+(een n8n-workflow op twee schema's is genoeg) en meet het na een jaar tegen de
+kern-ETF, inclusief commissies. Verwacht niet dat het wint.
+
+Bronnen voor dit hoofdstuk
+
+- [Lou, Polk & Skouras: A Tug of War: Overnight Versus Intraday Expected Returns (JFE 2019)](https://personal.lse.ac.uk/polk/research/TugOfWar.pdf)
+- [Knuteson: Strikingly Suspicious Overnight and Intraday Returns](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3705017)
+- [Elm Wealth: Still Working the Night Shift (2025)](https://elmwealth.com/night-shift/)
+- [Elm Wealth: Night Moves, Is the Overnight Drift the Grandmother of All Market Anomalies?](https://elmwealth.com/night-moves-overnight-drift/)
+- [CXO Advisory: Buy at the Close and Sell at the Open?](https://www.cxoadvisory.com/calendar-effects/buy-at-the-close-and-sell-at-the-open/)
+- [STOXX: When do returns come from? The overnight effect](https://stoxx.com/when-do-returns-come-from-an-analysis-of-the-overnight-effect-in-equities-trading/)
+- [Bloomberg: Overnight ETFs Shut Down With Returns Lagging (NSPY, NIWM)](https://www.bloomberg.com/news/articles/2023-07-19/-night-effect-funds-to-shut-down-with-overnight-returns-elusive)
+- [etf.com: 2 NightShares ETFs Close After Struggling to Gain Traction](https://www.etf.com/sections/news/2-nightshares-etfs-close-after-struggling-gain-traction)
+- [Quantpedia: Market Sentiment and an Overnight Anomaly](https://quantpedia.com/market-sentiment-and-an-overnight-anomaly/)
