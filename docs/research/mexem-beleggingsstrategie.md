@@ -491,3 +491,38 @@ Bronnen voor dit hoofdstuk
 - [Bloomberg: Overnight ETFs Shut Down With Returns Lagging (NSPY, NIWM)](https://www.bloomberg.com/news/articles/2023-07-19/-night-effect-funds-to-shut-down-with-overnight-returns-elusive)
 - [etf.com: 2 NightShares ETFs Close After Struggling to Gain Traction](https://www.etf.com/sections/news/2-nightshares-etfs-close-after-struggling-gain-traction)
 - [Quantpedia: Market Sentiment and an Overnight Anomaly](https://quantpedia.com/market-sentiment-and-an-overnight-anomaly/)
+
+### 9.5 Variant: vrijdag close kopen, maandag open verkopen
+
+Dit is het klassieke "weekend effect", en het werkt de verkeerde kant op.
+
+- **French (1980)** vond voor de S&P 500 over 1953-1977 dat het maandagrendement
+  (dat de weekendnacht bevat) gemiddeld significant **negatief** was, terwijl
+  alle andere dagen positief waren. Zijn verklaring: bedrijven parkeren slecht
+  nieuws tot na vrijdag-close, zodat de markt het in het weekend kan verwerken.
+- **Recent onderzoek naar overnight-rendementen per weeknacht** (Weekly
+  Seasonality in Overnight Effects, 2023) vindt hetzelfde beeld in
+  close-to-open termen: de nacht van maandag op dinsdag is consistent positief,
+  de nacht van vrijdag op maandag is de zwakste en gemiddeld negatief, voor
+  Amerikaanse large caps en index-ETF's.
+- **Het effect is bovendien instabiel.** Op de AEX is de weekendanomalie na de
+  jaren '90 verdwenen en werd maandag zelfs positief; in de kredietcrisis was
+  hij weer negatief. CXO Advisory concludeert voor SPY (1993-2017) dat
+  overnight-effecten per weekdag "zeer klein" zijn en "niet stabiel over
+  subperiodes".
+
+Wat je met deze variant koopt: 2,5 dag blootstelling aan nieuws (geopolitiek,
+weekendverklaringen, Aziatische opening) tegen de historisch laagste of zelfs
+negatieve compensatie van alle nachten. Voordeel ten opzichte van de dagelijkse
+variant is alleen dat je 52 in plaats van 252 rondjes per jaar doet, dus de
+kostenlast is een vijfde. Maar een vijfde van de kosten op een verwacht
+rendement van ongeveer nul is nog steeds een verwacht verlies. Wie het toch
+probeert kiest beter maandag-close naar dinsdag-open, en verwacht ook daar na
+kosten niets over te houden.
+
+Extra bronnen
+
+- [French (1980): Stock Returns and the Weekend Effect, JFE](https://www-2.rotman.utoronto.ca/~kan/3032/pdf/AssetPricingAnomalies/French_JFE_1980.pdf)
+- [Weekly Seasonality in Overnight Effects of the Stock Market (Applied Economics and Finance)](https://redfame.com/journal/index.php/aef/article/download/7705/6965)
+- [CXO Advisory: SPY by Day of the Week and Overnight](https://www.cxoadvisory.com/calendar-effects/spy-by-day-of-week-and-overnight/)
+- [De Ronde (EUR-scriptie): The weekend effect in the stock market during the current crisis (AEX)](https://thesis.eur.nl/pub/8071/Ronde,%20J.M.%20de%20(295825).doc)
