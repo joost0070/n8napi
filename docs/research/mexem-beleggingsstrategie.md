@@ -1124,3 +1124,155 @@ doelen te halen, is dat de betere ruil.
 - [Motley Fool: Better Growth Stock, Visa vs. Costco](https://www.fool.com/investing/2026/01/21/better-growth-stock-visa-vs-costco/)
 - [GuruFocus: Microsoft ROIC](https://www.gurufocus.com/term/roic/MSFT)
 - [Hermès: full-year results 2025](https://assets-finance.hermes.com/s3fs-public/node/pdf_file/2026-02/1770842738/hermes_20260212_pr_2025fullyearresults_va.pdf)
+
+---
+
+## 14. Chinese aandelen: hoe ik ernaar kijk
+
+*Stand 18 september 2026.*
+
+### 14.1 Het structurele probleem eerst
+
+China's economie is sinds eind 1992 bijna 13 keer zo groot geworden. De MSCI
+China-index staat over diezelfde 30+ jaar cumulatief op ongeveer nul. Tussen
+1994 en 2011 groeide de economie 17% per jaar in dollars terwijl de beurs 3,6%
+per jaar daalde. Dit is geen pech, het is structuur:
+
+- **Verwatering.** Het aantal aandelen in de MSCI China-index is sinds 2014
+  2,5 keer zo groot geworden; de winst per aandeel bewoog nauwelijks. Groei
+  wordt gefinancierd door steeds nieuwe aandelen uit te geven, niet door winst
+  per aandeel te laten groeien.
+- **De aandeelhouder is niet het doel.** Werkgelegenheid, strategische
+  autonomie en sociale stabiliteit gaan voor. In 2021 werd de hele
+  onderwijs-sector met één besluit onrendabel gemaakt en verloor Chinese tech
+  ruim 60% in anderhalf jaar. Dat kan opnieuw.
+- **Correlatie tussen bbp-groei en rendement is in China statistisch nul.**
+  In ontwikkelde markten is die positief.
+
+Dus de eerste vraag is niet "groeit China" (ja, 4,5% in 2026 volgens UBS, met
+deflatie en een vastgoedsector in het vijfde jaar van krimp) maar "komt die
+groei bij mij als aandeelhouder terecht". Historisch: nauwelijks.
+
+### 14.2 Regels VS: wat ik verwacht
+
+Twee sporen die tegelijk lopen en die je uit elkaar moet houden:
+
+| Spoor | Richting | Feiten |
+|---|---|---|
+| **Handel in goederen (tarieven)** | Ontspant tactisch | Trump en Xi ontmoeten elkaar 24 september in Washington, derde keer in een jaar; wederzijdse tariefverlaging op USD 30 mrd aan "niet-gevoelige" goederen in voorbereiding; een Board of Trade en Board of Investment zijn opgezet |
+| **Technologie en kapitaal** | Verhardt structureel, nu in wet | COINS Act (december 2025) codificeert en verbreedt het verbod op Amerikaanse investeringen in Chinese chips, AI en quantum; HFCAA-handhaving in februari 2025 nieuw leven ingeblazen (delisting na twee jaar zonder PCAOB-controle); 286 Chinese bedrijven met USD 1.100 mrd beurswaarde genoteerd in de VS |
+
+Mijn verwachting: tariefdeals komen en gaan, en elke deal geeft een rally van
+10 tot 20% in Chinese aandelen. Maar de technologische ontkoppeling is nu
+wetgeving met steun van beide partijen en draait niet terug. "Meer toegelaten"
+geldt voor sojabonen en speelgoed, "meer afgekapt" voor chips, AI en
+Amerikaans kapitaal in Chinese tech. Het delisting-risico voor ADR's blijft
+een zwaard van Damocles; de praktische oplossing is dat vrijwel elke grote
+naam inmiddels ook in Hongkong noteert.
+
+### 14.3 Regels EU: wat ik verwacht
+
+De EU is pragmatischer en verdeelder. In januari 2026 ruilde Brussel de
+tarieven van 35,5% op Chinese elektrische auto's in voor een minimumprijs
+("price undertaking"). BYD opent in 2026 een fabriek in Hongarije; Beijing
+instrueert autobouwers tegelijk om de geavanceerde technologie thuis te houden
+en alleen assemblage te exporteren. Duitsland wil handel, Frankrijk wil
+bescherming.
+
+Mijn verwachting: de EU laat Chinese producten toe onder voorwaarden (lokale
+productie, minimumprijzen, toezicht op toeleveringsketens) en "de-risked"
+selectief in gevoelige sectoren. Geen afkapping zoals de VS, wel steeds meer
+voorwaarden. Voor een Nederlandse belegger is Europa niet de beperking; de
+Amerikaanse regels bepalen waar Chinese bedrijven hun kapitaal kunnen halen en
+welke chips ze kunnen kopen.
+
+### 14.4 Waar de Chinese markt nu staat
+
+| Feit | Cijfer |
+|---|---|
+| Hang Seng 2025 | +29%, beste jaar sinds 2017 |
+| Hang Seng Tech 2026 tot nu | negatief, terwijl wereldwijde IT +20% deed |
+| Fwd K/W Hang Seng | 11,8x tegenover 22x voor de S&P 500 |
+| Chinese AI-chipzelfvoorziening | van 20% (2023) naar 40%+ (2026), doel 70% keten-breed in 2028 |
+| DeepSeek V4 (april 2026) | draait op Huawei Ascend in plaats van Nvidia |
+| Beperking | procestechnologie zit vast op 7nm, HBM-geheugen komt nog uit buitenlandse voorraden |
+| Hang Seng Tech herweging | vanaf juni 2026 zuivere AI-namen erin, richting 40% van de index binnen een jaar |
+
+China is goedkoop met een reden, maar goedkoop werkt soms: 2025 bewees dat.
+Het AI-verhaal is echt (eigen chips, eigen modellen, enorme binnenlandse
+markt) en tegelijk begrensd door de ontkoppeling die het juist veroorzaakte.
+
+### 14.5 Wat ik van het segment verwacht (5 tot 10 jaar)
+
+- **Geen samengesteld groeiverhaal maar een handelsmarkt.** Chinese aandelen
+  bewegen in golven van -60% en +80% rond een vlakke trend, gedreven door
+  Beijing (stimulus, ingrepen) en Washington (deals, sancties). Een
+  kopen-en-vergeten-belegger heeft er historisch weinig aan verdiend; wie in
+  paniek kocht en in euforie verkocht wel, maar dat kan bijna niemand.
+- **Verwacht rendement**: ruwweg gelijk aan de wereldindex (6 tot 8% nominaal),
+  met het dubbele van de volatiliteit, een dikke linkerstaart (Taiwan,
+  delisting, een nieuwe 2021) en een reële kans dat de waarderingskorting nooit
+  sluit omdat de oorzaak ervan (governance, verwatering, politiek) niet weggaat.
+- **Waar het wél kan werken**: de sectoren die Beijing zelf wil laten winnen
+  (halfgeleiders, AI, EV-keten, batterijen, robotica) en de paar bedrijven met
+  echte kasstroom en inkoop van eigen aandelen (Tencent is het schoolvoorbeeld:
+  het koopt sinds 2022 massaal eigen aandelen in, het tegenovergestelde van
+  verwatering).
+
+### 14.6 Als je het toch wilt: hoe
+
+1. **Weet wat je al hebt.** IWDA bevat 0% China. WEBN en VWCE bevatten ca. 3%
+   via opkomende markten. Dat is de marktweging; alles daarboven is een mening.
+2. **Begrens het op 5 tot 10% van de satelliet**, dus EUR 15 tot 25 van je
+   250. Niet meer. Dit is het thema met het slechtste historische rendement
+   per eenheid risico van alles in dit rapport.
+3. **Kies een ETF boven losse namen.** iShares MSCI China UCITS (ICGA, TER
+   0,40%, H-aandelen plus A-aandelen plus ADR's) voor breed, of een Hang Seng
+   Tech UCITS-ETF (HSBC, KraneShares KTEC) voor de AI-draai. De spreiding
+   beschermt tegen het bedrijfsspecifieke politieke risico dat in China groter
+   is dan waar ook.
+4. **Losse namen alleen via Hongkong, nooit via Amerikaanse ADR's.** Mexem
+   biedt via IBKR toegang tot de HKEX (controleer of dit voor jouw rekening
+   is geactiveerd en wat de tarieven zijn). De HFCAA raakt de ADR, niet de
+   HK-notering. Als ik één naam moest kiezen: Tencent (0700.HK): kasstroom,
+   inkoop eigen aandelen, WeChat als monopolie, AI-uitrol via Hunyuan; fwd
+   K/W rond de 15. Alibaba (9988.HK) is goedkoper maar heeft meer verwatering
+   en concurrentie. BYD (1211.HK) zit in een prijzenoorlog en tegen een
+   Europese minimumprijs. CATL (3750.HK, sinds 2025) is de batterijmonopolist
+   maar staat op Amerikaanse zwarte lijsten.
+5. **Wat ik niet zou doen**: Chinese chipbedrijven via A-aandelen (SMIC,
+   Cambricon: extreem duur, alleen via Stock Connect, sanctiedoelwit), Chinese
+   vastgoed, Chinese banken, en alles wat alleen in de VS noteert.
+
+### 14.7 Kort
+
+Mijn verwachting is dat China de komende 5 tot 10 jaar een technologische
+grootmacht wordt met eigen chips en eigen AI, en dat de gemiddelde buitenlandse
+aandeelhouder daar weinig van terugziet. Dat klinkt tegenstrijdig maar is
+precies wat de afgelopen 30 jaar liet zien. Een kleine, gespreide positie via
+een ETF is verdedigbaar als bewuste weddenschap op het sluiten van de korting;
+een grote positie of losse ADR's niet.
+
+### 14.8 Bronnen
+
+- [Aptus: Chinese Stocks, the disconnect with economic growth](https://aptuscapitaladvisors.com/chinese-stocks-the-disconnect-with-economic-growth/)
+- [Medium: The Mirage of Growth, why Chinese equities lag](https://medium.com/@shubhrgarg/the-mirage-of-growth-why-chinese-equities-lag-despite-a-booming-economy-84f06c6a780e)
+- [Washington Sun: China says a trade deal could come soon as Xi's trip nears](https://washingtonsun.com/trump-white-house/china-us-trade-deal-xi-trip)
+- [Skadden: US Treasury's reverse-CFIUS authority is codified (COINS Act)](https://www.skadden.com/insights/publications/2026/01/us-treasurys-reverse-cfius-authority)
+- [Torys: US law will widen constraints on outbound investments](https://www.torys.com/our-latest-thinking/publications/2026/01/us-law-will-widen-constraints-on-outbound-investments)
+- [China Briefing: US delisting risks drive Chinese companies to Hong Kong](https://www.china-briefing.com/news/us-delisting-risks-chinese-companies-hong-kong/)
+- [White & Case: The HFCAA and consequences for US-listed China-based companies](https://www.whitecase.com/insight-our-thinking/hfcaa-and-consequences-us-listed-china-based-companies)
+- [Europese Commissie: guidance on price undertaking offers for BEVs from China (januari 2026)](https://policy.trade.ec.europa.eu/news/commission-issues-guidance-document-submission-price-undertaking-offers-battery-electric-vehicles-2026-01-12_en)
+- [ECFR: EV endgame, stalling China's export surge](https://ecfr.eu/publication/ev-endgame-stalling-chinas-export-surge-in-europes-southern-neighbourhood/)
+- [CFR: Inside Europe's China dilemma](https://www.cfr.org/articles/inside-europes-china-dilemma)
+- [IG: Asia stock markets outlook 2026](https://www.ig.com/en/news-and-trade-ideas/Asia-stock-market-outlook-for-2026-251209)
+- [Standard Chartered: Demystifying Chinese tech equities' lagging performance](https://www.sc.com/en/news/wealth-retail-banking/demystifying-chinese-tech-equities-lagging-performance/)
+- [HSI: Hang Seng TECH factsheet augustus 2026](https://www.hsi.com.hk/static/uploads/contents/en/dl_centre/factsheets/hsteche.pdf)
+- [UBS: China Outlook 2026-27](https://www.ubs.com/global/en/investment-bank/insights-and-data/articles/china-outlook.html)
+- [Goldman Sachs: China's economy expected to grow 4.8% in 2026](https://www.goldmansachs.com/insights/articles/chinas-economy-expected-to-grow-in-2026-amid-surging-exports)
+- [IMF: China 2025 Article IV](https://www.elibrary.imf.org/view/journals/002/2026/044/article-A001-en.xml)
+- [OfficeChai/Morgan Stanley: China's AI-chip self-sufficiency from 20% to 40%](https://officechai.com/ai/chinas-self-sufficiency-in-ai-chips-has-risen-from-20-in-2023-to-over-40-in-2026-morgan-stanley-data/)
+- [CSIS: DeepSeek, Huawei, export controls and the US-China AI race](https://www.csis.org/analysis/deepseek-huawei-export-controls-and-future-us-china-ai-race)
+- [The Economy: China's AI self-sufficiency drive falters despite massive investment](https://economy.ac/news/2026/08/202608289728)
+- [Freenance: Best China ETF EU 2026](https://freenance.io/etf/best-china-etf-eu-2026-deep-dive-msci-china-csi-300-cspx-fxc-cnya-ucits-tax-treatment/)
+- [KraneShares: China ETFs, a comprehensive guide](https://kraneshares.com/china-etfs-a-comprehensive-guide-on-how-to-invest-in-china/)
