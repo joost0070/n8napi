@@ -1,0 +1,63 @@
+{
+  "name": "Maandelijkse kooporder herinnering (26e, 15:50)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "50 15 26 * *"
+            }
+          ]
+        }
+      },
+      "id": "a1b2c3d4-0001-4000-8000-000000000001",
+      "name": "Elke 26e om 15:50",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Rotatie van order B (EUR 250). Startmaand: oktober 2026 = index 0.\n// Augustus en september zijn inhaalmaanden (index 10 en 11).\nconst rotatie = [\n  { naam: 'Rheinmetall', ticker: 'RHM', beurs: 'Xetra', valuta: 'EUR', opmerking: 'Fractie-order: bedrag EUR 250 invullen.' },\n  { naam: 'ASML', ticker: 'ASML', beurs: 'Euronext Amsterdam', valuta: 'EUR', opmerking: 'Fractie-order: bedrag EUR 250 invullen.' },\n  { naam: 'iShares MSCI China UCITS ETF', ticker: 'ICGA', beurs: 'Xetra', valuta: 'EUR', opmerking: 'Gebruik gratis ETF-order nummer 2.' },\n  { naam: 'Fortum', ticker: 'FORTUM', beurs: 'Nasdaq Helsinki', valuta: 'EUR', opmerking: 'Hele stukken, ca. 10.' },\n  { naam: 'Saab B', ticker: 'SAAB B', beurs: 'Nasdaq Stockholm', valuta: 'SEK', opmerking: 'EERST EUR 250 naar SEK wisselen. Let op: B-aandeel.' },\n  { naam: 'Cameco', ticker: 'CCJ', beurs: 'NYSE', valuta: 'USD', opmerking: 'EERST EUR 250 naar USD wisselen.' },\n  { naam: 'Thales', ticker: 'HO', beurs: 'Euronext Paris', valuta: 'EUR', opmerking: '1 stuk.' },\n  { naam: 'Rolls-Royce', ticker: 'RR', beurs: 'London Stock Exchange', valuta: 'GBP', opmerking: 'EERST EUR 250 naar GBP wisselen. Koers in pence: 1100p = GBP 11.' },\n  { naam: 'Schneider Electric', ticker: 'SU', beurs: 'Euronext Paris', valuta: 'EUR', opmerking: '1 stuk.' },\n  { naam: 'Broadcom', ticker: 'AVGO', beurs: 'Nasdaq', valuta: 'USD', opmerking: 'Fractie-order. EERST EUR 250 naar USD wisselen.' },\n  { naam: 'INHAALMAAND', ticker: '-', beurs: '-', valuta: '-', opmerking: 'Koop de naam die het verst onder 10% van de satelliet zit.' },\n  { naam: 'INHAALMAAND + JAARLIJKSE EVALUATIE', ticker: '-', beurs: '-', valuta: '-', opmerking: 'Zie hoofdstuk 16.5 van het rapport. Vergelijk satelliet met IWDA.' },\n];\n\nconst start = new Date(2026, 9, 1); // oktober 2026\nconst nu = new Date();\nconst maandenSindsStart = (nu.getFullYear() - start.getFullYear()) * 12 + (nu.getMonth() - start.getMonth());\nconst index = ((maandenSindsStart % 12) + 12) % 12;\nconst cyclus = Math.floor(maandenSindsStart / 12) + 1;\nconst b = rotatie[index];\n\nconst maandNaam = nu.toLocaleDateString('nl-NL', { month: 'long', year: 'numeric' });\n\nconst regels = [\n  'Tijd: tussen 16:00 en 17:15.',\n  'Ordertype: LIMIT op de midprijs. Geldigheid: Day. Nooit een marktorder.',\n  'Niet gevuld om 17:15? Limiet op de laatprijs. Niet gevuld bij sluiting? Morgen opnieuw.',\n  'Zelfde bedrag, zelfde dag, ook bij -30%. De rotatie beslist, niet jij.',\n  'Noteer datum, naam, aantal, koers en bedrag in het logboek.',\n];\n\nconst tekst = [\n  `Kooporders ${maandNaam} (cyclus ${cyclus})`,\n  '',\n  'ORDER A (gratis ETF-order 1)',\n  'IWDA, Euronext Amsterdam, EUR 500, limiet op midprijs.',\n  '',\n  'ORDER B (EUR 250)',\n  `${b.naam}`,\n  `Ticker: ${b.ticker} | Beurs: ${b.beurs} | Valuta: ${b.valuta}`,\n  `${b.opmerking}`,\n  '',\n  'CHECKLIST',\n  ...regels.map((r, i) => `${i + 1}. ${r}`),\n].join('\\n');\n\nreturn [{ json: { tekst, orderB: b, index, cyclus, maand: maandNaam } }];"
+      },
+      "id": "a1b2c3d4-0002-4000-8000-000000000002",
+      "name": "Bepaal order van deze maand",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 0]
+    },
+    {
+      "parameters": {
+        "chatId": "VUL_JE_CHAT_ID_IN",
+        "text": "={{ $json.tekst }}",
+        "additionalFields": {}
+      },
+      "id": "a1b2c3d4-0003-4000-8000-000000000003",
+      "name": "Stuur Telegram-herinnering",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [520, 0],
+      "credentials": {
+        "telegramApi": {
+          "id": "VUL_IN",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Elke 26e om 15:50": {
+      "main": [[{ "node": "Bepaal order van deze maand", "type": "main", "index": 0 }]]
+    },
+    "Bepaal order van deze maand": {
+      "main": [[{ "node": "Stuur Telegram-herinnering", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Amsterdam"
+  },
+  "pinData": {}
+}

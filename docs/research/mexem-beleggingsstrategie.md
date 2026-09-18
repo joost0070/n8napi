@@ -1458,3 +1458,142 @@ dan Prysmian door Broadcom.
 - [GuruFocus: BYD forward PE](https://www.gurufocus.com/term/forward-pe-ratio/BYDDF)
 - [Bloomberg: Takaichi, AI, corporate reform pave way for Japan stocks in 2026](https://www.bloomberg.com/news/articles/2025-12-25/takaichi-ai-corporate-reform-pave-way-for-japan-stocks-in-2026)
 - [Global Investments: Japan equities 2026 guide](https://www.globalinvestments.net/investments/guides/japan-equity-investing-guide)
+
+---
+
+## 16. Het uitvoeringsplan: wat je elke maand koopt
+
+*Vastgelegd 18 september 2026. Dit hoofdstuk is bedoeld om uit te printen.*
+
+### 16.1 Twee praktische correcties op hoofdstuk 15
+
+Bij het uitwerken bleek dat twee namen niet passen bij EUR 250 per maand:
+
+- **Hongkong handelt in vaste lots.** Tencent: 100 aandelen per lot (ca. EUR
+  6.500), BYD: 500 aandelen (ca. EUR 5.500). Fractionele handel geldt niet voor
+  Hongkong. Losse Chinese aandelen zijn dus pas haalbaar als je er in één keer
+  duizenden euro's in wilt steken. **Oplossing: China via een UCITS-ETF in
+  euro's** (iShares MSCI China UCITS, ticker ICGA op Xetra, TER 0,40%), gekocht
+  met je tweede gratis ETF-order. Dat was in hoofdstuk 14 toch al mijn
+  voorkeur.
+- **Tokio handelt in eenheden van 100 aandelen.** Mitsubishi Heavy: ca. EUR
+  2.400 per eenheid. **Oplossing: Rolls-Royce** (Londen, ca. GBP 11 per
+  aandeel) neemt die plek in: defensie (onderzeeërreactoren, motoren),
+  kernenergie (SMR-leider in Europa, partner in het Nederlandse programma) en
+  turbines. Zelfde drie thema's, wel koopbaar.
+
+Rheinmetall (ca. EUR 1.020) en ASML (ca. EUR 1.600) kosten meer dan EUR 250
+per stuk; die koop je als **fractie** (je hebt "Global, Trade in Fractions"
+al aan staan; controleer bij de eerste order dat het orderticket fracties
+toestaat voor Xetra en Euronext).
+
+### 16.2 Het maandschema
+
+Elke maand, op de **26e** (of de eerste handelsdag daarna), tussen **16:00 en
+17:15**, limietorder op de midprijs. Twee orders per maand, klaar in tien
+minuten.
+
+**Order A, elke maand hetzelfde: IWDA, EUR 500, Euronext Amsterdam.**
+Gratis ETF-order nummer 1.
+
+**Order B, EUR 250, roterend:**
+
+| Maand | Naam | Ticker, beurs | Valuta | Ca. koers | Wat je krijgt | Bijzonderheden |
+|---|---|---|---|---|---|---|
+| Okt 2026 | Rheinmetall | RHM, Xetra | EUR | 1.020 | ca. 0,25 aandeel | fractie |
+| Nov 2026 | ASML | ASML, Amsterdam | EUR | 1.600 | ca. 0,16 aandeel | fractie |
+| Dec 2026 | iShares MSCI China UCITS | ICGA, Xetra | EUR | ca. 5 | ca. 50 stuks | gratis ETF-order nummer 2 |
+| Jan 2027 | Fortum | FORTUM, Helsinki | EUR | 25 | ca. 10 stuks | |
+| Feb 2027 | Saab B | SAAB B, Stockholm | SEK | 570 | ca. 4 stuks | eerst EUR 250 naar SEK wisselen |
+| Mrt 2027 | Cameco | CCJ, NYSE | USD | ca. 90 | ca. 3 stuks | eerst naar USD wisselen; Canadees bedrijf, 15% bronbelasting |
+| Apr 2027 | Thales | HO, Parijs | EUR | 240 | 1 stuk | |
+| Mei 2027 | Rolls-Royce | RR, Londen | GBP | ca. 11 | ca. 20 stuks | eerst naar GBP wisselen; geen UK stamp duty op elektronische aankoop via IBKR: controleer |
+| Jun 2027 | Schneider Electric | SU, Parijs | EUR | ca. 250 | 1 stuk | |
+| Jul 2027 | Broadcom | AVGO, Nasdaq | USD | ca. 370 | ca. 0,7 aandeel | fractie; eerst naar USD wisselen |
+| Aug 2027 | **Inhaalmaand**: de naam die het verst onder 10% van de satelliet zit | | | | | |
+| Sep 2027 | **Inhaalmaand plus jaarlijkse evaluatie** (16.5) | | | | | |
+
+Daarna begint de rotatie opnieuw in oktober 2027. Na één cyclus heeft elke naam
+ca. EUR 250 en de satelliet ca. EUR 3.000; na vier cycli ca. EUR 12.000
+inleg, tegenover ca. EUR 24.000 in IWDA.
+
+Themaverdeling van de satelliet: defensie 30% (Rheinmetall, Saab, Thales),
+kernenergie en stroom 30% (Fortum, Cameco, Rolls-Royce), chips en AI 20%
+(ASML, Broadcom), elektrificatie 10% (Schneider), China 10% (ETF). Vrijwel
+geen overlap met IWDA behalve ASML, Schneider en Broadcom.
+
+### 16.3 Valuta: zo doe je het zonder gedoe
+
+Vier van de tien maanden vragen een andere valuta (SEK, USD, GBP, USD). Doe
+het zo:
+
+1. Client Portal, "Convert Currency" (of in TWS de valutapaar-order
+   EUR.SEK, EUR.USD, GBP.EUR omgekeerd).
+2. Wissel precies EUR 250 op de koopdag, vlak voor de aandelenorder.
+3. Accepteer het minimumtarief (volgens reviews ca. USD 2 tot 5; controleer
+   het in je eigen tarievenoverzicht). Op EUR 250 is dat 1 tot 2%, vier keer
+   per jaar, dus ca. EUR 10 tot 20 per jaar in totaal. Niet de moeite van
+   ingewikkelde constructies.
+4. Laat restjes vreemde valuta staan; die gebruik je de volgende ronde.
+
+Vul het **W-8BEN**-formulier in (Client Portal, belastingformulieren) zodat
+Amerikaanse dividenden tegen 15% in plaats van 30% worden belast. Die 15% is
+verrekenbaar in box 3.
+
+### 16.4 De orderticket-checklist (elke keer hetzelfde)
+
+1. Tijd tussen 16:00 en 17:15.
+2. Juiste notering: de EUR-lijn (IWDA op Amsterdam, niet Londen; ICGA op
+   Xetra), Saab B (niet A), Rolls-Royce RR op de LSE in GBP (niet GBX-pence
+   vergissen: 1.100 pence = GBP 11).
+3. Ordertype **Limit**, limietprijs op de midprijs tussen bied en laat.
+4. Bedrag in euro's invullen (fractie-orders) of aantal stuks.
+5. Geldigheid: **Day**. Niet gevuld om 17:15? Limiet op de laatprijs zetten.
+   Niet gevuld bij sluiting? Volgende handelsdag opnieuw, geen paniek.
+6. Noteer datum, naam, aantal, koers en bedrag in het logboek (16.6).
+
+### 16.5 De regels, nog één keer, om op te hangen
+
+1. Zelfde bedrag, zelfde dag, elke maand. Ook bij -30%. Juist bij -30%.
+2. Nooit een naam overslaan omdat hij "duur staat", nooit dubbel kopen omdat
+   hij "goedkoop staat". De rotatie beslist, niet jij.
+3. Nooit verkopen buiten de jaarlijkse evaluatie in september.
+4. **Evaluatie september 2027, 2028, 2029**: (a) totaal satelliet tegenover
+   wat hetzelfde geld in IWDA had gedaan; (b) themagrenzen: defensie boven
+   35%, China boven 20% of kernenergie boven 35% van de satelliet? Dan gaan de
+   inhaalmaanden naar de andere namen tot het klopt; (c) één naam mag eruit
+   als de reden waarom je hem kocht weg is (niet omdat de koers daalde);
+   vervanger komt uit de reservelijst (TSMC, Vistra, Prysmian, Kongsberg,
+   Micron, Novo Nordisk, Mitsubishi Heavy zodra je EUR 2.400 voor één eenheid
+   over hebt).
+5. **September 2029, de harde regel**: staat de satelliet na drie volledige
+   jaren meer dan 10 procentpunt achter op IWDA, dan stopt order B en gaat de
+   volledige EUR 750 naar IWDA. De bestaande aandelen blijven staan.
+6. Het percentage satelliet (33%) gaat nooit omhoog. Alleen omlaag, alleen
+   in september.
+7. Nieuws, tips, TikToks en mijn eigen latere meningen veranderen niets aan
+   dit schema tot september.
+
+### 16.6 Logboek
+
+Houd één regel per order bij (Google Sheet of het n8n-journaal uit hoofdstuk
+5):
+
+| Datum | Order | Naam | Aantal | Koers | Bedrag EUR | Valutakosten | Commissie |
+|---|---|---|---|---|---|---|---|
+| 2026-10-26 | A | IWDA | | | 500 | 0 | 0 |
+| 2026-10-26 | B | Rheinmetall | | | 250 | 0 | |
+
+Eén keer per jaar erbij: waarde satelliet, waarde IWDA, en wat de EUR 250 per
+maand in IWDA had opgeleverd (koop fictief elke maand EUR 250 IWDA erbij in
+een aparte kolom; dat is je meetlat).
+
+### 16.7 De n8n-herinnering
+
+In `docs/research/n8n/maandelijkse-kooporder-herinnering.json` staat een
+importeerbare n8n-workflow: elke 26e om 15:50 rekent hij uit welke naam deze
+maand aan de beurt is en stuurt een Telegram-bericht met de complete
+orderticket-checklist (naam, ticker, beurs, valuta, of je eerst moet wisselen,
+en de vaste regels). Importeren via Workflows, Import from File; alleen je
+Telegram-credential en chat-id invullen. Geen API-koppeling met Mexem nodig:
+de order plaats je zelf, zoals afgesproken in hoofdstuk 5 (vier-ogen-principe).
