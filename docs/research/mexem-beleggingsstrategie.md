@@ -969,3 +969,158 @@ Bewijs over aandelen kiezen
 - [Bessembinder: Do Stocks Outperform Treasury Bills? (SSRN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2900447)
 - [Morningstar: Global Thematic Fund Landscape 2025](https://www.morningstar.com/business/insights/research/global-thematic-fund-landscape)
 - [Morningstar: Investors in thematic ETFs show terrible timing](https://magazine.morningstar.com/issues/q1-2024/investors-in-thematic-etfs-show-terrible-timing)
+
+---
+
+## 13. Breder dan AI: aandelen voor 5 tot 10 jaar, sector maakt niet uit
+
+*Stand 18 september 2026. Zelfde disclaimer als hoofdstuk 12.*
+
+### 13.1 "We hebben Nvidia gemist"
+
+Klopt, en dat is inderdaad niet erg, om twee redenen die belangrijker zijn dan
+ze klinken:
+
+1. **Je vindt de volgende Nvidia niet door naar de volgende Nvidia te zoeken.**
+   Nvidia zelf was tien jaar lang een saai gaming-chipbedrijf voordat het
+   explodeerde. De grootste winnaars van een decennium zijn vooraf zelden
+   herkenbaar, en aandelen die "de volgende X" worden genoemd zijn per definitie
+   al ontdekt en geprijsd. AMD is dit jaar +138% als "next Nvidia"-trade en
+   staat nu op 80 tot 100 keer de winst.
+2. **Het is niet nodig.** Bessembinder: 4% van de aandelen leverde alle netto
+   vermogenswinst van de markt. Met IWDA bezit je die 4% gegarandeerd, inclusief
+   de volgende Nvidia, wie dat ook wordt. De ETF mist nooit een winnaar; de
+   stockpicker bijna altijd.
+
+Wat een particulier wél kan doen met een horizon van 5 tot 10 jaar, en waar
+bewijs voor is:
+
+- **Kwaliteit kopen.** Asness, Frazzini en Pedersen ("Quality Minus Junk"):
+  winstgevende, stabiele bedrijven met lage schuld verslaan rommel met meer dan
+  5% per jaar, in 24 landen, en houden zich beter in crashes. De Morningstar
+  Wide Moat-index (bedrijven met een houdbaar concurrentievoordeel, gekocht als
+  ze redelijk geprijsd zijn) deed sinds 2007 11,5% per jaar tegen 9,0% voor de
+  markt, maar bleef de laatste tien jaar achter (13,9% tegen 15,3%). Kwaliteit
+  werkt, niet elk decennium.
+- **Structurele vraag met contracten kopen**, geen verhalen. Orderboeken,
+  wachtlijsten en meerjarige contracten zijn controleerbaar; "de markt wordt
+  in 2035 zo groot" is dat niet.
+- **Geduld als voorsprong.** Het enige waarin een particulier een
+  fondsmanager verslaat, is dat niemand hem na een slecht kwartaal ontslaat.
+
+### 13.2 Thema's met 5 tot 10 jaar structurele vraag: wat het bewijs zegt
+
+**Elektrificatie en het stroomnet.** Wereldwijde netinvesteringen ca. USD 470
+mrd in 2025, prognose van een supercyclus van USD 1.400 mrd tot 2030. Grote
+transformatoren zijn niet voor 2027 leverbaar. Prysmian investeert USD 2 mrd
+tot 2027 en verdubbelt de productie van hoogspanningskabels. Schneider Electric
+groeide in Q1 2026 11% organisch, energiemanagement 13%. Dit thema is breder
+dan AI: elektrische auto's, warmtepompen, herindustrialisering en het
+vervangen van 40 jaar oude netten in de VS en Europa. Namen: Schneider
+Electric (Parijs, EUR), Prysmian (Milaan, EUR), Eaton, Hitachi, Quanta.
+
+**Kernenergie en uranium.** Voor 2026 een tekort op de uraniummarkt vóór
+beleggersvraag; langetermijncontracten rond USD 90 tot 100 per pond, het
+hoogste sinds 2007; vraag overtreft aanbod structureel vanaf begin jaren '30.
+Cameco is via 49% Westinghouse geen mijnbouwer meer maar een nucleair
+infrastructuurplatform. SMR's zijn het verhaal van 2026 maar de eerste
+commerciële eenheden komen pas 2030-2035. Namen: Cameco; als alternatief het
+fysieke uraniumfonds van Sprott.
+
+**Gezondheid: obesitas en vergrijzing.** GLP-1-markt richting USD 100 mrd in de
+jaren '30. 2026 is het jaar van de pil: Lilly's Foundayo (orforglipron) sinds
+april op de markt, Novo's Wegovy-pil met 5 mln recepten en ca. 90% van de
+orale markt. Er is een prijzenoorlog: zelfbetaaltarieven vanaf USD 149 per
+maand. Waardering loopt extreem uiteen: Lilly fwd K/W 32 bij 48% omzetgroei;
+Novo fwd K/W 14 met 4% dividend maar dalende omzet in 2026 en -1% winst.
+Lilly is momentum, Novo is een contraire waardeweddenschap. Ik zou er één
+kiezen, niet beide.
+
+**Defensie Europa.** Duitsland: EUR 117 mrd in 2026, 162 mrd in 2029 (3,2%
+bbp). Rheinmetall: orderboek EUR 64 tot 73 mrd tegenover EUR 9,9 mrd omzet,
+omzet +69% in Q2 2026, marge 18,5%, fwd K/W ca. 28 na een daling van 40%
+vanaf de piek. Saab: orderboek SEK 274 mrd, omzet +30%. De sector is van
+"budgetten stijgen" naar "laat leveringen en kasstroom zien" gegaan; dat is
+precies het moment waarop het interessant wordt voor een 5-jaarsbelegger.
+
+**Voedsel, landbouw en water.** Eerlijk: de klassieke voedingssector (Nestlé,
+Unilever, supermarkten) groeit 3 tot 5% per jaar en had een slecht decennium.
+Dat is de plek voor stabiliteit en dividend, niet voor groei. Wil je
+voedselgerelateerde groei, dan zit die in de techniek erachter: Deere (80% van
+nieuwe combines met het hoogste automatiseringspakket, +25% YTD), Nutrien
+(goedkoopste kunstmestproducent, record volumes), Corteva (splitst in Q4 2026
+een genetica-bedrijf af). Water: Xylem groeit in waterinfrastructuur én
+datacenters (koelwater); Veolia is degelijk maar traag (3,4% omzetgroei per
+jaar).
+
+**Compounders: kwaliteit zonder thema.** Microsoft (ROIC ca. 20%, volgens
+GuruFocus "licht ondergewaardeerd"), Visa (K/W 32, gelijk aan het 10-jaars
+gemiddelde, 257 mrd transacties), Costco (K/W 51 tegenover gemiddeld 44: te
+duur nu), Hermès (41% operationele marge, ROIC 40%, altijd duur). Dit zijn de
+bedrijven die je over 10 jaar niet hoeft uit te leggen. Van deze vier is Visa
+op dit moment de redelijkst geprijsde.
+
+### 13.3 Een brede 10-namenlijst voor 5 tot 10 jaar
+
+Alternatief voor (of mix met) de AI-lijst uit 12.4. Gelijk gewogen, zelfde
+regels als 12.1. Zes van de tien noteren in euro's, dus zonder valutakosten.
+
+| # | Naam (beurs) | Thema | Waarom 5 tot 10 jaar | Grootste risico | Risico |
+|---|---|---|---|---|---|
+| 1 | **ASML** (Amsterdam, EUR) | Chips, alle thema's | Monopolie op EUV; elke chip voor AI, auto's, defensie en energie gaat erdoor; fwd K/W 28 | China-beperkingen; cyclus | Medium |
+| 2 | **Schneider Electric** (Parijs, EUR) | Elektrificatie | Wereldleider in laag- en middenspanning, datacenter-stroomverdeling en koeling; 11 tot 13% organische groei | Hoge waardering na sterke jaren; China-blootstelling | Medium |
+| 3 | **Siemens Energy** (Xetra, EUR) | Stroomopwekking en net | Gasturbines (7 jaar wachttijd), transformatoren, netapparatuur; helft van de waardering van GE Vernova | Uitvoering; Gamesa | Medium-hoog |
+| 4 | **Cameco** (NYSE/TSX) | Kernenergie | Uraniumtekort, contractprijzen hoogste sinds 2007, 49% Westinghouse; vraag structureel tot 2040 | Productieproblemen (McArthur River, Cigar Lake); uranium is volatiel | Medium-hoog |
+| 5 | **Novo Nordisk** (Kopenhagen, DKK, of ADR) *of* **Eli Lilly** (NYSE) | Obesitas, diabetes | Novo: fwd K/W 14, 4% dividend, 90% van de orale markt, prijs prijst krimp in. Lilly: marktleider, 48% groei, fwd K/W 32 | Novo: verdere prijserosie, marktaandeelverlies. Lilly: waardering, prijzenoorlog | Medium-hoog |
+| 6 | **Rheinmetall** (Xetra, EUR) | Defensie | Orderboek 7x omzet, 18,5% marge, 40% goedkoper dan de piek, Duits budget +40% tot 2029 | Vrede/budgetdraai; uitvoering van de capaciteitsuitbreiding | Medium-hoog |
+| 7 | **Deere** (NYSE) | Landbouwtechnologie | Autonomie en precisielandbouw als terugkerende softwareomzet bovenop machines; cyclisch dieptepunt voorbij | Landbouwcyclus, boereninkomens, handelsoorlogen | Medium |
+| 8 | **Xylem** (NYSE) | Water | Waterinfrastructuur, digitalisering van nutsbedrijven, koelwater voor datacenters; saaie groeier | Gemiddelde waardering, geen goedkoop instapmoment | Medium |
+| 9 | **Visa** (NYSE) | Betalingen, compounder | Netwerkeffect, 50%+ nettomarge, K/W op 10-jaars gemiddelde, groeit met de wereldeconomie plus verschuiving van cash | Regulering van interchange, stablecoins | Laag-medium |
+| 10 | **Broadcom** (Nasdaq) | AI-maatwerkchips | Zie 12.4: 12x FY28-winst bij 221% AI-groei; de AI-blootstelling in deze lijst | Capex-cyclus hyperscalers | Medium-hoog |
+
+Reserves als je er een wilt vervangen: TSMC (productie), Vistra (stroom),
+Prysmian (kabels), Hermès (kwaliteit, duur), Saab (defensie), Microsoft
+(compounder, maar je bezit al 3% via IWDA).
+
+**Wat deze lijst wel en niet is.** Hij spreidt over zes thema's die elk een
+eigen 5-tot-10-jaarsmotor hebben en die niet allemaal tegelijk kapotgaan als
+AI-capex in 2027 afkoelt. Hij bevat geen lotjes: geen neoclouds, geen SMR-
+startups, geen robotica-hoop, geen pre-revenue biotech. Dat betekent ook: de
+kans op een 10x zit er niet in. De kans op "de markt verslaan met minder pijn
+dan de AI-lijst" is, denk ik, iets groter dan 50%. Meer beloof ik niet.
+
+### 13.4 Kiezen tussen de AI-lijst (12.4) en deze lijst
+
+Voor geld met een horizon van 5 tot 10 jaar zou ik zelf deze brede lijst
+nemen, of een mix van vijf uit elk. De AI-lijst is een geconcentreerde
+weddenschap op één uitkomst (de uitbouw gaat door) en is al voor 30% in je
+IWDA aanwezig. De brede lijst wint waarschijnlijk minder als AI doorstoomt en
+verliest zeker minder als het niet zo is. Voor iemand die in 2026 begint met
+EUR 250 per maand en die geen Nvidia-achtige klapper nodig heeft om zijn
+doelen te halen, is dat de betere ruil.
+
+### 13.5 Bronnen bij dit hoofdstuk
+
+- [Yahoo Finance: Should You Look for the "Next Nvidia" or Just Buy the Real Thing?](https://finance.yahoo.com/markets/stocks/articles/look-next-nvidia-just-buy-152536878.html)
+- [Asness, Frazzini, Pedersen: Quality Minus Junk (SSRN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2312432)
+- [ETF Trends: Charting the Moat Index's Long-Term Track Record](https://www.etftrends.com/tactical-allocation-content-hub/charting-the-moat-indexs-long-term-track-record/)
+- [PortfoliosLab: MOAT vs SPY](https://portfolioslab.com/tools/stock-comparison/MOAT/SPY)
+- [Exoswan: Top Grid Modernization Stocks 2026](https://exoswan.com/grid-modernization-stocks)
+- [IEA: Building the Future Transmission Grid](https://iea.blob.core.windows.net/assets/744ff0bb-905a-4f9f-83e3-2d04ce99e09c/BuildingtheFutureTransmissionGrid.pdf)
+- [Sprott: Uranium Outlook 2026](https://sprott.com/insights/uranium-outlook-2026/)
+- [Triangle Investor: Cameco Stock Analysis 2026](https://triangle-investor.com/articles/cameco-stock-analysis-2026-uranium-market-outlook-production-forecast-nuclear-energy/)
+- [Motley Fool: 3 Nuclear Energy Stocks to Buy Before 2026 Ends](https://www.fool.com/investing/2026/09/16/3-nuclear-energy-stocks-to-buy-before-2026-ends/)
+- [CNBC: 2026 is the year of obesity pills](https://www.cnbc.com/2026/01/10/2026-is-the-year-of-obesity-pills-from-novo-nordisk-eli-lilly-.html)
+- [CNBC: Lilly's GLP-1 growth only getting started as Novo braces for decline](https://www.cnbc.com/2026/02/04/eli-lilly-novo-nordisk-earnings-glp1-market.html)
+- [GEN: Price war dampens Lilly surge after oral GLP-1 wins FDA nod](https://www.genengnews.com/topics/translational-medicine/stockwatch-price-war-dampens-lilly-surge-after-oral-glp-1-wins-fda-nod/)
+- [24/7 Wall St: Eli Lilly, Novo Nordisk and Merck, buy, sell or hold?](https://247wallst.com/investing/2026/08/19/eli-lilly-novo-nordisk-and-merck-buy-sell-or-hold/)
+- [IQVIA: The outlook for obesity from 2026 to 2030](https://www.iqvia.com/locations/emea/blogs/2026/04/the-outlook-for-obesity-from-2026-to-2030)
+- [CNBC: European defense stocks cooling off after the spending boom](https://www.cnbc.com/2026/05/30/defense-stocks-consolidation-rheinmetall-saab-renk.html)
+- [RankiaPro: European defence sector Q2 2026 earnings beat](https://rankiapro.com/en/news/european-defence-sector-enters-an-earnings-driven-phase-as-q2-reports-beat-expectations/)
+- [iocharts: Rheinmetall, EUR 73 billion backlog, -40% price drop](https://iocharts.io/en/blog/rheinmetall-rezveny-73-billion-eur-backlog-40-exchange-rates/)
+- [Globe and Mail: 3 Agriculture Stocks to Buy as Food Inflation Stays Elevated](https://www.theglobeandmail.com/investing/markets/stocks/DE/pressreleases/1419422/3-agriculture-stocks-to-buy-as-food-inflation-stays-elevated-in-2026/)
+- [Xylem 10-Q Q2 2026](https://www.sec.gov/Archives/edgar/data/0001524472/000152447226000110/xyl-20260630.htm)
+- [TIKR: Veolia, is a 30% return possible in 2026?](https://www.tikr.com/blog/veolia-vie-stock-is-a-30-return-possible-in-2026)
+- [Motley Fool: Better Growth Stock, Visa vs. Costco](https://www.fool.com/investing/2026/01/21/better-growth-stock-visa-vs-costco/)
+- [GuruFocus: Microsoft ROIC](https://www.gurufocus.com/term/roic/MSFT)
+- [Hermès: full-year results 2025](https://assets-finance.hermes.com/s3fs-public/node/pdf_file/2026-02/1770842738/hermes_20260212_pr_2025fullyearresults_va.pdf)
