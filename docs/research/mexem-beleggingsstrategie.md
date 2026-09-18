@@ -1597,3 +1597,104 @@ orderticket-checklist (naam, ticker, beurs, valuta, of je eerst moet wisselen,
 en de vaste regels). Importeren via Workflows, Import from File; alleen je
 Telegram-credential en chat-id invullen. Geen API-koppeling met Mexem nodig:
 de order plaats je zelf, zoals afgesproken in hoofdstuk 5 (vier-ogen-principe).
+
+### 16.8 Wat het kost, per order en per jaar
+
+Tarieven volgens Mexem/IBKR-overzichten en reviews 2026; controleer ze één
+keer in je eigen tarievenpagina in het Client Portal. Ik reken conservatief.
+
+| Order | Commissie | Valutakosten | Overig | Totaal per order |
+|---|---|---|---|---|
+| A: IWDA EUR 500 (gratis ETF-order 1) | 0 | 0 | | **EUR 0** |
+| ICGA EUR 250 (gratis ETF-order 2) | 0 | 0 | | **EUR 0** |
+| Rheinmetall, ASML, Thales, Schneider (EUR-beurzen) | 0,06%, minimum ca. EUR 1,80 | 0 | | **ca. EUR 1,80** |
+| Fortum (Helsinki) | minimum ca. EUR 2 tot 3 | 0 | | **ca. EUR 3** |
+| Saab (Stockholm) | minimum ca. SEK 49, ca. EUR 4,50 | ca. EUR 2 tot 4 | | **ca. EUR 7 tot 9** |
+| Cameco, Broadcom (VS) | USD 1 minimum | ca. EUR 2 tot 4 | | **ca. EUR 3 tot 5** |
+| Rolls-Royce (Londen) | minimum ca. GBP 1 tot 3 | ca. EUR 2 tot 4 | UK stamp duty 0,5% = EUR 1,25 | **ca. EUR 5 tot 8** |
+| Inhaalmaanden (2x) | afhankelijk van de naam | | | **ca. EUR 2 tot 5** |
+
+**Per jaar: ca. EUR 30 tot 45 aan kosten op EUR 9.000 inleg, ofwel 0,35 tot
+0,5% eenmalig op het nieuwe geld.** Omdat je die aandelen daarna jaren
+aanhoudt, is dat omgerekend minder dan 0,05% per jaar. Ter vergelijking: de
+lopende kosten van IWDA zijn 0,20% per jaar, elk jaar opnieuw. De
+transactiekosten zijn dus geen factor, mits je de rotatie aanhoudt.
+
+Waar het wél fout gaat, ter illustratie:
+
+| Aanpak | Kosten per maand | Kosten per jaar | Percentage van de inleg |
+|---|---|---|---|
+| Rotatie: 1 naam per maand voor EUR 250 (dit plan) | ca. EUR 3 | ca. EUR 35 | 0,4% |
+| Alle 10 namen elke maand voor EUR 25 | 10 x EUR 1,80 tot 5 = EUR 30 tot 40 | EUR 400 | **13 tot 16%** |
+| 4 namen per maand voor EUR 62 | ca. EUR 12 | ca. EUR 145 | 4,8% |
+
+Drie regels die de kosten laag houden:
+
+1. **Nooit meer dan één aandelenorder per maand.** De minimumcommissie is de
+   vijand, niet het percentage.
+2. **De twee gratis ETF-orders altijd benutten**: IWDA elke maand, de China-ETF
+   in de ETF-maand. Nooit een gratis order laten liggen.
+3. **Valuta alleen wisselen als je koopt**, en de USD-maanden (Cameco, Broadcom)
+   kun je desgewenst achter elkaar zetten en één keer EUR 500 wisselen; dat
+   spaart één keer het minimumtarief. Marginaal, wel gratis.
+
+Wat níet in deze tabel staat en meer kost dan alles hierboven samen: de
+spread. Daarom de limietorder op de midprijs tussen 16:00 en 17:15. Een
+marktorder om 09:00 in Rheinmetall kan zomaar 0,3 tot 0,5% kosten; dat is
+tien keer de commissie.
+
+### 16.9 "Elke maand kijken wat laag staat en waarom": ja, maar met een regel
+
+Je voorstel: elke maand EUR 250 in het aandeel dat laag staat, na te hebben
+gekeken waarom en wat we voor het komende jaar verwachten. Het gezonde deel
+daarvan wil ik houden, het gevaarlijke deel eruit halen.
+
+**Het gevaarlijke deel** is "wat verwachten we voor het komende jaar". Dat is
+markttiming met een verhaal erbij. Analisten met Bloomberg-terminals halen
+een trefzekerheid op 12-maandsdoelen die niet beter is dan een munt; hoofdstuk
+11 laat zien dat zelfs perfecte dip-timing van een simpele maandelijkse inleg
+verliest. En "laag" is relatief: Rheinmetall staat 49% onder de piek en is
+nog steeds 28 keer de winst. Wie elke maand een nieuwe verwachting formuleert,
+gaat elke maand handelen op die verwachting; dat is precies het gedrag dat
+particulieren 6,5 procentpunt per jaar kost.
+
+**Het gezonde deel** is: geld laten stromen naar wat is achtergebleven. Dat is
+gewoon herbalanceren, en daar is wél bewijs voor. Dus zo doen we het:
+
+**Cyclus 1 (oktober 2026 tot september 2027): vaste rotatie**, zoals in 16.2.
+Alle tien posities worden opgebouwd; er is nog niets om "laag" tegen af te
+zetten.
+
+**Vanaf cyclus 2 (oktober 2027): de achterblijver-regel.** Elke 26e koop je
+met order B de naam met het **laagste gewicht in de satelliet ten opzichte
+van 10%**. Dat is automatisch de naam die het meest is gedaald of het minst is
+gestegen. Je koopt dus structureel laag, zonder ooit een mening over het
+komende jaar te hoeven hebben.
+
+Met één veto, de **thesis-check**: de achterblijver wordt overgeslagen (en de
+volgende achterblijver gekocht) als één van deze harde feiten geldt, en
+alleen dan:
+
+| Veto-grond | Voorbeeld |
+|---|---|
+| Fraude, boekhoudonderzoek, accountant weg | Wirecard-scenario |
+| Winstverwachting door het bedrijf zelf met meer dan 25% verlaagd, of dividend geschrapt | Niet: analisten die hun koersdoel verlagen |
+| De reden waarom je hem kocht bestaat niet meer | Fortum verliest het Google-contract; België draait de kernuitstap terug terug; Rheinmetall bij een Duitse begrotingsstop op defensie |
+| Sanctie- of verbodsrisico dat het aandeel onverhandelbaar kan maken | Hoofdstuk 14 |
+
+Niet op de lijst, en dus geen reden om over te slaan: "de koers daalt al drie
+maanden", "een analist is negatief", "de sector is uit de gratie", "ik heb er
+een slecht gevoel over". Dat zijn juist de momenten waarop de regel zijn geld
+verdient.
+
+**Hoe je het in vijf minuten doet**: open op de 25e je portefeuille, sorteer
+de tien namen op waarde, pak de laagste, loop de vier veto-vragen langs (ja of
+nee, geen essay), koop op de 26e. Het n8n-journaal uit hoofdstuk 5 (Flex-
+rapport, posities per dag) kan dit vanaf cyclus 2 automatisch in de
+herinnering zetten.
+
+**Wat je hiermee wint tegenover je voorstel**: hetzelfde "laag kopen", maar
+zonder dat je elke maand een voorspelling hoeft te doen die je niet kunt
+maken, en zonder de verleiding om te gaan handelen op nieuws. En je houdt de
+maandelijkse "waarom staat hij laag"-analyse, alleen is de uitkomst binair:
+thesis intact (kopen) of thesis kapot (skip).
