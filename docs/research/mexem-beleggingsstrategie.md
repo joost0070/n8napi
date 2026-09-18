@@ -526,3 +526,128 @@ Extra bronnen
 - [Weekly Seasonality in Overnight Effects of the Stock Market (Applied Economics and Finance)](https://redfame.com/journal/index.php/aef/article/download/7705/6965)
 - [CXO Advisory: SPY by Day of the Week and Overnight](https://www.cxoadvisory.com/calendar-effects/spy-by-day-of-week-and-overnight/)
 - [De Ronde (EUR-scriptie): The weekend effect in the stock market during the current crisis (AEX)](https://thesis.eur.nl/pub/8071/Ronde,%20J.M.%20de%20(295825).doc)
+
+---
+
+## 10. Concreet plan bij EUR 750 per maand in IWDA en CNDX
+
+Uitgangssituatie: maandelijks IWDA (iShares Core MSCI World, TER 0,20%) en
+CNDX (iShares Nasdaq 100, TER 0,30%), inleg gaat van EUR 250 naar EUR 750, met
+een bewuste overweging van Amerikaanse tech via CNDX.
+
+### 10.1 Wat je nu eigenlijk bezit (doorkijk, cijfers medio 2026)
+
+| | IWDA | CNDX |
+|---|---|---|
+| Verenigde Staten | ca. 72% | ca. 97% |
+| Informatietechnologie | ca. 30% | ca. 60% |
+| Nvidia / Apple / Microsoft | 5,4 / 5,1 / 3,0% | 9,1 / 8,6 / 7,5% |
+| Top-10 gewicht | ca. 26% | ca. 50% |
+| Aantal posities | ca. 1.280 | 101 |
+
+IWDA is al voor bijna een derde tech en voor bijna driekwart Amerikaans. Alles
+in CNDX zit al in IWDA. CNDX koopt dus geen nieuwe spreiding, het verdubbelt
+de weging van dezelfde tien namen. Zo ziet de portefeuille eruit bij
+verschillende CNDX-aandelen:
+
+| CNDX-aandeel in portefeuille | VS | IT-sector | Nvidia | Top-5 namen samen |
+|---|---|---|---|---|
+| 0% | 72% | 30% | 5,4% | 18,5% |
+| 20% | 77% | 36% | 6,1% | 22% |
+| 30% | 80% | 39% | 6,5% | 24% |
+| 50% | 85% | 45% | 7,2% | 27% |
+
+### 10.2 Is de tech-tilt verstandig
+
+Eerlijk beeld van beide kanten:
+
+- **Voor**: de Nasdaq-100 deed sinds 1985 ca. 14,8% per jaar tegen 11,5% voor
+  de S&P 500, en versloeg de S&P in 14 van de 18 jaren sinds 2007.
+- **Tegen**: -83% van 2000 tot 2002, en pas in 2015 weer op het niveau van 2000
+  (15 jaar). Van 1999 tot 2009 -6% per jaar terwijl de brede markt -1% deed.
+  Waarderingen staan nu opnieuw hoog. De markt weet al dat Amerikaanse tech
+  dominant is en heeft dat ingeprijsd; een extra rendement is niet
+  vanzelfsprekend, het extra risico wel.
+- Een tilt is een mening, en meningen horen klein te zijn. Wie na drie goede
+  jaren de tilt verhoogt, koopt duur; wie na een crash verlaagt, verkoopt goedkoop.
+  Daarom: percentage nu vastleggen, opschrijven, en niet meer aan komen.
+
+### 10.3 Voorstel
+
+| Onderdeel | Bedrag per maand | Aandeel | Rol |
+|---|---|---|---|
+| Kern: IWDA | EUR 600 | 80% | Wereldwijde spreiding, blijft het fundament |
+| Tilt: Nasdaq-100 ETF | EUR 150 | 20% | Bewuste overweging Amerikaanse tech |
+
+Regels:
+
+1. **Tilt maximaal 20% van de inleg en maximaal 25% van de portefeuille.**
+   Komt CNDX door koersstijging boven 25%, dan gaan volgende maanden 100% naar
+   IWDA tot het weer onder 20% zit. Nooit verkopen om te herbalanceren; sturen
+   met nieuwe inleg is gratis en zonder gedoe.
+2. **Nooit ophogen na een goed jaar.** Het percentage mag alleen omlaag, en
+   alleen bij een jaarlijkse evaluatie, niet tijdens een crash.
+3. **Kopen op een vaste dag**, bijvoorbeeld de eerste handelsdag na salaris,
+   met een limietorder rond de midprijs. Niet timen.
+4. **Eén keer per jaar kijken**, in dezelfde maand. Verder de app dichtlaten.
+
+Optioneel voor de kern: nieuwe aankopen verleggen naar een all-country ETF
+(WEBN, TER 0,07%, of VWCE) zodat ook opkomende markten meelopen. Bestaande
+IWDA niet verkopen; twee kernposities naast elkaar is prima. Dit is fijnslijpen,
+geen noodzaak.
+
+### 10.4 Praktisch bij Mexem
+
+- **Twee gratis ETF-aankopen per maand** (orders tot ca. EUR 1.600). EUR 600
+  IWDA plus EUR 150 CNDX past daar precies in: nul commissie op de hele inleg.
+- **CNDX kost ca. USD 1.665 per stuk** (september 2026). EUR 150 per maand
+  koopt dus geen heel aandeel. Drie oplossingen, in volgorde van voorkeur:
+  1. **Fractionele aandelen** aanzetten (Client Portal, instellingen,
+     handelsrechten). IBKR biedt dit voor liquide Europese ETF's op Euronext
+     Amsterdam; controleer dat CNDX in aanmerking komt en of de gratis
+     ETF-regeling ook voor fractionele orders geldt.
+  2. **Overstappen voor nieuwe tech-aankopen naar Xtrackers Nasdaq 100
+     (TER 0,20%)**, goedkoper dan CNDX en met een lagere koers per stuk.
+     Bestaande CNDX gewoon houden.
+  3. **Sparen en per half jaar één CNDX kopen.** Twee maanden cash kost
+     verwaarloosbaar weinig rendement.
+- Vermijd valutaconversie: koop de EUR-notering op Euronext Amsterdam, niet de
+  USD-lijn in Londen.
+
+### 10.5 Wat je mag verwachten van EUR 750 per maand
+
+| Rendement per jaar | 10 jaar | 20 jaar | 30 jaar |
+|---|---|---|---|
+| 4% | EUR 110k | EUR 275k | EUR 521k |
+| 6% | EUR 123k | EUR 347k | EUR 753k |
+| 8% | EUR 137k | EUR 442k | EUR 1,1 mln |
+
+Zelf ingelegd: EUR 90k, 180k, 270k. Bruto, voor box 3. De vrijstelling
+(EUR 59k per persoon) bereik je bij 6% na ongeveer 6 jaar; daarna kost box 3
+ca. 2,1% van het vermogen boven de vrijstelling per jaar. Reken dus liever met
+de 4%-kolom als netto verwachting.
+
+### 10.6 Randvoorwaarden die belangrijker zijn dan de ETF-keuze
+
+1. Noodbuffer van 3 tot 6 maanden uitgaven op een spaarrekening, buiten de
+   beleggingen.
+2. Geen schulden met rente boven ca. 4% naast de inleg; die eerst aflossen is
+   een zeker rendement.
+3. Horizon van minimaal 10 jaar voor dit geld. Alles wat je binnen 5 jaar nodig
+   hebt, hoort niet in aandelen.
+4. De inleg moet ook door in een jaar van -30%. Als EUR 750 dan te veel voelt,
+   is het nu te veel.
+
+Bronnen bij dit hoofdstuk
+
+- [justETF: iShares Core MSCI World UCITS ETF (IWDA)](https://www.justetf.com/en/etf-profile.html?isin=IE00B4L5Y983)
+- [Trackinsight: IWDA holdings en sectoren](https://www.trackinsight.com/en/fund/IWDA)
+- [stockanalysis: CNDX holdings](https://stockanalysis.com/quote/lon/CNDX/holdings/)
+- [iShares: Nasdaq 100 UCITS ETF (CNDX)](https://www.ishares.com/uk/individual/en/products/253741/ishares-nasdaq-100-ucits-etf)
+- [Investing.com: CNDX koers](https://www.investing.com/etfs/cs-(ie)-on-nasdaq-100)
+- [CME Group: Nasdaq's Stellar Returns, Potential Risks Ahead](https://www.cmegroup.com/insights/economic-research/2024/nasdaqs-stellar-returns-potential-risks-ahead.html)
+- [DQYDJ: NASDAQ Drawdown History](https://dqydj.com/nasdaq-drawdown-history/)
+- [CFA Institute: Market Concentration and Lost Decades](https://rpc.cfainstitute.org/blogs/enterprising-investor/2025/market-concentration-and-lost-decades)
+- [justETF: Top Nasdaq 100 ETFs](https://www.justetf.com/en/how-to/nasdaq-100-etfs.html)
+- [Interactive Brokers: fractional shares in European stocks and ETFs](https://www.businesswire.com/news/home/20220531005157/en/Interactive-Brokers-Introduces-Fractional-Shares-Trading-in-European-Stocks-and-ETFs)
+- [The Happy Investors: ETF's kopen bij MEXEM](https://thehappyinvestors.nl/hoe-etfs-kopen-verkopen-mexem/)
