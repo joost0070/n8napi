@@ -651,3 +651,80 @@ Bronnen bij dit hoofdstuk
 - [justETF: Top Nasdaq 100 ETFs](https://www.justetf.com/en/how-to/nasdaq-100-etfs.html)
 - [Interactive Brokers: fractional shares in European stocks and ETFs](https://www.businesswire.com/news/home/20220531005157/en/Interactive-Brokers-Introduces-Fractional-Shares-Trading-in-European-Stocks-and-ETFs)
 - [The Happy Investors: ETF's kopen bij MEXEM](https://thehappyinvestors.nl/hoe-etfs-kopen-verkopen-mexem/)
+
+---
+
+## 11. Veelgestelde vragen over timing
+
+### 11.1 Is +12% van 1 januari tot 18 september een supergoed jaar?
+
+Nee, een goed maar gewoon jaar. IWDA stond op 21 augustus 2026 op +10,3% voor
+het jaar, dus jouw portefeuille loopt in lijn met de markt (jouw cijfer is een
+geldgewogen rendement inclusief tussentijdse aankopen, dus niet exact
+vergelijkbaar, maar dezelfde orde). Ter vergelijking, MSCI World sinds 1970:
+
+| Kenmerk | Waarde |
+|---|---|
+| Gemiddeld jaarrendement | ca. 10 tot 11% |
+| Standaarddeviatie | ca. 20% |
+| Jaren boven +10% | ca. 63% van de jaren |
+| Jaren boven +20% | ca. 40% van de jaren (2019, 2021, 2023, 2024, 2025 zaten daar allemaal boven) |
+| Jaren onder 0% | ca. 25% van de jaren |
+
++12% na 8,5 maanden is ongeveer +17% op jaarbasis: iets boven het gemiddelde,
+ver onder de topjaren. Het vierde jaar op rij met dubbele cijfers is wel
+uitzonderlijk; dat is een reden om rendementsverwachtingen te temperen, geen
+reden om iets te veranderen.
+
+### 11.2 Is er een moment in de maand waarop de koers standaard lager is?
+
+Er is één goed gedocumenteerd patroon: het **turn-of-the-month effect**
+(McConnell & Xu 2008, Financial Analysts Journal). Over 1926-2005 viel in de
+VS vrijwel al het extra rendement op de laatste handelsdag van de maand en de
+eerste drie van de volgende; de overige dagen leverden gemiddeld ongeveer
+niets. Het effect komt voor in 31 van de 35 onderzochte landen. Verklaring:
+salarissen, pensioenpremies en fondsinstroom komen rond de maandwissel de
+markt in.
+
+Wat het waard is voor jou: als je op de 24e in plaats van de 5e koopt, vang je
+dat effect op die ene inleg. Historisch ca. 0,5% op de inleg van die maand,
+dus ca. EUR 3 tot 4 op EUR 750, en het effect is de laatste decennia zwakker.
+Analyses over 30 jaar S&P 500 vinden dat de koopdag voor een maandelijkse
+inlegger vrijwel geen verschil maakt. Praktische regel: koop op de dag dat het
+geld binnenkomt. Wil je het toch optimaliseren zonder kosten: leg de order in
+de laatste week van de maand en zo dicht mogelijk bij de slotveiling (het
+overnight-effect uit hoofdstuk 9 werkt dan in je voordeel). Meer is er niet te
+halen.
+
+### 11.3 Een maand overslaan om volgende maand dubbel te kopen?
+
+Nee. Dat is markttiming, en het bewijs daarover is eenduidig:
+
+- **Schwab, 20 jaar, USD 2.000 per jaar**: perfecte timing (elk jaar op de
+  bodem kopen) eindigde op USD 151.391, direct beleggen op 135.471,
+  maandelijks spreiden op 134.856, elk jaar op de top kopen op 121.171, en
+  wachten in cash op 44.438. Direct beleggen haalde 92% van het onmogelijke
+  perfecte resultaat; wachten kostte het meest.
+- **Maggiulli, "Even God Couldn't Beat Dollar-Cost Averaging"**: iemand die
+  elke dip perfect op de bodem koopt (met voorkennis) verliest in 70% van de
+  40-jaarsperiodes sinds 1920 nog van een simpele maandelijkse inleg, omdat
+  het geld in de tussentijd rendement mist. Zit je twee maanden naast de
+  bodem, dan verlies je in 97% van de gevallen.
+- De markt stijgt gemiddeld ca. 0,5 tot 0,8% per maand. Elke maand wachten
+  kost dus verwacht 0,5 tot 0,8% van die inleg, plus het risico dat de
+  "betere" maand nooit komt.
+
+Regel: hetzelfde bedrag, elke maand, op dezelfde dag, ook als de koers hoog
+staat, juist als de koers laag staat. Het enige moment waarop dubbel inleggen
+verstandig is, is wanneer je meer geld over hebt.
+
+Bronnen bij dit hoofdstuk
+
+- [Investing.com: IWDA koers en YTD](https://www.investing.com/etfs/ishares-msci-world---acc)
+- [Wikipedia: MSCI World jaarrendementen sinds 1970](https://en.wikipedia.org/wiki/MSCI_World)
+- [Dimensional: The Uncommon Average](https://www.dimensional.com/no-en/insights/the-uncommon-average)
+- [McConnell & Xu (2008): Equity Returns at the Turn of the Month](https://business.purdue.edu/faculty/mcconnell/publications/Equity-Returns-at-the-Turn-of-the-Month.pdf)
+- [Quantpedia: Turn of the Month in Equity Indexes](https://quantpedia.com/strategies/turn-of-the-month-in-equity-indexes)
+- [DCA Insights: Best Days to Invest, Does Timing Really Matter?](https://dcainsights.com/blog/best-days-to-invest)
+- [Charles Schwab: Does Market Timing Work?](https://www.schwab.com/learn/story/does-market-timing-work)
+- [Of Dollars and Data: Even God Couldn't Beat Dollar-Cost Averaging](https://ofdollarsanddata.com/even-god-couldnt-beat-dollar-cost-averaging/)
