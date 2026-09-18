@@ -728,3 +728,22 @@ Bronnen bij dit hoofdstuk
 - [DCA Insights: Best Days to Invest, Does Timing Really Matter?](https://dcainsights.com/blog/best-days-to-invest)
 - [Charles Schwab: Does Market Timing Work?](https://www.schwab.com/learn/story/does-market-timing-work)
 - [Of Dollars and Data: Even God Couldn't Beat Dollar-Cost Averaging](https://ofdollarsanddata.com/even-god-couldnt-beat-dollar-cost-averaging/)
+
+### 11.4 Welke dag dan wel: het concrete recept
+
+Als je toch een vaste dag moet kiezen, kies dan de dag waarop de kleine,
+bekende effecten allemaal jouw kant op werken in plaats van tegen je:
+
+| Keuze | Waarom |
+|---|---|
+| **Dag: de 26e van de maand** (of de eerste handelsdag daarna als het weekend is) | Je zit dan belegd tijdens het turn-of-the-month-venster (laatste handelsdag plus eerste drie van de nieuwe maand), waar historisch het grootste deel van het maandrendement valt. Bovendien sluit het aan op de meeste salarisdata, dus het geld staat niet nodeloos stil. |
+| **Tijd: tussen 16:00 en 17:15 Nederlandse tijd** | Wall Street is dan open (vanaf 15:30). Marktmakers kunnen IWDA en CNDX dan direct afdekken, waardoor de spread op Euronext Amsterdam het kleinst is. Voor 15:30 en in de eerste 30 minuten na 09:00 zijn spreads breder. Laat in de middag pakt je ook het overnight-effect mee. |
+| **Order: limietorder op de midprijs** (tussen bied en laat) | Voorkomt dat je de volle spread betaalt. Wordt hij niet gevuld, zet dan binnen een kwartier de limiet op de laatprijs. Nooit een marktorder om 09:00. |
+| **Niet: de tweede woensdag of een andere dag midden in de maand** | Midden in de maand is historisch juist het zwakste deel van het maandpatroon. Het verschil is klein, maar waarom bewust de verkeerde kant kiezen. |
+
+Wat het oplevert: hooguit enkele euro's per inleg, over dertig jaar misschien
+enkele honderden tot een enkele duizend euro. Dat is ruis vergeleken met het
+bedrag dat je inlegt en het feit dat je het volhoudt. Maar het kost niets, en
+een vaste dag is het echte doel: dan hoef je nooit meer na te denken over
+"is dit een goed moment". Zet in n8n een herinnering op de 26e om 16:00 en
+klaar.
