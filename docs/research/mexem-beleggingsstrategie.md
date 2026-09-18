@@ -1276,3 +1276,185 @@ een grote positie of losse ADR's niet.
 - [The Economy: China's AI self-sufficiency drive falters despite massive investment](https://economy.ac/news/2026/08/202608289728)
 - [Freenance: Best China ETF EU 2026](https://freenance.io/etf/best-china-etf-eu-2026-deep-dive-msci-china-csi-300-cspx-fxc-cnya-ucits-tax-treatment/)
 - [KraneShares: China ETFs, a comprehensive guide](https://kraneshares.com/china-etfs-a-comprehensive-guide-on-how-to-invest-in-china/)
+
+---
+
+## 15. Jouw voorkeuren uitgewerkt: defensie EU/Scandinavië, kernenergie, Azië
+
+*Stand 18 september 2026. Je Mexem-rekening heeft aandelenrechten voor
+Hongkong, Stock Connect, Japan, heel Europa, de VS en fractionele handel; alles
+hieronder is dus direct uitvoerbaar.*
+
+### 15.1 Defensie Europa: welke naam
+
+Eerst de context: de sector deed +300% orderinstroom in 2025 en staat in 2026
+vlak (Stoxx Europe Aerospace & Defence -1,2% YTD). De markt is van "budgetten
+stijgen" naar "laat leveringen, marges en kasstroom zien" gegaan. Dat is een
+gezonder instapmoment dan begin 2025, niet per se een goedkoop moment.
+
+| Naam (beurs, valuta) | Wat | Cijfers | Mijn oordeel |
+|---|---|---|---|
+| **Rheinmetall** (Xetra, EUR) | Landsystemen, munitie, voertuigen; de directe ontvanger van het Duitse budget (EUR 117 mrd in 2026 naar 162 mrd in 2029) | Orderinstroom +323% in 2025; omzet 2026 +40 tot 45%; orderboek EUR 64 tot 73 mrd op 9,9 mrd omzet; marge 18,5%; fwd K/W ca. 28; 40% onder de piek | **Kern.** Grootste hefboom op Europese herbewapening, en de daling heeft de ergste overdrijving eruit gehaald. Risico: uitvoering van de enorme capaciteitsuitbreiding, en een vredesakkoord Oekraïne geeft een klap van 20 tot 30% (maar verandert de budgetten tot 2029 niet). |
+| **Saab** (Stockholm, SEK) | Gripen, GlobalEye, A26-onderzeeërs, raketten; Scandinavië en Oost-Europa | Orderinstroom +284% in 2025; orderboek richting SEK 300 mrd; omzet +30%, EBIT +41% in Q2 2026; Morgan Stanley dubbele upgrade, Barclays overweight | **Kern voor de Scandinavische hoek.** Beste ordermomentum van de sector op dit moment. Valutakosten SEK. |
+| **Thales** (Parijs, EUR) | Radar, elektronica, cyber, ruimtevaart; het "brein" in plaats van het staal | Laagste K/W van de grote drie (ca. 30 in maart), FCF-rendement 5%, WPA +62%, ROE 22% | **Kern als je één diversifieerder wilt.** Minder afhankelijk van één land of één programma; ook civiel (luchtverkeer, satellieten). |
+| **Kongsberg** (Oslo, NOK) | Raketten (NSM/JSM), gevechtsystemen, maritiem | Orderboek NOK 152 mrd; omzet +26% in Q1 2026; EBIT-marge 14% | Uitstekend bedrijf, maar Morgan Stanley verlaagde het juist op waardering en Morningstar noemt het "matig overgewaardeerd". Tweede keus na Saab voor Scandinavië. |
+| Leonardo (Milaan), Hensoldt en Renk (Xetra), BAE (Londen) | Helikopters/elektronica; sensoren; tandwielkasten; breed | RBC en Barclays koopadviezen augustus 2026 | Prima, maar kleiner (Hensoldt, Renk: volatiel) of minder zuiver Europees (BAE: VS-zwaar). Niet nodig naast de drie hierboven. |
+
+**Aanbeveling**: drie namen, gelijk gewogen: Rheinmetall, Saab, Thales. Samen
+maximaal 30% van je aandelendeel (EUR 75 van de 250), anders zit je met meer
+dan 10% van je totale vermogen in één politiek thema. Alternatief zonder
+namenkeuze: een Europese defensie-ETF (WisdomTree Europe Defence, VanEck
+Defense UCITS; TER ca. 0,4 tot 0,5%).
+
+### 15.2 Kernenergie in de EU: hoe het zit en wat je kunt kopen
+
+Het politieke tij is in Europa gekeerd, en sneller dan de meeste mensen
+beseffen:
+
+| Land / instelling | Stand 2026 |
+|---|---|
+| **EU** | Kernenergie zit sinds 2022 in de duurzame-financieringstaxonomie, in de Net-Zero Industry Act (2024) en in de "Made in EU"-eisen. Op 10 maart 2026 nam de Commissie een SMR-strategie aan: eerste Europese SMR begin jaren '30. |
+| **Nederland** | Coalitie van februari 2026 committeert zich aan minimaal vier nieuwe centrales (groot en/of SMR) en versnelt het SMR-programma; marktconsultatie financiering april 2026; ULC-Energy met Rolls-Royce SMR, Siemens Energy, Urenco, Orano, BAM, Mammoet, Fugro. |
+| **België** | Uitfaseringswet van 2003 in mei 2025 met grote meerderheid ingetrokken; Doel 4 en Tihange 3 tot 2045; ambitie tot 8 GW; staat koopt de nucleaire activa van Engie (april 2026). |
+| **Tsjechië, Polen** | ČEZ 20% aandeelhouder in Rolls-Royce SMR, early-works Temelín april 2026; Polen bouwt AP1000's (Westinghouse) en SMR's. |
+| **Denemarken, Italië** | Heroverwegen het verbod. |
+| **Duitsland** | Uit, en dat blijft zo. |
+| **Finland** | Fortum sloot op 9 september 2026 een 22-jarig stroomcontract met Google voor Loviisa; koers +15,8% op één dag, JPMorgan-upgrade. |
+
+De EU is dus geen rem meer maar een (voorzichtige) motor. Het grote probleem
+is niet politiek maar financierbaarheid en bouwtijd: nieuwe grote centrales
+duren 10 tot 15 jaar, SMR's zijn pas na 2030 commercieel. Voor een belegger
+betekent dat: de winst zit de komende vijf jaar bij (1) bestaande centrales die
+langer openblijven en dure langetermijncontracten met hyperscalers tekenen,
+(2) brandstof en verrijking, en (3) de paar beursgenoteerde SMR-ontwikkelaars.
+Veel van de Europese keten is niet beursgenoteerd (EDF, Urenco, Orano,
+Framatome, Westinghouse behalve via Cameco).
+
+| Naam (beurs) | Rol | Oordeel |
+|---|---|---|
+| **Fortum** (Helsinki, EUR) | Nucleaire en waterkracht-nutsbedrijf; Loviisa, Olkiluoto-belang; Google-PPA | De zuiverste Europese "bestaande kerncentrale met big-tech-contract". Nutsbedrijfsrisico: stroomprijzen, regulering. |
+| **Rolls-Royce** (Londen, GBP) | SMR-leider in Europa (VK, Tsjechië, Nederland, Zweden), plus straalmotoren en defensie (onderzeeërreactoren) | Drie van jouw thema's in één aandeel. Fors gestegen; SMR-omzet komt pas na 2030, de motoren betalen intussen de rekening. |
+| **Cameco** (NYSE) | Uranium plus 49% Westinghouse (AP1000-bouwer in Polen, Bulgarije, Oekraïne) | De brandstof- en reactorbouwkant. Zie hoofdstuk 13. |
+| **Siemens Energy** (Xetra) | Turbines en generatoren voor kerncentrales, partner in Nederlandse SMR-consortium | Al in de lijst via het stroomthema; telt dubbel. |
+| Yellow Cake (Londen), Global X Uranium UCITS ETF | Fysiek uranium, respectievelijk mijnbouwmand | Zuivere uraniumprijs-weddenschap zonder bedrijfsrisico; volatiel. |
+
+**Aanbeveling**: Fortum plus Cameco, of Fortum plus Rolls-Royce als je liever
+minder VS hebt. Maximaal 20% van het aandelendeel.
+
+### 15.3 Xylem en koeling: je hebt gelijk, maar om een andere reden
+
+Je intuïtie klopt: de koeling van datacenters verschuift naar gesloten
+vloeistofkringen (direct-to-chip, immersie) met minder dan 5% aanvulwater per
+cyclus; nieuwe sites in Arizona en Wisconsin besparen elk 125 miljoen liter
+per jaar tegenover verdampingskoeling. "Datacenters slurpen water" wordt dus
+minder waar, niet meer.
+
+Maar dat is niet waar Xylem zijn geld verdient. Datacenteromzet groeit met
+200% maar is klein; de kern is waterinfrastructuur voor nutsbedrijven (USD 683
+mln per kwartaal, +5%), meters (+15%) en behandeling. De totale groei is 2 tot
+4% per jaar. Xylem is een degelijke, trage infrastructuurspeler, geen
+AI-koelingsaandeel. Als de koelingsthese de reden was, laat hem dan vallen.
+Betere invulling van de "saaie infrastructuur"-plek: **Prysmian** (Milaan,
+EUR): kabels voor net, offshore wind en datacenters, USD 2 mrd
+capaciteitsuitbreiding, structureel tekort aan hoogspanningskabel. Of
+gewoon Schneider Electric zwaarder wegen.
+
+### 15.4 Xiaomi, BYD en de rest van Azië
+
+**BYD** (1211.HK). De cijfers zijn slecht en het verhaal is beter dan de
+cijfers: verkopen eerste vijf maanden 2026 -20%, binnenland -40% door de
+prijzenoorlog en lagere subsidies, kwartaalwinst -55%. Maar: 53% van de omzet
+komt inmiddels uit het buitenland met een brutomarge van 28% tegenover 17% in
+China, de Hongaarse fabriek (300.000 auto's) start in Q4 2026, en de Europese
+minimumprijs is voor BYD's marge eerder een zegen dan een straf. Fwd K/W ca.
+17, koers -37% in een jaar. Dit is een bedrijf dat van Chinese volumespeler
+naar wereldwijde autofabrikant verandert, tegen de prijs van een gewone
+autofabrikant. Risico: de prijzenoorlog duurt langer, Europese tegenmaatregelen,
+Chinese exportbeperkingen op technologie. **Oordeel: investeerbaar als China-
+naam, medium-hoog risico.**
+
+**Xiaomi** (1810.HK). Koers gehalveerd sinds medio 2025 (HK$56 naar HK$28).
+Q1 2026: EV- en AI-tak verliest RMB 3,1 mrd, smartphonemarges onder druk door
+de duurdere geheugenchips uit hoofdstuk 12 (Xiaomi is hier de verliezer van
+het HBM-tekort), terugkoop van HK$20 mrd, analisten zien een reële waarde
+rond HK$66. YU7 leverde 40.000 stuks in drie maanden. Dit is een turnaround-
+weddenschap: sterk merk, ecosysteem, eigen chips in ontwikkeling, maar twee
+prijzenoorlogen tegelijk (telefoons en EV's). **Oordeel: alleen als lotje van
+maximaal 2 tot 3%, niet als kernpositie.** Van de twee heeft BYD op dit moment
+het duidelijkere pad.
+
+**Japan als de betere "Azië"-hoek.** Je hebt Japan open, en Japan heeft wat
+China mist: aandeelhoudersrendement. De TSE dwingt bedrijven met een koers-
+boekwaarde onder 1 tot hervorming; recordinkoop van eigen aandelen tot maart
+2026; Nikkei boven 50.000. Twee namen die precies in jouw thema's vallen:
+
+| Naam (Tokio, JPY) | Waarom |
+|---|---|
+| **Mitsubishi Heavy Industries** (7011) | Defensie (Japan verdubbelt zijn budget), gasturbines (derde wereldspeler naast GE Vernova en Siemens Energy), kernenergie (herstarts, SMR). Drie van jouw thema's in één Japans aandeel. |
+| **Hitachi** (6501) | Hitachi Energy is wereldleider in transformatoren en HVDC, het knelpunt van hoofdstuk 13; plus IT/digital. |
+
+Reserves: Tokyo Electron of Advantest (chipapparatuur, de Japanse ASML-
+tegenhangers), Fanuc (robotica, de zuiverste "physical AI"-speler die wel
+beursgenoteerd is). Korea en Taiwan heb je niet aangevinkt; TSMC koop je via
+de Amerikaanse ADR, SK Hynix is voor jou niet direct bereikbaar.
+
+### 15.5 Jouw satelliet, uitgewerkt
+
+Kern blijft EUR 500 IWDA. Satelliet EUR 250, tien namen, gelijk gewogen, in
+rotatie één per maand, regels uit 12.1. Deze invulling volgt jouw voorkeuren
+en heeft één prettige eigenschap: bijna geen VS, dus hij spreidt weg van de
+72% VS in IWDA in plaats van erbovenop.
+
+| # | Naam | Thema | Beurs / valuta |
+|---|---|---|---|
+| 1 | Rheinmetall | Defensie | Xetra, EUR |
+| 2 | Saab | Defensie Scandinavië | Stockholm, SEK |
+| 3 | Thales | Defensie-elektronica | Parijs, EUR |
+| 4 | Fortum | Kernenergie EU | Helsinki, EUR |
+| 5 | Cameco | Uranium, Westinghouse | NYSE, USD |
+| 6 | Mitsubishi Heavy | Defensie, turbines, nucleair | Tokio, JPY |
+| 7 | Tencent | China-kwaliteit | Hongkong, HKD |
+| 8 | BYD | China-EV wereldwijd | Hongkong, HKD |
+| 9 | ASML | Chips, alle thema's | Amsterdam, EUR |
+| 10 | Schneider Electric of Prysmian | Elektrificatie | Parijs / Milaan, EUR |
+
+Optioneel als 11e, uit een apart "lotjes"-budget van maximaal 5%: Xiaomi of
+een Hang Seng Tech-ETF.
+
+Themagrenzen: defensie maximaal 30% van de satelliet, China maximaal 20%,
+kernenergie maximaal 20%. Valuta: SEK, JPY, HKD en USD kosten elk een
+conversie; wissel per kwartaal of accepteer dat de niet-EUR-namen in de
+rotatie iets duurder zijn.
+
+Wat deze lijst mist ten opzichte van hoofdstuk 12 en 13: Amerikaanse AI
+(Broadcom, Micron), gezondheid (Lilly/Novo), compounders (Visa). Dat is een
+keuze, geen fout; IWDA dekt de VS al ruim. Wil je toch één AI-naam, vervang
+dan Prysmian door Broadcom.
+
+### 15.6 Bronnen
+
+- [CNBC: European defense stocks cooling off after the boom](https://www.cnbc.com/2026/05/30/defense-stocks-consolidation-rheinmetall-saab-renk.html)
+- [CNBC: charts show the size of Europe's defense boom](https://www.cnbc.com/2026/03/12/defense-stocks-leonardo-rheinmetall-stock-rhm-ldo-iran-war-ukraine.html)
+- [Oninvest: analysts predict renewed growth in European defense](https://en.oninvest.com/article/analysts-have-predicted-renewed-growth-in-the-european-defense-sector-which-stocks-will-benefit)
+- [Dividendes.ch: Thales, Rheinmetall or Leonardo](https://www.dividendes.ch/2026/03/thales-rheinmetall-or-leonardo-best-european-defense-stock-in-2026/)
+- [Kongsberg Q4 2025 results](https://www.kongsberg.com/news/news-archive/2026/q4-2025/)
+- [Morningstar: Kongsberg earnings, record backlog](https://global.morningstar.com/en-nd/stocks/kongsberg-earnings-defense-execution-record-backlog-support-long-term-outlook-raise-fve-9)
+- [Investing.com: Morgan Stanley double-upgrades Saab, cuts Kongsberg on valuation](https://www.investing.com/news/stock-market-news/morgan-stanley-doubleupgrades-saab-on-defense-demand-cuts-kongsberg-on-valuation-4778232)
+- [Euronews: Brussels backs mini-nuclear power plants (SMR-strategie, maart 2026)](https://www.euronews.com/my-europe/2026/03/10/brussels-backs-mini-nuclear-power-plants-to-secure-low-carbon-power)
+- [World Nuclear Association: Nuclear Power in the Netherlands](https://world-nuclear.org/information-library/country-profiles/countries-g-n/netherlands)
+- [NucNet: Rolls-Royce reactors in the Netherlands on industrial scale](https://www.nucnet.org/news/agreement-aims-to-make-rolls-royce-reactors-available-in-netherlands-on-industrial-scale-1-1-2026)
+- [World Nuclear News: Belgium reverses phase-out policy](https://www.world-nuclear-news.org/articles/belgium-reverses-phase-out-policy-as-denmark-reconsiders-nuclear)
+- [Euronews: which EU countries could reverse their nuclear phaseouts](https://www.euronews.com/my-europe/2026/02/09/which-eu-countries-could-reverse-their-nuclear-energy-phaseouts)
+- [Think Tank Europa: EU SMR strategy](https://thinkeuropa.dk/en/explainer/2026-03-eu-smr-strategy-nuclear-energy-enters-the-industrial-policy-mainstream)
+- [EnkiAI: Rolls-Royce SMR, 20% ČEZ stake](https://enkiai.com/nuclear/rolls-royce-smr-cez-group/)
+- [ad-hoc-news: Fortum gains after Google nuclear deal](https://www.ad-hoc-news.de/boerse/news/corporate-news/fortum-stock-gains-after-google-nuclear-deal-and-analyst-upgrades/70087392)
+- [RackSolutions: Data center cooling trends 2026](https://www.racksolutions.com/news/blog/data-center-cooling-trends-and-insights-for-2026/)
+- [HydropureWater: Data center water reuse trends 2026](https://hydropurewater.com/blog/6033-data-center-water-reuse-trends-2026-engineering-costs-standards.html)
+- [Xylem Q2 2026 results](https://www.xylem.com/en-us/resources/press-releases/xylem-reports-second-quarter-2026-results/)
+- [Finimize: Xylem sees AI data centers turning into water demand](https://finimize.com/content/xylem-sees-ai-data-centers-turning-into-water-demand)
+- [Capital.com: Xiaomi stock forecast, EV losses, HK$20bn buyback](https://capital.com/en-int/market-updates/xiaomi-stock-forecast-02-06-2026)
+- [CarNewsChina: BYD made 53% of revenue overseas](https://carnewschina.com/2026/09/01/byd-made-53-revenue-overseas-as-chinas-sales-crumble/)
+- [Forbes: BYD profit slips but European sales onslaught gathers pace](https://www.forbes.com/sites/neilwinton/2026/04/07/byd-profit-slips-but-european-sales-onslaught-gathers-pace/)
+- [GuruFocus: BYD forward PE](https://www.gurufocus.com/term/forward-pe-ratio/BYDDF)
+- [Bloomberg: Takaichi, AI, corporate reform pave way for Japan stocks in 2026](https://www.bloomberg.com/news/articles/2025-12-25/takaichi-ai-corporate-reform-pave-way-for-japan-stocks-in-2026)
+- [Global Investments: Japan equities 2026 guide](https://www.globalinvestments.net/investments/guides/japan-equity-investing-guide)
