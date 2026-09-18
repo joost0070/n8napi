@@ -747,3 +747,225 @@ bedrag dat je inlegt en het feit dat je het volhoudt. Maar het kost niets, en
 een vaste dag is het echte doel: dan hoef je nooit meer na te denken over
 "is dit een goed moment". Zet in n8n een herinnering op de 26e om 16:00 en
 klaar.
+
+---
+
+## 12. EUR 500 in ETF's en EUR 250 in losse aandelen: AI-thema, 5-jaarsbeeld en namen
+
+*Stand van zaken 18 september 2026. Dit is mijn beste lezing van openbare
+informatie, geen advies. Voor losse aandelen heb ik geen voorsprong op de
+markt; de cijfers hieronder zijn gemiddeld een dag oud en iedereen kent ze.*
+
+### 12.1 De 500/250-verdeling: mijn oordeel
+
+Een derde van je inleg in losse aandelen is aan de bovenkant van wat ik
+verstandig vind, maar verdedigbaar als je het als bewuste, begrensde weddenschap
+inricht. Wat het bewijs zegt over aandelen kiezen:
+
+- **Bessembinder (2018)**: van alle Amerikaanse aandelen sinds 1926 deed 58% het
+  over hun hele bestaan slechter dan kortlopende staatsobligaties. De mediane
+  aandeel had een negatief levensrendement. 4% van de bedrijven leverde alle
+  netto vermogensgroei van de markt. Aandelen kiezen is dus zoeken naar een
+  paar naalden in een hooiberg die gemiddeld verliest.
+- **Morningstar, thematische fondsen**: over 15 jaar versloeg maar 1 op de 10
+  thematische fondsen de wereldindex, en 55% bestond na 15 jaar niet meer.
+  Professionals die een thema kiezen, verliezen dus meestal, ook als het thema
+  klopt. Je doet drie weddenschappen tegelijk: het thema groeit, deze
+  bedrijven profiteren, en de winstgroei zit nog niet in de koers.
+- **Cisco-les**: Cisco had in 2000 gelijk over internet en verloor toch 86%.
+  De koers van 2000 is 25 jaar later nog niet terug. Gelijk hebben over de
+  technologie is niet hetzelfde als geld verdienen aan het aandeel.
+
+Daarom deze voorwaarden, anders zou ik het niet doen:
+
+| Regel | Waarom |
+|---|---|
+| **De 250 vervangt de CNDX-tilt**, hij komt er niet bovenop | IWDA (30% tech) plus CNDX plus AI-aandelen is drie keer dezelfde weddenschap. Met 500 IWDA en 250 AI-aandelen zit je al op ca. 53% tech in de hele portefeuille. |
+| **8 tot 10 namen, gelijk gewogen, max 5% van de totale portefeuille per naam** | Eén naam die -80% doet (Micron in 2008, Nvidia in 2022: -66%) mag nooit je jaar bepalen. |
+| **Kopen in rotatie: één naam per maand, EUR 250 per order** | Tien orders van EUR 25 kosten bij Mexem USD 1 per order minimum, dus 4% van je inleg. Eén order van 250 kost 0,4%. |
+| **Minimale houdperiode 3 jaar, geen handelen op nieuws** | De enige voorsprong van een particulier is geduld. Daytraden hebben we in hoofdstuk 3 afgeschoten. |
+| **Meetlat: IWDA.** Na 3 jaar meer dan 10 procentpunt achter? Dan stopt de inleg in aandelen en gaat alles naar de kern. | Dit is de belangrijkste regel. Zonder meetlat praat je elke uitkomst goed. |
+| **Nooit bijkopen na een verdubbeling, nooit verkopen na een halvering** buiten de jaarlijkse evaluatie | Voorkomt de twee klassieke fouten. |
+| **W-8BEN invullen** bij Mexem | Anders 30% in plaats van 15% Amerikaanse dividendbelasting. De 15% is verrekenbaar in box 3. |
+| **Valuta: eens per kwartaal EUR 750 omwisselen**, of Europese noteringen kopen (ASML, BESI, Siemens Energy in EUR) | Het minimumtarief voor valutaconversie (ca. USD 5 volgens reviews, controleer dit) is op EUR 250 al 2%. |
+
+### 12.2 Waar de AI-keten staat in september 2026
+
+De geldstroom is echt en groter dan wat dan ook in de geschiedenis van tech:
+
+| Feit | Bron |
+|---|---|
+| Big-tech AI-capex 2026 ca. USD 725 mrd (Amazon 200, Google 185, Meta 125, Microsoft 120); Oracle ca. 70 mrd in FY2027 | valueaddvc, TMT Finance |
+| Goldman Sachs: USD 1.000 mrd wereldwijde AI-investering in 2026; UBS: 1.450 mrd in 2027, 4.100 mrd cumulatief 2026-2028 | Goldman Sachs, UBS via TMT Finance |
+| Hyperscalers geven 102% van hun cloud-omzet uit aan capex | Yahoo Finance |
+| Geschatte AI-omzet 2026: USD 50 tot 60 mrd tegenover 500+ mrd capex, dus USD 8 tot 10 investering per USD 1 omzet | Sourcery Intel |
+| OpenAI verwacht ca. USD 14 mrd verlies in 2026; Deutsche Bank schat 140 mrd cumulatief 2024-2029 | CNBC, Bloomberg |
+| Nvidia investeerde USD 30 mrd in OpenAI en 10 mrd in Anthropic, beide grote klanten; Nvidia garandeert USD 6,3 mrd onverkochte capaciteit bij CoreWeave | Bloomberg, I/O Fund |
+| Oracle leende USD 43 mrd om negatieve vrije kasstroom te dekken; banken worden voorzichtiger | Convergences, Sourcery Intel |
+| Softwaresector verloor USD 830 mrd in zes handelsdagen in februari 2026 na de lancering van agent-functies | Reuters via Techglock |
+| Datacenter-moratoria ingediend in 11 Amerikaanse staten, 50+ lokaal aangenomen | Sourcery Intel |
+
+**Waar het knelpunt zit, is verschoven.** In 2023-2024 was het de GPU. In 2026
+zijn het:
+
+1. **Geheugen (HBM en DRAM).** SK Hynix, Samsung en Micron zijn voor 2026
+   uitverkocht. DDR5-contractprijzen meer dan verdubbeld, spotprijzen +700% in
+   een jaar. Nieuwe fabrieken leveren pas vanaf tweede helft 2027. Micron is uit
+   de consumentenmarkt gestapt om alles aan AI te leveren.
+2. **Stroom.** Racks van 30 tot 100+ kW tegenover 5 tot 15 kW klassiek.
+   Gasturbines komen van drie fabrikanten (GE Vernova, Siemens Energy,
+   Mitsubishi); wachttijden tot zeven jaar. GE Vernova heeft 100 GW onder
+   contract en slots tot 2030 vol. Netaansluitingen duren jaren. Kernenergie
+   wordt rechtstreeks aan hyperscalers verkocht via 20-jaarscontracten (Vistra
+   aan Meta 2,6 GW, Constellation aan Microsoft en Meta).
+3. **Geavanceerde productie en packaging.** TSMC 3nm draait op 100% met drie
+   keer zoveel vraag als aanbod; capex naar USD 60 tot 64 mrd, omzet +40%.
+   ASML verhoogde de 2026-verwachting twee keer, naar ca. USD 51 mrd. Hybrid
+   bonding (BESI) staat op elke roadmap.
+4. **Netwerk en optica.** AI-clusters worden over meerdere datacenters verbonden
+   ("scale-across"). Arista schat die markt op USD 3 tot 4 mrd nu en 15 tot
+   20 mrd in 2030. Marvell, Broadcom, Credo, Coherent en Lumentum leveren de
+   optische onderdelen.
+5. **Koeling.** Vloeistofkoeling is standaard bij nieuwe AI-racks (Vertiv,
+   Schneider Electric).
+
+**Verschuiving binnen compute.** Nvidia heeft nog 90%+ van de versnellers,
+maar inference (het draaien van modellen, nu twee derde van alle AI-rekenwerk)
+verschuift naar maatwerkchips: Google TPU, Amazon Trainium (1 mln+ uitgerold),
+Microsoft Maia, Meta MTIA, OpenAI Titan. Broadcom en Marvell ontwerpen ca. 95%
+daarvan, Broadcom alleen ca. 60%. Analisten zien Nvidia's inference-aandeel
+richting 20 tot 30% in 2028. AMD kreeg 6 GW van OpenAI en 6 GW van Meta voor
+de MI450, levering vanaf tweede helft 2026.
+
+**Volgende golven, nog grotendeels privaat.** Physical AI en humanoïde robots:
+USD 47 mrd venture-geld in de eerste helft van 2026, meer dan 2022-2024
+samen. Beursgenoteerd zijn er nauwelijks zuivere spelers. AI-agents in
+bedrijfssoftware: 88% gebruikt AI, 23% schaalt agents; Salesforce Agentforce
+USD 800 mln ARR, +169%. De markt heeft SaaS als verliezer bestempeld, maar
+wie de winnaar wordt is open.
+
+### 12.3 Mijn 5-jaarsbeeld
+
+Twee scenario's, en ik weet niet welke het wordt:
+
+- **Uitbouw gaat door (mijn inschatting: 55%).** Capex groeit naar USD 1.000+
+  mrd per jaar, AI-omzet haalt langzaam in, de knelpunten (geheugen, stroom,
+  packaging, optica) blijven jaren krap. Leveranciers van die knelpunten
+  verdienen bovengemiddeld; hyperscalers verdienen gemiddeld; softwarebedrijven
+  zonder eigen data verliezen.
+- **Verteringsfase (45%).** Ergens in 2027-2028 blijkt de omzet de capex niet
+  te dragen, een grote partij (OpenAI, Oracle, een neocloud) komt in
+  financieringsproblemen, hyperscalers snijden in orders. Dezelfde aandelen
+  hierboven dalen 40 tot 70%, precies zoals Cisco, Nortel en Sun in 2000-2002,
+  terwijl de technologie zelf gewoon doorgaat. Geheugen is daarbij het meest
+  cyclisch: nieuwe fabrieken uit 2027 kunnen in 2028 een prijsinstorting geven.
+
+Wat ik wél met redelijke zekerheid durf te zeggen: de vraag naar stroom,
+netcapaciteit en geavanceerde chipproductie is structureel en niet alleen
+AI-gedreven (elektrificatie, herindustrialisering, defensie). Dat maakt de
+"stroom en fabricage"-laag robuuster dan de "GPU-huur"-laag.
+
+### 12.4 De namen: medium tot hoog risico, waar ik het meest van verwacht
+
+Gelijk gewogen, tien namen, in rotatie kopen. Cijfers per begin/half september
+2026, afgerond. "Verwachting" is mijn persoonlijke inschatting van de kans dat
+de naam IWDA over 5 jaar verslaat; niets hiervan is zeker.
+
+**Laag A: knelpunten met bewijsbare orderboeken (ca. 60% van de 250)**
+
+| Naam (ticker, beurs) | Laag | Waardering en momentum | Waarom | Belangrijkste risico | Risico |
+|---|---|---|---|---|---|
+| **Broadcom** (AVGO, Nasdaq) | Maatwerkchips, netwerk | AI-omzet +221% naar USD 16,7 mrd per kwartaal; doel USD 115 mrd FY27, 230 mrd FY28; ca. 12x FY28-winst; koers vlak sinds juni | Goedkoopste manier om de verschuiving van GPU naar maatwerkchip te bezitten; zes klanten waaronder Google, Meta, OpenAI, Anthropic | Als hyperscalers capex snijden, worden maatwerkprogramma's als eerste uitgesteld; softwaretak (VMware) zwak | Medium-hoog |
+| **ASML** (ASML, Amsterdam, EUR) | Lithografie | Fwd K/W ca. 28; 2026-verwachting twee keer verhoogd naar ca. USD 51 mrd | Monopolie op EUV; elke AI-chip ter wereld gaat door hun machines; geen valutakosten | China-exportbeperkingen; cyclisch; capaciteitsvragen | Medium |
+| **TSMC** (TSM, NYSE ADR) | Productie | K/W ca. 30; omzet +40%; 3nm op 100% bezetting, vraag 3x aanbod | Maakt letterlijk elke geavanceerde AI-chip (Nvidia, AMD, Broadcom, Google, Amazon) | Taiwan. Dit ene risico is niet weg te diversifiëren en verklaart de korting | Medium-hoog |
+| **Siemens Energy** (ENR, Xetra, EUR) | Gasturbines, netapparatuur | Fwd K/W ca. 33; EV/EBITDA 26 tegenover 61 voor GE Vernova; +17% YTD | Zelfde knelpunt als GE Vernova tegen minder dan de helft van de waardering; 60% van turbineorders voor datacenters | Uitvoeringsproblemen (windtak Gamesa), lange levertijden zijn ook lange kasstroomcycli | Medium-hoog |
+| **Vistra** (VST, NYSE) | Stroomproductie | Fwd K/W ca. 14; -8% YTD terwijl de S&P +12% deed | 20-jaars nucleair contract met Meta (2,6 GW, kasstroom vanaf 2027), Cogentrix-overname (10 gascentrales); de goedkoopste "stroom voor AI"-naam | Gas- en stroomprijzen dalen; politiek (Texas wil datacenters pauzeren); regulering van PPA-premies | Medium |
+| **Micron** (MU, Nasdaq) | Geheugen (HBM) | Fwd K/W ca. 13 na +70 tot 197% dit jaar; omzet +167%; brutomarge 73%; HBM4 uitverkocht t/m 2026 | Eén van drie HBM-leveranciers ter wereld; het scherpste knelpunt van 2026 | **Het meest cyclische aandeel op deze lijst.** Nieuwe fabrieken 2H2027 kunnen in 2028 de prijzen laten instorten (-80% in 2008 en 2022 was normaal); prijsafsprakenrechtszaak juni 2026 | Hoog |
+
+**Laag B: speculatiever, kleiner of duurder (ca. 40% van de 250)**
+
+| Naam (ticker, beurs) | Laag | Waardering en momentum | Waarom | Belangrijkste risico | Risico |
+|---|---|---|---|---|---|
+| **Vertiv** (VRT, NYSE) | Koeling, stroomverdeling in het datacenter | Fwd K/W ca. 31; +57% YTD, +78% in 52 weken | Vloeistofkoeling is verplicht bij 100 kW-racks; marktleider | Duur na de rally; concurrentie van Schneider en Aziatische spelers | Medium-hoog |
+| **Arista Networks** (ANET, NYSE) | AI-netwerk (Ethernet) | Omzetdoel 2026 verhoogd naar USD 11,5 mrd, AI-omzet naar 3,5 mrd (verdubbeld) | Vraag "materieel boven beschikbaar aanbod"; scale-across markt 5x groter in 2030 | Hoge waardering; Nvidia (Spectrum-X) en Broadcom-whitebox als concurrent | Medium-hoog |
+| **Marvell** (MRVL, Nasdaq) | Maatwerkchips, optica | FY27-omzetdoel USD 11 mrd; koers +16% op cijfers; kocht Polariton (siliciumfotonica) | Nummer twee in maatwerk-AI-chips naast Broadcom, plus optische interconnects | Klantconcentratie (Amazon, Microsoft); verliest wel eens een programma aan Broadcom | Hoog |
+| **BESI** (BESI, Amsterdam, EUR) | Hybrid bonding (packaging) | Koers ca. EUR 230 tot 240, beurswaarde ca. EUR 10 mrd; orders +129% j-o-j | Breedst gekwalificeerde leverancier van hybrid bonding (21 klanten: TSMC, Samsung, Intel, Micron); staat op elke roadmap; geen valutakosten | Klein, extreem volatiel (bewegingen van 10% per dag zijn normaal); afhankelijk van timing van klanten | Hoog |
+
+**Wat ik bewust niet op de lijst zet**
+
+| Naam | Reden |
+|---|---|
+| **Nvidia** | Je bezit al 5 tot 9% via IWDA/CNDX. Prima bedrijf, maar niet nodig als losse positie; inference-aandeel staat onder druk. |
+| **AMD** | Fwd K/W 80 tot 100 na +114 tot 140% dit jaar. De MI450-contracten zijn echt, maar de koers prijst perfectie in. |
+| **CoreWeave, Nebius, IREN** (neoclouds) | Schuld gedekt door GPU's die snel afschrijven; CoreWeave leent tegen SOFR +5,5% met covenants die volgens analisten in 2027 kunnen knappen; USD 25 mrd schuld bij capex van 3,7x omzet. Als er een 2000-moment komt, begint het hier. Hooguit een lotje van 1 tot 2%, niet meer. |
+| **Oracle** | USD 43 mrd geleend voor negatieve kasstroom, afhankelijk van OpenAI. |
+| **Palantir, Salesforce, ServiceNow en andere software** | De markt weet niet wie agents winnen of verliezen, ik ook niet. Waarderingen (Palantir) of disruptierisico (SaaS) te hoog. |
+| **Tesla als robotica-aandeel** | Optimus is een optie op een optie; waardering staat los van fundamentals. Voor physical AI is er nog geen beursgenoteerde zuivere speler; dat thema zit voorlopig in venture capital. |
+| **GE Vernova, Constellation** | Zelfde thema als Siemens Energy en Vistra tegen 2 tot 3x de waardering. |
+
+### 12.5 Wat ik van deze mand verwacht
+
+Eerlijk: ik geef deze tien namen samen misschien 45 tot 55% kans om IWDA over
+vijf jaar te verslaan, met ongeveer het dubbele van de volatiliteit en een
+realistische kans op een tussentijdse daling van 50%. Dat is geen ringing
+endorsement; het is de eerlijkste inschatting die ik kan geven van een
+weddenschap op een thema dat iedereen kent. Het argument ervoor is niet dat
+ik slimmer ben dan de markt, maar dat deze laag (geheugen, stroom, fabricage,
+netwerk) fysieke knelpunten met contracten en orderboeken vertegenwoordigt,
+en dat je bewust wilt overwegen op AI. Het argument ertegen staat in 12.1.
+
+Als je het doet: schrijf de tien namen, de regels en de meetlat vandaag op,
+en lees ze pas over een jaar terug.
+
+### 12.6 Bronnen bij dit hoofdstuk
+
+Macro en kapitaalstromen
+
+- [valueaddvc: Big Tech AI Capex Hits $725B in 2026](https://valueaddvc.com/blog/big-tech-ai-capex-in-2025-microsoft-google-meta-amazon-and-the-spending-race)
+- [TMT Finance: 2026 hyperscaler capex tops US$700bn](https://www.tmtfinance.com/intel/2026-hyperscaler-capex-tops-us700bn-analysis)
+- [Goldman Sachs: Global AI Investment Forecast to Exceed $1 Trillion in 2026](https://www.goldmansachs.com/insights/articles/global-investment-is-forecast-to-exceed-1-trillion-in-2026)
+- [Yahoo Finance: Hyperscalers Are Spending 102% of Cloud Revenue on Capex](https://finance.yahoo.com/technology/ai/articles/ai-absurd-spending-boom-hyperscalers-162709082.html)
+- [Bloomberg: AI Circular Deals, How Microsoft, OpenAI and Nvidia Keep Paying Each Other](https://www.bloomberg.com/graphics/2026-ai-circular-deals/)
+- [CNBC: Cramer warns AI's circular financing echoes dot-com bubble](https://www.cnbc.com/2026/07/27/jim-cramer-warns-ai-circular-financing-echoes-dot-com-bubble.html)
+- [Sourcery Intel: The Hidden Financial Bubble in AI Infrastructure](https://sourceryintel.com/reports/ai-infrastructure-financial-bubble)
+- [Techglock: Enterprise AI Agents 2026, the quarter software changed](https://techglock.com/blog/enterprise-ai-agents-2026-inside-the-quarter-that-rewrote-software)
+
+Knelpunten
+
+- [Network World: Samsung warns of memory shortages driving price surge in 2026](https://www.networkworld.com/article/4113772/samsung-warns-of-memory-shortages-driving-industry-wide-price-surge-in-2026.html)
+- [Wikipedia: 2024-present global memory supply shortage](https://en.wikipedia.org/wiki/2024%E2%80%93present_global_memory_supply_shortage)
+- [Spheron: Power-Bound, Not GPU-Bound](https://www.spheron.network/blog/ai-data-center-power-constraints-2026/)
+- [Bloomberg: Siemens Energy, Mitsubishi struggle to keep up with gas turbine demand](https://www.bloomberg.com/features/2025-bottlenecks-gas-turbines/)
+- [Power Engineering: GE Vernova turbine slots tighten through 2030](https://www.power-eng.com/gas/turbines/data-centers-drive-record-surge-in-ge-vernova-power-equipment-orders-as-turbine-slots-tighten-through-2030/)
+- [Utility Dive: Vistra supports Texas data center pause](https://www.utilitydive.com/news/vistra-texas-data-center-pause-comanche-amazon-earnings/827434/)
+- [Tom's Hardware: The custom AI ASIC state of play, May 2026](https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia)
+- [Introl: Custom Silicon Inflection 2026](https://introl.com/blog/custom-silicon-inflection-2026-hyperscaler-asics-nvidia-gpu)
+- [CNBC: ASML hikes sales forecast for second time this year](https://www.cnbc.com/2026/07/15/asml-2q-earnings-ai-chips-orders.html)
+- [Futuriom: OFC 2026 heralds optical shift for AI factories](https://www.futuriom.com/articles/news/ofc-2026-heralds-optical-shift-for-ai-factories/2026/03)
+- [Crunchbase: VCs pour billions into physical AI, H1 2026](https://news.crunchbase.com/venture/physical-ai-funding-startups-robotics-aerospace-h1-2026/)
+
+Bedrijven
+
+- [Broadcom Q3 FY2026 results](https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial)
+- [Motley Fool: Broadcom's AI revenue soared 221%, so why is the stock flat?](https://www.fool.com/investing/2026/09/03/broadcom-ai-revenue-soared-221-profits-tripled-why-is-the-stock-flat/)
+- [Investing.com: Micron at 10.7x forward PE](https://www.investing.com/analysis/micron-earnings-power-still-looks-undervalued-at-107x-forward-pe-200676559)
+- [TIKR: Micron up 70% in 2026](https://www.tikr.com/blog/micron-stock-is-up-70-in-2026-heres-why-analysts-still-see-more-upside-ahead)
+- [Gizmochina: Samsung, Micron, SK Hynix sued over RAM shortage](https://www.gizmochina.com/2026/06/30/samsung-micron-and-sk-hynix-sued-over-artificial-ram-shortage-and-price-hikes/)
+- [GuruFocus: ASML forward PE](https://www.gurufocus.com/term/forward-pe-ratio/ASML)
+- [Muffett Investments: BESI stock analysis](https://www.muffettinvestments.com/stock-research-reports/besi-stock-analysis)
+- [Investing.com: Siemens Energy vs GE Vernova](https://uk.investing.com/news/stock-market-news/siemens-energy-vs-ge-vernova-which-power-stock-offers-more-upside-from-here-93CH-4847434)
+- [stockanalysis: GE Vernova statistics](https://stockanalysis.com/stocks/gev/statistics/)
+- [TIKR: Vertiv up 57% YTD](https://www.tikr.com/blog/vertiv-stock-is-up-57-ytd-in-2026-can-it-still-deliver-10-annual-returns)
+- [Motley Fool: Constellation vs Vistra, September 2026](https://www.fool.com/investing/2026/09/06/nuclear-stock-face-off-is-stock-or-stock-the-bette/)
+- [Yahoo Finance: Vistra's price has edged downward through 2026](https://finance.yahoo.com/markets/stocks/articles/vistra-price-edged-downward-throught-114906277.html)
+- [24/7 Wall St: 3 AI networking stocks](https://247wallst.com/investing/2026/08/02/3-ai-networking-stocks-quietly-dominating-their-niche-in-august/)
+- [heygotrade: AMD outperformed Nvidia with +114% gain](https://www.heygotrade.com/en/blog/amd-stock-analysis-2026-how-amd-quietly-outperformed-nvidia-with-114-gain/)
+- [GuruFocus: Nvidia forward PE](https://www.gurufocus.com/term/forward-pe-ratio/NVDA)
+- [Motley Fool: Should CoreWeave and Nebius investors worry about circular financing?](https://www.fool.com/investing/2026/09/03/should-coreweave-and-nebius-group-stock-investors/)
+- [Insider Monkey: CoreWeave pays SOFR +5.5%, Nebius +2.5%](https://www.insidermonkey.com/blog/coreweave-pays-sofr-5-5-nebius-pays-2-5-ai-lenders-are-already-drawing-a-line-1837557/)
+
+Bewijs over aandelen kiezen
+
+- [Bessembinder: Do Stocks Outperform Treasury Bills? (SSRN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2900447)
+- [Morningstar: Global Thematic Fund Landscape 2025](https://www.morningstar.com/business/insights/research/global-thematic-fund-landscape)
+- [Morningstar: Investors in thematic ETFs show terrible timing](https://magazine.morningstar.com/issues/q1-2024/investors-in-thematic-etfs-show-terrible-timing)
