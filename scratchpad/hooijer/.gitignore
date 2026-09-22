@@ -1,6 +1,5 @@
-# Uitvoer van de scripts: regenereerbaar en bevat bedrijfscijfers.
-# Blijft lokaal, gaat niet naar GitHub.
 __pycache__/
 *.pkl
 *.csv
 *.xlsx
+bartogi/
