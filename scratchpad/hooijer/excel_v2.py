@@ -49,13 +49,6 @@ def schrijf(ws, df, formaten, start=1, totaal_vet=True):
     return start + len(df)
 
 
-def formules(ws, eerste, laatste, paren):
-    """Vervangt uitgerekende kolommen door formules. paren: {kolomletter: sjabloon}."""
-    for rij in range(eerste, laatste + 1):
-        for letter, sjabloon in paren.items():
-            ws[f"{letter}{rij}"] = sjabloon.format(r=rij)
-
-
 wb = Workbook()
 
 # ---------------------------------------------------------------- verantwoording
@@ -86,6 +79,13 @@ regels = [
     ("order%      = sessies met afgeronde bestelling gedeeld door sessies tot afrekenen", GEWOON),
     ("conversie%  = sessies met afgeronde bestelling gedeeld door sessies", GEWOON),
     ("AOV         = netto-omzet gedeeld door orders", GEWOON),
+    ("korting%    = kortingen gedeeld door bruto-omzet", GEWOON),
+    ("retour%     = retouren gedeeld door bruto-omzet", GEWOON),
+    ("", GEWOON),
+    ("De cijfers staan als uitgerekende waarde in het blad, niet als formule.", GEWOON),
+    ("Reden: de omgeving waarin dit bestand is gemaakt kon Excel-formules niet", GEWOON),
+    ("doorrekenen, en een formule zonder uitkomst leest in veel programma's als leeg.", GEWOON),
+    ("Met de rekenregels hierboven is elke kolom na te rekenen.", GEWOON),
     ("", GEWOON),
     ("Let op bij AOV", VET),
     ("Orders uit de sales-dataset (36.515) zijn er meer dan sessies met een afgeronde", GEWOON),
@@ -127,15 +127,6 @@ einde = schrijf(ws, tre, {
     "Orders": AANTAL, "wagen%": PROC, "afreken%": PROC, "order%": PROC,
     "conversie%": PROC, "Bruto-omzet": EURO, "Kortingen": EURO, "Retouren": EURO,
     "Netto-omzet": EURO, "AOV": EURO2}, start=3)
-formules(ws, 4, einde, {
-    "D": "=IF(B{r}=0,0,C{r}/B{r}*100)",
-    "F": "=IF(C{r}=0,0,E{r}/C{r}*100)",
-    "H": "=IF(E{r}=0,0,G{r}/E{r}*100)",
-    "I": "=IF(B{r}=0,0,G{r}/B{r}*100)",
-    "O": "=IF(N{r}=0,0,M{r}/N{r})"})
-for kol in "BCEGJKLMN":
-    ws[f"{kol}{einde}"] = f"=SUM({kol}4:{kol}{einde - 1})"
-
 # ---------------------------------------------------------------- rangschikking
 rang = pd.read_csv("rangschikking_v2.csv")
 rang.columns = ["Shop", "Bovengrens (naar 9,01%)", "Realistisch (naar 6,11%)"]
@@ -148,12 +139,10 @@ ws["A2"] = ("Methode: alleen sessie naar winkelwagen verbetert; de stappen daarn
 ws["A2"].font = GEWOON
 einde = schrijf(ws, rang, {"Bovengrens (naar 9,01%)": EURO,
                            "Realistisch (naar 6,11%)": EURO}, start=4)
-for kol in ("C", "D"):
-    ws[f"{kol}{einde + 1}"] = f"=SUM({kol}5:{kol}{einde})"
-    ws[f"{kol}{einde + 1}"].font = VET
-    ws[f"{kol}{einde + 1}"].number_format = EURO
-ws[f"B{einde + 1}"] = "Samen"
-ws[f"B{einde + 1}"].font = VET
+ws.cell(row=einde + 1, column=2, value="Samen").font = VET
+for kol, naam in ((3, "Bovengrens (naar 9,01%)"), (4, "Realistisch (naar 6,11%)")):
+    cel = ws.cell(row=einde + 1, column=kol, value=float(rang[naam].sum()))
+    cel.font, cel.number_format, cel.fill = VET, EURO, LICHT
 
 # ---------------------------------------------------------------- jaar op jaar
 jaar = pd.read_csv("jaar_op_jaar.csv")
