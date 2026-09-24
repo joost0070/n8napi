@@ -69,6 +69,7 @@ def bouw(cfg, pad):
                ("% te klein, % te smal, ...", "aandeel van die reden in de retouren van dat model"),
                ("Prioriteit Aanpakken", f"retour% minstens 10 punt boven het gemiddelde, of een van de drie modellen met de hoogste retourwaarde en boven het gemiddelde; minstens 30 verkocht"),
                ("Waarom los", "een maat groter lost 'te klein' op, niet 'te smal' of 'instap te nauw'"),
+               ("Benchmark", "Returnista Europa per categorie: sandalen 23,2%, boots/laarzen 25,1%, winter-/wandelschoenen 28,5%, sneakers 17,5-30%, sokken 1,25%, footwear totaal 28%. Teenslippers en espadrilles vergeleken met sandalen; soorten zonder eigen benchmark met footwear totaal. De benchmark rekent mogelijk per stuk of per order; hier per paar."),
                ("Niet gekoppeld", f"{los} retourregels vielen buiten het venster of misten een sku")]
     for i, (a, b) in enumerate(regels, 3):
         ws.cell(row=i, column=1, value=a).font = VET if (b is None and a) else GEW
@@ -83,15 +84,16 @@ def bouw(cfg, pad):
     ws["A1"] = "Echt retourpercentage per model, met elke reden apart"; ws["A1"].font = TITEL
     ws["A2"] = f"Gemiddeld {t['gem']:.1f}%. Redenkolommen = aandeel van die reden in de retouren van het model. Vet = 40% of meer."
     ws["A2"].font = GEW
-    kol = (["model", "Verkocht", "Retour", "Retour%", "Boven gemiddelde"]
+    kol = (["model", "Soort", "Verkocht", "Retour", "Retour%", "Boven gemiddelde",
+            "Benchmark", "T.o.v. benchmark", "Benchmark van"]
            + [c for l in landen for c in (f"Verkocht {l}", f"Retour% {l}")]
            + list(KOLOM.values()) + ["% overig", "Ruil%", "Omzet", "Retourwaarde",
                                     "Wat de redenen zeggen", "Thema's in toelichting", "Prioriteit"])
     df = m[kol].rename(columns={"model": "Model"})
-    f = {c: PROC for c in df.columns if "%" in c or c == "Boven gemiddelde"}
+    f = {c: PROC for c in df.columns if "%" in c or c in ("Boven gemiddelde", "Benchmark", "T.o.v. benchmark")}
     f.update({"Verkocht": AANT, "Retour": AANT, "Omzet": EURO, "Retourwaarde": EURO})
     f.update({f"Verkocht {l}": AANT for l in landen})
-    schrijf(ws, df, 4, f, breed={"Model": 16, "Wat de redenen zeggen": 58,
+    schrijf(ws, df, 4, f, breed={"Model": 16, "Soort": 18, "Benchmark van": 20, "Wat de redenen zeggen": 58,
                                  "Thema's in toelichting": 52, "Prioriteit": 28}, kleur_retour=t["gem"])
 
     # per maat

@@ -38,6 +38,14 @@ THEMA = {
 }
 DREMPEL_ADVIES, MIN_VERKOCHT = 10.0, 30
 
+# Returnista-benchmark Europa (retourpercentage per categorie). Soorten zonder eigen
+# benchmark vallen terug op 'footwear totaal'; teenslippers vallen onder sandalen.
+BENCHMARK = {"Sandalen": (23.2, "sandalen"), "Teenslippers/slippers": (23.2, "sandalen"),
+             "Espadrilles": (23.2, "sandalen"), "Laarzen/boots": (25.1, "boots/laarzen"),
+             "Wandelschoenen": (28.5, "winter-/wandelschoenen"), "Sneakers": (23.75, "sneakers"),
+             "Sokken": (1.25, "sokken")}
+FOOTWEAR = (28.0, "footwear totaal")
+
 
 def model_van(titel, patroon):
     m = re.match(patroon, str(titel), flags=re.I) if patroon else None
@@ -147,6 +155,13 @@ def tabellen(v, ret, cfg):
         lambda g: ", ".join(f"{t} ({n})" for t, n in zip(g["thema's"], g.n) if n >= 2)[:120],
         include_groups=False)
     m = m.fillna({k: 0 for k in list(KOLOM.values()) + ["% overig"]})
+    from bar_14_soort import soort
+    rep = v.groupby("model")["product"].agg(lambda t: t.value_counts().index[0])
+    m["Soort"] = rep.reindex(m.index).map(soort)
+    bm = m.Soort.map(lambda x: BENCHMARK.get(x, FOOTWEAR))
+    m["Benchmark"] = bm.str[0]
+    m["Benchmark van"] = bm.str[1]
+    m["T.o.v. benchmark"] = m["Retour%"] - m.Benchmark
     m["Wat de redenen zeggen"] = m.apply(diagnose, axis=1)
     top3 = set(m[m.Verkocht >= MIN_VERKOCHT].sort_values("Retourwaarde", ascending=False).index[:3])
     m["Prioriteit"] = m.reset_index().apply(lambda r: prioriteit(r, gem, top3), axis=1).values
