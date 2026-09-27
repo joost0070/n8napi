@@ -22,7 +22,12 @@ import shop
 _TEKSTKOLOMMEN = {"month", "week", "day", "referrer_source", "utm_source",
                   "utm_medium", "utm_campaign", "landing_page_path",
                   "product_title", "product_type", "referrer_name",
-                  "referrer_host", "billing_country", "hour"}
+                  "referrer_host", "billing_country", "hour",
+                  "session_country", "session_device_type",
+                  "landing_page_type", "search_query",
+                  "product_variant_title", "product_variant_sku",
+                  "new_or_returning_customer", "order_referrer_source",
+                  "customer_cohort_month", "shipping_country"}
 
 
 class VraagFout(RuntimeError):
@@ -34,7 +39,7 @@ def _naar_getal(kolom: pd.Series) -> pd.Series:
     return kolom if getallen.isna().all() else getallen
 
 
-def vraag(sleutel: str, query: str, pogingen: int = 5,
+def vraag(sleutel: str, query: str, pogingen: int = 8,
           timeout: int = 120) -> pd.DataFrame:
     """Stelt een ShopifyQL-vraag en geeft het antwoord als DataFrame terug."""
     graphql = """
@@ -70,8 +75,8 @@ def vraag(sleutel: str, query: str, pogingen: int = 5,
 
         if payload.get("errors"):
             boodschap = "; ".join(f.get("message", "?") for f in payload["errors"])
-            if "throttl" in boodschap.lower():
-                time.sleep(5 * (poging + 1))
+            if "throttl" in boodschap.lower() or "rate limit" in boodschap.lower():
+                time.sleep(15 * (poging + 1))
                 laatste = VraagFout(boodschap)
                 continue
             raise VraagFout(f"{sleutel}: {boodschap}\n  vraag: {query}")
