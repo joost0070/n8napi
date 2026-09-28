@@ -66,7 +66,7 @@ td.r,th.r{text-align:right}
 .vlag{display:inline-block;margin-top:3px;font-size:12px;color:var(--nu)}
 .detail td{background:var(--ground);padding:12px 14px 16px}
 .maten{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:6px 22px}
-.maat{display:grid;grid-template-columns:48px 1fr 132px;gap:8px;align-items:center;font-size:13px}
+.maat{display:grid;grid-template-columns:48px 1fr 170px;gap:8px;align-items:center;font-size:13px}
 .maat .m{font:500 13px "IBM Plex Mono",monospace}
 .maat .m.kern{font-weight:600}
 .maat .spoor{height:10px;background:var(--line);border-radius:2px;position:relative;overflow:hidden}
@@ -113,6 +113,7 @@ td.r,th.r{text-align:right}
     <h2>Zo lees je het</h2>
     <div><b>Voorraad voor</b>: hoe lang de hele voorraad van het artikel nog meegaat. De verkoop van de laatste 28 dagen (alle kanalen, gecorrigeerd voor dagen dat een maat leeg stond) wordt week voor week vooruit gerekend langs het seizoen van het artikel.</div>
     <div><b>Eerste maat op</b>: de kernmaat die als eerste leeg is. Kernmaten zijn de maten die samen 80% van de verkoop maken; een lege randmaat maakt het artikel niet rood.</div>
+    <div><b>Onderweg</b>: openstaande inkooporders tellen mee vanaf hun verwachte leverdatum. Een maat die op tijd wordt aangevuld, krijgt dus geen "te laat". Het bestelvoorstel trekt wat onderweg is er al vanaf.</div>
     <div><b>Bestel uiterlijk</b>: de datum waarop die maat op is, min de hersteltijd van het merk. Dat is de laatste dag om te bestellen zonder gat. Staat er "te laat", dan komt ook een bestelling van vandaag na het gat.</div>
     <div><b>Status</b>: leeg = het artikel of een kernmaat is op en er wordt nu omzet gemist (maat leeg = er ligt nog wel voorraad in andere maten) · te laat = leeg voordat een nieuwe levering er kan zijn · bestel nu = binnen twee weken besteldatum · volgende week = in de gaten houden.</div>
     <div><b>Geen besteladvies</b> krijgen: artikelen uit een oud seizoen die niet meer op volle prijs verkopen, artikelen die in een van de shops zijn afgeprijsd, artikelen die nergens online staan, en modellen op de lijst "niet bijbestellen" (config/bijbestellen.csv). Een ouder artikel dat nu op volle prijs goed verkoopt (8 of meer in 28 dagen) telt als doorloper en krijgt wel advies. Zet "alleen bij te bestellen" uit om ze toch te zien.</div>
@@ -209,7 +210,8 @@ function regel(u) {
   const [b1, b2] = besteltekst(u);
   const vlag = u.sprong ? `<span class="vlag">${nl(u.sprong, 1)}× vorig jaar: echte groei of actie?</span>` :
     u.weinig_historie ? `<span class="vlag" style="color:var(--muted)">weinig historie</span>` : '';
-  const bestel = u.bestel_totaal > 0 && RANG[u.status] <= 2 ? `<div class="sub">voorstel ${nl(u.bestel_totaal)} st</div>` : '';
+  const bestel = (u.bestel_totaal > 0 && RANG[u.status] <= 2 ? `<div class="sub">voorstel ${nl(u.bestel_totaal)} st</div>` : '') +
+    (u.onderweg > 0 ? `<div class="sub">onderweg ${nl(u.onderweg)} st, ${datum(u.onderweg_dag)}</div>` : '');
   return `<tr class="rij" tabindex="0" data-m="${esc(u.model)}" aria-expanded="${open.has(u.model)}">
     <td>${pil(u.status, u.voorraad)}</td>
     <td><span class="merk">${esc(u.merk)}</span> ${esc(u.naam)}<span class="abc ${u.abc}" title="ABC-klasse op omzet 12 maanden">${u.abc}</span><div class="sub">${esc(u.collectie)} · ${esc(u.seizoen)}${u.bestelbaar ? '' : ' · geen besteladvies' + (u.reden ? ': ' + esc(u.reden) : '')}</div>${vlag}</td>
@@ -238,7 +240,7 @@ function maten(u) {
   return `<div class="sub" style="margin-bottom:8px">Per maat: dagen tot leeg. Het streepje is de hersteltijd (${u.levertijd} weken): een balk die daar niet voorbij komt, is te laat. Vetgedrukt zijn de kernmaten.</div>
   <div class="maten">` + u.maten.map(m => {
     const d = m.dagen === null ? schaal : Math.min(m.dagen, schaal), [t1] = duur(m.dagen);
-    const extra = m.bestel > 0 && RANG[m.status] <= 2 ? ` · +${m.bestel}` : '';
+    const extra = (m.bestel > 0 && RANG[m.status] <= 2 ? ` · +${m.bestel}` : '') + (m.onderweg > 0 ? ` · ${m.onderweg} op ${datum(m.onderweg_dag)}` : '');
     return `<div class="maat" style="--kl:var(${KL[m.status] || '--bar'})" title="voorraad ${m.vrd}, ${nl(m.per_week, 1)}/wk">
       <span class="m ${m.kern ? 'kern' : ''}">${esc(m.maat)}</span>
       <span class="spoor"><i style="width:${Math.max(m.vrd > 0 ? 2 : 0, 100 * d / schaal)}%"></i><b style="left:${100 * lt / schaal}%"></b></span>

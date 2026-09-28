@@ -325,15 +325,44 @@ for m, t in tempo12.items():
     r = info.get(m)
     if r and r['size']: merkmaat[r['brand']][str(r['size'])] += t['stuks_jaar']
 
-def uitverkoop(voorraad, jaarvraag, idx, start):
-    """dagen tot de voorraad op is, seizoensgewogen; None als dat langer dan een jaar duurt"""
-    if voorraad <= 0: return 0.0
+def uitverkoop(voorraad, jaarvraag, idx, start, binnen=()):
+    """dagen tot de voorraad op is, seizoensgewogen; None als dat langer dan een jaar duurt.
+    binnen: leveringen onderweg als (dagen vanaf vandaag, stuks); die tellen mee vanaf hun week."""
+    binnen = sorted(binnen)
+    if voorraad <= 0 and not any(d <= 0 for d, _ in binnen): return 0.0
     rest, dagen, w = voorraad, 0.0, start
-    for _ in range(52):
+    for k in range(52):
+        rest += sum(q for d, q in binnen if k * 7 <= d < (k + 1) * 7 or (k == 0 and d < 0))
         vraag = jaarvraag * idx[w]
-        if vraag >= rest: return dagen + 7 * rest / vraag
+        if vraag >= rest: return dagen + 7 * rest / vraag if vraag else None
         rest -= vraag; dagen += 7; w = volgende(w)
     return None
+
+# Leveringen onderweg (openstaande inkooporders). Bestand onderweg.csv in de datamap, of het pad in
+# RADAR_ONDERWEG. Kolommen (; of ,): een artikelcode (ean / artikelnummer / sku), een aantal
+# (aantal / open) en een verwachte datum (datum / verwacht, JJJJ-MM-DD of DD-MM-JJJJ).
+ONDERWEG = defaultdict(list)
+_op = os.environ.get('RADAR_ONDERWEG') or os.path.join(B, 'onderweg.csv')
+if os.path.exists(_op):
+    import csv
+    _t = open(_op, encoding='utf-8-sig').read()
+    _rd = csv.DictReader(_t.splitlines(), delimiter=';' if _t.count(';') > _t.count(',') else ',')
+    def _kol(rij, *namen):
+        for k, v in rij.items():
+            if k and any(n in k.lower() for n in namen) and v: return v.strip()
+    _n = _ok = 0
+    for rij in _rd:
+        _n += 1
+        m = naar(_kol(rij, 'ean', 'barcode', 'artikel', 'sku', 'mpn'))
+        try:
+            q = int(float((_kol(rij, 'aantal', 'open', 'qty', 'stuks') or '0').replace(',', '.')))
+            ds = _kol(rij, 'datum', 'verwacht', 'lever', 'date') or ''
+            d = dt.date.fromisoformat(ds) if '-' in ds and len(ds.split('-')[0]) == 4 else dt.datetime.strptime(ds, '%d-%m-%Y').date()
+        except (ValueError, TypeError):
+            continue
+        if m and q > 0:
+            ONDERWEG[m].append(((d - TODAY).days, q)); _ok += 1
+    print(f"onderweg: {_ok} van {_n} regels gekoppeld ({_op})")
 
 def vraag_over(jaarvraag, idx, start, weken):
     s, w = 0.0, start
@@ -427,11 +456,15 @@ for p, mpns in modellen.items():
         jv = jaarvraag * x['aandeel']
         x['jaarvraag'] = jv
         x['per_week'] = jv * cv['idx'][NU]
-        x['dagen'] = uitverkoop(x['vrd'], jv, cv['idx'], NU)
+        binnen = ONDERWEG.get(x['m'], [])
+        x['onderweg'] = sum(q for _, q in binnen)
+        x['onderweg_dag'] = min((d for d, _ in binnen), default=None)
+        x['dagen'] = uitverkoop(x['vrd'], jv, cv['idx'], NU, binnen)
         x['dagen_vlak'] = (x['vrd'] / (x['verk28'] / max(28 - x['leeg28'], 1))) if x['verk28'] else None
         VEILIG_M = BUFFER.get(ABC.get(p), VEILIG)
         horizon = vraag_over(jv, cv['idx'], NU, lt + VEILIG_M + DEKKING)
-        x['bestel'] = max(0, round(vraag_over(jv, cv['idx'], NU, lt + DEKKING) - x['vrd']))
+        x['bestel'] = max(0, round(vraag_over(jv, cv['idx'], NU, lt + DEKKING) - x['vrd']
+                                   - sum(q for d, q in binnen if d <= (lt + DEKKING) * 7)))
         # dagen tot je uiterlijk moet bestellen: op-datum min de hersteltijd (negatief = al te laat)
         x['bestel_over'] = None if x['dagen'] is None else round(x['dagen'] - lt * 7)
         if horizon < 2 and x['vrd'] == 0:
@@ -459,7 +492,7 @@ for p, mpns in modellen.items():
     eerste = min((x['dagen'] for x in kernrij if x['dagen'] is not None), default=None)
     bestel_over = min((x['bestel_over'] for x in kernrij if x['bestel_over'] is not None), default=None)
     totaal_vrd = sum(x['vrd'] for x in rij)
-    dagen_totaal = uitverkoop(totaal_vrd, jaarvraag, cv['idx'], NU)
+    dagen_totaal = uitverkoop(totaal_vrd, jaarvraag, cv['idx'], NU, [b for x in rij for b in ONDERWEG.get(x['m'], [])])
     over, weken_rest = rest_seizoen(totaal_vrd, jaarvraag, cv, NU)
 
     # vorig jaar dezelfde weken: stond het model toen leeg?
@@ -522,6 +555,8 @@ for p, mpns in modellen.items():
         'levertijd_bron': herstel.get(merk, {}).get('bron', 'aanname'),
         'status': status, 'eerste_leeg': None if eerste is None else round(eerste),
         'bestel_over': bestel_over, 'per_week': round(sum(x['per_week'] for x in rij), 1),
+        'onderweg': sum(x['onderweg'] for x in rij),
+        'onderweg_dag': min((x['onderweg_dag'] for x in rij if x['onderweg_dag'] is not None), default=None),
         'dagen_totaal': None if dagen_totaal is None else round(dagen_totaal),
         'over_bij_dal': round(over), 'weken_tot_dal': weken_rest,
         'abc': ABC.get(p, 'C'), 'buffer': BUFFER.get(ABC.get(p), VEILIG),
@@ -535,7 +570,8 @@ for p, mpns in modellen.items():
         'prijs': r0['price'] or 0,
         'maten': sorted([{k: (round(v, 2) if isinstance(v, float) else v) for k, v in x.items()
                           if k in ('maat', 'vrd', 'verk28', 'leeg28', 'aandeel', 'per_week', 'dagen',
-                                   'dagen_vlak', 'status', 'bestel', 'sale', 'bestel_over')} | {'kern': x['m'] in kern}
+                                   'dagen_vlak', 'status', 'bestel', 'sale', 'bestel_over', 'onderweg',
+                                   'onderweg_dag')} | {'kern': x['m'] in kern}
                          for x in rij if x['status'] != 'GEEN VRAAG' or x['vrd'] > 0],
                         key=lambda x: (float(re.sub(r'[^0-9.]', '', x['maat'].split('-')[0].split('/')[0]) or 999)
                                        if re.match(r'^\d', x['maat'] or '') else 999, x['maat'])),
@@ -637,12 +673,13 @@ json.dump(uit, open(f'{B}/uitverkoop.json', 'w'), ensure_ascii=False, indent=1)
 # Volledig overzicht voor de overzichtspagina: elk model met voorraad of recente verkoop.
 VELDEN = ('abc', 'buffer', 'sell_through', 'overschot_pct', 'overschot_eur', 'overschot_st', 'overschot_weken',
           'afprijs_kandidaat', 'over_bij_dal',
-          'weken_tot_dal', 'dal',
+          'weken_tot_dal', 'dal', 'onderweg', 'onderweg_dag',
           'model', 'merk', 'naam', 'collectie', 'seizoen', 'status', 'bestelbaar', 'reden', 'col_sale', 'verk28', 'per_week',
           'voorraad', 'dagen_totaal', 'eerste_leeg', 'bestel_over', 'levertijd', 'levertijd_bron', 'sprong',
           'weinig_historie', 'vj_horizon', 'verwacht_horizon', 'bestel_totaal', 'piek', 'afprijs_wk', 'kanaal', 'prijs')
 overzicht = [{k: u[k] for k in VELDEN} | {'maten': [{k: m[k] for k in ('maat', 'vrd', 'per_week', 'dagen', 'status', 'bestel',
-                                                                        'bestel_over', 'kern')} for m in u['maten']]}
+                                                                        'bestel_over', 'kern', 'onderweg', 'onderweg_dag')}
+                                                     for m in u['maten']]}
              for u in uit_modellen if u['voorraad'] > 0 or u['verk28'] > 0]
 # De drie meetcijfers uit het advies: uitverkochte A-artikelen, voorraadwaarde oude seizoenen, afprijskandidaten
 oud = [u for u in uit_modellen if u['collectie'] in OUD or u['collectie'].startswith('uitlopend')]
