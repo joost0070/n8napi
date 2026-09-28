@@ -1,0 +1,165 @@
+<html><head><meta charset="utf-8"><title>Voorraad Watch – Hooijer Footwear Group</title></head><body>
+
+<h1>Voorraad Watch – Hooijer Footwear Group</h1>
+<p><i>Stand van zaken 28 september 2026 (week 40). Cijfers in dit document komen uit de analyse van 14 september (week 38), tenzij anders vermeld.</i></p>
+
+<h2>1. In het kort</h2>
+<p><b>Doel:</b> elke week zien welke maten te veel en te weinig voorraad hebben voor het seizoen, en <b>automatisch gewaarschuwd worden als een best verkopend artikel uit voorraad dreigt te lopen</b>, op een moment dat bijbestellen nog op tijd landt.</p>
+<p><b>Stand:</b></p>
+<ul>
+<li>Alle data is ontsloten: ChannelEngine, 17 Shopify-shops en de voorraadhistorie uit Shopify zelf.</li>
+<li>De methode voor de uitverkoopradar staat. De rekencode is geschreven.</li>
+<li>Het wekelijkse rapport is ontworpen: top 10 met resterende dagen per maat, een bijschakellijst en dagelijkse signalen.</li>
+<li><b>Nog niet gedaan:</b> de radar draaien op de data van deze week, en de n8n-workflow importeren. In jullie n8n-omgeving is niets aangeraakt.</li>
+</ul>
+<p><b>Belangrijkste les tot nu toe:</b> de verkochte aantallen liegen. Een maat die na drie weken uitverkocht is geraakt, lijkt een slome loper. Een merk heeft niet één seizoen en niet één prijsregime. Daarom werkt alles hieronder per model, per collectie en op werkelijke leverbaarheid.</p>
+
+<h2>2. Bronnen</h2>
+<table border="1" cellpadding="5">
+<tr><th>Bron</th><th>Wat het levert</th><th>Let op</th></tr>
+<tr><td>ChannelEngine</td><td>Artikelstam (merk, maat, seizoen, seizoensjaar), marktplaatsorders, retouren</td><td>Inkoopprijs is geen kostprijs (zie §7). Seizoenslabel ontbreekt bij ~1.250 artikelen met voorraad.</td></tr>
+<tr><td>17 Shopify-shops</td><td>Webshoporders, live prijzen en streepprijzen, voorraad, <b>echte kostprijs</b></td><td>Samen <b>93% van de vraag</b>. Geox NL: token geeft 401.</td></tr>
+<tr><td>ShopifyQL (Shopify)</td><td>Voorraad per week/maand, <b>dagen uit voorraad</b> per artikel</td><td>Dé bron voor "hoe lang stond het leeg".</td></tr>
+<tr><td>Marktplaatsen</td><td>bol.com, Amazon, Kaufland, ANWB via ChannelEngine</td><td>7% van de vraag, 27% retour.</td></tr>
+</table>
+<p><b>Eén voorraad, veel etalages.</b> Een paar ligt één keer in het magazijn, maar staat in maximaal vijf webshops én op de marktplaatsen. Shopify deelt die voorraad niet: elke shop heeft een eigen teller, die gelijk gehouden wordt door een extern systeem. Vraag tel je dus op over de kanalen, voorraad tel je één keer (104.058 paar; per shop opgeteld zou het ten onrechte 357.795 zijn).</p>
+
+<h2>3. De uitverkoopradar – de methode</h2>
+<p>Eén vraag per maat: <b>op welke dag is deze maat op, en is dat vóór of na het moment dat nieuwe voorraad binnen kan zijn?</b></p>
+<p>"Dagen voorraad" (voorraad gedeeld door gemiddelde verkoop) gaat bij schoenen op drie punten mis:</p>
+<ul>
+<li><b>Het seizoen:</b> 100 paar winterlaarzen gaan in week 40 niet even snel als in week 48.</li>
+<li><b>Uitverkochte weken:</b> een maat die half leeg stond, lijkt minder vraag te hebben.</li>
+<li><b>Kleine aantallen per maat:</b> twee verkopen in vier weken zeggen weinig.</li>
+</ul>
+<p>Daarom, per model (artikel + kleur) en daarna verdeeld over de maten:</p>
+<table border="1" cellpadding="5">
+<tr><th>Stap</th><th>Wat</th></tr>
+<tr><td>1. Recent tempo</td><td>Verkoop laatste 28 dagen, alle kanalen, gedeeld door de dagen dat het model <b>leverbaar</b> was.</td></tr>
+<tr><td>2. Ontseizoenen</td><td>Gedeeld door het seizoensgewicht van die 4 weken. Dat geeft het jaarniveau. Groei of krimp van het merk zit er dan al in.</td></tr>
+<tr><td>3. Vooruit afboeken</td><td>Week voor week langs de eigen seizoenscurve van het model van de voorraad af, tot die op is. <b>Die dag is de verwachte uitverkoopdatum.</b></td></tr>
+<tr><td>4. Maatverdeling</td><td>Eigen historie van het model (recente weken tellen zwaarder), met de maatcurve van het merk als vangnet voor nieuwe modellen.</td></tr>
+</table>
+
+<h3>Signalen</h3>
+<table border="1" cellpadding="5">
+<tr><th>Status</th><th>Wanneer</th><th>Betekenis</th></tr>
+<tr><td><b>Leeg</b></td><td>voorraad 0 en er is vraag</td><td>Er wordt nu omzet gemist.</td></tr>
+<tr><td><b>Te laat</b></td><td>leeg vóór de hersteltijd voorbij is</td><td>Ook een bestelling van vandaag komt na het gat.</td></tr>
+<tr><td><b>Bestel nu</b></td><td>leeg binnen hersteltijd + 2 weken</td><td>Nu bestellen landt op tijd.</td></tr>
+<tr><td>Volgende week</td><td>leeg binnen hersteltijd + 4 weken</td><td>In de gaten houden.</td></tr>
+</table>
+<p>Een model krijgt de status van zijn slechtste <b>kernmaat</b>: de maten die samen 80% van de vraag dragen. Een lege randmaat maakt het model niet rood.</p>
+<p><b>Hersteltijd per merk wordt gemeten, niet aangenomen:</b> uit de voorraadhistorie in Shopify blijkt hoe lang een uitverkochte bestseller leeg stond voordat hij terugkwam. Dat getal is precies de valkuil. Zodra een leverancier een echte levertijd opgeeft, gaat die voor.</p>
+
+<h2>4. Collectie, seizoen, piek en afprijzen</h2>
+<h3>Welke collectie krijgt besteladvies</h3>
+<table border="1" cellpadding="5">
+<tr><th>Collectie</th><th>Nu (week 40, 2026)</th><th>Signaal</th></tr>
+<tr><td>Lopend</td><td>FW 2026</td><td>Volledig: bestellen als het op dreigt te raken</td></tr>
+<tr><td>Doorlopend</td><td>NOOS, of een vlakke jaarcurve</td><td>Volledig</td></tr>
+<tr><td>Net voorbij</td><td>SS 2026</td><td>Geen besteladvies, wel restvoorraad-beeld</td></tr>
+<tr><td>Vorig jaar / ouder</td><td>FW 2025 en eerder</td><td>Geen besteladvies, afprijsbeeld</td></tr>
+</table>
+<p>Het NOOS-label in ChannelEngine is niet betrouwbaar. HEYDUDE Wally Braided staat als NOOS, maar doet 74% van zijn jaar in 13 zomerweken en 2% in week 38–52. De gemeten curve gaat daarom vóór het label.</p>
+
+<h3>Prijsregime per collectie, niet per merk</h3>
+<p>Afprijzen gebeurt per collectie. De zomercollectie wordt opgeruimd terwijl de nieuwe winter op volle prijs staat. Gemeten aan live streepprijzen:</p>
+<table border="1" cellpadding="5">
+<tr><th>Merk</th><th>Collectie</th><th>Afgeprijsd</th></tr>
+<tr><td>Hunter, HEYDUDE, Keen, Lazamani, Toni Pons</td><td>FW 2026</td><td><b>0%</b></td></tr>
+<tr><td>Keen</td><td>SS 2026</td><td>48%</td></tr>
+<tr><td>Lazamani</td><td>SS 2026</td><td>62%</td></tr>
+<tr><td>Lazamani</td><td>FW 2024</td><td>97%</td></tr>
+<tr><td>Jan Jansen</td><td>FW 2023</td><td>100%</td></tr>
+</table>
+<p>Vanaf 45% afgeprijsd wordt een collectie opgeruimd: daar wordt niet in bijbesteld, ook niet als één artikel nog volle prijs heeft.</p>
+
+<h3>Piek en afprijsmoment</h3>
+<p>Per model uit zijn eigen curve (twee volledige jaren, sep–aug):</p>
+<ul>
+<li><b>Piek:</b> de week met de meeste vraag.</li>
+<li><b>Afprijzen vanaf:</b> de week waarin 70% van de seizoensvraag achter de rug is.</li>
+<li><b>Restvoorraad bij seizoenseinde:</b> is die groter dan nul, dan wacht je niet op het vaste sale-moment.</li>
+</ul>
+<table border="1" cellpadding="5">
+<tr><th>Merk / seizoen</th><th>Piek</th><th>Nog te gaan (vanaf wk 38)</th></tr>
+<tr><td>Tofvel (sloffen)</td><td>wk 48</td><td>95% in 43 weken</td></tr>
+<tr><td>Lazamani FW</td><td>wk 48</td><td>88% in 40 weken</td></tr>
+<tr><td>Keen FW</td><td>wk 34</td><td>78% in 41 weken</td></tr>
+<tr><td>Hunter FW</td><td>wk 34</td><td>56% in 29 weken</td></tr>
+<tr><td>HEYDUDE SS</td><td>wk 33</td><td>11% in 15 weken</td></tr>
+<tr><td>Lazamani SS</td><td>wk 27</td><td>3% in 8 weken – voorbij</td></tr>
+</table>
+
+<h3>Merkmomentum (laatste 13 weken tegen dezelfde weken vorig jaar)</h3>
+<table border="1" cellpadding="5">
+<tr><th>Merk</th><th>Momentum</th></tr>
+<tr><td>Keen</td><td>+216%</td></tr>
+<tr><td>Tofvel</td><td>+132%</td></tr>
+<tr><td>Hunter</td><td>+111%</td></tr>
+<tr><td>HEYDUDE</td><td>+81%</td></tr>
+<tr><td>Toni Pons</td><td>+38%</td></tr>
+<tr><td>Sockwell</td><td>+23%</td></tr>
+<tr><td>Lazamani</td><td>+11%</td></tr>
+<tr><td><b>Crocs</b></td><td><b>−42%</b> (enige krimper, én zwaarste overstockpost)</td></tr>
+</table>
+
+<h2>5. Kanalen: merkshop, brede shop en marktplaats</h2>
+<ul>
+<li><b>Vraag</b> wordt over alle kanalen opgeteld; <b>voorraad</b> één keer.</li>
+<li>Per model toont de radar hoe de vraag verdeeld is: eigen merkshop, brede shop (Bartogi) en marktplaats.</li>
+<li><b>Bij krapte zijn de kanalen niet gelijk.</b> Marktplaatsverkoop kost een fee en komt vaker terug. Retour op marktplaatsen is 27%; in de webshops Lazamani 10,7%, HEYDUDE 3,6% en Sockwell 2,2%.</li>
+<li>Staat een kernmaat op "te laat", dan zijn de laatste paren meer waard in de eigen shops. Het rapport markeert dat; het afknijpen van marktplaatsvoorraad is een instelling in ChannelEngine.</li>
+</ul>
+
+<h2>6. De weekrapportage</h2>
+<table border="1" cellpadding="5">
+<tr><th>Onderdeel</th><th>Inhoud</th><th>Wanneer</th></tr>
+<tr><td>Top 10 best verkocht</td><td>Per model de resterende dagen per kernmaat, de eerste maat die leeg raakt, collectie, piekweek, kanaalverdeling en status</td><td>Elke maandag</td></tr>
+<tr><td>Bijschakellijst</td><td>Lopende collectie en doorlopende artikelen met status leeg / te laat / bestel nu, met een bestelvoorstel per maat</td><td>Elke maandag</td></tr>
+<tr><td>Acuut signaal</td><td>Alleen als een kernmaat van een lopend artikel leeg is of te laat dreigt te raken</td><td>Dagelijks 07:30, alleen bij een signaal</td></tr>
+<tr><td>Terugblik</td><td>Hoeveel procent van het jaar de 50 best verkopende modellen volledig leverbaar waren, plus de geschatte gemiste omzet</td><td>Maandelijks</td></tr>
+</table>
+
+<h2>7. Wat we al gevonden hebben</h2>
+<table border="1" cellpadding="5">
+<tr><th>Bevinding</th><th>Toelichting</th></tr>
+<tr><td><b>Verkochte aantallen misleiden</b></td><td>Van 9.737 maten verschoof het tempo bij 7.909 meer dan een kwart zodra de dagen uit voorraad werden meegeteld. Tofvel Mula Marbled Brown 39 stond 322 van de 365 dagen leeg. Sockwell Heartlink verkocht 19 paar in 12 dagen en stond daarna leeg.</td></tr>
+<tr><td><b>Kostprijs in ChannelEngine klopt niet</b></td><td>De inkoopprijs in ChannelEngine is 1,2× (Lazamani) tot 2,0× (Sockwell) de echte kostprijs in Shopify. Alle eurobedragen op basis van ChannelEngine staan dus te hoog, en ongelijk per merk. Echte marges: 63–79%.</td></tr>
+<tr><td><b>GANNI x Hunter niet op marktplaatsen</b></td><td>213 stuks (± €42.000 verkoopwaarde) staan in de webshops maar op 0 in ChannelEngine: beide Balmoral-kleuren, Tall Wellington Leopard, alle bucket hats en de paraplu. Kan bewust zijn (samenwerkingscollectie); anders een dure synchronisatiefout. Kostprijzen: poncho €105, Balmoral €95, Wellington €55, bucket hat €25, paraplu €22.</td></tr>
+<tr><td><b>Voorraad loopt tussen kanalen uiteen</b></td><td>Bij 27 artikelen verschillen de shops onderling (16 met ≤10 stuks – hier ontstaat overselling). Bij 210 wijkt ChannelEngine af van de webshops. In 13 maanden zijn er 107 MANCO-orders geweest, waarvan 71 op bol.com.</td></tr>
+<tr><td><b>Crocs Classic Clogs</b></td><td>10.789 paar op voorraad tegen ~355 verkocht per jaar, op volle prijs, bij een krimpend merk.</td></tr>
+<tr><td><b>Circulator Black Stripe</b></td><td>860 paar. De maandstanden over 13 maanden liggen tussen 834 en 1.074, en het artikel was nooit uit voorraad. Het is dus niet recent bijgevuld: dit is oude voorraad.</td></tr>
+</table>
+
+<h2>8. Wat nog niet klopt</h2>
+<p>De bestel- en afprijslijsten zijn een <b>rangschikking</b>: ze zetten de juiste regels bovenaan, maar zijn niet blind te tekenen.</p>
+<ol>
+<li><b>De seizoenscurve is nog gebouwd op verkopen</b>, dus ook gedrukt door leegstand in eerdere jaren. Het jaarniveau is gecorrigeerd, de vorm nog niet. Oplosbaar met de weekhistorie uit Shopify.</li>
+<li><b>Retouren worden nog niet afgetrokken.</b> Voor een waarschuwing is dat de veilige kant (het signaal komt eerder), maar bestelhoeveelheden staan daardoor te hoog, vooral bij merken met veel retour.</li>
+<li><b>Eurobedragen rekenen nog met de ChannelEngine-inkoopprijs</b>, die 1,2–2× te hoog is. Omzetten naar de Shopify-kostprijs staat op de lijst.</li>
+<li><b>Seizoenslabels ontbreken</b> bij ~1.250 artikelen met voorraad, en het NOOS-label is niet betrouwbaar.</li>
+<li><b>Nieuwe modellen</b> hebben geen eigen historie en leunen op modelfamilie of merk.</li>
+</ol>
+
+<h2>9. Wat ik van jullie nodig heb</h2>
+<table border="1" cellpadding="5">
+<tr><th>Wat</th><th>Waarom</th></tr>
+<tr><td>Levertijd, nabestelmogelijkheid en order-cutoff per merk</td><td>Bepaalt wanneer "bestel nu" omslaat in "te laat". De leveranciersmail (NL en EN) staat klaar in de repo.</td></tr>
+<tr><td>Is GANNI x Hunter bewust uitgesloten van de marktplaatsen?</td><td>Zo niet: 213 stuks direct verkoopbaar maken.</td></tr>
+<tr><td>Seizoensjaar invullen in ChannelEngine</td><td>Voor de collectie-indeling en het prijsregime.</td></tr>
+<tr><td>Nieuw token voor Geox NL</td><td>Die shop ontbreekt nu in de vraagcijfers.</td></tr>
+</table>
+
+<h2>10. Volgende stappen</h2>
+<ol>
+<li>De radar draaien op de data van week 40 en de eerste echte top 10 met resterende dagen opleveren.</li>
+<li>De hersteltijd per merk meten uit de voorraadhistorie.</li>
+<li>De n8n-code vergelijken met de rekenreferentie op dezelfde data, en daarna de workflow klaarzetten voor import. Dat is een nieuwe, losse workflow; bestaande workflows worden niet aangeraakt.</li>
+<li>De eurobedragen omzetten naar de Shopify-kostprijs en retouren verwerken.</li>
+</ol>
+<p><i>Dashboard: https://claude.ai/code/artifact/da9f2c11-a2a5-44c9-b4e9-f6b1542cf3e8<br>
+Code en documentatie: repository joost0070/n8napi, branch claude/inventory-analysis-by-brand-w0qw6x, map voorraad-watch/.</i></p>
+
+</body></html>
