@@ -54,15 +54,21 @@ def volgende(w): return w % 53 + 1
 #    twee volledige cycli, elk apart genormaliseerd, licht gladgestreken
 # =============================================================================
 cyc = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(int))))
+merkdag = defaultdict(lambda: defaultdict(int))   # merk -> datum -> stuks (voor de groei)
+modeldag = defaultdict(lambda: defaultdict(int))  # model -> datum -> stuks (vorig jaar zelfde weken)
 def tel(m, d, q):
     r = info.get(m)
     if not r or q <= 0: return
+    merkdag[r['brand']][d] += q
+    modeldag[model(r)][d] += q
     c = 'c1' if C1[0] <= d <= C1[1] else 'c2' if C2[0] <= d <= C2[1] else None
     if not c: return
     w = d.isocalendar()[1]
-    cyc['parent'][model(r)][c][w] += q
-    cyc['familie'][familie(r)][c][w] += q
-    cyc['merktype'][f"{r['brand']}|{stype(r)}"][c][w] += q
+    staart = c == 'c2' and d > C2[1] - dt.timedelta(days=56)
+    for niv, k in (('parent', model(r)), ('familie', familie(r)), ('merktype', f"{r['brand']}|{stype(r)}")):
+        cyc[niv][k][c][w] += q
+        if staart: laatst[(niv, k, w)] = (r['brand'], laatst.get((niv, k, w), (None, 0))[1] + q)
+laatst = {}
 for f in glob.glob(f'{B}/shop/*_orders.json'):
     for r in json.load(open(f)):
         m = naar(r.get('sku'))
@@ -77,6 +83,26 @@ for f in glob.glob(f'{B}/ord/o*.json'):
             if l.get('Status') != 'CANCELED':
                 tel(l.get('MerchantProductNo'), od, l.get('Quantity') or 0)
 
+# Merkgroei: laatste 6 weken met orderdata tegen dezelfde 6 weken een jaar eerder.
+# Alleen gebruikt om de bovengrens op het jaarniveau op te rekken, niet als voorspeller:
+# het recente tempo bevat de groei al. Hunter liep in sep 2026 ~3x vorig jaar.
+DMAX = max(d for dd in merkdag.values() for d in dd)
+def groei(merk):
+    dd = merkdag.get(merk, {})
+    nu = sum(q for d, q in dd.items() if DMAX - dt.timedelta(days=42) < d <= DMAX)
+    vj = sum(q for d, q in dd.items() if DMAX - dt.timedelta(days=42 + 364) < d <= DMAX - dt.timedelta(days=364))
+    return (nu / vj) if vj >= 30 else None
+GROEI = {m: groei(m) for m in merkdag}
+
+# Niveausprong aan het eind van de cyclus terugrekenen naar het niveau van de rest van
+# de cyclus. Anders leest een merk dat net 2,5x groeit (Hunter, eind aug 2026) die sprong
+# als seizoenspiek, en lijkt het seizoen voorbij terwijl het net begint.
+for (niv, k, w), (merk, q) in laatst.items():
+    g = GROEI.get(merk)
+    if g and (g > 1.3 or g < 0.77):
+        cyc[niv][k]['c2'][w] -= q * (1 - 1 / g)
+WRAP = C2[0].isocalendar()[1]      # eerste week van de cyclus: niet over deze naad gladstrijken
+
 def maakidx(cycli):
     delen, tot = [], 0
     for c in ('c1', 'c2'):
@@ -84,7 +110,11 @@ def maakidx(cycli):
         if t >= 60: delen.append({w: cc.get(w, 0) / t for w in range(1, 54)})
     if not delen or tot < 150: return None
     i = {w: sum(d[w] for d in delen) / len(delen) for w in range(1, 54)}
-    g = {w: (i[((w - 2) % 53) + 1] + i[w] + i[volgende(w)]) / 3 for w in range(1, 54)}
+    def glad(w):
+        vorige, na = ((w - 2) % 53) + 1, volgende(w)
+        buren = [i[w]] + ([i[vorige]] if w != WRAP else []) + ([i[na]] if na != WRAP else [])
+        return sum(buren) / len(buren)
+    g = {w: glad(w) for w in range(1, 54)}
     s = sum(g.values()); g = {w: v / s for w, v in g.items()}
     vec = [g[w] for w in range(1, 53)]
     top13 = max(sum(vec[(k + j) % 52] for j in range(13)) for k in range(52))
@@ -132,7 +162,13 @@ def collectie(r, cv):
     if sz == VORIG_SZ and j == VORIG_JR: return 'net voorbij'
     if sz == HUIDIG_SZ and j == HUIDIG_JR - 1: return 'vorig jaar'
     return 'ouder'
-BESTELBAAR = {'lopend', 'doorlopend', 'lopend?', 'geen label'}
+BESTELBAAR = {'lopend', 'doorlopend', 'lopend?', 'geen label', 'doorloper'}
+# Het seizoensjaar is het introductiejaar, niet 'nog in de collectie'. Een artikel uit een
+# ouder seizoen dat nu op volle prijs goed verkoopt, is een doorloper (bv. Hunter Downpour
+# Tall, label FW 2025, nu de best verkochte laars).
+OUD = {'vorig jaar', 'ouder', 'net voorbij'}
+def doorloper(col, verk28, n_live, n_sale):
+    return col in OUD and verk28 >= 8 and n_live > 0 and n_sale / n_live < 0.5
 
 # =============================================================================
 # 3. Data inlezen
@@ -305,6 +341,7 @@ for p, mpns in modellen.items():
 
     # recent tempo op modelniveau, gecorrigeerd voor de dagen dat maten leeg stonden
     verk28 = sum(x['verk28'] for x in rij)
+    begrensd = False
     beschikbaar = sum(x['aandeel'] * (28 - x['leeg28']) for x in rij)
     idx_recent = sum(cv['idx'][w] for w in RECENT) / len(RECENT)
     j12 = sum(x['t12'] for x in rij) * 52
@@ -313,7 +350,9 @@ for p, mpns in modellen.items():
         wekelijks = verk28 / beschikbaar * 7
         jaarvraag = wekelijks / idx_recent
         if n12 >= 30 and j12 > 0:
-            jaarvraag = min(max(jaarvraag, 0.4 * j12), 2.5 * j12)
+            plafond = 2.5 * j12 * max(1.0, GROEI.get(merk) or 1.0)
+            begrensd = jaarvraag > plafond
+            jaarvraag = min(max(jaarvraag, 0.4 * j12), plafond)
         bron = 'recent'
     elif j12 > 0:
         jaarvraag, bron = j12, '12 mnd'
@@ -367,10 +406,28 @@ for p, mpns in modellen.items():
     if vj:
         vj_leeg = sum(a * f for a, f in vj) / max(sum(a for a, _ in vj), 1e-9)
 
+    # Controle: wat ging er vorig jaar in dezelfde weken weg? (28 dagen terug en de komende
+    # hersteltijd + dekking). Zo is een voorstel van 378 naast 'vorig jaar 41' meteen te wegen.
+    vjd = TODAY - dt.timedelta(days=364); md = modeldag.get(p, {})
+    vj_28 = sum(q for d, q in md.items() if vjd - dt.timedelta(days=28) <= d < vjd)
+    vj_hor = sum(q for d, q in md.items() if vjd <= d < vjd + dt.timedelta(weeks=lt + DEKKING))
+    hor_nu = sum(vraag_over(x['jaarvraag'], cv['idx'], NU, lt + DEKKING) for x in rij)
+    weinig_historie = n12 < 30 or vj_hor < 20
+    # sprong: nu veel meer dan vorig jaar in dezelfde weken. Kan echt zijn (Hunter), kan een
+    # actie of lancering zijn. Het rapport vraagt dan om bevestiging voor je bestelt.
+    sprong = round(verk28 / vj_28, 1) if vj_28 >= 3 and verk28 >= 4 * vj_28 else None
     kanaal = {k: sum(x['kanaal'][k] for x in rij) for k in ('merkshop', 'breed', 'marktplaats')}
-    bestelbaar = (col in BESTELBAAR and any(x['live'] for x in rij) and not col_in_sale(r0))
+    n_live = sum(1 for x in rij if x['live']); n_sale = sum(1 for x in rij if x['live'] and x['sale'])
+    label = col
+    if doorloper(col, verk28, n_live, n_sale): col = 'doorloper'
+    # De prijs van het model zelf beslist, niet die van de collectie: een model op volle prijs
+    # in een collectie die grotendeels in de sale ligt, is bewust vastgehouden (bv. Hunter
+    # Women's Original Tall, 16x vorig jaar). De collectievlag gaat als info mee.
+    bestelbaar = (col in BESTELBAAR and n_live > 0 and n_sale / n_live < 0.5)
     uit_modellen.append({
-        'model': p, 'merk': merk, 'naam': fix(r0['name']), 'collectie': col,
+        'model': p, 'merk': merk, 'naam': fix(r0['name']), 'collectie': col, 'label': label,
+        'begrensd': begrensd, 'vj_28': vj_28, 'vj_horizon': vj_hor, 'verwacht_horizon': round(hor_nu),
+        'weinig_historie': weinig_historie, 'sprong': sprong,
         'seizoen': f"{r0['season_code']} {r0['season_year'] or ''}".strip(),
         'curve': niv, 'piek': cv['piek'], 'start': cv['start'], 'eind': cv['eind'], 'dal': cv['dal'],
         'afprijs_wk': cv['afprijs'], 'nog_te_gaan': round(100 * sum(
@@ -401,7 +458,10 @@ for p, mpns in modellen.items():
 top10 = sorted([u for u in uit_modellen if u['verk28'] > 0], key=lambda u: -u['verk28'])[:10]
 signalen = sorted([u for u in uit_modellen if u['bestelbaar'] and u['status'] in ('LEEG', 'TE LAAT', 'BESTEL NU')
                    and u['verk28'] >= 3],
-                  key=lambda u: (RANG[u['status']], -u['verk28']))
+                  # leeg en te laat samen, gesorteerd op wat het kost (omzet die binnen de hersteltijd
+                  # misloopt); daarna bestel-nu op volume. Een leeg randartikel met 3 verkopen hoort
+                  # niet boven de best verkochte laars die over 5 dagen op is.
+                  key=lambda u: (0 if u['status'] in ('LEEG', 'TE LAAT') else 1, -u['mis_eur'], -u['verk28']))
 
 per_col = defaultdict(int)
 for u in uit_modellen: per_col[u['collectie']] += u['verk28']
@@ -438,6 +498,7 @@ uit = {
     'huidige_collectie': f"{HUIDIG_SZ} {HUIDIG_JR}",
     'instellingen': {'levertijd_std': LEVERTIJD_STD, 'veilig': VEILIG, 'dekking': DEKKING},
     'herstel': herstel, 'nooit_hersteld': dict(nooit),
+    'groei': {m: round(g, 2) for m, g in GROEI.items() if g}, 'groei_tot': DMAX.isoformat(),
     'marktplaats_fee_pct': round(100 * mp_fee, 1),
     'fee_per_kanaal': {k: round(100 * fee_s[k] / omzet_s[k], 1) for k in fee_s if omzet_s[k] > 500},
     'verkoop_per_collectie': dict(per_col), 'kanalen': kan_tot,
@@ -460,6 +521,8 @@ print(f"peildatum {TODAY} (wk {NU}) | lopende collectie {HUIDIG_SZ} {HUIDIG_JR} 
 print(f"modellen beoordeeld: {len(uit_modellen):,} | signalen: {len(signalen)} {uit['signalen_per_status']}")
 hs = ', '.join('%s %swk (n=%s)' % (k, v['weken'], v['n']) for k, v in herstel.items()) or 'geen'
 print("hersteltijd gemeten voor: " + hs)
+print("merkgroei (6 wk t/m %s vs vorig jaar): " % DMAX + ', '.join(f"{m} {g:.2f}x" for m, g in sorted(GROEI.items(), key=lambda x: -(x[1] or 0)) if g))
+print("begrensd door plafond: " + ', '.join(u['naam'][:30] for u in uit_modellen if u['begrensd']) )
 print(f"marktplaats-fee gemiddeld: {uit['marktplaats_fee_pct']}%  per kanaal: {uit['fee_per_kanaal']}")
 tv = sum(per_col.values()) or 1
 print("verkoop laatste 28 dagen per collectie: " +

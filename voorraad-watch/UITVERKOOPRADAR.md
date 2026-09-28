@@ -57,6 +57,19 @@ Het seizoensgewicht komt van het model zelf (kleurvariant), anders van de
 modelfamilie, anders van merk × seizoen — twee volledige jaarcycli, elk apart
 genormaliseerd.
 
+**Niveausprong aan het eind van de cyclus.** Hunter verkocht eind augustus 2026
+ineens 2,5 à 3× zoveel als een jaar eerder (week 34: 297 paar tegen 61). Die
+weken vallen nog in de laatste cyclus. Zonder correctie leest de curve die sprong
+als seizoenspiek, en lijkt het seizoen voorbij terwijl het net begint. De laatste
+acht weken van de cyclus worden daarom teruggerekend naar het niveau van de rest,
+met de gemeten merkgroei (laatste 6 weken tegen dezelfde 6 weken vorig jaar),
+zodra die buiten 0,77–1,3× valt. Ook wordt niet meer gladgestreken over de naad
+tussen eind augustus en begin september.
+
+**Plafond.** Het jaarniveau mag hoogstens 2,5× het gemeten 12-maandstempo zijn,
+vermenigvuldigd met de merkgroei. Zonder die vermenigvuldiging zou een merk dat
+echt verdrievoudigt worden afgeknepen.
+
 ### 4. Maatverdeling
 
 Uit de eigen verkoophistorie van het model, waarbij de laatste 28 dagen drie
@@ -77,6 +90,21 @@ realistische verdeling.
 Een model krijgt de status van zijn slechtste **kernmaat**: de maten die samen
 80% van de vraag dragen. Een lege randmaat maakt het model niet rood.
 
+**Volgorde in het rapport.** Leeg en te laat samen, gesorteerd op de omzet die
+binnen de hersteltijd misloopt; daarna bestel-nu op volume. Eerder stonden alle
+lege artikelen bovenaan, ook met drie verkopen, en de best verkochte laars die
+over vijf dagen op is daaronder.
+
+**Controle naast elk voorstel.** Bij elk signaal staat wat er vorig jaar in
+dezelfde weken verkocht werd (de komende hersteltijd + 8 weken) naast wat er nu
+verwacht wordt. Twee markeringen:
+
+- **Sprong**: de laatste 28 dagen verkochten minstens 4× zoveel als dezelfde 28
+  dagen vorig jaar. Dat kan echte groei zijn (Hunter), een lancering of een actie.
+  Eerst bevestigen, dan bestellen.
+- **Weinig historie**: minder dan 30 stuks in 12 maanden, of minder dan 20 vorig
+  jaar in dezelfde weken. Voorzichtig bestellen.
+
 ### 6. Hersteltijd per merk — gemeten, niet aangenomen
 
 Uit de weekhistorie in ShopifyQL: hoe lang stond een uitverkochte maat leeg
@@ -88,6 +116,22 @@ Leegstand die langer dan twintig weken duurde telt apart: dat artikel is binnen
 het seizoen nooit meer aangevuld.
 
 Zodra een leverancier een echte levertijd opgeeft, gaat die voor.
+
+Gemeten in september 2026 (voorgevuld in `config/merk-config.template.csv`,
+kolom `hersteltijd_weken`):
+
+| Merk | Hersteltijd | Leegstanden | Niet terug binnen 20 wk |
+|---|---|---|---|
+| Tofvel | 2 wk | 216 | 91 |
+| Lazamani | 2 wk | 213 | 24 |
+| Hunter | 4 wk | 140 | 17 |
+| Keen | 4 wk | 25 | 2 |
+| HEYDUDE | 7 wk | 383 | 33 |
+| Sockwell | 7 wk | 89 | 9 |
+| Toni Pons | 9 wk | 19 | 9 |
+
+Tofvel valt op: als een maat terugkomt is dat snel, maar bijna één op de drie
+lege maten kwam helemaal niet terug.
 
 ---
 
@@ -102,13 +146,25 @@ Zodra een leverancier een echte levertijd opgeeft, gaat die voor.
 | **Net voorbij** | SS 2026 | geen besteladvies, wel restvoorraad bij seizoenseinde |
 | **Vorig jaar** | FW 2025 | geen besteladvies |
 | **Ouder** | alles daarvoor | geen besteladvies |
+| **Doorloper** | ouder label, maar nu op volle prijs en verkoopt (≥ 8 in 28 dagen) | volledig |
 | Geen label | seizoensjaar ontbreekt | wel signaal, gemarkeerd |
+
+Het seizoensjaar is het **introductiejaar**, niet "zit nog in de collectie". Hunter
+Downpour Tall staat als FW 2025, maar is in september 2026 de best verkochte laars
+op volle prijs. Zo'n artikel is een doorloper en krijgt gewoon een besteladvies.
 
 Het NOOS-label is niet heilig: een artikel dat als NOOS staat maar 74% van zijn
 jaar in dertien weken verkoopt wordt als seizoensartikel behandeld.
 
-Daarnaast: een collectie waarvan 45% of meer al is afgeprijsd wordt opgeruimd.
-Daar wordt niet in bijbesteld, ook niet als dit ene artikel nog volle prijs heeft.
+**De prijs van het model zelf beslist.** Staat de helft of meer van de online maten
+met een van-prijs, dan geen besteladvies: er is een korting gestart, dus niet
+bijkopen. Voorbeeld: Toni Pons Mona-FR verkoopt 10× vorig jaar, maar staat op €27,97
+van €40; die sprong komt van de korting.
+
+Eerder besliste de collectie: lag 45% of meer van de collectie in de sale, dan
+geen advies. Dat blokkeerde Hunter Women's Original Tall (NOOS), terwijl geen maat
+daarvan is afgeprijsd en het model 16× vorig jaar verkoopt. De collectievlag gaat
+nu alleen als informatie mee.
 
 ### Wanneer piekt het seizoen, wanneer afprijzen
 
@@ -146,6 +202,24 @@ gemist in de dagen dat een kernmaat leeg stond. Dat laatste is een indicatie: he
 rekent met het gemiddelde jaartempo, dus het overschat als de leegstand buiten
 het seizoen viel en onderschat als het in de piek was.
 
+## Seizoen per merk (omzet per week, dec 2025 – dec 2026)
+
+Het weekomzetbeeld per merkshop bevestigt de curves die de radar gebruikt:
+
+| Merk | Wanneer | Radar |
+|---|---|---|
+| Lazamani, HEYDUDE, Keen, Toni Pons | zomer: mei–aug, piek eind juni | afprijsmoment valt in juli/aug |
+| Bartogi (breed + marktplaatsen) | zomerpiek, tweede top rond Black Friday | — |
+| Tofvel | okt–jan, piek nov/dec; lente en zomer bijna nul | piek wk 46–51; een lege maat in oktober kost de hele piek |
+| Sockwell | vlak door het jaar, Black Friday 3–5× | doorlopend; Black Friday is geen seizoen, wel een piekweek |
+| Hunter | herfst/winter; 2026 is een uitzondering (~2,5–3× vorig jaar) | niveaucorrectie, zie hierboven |
+
+Acties staan niet in de verkoophistorie van vorig jaar als ze toen niet
+plaatsvonden (zoals de HEYDUDE-top begin oktober in de weekgrafiek, als dat een
+actie is). Die moeten
+als geplande actie in de merk-config komen, anders ziet de radar de piek pas als
+hij al begonnen is.
+
 ## Bekende beperkingen
 
 - Vraag is bruto: retouren worden niet afgetrokken. Voor een waarschuwing is dat
@@ -155,3 +229,9 @@ het seizoen viel en onderschat als het in de piek was.
   niet.
 - Prijzen en publicatiestatus komen uit de laatste volledige export; de voorraad
   en verkopen uit de radarrun zelf.
+- Een merk met maar één eerder seizoen (Hunter: geen 2024) heeft een curve op
+  één cyclus. De vorm is dan minder zeker; de controle "vorig jaar zelfde weken"
+  staat daarom bij elk voorstel.
+- De n8n-versie leest de hersteltijd uit de merk-config en meet hem niet zelf;
+  de meting (`scripts/pull_wk.py` + `scripts/uitverkoop.py`) moet eens per
+  kwartaal opnieuw.

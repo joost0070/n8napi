@@ -83,8 +83,10 @@ nieuw = [
      "id": "alleen-signalen", "name": "Maandag, alleen signalen", "type": "n8n-nodes-base.filter",
      "typeVersion": 2.2, "position": [440, 480]},
 ]
-# oude rapportnode vervangen
-w['nodes'] = [n for n in w['nodes'] if n['name'] != 'Weekrapport bouwen'] + nieuw
+# oude rapportnode vervangen; nodes uit een eerdere run eerst weghalen, zodat dit script
+# vaker gedraaid kan worden zonder dubbele nodes
+namen = {n['name'] for n in nieuw}
+w['nodes'] = [n for n in w['nodes'] if n['name'] not in namen] + nieuw
 nodes = {n['name']: n for n in w['nodes']}
 nodes['Mail het weekrapport']['parameters']['subject'] = "={{ $json.onderwerp }}"
 nodes['Analyse: signaal per maat']['position'] = [220, 700]

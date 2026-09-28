@@ -1,14 +1,16 @@
-# Alleen deze twee kolommen zijn nog handwerk. De rest leidt het systeem zelf af
-# uit 26 maanden verkoophistorie: seizoensvenster, sale-periodes, maatcurve, NOOS-status.
-merk;levertijd_dagen;nabestellen_mogelijk;order_cutoff_fw;order_cutoff_ss;veiligheidsvoorraad_weken;min_order_eenheid;opmerking
-Tofvel;;ja/nee;;;2;;
-Keen;;;;;2;;
-Hunter;;;;;2;;
-Lazamani;;;;;2;;
-Sockwell;;;;;2;;
-Crocs;;;;;2;;
-HEYDUDE;;;;;2;;
-Toni Pons;;;;;2;;
-Jan Jansen;;;;;2;;
-Bartogi;;;;;2;;
-Piedi Nudi;;;;;2;;
+# Handwerk: levertijd_dagen, nabestellen_mogelijk en de order-cutoffs (antwoord van de leverancier).
+# hersteltijd_weken is GEMETEN (sep 2026): mediaan van hoe lang een bestseller leeg stond voordat hij
+# terug was. De radar gebruikt levertijd_dagen als die is ingevuld, anders hersteltijd_weken, anders 6.
+# Tussen haakjes in 'opmerking': aantal gemeten leegstanden / aantal dat binnen 20 weken nooit terugkwam.
+merk;levertijd_dagen;hersteltijd_weken;nabestellen_mogelijk;order_cutoff_fw;order_cutoff_ss;veiligheidsvoorraad_weken;min_order_eenheid;opmerking
+Tofvel;;2;ja/nee;;;2;;gemeten 216/91 - bijna een op drie lege maten kwam niet terug
+Keen;;4;;;;2;;gemeten 25/2
+Hunter;;4;;;;2;;gemeten 140/17 - sep 2026 ~2,5x vorig jaar
+Lazamani;;2;;;;2;;gemeten 213/24
+Sockwell;;7;;;;2;;gemeten 89/9
+Crocs;;;;;;2;;te weinig metingen (9)
+HEYDUDE;;7;;;;2;;gemeten 383/33
+Toni Pons;;9;;;;2;;gemeten 19/9 - weinig metingen
+Jan Jansen;;;;;;2;;
+Bartogi;;;;;;2;;
+Piedi Nudi;;;;;;2;;

@@ -19,6 +19,7 @@ kunt doen.
 | `fw_start_week` / `fw_eind_week` | ISO-weeknummers van het verkoopvenster herfst/winter | "Te veel" = meer dan je vóór `fw_eind_week` nog kwijt kunt |
 | `ss_start_week` / `ss_eind_week` | Idem voor lente/zomer | Idem |
 | `levertijd_dagen` | Dagen van bestellen tot op voorraad | Kernwaarde: signaal moet *minstens* zo ver vooruit |
+| `hersteltijd_weken` | Vooraf gevuld met de **gemeten** waarde: hoe lang een bestseller in de praktijk leeg stond | Gebruikt zolang `levertijd_dagen` leeg is |
 | `nabestellen_mogelijk` | `ja` = NOOS/replenishment, `nee` = alleen voorseizoen-inkoop | Bij `nee` is een tekortsignaal informatief (afprijzen/spreiden), bij `ja` is het een bestelactie |
 | `order_cutoff_fw` / `order_cutoff_ss` | Laatste besteldatum per seizoen | Na deze datum verandert het advies van "bijbestellen" naar "herverdelen/afprijzen" |
 | `min_order_eenheid` | Minimum afname: los paar / size-run / doos van N | Adviesaantal moet hierop afgerond worden |
