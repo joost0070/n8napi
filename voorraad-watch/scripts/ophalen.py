@@ -125,8 +125,18 @@ def shopifyql():
 
 # ---- 5. SKU -> barcode ----
 def barcodes():
+    # Alleen shops waarvan de SKU's meestal geen EAN zijn (Keen: '1004347-7'); de rest koppelt
+    # al op EAN. Scheelt ~10 minuten ten opzichte van alle shops langslopen.
     stap("Shopify: SKU -> barcode")
-    subprocess.run([sys.executable, os.path.join(HIER, 'pull_barcode.py')], check=False)
+    doms = []
+    for f in glob.glob('shop/*_products.json'):
+        skus = [str(v.get('sku') or '') for v in json.load(open(f))]
+        skus = [x for x in skus if x]
+        if skus and sum(1 for x in skus if not x.isdigit()) / len(skus) > 0.3:
+            doms.append(os.path.basename(f)[:-len('_products.json')])
+    print('shops met eigen SKU\'s:', ', '.join(doms) or 'geen')
+    if doms:
+        subprocess.run([sys.executable, os.path.join(HIER, 'pull_barcode.py')] + doms, check=False)
 
 
 # ---- 6. 12-maandstempo op leverbare dagen ----
@@ -167,5 +177,5 @@ def tempo():
 
 if __name__ == '__main__':
     t0 = time.time()
-    artikelstam(); ce_orders(); barcodes(); shopifyql(); shopify(); tempo()
+    artikelstam(); ce_orders(); shopifyql(); shopify(); barcodes(); tempo()
     print(f"\nklaar in {(time.time() - t0) / 60:.1f} min")
