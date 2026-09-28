@@ -10,12 +10,13 @@ const ce = rd('rows.json');
 const ceProd = [{ Content: ce.map(r => ({ MerchantProductNo: r.mpn, ParentMerchantProductNo: r.parent || r.name, Brand: r.brand,
   Name: r.name, Size: r.size, Stock: r.stock, Price: r.price, Ean: r.ean,
   ExtraData: [{ Key: 'Seizoensjaar', Value: r.season_year }, { Key: 'seizoen_NL', Value: r.season }] })) }];
+const skuBc = fs.existsSync('sku_barcode.json') ? rd('sku_barcode.json') : {};
 const shopOrd = [], shopProd = [];
 for (const w of web) {
   const o = `shop/${w.domein}_orders.json`, p = `shop/${w.domein}_products.json`;
   if (fs.existsSync(o)) shopOrd.push({ orders: rd(o).map(r => ({ created_at: r.d + 'T12:00:00Z', line_items: [{ sku: r.sku, quantity: r.q }] })) });
   if (fs.existsSync(p)) shopProd.push({ products: rd(p).map(v => ({ status: 'active', published_at: v.gepubliceerd,
-    variants: [{ sku: v.sku, price: v.prijs, compare_at_price: v.vanaf }] })) });
+    variants: [{ sku: v.sku, price: v.prijs, compare_at_price: v.vanaf, barcode: skuBc[v.sku] }] })) });
 }
 const ceOrd = [...lijst('ord'), ...lijst('ord28')].filter(f => f.endsWith('.json')).map(f => { try { return rd(f); } catch { return {}; } });
 const seen = new Set(); for (const pg of ceOrd) pg.Content = (pg.Content || []).filter(o => !seen.has(o.Id) && seen.add(o.Id));

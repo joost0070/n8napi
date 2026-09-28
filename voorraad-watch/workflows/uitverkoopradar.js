@@ -48,10 +48,19 @@ for (const pg of $('CE: producten (alle maten)').all()) {
       model: p.ParentMerchantProductNo, voorraadCE: p.Stock || 0, prijs: p.Price || 0,
       sz: seizoenVan(ex(p, 'seizoen_NL') || ex(p, 'seizoen_EN')), jaar,
     };
-    if (p.Ean) eanNaar[p.Ean] = p.MerchantProductNo;
+    if (p.Ean) { eanNaar[p.Ean] = p.MerchantProductNo; eanNaar[String(p.Ean).replace(/^0+/, '')] = p.MerchantProductNo; }
   }
 }
-const naar = (s) => (art[s] ? s : eanNaar[s]);
+// Koppelen: artikelnummer, EAN, EAN zonder voorloopnullen (Shopify geeft UPC-12, CE EAN-13 met
+// een 0 ervoor), en voor shops met eigen SKU's (Keen: '1004347-7') via de barcode in Shopify.
+const skuBarcode = {};
+for (const pg of $('Shopify: producten').all())
+  for (const p of pg.json.products || [])
+    for (const v of p.variants || []) if (v.sku && v.barcode && v.sku !== v.barcode) skuBarcode[v.sku] = v.barcode;
+const naar = (s) => { if (art[s]) return s; s = String(s ?? '');
+  const m = eanNaar[s] || eanNaar[s.replace(/^0+/, '')];
+  if (m || !skuBarcode[s]) return m;
+  return eanNaar[String(skuBarcode[s]).replace(/^0+/, '')]; };
 const stype = (a) => (a.jaar === 'NOOS' ? 'NOOS' : a.sz);
 const familie = (a) => `${a.merk}|${String(a.naam || '').split(/\s+/).slice(0, 2).join(' ').toLowerCase()}`;
 const DAG = 86400000;
@@ -242,7 +251,7 @@ for (const [model, mpns] of Object.entries(modellen)) {
                 marktplaats: mp28[m] || 0 } };
   });
   const a0 = rij.reduce((b, x) => (x.n12 > b.n12 ? x : b), rij[0]).a;
-  const cv = curveVoor(a0); if (!cv) continue;
+  let cv = curveVoor(a0); if (!cv) continue;
   let col = collectie(a0, cv);
 
   const mm = merkMaat[a0.merk] || {}, mtot = rij.reduce((s, x) => s + (mm[x.maat] || 0), 0);
@@ -258,7 +267,14 @@ for (const [model, mpns] of Object.entries(modellen)) {
   if (verk28 >= 8 && besch >= 5 && idxRecent >= 0.5 / 52) {
     jaarvraag = verk28 / besch * 7 / idxRecent; bron = 'recent';
     if (n12 >= 30 && j12 > 0) jaarvraag = Math.min(Math.max(jaarvraag, 0.4 * j12), 2.5 * j12 * Math.max(1, groei[a0.merk] || 1));
-  } else if (j12 > 0) { jaarvraag = j12; bron = '12 mnd'; } else continue;
+  } else if (verk28 >= 8 && besch >= 5) {
+    // volgens de curve buiten het seizoen, maar het verkoopt nog: huidig tempo vlak doortrekken
+    const vlak = {}; for (let w = 1; w <= 53; w++) vlak[w] = 1 / 53;
+    cv = { ...cv, idx: vlak }; jaarvraag = verk28 / besch * 7 * 53; bron = 'vlak';
+  } else if (j12 > 0) {
+    // lang leeggestaan: tempo per leverbare dag blaast op; hoogstens 2x wat er echt verkocht is
+    jaarvraag = Math.min(j12, 2 * n12); bron = '12 mnd';
+  } else continue;
 
   const lt = levertijd(a0.merk);
   for (const x of rij) {

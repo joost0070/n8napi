@@ -37,7 +37,16 @@ BREED = {'bartogi-nl', 'bartogi-de'}
 ce = json.load(open(f'{B}/rows.json'))
 info = {r['mpn']: r for r in ce}
 ean2 = {r['ean']: r['mpn'] for r in ce if r.get('ean')}
-def naar(s): return s if s in info else ean2.get(s)
+# Koppelen: artikelnummer, EAN, EAN zonder voorloopnullen (Shopify geeft UPC-12, CE EAN-13 met
+# een 0 ervoor), en voor shops met eigen SKU's (Keen: '1004347-7') via de barcode in Shopify.
+ean0 = {str(r['ean']).lstrip('0'): r['mpn'] for r in ce if r.get('ean')}
+sku_bc = json.load(open(f'{B}/sku_barcode.json')) if os.path.exists(f'{B}/sku_barcode.json') else {}
+def naar(s):
+    if s in info: return s
+    s = str(s or '')
+    m = ean2.get(s) or ean0.get(s.lstrip('0'))
+    if m or s not in sku_bc: return m
+    return ean0.get(str(sku_bc[s]).lstrip('0'))
 def model(r): return r['parent'] or r['name']
 def stype(r): return 'NOOS' if str(r.get('season_year') or '').upper() == 'NOOS' else r['season_code']
 def familie(r):
@@ -354,8 +363,15 @@ for p, mpns in modellen.items():
             begrensd = jaarvraag > plafond
             jaarvraag = min(max(jaarvraag, 0.4 * j12), plafond)
         bron = 'recent'
+    elif verk28 >= 8 and beschikbaar >= 5:
+        # Volgens de curve buiten het seizoen, maar het verkoopt nog (HEYDUDE Wendy Speckle: 32 in
+        # 28 dagen, curve bijna nul). Dan het huidige tempo vlak doortrekken in plaats van naar nul.
+        cv = dict(cv, idx={w: 1 / 53 for w in range(1, 54)})
+        jaarvraag, bron = verk28 / beschikbaar * 7 * 53, 'vlak'
     elif j12 > 0:
-        jaarvraag, bron = j12, '12 mnd'
+        # Stond een model het grootste deel van het jaar leeg, dan blaast 'tempo per leverbare dag'
+        # het jaarniveau op (Sockwell-maten: 5x). Hoogstens 2x wat er echt verkocht is.
+        jaarvraag, bron = min(j12, 2 * n12), '12 mnd'
     else:
         continue
 
@@ -417,6 +433,14 @@ for p, mpns in modellen.items():
     # actie of lancering zijn. Het rapport vraagt dan om bevestiging voor je bestelt.
     sprong = round(verk28 / vj_28, 1) if vj_28 >= 3 and verk28 >= 4 * vj_28 else None
     kanaal = {k: sum(x['kanaal'][k] for x in rij) for k in ('merkshop', 'breed', 'marktplaats')}
+    # Komende 13 weken (rest van het jaar): verwachte vraag en wat de voorraad daarvan kan leveren,
+    # in stuks en in bruto omzet ex btw (zelfde basis als de MT-rapportage).
+    H13 = 53 - NU
+    q_vraag = q_lev = e_vraag = e_lev = 0.0
+    for x in rij:
+        v = vraag_over(x['jaarvraag'], cv['idx'], NU, H13)
+        l = min(v, x['vrd']); pr = (prijs_live.get(x['m'], (x['prijs'], None))[0] or x['prijs'] or 0) / 1.21
+        q_vraag += v; q_lev += l; e_vraag += v * pr; e_lev += l * pr
     n_live = sum(1 for x in rij if x['live']); n_sale = sum(1 for x in rij if x['live'] and x['sale'])
     label = col
     if doorloper(col, verk28, n_live, n_sale): col = 'doorloper'
@@ -428,6 +452,8 @@ for p, mpns in modellen.items():
         'model': p, 'merk': merk, 'naam': fix(r0['name']), 'collectie': col, 'label': label,
         'begrensd': begrensd, 'vj_28': vj_28, 'vj_horizon': vj_hor, 'verwacht_horizon': round(hor_nu),
         'weinig_historie': weinig_historie, 'sprong': sprong,
+        'rest_jaar': {'vraag_st': round(q_vraag), 'leverbaar_st': round(q_lev),
+                      'vraag_eur': round(e_vraag), 'leverbaar_eur': round(e_lev)},
         'seizoen': f"{r0['season_code']} {r0['season_year'] or ''}".strip(),
         'curve': niv, 'piek': cv['piek'], 'start': cv['start'], 'eind': cv['eind'], 'dal': cv['dal'],
         'afprijs_wk': cv['afprijs'], 'nog_te_gaan': round(100 * sum(
@@ -514,6 +540,22 @@ uit = {
         'slechtst': sorted(top50, key=lambda t: t['leverbaar_pct'])[:10],
     },
 }
+# per merk: vraag rest van het jaar tegen wat de voorraad kan leveren, met de kanaalverdeling
+per_merk = defaultdict(lambda: defaultdict(float))
+for u in uit_modellen:
+    pm = per_merk[u['merk']]; k = u['kanaal']; kt = sum(k.values())
+    rj = dict(u['rest_jaar'])
+    if not u['bestelbaar']:
+        # niet bij te bestellen: alleen wat er ligt kan nog verkocht worden, de rest van de
+        # 'vraag' gaat naar andere modellen (Ambre-laarsjes uit 2024: 0 voorraad, geen gat)
+        rj['vraag_st'], rj['vraag_eur'] = rj['leverbaar_st'], rj['leverbaar_eur']
+    for a, b in rj.items(): pm[a] += b
+    for kk in k: pm['kan_' + kk] += k[kk]
+    pm['kan_tot'] += kt
+uit['rest_jaar_per_merk'] = {m: {a: round(b) for a, b in d.items()} for m, d in per_merk.items()}
+uit['modellen_rest_jaar'] = sorted([{'merk': u['merk'], 'naam': u['naam'], 'status': u['status'], 'bestelbaar': u['bestelbaar'],
+                                     **u['rest_jaar']} for u in uit_modellen if u['bestelbaar']],
+                                   key=lambda m: -(m['vraag_eur'] - m['leverbaar_eur']))[:60]
 json.dump(uit, open(f'{B}/uitverkoop.json', 'w'), ensure_ascii=False, indent=1)
 
 # ---- samenvatting op het scherm ----

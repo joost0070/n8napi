@@ -202,9 +202,27 @@ gemist in de dagen dat een kernmaat leeg stond. Dat laatste is een indicatie: he
 rekent met het gemiddelde jaartempo, dus het overschat als de leegstand buiten
 het seizoen viel en onderschat als het in de piek was.
 
+### Koppeling en verwachting (september 2026)
+
+- **Artikelkoppeling.** Shopify geeft soms een UPC-12-barcode waar ChannelEngine
+  een EAN-13 met voorloopnul heeft, en Keenfootwear.nl gebruikt eigen SKU's
+  ("1004347-7"). De radar koppelt nu op artikelnummer, EAN, EAN zonder
+  voorloopnullen en via de Shopify-barcode (`scripts/pull_barcode.py`; in n8n uit
+  de node *Shopify: producten*). Daarvoor telde de Keen-shop niet mee.
+- **Buiten het seizoen, maar het verkoopt.** Zegt de curve "buiten seizoen" en
+  verkoopt een model toch ≥ 8 in 28 dagen, dan wordt het huidige tempo vlak
+  doorgetrokken in plaats van naar nul.
+- **Lang leeg gestaan.** Het 12-maandstempo per leverbare dag wordt begrensd op
+  2× de werkelijk verkochte stuks.
+- **Rest van het jaar per merk.** Per model de verwachte vraag tot week 52 en wat
+  de voorraad daarvan kan leveren. Modellen zonder besteladvies tellen alleen mee
+  met wat er ligt. Op merkniveau is de optelsom van modellen minder betrouwbaar
+  dan "vorig jaar × huidige groei" (merken met een lange staart, zoals HEYDUDE,
+  verschuiven vraag naar wat er ligt); gebruik dat voor de vergelijking met het doel.
+
 ## Seizoen per merk (omzet per week, dec 2025 – dec 2026)
 
-Het weekomzetbeeld per merkshop bevestigt de curves die de radar gebruikt:
+De weektargets in de MT-rapportage volgen hetzelfde patroon als de curves die de radar gebruikt:
 
 | Merk | Wanneer | Radar |
 |---|---|---|
