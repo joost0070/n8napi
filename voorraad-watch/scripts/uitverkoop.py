@@ -160,10 +160,13 @@ HUIDIG_SZ = 'FW' if (NU >= 30 or NU <= 5) else 'SS'
 HUIDIG_JR = JAAR if not (HUIDIG_SZ == 'FW' and NU <= 5) else JAAR - 1
 VORIG_SZ = 'SS' if HUIDIG_SZ == 'FW' else 'FW'
 VORIG_JR = HUIDIG_JR if HUIDIG_SZ == 'FW' else HUIDIG_JR - 1
-def collectie(r, cv):
+def collectie(r, cv, niv=None):
     jr = str(r.get('season_year') or '').upper()
     sz = r['season_code']
-    if (cv and cv['top13'] < 0.33) or jr == 'NOOS':
+    # Een vlakke curve maakt een model alleen 'doorlopend' als het zijn EIGEN curve is. Leunt het
+    # op de curve van de familie of het merk (te weinig eigen verkoop), dan zegt die niets over dit
+    # model: Keen WK500 Abbey Stone (FW 2025, 0 verkocht) werd anders 'doorlopend'.
+    if (cv and cv['top13'] < 0.33 and niv == 'parent') or jr == 'NOOS':
         # de gemeten curve gaat voor het label: NOOS bleek niet altijd te kloppen
         return 'doorlopend' if not cv or cv['top13'] < 0.45 else 'lopend?'
     if not jr.isdigit():
@@ -212,16 +215,29 @@ for f in glob.glob(f'{B}/ord28/o*.json'):
             fee_s[kan] += fee; omzet_s[kan] += tot
 mp_fee = sum(fee_s.values()) / max(sum(omzet_s.values()), 1)
 
-live, prijs_live = {}, {}
+live, prijs_live, sale_ergens = {}, {}, set()
 for f in glob.glob(f'{B}/shop/*_products.json'):
     for v in json.load(open(f)):
         m = naar(v.get('sku'))
         if not m: continue
-        if v.get('gepubliceerd'): live[m] = True
+        if v.get('gepubliceerd'):
+            live[m] = True
+            # afgeprijsd in één shop waar het online staat = het wordt opgeruimd
+            if v.get('vanaf') and v['vanaf'] > v['prijs'] * 1.02: sale_ergens.add(m)
         prijs_live[m] = (v['prijs'], v.get('vanaf'))
 def afgeprijsd(m):
     p = prijs_live.get(m)
-    return bool(p and p[1] and p[1] > p[0] * 1.02)
+    return m in sale_ergens or bool(p and p[1] and p[1] > p[0] * 1.02)
+
+# Handmatige lijst: config/bijbestellen.csv (model;bijbestellen;opmerking). 'nee' = uitlopend,
+# nooit een besteladvies. 'ja' = altijd meenemen. Gaat voor alle regels hierboven.
+HANDMATIG = {}
+_hp = os.path.join(os.path.dirname(CONFIG), 'bijbestellen.csv')
+if os.path.exists(_hp):
+    for _l in open(_hp, encoding='utf-8'):
+        _d = [x.strip() for x in _l.split(';')]
+        if len(_d) >= 2 and _d[0] and not _d[0].startswith('#') and _d[0].lower() != 'model':
+            HANDMATIG[_d[0]] = _d[1].lower().startswith('j')
 
 # prijsregime per collectie (merk x seizoen x jaar)
 colsale = defaultdict(lambda: [0, 0])
@@ -335,7 +351,7 @@ for p, mpns in modellen.items():
     r0 = max(rs, key=lambda r: tempo12.get(r['mpn'], {}).get('stuks_jaar', 0))
     niv, cv = curve_voor(r0)
     if not cv: continue
-    col = collectie(r0, cv)
+    col = collectie(r0, cv, niv)
     merk = r0['brand']
 
     rij = []
@@ -468,6 +484,14 @@ for p, mpns in modellen.items():
     # in een collectie die grotendeels in de sale ligt, is bewust vastgehouden (bv. Hunter
     # Women's Original Tall, 16x vorig jaar). De collectievlag gaat als info mee.
     bestelbaar = (col in BESTELBAAR and n_live > 0 and n_sale / n_live < 0.5)
+    reden = ('staat op de lijst: niet bijbestellen' if p in HANDMATIG and not HANDMATIG[p] else
+             'niet online' if n_live == 0 else
+             'afgeprijsd' if n_sale / n_live >= 0.5 else
+             'oud seizoen, verkoopt niet op volle prijs' if col not in BESTELBAAR else None)
+    if p in HANDMATIG:
+        bestelbaar = HANDMATIG[p]
+        col = col if bestelbaar else 'uitlopend (lijst)'
+    if bestelbaar: reden = None
     uit_modellen.append({
         'model': p, 'merk': merk, 'naam': fix(r0['name']), 'collectie': col, 'label': label,
         'begrensd': begrensd, 'vj_28': vj_28, 'vj_horizon': vj_hor, 'verwacht_horizon': round(hor_nu),
@@ -486,7 +510,7 @@ for p, mpns in modellen.items():
         'dagen_totaal': None if dagen_totaal is None else round(dagen_totaal),
         'over_bij_dal': round(over), 'weken_tot_dal': weken_rest,
         'vorig_jaar_leeg': None if vj_leeg is None else round(100 * vj_leeg),
-        'bestelbaar': bestelbaar, 'col_sale': col_in_sale(r0),
+        'bestelbaar': bestelbaar, 'reden': reden, 'col_sale': col_in_sale(r0),
         'prijs': r0['price'] or 0,
         'maten': sorted([{k: (round(v, 2) if isinstance(v, float) else v) for k, v in x.items()
                           if k in ('maat', 'vrd', 'verk28', 'leeg28', 'aandeel', 'per_week', 'dagen',
@@ -580,7 +604,7 @@ uit['modellen_rest_jaar'] = sorted([{'merk': u['merk'], 'naam': u['naam'], 'stat
 json.dump(uit, open(f'{B}/uitverkoop.json', 'w'), ensure_ascii=False, indent=1)
 
 # Volledig overzicht voor de overzichtspagina: elk model met voorraad of recente verkoop.
-VELDEN = ('model', 'merk', 'naam', 'collectie', 'seizoen', 'status', 'bestelbaar', 'col_sale', 'verk28', 'per_week',
+VELDEN = ('model', 'merk', 'naam', 'collectie', 'seizoen', 'status', 'bestelbaar', 'reden', 'col_sale', 'verk28', 'per_week',
           'voorraad', 'dagen_totaal', 'eerste_leeg', 'bestel_over', 'levertijd', 'levertijd_bron', 'sprong',
           'weinig_historie', 'vj_horizon', 'verwacht_horizon', 'bestel_totaal', 'piek', 'afprijs_wk', 'kanaal', 'prijs')
 overzicht = [{k: u[k] for k in VELDEN} | {'maten': [{k: m[k] for k in ('maat', 'vrd', 'per_week', 'dagen', 'status', 'bestel',

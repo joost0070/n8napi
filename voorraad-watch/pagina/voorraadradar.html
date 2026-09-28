@@ -109,6 +109,7 @@ td.r,th.r{text-align:right}
     <div><b>Eerste maat op</b>: de kernmaat die als eerste leeg is. Kernmaten zijn de maten die samen 80% van de verkoop maken; een lege randmaat maakt het artikel niet rood.</div>
     <div><b>Bestel uiterlijk</b>: de datum waarop die maat op is, min de hersteltijd van het merk. Dat is de laatste dag om te bestellen zonder gat. Staat er "te laat", dan komt ook een bestelling van vandaag na het gat.</div>
     <div><b>Status</b>: leeg = het artikel of een kernmaat is op en er wordt nu omzet gemist (maat leeg = er ligt nog wel voorraad in andere maten) · te laat = leeg voordat een nieuwe levering er kan zijn · bestel nu = binnen twee weken besteldatum · volgende week = in de gaten houden.</div>
+    <div><b>Geen besteladvies</b> krijgen: artikelen uit een oud seizoen die niet meer op volle prijs verkopen, artikelen die in een van de shops zijn afgeprijsd, artikelen die nergens online staan, en modellen op de lijst "niet bijbestellen" (config/bijbestellen.csv). Een ouder artikel dat nu op volle prijs goed verkoopt (8 of meer in 28 dagen) telt als doorloper en krijgt wel advies. Zet "alleen bij te bestellen" uit om ze toch te zien.</div>
     <div id="hersteltijden"></div>
   </section>
 </div>
@@ -196,7 +197,7 @@ function regel(u) {
   const bestel = u.bestel_totaal > 0 && RANG[u.status] <= 2 ? `<div class="sub">voorstel ${nl(u.bestel_totaal)} st</div>` : '';
   return `<tr class="rij" tabindex="0" data-m="${esc(u.model)}" aria-expanded="${open.has(u.model)}">
     <td>${pil(u.status, u.voorraad)}</td>
-    <td><span class="merk">${esc(u.merk)}</span> ${esc(u.naam)}<div class="sub">${esc(u.collectie)} · ${esc(u.seizoen)}${u.bestelbaar ? '' : ' · geen besteladvies'}</div>${vlag}</td>
+    <td><span class="merk">${esc(u.merk)}</span> ${esc(u.naam)}<div class="sub">${esc(u.collectie)} · ${esc(u.seizoen)}${u.bestelbaar ? '' : ' · geen besteladvies' + (u.reden ? ': ' + esc(u.reden) : '')}</div>${vlag}</td>
     <td class="r num">${nl(u.verk28)}<div class="sub">${nl(u.per_week, 1)}/wk verwacht</div></td>
     <td class="r num">${nl(u.voorraad)}</td>
     <td><div class="duur">${d1}<small>${d2}</small></div></td>

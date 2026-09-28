@@ -1,0 +1,4 @@
+# Handmatige lijst per model (hoofdartikelnummer uit ChannelEngine, bv. K1031276).
+# bijbestellen: nee = uitlopend, krijgt nooit een besteladvies. ja = altijd meenemen.
+# Deze lijst gaat voor de automatische regels (seizoenslabel, korting, doorloper).
+model;bijbestellen;opmerking
