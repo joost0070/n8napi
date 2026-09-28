@@ -616,8 +616,9 @@ json.dump({'peildatum': TODAY.isoformat(), 'week': NU, 'herstel': herstel, 'mode
 # ---- samenvatting op het scherm ----
 print(f"peildatum {TODAY} (wk {NU}) | lopende collectie {HUIDIG_SZ} {HUIDIG_JR} | recente weken {RECENT}")
 print(f"modellen beoordeeld: {len(uit_modellen):,} | signalen: {len(signalen)} {uit['signalen_per_status']}")
-hs = ', '.join('%s %swk (n=%s)' % (k, v['weken'], v['n']) for k, v in herstel.items()) or 'geen'
-print("hersteltijd gemeten voor: " + hs)
+hs = ', '.join('%s %swk (%s)' % (k, v['weken'], f"gemeten, n={v['n']}" if v['n'] else v['bron'])
+               for k, v in herstel.items()) or 'geen'
+print("hersteltijd: " + hs)
 print("merkgroei (6 wk t/m %s vs vorig jaar): " % DMAX + ', '.join(f"{m} {g:.2f}x" for m, g in sorted(GROEI.items(), key=lambda x: -(x[1] or 0)) if g))
 print("begrensd door plafond: " + ', '.join(u['naam'][:30] for u in uit_modellen if u['begrensd']) )
 print(f"marktplaats-fee gemiddeld: {uit['marktplaats_fee_pct']}%  per kanaal: {uit['fee_per_kanaal']}")

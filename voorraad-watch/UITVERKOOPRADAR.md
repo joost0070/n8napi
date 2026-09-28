@@ -256,7 +256,7 @@ hij al begonnen is.
 
 ## Dagelijkse run en overzichtspagina
 
-Elke ochtend om 07:30 draait een Claude-routine in een lege sessie:
+Elke ochtend om 05:52 draait een Claude-routine in een lege sessie (klaar vóór 07:00):
 
 ```
 bash voorraad-watch/scripts/dagelijks.sh
