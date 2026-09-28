@@ -1,6 +1,6 @@
 import os,subprocess,json,re,datetime as dt,threading
 from shops import SHOPS, API
-FROM=(dt.date(2026,9,14)-dt.timedelta(days=800)).isoformat()+"T00:00:00Z"
+FROM=(dt.date.today()-dt.timedelta(days=800)).isoformat()+"T00:00:00Z"
 os.makedirs('shop',exist_ok=True)
 FIELDS="id,created_at,cancelled_at,financial_status,line_items,current_total_discounts"
 

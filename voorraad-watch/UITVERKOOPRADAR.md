@@ -253,3 +253,29 @@ hij al begonnen is.
 - De n8n-versie leest de hersteltijd uit de merk-config en meet hem niet zelf;
   de meting (`scripts/pull_wk.py` + `scripts/uitverkoop.py`) moet eens per
   kwartaal opnieuw.
+
+## Dagelijkse run en overzichtspagina
+
+Elke ochtend om 07:30 draait een Claude-routine in een lege sessie:
+
+```
+bash voorraad-watch/scripts/dagelijks.sh
+```
+
+1. `scripts/ophalen.py` haalt alles vers op in een lege datamap: ChannelEngine-artikelstam
+   en orders (400 dagen), Shopify-orders (800 dagen) en producten per shop, ShopifyQL
+   (365 en 28 dagen) en de SKU→barcode-koppeling. Sleutels: ChannelEngine via de proxy,
+   Shopify via `SHOPIFY_TOKEN_*`.
+2. `scripts/uitverkoop.py` rekent per model en maat de dagen tot leeg, de status en de
+   **bestel-uiterlijk-datum** (dag waarop de maat op is, min de hersteltijd van het merk).
+   De hersteltijd komt uit `config/merk-config.template.csv`: een opgegeven levertijd van
+   de leverancier gaat voor, anders de gemeten hersteltijd, anders 6 weken.
+3. `scripts/pagina.py` zet het resultaat in `pagina/voorraadradar.html`; de routine
+   publiceert die pagina op dezelfde vaste link.
+
+De pagina heeft drie weergaven: **Bestellen** (alles wat leeg of te laat is, daarna op
+besteldatum), **Top 25 verkocht** en **Alle artikelen**. Per artikel: verkocht 28 dagen,
+voorraad, hoe lang die meegaat (dagen, weken of maanden), welke kernmaat als eerste op is
+en de uiterste besteldatum. Klik een regel open voor dezelfde cijfers per maat.
+
+Er gaat geen verkoop- of voorraaddata de repository in: de datamap staat buiten de repo.

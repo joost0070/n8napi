@@ -19,7 +19,9 @@ de veilige kant, het signaal komt eerder in plaats van later.
 import json, glob, os, re, statistics, datetime as dt
 from collections import defaultdict
 
-B = os.path.dirname(os.path.abspath(__file__))
+# datamap: RADAR_DATA, anders de map waarin het script wordt gestart
+B = os.environ.get('RADAR_DATA') or os.getcwd()
+CONFIG = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'config', 'merk-config.template.csv')
 TODAY = dt.date.today()
 JAAR, NU, _ = TODAY.isocalendar()
 RECENT = sorted({(TODAY - dt.timedelta(days=d)).isocalendar()[1] for d in range(1, 29)})
@@ -272,6 +274,21 @@ for merk, e in episodes.items():
     if len(e) >= 5:
         herstel[merk] = {'weken': max(2, min(12, round(statistics.median(e)))),
                          'n': len(e), 'nooit': nooit.get(merk, 0), 'bron': 'gemeten'}
+# Zonder weekhistorie (de dagelijkse run haalt die niet op): de merk-config. Een opgegeven
+# levertijd van de leverancier gaat altijd voor.
+if os.path.exists(CONFIG):
+    import csv
+    regels = [l for l in open(CONFIG, encoding='utf-8') if l.strip() and not l.startswith('#')]
+    for c in csv.DictReader(regels, delimiter=';'):
+        merk = (c.get('merk') or '').strip()
+        try: opgegeven = -(-int(c.get('levertijd_dagen') or 0) // 7)
+        except ValueError: opgegeven = 0
+        try: gemeten = int(c.get('hersteltijd_weken') or 0)
+        except ValueError: gemeten = 0
+        if opgegeven:
+            herstel[merk] = {'weken': opgegeven, 'n': 0, 'nooit': 0, 'bron': 'leverancier'}
+        elif gemeten and merk not in herstel:
+            herstel[merk] = {'weken': gemeten, 'n': 0, 'nooit': 0, 'bron': 'gemeten (config)'}
 def levertijd(merk):
     return herstel.get(merk, {}).get('weken', LEVERTIJD_STD)
 
@@ -384,6 +401,8 @@ for p, mpns in modellen.items():
         x['dagen_vlak'] = (x['vrd'] / (x['verk28'] / max(28 - x['leeg28'], 1))) if x['verk28'] else None
         horizon = vraag_over(jv, cv['idx'], NU, lt + VEILIG + DEKKING)
         x['bestel'] = max(0, round(vraag_over(jv, cv['idx'], NU, lt + DEKKING) - x['vrd']))
+        # dagen tot je uiterlijk moet bestellen: op-datum min de hersteltijd (negatief = al te laat)
+        x['bestel_over'] = None if x['dagen'] is None else round(x['dagen'] - lt * 7)
         if horizon < 2 and x['vrd'] == 0:
             x['status'] = 'GEEN VRAAG'
         elif x['vrd'] == 0:
@@ -407,6 +426,7 @@ for p, mpns in modellen.items():
     kernrij = [x for x in rij if x['m'] in kern and x['status'] != 'GEEN VRAAG']
     status = min((x['status'] for x in kernrij), key=lambda s: RANG[s], default='OK')
     eerste = min((x['dagen'] for x in kernrij if x['dagen'] is not None), default=None)
+    bestel_over = min((x['bestel_over'] for x in kernrij if x['bestel_over'] is not None), default=None)
     totaal_vrd = sum(x['vrd'] for x in rij)
     dagen_totaal = uitverkoop(totaal_vrd, jaarvraag, cv['idx'], NU)
     over, weken_rest = rest_seizoen(totaal_vrd, jaarvraag, cv, NU)
@@ -462,6 +482,7 @@ for p, mpns in modellen.items():
         'jaarvraag': round(jaarvraag), 'bron': bron, 'levertijd': lt,
         'levertijd_bron': herstel.get(merk, {}).get('bron', 'aanname'),
         'status': status, 'eerste_leeg': None if eerste is None else round(eerste),
+        'bestel_over': bestel_over, 'per_week': round(sum(x['per_week'] for x in rij), 1),
         'dagen_totaal': None if dagen_totaal is None else round(dagen_totaal),
         'over_bij_dal': round(over), 'weken_tot_dal': weken_rest,
         'vorig_jaar_leeg': None if vj_leeg is None else round(100 * vj_leeg),
@@ -469,7 +490,7 @@ for p, mpns in modellen.items():
         'prijs': r0['price'] or 0,
         'maten': sorted([{k: (round(v, 2) if isinstance(v, float) else v) for k, v in x.items()
                           if k in ('maat', 'vrd', 'verk28', 'leeg28', 'aandeel', 'per_week', 'dagen',
-                                   'dagen_vlak', 'status', 'bestel', 'sale')} | {'kern': x['m'] in kern}
+                                   'dagen_vlak', 'status', 'bestel', 'sale', 'bestel_over')} | {'kern': x['m'] in kern}
                          for x in rij if x['status'] != 'GEEN VRAAG' or x['vrd'] > 0],
                         key=lambda x: (float(re.sub(r'[^0-9.]', '', x['maat'].split('-')[0].split('/')[0]) or 999)
                                        if re.match(r'^\d', x['maat'] or '') else 999, x['maat'])),
@@ -557,6 +578,16 @@ uit['modellen_rest_jaar'] = sorted([{'merk': u['merk'], 'naam': u['naam'], 'stat
                                      **u['rest_jaar']} for u in uit_modellen if u['bestelbaar']],
                                    key=lambda m: -(m['vraag_eur'] - m['leverbaar_eur']))[:60]
 json.dump(uit, open(f'{B}/uitverkoop.json', 'w'), ensure_ascii=False, indent=1)
+
+# Volledig overzicht voor de overzichtspagina: elk model met voorraad of recente verkoop.
+VELDEN = ('model', 'merk', 'naam', 'collectie', 'seizoen', 'status', 'bestelbaar', 'col_sale', 'verk28', 'per_week',
+          'voorraad', 'dagen_totaal', 'eerste_leeg', 'bestel_over', 'levertijd', 'levertijd_bron', 'sprong',
+          'weinig_historie', 'vj_horizon', 'verwacht_horizon', 'bestel_totaal', 'piek', 'afprijs_wk', 'kanaal', 'prijs')
+overzicht = [{k: u[k] for k in VELDEN} | {'maten': [{k: m[k] for k in ('maat', 'vrd', 'per_week', 'dagen', 'status', 'bestel',
+                                                                        'bestel_over', 'kern')} for m in u['maten']]}
+             for u in uit_modellen if u['voorraad'] > 0 or u['verk28'] > 0]
+json.dump({'peildatum': TODAY.isoformat(), 'week': NU, 'herstel': herstel, 'modellen': overzicht},
+          open(f'{B}/overzicht.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 
 # ---- samenvatting op het scherm ----
 print(f"peildatum {TODAY} (wk {NU}) | lopende collectie {HUIDIG_SZ} {HUIDIG_JR} | recente weken {RECENT}")
