@@ -1,4 +1,5 @@
 # Handmatige lijst per model (hoofdartikelnummer uit ChannelEngine, bv. K1031276).
 # bijbestellen: nee = uitlopend, krijgt nooit een besteladvies. ja = altijd meenemen.
+# tot (optioneel, JJJJ-MM-DD): tot die datum geldt de regel, daarna beslist de radar weer zelf.
 # Deze lijst gaat voor de automatische regels (seizoenslabel, korting, doorloper).
-model;bijbestellen;opmerking
+model;bijbestellen;tot;opmerking
