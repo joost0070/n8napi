@@ -237,6 +237,11 @@ if os.path.exists(_hp):
     for _l in open(_hp, encoding='utf-8'):
         _d = [x.strip() for x in _l.split(';')]
         if len(_d) >= 2 and _d[0] and not _d[0].startswith('#') and _d[0].lower() != 'model':
+            tot = _d[2] if len(_d) > 2 else ''
+            try:
+                if tot and dt.date.fromisoformat(tot) < TODAY: continue   # einddatum voorbij: weer automatisch
+            except ValueError:
+                pass
             HANDMATIG[_d[0]] = _d[1].lower().startswith('j')
 
 # prijsregime per collectie (merk x seizoen x jaar)
@@ -345,6 +350,15 @@ def rest_seizoen(voorraad, jaarvraag, cv, start):
 STATUS = [('LEEG', 0), ('TE LAAT', 1), ('BESTEL NU', 2), ('VOLGENDE WEEK', 3), ('OK', 4), ('GEEN VRAAG', 5)]
 RANG = dict(STATUS)
 
+# ABC op omzet 12 maanden (alle kanalen): A = de modellen die samen 80% van de omzet maken, B de
+# volgende 15%, C de rest. A-artikelen krijgen meer buffer: die mogen het minst vaak leeg staan.
+omzet12 = {p: sum(tempo12.get(m, {}).get('stuks_jaar', 0) * (info[m]['price'] or 0) for m in mpns) for p, mpns in modellen.items()}
+ABC, _cum, _tot = {}, 0.0, sum(omzet12.values()) or 1
+for p, e in sorted(omzet12.items(), key=lambda x: -x[1]):
+    ABC[p] = 'A' if _cum < 0.80 * _tot else 'B' if _cum < 0.95 * _tot else 'C'
+    _cum += e
+BUFFER = {'A': 3, 'B': 2, 'C': 1}   # weken bovenop de hersteltijd
+
 uit_modellen = []
 for p, mpns in modellen.items():
     rs = [info[m] for m in mpns]
@@ -415,7 +429,8 @@ for p, mpns in modellen.items():
         x['per_week'] = jv * cv['idx'][NU]
         x['dagen'] = uitverkoop(x['vrd'], jv, cv['idx'], NU)
         x['dagen_vlak'] = (x['vrd'] / (x['verk28'] / max(28 - x['leeg28'], 1))) if x['verk28'] else None
-        horizon = vraag_over(jv, cv['idx'], NU, lt + VEILIG + DEKKING)
+        VEILIG_M = BUFFER.get(ABC.get(p), VEILIG)
+        horizon = vraag_over(jv, cv['idx'], NU, lt + VEILIG_M + DEKKING)
         x['bestel'] = max(0, round(vraag_over(jv, cv['idx'], NU, lt + DEKKING) - x['vrd']))
         # dagen tot je uiterlijk moet bestellen: op-datum min de hersteltijd (negatief = al te laat)
         x['bestel_over'] = None if x['dagen'] is None else round(x['dagen'] - lt * 7)
@@ -427,9 +442,9 @@ for p, mpns in modellen.items():
             x['status'] = 'OK'
         elif x['dagen'] < lt * 7:
             x['status'] = 'TE LAAT'
-        elif x['dagen'] < (lt + VEILIG) * 7:
+        elif x['dagen'] < (lt + VEILIG_M) * 7:
             x['status'] = 'BESTEL NU'
-        elif x['dagen'] < (lt + VEILIG + 2) * 7:
+        elif x['dagen'] < (lt + VEILIG_M + 2) * 7:
             x['status'] = 'VOLGENDE WEEK'
         else:
             x['status'] = 'OK'
@@ -509,6 +524,12 @@ for p, mpns in modellen.items():
         'bestel_over': bestel_over, 'per_week': round(sum(x['per_week'] for x in rij), 1),
         'dagen_totaal': None if dagen_totaal is None else round(dagen_totaal),
         'over_bij_dal': round(over), 'weken_tot_dal': weken_rest,
+        'abc': ABC.get(p, 'C'), 'buffer': BUFFER.get(ABC.get(p), VEILIG),
+        'sell_through': round(100 * verk28 / (verk28 + totaal_vrd)) if verk28 + totaal_vrd else None,
+        # Uitverkoopkandidaat: seizoensartikel zonder besteladvies (of met vlakke curve uitgesloten)
+        # waarvan bij het seizoenseinde naar verwachting meer dan 30% van de voorraad over is.
+        'overschot_pct': round(100 * over / totaal_vrd) if totaal_vrd else 0,
+        'overschot_eur': round(over * (r0['price'] or 0) / 1.21),
         'vorig_jaar_leeg': None if vj_leeg is None else round(100 * vj_leeg),
         'bestelbaar': bestelbaar, 'reden': reden, 'col_sale': col_in_sale(r0),
         'prijs': r0['price'] or 0,
@@ -522,6 +543,16 @@ for p, mpns in modellen.items():
         'mis_eur': round(sum(vraag_over(x['jaarvraag'], cv['idx'], NU, lt) * x['prijs']
                              for x in rij if x['status'] in ('LEEG', 'TE LAAT') and x['m'] in kern)),
     })
+    _u = uit_modellen[-1]
+    # Overschot = voorraad min de verwachte verkoop tot het seizoenseinde. Valt dat einde binnen
+    # 4 weken (of is het nu), dan de komende 13 weken: anders telt alles als overschot.
+    H = weken_rest if weken_rest >= 4 else 13
+    _over = max(totaal_vrd - vraag_over(jaarvraag, cv['idx'], NU, H), 0)
+    _u.update({'overschot_st': round(_over), 'overschot_weken': H,
+               'overschot_pct': round(100 * _over / totaal_vrd) if totaal_vrd else 0,
+               'overschot_eur': round(_over * (r0['price'] or 0) / 1.21)})
+    _u['afprijs_kandidaat'] = bool(totaal_vrd >= 10 and _u['overschot_pct'] > 30 and not bestelbaar and
+                                   (col in OUD or col.startswith('uitlopend') or cv['top13'] >= 0.33))
 
 # =============================================================================
 # 6. Rapportage
@@ -604,13 +635,25 @@ uit['modellen_rest_jaar'] = sorted([{'merk': u['merk'], 'naam': u['naam'], 'stat
 json.dump(uit, open(f'{B}/uitverkoop.json', 'w'), ensure_ascii=False, indent=1)
 
 # Volledig overzicht voor de overzichtspagina: elk model met voorraad of recente verkoop.
-VELDEN = ('model', 'merk', 'naam', 'collectie', 'seizoen', 'status', 'bestelbaar', 'reden', 'col_sale', 'verk28', 'per_week',
+VELDEN = ('abc', 'buffer', 'sell_through', 'overschot_pct', 'overschot_eur', 'overschot_st', 'overschot_weken',
+          'afprijs_kandidaat', 'over_bij_dal',
+          'weken_tot_dal', 'dal',
+          'model', 'merk', 'naam', 'collectie', 'seizoen', 'status', 'bestelbaar', 'reden', 'col_sale', 'verk28', 'per_week',
           'voorraad', 'dagen_totaal', 'eerste_leeg', 'bestel_over', 'levertijd', 'levertijd_bron', 'sprong',
           'weinig_historie', 'vj_horizon', 'verwacht_horizon', 'bestel_totaal', 'piek', 'afprijs_wk', 'kanaal', 'prijs')
 overzicht = [{k: u[k] for k in VELDEN} | {'maten': [{k: m[k] for k in ('maat', 'vrd', 'per_week', 'dagen', 'status', 'bestel',
                                                                         'bestel_over', 'kern')} for m in u['maten']]}
              for u in uit_modellen if u['voorraad'] > 0 or u['verk28'] > 0]
-json.dump({'peildatum': TODAY.isoformat(), 'week': NU, 'herstel': herstel, 'modellen': overzicht},
+# De drie meetcijfers uit het advies: uitverkochte A-artikelen, voorraadwaarde oude seizoenen, afprijskandidaten
+oud = [u for u in uit_modellen if u['collectie'] in OUD or u['collectie'].startswith('uitlopend')]
+kpi = {'a_leeg': sum(1 for u in uit_modellen if u['abc'] == 'A' and u['bestelbaar'] and u['status'] == 'LEEG'),
+       'a_totaal': sum(1 for u in uit_modellen if u['abc'] == 'A' and u['bestelbaar']),
+       'oud_waarde': round(sum(u['voorraad'] * u['prijs'] / 1.21 for u in oud)),
+       'afprijs_n': sum(1 for u in uit_modellen if u['afprijs_kandidaat']),
+       'afprijs_eur': round(sum(u['overschot_eur'] for u in uit_modellen if u['afprijs_kandidaat']))}
+print(f"meetcijfers: A-artikelen met lege kernmaat {kpi['a_leeg']}/{kpi['a_totaal']} | voorraad oude seizoenen "
+      f"EUR {kpi['oud_waarde']:,} | afprijskandidaten {kpi['afprijs_n']} (overschot EUR {kpi['afprijs_eur']:,})")
+json.dump({'peildatum': TODAY.isoformat(), 'week': NU, 'herstel': herstel, 'kpi': kpi, 'modellen': overzicht},
           open(f'{B}/overzicht.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 
 # ---- samenvatting op het scherm ----

@@ -40,6 +40,10 @@ h2{font-size:19px;font-weight:600}
 .st .u{font-size:12.5px;color:var(--muted)}
 .st[aria-pressed="true"]{background:var(--accent-soft);outline:2px solid var(--kl);outline-offset:-2px}
 .st:focus-visible,.rij:focus-visible,select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.meet{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13.5px;color:var(--muted)}
+.meet b{font:500 15px "IBM Plex Mono",monospace;color:var(--ink)}
+.abc{display:inline-block;font:600 10.5px "IBM Plex Mono",monospace;border:1px solid var(--line);border-radius:3px;padding:0 4px;margin-left:6px;color:var(--muted);vertical-align:1px}
+.abc.A{color:var(--accent);border-color:var(--accent)}
 .filters{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
 .filters input[type=search],.filters select{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:5px;background:var(--surface);color:var(--ink)}
 .filters input[type=search]{flex:1 1 240px;min-width:0}
@@ -87,11 +91,13 @@ td.r,th.r{text-align:right}
     <div class="stempel">peildatum <b id="peil"></b><br>week <b id="wk"></b> · elke ochtend vóór 07:00 bijgewerkt</div>
   </header>
 
+  <section class="meet" id="meet" aria-label="Meetcijfers"></section>
   <section class="statusbalk" id="statusbalk" aria-label="Filter op status"></section>
 
   <div class="tabs" role="tablist">
     <button role="tab" id="tab-bestel" aria-selected="true">Bestellen</button>
     <button role="tab" id="tab-top" aria-selected="false">Top 25 verkocht</button>
+    <button role="tab" id="tab-afprijs" aria-selected="false">Afprijzen</button>
     <button role="tab" id="tab-alles" aria-selected="false">Alle artikelen</button>
   </div>
 
@@ -110,6 +116,8 @@ td.r,th.r{text-align:right}
     <div><b>Bestel uiterlijk</b>: de datum waarop die maat op is, min de hersteltijd van het merk. Dat is de laatste dag om te bestellen zonder gat. Staat er "te laat", dan komt ook een bestelling van vandaag na het gat.</div>
     <div><b>Status</b>: leeg = het artikel of een kernmaat is op en er wordt nu omzet gemist (maat leeg = er ligt nog wel voorraad in andere maten) · te laat = leeg voordat een nieuwe levering er kan zijn · bestel nu = binnen twee weken besteldatum · volgende week = in de gaten houden.</div>
     <div><b>Geen besteladvies</b> krijgen: artikelen uit een oud seizoen die niet meer op volle prijs verkopen, artikelen die in een van de shops zijn afgeprijsd, artikelen die nergens online staan, en modellen op de lijst "niet bijbestellen" (config/bijbestellen.csv). Een ouder artikel dat nu op volle prijs goed verkoopt (8 of meer in 28 dagen) telt als doorloper en krijgt wel advies. Zet "alleen bij te bestellen" uit om ze toch te zien.</div>
+    <div><b>ABC en buffer</b>: A = de artikelen die samen 80% van de omzet (12 maanden) maken, B de volgende 15%, C de rest. De buffer bovenop de hersteltijd is 3 weken voor A, 2 voor B en 1 voor C: een A-artikel krijgt eerder een signaal.</div>
+    <div><b>Afprijzen</b>: artikelen zonder besteladvies (oud seizoen, al afgeprijsd of op de lijst) waarvan aan het einde van het seizoen naar verwachting meer dan 30% van de voorraad over is. Valt het seizoenseinde binnen 4 weken, dan telt de verkoop van de komende 13 weken. Sell-through = verkocht ÷ (verkocht + voorraad) over 4 weken.</div>
     <div id="hersteltijden"></div>
   </section>
 </div>
@@ -158,6 +166,12 @@ try { const t = localStorage.getItem('radar-tab'); if (t) tab = t; } catch (e) {
 // ---- kop, merken, hersteltijden ----
 $('peil').textContent = peil.toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 $('wk').textContent = DATA.week;
+const eur = n => '€ ' + nl(n);
+if (DATA.kpi) $('meet').innerHTML =
+  `<span>A-artikelen met een lege kernmaat <b>${nl(DATA.kpi.a_leeg)}</b> van ${nl(DATA.kpi.a_totaal)}</span>` +
+  `<span>Voorraad oude seizoenen <b>${eur(DATA.kpi.oud_waarde)}</b></span>` +
+  `<span>Afprijskandidaten <b>${nl(DATA.kpi.afprijs_n)}</b>, verwacht overschot <b>${eur(DATA.kpi.afprijs_eur)}</b></span>` +
+  `<span style="flex-basis:100%;font-size:12px">bedragen tegen verkoopprijs ex btw</span>`;
 const merken = [...new Set(DATA.modellen.map(m => m.merk))].sort((a, b) => a.localeCompare(b, 'nl'));
 $('merk').insertAdjacentHTML('beforeend', merken.map(m => `<option>${esc(m)}</option>`).join(''));
 const ht = Object.entries(DATA.herstel || {}).sort((a, b) => a[1].weken - b[1].weken);
@@ -165,9 +179,9 @@ $('hersteltijden').innerHTML = ht.length ? '<b>Hersteltijd per merk</b> (hoe lan
   ht.map(([m, h]) => `${esc(m)} ${h.weken} wk`).join(' · ') + '. Overige merken: 6 weken.' : '';
 
 // ---- filteren ----
-function basis() {
+function basis(voorTellers) {
   const q = $('zoek').value.trim().toLowerCase(), mk = $('merk').value, alleenB = $('bestelbaar').checked;
-  return DATA.modellen.filter(u => (!mk || u.merk === mk) && (!alleenB || u.bestelbaar) &&
+  return DATA.modellen.filter(u => (!mk || u.merk === mk) && (!alleenB || u.bestelbaar || (tab === 'afprijs' && !voorTellers)) &&
     (!q || (u.merk + ' ' + u.naam + ' ' + u.model).toLowerCase().includes(q)));
 }
 function statusbalk(lijst) {
@@ -178,6 +192,7 @@ function statusbalk(lijst) {
   }).join('');
 }
 function sorteer(lijst) {
+  if (tab === 'afprijs') return lijst.filter(u => u.afprijs_kandidaat).sort((a, b) => b.overschot_eur - a.overschot_eur);
   if (tab === 'top') return lijst.filter(u => u.verk28 > 0).sort((a, b) => b.verk28 - a.verk28).slice(0, 25);
   if (tab === 'bestel') {
     // eerst alles wat nu leeg of te laat is, de best verkopende bovenaan; daarna op besteldatum
@@ -197,13 +212,25 @@ function regel(u) {
   const bestel = u.bestel_totaal > 0 && RANG[u.status] <= 2 ? `<div class="sub">voorstel ${nl(u.bestel_totaal)} st</div>` : '';
   return `<tr class="rij" tabindex="0" data-m="${esc(u.model)}" aria-expanded="${open.has(u.model)}">
     <td>${pil(u.status, u.voorraad)}</td>
-    <td><span class="merk">${esc(u.merk)}</span> ${esc(u.naam)}<div class="sub">${esc(u.collectie)} · ${esc(u.seizoen)}${u.bestelbaar ? '' : ' · geen besteladvies' + (u.reden ? ': ' + esc(u.reden) : '')}</div>${vlag}</td>
+    <td><span class="merk">${esc(u.merk)}</span> ${esc(u.naam)}<span class="abc ${u.abc}" title="ABC-klasse op omzet 12 maanden">${u.abc}</span><div class="sub">${esc(u.collectie)} · ${esc(u.seizoen)}${u.bestelbaar ? '' : ' · geen besteladvies' + (u.reden ? ': ' + esc(u.reden) : '')}</div>${vlag}</td>
     <td class="r num">${nl(u.verk28)}<div class="sub">${nl(u.per_week, 1)}/wk verwacht</div></td>
     <td class="r num">${nl(u.voorraad)}</td>
     <td><div class="duur">${d1}<small>${d2}</small></div></td>
     <td><div class="duur">${eerste && u.status !== 'OK' ? esc(eerste) + ': ' : ''}${e1}<small>${e2}</small></div></td>
     <td><div class="duur" style="color:var(${RANG[u.status] <= 2 ? KL[u.status] : '--ink'})">${b1}<small>${b2}</small></div>${bestel}</td>
-    <td class="r num">${u.levertijd} wk</td></tr>` +
+    <td class="r num">${u.levertijd} wk<div class="sub">+${u.buffer} buffer</div></td></tr>` +
+    (open.has(u.model) ? `<tr class="detail"><td colspan="8">${maten(u)}</td></tr>` : '');
+}
+function afprijsRegel(u) {
+  return `<tr class="rij" tabindex="0" data-m="${esc(u.model)}" aria-expanded="${open.has(u.model)}">
+    <td><span class="pil" style="--kl:var(--muted);--bg:var(--geen-bg)">afprijzen</span></td>
+    <td><span class="merk">${esc(u.merk)}</span> ${esc(u.naam)}<span class="abc ${u.abc}">${u.abc}</span><div class="sub">${esc(u.collectie)} · ${esc(u.seizoen)}${u.reden ? ' · ' + esc(u.reden) : ''}</div></td>
+    <td class="r num">${nl(u.verk28)}</td>
+    <td class="r num">${nl(u.voorraad)}</td>
+    <td class="r num">${nl(u.voorraad - u.overschot_st)}<div class="sub">in ${u.overschot_weken} wk</div></td>
+    <td class="r num"><b>${nl(u.overschot_st)}</b><div class="sub">${u.overschot_pct}% van de voorraad</div></td>
+    <td class="r num">${eur(u.overschot_eur)}</td>
+    <td class="r num">${u.sell_through ?? '—'}%</td></tr>` +
     (open.has(u.model) ? `<tr class="detail"><td colspan="8">${maten(u)}</td></tr>` : '');
 }
 function maten(u) {
@@ -221,17 +248,20 @@ function maten(u) {
 
 function teken() {
   const b = basis();
-  statusbalk(b);
+  statusbalk(basis(true));
   let lijst = sorteer(b.slice());
   if (statusFilter) lijst = lijst.filter(u => u.status === statusFilter);
   const zicht = lijst.slice(0, tab === 'top' ? 25 : toon);
-  const kop = `<tr><th>Status</th><th>Artikel</th><th class="r">Verkocht 28 d</th><th class="r">Voorraad</th>
-    <th>Voorraad voor</th><th>Eerste maat op</th><th>Bestel uiterlijk</th><th class="r">Herstel</th></tr>`;
+  const kop = tab === 'afprijs'
+    ? `<tr><th>Signaal</th><th>Artikel</th><th class="r">Verkocht 28 d</th><th class="r">Voorraad</th>
+      <th class="r">Verwacht verkocht</th><th class="r">Overschot</th><th class="r">Waarde overschot</th><th class="r">Sell-through 4 wk</th></tr>`
+    : `<tr><th>Status</th><th>Artikel</th><th class="r">Verkocht 28 d</th><th class="r">Voorraad</th>
+      <th>Voorraad voor</th><th>Eerste maat op</th><th>Bestel uiterlijk</th><th class="r">Herstel</th></tr>`;
   $('lijst').innerHTML = zicht.length
-    ? `<table><thead>${kop}</thead><tbody>${zicht.map(regel).join('')}</tbody></table>` +
+    ? `<table><thead>${kop}</thead><tbody>${zicht.map(tab === 'afprijs' ? afprijsRegel : regel).join('')}</tbody></table>` +
       (lijst.length > zicht.length ? `<div class="meer"><button id="meer">Toon meer (${nl(lijst.length - zicht.length)} over)</button></div>` : '')
     : `<div class="leeg-melding">Geen artikelen bij deze filters.</div>`;
-  for (const t of ['bestel', 'top', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
+  for (const t of ['bestel', 'top', 'afprijs', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
 }
 
 // ---- interactie ----
