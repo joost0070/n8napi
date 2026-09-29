@@ -106,6 +106,7 @@ td.r,th.r{text-align:right}
     <button role="tab" id="tab-top" aria-selected="false">Top 25 verkocht</button>
     <button role="tab" id="tab-afprijs" aria-selected="false">Afprijzen</button>
     <button role="tab" id="tab-shop" aria-selected="false">Per shop</button>
+    <button role="tab" id="tab-mp" aria-selected="false">Marktplaatsen</button>
     <button role="tab" id="tab-alles" aria-selected="false">Alle artikelen</button>
   </div>
 
@@ -121,6 +122,10 @@ td.r,th.r{text-align:right}
     <button id="kopieer-alle" type="button">Kopieer alle shops</button>
     <span id="kopieer-melding" class="sub" role="status"></span>
   </div>
+  <div class="shopbalk" id="mpbalk" hidden>
+    <button id="kopieer-ean" type="button">Kopieer EAN-lijst voor ChannelEngine</button>
+    <span class="sub">Zet voor deze EAN's de voorraad naar de marktplaatsen op 0 (of sluit ze uit in ChannelEngine) tot de nieuwe levering binnen is.</span>
+  </div>
   <textarea id="kopieer-veld" aria-label="Tabel om te kopiëren" hidden readonly></textarea>
   <div class="lijst" id="lijst"></div>
 
@@ -134,6 +139,7 @@ td.r,th.r{text-align:right}
     <div><b>Geen besteladvies</b> krijgen: artikelen uit een oud seizoen die niet meer op volle prijs verkopen, artikelen die in een van de shops zijn afgeprijsd, artikelen die nergens online staan, en modellen op de lijst "niet bijbestellen" (config/bijbestellen.csv). Een ouder artikel dat nu op volle prijs goed verkoopt (8 of meer in 28 dagen) telt als doorloper en krijgt wel advies. Zet "alleen bij te bestellen" uit om ze toch te zien.</div>
     <div><b>ABC en buffer</b>: A = de artikelen die samen 80% van de omzet (12 maanden) maken, B de volgende 15%, C de rest. De buffer bovenop de hersteltijd is 3 weken voor A, 2 voor B en 1 voor C: een A-artikel krijgt eerder een signaal.</div>
     <div><b>Afprijzen</b>: artikelen zonder besteladvies (oud seizoen, al afgeprijsd of op de lijst) waarvan aan het einde van het seizoen naar verwachting meer dan 30% van de voorraad over is. Valt het seizoenseinde binnen 4 weken, dan telt de verkoop van de komende 13 weken. Sell-through = verkocht ÷ (verkocht + voorraad) over 4 weken.</div>
+    <div><b>Marktplaatsen</b>: bij een artikel met besteladvies waarvan een maat op raakt vóór een nieuwe levering er kan zijn (of binnen de buffer), terwijl die maat ook via marktplaatsen verkoopt, gaan de laatste paren beter naar de eigen shops. De lijst geeft per maat de EAN, zodat je de marktplaatsvoorraad in ChannelEngine op 0 kunt zetten.</div>
     <div id="hersteltijden"></div>
   </section>
 </div>
@@ -234,6 +240,12 @@ async function kopieer(tekst, wat) {
 }
 $('shop').addEventListener('change', () => { try { localStorage.setItem('radar-shop', $('shop').value); } catch (e) {} teken(); });
 $('kopieer').addEventListener('click', () => { const s = SHOPS[$('shop').value]; if (s) kopieer(tsv(s), 'Tabel ' + s.shop); });
+$('kopieer-ean').addEventListener('click', () => {
+  const rijen = [['EAN', 'Merk', 'Artikel', 'Maat', 'Voorraad', 'Dagen met marktplaatsen', 'Dagen alleen eigen shops', 'Verkocht via marktplaats 28 d']];
+  for (const u of mpLijst()) for (const m of u.maten.filter(m => m.mp_advies))
+    rijen.push([m.ean || '', u.merk, u.naam, m.maat, m.vrd, m.dagen === null ? '' : Math.round(m.dagen), m.dagen_eigen ?? '', m.mp28]);
+  kopieer(rijen.map(r => r.join('\t')).join('\n'), `EAN-lijst (${rijen.length - 1} maten)`);
+});
 $('kopieer-alle').addEventListener('click', () => kopieer(SHOPS.map((s, i) => i ? tsv(s).split('\n').slice(1).join('\n') : tsv(s)).join('\n'), 'Alle shops'));
 const merken = [...new Set(DATA.modellen.map(m => m.merk))].sort((a, b) => a.localeCompare(b, 'nl'));
 $('merk').insertAdjacentHTML('beforeend', merken.map(m => `<option>${esc(m)}</option>`).join(''));
@@ -310,13 +322,34 @@ function maten(u) {
   }).join('') + `</div>`;
 }
 
+function mpRegel(u) {
+  const adv = u.maten.filter(m => m.mp_advies);
+  return `<tr class="rij" tabindex="0" data-m="${esc(u.model)}" aria-expanded="${open.has(u.model)}">
+    <td>${pil(u.status, u.voorraad)}</td>
+    <td class="art"><span class="merk">${esc(u.merk)}</span> ${esc(u.naam)}<span class="abc ${u.abc}">${u.abc}</span><div class="sub">hersteltijd ${u.levertijd} wk</div></td>
+    <td class="r num">${nl(u.verk28)}<div class="sub">waarvan ${nl(u.mp28)} marktplaats (${Math.round(100 * u.mp28 / Math.max(u.verk28, 1))}%)</div></td>
+    <td>${adv.map(m => `<div class="duur" style="font-size:13.5px">${esc(m.maat)}: ${m.vrd} st · ${duur(m.dagen)[0]} → <b>${duur(m.dagen_eigen)[0]}</b><small>${m.mp28} via marktplaats in 28 d · EAN ${esc(m.ean || '')}</small></div>`).join('')}</td></tr>` +
+    (open.has(u.model) ? `<tr class="detail"><td colspan="4">${maten(u)}</td></tr>` : '');
+}
+function mpLijst() { return basis().filter(u => u.mp_advies > 0).sort((a, b) => b.mp28 - a.mp28 || b.verk28 - a.verk28); }
 function teken() {
+  $('mpbalk').hidden = tab !== 'mp';
+  if (tab === 'mp') {
+    statusbalk(basis(true));
+    const l = mpLijst();
+    $('lijst').innerHTML = `<div class="sub" style="padding:10px 12px">Maten die op raken vóór een nieuwe levering er kan zijn (of binnen de buffer), terwijl ze ook via bol.com, Amazon of ANWB verkopen.
+      De laatste paren zijn in de eigen shops meer waard: geen fee (bol ~13%, Amazon ~18%) en minder retour. Per maat: voorraad · dagen met marktplaatsen → <b>dagen als alleen de eigen shops verkopen</b>.</div>` +
+      (l.length ? `<table><thead><tr><th>Status</th><th>Artikel</th><th class="r">Verkocht 28 d</th><th>Van marktplaatsen halen</th></tr></thead><tbody>${l.map(mpRegel).join('')}</tbody></table>`
+                : '<div class="leeg-melding">Geen maten die van de marktplaatsen af moeten bij deze filters.</div>');
+    for (const t of ['bestel', 'top', 'afprijs', 'shop', 'mp', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
+    return;
+  }
   $('shopbalk').hidden = tab !== 'shop';
   document.querySelector('.filters').hidden = tab === 'shop';
   if (tab === 'shop') {
     statusbalk(basis(true));
     $('lijst').innerHTML = shopTabel();
-    for (const t of ['bestel', 'top', 'afprijs', 'shop', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
+    for (const t of ['bestel', 'top', 'afprijs', 'shop', 'mp', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
     return;
   }
   const b = basis();
@@ -333,7 +366,7 @@ function teken() {
     ? `<table><thead>${kop}</thead><tbody>${zicht.map(tab === 'afprijs' ? afprijsRegel : regel).join('')}</tbody></table>` +
       (lijst.length > zicht.length ? `<div class="meer"><button id="meer">Toon meer (${nl(lijst.length - zicht.length)} over)</button></div>` : '')
     : `<div class="leeg-melding">Geen artikelen bij deze filters.</div>`;
-  for (const t of ['bestel', 'top', 'afprijs', 'shop', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
+  for (const t of ['bestel', 'top', 'afprijs', 'shop', 'mp', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
 }
 
 // ---- interactie ----

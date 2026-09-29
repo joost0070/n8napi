@@ -587,6 +587,28 @@ for p, mpns in modellen.items():
     _u.update({'overschot_st': round(_over), 'overschot_weken': H,
                'overschot_pct': round(100 * _over / totaal_vrd) if totaal_vrd else 0,
                'overschot_eur': round(_over * (r0['price'] or 0) / 1.21)})
+    # Marktplaatsen afknijpen: bij een bestelbaar model dat in een maat krap wordt (op voordat een
+    # nieuwe levering er kan zijn, of binnen de buffer), gaan de laatste paren naar de eigen shops.
+    # Per maat: wat de marktplaatsen de laatste 28 dagen verkochten en hoe lang de voorraad
+    # meegaat als alleen de eigen shops (merkshop + Bartogi) nog verkopen.
+    _mp_n = 0
+    for x in rij:
+        k = x['kanaal']; mp, eigen = k['marktplaats'], k['merkshop'] + k['breed']
+        x['mp28'], x['eigen28'] = mp, eigen
+        aandeel_eigen = eigen / (mp + eigen) if mp + eigen else 1.0
+        # zelfde seizoensgewogen afboeking als 'dagen', maar met alleen de vraag van de eigen shops
+        de = uitverkoop(x['vrd'], x['jaarvraag'] * aandeel_eigen, cv['idx'], NU, ONDERWEG.get(x['m'], []))
+        x['dagen_eigen'] = None if de is None else round(de)
+        x['mp_advies'] = bool(bestelbaar and x['vrd'] > 0 and mp > 0 and
+                              x['status'] in ('TE LAAT', 'BESTEL NU', 'VOLGENDE WEEK'))
+        _mp_n += x['mp_advies']
+    _u['mp_advies'] = _mp_n
+    _u['mp28'] = sum(x['mp28'] for x in rij)
+    for mm in _u['maten']:
+        xx = next((x for x in rij if fix(info[x['m']]['size']) == mm['maat']), None)
+        if xx:
+            mm.update({k: xx[k] for k in ('mp28', 'eigen28', 'dagen_eigen', 'mp_advies')})
+            if xx['mp_advies']: mm['ean'] = info[xx['m']].get('ean') or xx['m']
     _u['afprijs_kandidaat'] = bool(totaal_vrd >= 10 and _u['overschot_pct'] > 30 and not bestelbaar and
                                    (col in OUD or col.startswith('uitlopend') or cv['top13'] >= 0.33))
 
@@ -673,12 +695,13 @@ json.dump(uit, open(f'{B}/uitverkoop.json', 'w'), ensure_ascii=False, indent=1)
 # Volledig overzicht voor de overzichtspagina: elk model met voorraad of recente verkoop.
 VELDEN = ('abc', 'buffer', 'sell_through', 'overschot_pct', 'overschot_eur', 'overschot_st', 'overschot_weken',
           'afprijs_kandidaat', 'over_bij_dal',
-          'weken_tot_dal', 'dal', 'onderweg', 'onderweg_dag',
+          'weken_tot_dal', 'dal', 'onderweg', 'onderweg_dag', 'mp_advies', 'mp28',
           'model', 'merk', 'naam', 'collectie', 'seizoen', 'status', 'bestelbaar', 'reden', 'col_sale', 'verk28', 'per_week',
           'voorraad', 'dagen_totaal', 'eerste_leeg', 'bestel_over', 'levertijd', 'levertijd_bron', 'sprong',
           'weinig_historie', 'vj_horizon', 'verwacht_horizon', 'bestel_totaal', 'piek', 'afprijs_wk', 'kanaal', 'prijs')
 overzicht = [{k: u[k] for k in VELDEN} | {'maten': [{k: m[k] for k in ('maat', 'vrd', 'per_week', 'dagen', 'status', 'bestel',
-                                                                        'bestel_over', 'kern', 'onderweg', 'onderweg_dag')}
+                                                                        'bestel_over', 'kern', 'onderweg', 'onderweg_dag',
+                                                                        'mp28', 'eigen28', 'dagen_eigen', 'mp_advies', 'ean') if k in m}
                                                      for m in u['maten']]}
              for u in uit_modellen if u['voorraad'] > 0 or u['verk28'] > 0]
 # De drie meetcijfers uit het advies: uitverkochte A-artikelen, voorraadwaarde oude seizoenen, afprijskandidaten
