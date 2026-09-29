@@ -23,6 +23,7 @@
   --bar:#34443D;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--ground);color:var(--ink);font:15px/1.45 "Source Sans 3",system-ui,sans-serif;padding-block:20px 48px;padding-inline:16px}
 .wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
 h1,h2{font-family:"Archivo Narrow","Arial Narrow",sans-serif;text-wrap:balance;margin:0}
@@ -44,6 +45,11 @@ h2{font-size:19px;font-weight:600}
 .meet b{font:500 15px "IBM Plex Mono",monospace;color:var(--ink)}
 .abc{display:inline-block;font:600 10.5px "IBM Plex Mono",monospace;border:1px solid var(--line);border-radius:3px;padding:0 4px;margin-left:6px;color:var(--muted);vertical-align:1px}
 .abc.A{color:var(--accent);border-color:var(--accent)}
+.shopbalk{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.shopbalk select,.shopbalk button{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:5px;background:var(--surface);color:var(--ink)}
+.shopbalk button{cursor:pointer}
+#kopieer{border-color:var(--accent);color:var(--accent);font-weight:600}
+#kopieer-veld{width:100%;min-height:140px;font:12px "IBM Plex Mono",monospace;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:5px;padding:8px}
 .filters{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
 .filters input[type=search],.filters select{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:5px;background:var(--surface);color:var(--ink)}
 .filters input[type=search]{flex:1 1 240px;min-width:0}
@@ -55,6 +61,7 @@ h2{font-size:19px;font-weight:600}
 table{border-collapse:collapse;width:100%;min-width:760px}
 th{font:600 11.5px "Archivo Narrow",sans-serif;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
 td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.art{min-width:260px}
 tr.rij{cursor:pointer}
 tr.rij:hover td{background:var(--accent-soft)}
 td.r,th.r{text-align:right}
@@ -98,6 +105,7 @@ td.r,th.r{text-align:right}
     <button role="tab" id="tab-bestel" aria-selected="true">Bestellen</button>
     <button role="tab" id="tab-top" aria-selected="false">Top 25 verkocht</button>
     <button role="tab" id="tab-afprijs" aria-selected="false">Afprijzen</button>
+    <button role="tab" id="tab-shop" aria-selected="false">Per shop</button>
     <button role="tab" id="tab-alles" aria-selected="false">Alle artikelen</button>
   </div>
 
@@ -107,6 +115,13 @@ td.r,th.r{text-align:right}
     <label><input type="checkbox" id="bestelbaar" checked> alleen bij te bestellen</label>
   </div>
 
+  <div class="shopbalk" id="shopbalk" hidden>
+    <select id="shop" aria-label="Shop"></select>
+    <button id="kopieer" type="button">Kopieer tabel voor de weekrapportage</button>
+    <button id="kopieer-alle" type="button">Kopieer alle shops</button>
+    <span id="kopieer-melding" class="sub" role="status"></span>
+  </div>
+  <textarea id="kopieer-veld" aria-label="Tabel om te kopiëren" hidden readonly></textarea>
   <div class="lijst" id="lijst"></div>
 
   <section class="uitleg">
@@ -173,6 +188,53 @@ if (DATA.kpi) $('meet').innerHTML =
   `<span>Voorraad oude seizoenen <b>${eur(DATA.kpi.oud_waarde)}</b></span>` +
   `<span>Afprijskandidaten <b>${nl(DATA.kpi.afprijs_n)}</b>, verwacht overschot <b>${eur(DATA.kpi.afprijs_eur)}</b></span>` +
   `<span style="flex-basis:100%;font-size:12px">bedragen tegen verkoopprijs ex btw</span>`;
+const SHOPS = DATA.shops || [];
+const MOD = Object.fromEntries(DATA.modellen.map(u => [u.model, u]));
+$('shop').innerHTML = SHOPS.map((s, i) => `<option value="${i}">${esc(s.shop)}${s.marktplaats ? ' (marktplaats)' : ''}</option>`).join('');
+try { const s = localStorage.getItem('radar-shop'); if (s && SHOPS[s]) $('shop').value = s; } catch (e) {}
+const vwTekst = DATA.vorige_week ? `week ${DATA.vorige_week[2]} (${new Date(DATA.vorige_week[0]).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' })} – ${new Date(DATA.vorige_week[1]).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' })})` : 'vorige week';
+function dagTekst(d) { const [a] = duur(d); return a; }
+function shopRijen(s) {
+  return s.top.map((t, i) => {
+    const u = MOD[t.model], eerste = (u.maten.filter(m => m.kern && m.dagen !== null).sort((a, b) => a.dagen - b.dagen)[0] || {}).maat;
+    return { i: i + 1, u, t, eerste, besteld: besteltekst(u) };
+  });
+}
+function shopTabel() {
+  const s = SHOPS[$('shop').value]; if (!s) return '<div class="leeg-melding">Geen verkoop vorige week.</div>';
+  const kop = `<tr><th>#</th><th>Artikel (zonder maat)</th><th class="r">Verkocht</th><th class="r">Opbrengst</th>
+    <th class="r">Voorraad</th><th>Voorraad voor</th><th>Eerste maat op</th><th>Bestel uiterlijk</th><th>Status</th></tr>`;
+  const body = shopRijen(s).map(({ i, u, t, eerste, besteld }) => {
+    const [d1, d2] = duur(u.dagen_totaal), [e1, e2] = duur(u.eerste_leeg);
+    return `<tr class="rij" tabindex="0" data-m="${esc(u.model)}" aria-expanded="${open.has(u.model)}">
+      <td class="num">${i}</td>
+      <td class="art"><span class="merk">${esc(u.merk)}</span> ${esc(u.naam)}<span class="abc ${u.abc}">${u.abc}</span><div class="sub">${esc(u.collectie)}${u.bestelbaar ? '' : ' · geen besteladvies' + (u.reden ? ': ' + esc(u.reden) : '')}</div></td>
+      <td class="r num">${nl(t.stuks)}</td><td class="r num">${eur(t.omzet)}</td>
+      <td class="r num">${nl(u.voorraad)}</td>
+      <td><div class="duur">${d1}<small>${d2}</small></div></td>
+      <td><div class="duur">${eerste && u.eerste_leeg !== null ? esc(eerste) + ': ' : ''}${e1}<small>${e2}</small></div></td>
+      <td><div class="duur" style="color:var(${RANG[u.status] <= 2 && u.bestelbaar ? KL[u.status] : '--ink'})">${u.bestelbaar ? besteld[0] : '—'}<small>${u.bestelbaar ? besteld[1] : 'niet bijbestellen'}</small></div></td>
+      <td>${pil(u.status, u.voorraad)}</td></tr>` + (open.has(u.model) ? `<tr class="detail"><td colspan="9">${maten(u)}</td></tr>` : '');
+  }).join('');
+  return `<div class="sub" style="padding:10px 12px">${esc(s.shop)}: top 10 op opbrengst ${esc(vwTekst)}, net als het weekdashboard (${nl(s.stuks)} stuks, ${eur(s.omzet)} incl. btw).
+    Voorraad en dagen gelden voor het artikel als geheel: de voorraad is gedeeld over alle shops en de verwachte verkoop telt alle kanalen mee.</div>
+    <table><thead>${kop}</thead><tbody>${body}</tbody></table>`;
+}
+function tsv(s) {
+  const kop = ['Shop', 'Week', '#', 'Merk', 'Artikel', 'Verkocht vorige week', 'Opbrengst', 'Voorraad', 'Voorraad voor (dagen)', 'Voorraad voor', 'Eerste maat op', 'Eerste maat op (dagen)', 'Bestel uiterlijk', 'Status'];
+  const rijen = shopRijen(s).map(({ i, u, t, eerste, besteld }) => [s.shop, DATA.vorige_week ? DATA.vorige_week[2] : '', i, u.merk, u.naam, t.stuks,
+    String(t.omzet).replace('.', ','), u.voorraad, u.dagen_totaal ?? '', dagTekst(u.dagen_totaal), u.eerste_leeg !== null && eerste ? eerste : '',
+    u.eerste_leeg ?? '', u.bestelbaar ? besteld[0] : 'niet bijbestellen', u.status === 'VOLGENDE WEEK' ? 'volgende week' : u.status.toLowerCase()]);
+  return [kop, ...rijen].map(r => r.join('\t')).join('\n');
+}
+async function kopieer(tekst, wat) {
+  const veld = $('kopieer-veld'), m = $('kopieer-melding');
+  try { await navigator.clipboard.writeText(tekst); m.textContent = `${wat} gekopieerd. Plak in Excel, Google Sheets of de rapportage.`; veld.hidden = true; }
+  catch (e) { veld.value = tekst; veld.hidden = false; veld.focus(); veld.select(); m.textContent = 'Kopiëren lukt hier niet automatisch: de tabel staat geselecteerd hieronder, gebruik Ctrl+C.'; }
+}
+$('shop').addEventListener('change', () => { try { localStorage.setItem('radar-shop', $('shop').value); } catch (e) {} teken(); });
+$('kopieer').addEventListener('click', () => { const s = SHOPS[$('shop').value]; if (s) kopieer(tsv(s), 'Tabel ' + s.shop); });
+$('kopieer-alle').addEventListener('click', () => kopieer(SHOPS.map((s, i) => i ? tsv(s).split('\n').slice(1).join('\n') : tsv(s)).join('\n'), 'Alle shops'));
 const merken = [...new Set(DATA.modellen.map(m => m.merk))].sort((a, b) => a.localeCompare(b, 'nl'));
 $('merk').insertAdjacentHTML('beforeend', merken.map(m => `<option>${esc(m)}</option>`).join(''));
 const ht = Object.entries(DATA.herstel || {}).sort((a, b) => a[1].weken - b[1].weken);
@@ -249,6 +311,14 @@ function maten(u) {
 }
 
 function teken() {
+  $('shopbalk').hidden = tab !== 'shop';
+  document.querySelector('.filters').hidden = tab === 'shop';
+  if (tab === 'shop') {
+    statusbalk(basis(true));
+    $('lijst').innerHTML = shopTabel();
+    for (const t of ['bestel', 'top', 'afprijs', 'shop', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
+    return;
+  }
   const b = basis();
   statusbalk(basis(true));
   let lijst = sorteer(b.slice());
@@ -263,13 +333,13 @@ function teken() {
     ? `<table><thead>${kop}</thead><tbody>${zicht.map(tab === 'afprijs' ? afprijsRegel : regel).join('')}</tbody></table>` +
       (lijst.length > zicht.length ? `<div class="meer"><button id="meer">Toon meer (${nl(lijst.length - zicht.length)} over)</button></div>` : '')
     : `<div class="leeg-melding">Geen artikelen bij deze filters.</div>`;
-  for (const t of ['bestel', 'top', 'afprijs', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
+  for (const t of ['bestel', 'top', 'afprijs', 'shop', 'alles']) $('tab-' + t).setAttribute('aria-selected', tab === t);
 }
 
 // ---- interactie ----
 document.addEventListener('click', e => {
   const st = e.target.closest('.st');
-  if (st) { statusFilter = statusFilter === st.dataset.s ? null : st.dataset.s; if (statusFilter && tab === 'bestel' && RANG[statusFilter] > 3) tab = 'alles'; teken(); return; }
+  if (st) { statusFilter = statusFilter === st.dataset.s ? null : st.dataset.s; if (tab === 'shop' || (statusFilter && tab === 'bestel' && RANG[statusFilter] > 3)) tab = 'alles'; teken(); return; }
   const r = e.target.closest('tr.rij');
   if (r) { const m = r.dataset.m; open.has(m) ? open.delete(m) : open.add(m); teken(); return; }
   if (e.target.id === 'meer') { toon += 100; teken(); return; }

@@ -690,7 +690,45 @@ kpi = {'a_leeg': sum(1 for u in uit_modellen if u['abc'] == 'A' and u['bestelbaa
        'afprijs_eur': round(sum(u['overschot_eur'] for u in uit_modellen if u['afprijs_kandidaat']))}
 print(f"meetcijfers: A-artikelen met lege kernmaat {kpi['a_leeg']}/{kpi['a_totaal']} | voorraad oude seizoenen "
       f"EUR {kpi['oud_waarde']:,} | afprijskandidaten {kpi['afprijs_n']} (overschot EUR {kpi['afprijs_eur']:,})")
-json.dump({'peildatum': TODAY.isoformat(), 'week': NU, 'herstel': herstel, 'kpi': kpi, 'modellen': overzicht},
+# Per shop de top 10 van vorige week (zoals het weekdashboard: artikel zonder maat, aantal, opbrengst),
+# zodat de resterende voorraad naast het dashboard van elke shop kan. Opbrengst incl. btw, na korting.
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location('shops', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'shops.py'))
+_sh = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_sh)
+VW_EIND = TODAY - dt.timedelta(days=TODAY.weekday() + 1)          # afgelopen zondag
+VW_BEGIN = VW_EIND - dt.timedelta(days=6)                           # maandag daarvoor
+in_overzicht = {u['model'] for u in overzicht}
+def _top(regels):
+    agg = defaultdict(lambda: [0, 0.0])
+    for m, q, e in regels:
+        if m in info:
+            a = agg[model(info[m])]; a[0] += q; a[1] += e
+    rij = sorted(agg.items(), key=lambda x: -x[1][1])
+    return [{'model': p, 'stuks': a[0], 'omzet': round(a[1], 2)} for p, a in rij[:10] if p in in_overzicht], \
+           sum(a[0] for a in agg.values()), round(sum(a[1] for a in agg.values()), 2)
+shops_top = []
+for naam, dom, _env in _sh.SHOPS:
+    f = f'{B}/shop/{dom}_orders.json'
+    if not os.path.exists(f): continue
+    regels = [(naar(r.get('sku')), r.get('q') or 0, (r.get('pr') or 0) * (r.get('q') or 0) - (r.get('dis') or 0))
+              for r in json.load(open(f)) if VW_BEGIN.isoformat() <= r['d'] <= VW_EIND.isoformat()]
+    top, st, om = _top(regels)
+    if top: shops_top.append({'shop': naam, 'top': top, 'stuks': st, 'omzet': om})
+kan = defaultdict(list)
+for f in glob.glob(f'{B}/ord/o*.json'):
+    for o in json.load(open(f)).get('Content') or []:
+        if not (VW_BEGIN.isoformat() <= (o.get('OrderDate') or '')[:10] <= VW_EIND.isoformat()): continue
+        for l in o.get('Lines') or []:
+            if l.get('Status') != 'CANCELED':
+                kan[o.get('ChannelName') or '?'].append((l.get('MerchantProductNo'), l.get('Quantity') or 0,
+                                                          float(l.get('LineTotalInclVat') or 0)))
+for k, regels in sorted(kan.items(), key=lambda x: -sum(r[2] for r in x[1])):
+    top, st, om = _top(regels)
+    if top and om >= 200: shops_top.append({'shop': k.replace(' (v3)', ''), 'top': top, 'stuks': st, 'omzet': om, 'marktplaats': True})
+print(f"per shop: top 10 van {VW_BEGIN:%d-%m} t/m {VW_EIND:%d-%m} voor {len(shops_top)} shops en kanalen")
+
+json.dump({'peildatum': TODAY.isoformat(), 'week': NU, 'herstel': herstel, 'kpi': kpi, 'modellen': overzicht,
+           'shops': shops_top, 'vorige_week': [VW_BEGIN.isoformat(), VW_EIND.isoformat(), VW_BEGIN.isocalendar()[1]]},
           open(f'{B}/overzicht.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 
 # ---- samenvatting op het scherm ----
