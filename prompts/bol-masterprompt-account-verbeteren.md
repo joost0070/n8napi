@@ -89,6 +89,7 @@ Gebruik de Retailer API v10 (content en insights) en v11 (offers en retailers). 
 | 12 | Offers v11: `GET /retailer/offers` en `/retailer/offers/{id}/not-for-sale-reasons` | voorraad, leverbelofte, waarom offline (ontbrekende attributen, prijs te hoog) |
 | 13 | Retailers v11: `GET /retailer/retailers/performance-status` en `/retailers/current/ratings` | kwaliteitsscore, strikes, beleidspunten, verkopersbeoordeling incl. "productinformatie" |
 | 14 | `POST /retailer/products/list` met zoekterm en `sort=RELEVANCE` | titels en samenstelling van pagina 1 bij concurrenten, zonder scrapen |
+| 15 | Shopify Admin API (merkstore en Bartogi): product op barcode of SKU, met `variants` (barcode, sku, option1 tot 3, `image_id`) en `images` (`src`, `position`, `variant_ids`, `alt`, breedte en hoogte) | bronfoto's per exacte variant voor de fotovergelijking (§4 F2) |
 
 Niet via de API (alleen in het verkopersaccount): contentscore, Leverbeloftescore, onderwerpen van klantvragen, bol zoektrends-vergelijking, video-aanwezigheid. Vraag de eigenaar om een export of schermafdruk als die nodig is.
 
@@ -155,6 +156,28 @@ Controle: lengte, merk vooraan, productgroepwoord in de eerste 35 tekens, verbod
 - Regel 3 geldt altijd: alleen foto's van exact deze variant.
 - Verwijderen van foto's kan niet via de API. Alleen vervangen met een nieuwe set, of in het verkopersaccount met het prullenbakje. Grote verwijderlijsten gaan via Partnerservice.
 
+### F2. Fotovergelijking met Bartogi en de merkstore
+
+Doel: per EAN zien welke bol-foto's kloppen, welke ontbreken en welke mogelijk fout zijn, met de foto's van Bartogi (en de merkstore) als referentie.
+
+Werkwijze:
+1. **Bronfoto's van exact deze variant bepalen.** Zoek de Shopify-variant met dezelfde barcode (EAN), anders dezelfde SKU. Neem alleen foto's die aan die variant gekoppeld zijn (`image.variant_ids` bevat de variant, of `variant.image_id`). Foto's zonder variantkoppeling tellen alleen als het product maar één kleur heeft. Haal ze op van Bartogi én van de merkstore als het product in beide staat.
+2. **bol-foto's ophalen.** `GET /retailer/products/{ean}/assets?usage=PRIMARY` en `ADDITIONAL`, grootste variant (bol levert maximaal 550 pixels via de API).
+3. **Vergelijken per foto.** Maak van elke foto een perceptuele hash (pHash of dHash op een verkleinde grijswaardenversie) en een kleurprofiel (dominante kleuren na het wegfilteren van de witte achtergrond). Twee foto's zijn dezelfde als de hashafstand klein is (richtwaarde 10 of minder op 64 bits); stel de drempel eerst af op 5 bekende paren.
+4. **Kleurcontrole.** Vergelijk het kleurprofiel van elke bol-foto met dat van de bronfoto's van deze variant en met de kleurwaarde in de titel en het attribuut Kleur. Een duidelijk afwijkende dominante kleur is een verdachte foto.
+
+Uitkomst per foto (tabel: EAN, product, bol-positie, bol-url, beste bronmatch, bron (Bartogi of merkstore), hashafstand, kleur bol, kleur bron, oordeel):
+- **Klopt:** bol-foto komt overeen met een bronfoto van exact deze variant.
+- **Ontbreekt op bol:** bronfoto van deze variant die niet op bol staat. Kandidaat om toe te voegen, met voorgesteld label (FRONT voor de vrijstaande vooraanzicht-foto, anders SIDE, BACK, DETAIL of IN SITU).
+- **Verdacht, handmatig bekijken:** bol-foto zonder match in de bron, of met afwijkende kleur of model. Nooit automatisch verwijderen of vervangen; op de controlelijst met beide url's naast elkaar.
+- **Hoofdfoto fout:** de FRONT-foto op bol toont een andere kleur of een ander model dan de EAN. Hoogste prioriteit.
+
+Regels:
+- Regel 3 geldt: een foto wordt alleen voorgesteld als die aan exact deze variant gekoppeld is. Een Bartogi-foto van dezelfde schoen in een andere kleur wordt nooit gebruikt.
+- Controleer bronfoto's op bol-eisen voordat je ze voorstelt: minimaal 1200 pixels voor zoom, hoofdfoto met witte achtergrond en zonder tekst of logo's, geen spaties in de url. Een lifestylefoto wordt nooit FRONT.
+- Bartogi-foto's zijn materiaal van een winkel die ook andere merken voert. Gebruik ze alleen als het account het recht heeft ze te gebruiken; bij een merk dat bij bol een merkregistratie heeft, gaan de foto's van de merkeigenaar voor.
+- Verwijderen kan niet via de API: foute foto's gaan als lijst naar de eigenaar voor het verkopersaccount of Partnerservice.
+
 ### G. Productfamilies en bundels
 
 - Families bundelen reviews en bezoek (bol: gemiddeld tot 10 procent meer verkoop).
@@ -200,7 +223,7 @@ Score per verbetering = impact maal zekerheid, gedeeld door moeite.
 - **Zekerheid:** hoog als de bron exact matcht en de bol-regel gedocumenteerd is; laag als het een bureau-advies is.
 - **Moeite:** hoeveel handwerk of risico.
 
-Volgorde: eerst alles onder A (identiteit), dan offline- en filterblokkades (D), dan titel (B), dan foto's (F), dan beschrijving (C) en zoekwoorden (E), dan families (G).
+Volgorde: eerst alles onder A (identiteit) en een foute hoofdfoto uit F2, dan offline- en filterblokkades (D), dan titel (B), dan foto's (F en F2), dan beschrijving (C) en zoekwoorden (E), dan families (G).
 
 ---
 
@@ -215,7 +238,8 @@ Lever per run:
    | EAN | Product | Onderdeel | Huidige waarde | Nieuwe waarde | Bron (merkstore, Bartogi, spec) | Bol-regel | Zekerheid | Prioriteit |
    |---|---|---|---|---|---|---|---|---|
 
-4. **Risico's**: beleidspunten, reviewcompliance, content van anderen.
+4. **Fotovergelijking** (uit F2): per EAN de telling klopt, ontbreekt, verdacht en hoofdfoto fout, plus een overzichtsblad met bol-foto en bronfoto naast elkaar voor alles wat verdacht is.
+5. **Risico's**: beleidspunten, reviewcompliance, content van anderen.
 5. **Vraag om akkoord** per batch.
 
 ---
