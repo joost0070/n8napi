@@ -30,8 +30,8 @@ Joosts terechte punt: "verzenden vanuit Nederland" en "geen voorraad inkopen" sp
 | tencel dekbedovertrek | 970 | **zomer** (juni-sep 102-161) |
 
 Twee lessen uit deze cijfers (inschatting):
-- **Dons zoekt men op bol weinig**, de premium donsklant zoekt via Google en koopt op vertrouwen. Dat pleit voor de eigen site als hoofdkanaal voor dons, met bol als aanvulling.
-- **Zijden kussensloop en verzwaringsdeken** hebben op bol een grote, specifieke vraag voor een nicheproduct. Dat zijn producten waar je met een goed product snel zichtbaar wordt.
+- **Dons zoekt men op bol weinig**, de premium donsklant zoekt via Google en koopt op vertrouwen. Dat bevestigt de keuze van Joost: de eigen shop blinesleep is het hoofdkanaal, bol is alleen een etalage voor een paar zoekproducten.
+- **Zijden kussensloop en verzwaringsdeken** hebben op bol een grote, specifieke vraag voor een nicheproduct. Dat zijn de producten die we op bol als etalage zetten, zodat klanten het merk leren kennen en daarna op de eigen shop kopen.
 
 ### Scoring van de kandidaten (inschatting, 1 = slecht, 5 = goed)
 

@@ -9,7 +9,7 @@ Peildatum 5 oktober 2026. Bouwt voort op het rapport `reports/D2C slaapkamertext
 1. **Begin niet met het dekbedovertrek, maar met de producten waar de marge en de groei zitten:** het donsdekbed en de verzwaringsdeken. Bedtextiel groeide 1%, dekbedden 23%. Een dekbed of deken van €200-450 draagt de advertentiekosten makkelijk, een overtrek van €99 nauwelijks.
 2. **Prijs is niet leidend, bewijs is leidend.** In dit segment koopt de klant zekerheid: aantoonbare kwaliteit, echte certificaten, snelle levering uit Nederland en een eerlijk verhaal. Daar mag een premium prijs tegenover staan.
 3. **Het verhaal is "rechtstreeks van de beste fabriek, zonder drie tussenschakels, en we laten het je zien".** Jacks sterkste wapen is niet zijn prijs, maar zijn transparantie en zijn video's vanuit de fabriek. Dat nemen we over, maar transparant over kwaliteit, niet over marge.
-4. **Snelheid via wat er al staat:** bol-account met merkregistratie, eFreight voor vracht en fulfilment, bestaande leveranciers (Sine, Samsung Down, Charming) en het Bline-merk.
+4. **Snelheid via wat er al staat:** het Bline-merk, het domein blinesleep, eFreight voor vracht en fulfilment, bestaande leveranciers (Sine, Samsung Down, Charming). De eigen shop is het hoofdkanaal, bol een etalage.
 5. **Twee partners per productgroep, jaarvolume als ruilmiddel**, kwaliteit vastgelegd met gouden sample, labtest en inspectie.
 
 ---
@@ -88,19 +88,21 @@ Drie pijlers die het verhaal dragen:
 
 ---
 
-## 5. Kanalen: bol voor vertrouwen, eigen site voor marge, content voor groei
+## 5. Kanalen: de eigen shop is het hoofdkanaal, bol is een etalage
+
+Besluit Joost (5 oktober): **de massa moet op de eigen shop (blinesleep)**, bol blijft actief maar is niet het hoofdplatform. Dat past bij het premium verhaal: op de eigen shop bepaal je de beleving, de bundels, de proefnachten, de klantdata en de marge (geen 14% commissie).
 
 | Kanaal | Rol | Hoe | KPI |
 |---|---|---|---|
-| **bol.com** | Snelle reviews, volume, vertrouwen | Zelfde account, merkregistratie Bline, LvB of eFreight; productfamilies per maat; Sponsored Products op "donsdekbed", "verzwaringsdeken", categoriepagina's | 25+ reviews per held in 60 dagen; ACoS onder 25% |
-| **Eigen site (Shopify)** | Merk, verhaal, bundels, marge, klantdata | Specificatiekaarten, video, proefslapen, bundels; e-mail vanaf dag 1 | Conversie > 1,5%, orderwaarde > €250 |
-| **Meta (Facebook, Instagram)** | Klantwerving | Video uit de fabriek, vergelijkingen met bewijs, UGC van slapers | CAC per eerste order < €60 bij orderwaarde > €250 |
-| **Google Shopping en Search** | Vraag oogsten | Merk + "donsdekbed 240x220", "verzwaringsdeken 7 kg" | ROAS > 4 |
+| **Eigen shop blinesleep (Shopify)** | **Hoofdkanaal**: merk, verhaal, bundels, marge, klantdata | Specificatiekaarten, video, proefslapen, bundels, leverdatum per drop, e-mail vanaf dag 1 | 70-80% van de omzet; conversie > 1,5%; orderwaarde > €250 |
+| **Meta (Facebook, Instagram)** | Belangrijkste bron van nieuwe klanten | Video uit de fabriek, bewijs per product, UGC van slapers; alles stuurt naar de eigen shop | CAC per eerste order < €60 bij orderwaarde > €250 |
+| **Google Shopping en Search** | Vraag oogsten | Merk + "donsdekbed 240x220", "zijden kussensloop", "lyocell beddengoed" | ROAS > 4 |
 | **Content: "Nederlander in de fabriek"** | Goedkoopste klantwerving (Jacks motor) | Wekelijkse video van Joost in China en bij inspectie; YouTube, TikTok, Instagram | Bereik en wachtlijst-aanmeldingen |
 | **Creators** | Bewijs door anderen | 20-40 producten naar slaap-, wonen- en mama-creators | Content die je mag gebruiken in ads |
-| **E-mail** | Herhaalaankoop, drops | Welkomstreeks, aanvullers verkopen na dekbed | 20-30% herhaal in 12 maanden |
+| **E-mail en sms** | Herhaalaankoop, drops | Welkomstreeks, aanvullers na het dekbed, aankondiging van elke drop | 20-30% herhaal in 12 maanden |
+| **bol.com** | Etalage en vertrouwen, geen hoofdkanaal | Alleen de instap- en zoekproducten (zijden sloop, later de verzwaringsdeken), merkregistratie Bline; geen bundels en geen exclusieve aanbiedingen | Reviews en zichtbaarheid; 10-20% van de omzet |
 
-**Volgorde:** wachtlijst en content eerst, dan bol en de eigen site tegelijk live. Duitsland via bol.de en Amazon.de pas als Nederland winstgevend draait (waarschijnlijk 2027).
+**Volgorde:** wachtlijst en content eerst, dan de eigen shop live. bol volgt met een paar producten zodra de eigen shop draait. Duitsland via een Duitstalige shop (en eventueel Amazon.de) pas als Nederland winstgevend draait (waarschijnlijk 2027).
 
 ---
 
@@ -186,8 +188,8 @@ Het seizoen bepaalt het ritme. Dekbedden en dekens verkopen van oktober tot febr
 |---|---|---|---|
 | **0. Voorbereiden** | 5-25 okt | Bijlagen met offertes openen (Samsung Down, Charming, Sine, TopKing); specificaties vastleggen; merkbesluit met de marketingexpert; landingspagina's met wachtlijst voor dons en verzwaringsdeken; Meta-test €2-3k; samples dons bestellen | Prijzen bekend, CPL per held, samples onderweg |
 | **1. Fabrieksreis** | 31 okt-8 nov | Canton Fair fase 3 (31 okt-4 nov) plus bezoeken aan Sine en Samsung Down (Hangzhou), Charming (Hefei of Tongcheng), een weverij in Keqiao of Nantong. Jaardeals sluiten, gouden samples verzegelen, eerste filmmateriaal | Twee partners per held met schriftelijke voorwaarden |
-| **2. Eerste drop** | 9 nov-15 jan | PO's: 150-200 verzwaringsdekens, 100-150 donsdekbedden (2-3 maten), 300 overtreksets; inspectie; trein of zee; labtests. Pre-order "januari-drop" met vaste leverdatum. Site en bol-listings klaarzetten | Pre-orders en wachtlijst tellen |
-| **3. Launch** | 15 jan-31 mrt | Levering uit eFreight in 1-2 dagen, live op bol en eigen site, reviews verzamelen, creators, wekelijkse video | 25+ reviews per held, CAC en marge per order gemeten |
+| **2. Eerste drop** | 9 nov-15 jan | PO's: 150-200 verzwaringsdekens, 100-150 donsdekbedden (2-3 maten), 300 overtreksets; inspectie; trein of zee; labtests. Pre-order "januari-drop" met vaste leverdatum. Eigen shop klaarzetten | Pre-orders en wachtlijst tellen |
+| **3. Launch** | 15 jan-31 mrt | Levering uit eFreight in 1-2 dagen, live op de eigen shop, reviews verzamelen, creators, wekelijkse video | 25+ reviews per held, CAC en marge per order gemeten |
 | **4. Opschalen** | apr-sep 2027 | Bestsellers per SKU naar container-volume, beddengoed uitbreiden, zomerdekbed en Tencel voor het zomerseizoen | Bijdrage na ads positief per kanaal |
 | **5. Oogst** | okt 2027-feb 2028 | Volle winter met eigen voorraad, Black Friday met bundels in plaats van korting, start Duitsland | Doelomzet en marge gehaald |
 
@@ -213,7 +215,7 @@ Het testbudget is iets hoger dan in het rapport (€30-50k), omdat de helden duu
 
 Opschalen naar een container gebeurt alleen als:
 
-1. **CAC per eerste order onder €60** bij een orderwaarde boven €250 (eigen site), of ACoS onder 25% op bol.
+1. **CAC per eerste order onder €60** bij een orderwaarde boven €250 op de eigen shop.
 2. **Bijdrage na advertenties positief** per held.
 3. **Retouren onder 10%** (dons en deken), met nul certificaat- of kwaliteitsklachten.
 4. **Gemiddelde review 4,5+** met minimaal 25 reviews per held.
