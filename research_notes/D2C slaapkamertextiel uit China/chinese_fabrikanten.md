@@ -318,3 +318,120 @@ On dropshipping:
 ### Gaps
 - I found no verified named examples of EU D2C brands sourcing from specific Nantong factories. Brands rarely disclose this.
 - I found no Chinese bedding manufacturer with its own EU warehouse for dropshipping that I could confirm.
+
+## 8. Partnership instead of dropshipping: getting a factory to sell from its stock or hold stock for you, how to approach and negotiate, and how to lock in premium quality
+
+Founder's premise (from the coordinator): access to factory stock is mainly a matter of having the right conversations with manufacturers. The goal is a partnership, not Alibaba or 1688 dropshipping, and the positioning is mid-to-premium. This section tests that premise against the sources.
+
+### Takeaway
+The sources support the premise. The binding constraint on small orders is the fabric (dye lot, greige), not the sewing. Factories and mills routinely offer brands four kinds of arrangement:
+- stock fabric programmes
+- reserved greige fabric with colour call-offs
+- safety stock held for bestsellers
+- reserved capacity and raw material for long-term customers
+
+They do this when the brand gives them a credible forecast, pays explicitly for setup or remnant costs, and behaves as a reliable long-term customer. Premium quality is then secured contractually and procedurally. The tools are a written fabric spec, verified OEKO-TEX/GOTS certificates, lab tests, a signed and sealed golden sample, and AQL inspection (critical 0, major 2.5, minor 4.0). A few real brands show the model works at premium level; Ettitude is the clearest case, producing in Zhejiang.
+
+### Cited Findings
+
+**A. Arrangements that give a small brand access to factory or mill stock**
+- **Stock fabric programmes.** Some manufacturers run "stock fabric programs and flexible booking systems" for repeat orders and fast replenishment. These are aimed at basics, core colours and carry-over styles. The same source says brands can have safety stock held for bestsellers. — [Sino Finetex, textile manufacturer guide](https://sinofinetex.com/textile-manufacturer-china-complete-guide-to-sourcing-quality-and-trends/) (undated; search summary)
+- **Mill "stock service".** Some mills keep popular fabrics in greige or dyed form ready for low-volume shipment. In-stock greige can ship "with no minimum order". — [search summary: Makemine fabric sourcing 2026](https://www.makemine.com/blog/fabric-sourcing); [Weaverine greige](https://www.weaverine.com/greige-fabric)
+- **Greige reservation with colour call-off (Sungil Tex, a mill, not Chinese; used here as an example of the contract model):**
+  - The mill holds greige stock "against the brand's account" under a formal agreement.
+  - The brand calls off quantities and names a colour within a conversion window, typically 4–8 weeks.
+  - Greige minimum is 3,000 yards per order; the per-colour conversion minimum is 1,000 yards.
+  - The contract should define: reserved yardage, minimum call-off per colour, window length, dyeing turnaround, terms for stock left unconverted at expiry, and the colour range.
+  - Effective lead time drops to "dyeing + finishing time only".
+  - Brands need a direct relationship with the mill, not only with the sewing factory.
+  - "Fabric accounts for roughly 60–70% of total garment cost."
+  — [Sungil Tex greige procurement strategy](https://www.sungiltex.com/post/greige-fabric-procurement-strategy-how-fashion-brands-can-reduce-lead-times-and-minimize-waste-by-s)
+- **Lead times by fabric route (Nantong):** stock/in-line fabric with a standard shade card takes about 5–8 weeks from PO to cargo-ready. Custom-dyed takes 8–12 weeks and custom-printed 11–16 weeks. — [BeddingTextilePro lead time](https://www.beddingtextilepro.com/blog/bedding-production-lead-time-and-scheduling)
+- **Safety stock agreements in general.** In a typical clause, the buyer gives the supplier its requested safety-stock level each month, both parties agree the level, and the supplier holds stock at that level as set out in an appendix. — [Zhihu "Safety Stock Agreement" template](https://zhuanlan.zhihu.com/p/402809812) (generic contract template, not textile-specific)
+- **Chinese-language practice.** Chinese supplier commentary describes:
+  - reserving capacity and raw-material stock for long-term customers, to keep batch quality uniform and supply continuous (为长期客户预留产能与原料库存，保障批次品质统一、供货连贯)
+  - brands pre-arranging stock or short-lead-time fabric with fabric suppliers
+  - staggered delivery in batches (分批出货) matched to the client's sales
+  — [Sohu (faux-fur supplier article, 2026)](https://www.sohu.com/a/1083785316_122772389); [Zhihu 面料采购常见问题](https://zhuanlan.zhihu.com/p/449164483); [scmor 柔性供应链](https://www.scmor.com/view/2098) (search summaries; general rather than bedding-specific)
+
+**B. Negotiating MOQ and terms as a partner**
+- **Factories' cost reasoning.** MOQs protect the factory against material minimums (bulk material, i.e. the dye lot), line changeovers and tooling. — [search summary of Owlsourcing / Supplier Ally / CMGM](https://www.cmgm.net/china-factory-moq-negotiation-strategy/)
+- **Concrete tactics (CMGM):**
+  - Pay setup costs explicitly as a line item, e.g. "cover a color change … or a material remainder", in exchange for a lower piece MOQ.
+  - Start on stock colours: "custom pantone + low volume is the expensive combination; stock color + your logo is cheaper to start."
+  - Consolidate SKUs on one platform, e.g. one fabric in several colourways in one run.
+  - Give written 6–12 month forecasts with negotiated cancellation terms.
+  - Use standard export cartons rather than custom colour boxes for pilots.
+  - Always get quotes at both your pilot quantity and the factory's MOQ.
+  - Red flag: very low MOQs of 50–100 can mean pooled runs mixed with other buyers' goods, which makes QC unpredictable.
+  — [CMGM MOQ negotiation](https://www.cmgm.net/china-factory-moq-negotiation-strategy/)
+- **Relationship first.** Build the relationship first and negotiate second; guanxi influences pricing more than aggressive tactics. Negotiate the whole package (MOQ, payment terms, samples, packaging, lead times, QC, defect handling, shipping), not just unit price. Free or refundable samples, a 30% rather than 50% deposit, and delivery to port are often easier wins than price cuts. — [search summary: Owlsourcing 2025](https://owlsourcing.com/negotiate-with-chinese-suppliers/); [aitakon 2026](https://www.aitakon.com/how-to-negotiate-with-chinese-manufacturer); [Supplier Ally](https://supplierally.com/uncategorized/negotiate-moq-pricing-china-factories-guide/)
+- **Payment terms:**
+  - Standard is T/T 30% deposit, 70% before shipment.
+  - A milestone variant is 30% deposit, 40% after fabric approval, 30% before shipment.
+  - Net 15 or Net 30 becomes negotiable for established, repeat buyers.
+  - A letter of credit (LC) suits larger orders; escrow or Trade Assurance suits first small orders.
+  — [New Asia Garment payment terms](https://www.newasiagarment.com/how-to-negotiate-payment-terms-and-flexible-lead-times-with-reliable-china-apparel-factories/)
+- **Sourcing agents (2026):**
+  - Commission is typically 5–10% of order value; quoted ranges run from 3–10% to 5–15%.
+  - Tiered: about 10% for orders under $10k, 5–8% for $10k–50k, 3–5% above $100k.
+  - Hybrid models charge 2–3% plus separate fees for audits, lab tests and inspections.
+  — [search summary: Maple Sourcing](https://www.maplesourcing.com/china-sourcing-agent-fees.html); [Dark Horse Sourcing 2026](https://darkhorsesourcing.com/news-detail/-china-sourcing-agent-fees-guide-2026); [europe-infos 2026](https://www.europe-infos.fr/english/8536/what-it-really-costs-to-hire-a-china-sourcing-agent-in-2026-and-how-to-avoid-surprise-fees/)
+- **Where to meet partners:**
+  - Intertextile Shanghai Home Textiles: spring edition in March and autumn edition 18–20 Aug 2026; about 900 exhibitors in 2025, co-hosted by the China Home Textile Association.
+  - Canton Fair Phase 3 (home textiles): 31 Oct – 4 Nov 2026.
+  - Heimtextil Frankfurt: 12–15 Jan 2027.
+  - Nantong exhibitors appear as a group at Intertextile Shanghai.
+  — see section 6 sources; [China Daily on Nantong at Shanghai fair](https://govt.chinadaily.com.cn/s/202503/12/WS67d3a270498eec7e1f731cfe/nantong-home-textile-businesses-appear-at-shanghai-home-textile-fair.html)
+- **On-site visits:**
+  - Dieshiqiao has 15,000+ shops, many run directly by factories, plus a separate packaging market with 1,000+ suppliers.
+  - Haimen/Sanxing has 2,000+ bedding makers.
+  - Keqiao handles about a quarter of global fabric transactions.
+  — [Sohu](https://www.sohu.com/a/963872140_121124407); [Jing Sourcing](https://jingsourcing.com/b-china-fabric-market/); [chinaguide.in](https://chinaguide.in/cities/nantong/)
+
+**C. Locking in premium quality**
+- **Golden sample.** It should be signed, dated and sealed. The inspection company should hold a sealed copy and compare production against it, together with the spec sheet and inspection checklist. — [Insight Quality](https://insight-quality.com/what-is-a-golden-sample/); [HKTDC](https://newsbites.hktdc.com/tips/golden-sample/); [Sofeast](https://www.sofeast.com/glossary/golden-sample/)
+- **AQL levels.** A common textile setting is critical 0, major 2.5, minor 4.0. — [ExploreTex AQL 2026](https://exploretex.com/garment-factory-quality-inspection-aql-standards/)
+- **Duvet cover inspection points:** quantity, fabric condition, workmanship, size (finished length, width and opening against the spec and tolerance sheet), closures, labels and packaging. — [JOYI LIFE duvet inspection](https://www.joyilife.com/inspect-duvet-covers-before-shipment/) (search summary; the page did not render on fetch); [JOYI bedsheet checklist](https://www.joyilife.com/bedsheet-set-inspection-checklist/)
+- **Lab tests:** fibre content, pH, colour fastness (wash, rub, perspiration, light), azo dyes, dimensional change (ISO 6330/5077), strength, pilling, thread count and fabric weight. — [Testex](https://www.testextextile.com/expert-interpretation-quality-and-testing-of-bedding-sets/); [Ninghow](https://ninghow.com/blog/fabric-shrinkage-test-buyers-ask/)
+- **Fibre-origin fraud.** The Cotton Egypt Association estimates that up to 90% of "Egyptian cotton" products are not genuine. Target recalled 750,000 fake Egyptian-cotton sheets and pillowcases (2016). Isotopic or DNA origin tests (Oritain, Applied DNA Sciences) can verify Supima or Egyptian origin at any stage; Supima licensees use Oritain. — [Bloomberg 2016](https://www.bloomberg.com/news/articles/2016-09-22/dna-testing-could-put-an-end-to-fake-egyptian-cotton) (older data); [Oritain/Supima](https://oritain.com/resources/news/oritain-maps-supima-cotton-origin-tackling-fraud-in-the-global-cotton-supply-chain-and-enabling-the-first-true-authentication-of-premium-cotton-fibre); [cottonwithlove 2026](https://cottonwithlove.com/guides/fake-egyptian-cotton-sheets/)
+- **Certificate verification.** OEKO-TEX Label Check gives a valid, expired or withdrawn result, with the certificate's scope; certificates are valid for one year. Check GOTS licence numbers in the GOTS database and require a Transaction Certificate per shipment. — see section 5 sources
+- **Compliance risk for Chinese cotton.** The EU Forced Labour Regulation (EU) 2024/3015 bans products made with forced labour from **14 December 2027**. It applies to all products and origins with no threshold. The Commission published guidelines, a single portal and a risk database on 26 June 2026. — [EU Commission FLR](https://single-market-economy.ec.europa.eu/single-market/goods/forced-labour-regulation_en); [Mayer Brown, Sept 2026](https://www.mayerbrown.com/en/insights/publications/2026/09/a-practical-roadmap-for-compliance-with-the-eu-forced-labour-regulation); [Bird & Bird 2026](https://www.twobirds.com/en/insights/2026/eu-forced-labour-regulation-the-european-commission's-new-guidelines-for-businesses)
+
+**D. Western brands producing premium bedding with Chinese partners**
+- **Ettitude** (Los Angeles, DTC) sources its bamboo-lyocell textiles from a factory in Zhejiang near Shanghai, using a closed-loop process. — [TechCrunch 2020](https://techcrunch.com/2020/05/14/investors-cozy-up-to-la-based-ettitudes-bamboo-bedding-and-sleep-wear-with-1-6-million) (older data); [TechCrunch 2018](https://techcrunch.com/2018/10/01/ettitude-targets-eco-conscious-shoppers-with-its-organic-bedding)
+- **Quince** (US DTC) works factory-direct with just-in-time manufacturing. **Cozy Earth** sells bamboo-viscose sheets at $289 (Queen). — [The Good Trade 2026](https://www.thegoodtrade.com/features/best-bamboo-sheets/) (China origin for Quince and Cozy Earth comes from a search summary only and is not confirmed in a fetched source)
+
+### Inferences
+**Partnership playbook for Bline (synthesis; my estimates, not sourced facts):**
+
+1. **Target the right counterpart.** Talk to the mill or dye house, or to a Nantong maker with its own fabric programme, not just a cut-and-sew factory. The 3,000 m per colour MOQ is the mill's, so the solution has to be negotiated where the fabric is made.
+2. **Proposal structure that makes 500 pcs viable:**
+   - Choose 3–4 core colours from the mill's stock or in-line shade card, e.g. white, off-white, stone, sage.
+   - Commit to a 12-month forecast, such as 4 drops a year.
+   - Ask the factory to (a) reserve greige or stock fabric for Bline, (b) cut 300–500 sets per drop, and (c) optionally hold a buffer of finished bestsellers that Bline calls off within an agreed window, e.g. 60–90 days.
+   - Offer in return: a modest unit surcharge or an explicit remnant or setup fee, a deposit against the reserved fabric, and a clause that Bline buys out any unused reserved stock at expiry.
+3. **Payment path:**
+   - First order: 30/70, or 30/40/30 tied to fabric approval, via Trade Assurance or escrow.
+   - After 2–3 smooth orders: ask for balance against a copy of the bill of lading, then Net 30.
+4. **Approach sequence:**
+   1. Shortlist 8–12 exporters with EU clients and OEKO-TEX certification, via Intertextile, Heimtextil or Made-in-China.
+   2. Run video calls, then a paid sample round in EU sizes.
+   3. Visit Nantong (Haimen and Dieshiqiao) and Keqiao in one 3–4 day trip; Shanghai to Nantong is about 1.5–2 hours by road or rail (my estimate).
+   4. Narrow down to 2 partners.
+   - Consider a Nantong-based agent at 5–8% for the first year if there is no Mandarin speaker on the team.
+5. **Premium lock-in (in the purchase contract):**
+   - Fabric spec: fibre (e.g. long-staple combed cotton, or Supima/Egyptian with a certificate), yarn count (e.g. 60s or 80s single-ply), TC and construction (sateen or percale), weight in g/m², and finish (enzyme or stone wash).
+   - Performance limits: shrinkage ≤3% (ISO 6330 at 60 °C), wash fastness ≥4, rub fastness ≥3–4, pH 4.0–7.5, and OEKO-TEX on the finished article.
+   - Sealed golden sample for each colour.
+   - Pre-shipment AQL inspection (0 / 2.5 / 4.0) at about US$200–350 per man-day, and a during-production inspection on the first order.
+   - Lab test for each new fabric lot.
+   - Optional origin test for premium-cotton claims.
+   - Forced-labour documentation (cotton origin and traceability) ahead of 14 Dec 2027.
+6. **Why this is not dropshipping:** the factory holds Bline-specific fabric or goods, made to Bline's spec and labels, under a contract. Bline receives bulk drops into an NL 3PL. This keeps control over quality, sizes (EU 240x220, 30 cm corner) and brand experience. 1688 stock is only useful as a sampling or benchmarking tool.
+
+### Gaps
+- I found no public, bedding-specific contract examples or numbers for consignment stock (stock held at the factory and invoiced on call-off) between Chinese factories and small Western brands. The sources describe the general mechanisms (safety stock, reserved greige, reserved capacity), not published bedding cases. The terms must be negotiated case by case.
+- I found no typical holding fees or storage periods that Chinese factories charge for keeping finished goods for a client.
+- Chinese-origin claims for Quince and Cozy Earth are unconfirmed. Ettitude (Zhejiang) is the only well-sourced example.
+- I found no sourced data on Xinjiang cotton share in Nantong bedding, or on how Nantong mills document cotton origin.
