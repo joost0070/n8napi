@@ -47,7 +47,7 @@ Bij home/bedding-D2C is er bijna nooit één oorzaak. De doodsteek is meestal de
 
 ### Inferences
 - Patroon "overreach na een piek": Made.com (voorraad), Parachute (winkels), Brooklinen (30-winkelplan, daarna 80% relaunch) en Emma (systemen en landen) kwamen allemaal in de problemen door vaste kosten of kapitaal vast te leggen op basis van een optimistische groeiprognose. Voor Bline met €50k is het equivalent: te veel SKU's, kleuren en maten tegelijk vooruit betalen, of te vroeg naar BE/DE uitbreiden.
-- Dekbedden worden eens per 5-10 jaar gekocht. Daardoor moet de CAC op de eerste order terugverdiend worden. Bij een dekbed van €549 met grofweg 55-65% brutomarge (schatting) is een CAC van €100-200 haalbaar. Bij een siliconen kussensloop van €59 is dat niet zo. De kussensloop werkt dan als instapproduct en het dekbed moet de winst maken.
+- Dekbedden worden eens per 5-10 jaar gekocht. Daardoor moet de CAC op de eerste order terugverdiend worden. Bij een dekbed van €549 met grofweg 55-65% brutomarge (schatting) is een CAC van €100-200 haalbaar. Bij een zijden kussensloop van €59 is dat niet zo. De kussensloop werkt dan als instapproduct en het dekbed moet de winst maken.
 - Kortingsverslaving: als het merk vanaf de launch met Black Friday-korting verkoopt, leert de Nederlandse klant (die prijsvergelijkt via Tweakers, Kieskeurig en bol) wachten op korting. Afleiding uit het algemene D2C-patroon. Ik vond hiervoor geen specifieke cijfers voor bedding.
 - Snurk is geen waarschuwing over het businessmodel. Het is wel relevant als concurrentie-signaal: hun voorraad gaat in Q4 2026 met 50% korting de markt op, precies in de launchperiode van Bline.
 
@@ -110,7 +110,7 @@ De grootste China-risico's voor Bline zijn productspecifiek: dons is een product
 | Donspercentage/soort klopt niet (gans vs eend, veer) | Middel-Hoog | Zeer hoog (claim, retour, ACM) | Vulgewicht wijkt af, schachtjes prikken door, geur | IDFL/TÜV-test op eerste bulk en daarna per kwartaal, testrapport op batchnummer, contractuele boeteclausule | €150-400 per test (schatting, niet geverifieerd) |
 | Kwaliteitsverval na de eerste batches | Hoog | Hoog | Reviews over pilling, krimp, kleurverschil; meer CS-tickets per batch | Golden sample bij de fabriek en bij Bline, AQL-inspectie door derde partij voor verzending | Inspectie ~US$300-400/manday (schatting) |
 | Kleurverschil tussen batches (linnen) | Hoog | Middel | Klant combineert een sloop uit batch A met een overtrek uit batch B | Lab-dip goedkeuren, één verfbad per kleur per seizoen, batchcode op het label | Laag |
-| Zijde: te laag momme of blend | Middel | Hoog | Gewicht per m2 lager; glans "plastic" | Weeg-/composietietest, brandtest bij ontvangst | Laag-middel |
+| Zijde: te laag momme of blend | Middel | Hoog | Gewicht per m2 lager; glans "plastic" | Weeg- en samenstellingstest, brandtest bij ontvangst | Laag-middel |
 | Vals of verlopen OEKO-TEX/RDS-certificaat | Middel | Hoog | PDF zonder nummer in de database, andere bedrijfsnaam | Zelf checken via de OEKO-TEX Label Check en de Textile Exchange-database, certificaat op naam van de producent | €0 |
 | BEC-betaalfraude | Laag-Middel | Zeer hoog (volledige batchbetaling) | Mail over een "nieuwe rekening", haast, ander domein | Bel-verificatie, rekening alleen wijzigen met getekende brief + call, 2-persoonsakkoord | €0 |
 | Leverancier kopieert of verkoopt aan concurrent | Hoog | Middel | Identiek product op AliExpress/bol | NNN-overeenkomst, eigen specs en verpakking, merk en reviews als moat | €1-3k juridisch (schatting) |
