@@ -206,49 +206,45 @@ def bedroom(label="Slaapkamer met donsdekbed in ochtendlicht", w=1248, h=560):
             f'<linearGradient id="{u}dv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EEE6D9"/></linearGradient>'
             f'<linearGradient id="{u}dr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2EBE0"/><stop offset="1" stop-color="#DED2BF"/></linearGradient>'
             f'<radialGradient id="{u}lamp" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF4DD" stop-opacity=".9"/><stop offset="1" stop-color="#FFF4DD" stop-opacity="0"/></radialGradient>'
+            f'<radialGradient id="{u}pf" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>'
             f'<clipPath id="{u}dc"><path d="M228,372 C420,350 800,350 992,372 L1006,486 C800,500 420,500 214,486 Z"/></clipPath>'
             + blur(u, 22) + blur(u, 8, "s") + ndef)
     quilt = "".join(f'<path d="M{x},350 C{x-4},420 {x-6},460 {x-8},500" />' for x in range(318, 1000, 96))
     quilt += "".join(f'<path d="M210,{y} C420,{y-14} 800,{y-14} 1010,{y}"/>' for y in (408, 446))
-    puffs = "".join(f'<ellipse cx="{x}" cy="{y}" rx="34" ry="11" fill="#fff" opacity=".8"/>' for x in range(270, 990, 96) for y in (386, 426, 466))
+    puffs = "".join(f'<ellipse cx="{x}" cy="{y}" rx="40" ry="15" fill="url(#{u}pf)"/>' for x in range(270, 990, 96) for y in (388, 428, 468))
     body = (f'<rect width="{w}" height="{h}" fill="url(#{u}w)"/>'
             f'<g filter="url(#{u}b)" opacity=".55"><polygon points="760,0 1040,0 900,470 600,470" fill="#FFF9EE"/>'
             f'<polygon points="1080,0 1160,0 1040,470 960,470" fill="#FFF9EE" opacity=".7"/></g>'
             f'<rect y="470" width="{w}" height="{h-470}" fill="url(#{u}f)"/>'
             f'<rect y="468" width="{w}" height="3" fill="#BCA988" opacity=".35"/>'
-            # side stool with vase
-            f'<rect x="96" y="380" width="96" height="92" rx="6" fill="#CDBD9F"/><rect x="96" y="380" width="96" height="8" rx="3" fill="#BEAC8B"/>'
-            f'<path d="M128,380 C120,350 122,330 136,322 L152,322 C166,330 168,350 160,380 Z" fill="#EFE8DC" stroke="#D8CCB8"/>'
-            f'<g stroke="#7C8B74" stroke-width="2" fill="none" stroke-linecap="round"><path d="M144,324 C140,270 120,230 100,200"/><path d="M144,324 C150,260 170,226 196,206"/>'
-            f'<path d="M144,324 C146,280 150,240 146,190"/></g>'
-            f'<g fill="#8E9C86">' + "".join(f'<ellipse cx="{x}" cy="{y}" rx="7" ry="3.5" transform="rotate({r} {x} {y})"/>' for x, y, r in
-                                             [(108, 212, -40), (118, 236, -30), (172, 222, 30), (184, 214, 40), (160, 240, 20), (147, 200, -80), (146, 222, 80), (126, 258, -20)]) + '</g>'
-            # shadow + bed
+            # bed group, shifted left so the overlay card on the right never covers it
+            f'<g transform="translate(40,52) scale(.88)">'
             f'<ellipse cx="610" cy="512" rx="430" ry="20" fill="#7F6C52" opacity=".35" filter="url(#{u}s)"/>'
             f'<rect x="270" y="140" width="680" height="260" rx="22" fill="url(#{u}hb)"/>'
             + "".join(f'<rect x="{x}" y="150" width="2" height="240" fill="#B5A385" opacity=".5"/>' for x in range(338, 950, 68)) +
             f'<rect x="240" y="386" width="740" height="104" rx="10" fill="#DBCDB6"/>'
             f'<rect x="262" y="488" width="14" height="22" fill="#A99472"/><rect x="944" y="488" width="14" height="22" fill="#A99472"/>'
-            # pillows
             f'<g transform="translate(312,250) scale(0.95,0.68)">{g_pillow(u+"p1")}</g>'
             f'<g transform="translate(624,250) scale(0.95,0.68)">{g_pillow(u+"p2")}</g>'
             f'<g transform="translate(478,300) scale(0.72,0.5)">{g_silk(u+"s1")}</g>'
-            # duvet
             f'<path d="M228,372 C420,350 800,350 992,372 L1006,486 C800,500 420,500 214,486 Z" fill="url(#{u}dv)"/>'
             f'<g clip-path="url(#{u}dc)">{puffs}<g stroke="#E0D5C3" stroke-width="1.4" fill="none">{quilt}</g></g>'
             f'<path d="M214,486 C420,500 800,500 1006,486 L1000,520 C800,534 420,534 220,520 Z" fill="url(#{u}dr)"/>'
             f'<path d="M228,372 C420,350 800,350 992,372 L990,388 C800,368 420,368 230,388 Z" fill="#FBF8F3" stroke="#E3D9C8"/>'
-            # sage throw
             f'<path d="M760,366 C820,364 880,366 930,370 L948,494 C900,500 840,502 788,500 Z" fill="#7C8B74" opacity=".92"/>'
             f'<path d="M760,366 C820,364 880,366 930,370 L932,382 C880,378 820,376 762,378 Z" fill="#91A089"/>'
             f'<path d="M788,500 C840,502 900,500 948,494 L944,528 C900,534 840,536 792,532 Z" fill="#6D7B66"/>'
-            # nightstand + lamp
-            f'<circle cx="1110" cy="250" r="120" fill="url(#{u}lamp)"/>'
-            f'<rect x="1030" y="372" width="150" height="104" rx="6" fill="#C9B898"/><rect x="1030" y="372" width="150" height="9" rx="3" fill="#B8A582"/>'
-            f'<path d="M1042,420 H1168" stroke="#B19D79" stroke-width="1.5"/><circle cx="1105" cy="398" r="3" fill="#A48F69"/>'
-            f'<rect x="1088" y="352" width="30" height="20" rx="4" fill="#E9E1D4"/><path d="M1103,352 V282" stroke="#9B8764" stroke-width="3"/>'
-            f'<path d="M1068,284 L1138,284 L1124,222 L1082,222 Z" fill="#F6EFE2" stroke="#E0D3BC"/>'
-            f'<rect x="1046" y="356" width="30" height="16" rx="2" fill="#7C8B74" opacity=".8"/><rect x="1046" y="350" width="26" height="7" rx="2" fill="#E9E1D4"/>'
+            # nightstand, lamp and a vase with branches on the left
+            f'<circle cx="150" cy="250" r="130" fill="url(#{u}lamp)"/>'
+            f'<rect x="60" y="372" width="160" height="110" rx="6" fill="#C9B898"/><rect x="60" y="372" width="160" height="9" rx="3" fill="#B8A582"/>'
+            f'<path d="M72,422 H208" stroke="#B19D79" stroke-width="1.5"/><circle cx="140" cy="400" r="3" fill="#A48F69"/>'
+            f'<rect x="96" y="352" width="30" height="20" rx="4" fill="#E9E1D4"/><path d="M111,352 V282" stroke="#9B8764" stroke-width="3"/>'
+            f'<path d="M76,284 L146,284 L132,222 L90,222 Z" fill="#F6EFE2" stroke="#E0D3BC"/>'
+            f'<path d="M168,372 C160,350 162,336 172,330 L186,330 C196,336 198,350 190,372 Z" fill="#EFE8DC" stroke="#D8CCB8"/>'
+            f'<g stroke="#7C8B74" stroke-width="2" fill="none" stroke-linecap="round"><path d="M179,332 C176,290 160,262 146,244"/><path d="M179,332 C184,286 198,262 214,250"/></g>'
+            f'<g fill="#8E9C86">' + "".join(f'<ellipse cx="{x}" cy="{y}" rx="7" ry="3.5" transform="rotate({r} {x} {y})"/>' for x, y, r in
+                                             [(150, 250, -40), (158, 266, -30), (204, 256, 30), (212, 250, 40), (194, 270, 20), (166, 284, -20)]) + '</g>'
+            f'</g>'
             + nrect)
     return svg(f"0 0 {w} {h}", body, defs, label=label)
 
@@ -287,15 +283,15 @@ def bundle_scene(label="De Slaapset: donsdekbed, Tencel set en twee kussens"):
     ndef, nrect = noise(u, 0.05)
     defs = (f'<radialGradient id="{u}bg" cx=".4" cy=".35" r=".9"><stop offset="0" stop-color="#F2ECE2"/><stop offset="1" stop-color="#DCD0BC"/></radialGradient>'
             + blur(u, 12, "s") + ndef)
-    body = (f'<rect width="700" height="560" fill="url(#{u}bg)"/>'
-            f'<rect y="390" width="700" height="170" fill="#000" opacity=".04"/>'
-            f'<ellipse cx="340" cy="430" rx="290" ry="22" fill="#6E5B42" opacity=".28" filter="url(#{u}s)"/>'
-            f'<g transform="translate(150,120) scale(.95)">{g_pillow(u+"a")}</g>'
-            f'<g transform="translate(300,140) scale(.95)">{g_pillow(u+"b", "#FFFFFF", "#E8DFD2")}</g>'
-            f'<g transform="translate(70,214) scale(1.05)">{g_duvet_stack(u+"d", band=True)}</g>'
-            f'<g transform="translate(380,300)">{g_sheet_stack(u+"t", ribbon=True)}</g>'
-            f'<g transform="translate(410,404) scale(.52)">{g_silk(u+"k")}</g>' + nrect)
-    return svg("0 0 700 560", body, defs, label=label)
+    body = (f'<rect width="640" height="640" fill="url(#{u}bg)"/>'
+            f'<rect y="470" width="640" height="170" fill="#000" opacity=".04"/>'
+            f'<ellipse cx="330" cy="520" rx="270" ry="22" fill="#6E5B42" opacity=".28" filter="url(#{u}s)"/>'
+            f'<g transform="translate(96,196) scale(.82)">{g_pillow(u+"a")}</g>'
+            f'<g transform="translate(296,210) scale(.82)">{g_pillow(u+"b", "#FFFFFF", "#E8DFD2")}</g>'
+            f'<g transform="translate(60,298) scale(.98)">{g_duvet_stack(u+"d", band=True)}</g>'
+            f'<g transform="translate(372,400) scale(.86)">{g_sheet_stack(u+"t", ribbon=True)}</g>'
+            f'<g transform="translate(394,486) scale(.5)">{g_silk(u+"k")}</g>' + nrect)
+    return svg("0 0 640 640", body, defs, label=label)
 
 
 def seam_detail(label="Detail van cassettes met tussenwanden"):
@@ -420,12 +416,12 @@ def video_scene(kind):
     body = (f'<rect width="700" height="480" fill="url(#{u}bg)"/>'
             f'<g filter="url(#{u}d)" opacity=".7">{rolls}</g>'
             f'<rect width="700" height="480" fill="#1F2A37" opacity=".25"/>'
-            f'<ellipse cx="420" cy="230" rx="200" ry="200" fill="#FFF0D6" opacity=".12" filter="url(#{u}b)"/>'
-            f'<path d="M290,480 C292,400 330,350 420,340 C510,350 548,400 552,480 Z" fill="#2B3A4A"/>'
-            f'<path d="M395,342 C400,360 440,360 446,342 L440,318 H400 Z" fill="#CFA98A"/>'
-            f'<ellipse cx="420" cy="262" rx="52" ry="64" fill="#DDBB9E"/>'
-            f'<path d="M368,250 C362,200 400,184 426,186 C462,188 480,212 472,250 C466,226 446,214 420,214 C394,214 376,226 368,250 Z" fill="#4A3B30"/>'
-            f'<path d="M375,348 L420,372 L466,348" stroke="#3B4C5E" stroke-width="3" fill="none"/>' + nrect)
+            f'<ellipse cx="540" cy="230" rx="200" ry="200" fill="#FFF0D6" opacity=".12" filter="url(#{u}b)"/>'
+            f'<path d="M410,480 C412,400 450,350 540,340 C630,350 668,400 672,480 Z" fill="#2B3A4A"/>'
+            f'<path d="M515,342 C520,360 560,360 566,342 L560,318 H520 Z" fill="#CFA98A"/>'
+            f'<ellipse cx="540" cy="262" rx="52" ry="64" fill="#DDBB9E"/>'
+            f'<path d="M488,250 C482,200 520,184 546,186 C582,188 600,212 592,250 C586,226 566,214 540,214 C514,214 496,226 488,250 Z" fill="#4A3B30"/>'
+            f'<path d="M495,348 L540,372 L586,348" stroke="#3B4C5E" stroke-width="3" fill="none"/>' + nrect)
     return svg("0 0 700 480", body, defs)
 
 
