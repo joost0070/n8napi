@@ -210,10 +210,11 @@ Elk nieuw product gaat door dezelfde trechter. Zo groeit het assortiment alleen 
 
 | Onderdeel | Advies |
 |---|---|
-| **Vorm** | Vaste maandvergoeding plus een bonus op resultaat, bijvoorbeeld een percentage van de bijdrage na advertenties of een bedrag per nieuwe klant boven de target |
-| **Eigendom** | Advertentieaccounts (Meta, Google), pixels, data, creatives en klantlijsten staan op naam van Shop4You; de expert krijgt toegang, geen eigendom |
-| **Afspraken** | Wekelijkse rapportage; KPI's (klantkosten per eerste order, ROAS, bijdrage na advertenties); opzegtermijn 1 maand; geheimhouding |
-| **Start** | Proefperiode van 3 maanden rond de lancering, daarna evalueren |
+| **Vorm** | Een lagere vaste maandvergoeding plus een bonus op resultaat: een percentage van de bijdrage na advertenties, of op de verhouding tussen totale omzet en totale advertentiekosten. **Niet betalen als percentage van het advertentiebudget**, want dan wordt meer uitgeven beloond |
+| **Tarieven** | Freelance specialisten in Google en Meta Ads rekenen in 2026 ongeveer €65-130 per uur, ervaren specialisten €100-150 (bron: commerciële platforms en bureaus, geen onafhankelijke cijfers) |
+| **Eigendom** | Advertentieaccounts (Meta, Google), pixels, data, creatives en klantlijsten staan op naam van Shop4You; de expert krijgt alleen gebruikerstoegang. Het auteursrecht op alles wat voor Bline gemaakt wordt, gaat over naar Shop4You |
+| **Afspraken** | Maandelijkse rapportage met KPI's (klantkosten per eerste order, bijdrage na advertenties); verwerkersovereenkomst als de expert klantdata ziet; geen werk voor concurrerende premium beddengoedmerken; opletten voor de Nederlandse regels rond schijnzelfstandigheid |
+| **Start** | Proefperiode van 2-3 maanden rond de lancering, daarna maandelijks opzegbaar met een verplichting om bij een overdracht mee te helpen |
 
 ---
 
