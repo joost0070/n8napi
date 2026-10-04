@@ -21,7 +21,7 @@ Je gevoel klopt. Hieronder de rekensom met echte inkoopprijzen uit je offertes w
 | Product | Inkoop (FOB) | Landed in NL (inschatting) | Verkoopprijs NL-markt | Mijn prijs | Brutomarge | Bijdrage vóór ads per stuk |
 |---|---|---|---|---|---|---|
 | Verzwaringsdeken lyocell 140x200, 7 kg | **US$27,20** (Sine, feit) | ca. €30-33 (zee, invoerrecht 3,7-12% nog te bevestigen) | Cura €140-190, Gravity €142-235 ([bol](https://www.bol.com/be/nl/p/cura-of-sweden-verzwaringsdeken-pearl-classic-150x210-9kg/9300000017165891/); [Gravity](https://gravity-deken.nl/pages/verzwaringsdeken-1)) | **€179** | ca. 78% | ca. **€95-100** |
-| Donsdekbed 240x220, 90-95% dons, Tencel- of biokatoen-tijk | offerte in bijlage, **nog openen** (Samsung Down, Charming). Inschatting US$70-120 | ca. €75-120 (zee of vacuüm) | Ten Cate 100% ganzendons €590-650, Cloudpillo dons-veren €325 ([bol](https://www.bol.com/nl/nl/p/ten-cate-premium-donzen-lits-jumeaux-4-seizoenen-dekbed-240x220-cm-extra-lang-100-ganzendons-geschikt-voor-alle-seizoenen-zomer-winter-dekbed-anti-huisstofmijt-ventilerend-absorberend/9200000093694543/); [AH](https://www.ah.nl/producten/product/wi583472/ten-cate-dekbed-4-seizoenen-dons-100-240x220)) | **€399-449** | ca. 65-75% | ca. **€170-230** |
+| Donsdekbed 240x220, 90-95% dons, Tencel- of biokatoen-tijk | offerte in bijlage, **nog openen** (Samsung Down, Charming). Inschatting US$70-120, sterk afhankelijk van donspercentage, vulkracht en tijk (zie §6) | ca. €75-120 (zee of vacuüm) | Ten Cate 100% ganzendons €590-650, Cloudpillo dons-veren €325 ([bol](https://www.bol.com/nl/nl/p/ten-cate-premium-donzen-lits-jumeaux-4-seizoenen-dekbed-240x220-cm-extra-lang-100-ganzendons-geschikt-voor-alle-seizoenen-zomer-winter-dekbed-anti-huisstofmijt-ventilerend-absorberend/9200000093694543/); [AH](https://www.ah.nl/producten/product/wi583472/ten-cate-dekbed-4-seizoenen-dons-100-240x220)) | **€399-449** | ca. 65-75% | ca. **€170-230** |
 | Dekbedovertrekset 240x220 percal/satijn | US$16 (schatting rapport) | ca. €19 (zee) / €28 (lucht) | Walra €98-140, Cloudpillo €108, Essenza €160, Yumeko €190 | **€119-139** | ca. 78-83% | ca. **€60-75** |
 | Hoofdkussen (dons of cooling memory foam) | cooling foam **US$7,80** (Myhome Tex, feit); dons nog openen | ca. €10-25 | Cloudpillo kussens rond €70-90 (inschatting uit markt) | **€69-89** | ca. 70-80% | ca. **€35-50** |
 | Bline leeskussen (bestaand) | **US$11,60** EXW (Megafeat, feit) | ca. €14 | €69,99-79,99 op bol | bestaand | bekend | bekend |
@@ -118,6 +118,40 @@ Drie pijlers die het verhaal dragen:
 ### De deal die je voorstelt (Jacks les, vertaald)
 
 > "Wij bouwen in Nederland een premium slaapmerk op jullie product. We geven een jaarprognose met vier drops. In ruil vragen we: vaste prijs voor 12 maanden, kleine rondes van 50-200 stuks per maat of kleur, gereserveerde stof of dons voor onze specificatie, en een buffer van bestsellers die we binnen 60-90 dagen afroepen."
+
+### Samenstelling van vulling en tijk: hier zit het echte prijsverschil
+
+Twee offertes voor "een donsdekbed 240x220" kunnen een factor twee tot drie in prijs schelen, en terecht. Daarom vergelijken we nooit op productnaam, altijd op een vaste specificatie. Dat geldt ook voor de marge: een goedkopere vulling of tijk ziet de klant niet op de foto, maar wel na twee nachten.
+
+**Vulling (dons):**
+
+| Kenmerk | Wat het betekent | Waar het verschil zit |
+|---|---|---|
+| Dons/veren-verhouding | 100%, 95/5, 90/10 of minder (bijvoorbeeld 60/40 "dons en veren") | Hoe hoger het donspercentage, hoe lichter, warmer en duurder. Cloudpillo verkoopt "dons en veren", Ten Cate 90-100% dons |
+| Gans of eend | Ganzendons heeft grotere donsbolletjes | Gans is duurder en vult beter bij hetzelfde gewicht |
+| Vulkracht (fill power, in cuin) | Hoeveel volume een ons dons maakt: 600 is gewoon, 700-750 goed, 800+ top | Grootste prijsfactor na het donspercentage. Charming bood 800+ (winter) en 700+ (zomer) |
+| Vulgewicht per maat | Grammen per maat, bijvoorbeeld 940 g voor 240x220 winter (Charming) | Bij hoge vulkracht heb je minder gewicht nodig voor dezelfde warmte; vergelijk dus vulkracht en gewicht samen |
+| Herkomst en certificaat | RDS of Downpass (dierenwelzijn, geen levend plukken), herkomstland | Zonder certificaat niet verkopen |
+| Reinheid | Gewassen en getest op troebelheid en zuurstofgetal; label volgens de Europese norm EN 12934 | Slecht gewassen dons ruikt en geeft allergieklachten |
+
+**Tijk (de stof om de vulling heen):**
+
+| Kenmerk | Wat het betekent | Waar het verschil zit |
+|---|---|---|
+| Vezel | 100% katoen, biokatoen (GOTS), Tencel/lyocell, of een mix (Charming: 50% Tencel / 50% katoen) | Tencel voelt koeler en zachter, biokatoen geeft een certificaatverhaal; polyester-mix is goedkoper en slechter |
+| Weefsel | Batist (licht, soepel) of satijn (glanzend, zwaarder) | Batist is de klassieker voor dons; satijn voelt luxer |
+| Garen en dichtheid | 60S of 80S garen, draaddichtheid 300TC+, enkeldraads | Hogere garenfijnheid en dichtheid is zachter en duurder; let op tweedraads "TC-opblazen" |
+| Donsdichtheid | "Downproof": dons mag er niet doorheen prikken | Goedkope tijk lekt na een paar maanden |
+| Constructie | Cassettes met tussenwanden (box), doorgestikt, 4-seizoenen (twee dekbedden met knopen) | Cassettes met tussenwanden houden het dons op zijn plek en zijn duurder om te maken |
+| Afwerking | Biesrand, labels, kwaliteit van de stiknaad | Zichtbaar bij uitpakken: eerste indruk |
+
+**Verzwaringsdeken:** vulling van glasparels (fijner, stiller, duurder) of kunststof korrels, het aantal en de grootte van de vakjes, de binnenstof en de hoes (lyocell, katoen, minky). Sine biedt lyocell met glasparels; dat houden we als minimum.
+
+**Praktisch:**
+- Eén vast **specificatieblad per product** dat naar elke leverancier gaat. Elke offerte moet op elke regel antwoord geven. Een offerte zonder vulkracht, donspercentage of tijkgegevens telt niet.
+- Prijs altijd **per gram vulling plus tijk apart** laten opgeven, zodat je kunt zien waar het verschil zit.
+- **Labtest van het eerste sample** op donspercentage, vulkracht en tijkdichtheid. Dat kost een paar honderd euro en voorkomt dat je €450 vraagt voor een product van €250.
+- Op de website staat dezelfde specificatie. Dat is precies het bewijs dat de premium prijs draagt.
 
 ### Kwaliteitsborging (niet onderhandelbaar)
 
