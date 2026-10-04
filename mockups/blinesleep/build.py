@@ -519,7 +519,7 @@ def bewijs():
         <span class="eyebrow">Ons bewijs</span>
         <h1 class="display">Wat erin zit, staat erop. <em class="accent">En je kunt het checken.</em></h1>
         <p class="lead">Premium is geen gevoel. Het is een vulpercentage, een vulkracht, een garen en een certificaatnummer. Hier lees je welke norm wij hanteren, hoe je specs leest en hoe je onze claims zelf controleert.</p>
-        <nav class="anchor-nav"><a href="#standaard">Onze standaard</a><a href="#lezen">Specs lezen</a><a href="#checken">Certificaat checken</a><a href="#labtests">Labtests per partij</a><a href="#fabriek">De fabriek</a></nav>
+        <nav class="anchor-nav"><a href="#standaard">Standaard</a><a href="#lezen">Specs lezen</a><a href="#checken">Certificaat checken</a><a href="#labtests">Labtests</a><a href="#fabriek">Fabriek</a></nav>
       </div>
       <div class="media">{art.lab_report_scene()}</div>
     </div>
@@ -528,7 +528,7 @@ def bewijs():
   <section class="section" id="standaard" style="padding-top:40px">
     <div class="container">
       <div class="section-head">
-        <div><span class="eyebrow">Onze standaard</span><h2 class="h2">De lat per product. Op papier, en in het lab.</h2></div>
+        <div><span class="eyebrow">Onze standaard</span><h2 class="h2">Onze lat, per product.</h2></div>
         <p>Dit zijn de minimale specs die een partij moet halen voordat we hem verkopen. Haalt hij ze niet, dan gaat hij terug.</p>
       </div>
       <div class="standard-grid">{std_html}</div>
@@ -634,7 +634,7 @@ def bewijs():
           <p class="muted">We zagen hoe dons wordt gewassen en gesorteerd, hoe de tijk wordt geweven en hoe elke cassette wordt gevuld en gewogen. Alles wat we zagen, filmden we. Je vindt het bij Van de fabriek.</p>
         </div>
         <div>
-          <blockquote>"We willen niet dat je ons op ons woord gelooft. Daarom laten we de fabriek, de cijfers en de rapporten zien."</blockquote>
+          <blockquote>“We willen niet dat je ons op ons woord gelooft. Daarom laten we de fabriek, de cijfers en de rapporten zien.”</blockquote>
           <cite><span class="avatar">{art.avatar()}</span><span><b style="color:var(--ink);font-weight:600">Joost</b><br>Oprichter Bline Sleep</span></cite>
         </div>
       </div>

@@ -450,12 +450,13 @@ def factory_floor():
             f'<radialGradient id="{u}gl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF7E6" stop-opacity=".9"/><stop offset="1" stop-color="#FFF7E6" stop-opacity="0"/></radialGradient>'
             + ndef)
     b = f'<rect width="500" height="300" fill="url(#{u}bg)"/>'
-    for k, (y, s) in enumerate([(70, .5), (110, .75), (170, 1.1)]):
+    for k, (y, s) in enumerate([(80, .5), (130, .75), (200, 1.1)]):
         for i in range(-2, 3):
             x = 250 + i * 150 * s
-            b += (f'<circle cx="{x:.0f}" cy="{y-40*s:.0f}" r="{40*s:.0f}" fill="url(#{u}gl)"/>'
-                  f'<path d="M{x-14*s:.0f},{y-44*s:.0f} H{x+14*s:.0f} L{x+20*s:.0f},{y-34*s:.0f} H{x-20*s:.0f} Z" fill="#3E4650"/>'
-                  f'<path d="M{x:.0f},0 V{y-44*s:.0f}" stroke="#3E4650" stroke-width="{1.2*s:.1f}"/>'
+            lamp = k < 2
+            b += ((f'<circle cx="{x:.0f}" cy="{y-30*s:.0f}" r="{44*s:.0f}" fill="url(#{u}gl)"/>'
+                  f'<path d="M{x-14*s:.0f},{y-34*s:.0f} H{x+14*s:.0f} L{x+20*s:.0f},{y-24*s:.0f} H{x-20*s:.0f} Z" fill="#3E4650"/>'
+                  f'<path d="M{x:.0f},0 V{y-34*s:.0f}" stroke="#3E4650" stroke-width="{1.2*s:.1f}"/>') if lamp else '') + (
                   f'<rect x="{x-50*s:.0f}" y="{y+30*s:.0f}" width="{100*s:.0f}" height="{18*s:.0f}" fill="#6E6152"/>'
                   f'<rect x="{x-36*s:.0f}" y="{y+16*s:.0f}" width="{56*s:.0f}" height="{16*s:.0f}" rx="{5*s:.0f}" fill="#FBF8F3"/>'
                   f'<rect x="{x+22*s:.0f}" y="{y+8*s:.0f}" width="{16*s:.0f}" height="{24*s:.0f}" fill="#2E3540"/>')
