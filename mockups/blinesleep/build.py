@@ -317,7 +317,7 @@ def product():
         ("silk", ("#F4EEE6", "#E2D5C2"), "Zijden kussensloop", "60 x 70 · Champagne · 22 momme", "€59", False),
     ]
     addons_html = "".join(
-        f'<div class="addon{" on" if on else ""}"><div class="media">{art.product_scene(k, bg, w=400, h=300)}</div>'
+        f'<div class="addon{" on" if on else ""}"><div class="media">{art.product_scene(k, bg)}</div>'
         f'<div class="addon-body"><div class="top"><b>{t}</b><span class="tick">{ok if on else ""}</span></div>'
         f'<span class="muted">{d}</span><span class="addon-price">{p}</span></div></div>' for k, bg, t, d, p, on in addons)
 
@@ -336,13 +336,13 @@ def product():
     <nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span class="sep">/</span><a href="#">Dekbedden</a><span class="sep">/</span><span class="here">Het Donsdekbed · 4 seizoenen</span></nav>
     <section class="pdp">
       <div class="gallery">
-        <div class="media gallery-main"><span class="tag pill"><span class="dot"></span>Partij BL-D-2610 · labgetest</span>{art.product_scene("duvet-big", ("#F3EDE3", "#DBCEB9"), label="Het Donsdekbed, gevouwen", w=400, h=410)}</div>
+        <div class="media gallery-main"><span class="tag pill"><span class="dot"></span>Partij BL-D-2610 · labgetest</span>{art.product_scene("duvet-big", ("#F3EDE3", "#DBCEB9"), label="Het Donsdekbed, gevouwen", w=400, h=420)}</div>
         <div class="gallery-dots"><i class="on"></i><i></i><i></i><i></i></div>
         <div class="gallery-thumbs">{thumbs_html}</div>
       </div>
       <div class="buybox">
         <span class="eyebrow">Dekbedden</span>
-        <h1>Het Donsdekbed · 4 seizoenen</h1>
+        <h1>Het Donsdekbed&nbsp;· <em class="accent">4&nbsp;seizoenen</em></h1>
         <p class="promise">Twee lagen die je met drukknopen samen of los gebruikt. Gevuld met 95% ganzendons, in een tijk van Tencel die ademt. Warm in januari, nooit klam.</p>
         <div class="rating-line"><span class="pill sage">Nieuw</span><span>Eerste partij, nog geen reviews. Wel een labrapport: <a class="check-link" href="#">bekijk PDF</a></span></div>
         <div class="price-row">
@@ -359,7 +359,7 @@ def product():
         <div class="delivery-box">
           <span class="d-ic">{icon('truck')}</span>
           <div>
-            <p>Bestel vandaag, vertrekt <b>donderdag</b> met de drop, bij jou tussen <b>15 en 17 oktober</b>.</p>
+            <p>Bestel vandaag, vertrekt <b>donderdag</b> met de drop, bij jou tussen <b>15&nbsp;en&nbsp;17&nbsp;oktober</b>.</p>
             <div class="timeline">
               <div class="done"><b>Vandaag</b>Besteld</div>
               <div><b>Do 8 okt</b>Vertrek drop</div>
@@ -398,8 +398,8 @@ def product():
           <tr><th>Tijk</th><td><span class="val">100% Tencel lyocell batist, 300TC</span><span class="note">Enkeldraads garen, downproof geweven. Zacht, stil en vochtregulerend.</span></td></tr>
           <tr><th>Constructie</th><td><span class="val">Cassettes met tussenwanden</span><span class="note">Tussenwanden van 4 cm houden het dons op zijn plek, zonder koude naden. Paspel rondom.</span></td></tr>
           <tr><th>Certificaten</th><td><div class="cert-row">
-            <div class="cert"><span class="seal">RDS</span><div><b>Responsible Down Standard</b><code>Licentie CU-XXXXXXX</code></div>{CHECK_ZELF}</div>
-            <div class="cert"><span class="seal">OEKO</span><div><b>OEKO-TEX Standard 100</b><code>Nr. 00.HXX.00000</code></div>{CHECK_ZELF}</div>
+            <div class="cert"><span class="seal">RDS</span><div><b>Responsible Down Standard</b><code>Licentie CU-XXXXXXX</code>{CHECK_ZELF}</div></div>
+            <div class="cert"><span class="seal">OEKO</span><div><b>OEKO-TEX Standard 100</b><code>Nr. 00.HXX.00000</code>{CHECK_ZELF}</div></div>
           </div></td></tr>
           <tr><th>Labtest</th><td><div class="lab-grid">
             <div><b>95,4%</b><span>Donspercentage</span></div>
@@ -478,7 +478,7 @@ def bewijs():
     std_html = ""
     for k, bg, t, rows, mn in standards:
         li = "".join(f'<li><span>{a}</span><span>{b}</span></li>' for a, b in rows)
-        std_html += (f'<article class="standard"><div class="media">{art.product_scene(k, bg, w=400, h=225)}</div><div class="standard-body">'
+        std_html += (f'<article class="standard"><div class="media">{art.product_scene(k, bg)}</div><div class="standard-body">'
                      f'<h3>{t}</h3><ul class="std-list">{li}</ul><p class="std-min">{ok}{mn}</p></div></article>')
 
     dots = "".join('<i class="f"></i>' if i in (19, 38, 57, 76, 95) else "<i></i>" for i in range(100))
@@ -658,7 +658,7 @@ def cart():
         ic = icon("box") if sk == "stock" else icon("calendar")
         items_html += f"""
         <div class="cart-item">
-          <div class="media">{art.product_scene(k, bg, w=264, h=300)}</div>
+          <div class="media">{art.product_scene(k, bg)}</div>
           <div>
             <div class="ci-title">{t}</div>
             <div class="ci-variant">{v}</div>

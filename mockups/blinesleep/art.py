@@ -121,8 +121,8 @@ def g_duvet_stack(u, layers=3, band=True):
                      f'</g></g>')
     top = 40
     if band:
-        parts.append(f'<rect x="206" y="{top-4}" width="24" height="{52*(layers-1)+72}" fill="#E5D6B9" opacity=".9"/>'
-                     f'<rect x="206" y="{top-4}" width="2" height="{52*(layers-1)+72}" fill="#CDB98F" opacity=".6"/>'
+        parts.append(f'<rect x="206" y="{top+3}" width="24" height="{52*(layers-1)+62}" fill="#E5D6B9" opacity=".9"/>'
+                     f'<rect x="206" y="{top+3}" width="2" height="{52*(layers-1)+62}" fill="#CDB98F" opacity=".6"/>'
                      f'<g transform="translate(190,{52*(layers-1)+top+40}) rotate(-6)">'
                      f'<rect width="62" height="34" rx="3" fill="#FBF7EF" stroke="#C8B48A" stroke-width=".8"/>'
                      f'<circle cx="8" cy="17" r="2.4" fill="none" stroke="#C8B48A" stroke-width=".8"/>'
@@ -270,8 +270,8 @@ def product_scene(kind, bg=("#F1EBE1", "#E2D7C6"), label="", w=400, h=460):
         obj = (f'<ellipse cx="200" cy="356" rx="160" ry="16" fill="#6E5B42" opacity=".28" filter="url(#{u}s)"/>'
                f'<g transform="translate(50,110)">{g_duvet_stack(u+"d")}</g>')
     elif kind == "duvet-big":
-        obj = (f'<ellipse cx="200" cy="372" rx="170" ry="16" fill="#6E5B42" opacity=".28" filter="url(#{u}s)"/>'
-               f'<g transform="translate(40,74) scale(1.07)">{g_duvet_stack(u+"d", layers=4)}</g>')
+        obj = (f'<ellipse cx="200" cy="338" rx="150" ry="14" fill="#6E5B42" opacity=".28" filter="url(#{u}s)"/>'
+               f'<g transform="translate(66,92) scale(.9)">{g_duvet_stack(u+"d", layers=4)}</g>')
     elif kind == "sheets":
         obj = (f'<ellipse cx="200" cy="338" rx="150" ry="14" fill="#6E5B42" opacity=".25" filter="url(#{u}s)"/>'
                f'<g transform="translate(70,190)">{g_sheet_stack(u+"t")}</g>'
