@@ -256,3 +256,40 @@ Begin licht en contractueel; bouw belangenafstemming op via exclusiviteit, volum
 ### Gaps
 - Geen benchmarkdata over typische exclusiviteits- of volumeclausules in kleine OEM-contracten met Chinese textielfabrieken.
 - Geen kostenindicatie gevonden voor juridisch advies (SHA, OEM-contract in het Chinees) specifiek voor dit soort deals; Harris Sliwoski adverteert een vaste prijs voor productiecontracten, maar het bedrag stond niet in de gevonden snippet ([Lexology / Harris Sliwoski](https://www.lexology.com/library/detail.aspx?g=bc7e2eb7-df1a-47f7-9789-a6cf48ee4ec7)).
+
+---
+
+## 7. Vergoeding van een marketing-/ads-freelancer of bureau zonder equity (NL, 2026)
+
+Context: de founder wil geen gezamenlijke vennootschap met de ads-expert. Deze sectie beperkt zich tot vergoedingsmodellen zonder aandelen en contractpunten.
+
+### Takeaway
+Gangbaar en eenvoudig: een vaste maandfee (retainer) of uurtarief van circa EUR 65 tot 130 per uur, plus een prestatiebonus op contributiemarge of op een omzet-/ROAS-doel. Een omzetdeling kan, maar baseer die op marge en zet er een plafond op. Contractueel het belangrijkste: alle advertentieaccounts, data, pixels en creatives staan op naam van Bline (of Shop4You), en de freelancer krijgt alleen gebruikersrechten.
+
+### Cited Findings
+- Tarieven 2026 (commerciele tariefoverzichten, geen officiele statistiek): freelance SEA-specialisten gemiddeld EUR 65 tot 95 per uur; Google Ads- en Meta Ads-specialisten EUR 40 tot 125 per uur, ook genoemd EUR 70 tot 130 per uur of EUR 560 tot 1.040 per dag; ervaren specialisten EUR 100 tot 150 per uur; starters EUR 50 tot 75 per uur ([Freelancer.nl SEA](https://freelancer.nl/freelancers/sea); [Freelancer.nl Meta Ads](https://freelancer.nl/freelancers/meta-ads); [Freelancer.nl Google Ads](https://freelancer.nl/freelancers/google-adwords); [Searchlab: kosten freelance marketeer 2026](https://searchlab.nl/kosten/wat-kost-een-freelance-marketeer); [Consultant.nl: Google Ads beheer uitbesteden](https://www.consultant.nl/categories/sea-consultant/google-ads-beheer-uitbesteden)).
+- Full-service e-commerce marketingretainers in de VS liggen volgens een bureau-prijsgids op USD 5.000 tot 30.000+ per maand (commerciele bron, VS-markt) ([First Spark Digital](https://firstsparkdigital.com/blog/ecommerce-marketing-agency-pricing)).
+- DTC-merken dwingen bureaus tot alternatieve vergoedingsmodellen, zoals KPI-gebaseerde (outcome-based) beloning en flexibel opzegbare projectafspraken, omdat founders vaak niet geloven dat de belangen van bureau en merk gelijklopen ([Digiday](https://digiday.com/marketing/dtc-brands-force-agencies-new-ways-get-paid/)).
+- Bij Google Ads verschillen toegang en eigendom: de eigenaar heeft de hoogste rechten en kan gebruikers en bureaus toevoegen, verwijderen en ontkoppelen en het account overdragen; bij een overstap moet het vorige bureau als betalende manager de wijziging van de betaler starten ([Google Ads Help: eigendom klantaccounts](https://support.google.com/google-ads/answer/7456532?hl=nl); [Google Ads Help: eigendom overdragen](https://support.google.com/google-ads/answer/44500?hl=nl); [Google Ads Help: account overzetten naar bureau](https://support.google.com/google-ads/answer/14200924?hl=nl)).
+- Staat het Google Ads-account op naam van het merk zelf, dan neemt het bij een overstap campagnes, historie en leerdata mee; controleer in het bureaucontract opzegtermijn, einddatum en overdrachtsregeling ([Quantum Media](https://quantummedia.nl/blogs/kennisbank/google-ads-bureau-overstappen); [Ads-specialisten](https://ads-specialisten.nl/google-ads-uitbesteden-ander-bureau/)).
+- Phantom shares (virtuele aandelen) zijn voor werknemers belast als loon; bij uitruil van brutoloon is het ingeleverde bedrag direct belast ([Belastingdienst Kennisgroep KG:204:2025:14](https://kennisgroepen.belastingdienst.nl/publicaties/kg204202514-genietingsmoment-virtuele-aandelen/); [Van Ree Accountants](https://www.vanreeaccountants.nl/nieuws/medewerkersparticipatie-deel-4-stock-appreciation-rights-en-phantom-shares)). Voor een externe freelancer zijn ze daardoor weinig logisch; een gewone contractuele bonus is eenvoudiger.
+
+### Inferences
+- **Vergoedingsmodellen (oplopend in belangenafstemming):**
+  1. Uurtarief of vaste maandfee: voorspelbaar, geen prikkel op resultaat. Bij een startend merk met een klein advertentiebudget is een beperkt urenpakket (bijv. 8 tot 16 uur per maand) realistisch; bij EUR 65 tot 130 per uur komt dat op circa EUR 520 tot 2.080 per maand (eigen rekensom op basis van bovenstaande tarieven).
+  2. Verlaagde fee + prestatiebonus: bijv. bonus per kwartaal bij het halen van een doel op contributiemarge na advertentiekosten, of op MER (totale omzet / totale advertentie-uitgaven) in plaats van alleen platform-ROAS, omdat platform-ROAS door attributie overschat kan worden.
+  3. Omzetdeling: een percentage van de netto-omzet uit betaalde kanalen. Risico's: freelancer stuurt op omzet in plaats van marge, discussie over attributie (bol, direct, organisch), en het loopt mee met groei ook als die niet aan hem te danken is. Zet er een minimumvergoeding, een plafond en een looptijd op, en definieer "netto-omzet" (excl. btw, retouren, kortingen).
+  4. Percentage van advertentiebudget (veel bureaus rekenen 10 tot 20%; niet bronvast in deze sessie): prikkelt tot meer uitgeven, voor Bline minder geschikt.
+- **Contractpunten (opdrachtovereenkomst):**
+  - Eigendom: Google Ads-, Meta Business Manager-, GA4-, Merchant Center- en TikTok-accounts, pixels, catalogi en domeinverificatie op naam van Bline; freelancer of bureau krijgt alleen gebruikers- of partnertoegang en geen eigenaarsrol; betaalmiddel van Bline.
+  - IP: alle creatives, teksten, video's, doelgroepen en rapportages worden eigendom van Bline (overdracht van auteursrechten in het contract; licenties op gebruikte stockbeelden, muziek en makers/UGC op naam van Bline en voor betaalde inzet).
+  - Data en AVG: verwerkersovereenkomst als de freelancer klantdata verwerkt (bijv. klantlijsten uploaden).
+  - KPI's en rapportage: maandelijkse rapportage van uitgaven, MER, CAC, contributiemarge en nieuwe versus terugkerende klanten; vooraf vastgelegde doelen per kwartaal.
+  - Looptijd en opzegging: proefperiode van 2 tot 3 maanden, daarna maandelijks opzegbaar met 1 maand opzegtermijn; verplichte medewerking aan overdracht bij einde, zonder extra kosten.
+  - Exclusiviteit: geen werk voor directe concurrenten in premium beddengoed in NL/BE/DE tijdens de opdracht (en eventueel 6 maanden daarna), plus geheimhouding.
+  - Zzp-regels: na het einde van het handhavingsmoratorium (1 januari 2025) handhaaft de Belastingdienst weer op schijnzelfstandigheid; houd de freelancer vrij in werkwijze, laat hem op resultaat factureren en vermijd gezagsverhouding (niet in deze sessie geverifieerd, laten toetsen).
+
+### Gaps
+- Geen onafhankelijke (niet-commerciele) bron voor NL ads-tarieven 2026; alle bedragen komen van platforms en bureaus.
+- Geen NL-bron gevonden voor gangbare bonus- of omzetdelingspercentages voor ads-freelancers.
+- Percentage-van-budget-tarieven en de status van de handhaving op schijnzelfstandigheid in 2026 niet geverifieerd in deze sessie.
