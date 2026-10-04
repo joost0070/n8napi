@@ -196,6 +196,14 @@ def g_hand(u):
             f'<path d="M140,214 C180,206 230,208 268,224" stroke="{shade}" stroke-width="1.6" fill="none" opacity=".45"/>')
 
 
+def g_frame(x, y, w, h):
+    """Framed minimalist arch print for wall decoration."""
+    return (f'<g transform="translate({x},{y})"><rect x="3" y="6" width="{w}" height="{h}" fill="#000" opacity=".06"/>'
+            f'<rect width="{w}" height="{h}" fill="#F4EEE4" stroke="#B9A684" stroke-width="5"/>'
+            f'<path d="M{w*0.24:.0f},{h*0.86:.0f} V{h*0.5:.0f} A{w*0.26:.0f},{w*0.26:.0f} 0 0 1 {w*0.76:.0f},{h*0.5:.0f} V{h*0.86:.0f} Z" fill="#AEB8A6"/>'
+            f'<circle cx="{w*0.62:.0f}" cy="{h*0.3:.0f}" r="{w*0.08:.0f}" fill="#C9A978"/></g>')
+
+
 # ---------------------------------------------------------------- scenes
 def bedroom(label="Slaapkamer met donsdekbed in ochtendlicht", w=1248, h=560):
     u = uid()
@@ -219,6 +227,7 @@ def bedroom(label="Slaapkamer met donsdekbed in ochtendlicht", w=1248, h=560):
             f'<rect y="468" width="{w}" height="3" fill="#BCA988" opacity=".35"/>'
             # bed group, shifted left so the overlay card on the right never covers it
             f'<g transform="translate(40,52) scale(.88)">'
+            + g_frame(380, -10, 120, 150) + g_frame(530, 20, 90, 110) +
             f'<ellipse cx="610" cy="512" rx="430" ry="20" fill="#7F6C52" opacity=".35" filter="url(#{u}s)"/>'
             f'<rect x="270" y="140" width="680" height="260" rx="22" fill="url(#{u}hb)"/>'
             + "".join(f'<rect x="{x}" y="150" width="2" height="240" fill="#B5A385" opacity=".5"/>' for x in range(338, 950, 68)) +
@@ -285,12 +294,14 @@ def bundle_scene(label="De Slaapset: donsdekbed, Tencel set en twee kussens"):
             + blur(u, 12, "s") + ndef)
     body = (f'<rect width="640" height="640" fill="url(#{u}bg)"/>'
             f'<rect y="470" width="640" height="170" fill="#000" opacity=".04"/>'
+            + g_frame(250, 44, 120, 150) +
+            f'<g transform="translate(-32,-30) scale(1.1)">'
             f'<ellipse cx="330" cy="520" rx="270" ry="22" fill="#6E5B42" opacity=".28" filter="url(#{u}s)"/>'
             f'<g transform="translate(96,196) scale(.82)">{g_pillow(u+"a")}</g>'
             f'<g transform="translate(296,210) scale(.82)">{g_pillow(u+"b", "#FFFFFF", "#E8DFD2")}</g>'
             f'<g transform="translate(60,298) scale(.98)">{g_duvet_stack(u+"d", band=True)}</g>'
             f'<g transform="translate(372,400) scale(.86)">{g_sheet_stack(u+"t", ribbon=True)}</g>'
-            f'<g transform="translate(394,486) scale(.5)">{g_silk(u+"k")}</g>' + nrect)
+            f'<g transform="translate(394,486) scale(.5)">{g_silk(u+"k")}</g></g>' + nrect)
     return svg("0 0 640 640", body, defs, label=label)
 
 
