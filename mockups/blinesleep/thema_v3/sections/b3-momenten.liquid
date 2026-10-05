@@ -1,0 +1,45 @@
+{%- comment -%}
+  Bline v3: "voor elk moment". Mozaïek met verschillende mensen, kamers en kleuren.
+  Een tik op een tegel zet die kleur in de productsectie bovenaan.
+{%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in">
+    <p class="b3-oog">{{ section.settings.oog }}</p>
+    <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+    {%- if section.settings.intro != blank -%}<p class="b3-intro">{{ section.settings.intro }}</p>{%- endif -%}
+    <div class="b3-mozaiek">
+      {%- for block in section.blocks -%}
+        {%- assign kp = all_products[block.settings.kleur] -%}
+        {%- assign k = block.settings.kleur | remove: 'leeskussen-' -%}
+        <a href="{{ kp.url }}" class="b3-tegel{% if forloop.first %} b3-tegel--groot{% endif %}" data-b3-zet-kleur="{{ k }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.beeld != blank -%}
+            {{ block.settings.beeld | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1100, 1400', sizes: '(min-width: 990px) 40vw, 50vw', alt: block.settings.beeld.alt }}
+          {%- endif -%}
+          <span class="b3-tegel__tekst">
+            <span class="b3-tegel__kop">{{ block.settings.kop }}</span>
+            <span class="b3-tegel__kleur"><i style="--k: {{ kp.metafields.bline.kleur_hex.value }}"></i>{{ kp.metafields.bline.kleur_naam.value }}</span>
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: momenten",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Voor iedereen" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Voor elk <em>moment</em> in bed" },
+    { "type": "text", "id": "intro", "label": "Intro" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "warm", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "blocks": [
+    { "type": "tegel", "name": "Tegel", "settings": [
+      { "type": "image_picker", "id": "beeld", "label": "Beeld" },
+      { "type": "text", "id": "kop", "label": "Kop", "default": "Lezen" },
+      { "type": "text", "id": "kleur", "label": "Kleur (handle van het kussen)", "default": "leeskussen-beige" }
+    ] }
+  ],
+  "presets": [{ "name": "Bline v3: momenten" }]
+}
+{% endschema %}

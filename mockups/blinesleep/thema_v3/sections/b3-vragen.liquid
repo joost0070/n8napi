@@ -1,0 +1,33 @@
+{%- comment -%} Bline v3: vragen. {%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in b3-vragen-wrap">
+    <div>
+      <p class="b3-oog">{{ section.settings.oog }}</p>
+      <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+      <p class="b3-intro">{{ section.settings.intro }}</p>
+    </div>
+    <div class="b3-vragen">
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}><summary>{{ block.settings.vraag }}</summary><div>{{ block.settings.antwoord }}</div></details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: vragen",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Vragen" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Goed om te <em>weten</em>" },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "Staat je vraag er niet bij? Bel of app 06 38 66 28 33." },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "warm", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "blocks": [
+    { "type": "vraag", "name": "Vraag", "settings": [
+      { "type": "text", "id": "vraag", "label": "Vraag" },
+      { "type": "richtext", "id": "antwoord", "label": "Antwoord" }
+    ] }
+  ],
+  "presets": [{ "name": "Bline v3: vragen" }]
+}
+{% endschema %}

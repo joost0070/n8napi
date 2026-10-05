@@ -1,0 +1,28 @@
+{%- comment -%} Bline v3: bewegende band met beloftes (stopt bij "minder beweging"). {%- endcomment -%}
+<div class="b3 b3-band" role="region" aria-label="Beloftes">
+  <div class="b3-band__rij">
+    {%- for ronde in (1..2) -%}
+      <div class="b3-band__groep"{% if ronde == 2 %} aria-hidden="true"{% endif %}>
+        {%- for i in (1..2) -%}
+          {%- for block in section.blocks -%}
+            <span class="b3-band__item" {{ block.shopify_attributes }}>{% render 'b3-icoon', naam: block.settings.icoon %}{{ block.settings.tekst }}</span>
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Bline v3: band",
+  "blocks": [
+    { "type": "item", "name": "Belofte", "settings": [
+      { "type": "text", "id": "tekst", "label": "Tekst", "default": "Gratis verzending" },
+      { "type": "select", "id": "icoon", "label": "Icoon", "default": "truck", "options": [
+        { "value": "truck", "label": "Truck" }, { "value": "klok", "label": "Klok" }, { "value": "terug", "label": "Retour" },
+        { "value": "was", "label": "Wassen" }, { "value": "boek", "label": "Boek" }, { "value": "check", "label": "Vinkje" }, { "value": "telefoon", "label": "Telefoon" } ] }
+    ] }
+  ],
+  "presets": [{ "name": "Bline v3: band" }]
+}
+{% endschema %}

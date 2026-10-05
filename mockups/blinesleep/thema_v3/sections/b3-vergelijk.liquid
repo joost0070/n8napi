@@ -1,0 +1,33 @@
+{%- comment -%} Bline v3: Bline tegenover losse kussens. {%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in">
+    <p class="b3-oog">{{ section.settings.oog }}</p>
+    <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+    <table class="b3-vergelijk">
+      <thead><tr><th scope="col"><span class="visually-hidden">Eigenschap</span></th><th scope="col">Bline</th><th scope="col">Losse kussens</th></tr></thead>
+      <tbody>
+        {%- for block in section.blocks -%}
+          <tr {{ block.shopify_attributes }}><td>{{ block.settings.wat }}</td><td>{{ block.settings.bline }}</td><td>{{ block.settings.los }}</td></tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: vergelijk",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Waarom niet gewoon kussens?" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Geen <em>kussenfort</em> meer" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "wit", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "blocks": [
+    { "type": "rij", "name": "Rij", "settings": [
+      { "type": "text", "id": "wat", "label": "Eigenschap" },
+      { "type": "text", "id": "bline", "label": "Bline" },
+      { "type": "text", "id": "los", "label": "Losse kussens" }
+    ] }
+  ],
+  "presets": [{ "name": "Bline v3: vergelijk" }]
+}
+{% endschema %}

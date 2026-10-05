@@ -1,0 +1,36 @@
+{%- comment -%}
+  Bline v3: score met verdeling. Bron: bol Ratings API, 05-10-2026, 13 reviews (9 x 5, 3 x 4, 0 x 3, 1 x 2, 0 x 1), gemiddeld 4,54.
+  Geen reviewteksten van bol overnemen. Eigen reviews (Judge.me) komen eronder zodra ze er zijn.
+{%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in">
+    <p class="b3-oog">{{ section.settings.oog }}</p>
+    <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+    <div class="b3-score">
+      <div>
+        <div class="b3-score__groot">4,5</div>
+        <div class="b3-score__sterren" aria-hidden="true">{% for i in (1..5) %}{% render 'b3-ster' %}{% endfor %}</div>
+        <div class="b3-score__bron">13 reviews op bol.com</div>
+      </div>
+      <div aria-label="Verdeling van de sterren">
+        {%- assign rijen = '5 sterren:9,4 sterren:3,3 sterren:0,2 sterren:1,1 ster:0' | split: ',' -%}
+        {%- for r in rijen -%}
+          {%- assign d = r | split: ':' -%}
+          {%- assign pct = d[1] | times: 100 | divided_by: 13 -%}
+          <div class="b3-score__rij"><span>{{ d[0] }}</span><span class="b3-score__balk"><i style="width: {{ pct }}%"></i></span><span>{{ d[1] }}</span></div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: score",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Wat kopers vinden" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Al <em>gewaardeerd</em> op bol.com" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "warm", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "presets": [{ "name": "Bline v3: score" }]
+}
+{% endschema %}
