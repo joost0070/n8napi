@@ -871,3 +871,20 @@ Script over alle nieuwe teksten (Over Bline, de telefoonregels op Contact, Verze
 4. Achternaam op Over Bline: ja of nee.
 5. Schrijfwijze telefoon in de winkelinstellingen (staat als 31638662833), zie punt 2.
 6. Overige punten uit sessie 4 tot en met 8 blijven open (Judge.me-productgroep, echte telefoontest, gewicht losse hoes).
+
+## 5 oktober 2026, sessie 10: geen persoonsnaam op de site
+
+Opdracht van Joost (05-10, via de hoofdsessie): geen naam noemen op de site. Toegang zoals sessie 9 (vaste winkelnaam, client credentials met `BLINE_SHOPIFY_CLIENT_ID` en `BLINE_SHOPIFY_CLIENT_SECRET`, alleen namen gecontroleerd, geen SHOPIFY_*- of BOL_*-variabelen). Alleen tekst aangeraakt; beelden horen bij sessie 12. Vooraf een lokale kopie van alles (map `backup_voor_s10`).
+
+**Gezocht** op "Joost" en "Kuiphuis" in: pagina's (met SEO-metafields), beleid, blogs en artikelen, producten (beschrijving, SEO, metafields, alt-teksten, varianten), collecties, menu's, winkel-metafields, metaobjecten, bestanden (alt en naam), doorverwijzingen, kortingen, alle themabestanden van Dawn en Horizon (dus ook `config/settings_data.json`, templates, secties en `locales/nl.json`) en de wachtwoordpagina. Enige taal is nl.
+
+**Gevonden en aangepast**
+- Pagina Over Bline: "Bline is een klein bedrijf uit Borne, in Overijssel. Achter het merk staat Joost." wordt "Bline is een klein Nederlands merk uit Borne, in Overijssel." Rest van de tekst ongewijzigd.
+- Sectie "Bline foto" op Over Bline staat uit (`templates/page.over-bline.json`, `"disabled": true`). Er was geen beeld gekozen. Het blok "Gemaakt door Bline uit Borne" op de productpagina's blijft, zonder naam en zonder foto.
+- Repo: `reports/bijlagen/Bline shop teksten.md` gelijkgetrokken. De Collabs-tekst bevatte de naam alleen in interne notities, niet in de tekst voor Collabs.
+
+**Controle:** alles opnieuw opgehaald en doorzocht: 0 treffers. Alleen `templates/page.over-bline.json` is in het thema veranderd; `pageUpdate` en `themeFilesUpsert` zonder fouten.
+
+**Niet gedaan, bewust:** wachtwoord blijft aan; geen prijzen, mails, betaalinstellingen, apps of beelden.
+
+**Vervalt uit sessie 9, Wacht op Joost:** punt 1 (foto) en punt 4 (achternaam).

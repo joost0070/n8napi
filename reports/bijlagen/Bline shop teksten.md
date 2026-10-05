@@ -92,9 +92,9 @@ Paginatitel: Over Bline | Bline
 
 Metabeschrijving: Bline is een klein bedrijf uit Borne. We verkopen een leeskussen met een wasbare hoes, in vijf kleuren.
 
-Bovenaan: plek voor een foto van Joost (sectie "Bline foto", toont niets zolang er geen beeld is gekozen). Bijgewerkt in sessie 9.
+Bovenaan stond de sectie "Bline foto"; die staat sinds sessie 10 uit (geen persoonsfoto op de site). Bijgewerkt in sessie 9 en 10.
 
-Bline is een klein bedrijf uit Borne, in Overijssel. Achter het merk staat Joost. Je vindt ons aan de Brasem in Borne.
+Bline is een klein Nederlands merk uit Borne, in Overijssel. Je vindt ons aan de Brasem in Borne.
 
 #### Waarom dit kussen
 
