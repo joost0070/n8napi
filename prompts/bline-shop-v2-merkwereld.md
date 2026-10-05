@@ -86,3 +86,15 @@ Na elke ronde testpagina-screenshots op 390 x 844 en 1366 x 800 van home, collec
 ## Geen namen (Joost 05-10)
 
 "Zeker geen naam noemen." Nergens op de site een persoonsnaam: niet op Over Bline, niet bij "Gemaakt door", niet in blogs, mails of de Collabs-tekst. Schrijf als "we" en "Bline". Bedrijfsgegevens (Shop4You, adres, KvK, btw) blijven, want die zijn wettelijk verplicht. Geen persoonsfoto tenzij Joost die zelf voor de site aanlevert; ook dan zonder naam. Over Bline vertelt het verhaal van het merk en het product, niet van een persoon.
+
+## Beelden bewerken mag (Joost 05-10: "jij kan zelf ook gave beelden bewerken")
+
+Bewerken van goedgekeurde beelden is toegestaan, nieuwe nep-scènes verzinnen niet:
+- bijsnijden en uitsnedes (macro van stof, rits, zijvak) voor materialen en details;
+- banners: een goedgekeurde sfeerfoto verbreden naar 16:9 of 21:9 (desktop) en 4:5 (mobiel), met rustige ruimte voor de kop;
+- packshots: achtergrond egaliseren naar licht en effen, rommel weghalen, zelfde licht en hoek per kleur;
+- tekst en het rondje uit de bol-hoofdbeelden (`*_00`) halen zodat ze tekstloos bruikbaar zijn;
+- collages voor lookbook en tegels;
+- licht, kleur en scherpte gelijk trekken over de set.
+
+Harde controle per bewerkt beeld: vorm van het kussen, kleur van de stof (naast het origineel en de echte stof), naden, label, handen en gezichten. Twijfel: niet gebruiken. Bewerkte beelden komen in `mockups/blinesleep/beelden_bewerkt/` met een tabel bron, bewerking en controle.
