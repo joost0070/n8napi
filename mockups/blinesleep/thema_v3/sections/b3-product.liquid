@@ -104,6 +104,10 @@
         <li>{% render 'b3-icoon', naam: 'was' %}Hoes wasbaar op 30 °C</li>
       </ul>
       {% render 'bline-betaal' %}
+      <a class="b3-app" href="https://wa.me/31638662833?text={{ 'Hoi Bline, ik heb een vraag over het leeskussen.' | url_encode }}" target="_blank" rel="noopener">
+        <span class="b3-app__bol" aria-hidden="true">{% render 'b3-icoon', naam: 'telefoon' %}</span>
+        <span><b>Twijfel over maat of kleur?</b><br>App ons op 06 38 66 28 33, we reageren op werkdagen.</span>
+      </a>
 
       <div class="b3-uitklap">
         <details open>

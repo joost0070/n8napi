@@ -1,0 +1,93 @@
+# Bline Meta-advertenties (Facebook en Instagram)
+
+Alle beelden zijn de goedgekeurde originelen (Higgsfield/bol en de shoot), onveranderd. Alleen tekst en kleurvlakken eromheen. Bestanden in deze map, 1080 px breed.
+
+**Opzet**
+
+| Campagne | Doel | Budget | Doelgroep | Advertenties |
+|---|---|---|---|---|
+| `bl_sales_nlbe` | Verkoop, optimaliseren op Aankoop | €10 per dag, 14 dagen test | Advantage+ (NL en BE, 25+), plaatsingen Advantage+ | 1 t/m 6 |
+| `bl_herinnering_nlbe` (na 14 dagen) | Verkoop | €2 per dag | productpagina bekeken of in winkelwagen, niet gekocht, 7 dagen | 7 en 1 |
+
+Knop overal: **Nu kopen**. UTM op elke advertentie (URL-parameters):
+`utm_source={{site_source_name}}&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}`
+
+Geen woorden als rugpijn, ergonomisch, houding of beste (medische en vergelijkende claims).
+
+---
+
+### 1. `bl_kussenfort` (4:5 feed en 9:16 stories/reels)
+Bestanden: `bline-ad-a_kussenfort_45.jpg`, `bline-ad-a_kussenfort_916.jpg`
+Landing: `https://www.blinesleep.nl/products/leeskussen-beige`
+
+Primaire tekst:
+> Een stapel kussens zakt weg zodra je gaat zitten. Bline blijft staan.
+> Stevig traagschuim, een vak voor je telefoon en een hoes die zo in de was kan.
+>
+> ✓ 4,5 uit 5 op bol.com
+> ✓ Gratis verzending in NL en BE
+> ✓ 14 dagen bedenktijd
+
+Kop: **Geen kussenfort meer** · Beschrijving: Vanaf €69,99, gratis verzending
+
+### 2. `bl_momenten` (4:5 en 9:16)
+Bestanden: `bline-ad-d_momenten_45.jpg`, `bline-ad-d_momenten_916.jpg`
+Landing: `https://www.blinesleep.nl/`
+
+Primaire tekst:
+> Lezen, werken, gamen of gewoon even bijkomen. Met Bline zit je rechtop in bed zonder kussens te stapelen.
+> In vijf kleuren, met een hoes die in de was kan. Gratis verzending in Nederland en België.
+
+Kop: **Voor elk moment in bed** · Beschrijving: 4,5 uit 5 op bol.com
+
+### 3. `bl_kleuren` (4:5) en `bl_kleuren_carrousel` (5 kaarten 1:1)
+Bestanden: `bline-ad-b_kleuren_45.jpg`; carrousel `bline-ad-carrousel-beige/blauw/wit/grijs/zwart.jpg`
+Landing: per kaart het kleurproduct, bijvoorbeeld `https://www.blinesleep.nl/products/leeskussen-blauw`
+
+Primaire tekst:
+> Zelfde kussen, vijf kleuren. Welke past bij jouw bed?
+> Stevig traagschuim, vak voor je telefoon, hoes wasbaar op 30 °C.
+
+Kaarten (kop · beschrijving): Beige · €79,99 | Blauw · €79,99 | Wit · €69,99 | Grijs · €79,99 | Zwart · €79,99
+
+### 4. `bl_video` (1:1, 25 seconden)
+Bestand: de productvideo uit Shopify Files ("video leeskussen.mp4", 1080 x 1080)
+Landing: `https://www.blinesleep.nl/products/leeskussen-wit`
+
+Primaire tekst:
+> Zo werkt hij: leunen, telefoon in het vak, hoes eraf en in de was.
+> Gratis verzending in Nederland en België.
+
+Kop: **Zie hem in actie** · Beschrijving: Leeskussen wit, €69,99
+
+### 5. `bl_score` (4:5)
+Bestand: `bline-ad-e_score_45.jpg`
+Landing: `https://www.blinesleep.nl/products/leeskussen-blauw`
+
+Primaire tekst:
+> Al verkocht via bol.com, waar kopers hem een 4,5 uit 5 geven. Nu ook in onze eigen winkel, voor dezelfde prijs.
+
+Kop: **4,5 uit 5 op bol.com** · Beschrijving: Gratis verzending, 14 dagen bedenktijd
+
+### 6. `bl_stevig` (4:5)
+Bestand: `bline-ad-g_stevig_45.jpg`
+Landing: `https://www.blinesleep.nl/products/leeskussen-beige`
+
+Primaire tekst:
+> 3,8 kg traagschuim. Leun er gerust tegenaan: hij blijft staan.
+> Katoenen hoes met rits, wasbaar op 30 °C.
+
+Kop: **Stevig van binnen** · Beschrijving: In 5 kleuren, vanaf €69,99
+
+### 7. `bl_set` (1:1, alleen herinnering)
+Bestand: `bline-ad-f_bundel_11.jpg`
+Landing: `https://www.blinesleep.nl/?kleur=beige&hoes=1` (kleur en hoes staan dan al aangevinkt)
+
+Primaire tekst:
+> Je keek naar het leeskussen. Neem er meteen een tweede hoes bij: €9,99 voordeel en gratis verzending.
+
+Kop: **Kussen + extra hoes €104,99** · Beschrijving: Eén in de was, één om het kussen
+
+---
+
+**Testen en beslissen (stopregels uit het funnelplan):** na 7 dagen de advertenties met de laagste klikfrequentie en geen toevoegingen pauzeren; na 14 dagen budget naar de beste twee. Kosten per aankoop boven €34: niet opschalen.

@@ -116,7 +116,11 @@
       window.addEventListener('scroll', function () { if (!wacht) { wacht = true; requestAnimationFrame(meet); } }, { passive: true });
       meet();
     }
-    var q = new URLSearchParams(location.search).get('kleur');
+    var zoek = new URLSearchParams(location.search);
+    var q = zoek.get('kleur');
+    // advertenties kunnen de keuze vooraf zetten: ?kleur=blauw&aantal=2&hoes=1
+    if (zoek.get('aantal') === '2') { var b2 = root.querySelector('[data-b3-aantal="2"]'); if (b2) b2.click(); }
+    if (zoek.get('hoes') === '1') { var hv = $('[data-b3-hoes]'); hv.checked = true; staat.hoes = true; }
     if (q && D.kleuren[q] && q !== staat.kleur) kies(q); else teken();
   }
 

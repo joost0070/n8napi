@@ -1,8 +1,11 @@
 # Bline: funnel en advertentieplan voor blinesleep.nl
 
-Versie 1.0, 5 oktober 2026. Voor de start van de eigen webshop (fase 1: leeskussen en losse hoes, NL en BE). Alles staat klaar om te zetten zodra de koppelingen er zijn; niets draait voordat Joost "live" zegt.
+Versie 2.0, 5 oktober 2026 (v1.0 van dezelfde dag is bijgewerkt na shop v3). Fase 1: één product, het leeskussen in vijf kleuren, met de losse hoes als upsell, voor NL en BE. Alles staat klaar; niets draait voordat Joost "live" zegt.
 
-Basis: lessen uit het Google Ads MCC (`research_notes/Bline Sleep risicos en voorbeelden/google_ads_mcc_lessen.md`), de fouten van uwleeskussen.nl, de bol-cijfers van Bline en de webshop zoals die op 05-10 in Shopify staat (`reports/Bline shop opbouw logboek.md`).
+Bestanden die klaarliggen:
+- **Meta:** 8 advertenties plus een carrousel van 5 kaarten, met teksten: `mockups/blinesleep/ads/meta/` (`teksten.md`).
+- **Google:** importbestanden voor Google Ads Editor (merk, generiek, per kleur, uitsluitingen, extensies) en het Shopping-plan: `mockups/blinesleep/ads/google/` (`LEESMIJ.md`).
+- **Mails:** `reports/bijlagen/Bline mails funnel.md`.
 
 ---
 
@@ -11,34 +14,54 @@ Basis: lessen uit het Google Ads MCC (`research_notes/Bline Sleep risicos en voo
 ```mermaid
 flowchart LR
   A[Google Shopping<br/>NL en BE] --> P
-  B[Google Zoeken<br/>koopwoorden + merk] --> P
-  C[Meta video en foto<br/>NL en BE] --> P
-  P[Productpagina per kleur<br/>bijv. leeskussen-beige] --> W[Winkelwagen-lade]
+  B[Google Zoeken<br/>merk, generiek, per kleur] --> P
+  C[Meta foto, video, carrousel<br/>NL en BE] --> P
+  P[Productpagina<br/>alle kleuren op één plek<br/>1 of 2 kussens, extra hoes] --> W[Winkelwagen-lade<br/>hoes als upsell]
   W --> K[Checkout<br/>iDEAL, Bancontact, kaart]
   K --> T[Bedankpagina<br/>meting: 1 aankoop met echte waarde]
-  K -.verlaten.-> M[Mail verlaten checkout<br/>na 10 uur, 1 keer]
-  M --> K
-  C -.bekeken, niet gekocht.-> R[Meta: herinnering<br/>7 dagen, laag budget]
+  K -.verlaten.-> M1[Mail na 10 uur, 1 keer]
+  M1 --> K
+  C -.bekeken, niet gekocht.-> R[Meta herinnering<br/>kussen + hoes, 7 dagen]
   R --> P
-  T --> V[Verzending via ChannelDock en eFreight<br/>track and trace]
+  T --> M2[Mail tips na 2 dagen]
+  M2 --> M3[Reviewvraag na 14 dagen]
+  M3 --> M4[Tweede hoes na 30 dagen]
 ```
 
-**Waarom zo kort:** één product, één beslissing. Elke advertentie landt op de productpagina van de kleur uit de advertentie, nooit op de homepage of op "alle producten" (dat ging mis bij uwleeskussen.nl).
+**Landingspagina's sinds shop v3:** de homepage is zelf de productpagina (alle vijf kleuren, kleur wisselen zonder te laden). Advertenties zonder kleur landen op `/`; advertenties met één kleur in beeld landen op `/products/leeskussen-<kleur>`. Een advertentie kan de keuze vooraf zetten met parameters: `?kleur=blauw`, `&aantal=2`, `&hoes=1` (getest). Nooit meer op een collectie landen.
 
-**Landingspagina per kleur (sinds 5 oktober 2026, sessie 8 van het shoplogboek):** elke kleur is een eigen product met een eigen adres. Leeskussen: `/products/leeskussen-wit`, `-beige`, `-blauw`, `-grijs`, `-zwart`. Losse hoes: `/products/hoes-wit`, `-beige`, `-blauw`, `-grijs`, `-zwart`. Op elke pagina staan kleurbolletjes naar de andere kleuren. Google Shopping krijgt zo per kleur een eigen product met eigen foto, titel en EAN. Een advertentie zonder kleur (zoekwoorden, merk, de carrousel met alle kleuren) landt op `/collections/leeskussens`; een advertentie met één kleur in beeld landt op het product in die kleur. De sfeerfoto (beige, vrouw met boek) landt op `/products/leeskussen-beige`.
+## 2. Vertrouwen: wat er staat en wat nog kan
 
-## 2. Wat er op de site al klopt voor conversie
+**Staat er nu:**
+- 4,5 uit 5 op bol.com met bron en verdeling; eigen Judge.me-reviews zodra er 3 zijn.
+- "Waarom Bline": een Nederlands merk (Shop4You, Borne), een echte klantenservice, 14 dagen bedenktijd.
+- App-link bij de koopknop ("Twijfel over maat of kleur? App ons"), telefoon in footer en vragen.
+- Bedrijfsgegevens, KvK en btw in de footer; betaaliconen; gratis verzending en levertijd bij de knop.
+- Video, getekende maten en vergelijking met losse kussens.
 
-- Productpagina per kleur: prijs, levertijd, kleurbolletjes als links naar de andere kleuren, knop, gratis verzending en 14 dagen bedenktijd direct onder de knop. Meelopende knop "In winkelwagen" op mobiel.
-- Elke kleurpagina toont alleen foto's van die kleur, plus de maattekening.
-- Specificaties, "Waarom dit kussen" (antwoord op de klachten bij concurrenten: te hard, kleur anders dan de foto, hoes niet wasbaar, te breed) en veelgestelde vragen.
-- Winkelwagen als lade, geen pop-ups, geen aftelklokken.
+**Beslissingen voor Joost** (kosten of beleid, daarom niet zelf gedaan):
 
-**Nog toevoegen zodra het kan:**
-1. Reviewscore met bron: "4,5 uit 5 bij 13 reviews op bol.com" (Ratings API 05-10: 9 x 5, 3 x 4, 1 x 2 sterren, gemiddeld 4,54). Alleen het getal en de bron, geen bol-teksten overnemen.
-2. Video van het kussen (bestand van Joost) als tweede beeld in de galerij.
+| Nr | Wat | Waarom | Kosten | Advies |
+|---|---|---|---|---|
+| 1 | Achteraf betalen (Klarna of Riverty) aanzetten in Shopify Payments | in NL een van de sterkste vertrouwensknoppen bij een onbekende winkel | transactiekosten iets hoger | ja, bij livegang |
+| 2 | Keurmerk WebwinkelKeur | bekend schildje, onafhankelijke reviews | ongeveer €10 tot €15 per maand | na de eerste 4 weken beslissen |
+| 3 | Gratis retour | nu betaalt de klant de retour | gemiddeld enkele euro's per verkoop | eerst niet; testen als de conversie achterblijft |
+| 4 | Kaartje in de doos met QR naar de reviewpagina | eigen reviews komen sneller | drukwerk | ja |
+| 5 | Google Klantenreviews (Merchant Center) | sterren in Shopping na genoeg reviews | gratis | ja, na koppeling |
 
-## 3. Meting (eerst, anders niets aanzetten)
+## 3. Welke platformen, en waarom
+
+| Platform | Rol | Wanneer | Budget |
+|---|---|---|---|
+| **Google Shopping** | mensen die al "leeskussen" zoeken; hoogste koopintentie | vanaf live | €11 per dag (NL €8, BE €3) |
+| **Google Zoeken** | merk beschermen en generieke koopwoorden, per kleur | vanaf live | €4 per dag |
+| **Meta (Facebook en Instagram)** | nieuwe kopers die nog niet zoeken; het product is visueel en lost een herkenbaar probleem op | vanaf live, 14 dagen test | €10 per dag, daarna €2 herinnering |
+| **bol.com** | loopt al (Sponsored Products), blijft apart | doorlopend | zoals nu |
+| Pinterest | slaapkamer- en leesinspiratie, past bij het product | fase 2, na 4 weken | eerst organisch, daarna €5 per dag test |
+| TikTok | werkt alleen met echte video's van gebruikers | fase 3, zodra creators via Collabs video's maken | nog niet |
+| Performance Max | pas bij 30+ aankopen per maand (les uit het MCC) | later | |
+
+## 4. Meting (eerst, anders niets aanzetten)
 
 | Wat | Hoe | Klaar als |
 |---|---|---|
@@ -47,7 +70,7 @@ flowchart LR
 | Meta | Facebook & Instagram-app: pixel plus Conversions API, gegevensdeling "Maximaal" | testbestelling zichtbaar als Purchase in Events Manager, geen dubbele telling |
 | Nooit meer | conversies met een vaste waarde van €1, micro-conversies als doel (dat liet PMax bij uwleeskussen.nl op het verkeerde sturen) | |
 
-## 4. Google Ads
+## 5. Google Ads
 
 **Account:** een nieuw Google Ads-account voor Bline, aangemaakt via de Google & YouTube-app in Shopify. Niet het oude account van uwleeskussen.nl: daar zitten de nep-conversies en de afgekeurde advertenties met medische claims in de geschiedenis.
 
@@ -68,53 +91,27 @@ Totaal €15 per dag, ongeveer €450 per maand. Netwerken: alleen Google Zoeken
 
 **Merk:** bline, bline leeskussen, blinesleep, bline sleep.
 
-**Advertenties (responsive):** landingspagina de collectie `/collections/leeskussens` (alle vijf kleuren), weergavepad blinesleep.nl/leeskussen. Een advertentiegroep per kleur (bijvoorbeeld "leeskussen beige") landt op het product in die kleur, bijvoorbeeld `/products/leeskussen-beige`.
-
-Koppen (max. 30 tekens, gecontroleerd):
-1. Leeskussen met boekenvak
-2. Bline leeskussen
-3. Lezen in bed, zonder gedoe
-4. Hoes wasbaar op 30 graden
-5. 5 kleuren, 65 x 50 x 45 cm
-6. Gratis verzending NL en BE
-7. 14 dagen bedenktijd
-8. Rechtop zitten in bed
-9. Vulling: 3,8 kg traagschuim
-10. Vak voor boek en telefoon
-11. Binnen 1-2 werkdagen in huis
-12. Losse hoezen te koop
-13. Betaal met iDEAL of Bancontact
-14. Rugkussen voor bed en bank
-15. Bekijk alle kleuren
-
-Beschrijvingen (max. 90 tekens, gecontroleerd):
-1. Leeskussen met rugleuning en zijvak voor je boek, bril of telefoon. Hoes kan in de was.
-2. Stevig traagschuim dat blijft staan. In wit, beige, blauw, grijs en zwart.
-3. Gratis verzending in Nederland en België. Binnen 1-2 werkdagen in huis.
-4. Niet goed? Je hebt 14 dagen bedenktijd. Losse hoezen in alle kleuren te koop.
+**Advertenties (responsive):** 7 advertenties met elk 15 koppen en 4 beschrijvingen, lengtes automatisch gecontroleerd, in `mockups/blinesleep/ads/google/bline-google-4_advertenties.csv`. "Leeskussen algemeen" landt op `/` (de productpagina), elke kleurgroep op `/products/leeskussen-<kleur>`. Sitelinks, highlights en een snippet met de vijf kleuren in `bline-google-6_extensies.csv`. Shopping-feed: zie `mockups/blinesleep/ads/google/LEESMIJ.md` (langere titels per kleur, beeld 01 als hoofdbeeld, hoezen eerst uitgesloten).
 
 Geen woorden als ergonomisch, rugpijn, houding of beste. De advertenties van uwleeskussen.nl werden beperkt door medische claims.
 
-## 5. Meta (Facebook en Instagram)
+## 6. Meta (Facebook en Instagram)
 
 | Onderdeel | Keuze |
 |---|---|
-| Campagne | Verkoop, 1 campagne, Advantage+-doelgroep, NL en BE |
+| Campagne | `bl_sales_nlbe`: Verkoop, Advantage+-doelgroep en -plaatsingen, NL en BE |
 | Optimaliseren op | Aankoop (pixel plus Conversions API) |
 | Budget | €10 per dag, 14 dagen als test |
-| Advertenties | 1) video van het kussen (zodra Joost het bestand stuurt), 2) carrousel met de 5 kleuren, 3) één sfeerfoto (beige, vrouw met boek) |
-| Herinnering | na de test: €2 per dag op mensen die de productpagina bekeken en niet kochten, 7 dagen |
+| Advertenties | 1 kussenfort (4:5 en 9:16), 2 momenten (4:5 en 9:16), 3 kleuren plus carrousel, 4 video, 5 score, 6 stevig |
+| Herinnering | `bl_herinnering_nlbe`, na de test: €2 per dag, productpagina bekeken of in winkelwagen en niet gekocht, 7 dagen; advertentie 7 (kussen + hoes, landt met hoes al aangevinkt) en 1 |
 
-Tekst (primair): "Zondagavond, boek erbij. En dan zakt je kussen weer achter je rug weg. Dit leeskussen blijft staan, met een vak opzij voor je boek en telefoon. Hoes kan in de was. Gratis verzending in Nederland en België."
-Kop: "Lezen in bed, zonder kussenfort." Knop: "Nu kopen".
+Alle beelden, teksten, koppen, landingspagina's en UTM's: `mockups/blinesleep/ads/meta/teksten.md`. Beelden zijn de goedgekeurde originelen, onveranderd; alleen tekst en kleurvlakken eromheen.
 
-## 6. Mail
+## 7. Mail
 
-- **Verlaten checkout:** Shopify-automatisering (gratis), 1 mail na 10 uur: "Je leeskussen staat nog klaar", met foto van de gekozen kleur. Geen kortingscode, geen tweede mail.
-- **Orderbevestiging en verzending:** de concepten uit `reports/bijlagen/Bline shop teksten.md`.
-- **Na de bezorging:** één mail met de luchttip (24 tot 48 uur laten luchten en opschudden) en het wasvoorschrift. Een reviewvraag mag in de eigen shop, maar pas nadat er een reviewsysteem op de site staat; dat is een latere stap.
+Vijf mails, teksten in `reports/bijlagen/Bline mails funnel.md`: verlaten checkout (na 10 uur, 1 keer), tips na verzending (dag 2), reviewvraag via Judge.me (dag 14, geen beloning), tweede hoes (dag 30, alleen als er geen hoes bij zat), welkom na aanmelding. Geen kortingscodes zonder akkoord. Orderbevestiging en verzending: `reports/bijlagen/Bline shop teksten.md`.
 
-## 7. Rekenregels en stopregels
+## 8. Rekenregels en stopregels
 
 **Break-even:** bundel €79,99 geeft ongeveer €34 bijdrage per verkoop vóór advertenties (inkoop €19,27, verzending €6,21, pick en pack €2,15, betaalkosten ongeveer €1,20, retourvoorziening ongeveer €3). Break-even ROAS ongeveer 2,3 (omzet incl. btw gedeeld door advertentiekosten); wit €69,99 ongeveer 2,2. Kosten per aankoop mogen dus hooguit **€34** zijn.
 
@@ -128,7 +125,7 @@ Kop: "Lezen in bed, zonder kussenfort." Knop: "Nu kopen".
 
 Verwachting (inschatting, geen belofte): bij een CPC van €0,50 tot €0,80 en 2 tot 3% conversie liggen de kosten per aankoop tussen €17 en €40. De eerste 4 weken zijn een meting, geen winstmachine.
 
-## 8. Volgorde naar live
+## 9. Volgorde naar live
 
 1. Joost: domein, Shopify Payments, ChannelDock, Google- en Meta-app koppelen (zie de lijst in het logboek).
 2. Claude: testbestelling nalopen (betaling, ChannelDock-pick van de bundel, track and trace, meting in Google en Meta).
@@ -136,7 +133,7 @@ Verwachting (inschatting, geen belofte): bij een CPC van €0,50 tot €0,80 en 
 4. Claude: Merchant Center controleren (geen afkeuringen), Google-campagnes en Meta-campagne zetten volgens dit plan, budgetten zoals hierboven.
 5. Elke maandag: weekcheck met de stopregels.
 
-## 9. Link- en UTM-afspraken
+## 10. Link- en UTM-afspraken
 
 Google Ads gebruikt automatische tagging (gclid); daar geen UTM's aan toevoegen. Alle andere links krijgen vaste UTM's, kleine letters, zonder spaties:
 
@@ -148,6 +145,6 @@ Google Ads gebruikt automatische tagging (gclid); daar geen UTM's aan toevoegen.
 | Blog naar product | (geen UTM: interne links nooit taggen) | | | |
 | bol-verpakking of insert met QR | `insert` | qr | `doos_2026` | kleur, bijvoorbeeld `beige` |
 
-Landingspagina's: altijd het kleurproduct (`/products/leeskussen-beige` enzovoort) of de collectie `/collections/leeskussens`, nooit de homepage voor advertenties.
+Landingspagina's: de homepage `/` (die is sinds v3 de productpagina met alle kleuren) of het kleurproduct (`/products/leeskussen-beige` enzovoort), eventueel met `?kleur=`, `&aantal=2`, `&hoes=1`. Nooit een collectie.
 
 Bestandsnamen van beelden: `bline-<product>-<kleur>-<soort>-<nr>.jpg`, bijvoorbeeld `bline-leeskussen-beige-packshot-01.jpg`, `bline-leeskussen-beige-gebruik-02.jpg`, `bline-hoes-blauw-rits-01.jpg`, `bline-over-joost-01.jpg`.
