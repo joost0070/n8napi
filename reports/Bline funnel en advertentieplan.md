@@ -135,3 +135,19 @@ Verwachting (inschatting, geen belofte): bij een CPC van €0,50 tot €0,80 en 
 3. Joost zegt "live": wachtwoord uit.
 4. Claude: Merchant Center controleren (geen afkeuringen), Google-campagnes en Meta-campagne zetten volgens dit plan, budgetten zoals hierboven.
 5. Elke maandag: weekcheck met de stopregels.
+
+## 9. Link- en UTM-afspraken
+
+Google Ads gebruikt automatische tagging (gclid); daar geen UTM's aan toevoegen. Alle andere links krijgen vaste UTM's, kleine letters, zonder spaties:
+
+| Kanaal | utm_source | utm_medium | utm_campaign | utm_content |
+|---|---|---|---|---|
+| Meta-advertenties | facebook of instagram ({{site_source_name}}) | paid_social | `{{campaign.name}}` | `{{ad.name}}` |
+| Creators (Collabs) | naam van de creator, bijvoorbeeld `boekenblog_lisa` | creator | `collabs_2026q4` | `post`, `story` of `reel` |
+| Mail (Shopify Email) | shopify_email | email | naam van de flow, bijvoorbeeld `verlaten_checkout` | `knop` of `beeld` |
+| Blog naar product | (geen UTM: interne links nooit taggen) | | | |
+| bol-verpakking of insert met QR | `insert` | qr | `doos_2026` | kleur, bijvoorbeeld `beige` |
+
+Landingspagina's: altijd het kleurproduct (`/products/leeskussen-beige` enzovoort) of de collectie `/collections/leeskussens`, nooit de homepage voor advertenties.
+
+Bestandsnamen van beelden: `bline-<product>-<kleur>-<soort>-<nr>.jpg`, bijvoorbeeld `bline-leeskussen-beige-packshot-01.jpg`, `bline-leeskussen-beige-gebruik-02.jpg`, `bline-hoes-blauw-rits-01.jpg`, `bline-over-joost-01.jpg`.
