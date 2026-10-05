@@ -1,0 +1,152 @@
+{
+ "home_mobiel": {
+  "banner": {
+   "src": "bline-leeskussen-wit-gebruik-01.jpg",
+   "w": 390,
+   "h": 390
+  },
+  "kaarten": [
+   "bline-leeskussen-beige-01.jpg",
+   "bline-leeskussen-wit-packshot-01.jpg",
+   "bline-leeskussen-grijs-01.jpg",
+   "bline-leeskussen-blauw-01.jpg",
+   "bline-leeskussen-zwart-01.jpg",
+   "bline-hoes-beige-packshot-01.png",
+   "bline-hoes-wit-packshot-01.png",
+   "bline-hoes-grijs-packshot-01.png",
+   "bline-hoes-blauw-packshot-01.png",
+   "bline-hoes-zwart-packshot-01.png"
+  ],
+  "galerij": []
+ },
+ "collectie_leeskussens_mobiel": {
+  "kaarten": [
+   "bline-leeskussen-beige-01.jpg",
+   "bline-leeskussen-wit-packshot-01.jpg",
+   "bline-leeskussen-grijs-01.jpg",
+   "bline-leeskussen-blauw-01.jpg",
+   "bline-leeskussen-zwart-01.jpg"
+  ],
+  "galerij": []
+ },
+ "collectie_hoezen_mobiel": {
+  "kaarten": [
+   "bline-hoes-beige-packshot-01.png",
+   "bline-hoes-wit-packshot-01.png",
+   "bline-hoes-grijs-packshot-01.png",
+   "bline-hoes-blauw-packshot-01.png",
+   "bline-hoes-zwart-packshot-01.png"
+  ],
+  "galerij": []
+ },
+ "leeskussen_beige_mobiel": {
+  "kaarten": [],
+  "galerij": [
+   "bline-leeskussen-beige-01.jpg",
+   "bline-leeskussen-beige-gebruik-01.png",
+   "bline-leeskussen-beige-gebruik-02.png",
+   "bline-leeskussen-beige-gebruik-03.png",
+   "bline-leeskussen-beige-02.jpg",
+   "bline-leeskussen-beige-03.jpg",
+   "bline-leeskussen-beige-05.jpg",
+   "bline-leeskussen-beige-04.jpg",
+   "bline-leeskussen-maattekening.jpg"
+  ],
+  "teller": "1 / van 9"
+ },
+ "leeskussen_wit_mobiel": {
+  "kaarten": [],
+  "galerij": [
+   "bline-leeskussen-wit-packshot-01.jpg",
+   "bline-leeskussen-wit-gebruik-01.jpg",
+   "bline-leeskussen-wit-gebruik-02.jpg",
+   "bline-leeskussen-wit-gebruik-03.jpg",
+   "bline-leeskussen-wit-gebruik-04.png",
+   "bline-leeskussen-wit-01.jpg",
+   "bline-leeskussen-wit-02.jpg",
+   "bline-leeskussen-wit-03.jpg",
+   "bline-leeskussen-wit-04.jpg",
+   "bline-leeskussen-wit-05.jpg",
+   "bline-leeskussen-wit-08.jpg",
+   "bline-leeskussen-wit-06.jpg",
+   "bline-leeskussen-maattekening.jpg",
+   "bline-leeskussen-wit-07.jpg"
+  ],
+  "teller": "1 / van 14"
+ },
+ "home_desktop": {
+  "banner": {
+   "src": "bline-leeskussen-wit-gebruik-01.jpg",
+   "w": 1366,
+   "h": 720
+  },
+  "kaarten": [
+   "bline-leeskussen-beige-01.jpg",
+   "bline-leeskussen-wit-packshot-01.jpg",
+   "bline-leeskussen-grijs-01.jpg",
+   "bline-leeskussen-blauw-01.jpg",
+   "bline-leeskussen-zwart-01.jpg",
+   "bline-hoes-beige-packshot-01.png",
+   "bline-hoes-wit-packshot-01.png",
+   "bline-hoes-grijs-packshot-01.png",
+   "bline-hoes-blauw-packshot-01.png",
+   "bline-hoes-zwart-packshot-01.png"
+  ],
+  "galerij": []
+ },
+ "collectie_leeskussens_desktop": {
+  "kaarten": [
+   "bline-leeskussen-beige-01.jpg",
+   "bline-leeskussen-wit-packshot-01.jpg",
+   "bline-leeskussen-grijs-01.jpg",
+   "bline-leeskussen-blauw-01.jpg",
+   "bline-leeskussen-zwart-01.jpg"
+  ],
+  "galerij": []
+ },
+ "collectie_hoezen_desktop": {
+  "kaarten": [
+   "bline-hoes-beige-packshot-01.png",
+   "bline-hoes-wit-packshot-01.png",
+   "bline-hoes-grijs-packshot-01.png",
+   "bline-hoes-blauw-packshot-01.png",
+   "bline-hoes-zwart-packshot-01.png"
+  ],
+  "galerij": []
+ },
+ "leeskussen_beige_desktop": {
+  "kaarten": [],
+  "galerij": [
+   "bline-leeskussen-beige-01.jpg",
+   "bline-leeskussen-beige-gebruik-01.png",
+   "bline-leeskussen-beige-gebruik-02.png",
+   "bline-leeskussen-beige-gebruik-03.png",
+   "bline-leeskussen-beige-02.jpg",
+   "bline-leeskussen-beige-03.jpg",
+   "bline-leeskussen-beige-05.jpg",
+   "bline-leeskussen-beige-04.jpg",
+   "bline-leeskussen-maattekening.jpg"
+  ],
+  "teller": " 1 / van 9 "
+ },
+ "leeskussen_wit_desktop": {
+  "kaarten": [],
+  "galerij": [
+   "bline-leeskussen-wit-packshot-01.jpg",
+   "bline-leeskussen-wit-gebruik-01.jpg",
+   "bline-leeskussen-wit-gebruik-02.jpg",
+   "bline-leeskussen-wit-gebruik-03.jpg",
+   "bline-leeskussen-wit-gebruik-04.png",
+   "bline-leeskussen-wit-01.jpg",
+   "bline-leeskussen-wit-02.jpg",
+   "bline-leeskussen-wit-03.jpg",
+   "bline-leeskussen-wit-04.jpg",
+   "bline-leeskussen-wit-05.jpg",
+   "bline-leeskussen-wit-08.jpg",
+   "bline-leeskussen-wit-06.jpg",
+   "bline-leeskussen-maattekening.jpg",
+   "bline-leeskussen-wit-07.jpg"
+  ],
+  "teller": " 1 / van 14 "
+ }
+}

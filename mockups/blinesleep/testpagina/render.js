@@ -79,6 +79,7 @@ settings.color_schemes_by_id = Object.fromEntries(settings.color_schemes.map((s)
 const SHOP_IMAGES = {
   'bline-logo.png': { src: 'https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-logo.png?v=1791194891', width: 2000, height: 839 },
   'bline-icoon.png': { src: 'https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-icoon.png?v=1791194891', width: 512, height: 512 },
+  'bline-leeskussen-wit-gebruik-01.jpg': { src: 'https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-gebruik-01.jpg?v=1791219575', width: 6000, height: 4000 },
 };
 function shopImage(v) {
   if (typeof v !== 'string' || !v.startsWith('shopify://shop_images/')) return v;
