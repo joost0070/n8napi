@@ -1,0 +1,33 @@
+{%- comment -%} Bline v3: kleurengids. Per kleur een foto, de naam, een korte tekst en een knop. {%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in b3-gids">
+    {%- for block in section.blocks -%}
+      {%- assign kp = all_products[block.settings.kleur] -%}
+      <div class="b3-gids__rij{% cycle '', ' b3-gids__rij--om' %}" {{ block.shopify_attributes }}>
+        <a href="{{ kp.url }}" class="b3-gids__beeld">{%- if block.settings.beeld != blank -%}{{ block.settings.beeld | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 700, 1000, 1200', sizes: '(min-width: 990px) 45vw, 100vw', alt: block.settings.beeld.alt }}{%- endif -%}</a>
+        <div class="b3-gids__tekst">
+          <span class="b3-gids__bol" style="--k: {{ kp.metafields.bline.kleur_hex.value }}"></span>
+          <h2 class="b3-kop"><em>{{ kp.metafields.bline.kleur_naam.value }}</em></h2>
+          <div class="b3-intro">{{ block.settings.tekst }}</div>
+          <a href="{{ kp.url }}" class="b3-knop">Kies {{ kp.metafields.bline.kleur_naam.value | downcase }} · {{ kp.price | money }}</a>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: kleurengids",
+  "settings": [
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "wit", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "blocks": [
+    { "type": "kleur", "name": "Kleur", "settings": [
+      { "type": "text", "id": "kleur", "label": "Kussen (handle)", "default": "leeskussen-beige" },
+      { "type": "image_picker", "id": "beeld", "label": "Beeld" },
+      { "type": "richtext", "id": "tekst", "label": "Tekst" }
+    ] }
+  ],
+  "presets": [{ "name": "Bline v3: kleurengids" }]
+}
+{% endschema %}

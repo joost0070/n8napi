@@ -264,3 +264,11 @@ Lookbook (homepage en Lezen in bed): `wit-gebruik-01` en `-03` (echte foto's), `
 | 8 sets (nieuw) | setcollage, sfeertegel van het kussen, packshot van de hoes of het kussen |
 
 Niets uit Files verwijderd. De witte macro's staan alleen bij Wit; bij de andere kleuren zou een wit detail verwarren.
+
+## 5 oktober 2026, sessie 12: Files opgeruimd en eigen bewerkingen uit de winkel
+
+Akkoord Joost (05-10): "ruim de bestanden op". Werkwijze: alle bestanden opgehaald en op inhoud vergeleken (SHA-1). Per bestand gecontroleerd: niet aan een product gekoppeld, niet genoemd in het thema (alle bestanden), pagina's, artikelen of collecties.
+
+- **Verwijderd (57):** 27 dubbele uploads (`1.png` tot `27.png` met code), `DSC01348.jpg` (identieke kopie van `bline-leeskussen-wit-gebruik-02.jpg`, die blijft), 19 afgekeurde beelden, en 10 kopieën met code (`bline-leeskussen-<kleur>-01_…`, `-04_…`, `wit-06_…`). Die laatste hingen aan de hoezen; de hoezen wijzen nu naar het basisbestand op dezelfde plek (beeld vrijwel identiek, gecontroleerd).
+- **Blijft:** de video, alle echte DSC-foto's, alle goedgekeurde beelden, de `-niet`-bestanden (geen akkoord om die te verwijderen) en mijn eigen bewerkingen (banners, tegels, stroken, sets, details). Die laatste worden nergens meer in de winkel gebruikt (behalve de sets, die niet in de webwinkel staan) en kunnen weg zodra Joost dat wil.
+- Files: van 188 naar 131 bestanden, geen dubbele en geen afgekeurde meer.

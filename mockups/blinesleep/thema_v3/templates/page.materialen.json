@@ -1,0 +1,229 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+ "sections": {
+  "kop": {
+   "type": "b3-kop",
+   "settings": {
+    "oog": "Materialen",
+    "kop": "Waar het kussen van <em>gemaakt</em> is",
+    "intro": "<p>Een katoenen hoes, een vulling van traagschuim en een vak opzij. Hieronder per onderdeel wat het is en hoe je het verzorgt.</p>",
+    "achtergrond": "warm"
+   }
+  },
+  "binnen": {
+   "type": "b3-binnenkant",
+   "blocks": {
+    "g0": {
+     "type": "getal",
+     "settings": {
+      "groot": "3,8",
+      "eenheid": "kg",
+      "tekst": "traagschuim: blijft staan als je leunt",
+      "tint": "zand"
+     }
+    },
+    "g1": {
+     "type": "getal",
+     "settings": {
+      "groot": "65",
+      "eenheid": "cm",
+      "tekst": "breed, 50 hoog en 45 diep",
+      "tint": "mist"
+     }
+    },
+    "g2": {
+     "type": "getal",
+     "settings": {
+      "groot": "30",
+      "eenheid": "°C",
+      "tekst": "de hoes gaat er met een rits af en zo in de was",
+      "tint": "steen"
+     }
+    },
+    "g3": {
+     "type": "getal",
+     "settings": {
+      "groot": "400",
+      "eenheid": "TC",
+      "tekst": "zacht, stevig geweven katoen",
+      "tint": "zand"
+     }
+    }
+   },
+   "block_order": [
+    "g0",
+    "g1",
+    "g2",
+    "g3"
+   ],
+   "settings": {
+    "oog": "De vulling",
+    "kop": "3,8 kg <em>traagschuim</em>",
+    "intro": "Binnenin zit 3,8 kg traagschuim. Daardoor blijft het kussen staan als je ertegenaan leunt. Net uitgepakt? Laat het 24 tot 48 uur luchten en schud het op.",
+    "beeld": "shopify://shop_images/bline-leeskussen-beige-04.jpg",
+    "achtergrond": "wit"
+   }
+  },
+  "hoes": {
+   "type": "b3-verhaal",
+   "blocks": {
+    "b0": {
+     "type": "punt",
+     "settings": {
+      "icoon": "check",
+      "kop": "100% katoen, 400 TC",
+      "tekst": "Bies langs de naden."
+     }
+    },
+    "b1": {
+     "type": "punt",
+     "settings": {
+      "icoon": "rits",
+      "kop": "Volledig afneembaar",
+      "tekst": "Met een onzichtbare rits."
+     }
+    },
+    "b2": {
+     "type": "punt",
+     "settings": {
+      "icoon": "boek",
+      "kop": "In vijf kleuren",
+      "tekst": "Ook los te koop."
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2"
+   ],
+   "settings": {
+    "video_product": "",
+    "beeld": "shopify://shop_images/bline-hoes-beige-packshot-01.png",
+    "oog": "De hoes",
+    "kop": "Katoen <em>400 TC</em>",
+    "tekst": "De hoes is van 100% katoen met 400 draden per vierkante inch. Dicht geweven, glad en zacht.",
+    "knop": "",
+    "knop_kleur": "beige",
+    "om": false,
+    "achtergrond": "warm"
+   }
+  },
+  "zijvak": {
+   "type": "b3-verhaal",
+   "blocks": {
+    "b0": {
+     "type": "punt",
+     "settings": {
+      "icoon": "telefoon",
+      "kop": "Zijvak",
+      "tekst": "Voor boek, bril of telefoon."
+     }
+    },
+    "b1": {
+     "type": "punt",
+     "settings": {
+      "icoon": "rits",
+      "kop": "Onzichtbare rits",
+      "tekst": "Je ziet hem niet als de hoes erom zit."
+     }
+    },
+    "b2": {
+     "type": "punt",
+     "settings": {
+      "icoon": "check",
+      "kop": "Bline-label",
+      "tekst": "Aan de zijkant."
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2"
+   ],
+   "settings": {
+    "video_product": "",
+    "beeld": "shopify://shop_images/bline-leeskussen-beige-gebruik-01.png",
+    "oog": "Rits en zijvak",
+    "kop": "Alles binnen <em>handbereik</em>",
+    "tekst": "Aan de zijkant zit een vak voor je boek, bril of telefoon. De rits zit uit het zicht, het label aan de zijkant.",
+    "knop": "",
+    "knop_kleur": "beige",
+    "om": true,
+    "achtergrond": "wit"
+   }
+  },
+  "wassen": {
+   "type": "b3-tegels",
+   "blocks": {
+    "b0": {
+     "type": "tegel",
+     "settings": {
+      "icoon": "was",
+      "titel": "Op 30 °C",
+      "tekst": "<p>Machinewas, normaal programma. Haal de hoes er met de rits af.</p>",
+      "link": "",
+      "link_label": ""
+     }
+    },
+    "b1": {
+     "type": "tegel",
+     "settings": {
+      "icoon": "check",
+      "titel": "Niet bleken",
+      "tekst": "<p>Gebruik een gewoon wasmiddel zonder bleekmiddel.</p>",
+      "link": "",
+      "link_label": ""
+     }
+    },
+    "b2": {
+     "type": "tegel",
+     "settings": {
+      "icoon": "veer",
+      "titel": "Niet in de droger",
+      "tekst": "<p>Laat de hoes aan de lucht drogen. Een extra hoes is handig om te wisselen.</p>",
+      "link": "/collections/hoezen",
+      "link_label": "Losse hoezen"
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2"
+   ],
+   "settings": {
+    "oog": "Verzorging",
+    "kop": "Zo was je de <em>hoes</em>",
+    "achtergrond": "warm"
+   }
+  },
+  "kleuren": {
+   "type": "b3-kleuren",
+   "settings": {
+    "basis": "leeskussen-beige",
+    "oog": "Ons leeskussen",
+    "kop": "Kies je <em>kleur</em>",
+    "intro": "Zelfde kussen, vijf kleuren. Tik op een kleur voor het kussen in die kleur.",
+    "achtergrond": "wit"
+   }
+  }
+ },
+ "order": [
+  "kop",
+  "binnen",
+  "hoes",
+  "zijvak",
+  "wassen",
+  "kleuren"
+ ]
+}

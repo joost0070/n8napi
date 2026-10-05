@@ -353,3 +353,68 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
 .b3-app { display: flex; gap: 1.2rem; align-items: center; padding: 1.2rem 1.4rem; margin: 0 0 1.6rem; border-radius: var(--b3-r-klein); background: var(--b3-bg); color: var(--b3-inkt); text-decoration: none; font-size: 1.3rem; line-height: 1.4; }
 .b3-app b { font-weight: 600; }
 .b3-app__bol { flex: none; width: 4rem; height: 4rem; border-radius: 50%; display: grid; place-items: center; background: #fff; }
+
+/* ---------- paginakop ---------- */
+.b3-kopblok { padding-bottom: 3.2rem; }
+.b3-kopblok__kop { margin-bottom: 1.2rem; }
+.b3-kopblok__intro p { margin: 0; }
+@media (min-width: 990px) { .b3-kopblok { padding-top: 7.2rem; padding-bottom: 4.8rem; } }
+
+/* ---------- lookbook ---------- */
+.b3-lookbook { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.b3-lookbook__item { position: relative; display: block; border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 1 / 1; background: var(--b3-steen); }
+.b3-lookbook__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.b3-lookbook__item:hover img { transform: scale(1.03); }
+.b3-lookbook__item--groot { grid-column: span 2; }
+.b3-lookbook__kleur { position: absolute; left: 1rem; bottom: 1rem; font-size: 1.15rem; padding: .6rem .9rem; }
+.b3-lookbook__kleur i { width: 1.1rem; height: 1.1rem; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+@media (min-width: 990px) {
+  .b3-lookbook { grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+  .b3-lookbook__item--groot { grid-column: span 2; grid-row: span 2; }
+}
+
+/* ---------- kleurengids ---------- */
+.b3-gids { display: grid; gap: 4rem; }
+.b3-gids__rij { display: grid; gap: 1.6rem; align-items: center; }
+.b3-gids__beeld { display: block; border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 1 / 1; background: var(--b3-steen); }
+.b3-gids__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-gids__bol { display: block; width: 3.6rem; height: 3.6rem; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); margin-bottom: 1.2rem; }
+.b3-gids .b3-kop em { font-size: 1.3em; }
+.b3-gids .b3-intro p { margin: 0; }
+@media (min-width: 990px) {
+  .b3-gids { gap: 6.4rem; }
+  .b3-gids__rij { grid-template-columns: 1fr 1fr; gap: 6.4rem; }
+  .b3-gids__rij--om .b3-gids__beeld { order: 2; }
+}
+
+/* ---------- tegels ---------- */
+.b3-tegels { display: grid; gap: 1rem; }
+.b3-tegelkaart { border-radius: var(--b3-r); padding: 2.4rem 2rem; }
+.b3-tegelkaart__icoon { width: 4.4rem; height: 4.4rem; border-radius: 50%; display: grid; place-items: center; background: #fff; margin-bottom: 1.4rem; }
+.b3-tegelkaart h3 { font-size: 1.8rem; font-weight: 600; margin: 0 0 .6rem; }
+.b3-tegelkaart div { color: var(--b3-sub); font-size: 1.4rem; }
+.b3-tegelkaart div p { margin: 0; }
+.b3-tegelkaart__link { display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.2rem; color: var(--b3-inkt); font-weight: 500; text-decoration: none; }
+@media (min-width: 750px) { .b3-tegels { grid-template-columns: repeat(3, 1fr); gap: 1.6rem; } }
+
+/* ---------- aanmelden ---------- */
+.b3-aanmelden { max-width: 64rem; text-align: center; }
+.b3-aanmelden .b3-intro { margin-left: auto; margin-right: auto; }
+.b3-aanmelden__form { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; }
+.b3-aanmelden__form input[type=email] { flex: 1 1 24rem; min-height: 5.2rem; border-radius: 99px; border: 1.5px solid var(--b3-lijn); padding: 0 2rem; font: inherit; background: #fff; }
+.b3-aanmelden__ok, .b3-aanmelden__fout { width: 100%; margin: .8rem 0 0; }
+.b3-aanmelden__klein { font-size: 1.2rem; color: var(--b3-sub); margin-top: 1.2rem; }
+
+/* ---------- Dawn-pagina's, collecties en blog in de v3-stijl ---------- */
+.main-page-title { font-size: clamp(3rem, 5vw, 4.4rem); margin-bottom: 2.4rem; }
+.template-page .rte, .template-page .page-width--narrow { color: var(--b3-sub); }
+.contact .field__input, .contact .text-area { border-radius: 12px; }
+.contact .button { min-height: 5.2rem; }
+.card-wrapper .card__heading { font-family: var(--font-heading-family); font-weight: 500; }
+.card__media, .card .media { border-radius: var(--b3-r); }
+.blog-articles .card__heading, .article-template__title { font-family: var(--font-heading-family); font-weight: 600; }
+.article-template__hero-container .media { border-radius: var(--b3-r); }
+.collection-hero__title { font-family: var(--font-heading-family); font-weight: 600; }
+@media (max-width: 989px) { .b3-lookbook__item--groot ~ .b3-lookbook__item:last-child:nth-child(even) { grid-column: span 2; aspect-ratio: 2 / 1; } }
+.footer-block__details-content, .footer-block__details-content p, .footer__content-bottom { color: rgba(255,255,255,.78); }
+.footer-block__details-content a { color: #fff; }

@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+ "sections": {
+  "kop": {
+   "type": "b3-kop",
+   "settings": {
+    "oog": "Binnenkort",
+    "kop": "Bline <em>Sleep</em>",
+    "intro": "<p>Na het leeskussen werken we aan meer voor in bed. We laten het pas zien als het goed genoeg is.</p>",
+    "achtergrond": "warm"
+   }
+  },
+  "beeld": {
+   "type": "b3-groot",
+   "settings": {
+    "beeld": "shopify://shop_images/bline-leeskussen-wit-gebruik-02.jpg",
+    "focus": "50% 45%",
+    "oog": "Bline Sleep",
+    "kop": "Meer voor in <em>bed</em>",
+    "tekst": "Zacht, rustig en gemaakt om lang mee te gaan.",
+    "knop": "",
+    "knop_kleur": "wit",
+    "uitlijning": "links"
+   }
+  },
+  "wat": {
+   "type": "b3-tegels",
+   "blocks": {
+    "b0": {
+     "type": "tegel",
+     "settings": {
+      "icoon": "veer",
+      "titel": "Zijden kussensloop",
+      "tekst": "<p>Een sloop van zijde voor je hoofdkussen.</p>",
+      "link": "",
+      "link_label": ""
+     }
+    },
+    "b1": {
+     "type": "tegel",
+     "settings": {
+      "icoon": "check",
+      "titel": "Beddengoed van lyocell",
+      "tekst": "<p>Lyocell wordt gemaakt van houtvezel.</p>",
+      "link": "",
+      "link_label": ""
+     }
+    },
+    "b2": {
+     "type": "tegel",
+     "settings": {
+      "icoon": "klok",
+      "titel": "Dekbed",
+      "tekst": "<p>Een dekbed dat past bij de rest van Bline.</p>",
+      "link": "",
+      "link_label": ""
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2"
+   ],
+   "settings": {
+    "oog": "Wat er komt",
+    "kop": "Voor in <em>bed</em>",
+    "achtergrond": "wit"
+   }
+  },
+  "aanmelden": {
+   "type": "b3-aanmelden",
+   "settings": {
+    "oog": "Nieuws",
+    "kop": "Als eerste <em>weten</em>",
+    "tekst": "Laat je e-mailadres achter. We mailen alleen als er iets nieuws is.",
+    "achtergrond": "warm"
+   }
+  },
+  "kleuren": {
+   "type": "b3-kleuren",
+   "settings": {
+    "basis": "leeskussen-beige",
+    "oog": "Intussen",
+    "kop": "Het <em>leeskussen</em>",
+    "intro": "Zelfde kussen, vijf kleuren. Tik op een kleur voor het kussen in die kleur.",
+    "achtergrond": "wit"
+   }
+  }
+ },
+ "order": [
+  "kop",
+  "beeld",
+  "wat",
+  "aanmelden",
+  "kleuren"
+ ]
+}

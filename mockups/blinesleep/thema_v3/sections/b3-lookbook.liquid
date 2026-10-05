@@ -1,0 +1,34 @@
+{%- comment -%} Bline v3: lookbook. Elke foto linkt naar het kussen in die kleur. Alleen originele beelden. {%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in">
+    {%- if section.settings.oog != blank -%}<p class="b3-oog">{{ section.settings.oog }}</p>{%- endif -%}
+    {%- if section.settings.kop != blank -%}<h2 class="b3-kop">{{ section.settings.kop }}</h2>{%- endif -%}
+    <div class="b3-lookbook">
+      {%- for block in section.blocks -%}
+        {%- assign kp = all_products[block.settings.kleur] -%}
+        <a href="{{ kp.url }}" class="b3-lookbook__item{% if block.settings.groot %} b3-lookbook__item--groot{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.beeld != blank -%}{{ block.settings.beeld | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 600, 900, 1200', sizes: '(min-width: 990px) 33vw, 50vw', alt: block.settings.beeld.alt }}{%- endif -%}
+          <span class="b3-pil b3-pil--licht b3-lookbook__kleur"><i style="--k: {{ kp.metafields.bline.kleur_hex.value }}"></i>{{ kp.metafields.bline.kleur_naam.value }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: lookbook",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "wit", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "blocks": [
+    { "type": "foto", "name": "Foto", "settings": [
+      { "type": "image_picker", "id": "beeld", "label": "Beeld" },
+      { "type": "text", "id": "kleur", "label": "Kussen (handle)", "default": "leeskussen-beige" },
+      { "type": "checkbox", "id": "groot", "label": "Groot", "default": false }
+    ] }
+  ],
+  "presets": [{ "name": "Bline v3: lookbook" }]
+}
+{% endschema %}

@@ -1022,3 +1022,7 @@ Aanleiding (Joost): "de opbouw van de foto's is heel cheap", "de afbeeldingen di
 **Getest** (lokaal gerenderd met de echte winkeldata na upload): 1 kussen €79,99, 2 kussens €149,99, kussen + hoes €104,99, 2 kussens + hoes €184,98 (één korting, zoals Shopify rekent), Wit + hoes €89,99; juiste varianten naar `/cart/add.js`. Screenshots in `mockups/blinesleep/screenshots/v3b/`.
 
 **Niet gedaan:** wachtwoord blijft aan, geen prijzen gewijzigd, geen mails. Nog open: de 27 dubbele uploads (`1.png` tot `27.png`) staan nog in Files; collectiepagina's en inhoudspagina's (Materialen, Lezen in bed, Kleurengids, Maatgids, Bline Sleep) hebben nog de oude stijl en eigen bewerkte beelden, maar staan niet meer in het menu.
+
+### Sessie 12b: alle pagina's in de v3-stijl
+
+Akkoord Joost: "doe de pagina's". Nieuwe secties `b3-kop`, `b3-lookbook`, `b3-kleurgids`, `b3-tegels`, `b3-aanmelden`. Materialen, Maatgids, Kleurengids, Lezen in bed en Bline Sleep opnieuw opgebouwd met de bestaande teksten en alleen originele beelden (geen eigen banners, tegels of stroken meer). Gewone pagina's (verzending, retour, privacy, vergelijking, contact) en artikelen eindigen met "Kies je kleur"; collecties krijgen een kop zonder bewerkte banner, de productkaarten, de band en de vragen; blog met v3-kop. Oude mega-menu-instellingen met bewerkte beelden leeggemaakt. De 8 sets staan niet op het kanaal Online Store en zijn dus niet zichtbaar. Na upload opnieuw opgehaald: gelijk aan de geteste versie. Screenshots in `mockups/blinesleep/screenshots/v3c/`.

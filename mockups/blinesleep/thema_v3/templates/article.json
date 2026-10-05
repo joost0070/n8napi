@@ -1,0 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+ "sections": {
+  "main": {
+   "type": "main-article",
+   "blocks": {
+    "featured_image": {
+     "type": "featured_image",
+     "settings": {
+      "image_height": "medium"
+     }
+    },
+    "title": {
+     "type": "title",
+     "settings": {
+      "blog_show_date": true,
+      "blog_show_author": false
+     }
+    },
+    "content": {
+     "type": "content",
+     "settings": {}
+    }
+   },
+   "block_order": [
+    "featured_image",
+    "title",
+    "content"
+   ],
+   "settings": {}
+  },
+  "kleuren": {
+   "type": "b3-kleuren",
+   "settings": {
+    "basis": "leeskussen-beige",
+    "oog": "Ons leeskussen",
+    "kop": "Kies je <em>kleur</em>",
+    "intro": "Zelfde kussen, vijf kleuren. Tik op een kleur voor het kussen in die kleur.",
+    "achtergrond": "warm"
+   }
+  }
+ },
+ "order": [
+  "main",
+  "kleuren"
+ ]
+}

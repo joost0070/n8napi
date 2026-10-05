@@ -1,0 +1,216 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+ "sections": {
+  "kop": {
+   "type": "b3-kop",
+   "settings": {
+    "oog": "Inspiratie",
+    "kop": "Lezen in <em>bed</em>",
+    "intro": "<p>Met een boek, een serie of je laptop. Tik op een foto voor het kussen in die kleur.</p>",
+    "achtergrond": "warm"
+   }
+  },
+  "in_bed": {
+   "type": "b3-lookbook",
+   "blocks": {
+    "b0": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-blauw-03.jpg",
+      "kleur": "leeskussen-blauw",
+      "groot": true
+     }
+    },
+    "b1": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-beige-03.jpg",
+      "kleur": "leeskussen-beige",
+      "groot": false
+     }
+    },
+    "b2": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-wit-gebruik-06.png",
+      "kleur": "leeskussen-wit",
+      "groot": false
+     }
+    },
+    "b3": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-zwart-03.jpg",
+      "kleur": "leeskussen-zwart",
+      "groot": false
+     }
+    },
+    "b4": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-grijs-05.jpg",
+      "kleur": "leeskussen-grijs",
+      "groot": false
+     }
+    },
+    "b5": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-beige-02.jpg",
+      "kleur": "leeskussen-beige",
+      "groot": false
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "b5"
+   ],
+   "settings": {
+    "oog": "In bed",
+    "kop": "Rechtop met een <em>boek</em>",
+    "achtergrond": "wit"
+   }
+  },
+  "video": {
+   "type": "b3-verhaal",
+   "blocks": {
+    "b0": {
+     "type": "punt",
+     "settings": {
+      "icoon": "check",
+      "kop": "Blijft staan",
+      "tekst": "Door 3,8 kg traagschuim."
+     }
+    },
+    "b1": {
+     "type": "punt",
+     "settings": {
+      "icoon": "rits",
+      "kop": "Hoes eraf met één rits",
+      "tekst": "En zo in de was."
+     }
+    },
+    "b2": {
+     "type": "punt",
+     "settings": {
+      "icoon": "boek",
+      "kop": "In vijf kleuren",
+      "tekst": "Kies wat bij je bed past."
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2"
+   ],
+   "settings": {
+    "video_product": "leeskussen-wit",
+    "beeld": "",
+    "oog": "Zo gebruik je het",
+    "kop": "Leunen, lezen, <em>wegleggen</em>",
+    "tekst": "Zet het kussen tegen het hoofdbord, leun achterover en leg je telefoon in het vak opzij.",
+    "knop": "Kies je kleur",
+    "knop_kleur": "beige",
+    "om": false,
+    "achtergrond": "donker"
+   }
+  },
+  "werken": {
+   "type": "b3-lookbook",
+   "blocks": {
+    "b0": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-grijs-02.jpg",
+      "kleur": "leeskussen-grijs",
+      "groot": true
+     }
+    },
+    "b1": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-zwart-05.jpg",
+      "kleur": "leeskussen-zwart",
+      "groot": false
+     }
+    },
+    "b2": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-wit-04.jpg",
+      "kleur": "leeskussen-wit",
+      "groot": false
+     }
+    },
+    "b3": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-zwart-02.jpg",
+      "kleur": "leeskussen-zwart",
+      "groot": false
+     }
+    },
+    "b4": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-wit-03.jpg",
+      "kleur": "leeskussen-wit",
+      "groot": false
+     }
+    },
+    "b5": {
+     "type": "foto",
+     "settings": {
+      "beeld": "shopify://shop_images/bline-leeskussen-blauw-05.jpg",
+      "kleur": "leeskussen-blauw",
+      "groot": false
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "b5"
+   ],
+   "settings": {
+    "oog": "Werken, kijken, op de bank",
+    "kop": "Ook om te werken en te <em>kijken</em>",
+    "achtergrond": "warm"
+   }
+  },
+  "kleuren": {
+   "type": "b3-kleuren",
+   "settings": {
+    "basis": "leeskussen-beige",
+    "oog": "Ons leeskussen",
+    "kop": "Kies je <em>kleur</em>",
+    "intro": "Zelfde kussen, vijf kleuren. Tik op een kleur voor het kussen in die kleur.",
+    "achtergrond": "wit"
+   }
+  }
+ },
+ "order": [
+  "kop",
+  "in_bed",
+  "video",
+  "werken",
+  "kleuren"
+ ]
+}
