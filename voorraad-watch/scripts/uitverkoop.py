@@ -159,6 +159,9 @@ def curve_voor(r):
 HUIDIG_SZ = 'FW' if (NU >= 30 or NU <= 5) else 'SS'
 HUIDIG_JR = JAAR if not (HUIDIG_SZ == 'FW' and NU <= 5) else JAAR - 1
 VORIG_SZ = 'SS' if HUIDIG_SZ == 'FW' else 'FW'
+# weken tot het einde van het lopende verkoopseizoen: FW t/m week 9 (eind februari), SS t/m week 35
+SEIZOEN_EIND = 9 if HUIDIG_SZ == 'FW' else 35
+SEIZOEN_H = (SEIZOEN_EIND - NU) % 53 + 1
 VORIG_JR = HUIDIG_JR if HUIDIG_SZ == 'FW' else HUIDIG_JR - 1
 def collectie(r, cv, niv=None):
     jr = str(r.get('season_year') or '').upper()
@@ -604,6 +607,24 @@ for p, mpns in modellen.items():
         _mp_n += x['mp_advies']
     _u['mp_advies'] = _mp_n
     _u['mp28'] = sum(x['mp28'] for x in rij)
+    # Modelniveau, voor de vraag 'verkopen de eigen shops dit seizoen alles zelf uit?'. Per maat de
+    # vraag van alleen de eigen shops tot het einde van het verkoopseizoen (SEIZOEN_H) tegen
+    # voorraad plus onderweg. eigen_dekt = deel van de voorraad dat de eigen shops zelf verkopen;
+    # rond 100% voegt een marktplaats niets toe en kost hij alleen fee en paren.
+    _eig = _mpv = _dekt = 0.0
+    for x in rij:
+        k = x['kanaal']; tot = k['marktplaats'] + k['merkshop'] + k['breed']
+        a_eigen = (k['merkshop'] + k['breed']) / tot if tot else 1.0
+        v = vraag_over(x['jaarvraag'], cv['idx'], NU, SEIZOEN_H)
+        vrd_x = x['vrd'] + sum(q for d, q in ONDERWEG.get(x['m'], []) if d <= SEIZOEN_H * 7)
+        _eig += v * a_eigen; _mpv += v * (1 - a_eigen); _dekt += min(vrd_x, v * a_eigen)
+    _vrd_h = totaal_vrd + sum(q for x in rij for d, q in ONDERWEG.get(x['m'], []) if d <= SEIZOEN_H * 7)
+    _mp_t, _eig_t = _u['mp28'], sum(x['eigen28'] for x in rij)
+    _de = uitverkoop(totaal_vrd, jaarvraag * (_eig_t / (_mp_t + _eig_t) if _mp_t + _eig_t else 1.0),
+                     cv['idx'], NU, [b for x in rij for b in ONDERWEG.get(x['m'], [])])
+    _u.update({'eigen_seizoen_st': round(_eig), 'mp_seizoen_st': round(_mpv),
+               'eigen_dekt_pct': round(100 * _dekt / _vrd_h) if _vrd_h else None,
+               'dagen_eigen': None if _de is None else round(_de)})
     for mm in _u['maten']:
         xx = next((x for x in rij if fix(info[x['m']]['size']) == mm['maat']), None)
         if xx:
@@ -696,6 +717,7 @@ json.dump(uit, open(f'{B}/uitverkoop.json', 'w'), ensure_ascii=False, indent=1)
 VELDEN = ('abc', 'buffer', 'sell_through', 'overschot_pct', 'overschot_eur', 'overschot_st', 'overschot_weken',
           'afprijs_kandidaat', 'over_bij_dal',
           'weken_tot_dal', 'dal', 'onderweg', 'onderweg_dag', 'mp_advies', 'mp28',
+          'eigen_seizoen_st', 'mp_seizoen_st', 'eigen_dekt_pct', 'dagen_eigen',
           'model', 'merk', 'naam', 'collectie', 'seizoen', 'status', 'bestelbaar', 'reden', 'col_sale', 'verk28', 'per_week',
           'voorraad', 'dagen_totaal', 'eerste_leeg', 'bestel_over', 'levertijd', 'levertijd_bron', 'sprong',
           'weinig_historie', 'vj_horizon', 'verwacht_horizon', 'bestel_totaal', 'piek', 'afprijs_wk', 'kanaal', 'prijs')
@@ -750,7 +772,7 @@ for k, regels in sorted(kan.items(), key=lambda x: -sum(r[2] for r in x[1])):
     if top and om >= 200: shops_top.append({'shop': k.replace(' (v3)', ''), 'top': top, 'stuks': st, 'omzet': om, 'marktplaats': True})
 print(f"per shop: top 10 van {VW_BEGIN:%d-%m} t/m {VW_EIND:%d-%m} voor {len(shops_top)} shops en kanalen")
 
-json.dump({'peildatum': TODAY.isoformat(), 'week': NU, 'herstel': herstel, 'kpi': kpi, 'modellen': overzicht,
+json.dump({'peildatum': TODAY.isoformat(), 'week': NU, 'seizoen_eind_wk': SEIZOEN_EIND, 'seizoen_weken': SEIZOEN_H, 'herstel': herstel, 'kpi': kpi, 'modellen': overzicht,
            'shops': shops_top, 'vorige_week': [VW_BEGIN.isoformat(), VW_EIND.isoformat(), VW_BEGIN.isocalendar()[1]]},
           open(f'{B}/overzicht.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 

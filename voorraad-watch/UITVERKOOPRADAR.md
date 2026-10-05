@@ -194,6 +194,22 @@ komt vaker retour (27% tegen 2–11% in de eigen shops). Wanneer een kernmaat op
 radar markeert dat; het afknijpen van de marktplaatsvoorraad zelf is een
 instelling in ChannelEngine.
 
+Op modelniveau beantwoordt de radar de vraag "verkopen de eigen shops dit
+seizoen alles zelf uit?". Per maat zet hij de verwachte vraag van alleen de
+eigen shops (merkshop + Bartogi) tot het einde van het verkoopseizoen (FW t/m
+week 9, SS t/m week 35) af tegen voorraad plus onderweg:
+
+- `eigen_seizoen_st` / `mp_seizoen_st`: verwachte verkoop eigen shops en
+  marktplaatsen tot het seizoenseinde;
+- `eigen_dekt_pct`: deel van de voorraad dat de eigen shops zelf verkopen
+  (per maat begrensd op de voorraad). Rond 100% voegt een marktplaats niets
+  toe en kost hij alleen fee en paren;
+- `dagen_eigen`: dagen tot het model op is als alleen de eigen shops verkopen.
+
+Een model met een laag percentage maar krappe kleine maten (Downpour Tall
+Black: 37–38 op, 40+ overvol) haal je per maat van de marktplaatsen, niet als
+geheel.
+
 ## Terugblik: hoe groot is het probleem
 
 Voor de vijftig best verkopende modellen van het afgelopen jaar: welk deel van
