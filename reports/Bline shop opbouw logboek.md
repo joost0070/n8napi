@@ -187,3 +187,77 @@ Opmerkingen:
 6. ChannelDock aan Shopify koppelen.
 7. Shopify Payments activeren, daarna Google- en Meta-app koppelen.
 8. Retouradres bevestigen.
+
+## 5 oktober 2026, sessie 3
+
+Joost gaf akkoord op het verzendvoorstel en vroeg door te gaan met beelden en Dawn.
+
+### Werkpakket E: verzending en markten (akkoord Joost 05-10)
+
+- Zone Nederland: de twee oude tarieven (€6,95 en gratis vanaf €55) vervangen door één tarief "Gratis verzending", €0, met de tekst "Binnen 1-2 werkdagen in huis".
+- Zone België aangemaakt met hetzelfde gratis tarief.
+- Zones EU (26 landen) en Internationaal (14 landen) verwijderd. De winkel verstuurt nu alleen naar NL en BE (gecontroleerd).
+- Markt België van concept naar **actief** gezet. Dit is niet zichtbaar zolang het wachtwoord aan staat.
+
+### Werkpakket C: beelden
+
+Bron: de 24 bestaande Higgsfield-originelen (2048 px, gedownload via de rawUrl uit `koppeling.json`, geen nieuwe generaties) en de echte foto's van bol (`wit_05, 07, 09, 10, 11`, `blauw_08`, `grijs_08`, 1200 px). Omgezet naar JPG, sRGB, kwaliteit 85, maximaal 2048 px, bestandsnaam `bline-leeskussen-<kleur>-<nr>.jpg`.
+
+Kleurcontrole: elk beeld naast de bol-foto gelegd; ze komen overeen (het zijn dezelfde generaties). De extra zwart-kandidaat (645857df) is **niet gebruikt**: daarop is het kussen donkergrijs, niet zwart. Voor zwart is `zwart_05` het hoofdbeeld.
+
+Leeskussen Bline, 31 beelden:
+
+| Kleur | Volgorde |
+|---|---|
+| Wit (8) | wit_05 (hoofdbeeld, echte foto), wit_02, wit_06, wit_03, wit_07, wit_10 (vulling), wit_09 (label), wit_04 |
+| Beige (5) | beige_07 (hoofdbeeld), beige_04, beige_03, beige_06 (rits en vulling), beige_02 |
+| Blauw (6) | blauw_05 (hoofdbeeld), blauw_03, blauw_04, blauw_06 (rits en vulling), blauw_02, blauw_08 |
+| Grijs (6) | grijs_05 (hoofdbeeld), grijs_03, grijs_04, grijs_07 (rits en vulling), grijs_02, grijs_08 |
+| Zwart (5) | zwart_05 (hoofdbeeld), zwart_02, zwart_04, zwart_07 (rits en vulling), zwart_03 |
+| Alle kleuren | maattekening (wit_11) |
+
+- Elke variant heeft zijn hoofdbeeld als variantbeeld.
+- Alt-teksten in gewoon Nederlands, met daarin "kleur Wit", "kleur Beige" enzovoort. Het thema gebruikt dat om bij een kleurkeuze alleen de beelden van die kleur te tonen. De maattekening heeft geen kleur in de alt-tekst en staat dus bij elke kleur.
+- Hoes voor leeskussen Bline: 10 beelden (per kleur het hoofdbeeld en het rits-detail), variantbeelden gekoppeld.
+- Geen beelden met tekst gebruikt, behalve de maattekening.
+- Ontbreekt nog: een tekstloos packshot per kleur op een lichte achtergrond. Dat vraagt nieuwe beelden: akkoordpunt 2, niet gedaan.
+
+Logo (`bline-logo.png`), witte variant en icoon (`bline-icoon.png`) staan als bestanden in Shopify.
+
+### Werkpakket B: Dawn (versie 16.0.0, **niet gepubliceerd**)
+
+Instellingen:
+- Kleuren uit `mockups/blinesleep/styles.css`: achtergrond #F7F4EF, tekst en knoppen #1F2A37, zand #F1EBE1 als tweede schema, donker schema #1F2A37, salie #5F6E58.
+- Lettertypes uit de Shopify-bibliotheek: Cormorant (koppen, gewicht 500) en Inter (tekst).
+- Logo en favicon ingesteld. Afgeronde knoppen en beelden, geen animaties bij scrollen, winkelwagen als lade.
+- Geen pop-ups en geen aftelklokken. De nieuwsbriefaanmelding en de knop "Volgen in Shop" in de voettekst staan uit, net als de keuze voor land en taal.
+- Aankondigingsbalk: "Gratis verzending in Nederland en België" (gelijk aan de verzendinstelling).
+
+Zelf gebouwd:
+1. **Kleurbolletjes**: in de keuzeknoppen van de optie Kleur staat een gekleurd bolletje voor de naam. De kleurcodes staan in thema-instellingen > Bline en zijn aan te passen. Wijziging in `snippets/product-variant-options.liquid`.
+2. **Beelden per kleur**: `assets/bline.js` verbergt bij een kleurkeuze de beelden van andere kleuren (op basis van de alt-tekst).
+3. **Meelopende knop "In winkelwagen"**: sectie `bline-sticky-atc`. Verschijnt onderaan het scherm, op mobiel en desktop, zodra de hoofdknop uit beeld is gescrold. Toont titel en prijs van de gekozen variant.
+4. **Specificatietabel**: sectie `bline-specificaties`, gevuld uit de metafields in namespace `bline`. Lege velden worden overgeslagen. Werkt ook voor latere producten.
+5. **Levertijdregel**: snippet `bline-levertijd`, tekst in thema-instellingen (standaard "Binnen 1-2 werkdagen in huis"). De datumregel met werkdagen, Nederlandse feestdagen 2026 en 2027 en een instelbare cut-off staat klaar maar **uit**, tot eFreight de cut-off bevestigt en Joost akkoord geeft (akkoordpunt 5).
+6. **Vergelijkingsblok "Waarom dit kussen"**: sectie `bline-waarom` met vier punten, elk met een feit uit 3a: stevigheid (3,8 kg traagschuim, laten luchten), wasbare hoes (30 °C, losse hoes te koop), maat (65 x 50 x 45 cm, eerst meten), kleur (14 dagen bedenktijd).
+7. **Veelgestelde vragen**: Dawn-sectie met uitklapblokken, zes vragen (levertijd, wassen, stevigheid, losse hoes, inhoud doos, terugsturen).
+
+Productpagina: titel, prijs, levertijdregel, kleurkeuze, knop, twee regels onder de knop (gratis verzending NL en BE, 14 dagen bedenktijd), omschrijving, daarna specificaties, "Waarom dit kussen", vragen en de meelopende knop. Galerij met miniaturen, ook op mobiel. "Kopen met"-knoppen en "Delen" weggehaald; "You may also like" verwijderd (er is maar één product).
+
+Homepage (concept): grote foto (beige, vrouw met boek) met kop "Lezen in bed, zonder kussenfort.", het leeskussen als uitgelicht product, "Waarom dit kussen" en de vragen. Een reviewscore staat er niet in: het bol-cijfer moet nog met bron worden opgehaald.
+
+Alle teksten nagelopen op het lange streepje, op "u" en "uw", op de schrapwoorden en op gezondheidswoorden: geen treffers. Er staat geen tijdstip in een levertijdbelofte.
+
+Controle door Shopify: alle bestanden zijn zonder fouten opgeslagen (één instelling op de homepage gecorrigeerd). Het thema is nog steeds **niet gepubliceerd**, Horizon blijft het actieve thema.
+
+### Nog niet gedaan, en waarom
+
+- **Screenshots, Lighthouse en de controle op "Translation missing"** kon ik niet doen. De winkel staat achter een wachtwoord en de producten zijn concept. Daardoor is de voorbeeldweergave van het thema alleen te zien in de admin van Joost. Het wachtwoord van de winkel heb ik niet en ik heb het ook niet uitgezet.
+- **Product niet op het verkoopkanaal Online Store gezet.** Het product blijft concept. Bij de livegang moeten product en collectie "Leeskussens" nog op het kanaal.
+- **Productomschrijving** volgt bij werkpakket D.
+
+### Wacht op Joost
+
+1. De voorbeeldweergave van Dawn bekijken in de admin (Online Store > Thema's > Dawn > Aanpassen), op mobiel en desktop. Of het winkelwachtwoord als omgevingsvariabele geven, dan maak ik zelf screenshots en draai ik Lighthouse.
+2. Eventueel nieuwe tekstloze packshots per kleur (akkoordpunt 2).
+3. De overige punten uit sessie 2 (Payments, certificaat, gewicht hoes, DNS, ChannelDock, retouradres).
