@@ -88,6 +88,42 @@ Primaire tekst:
 
 Kop: **Kussen + extra hoes €104,99** · Beschrijving: Eén in de was, één om het kussen
 
+### 8. `bl_waarom` (4:5, voor wie twijfelt over de prijs)
+Bestand: `bline-ad-h_waarom_45.jpg`
+Landing: `https://www.blinesleep.nl/products/leeskussen-grijs`
+
+Primaire tekst:
+> Waarom Bline meer kost dan een fluwelen kussen van €40: 3,8 kg traagschuim dat blijft staan, een hoes van katoen 400 TC die zo in de was kan, en een vak voor je telefoon.
+> Gratis verzending in NL en BE, 14 dagen bedenktijd.
+
+Kop: **Gemaakt om te blijven staan** · Beschrijving: Vanaf €69,99
+
+### 9. `bl_zaterdag` (4:5, verhaal)
+Bestand: `bline-ad-i_zaterdag_45.jpg`
+Landing: `https://www.blinesleep.nl/products/leeskussen-beige`
+
+Primaire tekst:
+> Zaterdagochtend, nog even niet opstaan. Koffie op het nachtkastje, boek op schoot, rug tegen een kussen dat niet wegzakt.
+> Bline leeskussen, in vijf kleuren. Gratis verzending.
+
+Kop: **Zaterdagochtend, niks hoeft** · Beschrijving: 4,5 uit 5 op bol.com
+
+---
+
+## Extra openingszinnen om te testen (Meta kiest zelf de beste)
+
+Meta laat per advertentie tot 5 primaire teksten testen. Zet bij 1, 2 en 5 deze erbij:
+
+| Advertentie | Variant B | Variant C |
+|---|---|---|
+| 1 kussenfort | Drie kussens achter je rug en nog zak je weg? Eén Bline is genoeg. | Lezen in bed zonder steeds je kussens op te schudden. |
+| 2 momenten | Werken, gamen of een serie: in bed zit je rechtop, zonder kussenstapel. | Jouw bed, maar dan met een rugleuning. |
+| 5 score | 4,5 uit 5 op bol.com. Nu ook rechtstreeks bij ons, voor dezelfde prijs. | Kopers op bol.com geven hem een 4,5. Zie waarom. |
+
+## Wat de markt doet (onderzoek 05-10-2026) en wat we daarmee doen
+
+Zie `research_notes/Bline Sleep risicos en voorbeelden/markt_advertenties_2026-10-05.md`.
+
 ---
 
 **Testen en beslissen (stopregels uit het funnelplan):** na 7 dagen de advertenties met de laagste klikfrequentie en geen toevoegingen pauzeren; na 14 dagen budget naar de beste twee. Kosten per aankoop boven €34: niet opschalen.
