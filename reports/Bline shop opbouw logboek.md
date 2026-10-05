@@ -623,3 +623,148 @@ Script over alle nieuwe teksten (ondertitels, btw, knop, lade, bundelregel, upse
 1. Betaaliconen in de voettekst verschijnen pas als Shopify Payments of een andere betaalprovider actief is (Shopify vult ze zelf). De rij bij de knop staat vast in het thema.
 2. De echte test op de telefoon en Lighthouse zodra het wachtwoord eraf mag (zie sessie 6).
 3. De overige punten uit sessie 4 tot en met 6 blijven open.
+
+## 5 oktober 2026, sessie 8: elke kleur een eigen product
+
+Opdracht: `prompts/bline-kleur-als-product.md`. Besluit Joost (05-10): "Elke kleur als eigen product", eerder "je moet ook alle producten natuurlijk aanmaken dan kan je later nog wel de afbeeldingen toevoegen" en "top ga door".
+
+Toegang: de vaste winkelnaam die Joost doorgaf (niet de waarde in `BLINE_SHOPIFY_STORE`), sleutel via client credentials met `BLINE_SHOPIFY_CLIENT_ID` en `BLINE_SHOPIFY_CLIENT_SECRET`. Alleen de namen gecontroleerd. Geen SHOPIFY_*- of BOL_*-variabelen gebruikt. Admin GraphQL, versie 2026-10.
+
+Vooraf: export van de twee oude producten (alle velden, varianten, voorraad, beelden, metafields, kanalen) in `reports/bijlagen/Bline export oude producten 2026-10-05.json`; kopie van alle 364 themabestanden van Dawn (lokaal, map `backup_voor_s8`); kopie van menu, doorverwijzingen, kortingen en de artikel- en paginateksten (lokaal).
+
+### De 10 producten (alle actief, kanaal Online Store, wachtwoord aan)
+
+| Product | Handle | SKU | EAN | Prijs | Voorraad | Beelden | Status |
+|---|---|---|---|---|---|---|---|
+| Leeskussen Bline Wit | leeskussen-wit | BLINE-LK-WIT | 8720892179074 | €69,99 | 241 | 9 | actief |
+| Leeskussen Bline Beige | leeskussen-beige | BLINE-LK-BEIGE | 8720892687241 | €79,99 | 39 | 6 | actief |
+| Leeskussen Bline Blauw | leeskussen-blauw | BLINE-LK-BLAUW | 8720892687258 | €79,99 | 86 | 7 | actief |
+| Leeskussen Bline Grijs | leeskussen-grijs | BLINE-LK-GRIJS | 8720892687265 | €79,99 | 78 | 7 | actief |
+| Leeskussen Bline Zwart | leeskussen-zwart | BLINE-LK-ZWART | 8720892687272 | €79,99 | 80 | 6 | actief |
+| Losse hoes Wit voor leeskussen Bline | hoes-wit | BLINE-HOES-WIT | 8720892179098 | €29,99 | 27 | 2 | actief |
+| Losse hoes Beige voor leeskussen Bline | hoes-beige | BLINE-HOES-BEIGE | 8720892687203 | €34,99 | 38 | 2 | actief |
+| Losse hoes Blauw voor leeskussen Bline | hoes-blauw | BLINE-HOES-BLAUW | 8720892687210 | €34,99 | 85 | 2 | actief |
+| Losse hoes Grijs voor leeskussen Bline | hoes-grijs | BLINE-HOES-GRIJS | 8720892687227 | €34,99 | 77 | 2 | actief |
+| Losse hoes Zwart voor leeskussen Bline | hoes-zwart | BLINE-HOES-ZWART | 8720892687234 | €34,99 | 80 | 2 | actief |
+
+Prijzen gelijk aan de tabel in de opdracht (en aan bol). Per product overgenomen van de oude variant: beschrijving, metafields `bline.*` (afmetingen, vulling, hoesstof, wasvoorschrift, gewicht, inhoud doos), Google-productcategorie (4456 voor het kussen, 2927 voor de hoes) en conditie, Shopify-categorie, merk Bline, producttype, gewicht (kussen 3,9 kg; hoes 0, gewicht nog onbekend), voorraad op de locatie, belasting, voorraadbeleid en het sjabloon (hoezen op `product.hoes`). Eén variant per product (geen optie meer).
+
+- **Beelden**: de bestaande bestanden zijn aan het nieuwe product gekoppeld, niet opnieuw geüpload. Kussen: de beelden van die kleur in de volgorde van sessie 3, met de maattekening als laatste. Hoes: hoofdbeeld en rits-detail van die kleur. Alt-teksten staan op het bestand en zijn dus gelijk gebleven (met "kleur Beige" enzovoort). De oude producten houden hun beelden (31 en 10).
+- **SEO**: kussen "Leeskussen Beige met vak voor je boek | Bline", metabeschrijving "Leeskussen in beige van 65 x 50 x 45 cm met 3,8 kg traagschuim en een katoenen hoes die in de was kan. Gratis verzending in NL en BE." (131 tot 133 tekens). Hoes "Losse hoes Beige voor het leeskussen | Bline", "Katoenen hoes (400 TC) in beige met onzichtbare rits voor het Bline leeskussen. Wasbaar op 30 °C. Gratis verzending in NL en BE." (126 tot 128 tekens).
+- **Nieuwe metafield-definities** (namespace `bline`, product): `kleur_naam` (tekst), `kleur_hex` (kleur; Wit #F1EFEC, Beige #CDBFA9, Blauw #4A5878, Grijs #9A9690, Zwart #2B2B2D, gelijk aan de kleurcodes in de thema-instellingen) en `kleuren` (lijst met productreferenties). `kleuren` staat op elk product met de 5 producten van dezelfde soort, volgorde Wit, Beige, Blauw, Grijs, Zwart.
+
+### Oude producten
+
+- "Leeskussen Bline" (`leeskussen`) en "Hoes voor leeskussen Bline" (`hoes-leeskussen`): status **concept**, van het kanaal Online Store gehaald. Niet verwijderd.
+- Let op: ze houden hun SKU's, EAN's en voorraad. Shopify staat dubbele SKU's toe en de producten zijn niet zichtbaar, maar bij het koppelen van ChannelDock alleen de 10 nieuwe producten koppelen (of de oude dan verwijderen, met akkoord).
+
+### Collecties en menu
+
+- **Leeskussens**: de 5 kussens, handmatige volgorde Beige, Wit, Grijs, Blauw, Zwart. De oude producten eruit. Nieuwe omschrijving: "Het Bline leeskussen in vijf kleuren: beige, wit, grijs, blauw en zwart. Een losse hoes vind je bij Hoezen." Metabeschrijving aangepast.
+- **Hoezen** (nieuw, `hoezen`, op Online Store): de 5 hoezen in dezelfde volgorde, met omschrijving, SEO-titel "Losse hoezen voor het leeskussen | Bline" en metabeschrijving.
+- **Hoofdmenu**: Leeskussens (collectie), Losse hoezen (collectie Hoezen), Over Bline, Vragen.
+
+### Doorverwijzingen
+
+| Pad | Was | Nu |
+|---|---|---|
+| /products/leeskussen | (product) | nieuw: /products/leeskussen-beige |
+| /products/hoes-leeskussen | (product) | nieuw: /products/hoes-beige |
+| /products/leeskussen-wit, -beige, -blauw, -grijs, -zwart | oude product met kleur gekozen | verwijderd: op dat pad staat nu het product in die kleur zelf |
+| /products/hoes-wit, -beige, -blauw, -grijs, -zwart | oude hoes met kleur gekozen | verwijderd, zelfde reden |
+| /collections/hoezen | oude hoes | door Shopify zelf verwijderd bij het aanmaken van de collectie Hoezen (het pad is nu de collectie) |
+| /products/leeskussen-met-hoes | oude product | /products/leeskussen-beige |
+| /products/hoes | oude hoes | /collections/hoezen |
+| /collections/leeskussen en de 9 paginapaden | ongewijzigd | ongewijzigd |
+
+Daarmee wijzen alle 22 oude paden van uwleeskussen.nl naar de juiste kleur, de juiste collectie of de pagina; 11 ervan zijn nu een echte pagina in plaats van een doorverwijzing.
+
+### Thema (Dawn, gepubliceerd)
+
+| Bestand | Wijziging |
+|---|---|
+| `snippets/bline-kleurkeuze.liquid` (nieuw) | "Kleur: **Beige**" en vijf kleurvlakken met bolletje en naam, als links naar het product in die kleur. Leest `bline.kleuren`, `kleur_naam` en `kleur_hex`. Huidige kleur gemarkeerd (rand 2 px, vet, `aria-current`). Uitverkochte kleur: grijs en doorgestreept, met "(uitverkocht)" voor schermlezers. |
+| `templates/product.json` en `product.hoes.json` | Blok variantkeuze vervangen door de kleurkeuze, op dezelfde plek (onder de prijs, boven de knop). De rest is gelijk: kruimelpad, titel, score (alleen kussen), ondertitel, prijs, knop, vinkjes, bundelregel (alleen kussen), betaaliconen, uitklapblokken, reviewblok, "Goed om te weten", meelopende knop. |
+| `snippets/bline-upsell.liquid` | Kiest de hoes als ander product: Wit naar hoes-beige, Beige naar hoes-wit, Blauw naar hoes-grijs, Grijs naar hoes-blauw, Zwart naar hoes-grijs; is die uitverkocht, dan een andere beschikbare kleur (niet de eigen kleur). Geen upsell als er al een hoes in de winkelwagen ligt. |
+| `snippets/cart-drawer.liquid` | Upsell onder het eerste kussen (handle begint met `leeskussen-`). |
+| `snippets/bline-kruimel.liquid` | Hoes: Home / Hoezen / product (kussen blijft Home / Leeskussens / product). |
+| `templates/index.json` | Uitgelicht product vervangen door twee rasters: Leeskussens (5 kaarten) en Losse hoezen (5 kaarten), 2 kolommen op mobiel, 5 op desktop, vierkante foto's. Knop "Shop nu" naar de collectie Leeskussens. Kenmerken lezen nu leeskussen-beige. |
+| `templates/collection.json` | 5 kolommen op desktop (alle kaarten op één rij), vierkante foto's. |
+| `assets/bline.css` | Stijl van de kleurvlakken (zelfde maten als punt 5 en 11) en kaarttitels 16 px op mobiel. |
+
+Controle met de Admin API: `themeFilesUpsert` gaf nul fouten voor alle 9 bestanden. Daarna het hele thema (365 bestanden) opnieuw opgehaald en vergeleken met wat ik verstuurde: alles gelijk. Geen "Translation missing" in de gerenderde pagina's.
+
+### Links in blogs en pagina's
+
+Zes artikelen en de pagina "Leeskussen of losse kussens" linkten naar `/products/leeskussen`. Nu: vijf artikelen naar `/collections/leeskussens`, het wasartikel en de vergelijkingspagina naar `/products/leeskussen-beige` (daar gaat het om maten en wasvoorschrift). Linkteksten niet veranderd. Details in `reports/Bline blogs logboek.md`. In het thema, de menu's en de andere pagina's stond geen link meer naar een oud product (gecontroleerd).
+
+### Bundelkortingen herrekend
+
+Beide kortingen wijzen nu naar de collecties Leeskussens en Hoezen. draftOrderCalculate (alleen berekend, geen order):
+
+| Scenario | Totaal | Verwacht | Klopt |
+|---|---|---|---|
+| Beige kussen + blauwe hoes | €104,99 | €104,99 | ja |
+| Wit kussen + blauwe hoes | €94,99 | €94,99 | ja |
+| 2 beige kussens | €149,99 | €149,99 | ja |
+| 1 beige kussen zonder hoes | €79,99 | geen korting | ja |
+| Extra: 2 beige kussens + 2 blauwe hoezen | €219,97 | één korting | ja |
+| Extra: beige + grijs kussen (twee producten) | €149,99 | €149,99 | ja |
+| Extra: alleen een blauwe hoes | €34,99 | geen korting | ja |
+
+Details in `reports/Bline bundels logboek.md`.
+
+### Testpagina-screenshots (werkwijze sessie 6 en 7, benadering)
+
+Thema en data opnieuw opgehaald, lokaal gerenderd met de echte Liquid, CSS en JavaScript en de 10 nieuwe producten, daarna Chromium op 390 x 844 en 1366 x 800. Screenshots en metingen in `mockups/blinesleep/screenshots/shop/ronde3/`. Scripts bijgewerkt in `mockups/blinesleep/testpagina/`. Dezelfde beperkingen als in sessie 7: Judge.me nagebootst, betaaliconen als plaatsvervangers, winkelwagen niet echt gevuld.
+
+| Pagina | Mobiel / desktop |
+|---|---|
+| Collectie Leeskussens | 5 kaarten, mobiel 2 kolommen (178 px breed), desktop 5 op één rij; volgorde Beige, Wit, Grijs, Blauw, Zwart; kaarttitel 16 px op mobiel |
+| Leeskussen Beige | eerste scherm gelijk aan ronde 2 (foto, teller 1/6, kruimelpad, titel, score, ondertitel, prijs, meelopende knop); "Kleur: Beige" 16 px; kleurvlakken 44 px hoog, 85 tot 106 px breed; gekozen vlak rand 1 px plus 1 px binnenrand = 2 px, vet; knop 360 x 50 |
+| Hoes Blauw | kruimelpad Home / Hoezen / product, "Kleur: Blauw", teller 1/2, geen score en geen bundelregel (zoals bij de oude hoes) |
+| Lade met upsell | Leeskussen Bline Beige, upsell "Extra hoes erbij? €9,99 korting" met knop "+ Wit" (44 px hoog), Afrekenen 50 px in beeld. Klik getest: het verzoek vraagt de variant van hoes-wit, daarna staan kussen en hoes in de lade, de upsell is weg, totaal €99,99 |
+| Homepage | foto, kop, "Shop nu", raster Leeskussens, raster Losse hoezen, vinkjes, kenmerken, vragen |
+
+**De 12 reviewpunten op de nieuwe pagina's**
+
+| Nr | Punt | Stand |
+|---|---|---|
+| 1 | Rangorde titel en prijs | ja: titel 24 / 28 px, prijs 24 px, beide 700 |
+| 2 | Ondertitel | ja, kussen en hoes |
+| 3 | "Incl. btw" | ja, 14 px grijs naast de prijs |
+| 4 | "Kleur: Beige" | ja, nu vast per product (de kleur hoort bij de pagina) |
+| 5 | Rechte hoeken beelden en kaarten | ja, ook de nieuwe kaarten op home en collectie |
+| 6 | Bijna zwarte, compacte tekst | ja, ongewijzigd |
+| 7 | Rustige balk | ja, ongewijzigd |
+| 8 | Menu uitgeschreven op desktop | ja: Leeskussens, Losse hoezen, Over Bline, Vragen |
+| 9 | Betaaliconen bij de knop | ja |
+| 10 | Minder witruimte | ja, rasters 48 / 24 px boven en onder |
+| 11 | Knoppen en kleurvlakken | ja: 4 px hoeken, rand 1 px 25% grijs, hover 1 px #1A1A1A, gekozen 2 px |
+| 12 | Homepage | ja, met één verschil: de score stond onder het uitgelichte product en staat nu alleen in de balk en op de productpagina's |
+
+Ook nagelopen: geen tekst onder 16 px op mobiel (behalve kruimelpad 14 px en "Incl. btw" 14 px, zoals in sessie 7); niets zwevends behalve lade en meelopende knop. Op de hoespagina loopt het kruimelpad op mobiel over twee regels door de lange titel; leesbaar, laten staan.
+
+### Stijlcontrole
+
+Script over alle nieuwe teksten (10 titels, SEO-titels en metabeschrijvingen, twee collectieteksten met SEO, de rasterteksten op de homepage, het label "Kleur:", de metafield-omschrijvingen): schrapwoorden, AI-zinnen, gedachtestreepjes (lang, half, los streepje), "u" en "uw", uitroeptekens, superlatieven en gezondheidswoorden. 0 treffers. Het funnel- en advertentieplan is bijgewerkt met een landingspagina per kleur.
+
+### Gecontroleerd na afloop
+
+- Wachtwoord staat aan: home, `/products/leeskussen-beige`, `/collections/leeskussens` en `/collections/hoezen` sturen door naar `/password`.
+- Geen prijzen anders dan de tabel, geen mails, geen betaalinstellingen, geen nieuwe apps, geen nieuwe beelden.
+
+### Wacht op Joost
+
+**Judge.me: de vijf kussens als één productgroep** (zodat reviews niet per kleur versnipperen):
+1. Judge.me > Settings > **Product Groups** (soms onder "Reviews" > "Product groups").
+2. **Create group**, naam "Leeskussen Bline". Voeg toe: Leeskussen Bline Wit, Beige, Blauw, Grijs en Zwart. Sla op. Elke kleur toont dan alle reviews van de groep en dezelfde score.
+3. Optioneel een tweede groep "Losse hoes" met de 5 hoezen.
+4. Controleer of reviews die eventueel nog op het oude "Leeskussen Bline" (concept) staan, worden overgezet: in Judge.me > Reviews filteren op dat product en met "Move reviews" naar Leeskussen Bline Beige verplaatsen (nu zijn er nog geen reviews).
+5. Zet bij de bol-import (als je die later gebruikt) alle kleuren in dezelfde groep.
+
+**Verder**
+1. ChannelDock: alleen de 10 nieuwe producten koppelen (de oude op concept hebben dezelfde SKU en EAN).
+2. Google- en Meta-app: na het koppelen controleren dat de feed 10 producten toont en de 2 oude niet.
+3. Gewicht van de losse hoes (staat nog op 0).
+4. De echte test op de telefoon zodra het wachtwoord eraf mag, en de overige punten uit sessie 4 tot en met 7.

@@ -33,6 +33,8 @@ with sync_playwright() as pw:
         p.goto(BASE + 'product.html'); wait(p)
         p.screenshot(path=f'{OUT}/{PRE}product_{vn}_eerste_scherm.png')
         p.screenshot(path=f'{OUT}/{PRE}product_{vn}_volledig.png', full_page=True)
+        p.evaluate("window.scrollTo(0, document.querySelector('.bline-kleurkeuze').getBoundingClientRect().top + scrollY - 140)"); time.sleep(0.8)
+        p.screenshot(path=f'{OUT}/{PRE}product_{vn}_kleurkeuze.png'); p.evaluate('window.scrollTo(0,0)'); time.sleep(0.4)
         metingen[f'product_{vn}'] = p.evaluate(open(os.path.join(os.path.dirname(__file__), 'meet.js')).read())
         # homepage
         p.goto(BASE + 'home.html'); wait(p)
@@ -45,10 +47,13 @@ with sync_playwright() as pw:
             p.evaluate("document.querySelector('cart-drawer') && document.querySelector('cart-drawer').open()"); time.sleep(1)
             p.screenshot(path=f'{OUT}/{PRE}lade_{vn}{"_bundel" if "bundel" in naam else ""}.png')
             metingen[f'lade_{vn}{"_bundel" if "bundel" in naam else ""}'] = p.evaluate(open(os.path.join(os.path.dirname(__file__), 'meet_lade.js')).read())
-        for extra in ['hoes', 'collection', 'page', 'article', 'blog', 'vergelijking', 'vragen']:
+        for extra in ['hoes', 'collection', 'collection_hoezen', 'page', 'article', 'blog', 'vergelijking', 'vragen']:
             if os.path.exists(os.path.join(SITE, extra + '.html')):
                 p.goto(BASE + extra + '.html'); wait(p)
                 p.screenshot(path=f'{OUT}/{PRE}{extra}_{vn}_eerste_scherm.png')
+                if extra in ('hoes', 'collection'):
+                    p.screenshot(path=f'{OUT}/{PRE}{extra}_{vn}_volledig.png', full_page=True)
+                    metingen[f'{extra}_{vn}'] = p.evaluate(open(os.path.join(os.path.dirname(__file__), 'meet.js')).read())
         ctx.close()
     b.close()
 json.dump(metingen, open(f'{OUT}/{PRE}metingen.json', 'w'), indent=1, ensure_ascii=False)

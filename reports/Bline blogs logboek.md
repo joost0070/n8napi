@@ -107,3 +107,19 @@ Tijdens het schrijven gevonden en aangepast: "het grootste deel van de breedte" 
 - Artikel 2 linkt nu ook naar de vergelijkingspagina, met één zin onder de tabel. Het artikel heeft daarmee twee links: product en vergelijkingspagina.
 - "Blog" staat in het voettekstmenu Klantenservice.
 - De vijf nieuwe vragen staan nu in de uitklapblokken (vraag 12 tot 16) en zijn uit de paginatekst gehaald.
+
+## Aanvulling 5 oktober 2026 (shopsessie 8)
+
+Het oude product `/products/leeskussen` staat op concept (elke kleur is nu een eigen product). De links zijn aangepast, linktekst ongewijzigd:
+
+| Artikel of pagina | Link nu |
+|---|---|
+| Leeskussen kopen: waar let je op? | /collections/leeskussens |
+| Leeskussen of extra kussens | /collections/leeskussens (link naar de vergelijkingspagina blijft) |
+| Zo was je de hoes van een leeskussen | /products/leeskussen-beige |
+| Welk formaat leeskussen past op jouw bed? | /collections/leeskussens |
+| Cadeau voor iemand die veel leest | /collections/leeskussens |
+| Tv kijken of werken in bed | /collections/leeskussens |
+| Pagina Leeskussen of losse kussens | /products/leeskussen-beige |
+
+Daarnaast vangt de doorverwijzing `/products/leeskussen` naar `/products/leeskussen-beige` oude links op.

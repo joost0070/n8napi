@@ -4,10 +4,11 @@
   const out = {
     balk: r('.announcement-bar__message'), header: r('.header-wrapper'), menu_desktop: r('.header__inline-menu'), hamburger: r('header-drawer summary'),
     titel: r('.product__title h1'), ondertitel: r('.bline-ondertitel'), prijs: r('.product__info-container .price-item--regular'), btw: r('.product__tax'),
-    kleurlabel: r('.product-form__input--pill legend, .product-form__input legend'), knop: r('.product-form__submit'), vinkjes: r('.product__info-container .bline-vinkjes'),
+    kleurlabel: r('.bline-kleurkeuze__label, .product-form__input--pill legend, .product-form__input legend'), knop: r('.product-form__submit'), vinkjes: r('.product__info-container .bline-vinkjes'),
     bundelregel: r('.bline-bundelregel'), betaal: r('.bline-betaal'), foto: r('.product__media-item img, .product__media img'), uitklap_tekst: r('.bline-uitklap .accordion__content'),
     kruimel: r('.bline-kruimel'), reviews: r('.bline-reviews'), hero_kop: r('.banner__heading'), hero_knop: r('.banner__buttons .button'),
-    kleurvlak: r('.product-form__input--pill input[type=radio]:checked + label'), kleurvlak_niet: r('.product-form__input--pill input[type=radio]:not(:checked) + label'),
+    kleurvlak: r('.bline-kleurvlak.is-gekozen'), kleurvlak_niet: r('.bline-kleurvlak:not(.is-gekozen)'), kleurvlak_rand: (() => { const e = document.querySelector('.bline-kleurvlak.is-gekozen'); return e ? getComputedStyle(e).borderTopWidth + ' + ' + getComputedStyle(e).boxShadow : null; })(),
+    sticky: r('[data-bline-sticky]'), score: r('.bline-score'), kaarten: [...document.querySelectorAll('.product-grid .grid__item, .collection .grid__item')].slice(0, 6).map((e) => { const b = e.getBoundingClientRect(); return Math.round(b.left) + ',' + Math.round(b.top + scrollY) + ' ' + Math.round(b.width) + 'x' + Math.round(b.height); }),
   };
   const secs = [...document.querySelectorAll('main .shopify-section')].map((s) => { const cs = getComputedStyle(s.firstElementChild || s); const inner = s.querySelector('[class*="section-template"][class*="padding"], .section-padding, [class*="-padding"]'); const ic = inner ? getComputedStyle(inner) : null; return { id: s.id.replace('shopify-section-', ''), h: Math.round(s.getBoundingClientRect().height), pt: ic && ic.paddingTop, pb: ic && ic.paddingBottom, mt: getComputedStyle(s).marginTop }; });
   out.secties = secs;

@@ -13,7 +13,7 @@ flowchart LR
   A[Google Shopping<br/>NL en BE] --> P
   B[Google Zoeken<br/>koopwoorden + merk] --> P
   C[Meta video en foto<br/>NL en BE] --> P
-  P[Productpagina leeskussen<br/>kleur al gekozen] --> W[Winkelwagen-lade]
+  P[Productpagina per kleur<br/>bijv. leeskussen-beige] --> W[Winkelwagen-lade]
   W --> K[Checkout<br/>iDEAL, Bancontact, kaart]
   K --> T[Bedankpagina<br/>meting: 1 aankoop met echte waarde]
   K -.verlaten.-> M[Mail verlaten checkout<br/>na 10 uur, 1 keer]
@@ -23,12 +23,14 @@ flowchart LR
   T --> V[Verzending via ChannelDock en eFreight<br/>track and trace]
 ```
 
-**Waarom zo kort:** één product, één beslissing. Elke advertentie landt op de productpagina met de juiste kleur al gekozen, nooit op de homepage of op "alle producten" (dat ging mis bij uwleeskussen.nl).
+**Waarom zo kort:** één product, één beslissing. Elke advertentie landt op de productpagina van de kleur uit de advertentie, nooit op de homepage of op "alle producten" (dat ging mis bij uwleeskussen.nl).
+
+**Landingspagina per kleur (sinds 5 oktober 2026, sessie 8 van het shoplogboek):** elke kleur is een eigen product met een eigen adres. Leeskussen: `/products/leeskussen-wit`, `-beige`, `-blauw`, `-grijs`, `-zwart`. Losse hoes: `/products/hoes-wit`, `-beige`, `-blauw`, `-grijs`, `-zwart`. Op elke pagina staan kleurbolletjes naar de andere kleuren. Google Shopping krijgt zo per kleur een eigen product met eigen foto, titel en EAN. Een advertentie zonder kleur (zoekwoorden, merk, de carrousel met alle kleuren) landt op `/collections/leeskussens`; een advertentie met één kleur in beeld landt op het product in die kleur. De sfeerfoto (beige, vrouw met boek) landt op `/products/leeskussen-beige`.
 
 ## 2. Wat er op de site al klopt voor conversie
 
-- Productpagina: prijs, levertijd, kleurkeuze met bolletjes, knop, gratis verzending en 14 dagen bedenktijd direct onder de knop. Meelopende knop "In winkelwagen" op mobiel.
-- Bij een kleurkeuze zie je alleen foto's van die kleur.
+- Productpagina per kleur: prijs, levertijd, kleurbolletjes als links naar de andere kleuren, knop, gratis verzending en 14 dagen bedenktijd direct onder de knop. Meelopende knop "In winkelwagen" op mobiel.
+- Elke kleurpagina toont alleen foto's van die kleur, plus de maattekening.
 - Specificaties, "Waarom dit kussen" (antwoord op de klachten bij concurrenten: te hard, kleur anders dan de foto, hoes niet wasbaar, te breed) en veelgestelde vragen.
 - Winkelwagen als lade, geen pop-ups, geen aftelklokken.
 
@@ -66,7 +68,7 @@ Totaal €15 per dag, ongeveer €450 per maand. Netwerken: alleen Google Zoeken
 
 **Merk:** bline, bline leeskussen, blinesleep, bline sleep.
 
-**Advertenties (responsive):** landingspagina altijd de productpagina, pad blinesleep.nl/leeskussen.
+**Advertenties (responsive):** landingspagina de collectie `/collections/leeskussens` (alle vijf kleuren), weergavepad blinesleep.nl/leeskussen. Een advertentiegroep per kleur (bijvoorbeeld "leeskussen beige") landt op het product in die kleur, bijvoorbeeld `/products/leeskussen-beige`.
 
 Koppen (max. 30 tekens, gecontroleerd):
 1. Leeskussen met boekenvak

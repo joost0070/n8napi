@@ -46,3 +46,26 @@ Alleen berekend, geen conceptorder of echte order aangemaakt. Bezorgadres een te
 | Extra: 2 beige kussens + 2 blauwe hoezen | €229,96 | Twee leeskussens: €9,99 korting | €219,97 | één korting, niet stapelen | ja |
 
 Het extra scenario laat zien dat de kortingen niet stapelen: als beide kunnen, past Shopify er één toe (beide zijn €9,99). Aanpassingen na de controle waren niet nodig.
+
+## Aanvulling 5 oktober 2026 (shopsessie 8): elke kleur een eigen product
+
+De twee kortingen wijzen nu naar collecties in plaats van naar de oude producten (die staan op concept):
+
+| | Extra hoes | Twee kussens |
+|---|---|---|
+| Voorwaarde | koop 1 product uit collectie **Leeskussens** | minimaal 2 stuks uit collectie **Leeskussens** |
+| Korting | €9,99 op 1 product uit collectie **Hoezen** | €9,99 in totaal over de kussens |
+
+Titels, limieten, combineren, start en ID's zijn gelijk gebleven. Opnieuw nagerekend met draftOrderCalculate (alleen berekend, geen order; testadres Utrecht; `acceptAutomaticDiscounts` aan):
+
+| Scenario | Losse prijs | Toegepaste korting | Totaal | Verwacht | Klopt |
+|---|---|---|---|---|---|
+| Beige kussen + blauwe hoes | €114,98 | Extra hoes (hoes €34,99 naar €25,00) | €104,99 | €104,99 | ja |
+| Wit kussen + blauwe hoes | €104,98 | Extra hoes (hoes €34,99 naar €25,00) | €94,99 | €94,99 | ja |
+| 2 beige kussens | €159,98 | Twee leeskussens | €149,99 | €149,99 | ja |
+| 1 beige kussen zonder hoes | €79,99 | geen | €79,99 | geen korting | ja |
+| Extra: 2 beige kussens + 2 blauwe hoezen | €229,96 | Twee leeskussens (één korting) | €219,97 | niet stapelen | ja |
+| Extra: beige kussen + grijs kussen (twee verschillende producten) | €159,98 | Twee leeskussens (€74,99 + €75,00) | €149,99 | €149,99 | ja |
+| Extra: alleen een blauwe hoes | €34,99 | geen | €34,99 | geen korting | ja |
+
+Verzending kwam in alle gevallen terug als "Gratis verzending", €0,00.

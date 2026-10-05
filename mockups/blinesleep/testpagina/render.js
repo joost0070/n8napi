@@ -97,14 +97,16 @@ const numId = (gid) => Number(String(gid).split('/').pop());
 
 // ---------- producten ----------
 const products = {};
+const OUDE = ['leeskussen', 'hoes-leeskussen'];
 for (const p of DATA.products.nodes) {
+  if (OUDE.includes(p.handle)) continue;
   const media = p.media.nodes.filter((m) => m.image).map((m, i) => {
     const img = mkImage(m.image.url, m.image.width, m.image.height, m.alt);
     return { id: numId(m.id), alt: m.alt, media_type: 'image', position: i + 1, preview_image: img, aspect_ratio: img.aspect_ratio, src: img.src, width: img.width, height: img.height, toString() { return img.src; } };
   });
   const prod = { id: numId(p.id), handle: p.handle, title: p.title, vendor: p.vendor, type: p.productType, url: '/products/' + p.handle,
     description: p.descriptionHtml, content: p.descriptionHtml, media, images: media.map((m) => m.preview_image), featured_media: media[0], featured_image: media[0] && media[0].preview_image,
-    available: true, tags: [], template_suffix: p.templateSuffix, has_only_default_variant: false, requires_selling_plan: false, selling_plan_groups: [], gift_card: false, 'gift_card?': false,
+    available: p.variants.nodes.some((v) => v.availableForSale), tags: [], template_suffix: p.templateSuffix, has_only_default_variant: p.variants.nodes.length === 1 && p.variants.nodes[0].title === 'Default Title', requires_selling_plan: false, selling_plan_groups: [], gift_card: false, 'gift_card?': false,
     quantity_price_breaks_configured: false, 'quantity_price_breaks_configured?': false, collections: [],
     metafields: { bline: Object.fromEntries(p.metafields.nodes.map((m) => [m.key, { value: m.value, type: m.type, toString() { return m.value; } }])) } };
   prod.variants = p.variants.nodes.map((v) => {
@@ -132,7 +134,13 @@ for (const p of DATA.products.nodes) {
     prod.options_by_name[o.name] = opt;
     return opt;
   });
+  prod.__gid = p.id; prod.__collecties = (p.collections ? p.collections.nodes : []).map((c) => c.handle);
   products[p.handle] = prod;
+}
+// lijst met productreferenties (bline.kleuren) omzetten naar producten
+for (const prod of Object.values(products)) {
+  const mf = prod.metafields.bline.kleuren;
+  if (mf && mf.type === 'list.product_reference') { const ids = JSON.parse(mf.value); mf.value = ids.map((g) => Object.values(products).find((x) => x.__gid === g)).filter(Boolean); }
 }
 const all_products = products;
 
@@ -188,10 +196,10 @@ engine.registerFilter('image_tag', (url, ...a) => {
 });
 engine.registerFilter('placeholder_svg_tag', (n, cls) => `<svg class="${cls || ''}" viewBox="0 0 100 100"></svg>`);
 engine.registerFilter('font_face', (f) => {
-  const w = f && f.weight ? f.weight : 400; const file = w >= 700 ? 'nunito_n7.ttf' : 'nunito_n4.ttf';
-  return `@font-face{font-family:"Nunito Sans";font-weight:${w};font-style:${f && f.style || 'normal'};font-display:swap;src:url("fonts/${file}") format("truetype");}`;
+  const w = f && f.weight ? f.weight : 400; const file = w >= 700 ? 'nunito_n7.woff2' : 'nunito_n4.woff2';
+  return `@font-face{font-family:"Nunito Sans";font-weight:${w};font-style:${f && f.style || 'normal'};font-display:swap;src:url("fonts/${file}") format("woff2");}`;
 });
-engine.registerFilter('font_url', (f) => 'fonts/' + ((f && f.weight >= 700) ? 'nunito_n7.ttf' : 'nunito_n4.ttf'));
+engine.registerFilter('font_url', (f) => 'fonts/' + ((f && f.weight >= 700) ? 'nunito_n7.woff2' : 'nunito_n4.woff2'));
 engine.registerFilter('font_modify', (f, prop, val) => { const n = Object.assign(Object.create(Font.prototype), f); if (prop === 'weight') n.weight = val === 'bold' ? 700 : val === 'bolder' ? Math.min(900, f.weight + 300) : Number(val) || f.weight; if (prop === 'style') n.style = val; return n; });
 engine.registerFilter('color_brightness', (c) => { c = toColor(c); return (c.red * 299 + c.green * 587 + c.blue * 114) / 1000; });
 engine.registerFilter('color_lighten', (c, p) => { const [h, s, l] = hsl(toColor(c)); return fromHsl(h, s, Math.min(1, l + p / 100)); });
@@ -308,18 +316,18 @@ engine.registerTag('sections', {
 
 // ---------- collecties ----------
 const collections = {};
-for (const c of DATA.collections.nodes) collections[c.handle] = { handle: c.handle, title: c.title, url: '/collections/' + c.handle, description: c.descriptionHtml, products: Object.values(products).filter((p) => c.handle !== 'slapen'), products_count: 2, all_products_count: 2, image: null, featured_image: products.leeskussen.media[0].preview_image, filters: [], sort_options: [], toString() { return c.handle; } };
-for (const p of Object.values(products)) p.collections = [collections.leeskussens];
-collections.all = { handle: 'all', title: 'Producten', url: '/collections/all', products: Object.values(products), products_count: 2, filters: [] };
+for (const c of DATA.collections.nodes) { const ps = c.products.nodes.map((n) => products[n.handle]).filter(Boolean); collections[c.handle] = { id: hash(c.handle) & 0xffffff, handle: c.handle, title: c.title, url: '/collections/' + c.handle, description: c.descriptionHtml, products: ps, products_count: ps.length, all_products_count: ps.length, image: null, featured_image: ps[0] && ps[0].media[0] && ps[0].media[0].preview_image, filters: [], sort_options: [], toString() { return c.handle; } }; }
+for (const p of Object.values(products)) p.collections = p.__collecties.map((h) => collections[h]).filter(Boolean);
+collections.all = { handle: 'all', title: 'Producten', url: '/collections/all', products: Object.values(products), products_count: Object.keys(products).length, filters: [] };
 
 // ---------- winkelwagen ----------
 function mkCart(lines) {
   const items = lines.map(([handle, kleur, qty, korting], i) => {
-    const p = products[handle]; const v = p.variants.find((x) => x.title === kleur);
+    const p = products[handle]; const v = p.variants.find((x) => x.title === kleur) || p.variants[0];
     const line = v.price * qty; const disc = korting || 0;
-    return { id: v.id, key: v.id + ':' + i, index: i + 1, product: p, variant: v, variant_id: v.id, product_id: p.id, title: p.title + ' - ' + kleur, quantity: qty,
+    return { id: v.id, key: v.id + ':' + i, index: i + 1, product: p, variant: v, variant_id: v.id, product_id: p.id, title: p.has_only_default_variant ? p.title : p.title + ' - ' + kleur, quantity: qty,
       price: v.price, original_price: v.price, final_price: v.price - disc / qty, original_line_price: line, final_line_price: line - disc, line_price: line - disc,
-      url: v.url, image: v.featured_image, options_with_values: [{ name: 'Kleur', value: kleur }], product_has_only_default_variant: false,
+      url: v.url, image: v.featured_image, options_with_values: p.has_only_default_variant ? [] : [{ name: 'Kleur', value: kleur }], product_has_only_default_variant: p.has_only_default_variant,
       line_level_discount_allocations: disc ? [{ amount: disc, discount_application: { title: 'Extra hoes: €9,99 korting', type: 'automatic' } }] : [], discounts: [], properties: {},
       selling_plan_allocation: null, unit_price_measurement: null, requires_shipping: true, sku: v.sku, vendor: 'Bline', gift_card: false, quantity_rule: { min: 1, max: null, increment: 1 }, has_components: false };
   });
@@ -363,14 +371,17 @@ if (require.main === module) {
     fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
     for (const f of fs.readdirSync(path.join(THEME, 'assets'))) fs.copyFileSync(path.join(THEME, 'assets', f), path.join(OUT, 'assets', f));
     fs.cpSync(path.join(__dirname, 'site/fonts'), path.join(OUT, 'fonts'), { recursive: true });
-    const P = products.leeskussen;
+    const P = products['leeskussen-beige'];
     const pages = (process.argv[4] || 'product,home,hoes,collection,page,article,blog').split(',');
-    if (pages.includes('product')) await renderPage({ template: 'product', out: 'product.html', pageType: 'product', title: 'Leeskussen met vak voor je boek', extraScope: { product: P, __path: '/products/leeskussen' }, cartLines: [['leeskussen', 'Wit', 1]] });
-    if (pages.includes('product')) await renderPage({ template: 'product', out: 'product_lade_leeg.html', pageType: 'product', title: 'Leeskussen met vak voor je boek', extraScope: { product: P, __path: '/products/leeskussen' }, cartLines: [] });
-    if (pages.includes('product')) await renderPage({ template: 'product', out: 'product_lade_bundel.html', pageType: 'product', title: 'Leeskussen met vak voor je boek', extraScope: { product: P, __path: '/products/leeskussen' }, cartLines: [['leeskussen', 'Wit', 1], ['hoes-leeskussen', 'Beige', 1, 999]] });
-    if (pages.includes('hoes')) await renderPage({ template: 'product.hoes', out: 'hoes.html', pageType: 'product', title: 'Losse hoes voor het leeskussen', extraScope: { product: products['hoes-leeskussen'], __path: '/products/hoes-leeskussen' } });
-    if (pages.includes('home')) await renderPage({ template: 'index', out: 'home.html', pageType: 'index', title: 'BlineSleep.nl', extraScope: { __path: '/' }, cartLines: [['leeskussen', 'Wit', 1]] });
+    const LK = '/products/leeskussen-beige';
+    if (pages.includes('product')) await renderPage({ template: 'product', out: 'product.html', pageType: 'product', title: P.title, extraScope: { product: P, __path: LK }, cartLines: [['leeskussen-beige', 'Default Title', 1]] });
+    if (pages.includes('product')) await renderPage({ template: 'product', out: 'product_lade_leeg.html', pageType: 'product', title: P.title, extraScope: { product: P, __path: LK }, cartLines: [] });
+    if (pages.includes('product')) await renderPage({ template: 'product', out: 'product_lade_bundel.html', pageType: 'product', title: P.title, extraScope: { product: P, __path: LK }, cartLines: [['leeskussen-beige', 'Default Title', 1], ['hoes-wit', 'Default Title', 1, 999]] });
+    for (const k of ['wit', 'blauw', 'grijs', 'zwart']) if (pages.includes('product')) await renderPage({ template: 'product', out: 'product_' + k + '.html', pageType: 'product', title: products['leeskussen-' + k].title, extraScope: { product: products['leeskussen-' + k], __path: '/products/leeskussen-' + k }, cartLines: [['leeskussen-' + k, 'Default Title', 1]] });
+    if (pages.includes('hoes')) await renderPage({ template: 'product.hoes', out: 'hoes.html', pageType: 'product', title: products['hoes-blauw'].title, extraScope: { product: products['hoes-blauw'], __path: '/products/hoes-blauw' } });
+    if (pages.includes('home')) await renderPage({ template: 'index', out: 'home.html', pageType: 'index', title: 'BlineSleep.nl', extraScope: { __path: '/' }, cartLines: [['leeskussen-beige', 'Default Title', 1]] });
     if (pages.includes('collection')) await renderPage({ template: 'collection', out: 'collection.html', pageType: 'collection', title: 'Leeskussens', extraScope: { collection: collections.leeskussens, __path: '/collections/leeskussens' } });
+    if (pages.includes('collection')) await renderPage({ template: 'collection', out: 'collection_hoezen.html', pageType: 'collection', title: 'Hoezen', extraScope: { collection: collections.hoezen, __path: '/collections/hoezen' } });
     if (pages.includes('page')) {
       const pg = DATA.pages.nodes.find((x) => x.handle === 'over-bline');
       await renderPage({ template: 'page', out: 'page.html', pageType: 'page', title: pg.title, extraScope: { page: { title: pg.title, handle: pg.handle, url: '/pages/' + pg.handle, content: '<p>Bline maakt een leeskussen met vak voor je boek.</p>' }, __path: '/pages/over-bline' } });
