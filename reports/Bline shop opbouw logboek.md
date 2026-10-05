@@ -64,3 +64,126 @@ De nulmeting (thema's, producten, pagina's, menu's, markten, verzendprofielen, b
 - Voor de sleutel is altijd de vaste `.myshopify.com`-naam nodig; het eigen domein werkt niet voor de API.
 - Een paar voor de hand liggende namen geprobeerd (bline-sleep, blinesleep-nl, blinesleepnl, bline, bline-nl en enkele varianten): geen daarvan is een actieve winkel van Bline.
 - Nodig van Joost: de naam uit de adresbalk van de Shopify-admin (`admin.shopify.com/store/<naam>`). De variabele wordt dan `<naam>.myshopify.com`.
+
+## 5 oktober 2026, sessie 2
+
+### Stap 0: winkelnaam en variabelen
+
+- Joost gaf op 05-10 de juiste vaste `.myshopify.com`-naam door. De waarde in `BLINE_SHOPIFY_STORE` klopt niet en is in deze sessie niet gebruikt; de juiste naam staat alleen in het script, niet in dit logboek.
+- `BLINE_SHOPIFY_CLIENT_ID` en `BLINE_SHOPIFY_CLIENT_SECRET`: aanwezig (alleen de namen gecontroleerd). SHOPIFY_*- en BOL_*-variabelen niet gebruikt.
+
+### Werkpakket A: sleutel ophalen
+
+**Resultaat: gelukt.** `POST /admin/oauth/access_token` met client credentials gaf HTTP 200, sleutel geldig 24 uur, alleen in het geheugen van het script.
+
+Rechten (94 scopes): lezen en schrijven voor producten, voorraad, locaties, bestanden, thema's, content, pagina's, navigatie, metaobjecten, vertalingen, talen, markten, verzending, beleidsteksten, privacy-instellingen, kortingen, orders, conceptorders, fulfilment, retouren, klanten, pixels, kanalen, publicaties en productfeeds. Plus lezen van analytics, klantgebeurtenissen en Shopify Payments-uitbetalingen en -geschillen.
+
+Ontbreekt: `read_shopify_payments_accounts` (of `read_shopify_payments`). Daardoor kan ik niet zien of Shopify Payments actief is. Niet nodig voor de bouw; Joost kijkt dit na in de admin (werkpakket G).
+
+### Werkpakket A: nulmeting (alleen gelezen)
+
+| Onderdeel | Stand 05-10 |
+|---|---|
+| Winkel | naam "BlineSleep.nl", abonnement Basic, valuta EUR, tijdzone Europe/Amsterdam, kilogram, prijzen incl. btw, contactadres mail@blinesleep.nl, factuuradres Borne |
+| Wachtwoord | aan: de winkel stuurt door naar de wachtwoordpagina (302 naar /password) |
+| Hoofddomein | nog de `.myshopify.com`-naam; blinesleep.nl is niet gekoppeld |
+| Thema's | Horizon (gepubliceerd, achter wachtwoord) en Dawn (niet gepubliceerd, toegevoegd op 04-10) |
+| Producten | 0 |
+| Collecties | alleen "Homepage" (frontpage) |
+| Pagina's | alleen "Contact" (gepubliceerd) |
+| Blog | "Nieuws", leeg |
+| Menu's | Hoofdmenu: Home, Assortiment (/collections/all), Contact. Voettekst: Zoeken |
+| Talen | alleen Nederlands |
+| Markten | Nederland (actief). België ontbrak |
+| Verzending | één profiel. NL: twee tarieven "Standaard", €6,95 en €0 (vermoedelijk gratis boven een grens). EU (26 landen, ook BE): €12,95. Internationaal (14 landen, o.a. VS, VK, Japan): €19,95 |
+| Locatie | "Brasem 7623KS-Borne", verstuurt online orders. De voorraad ligt in werkelijkheid bij eFreight in Vianen |
+| Fulfilment | alleen handmatig, ChannelDock nog niet gekoppeld |
+| Beleid | alleen een privacybeleid (Shopify-sjabloon, 18.825 tekens). Geen voorwaarden, retour-, verzend- of contactbeleid |
+| Betalen | niet leesbaar (recht ontbreekt, zie boven) |
+| Pixels, apps | geen pixel van deze app; Google- en Meta-app nog niet zichtbaar gekoppeld |
+| Orders, kortingen, doorverwijzingen, bestanden | alle 0 |
+| Metafield-definities | geen |
+
+### Wat ontbreekt (na de nulmeting)
+
+1. Domein blinesleep.nl koppelen (DNS bij Joost), plus uwleeskussen.nl en blinesleep.com als doorverwijzing.
+2. Dawn inrichten (logo, kleuren, eigen secties). Dawn staat er al, installeren is niet meer nodig.
+3. Beelden uploaden en per kleur ordenen.
+4. Alle teksten: homepage, productpagina, Over Bline, Verzending, Retourneren, Veelgestelde vragen, aankondigingsbalk, e-mailmeldingen.
+5. Beleidsteksten: voorwaarden, retour met modelformulier, verzending, contactgegevens.
+6. Verzending: NL en BE gratis, overige landen uit (akkoordpunt 4).
+7. Markt België activeren (staat nu als concept, zie hieronder).
+8. Menu: "Assortiment" wijst naar /collections/all; wordt de productpagina of de collectie Leeskussens.
+9. ChannelDock-koppeling, Shopify Payments, Google- en Meta-app (Joost).
+10. Locatie: de naam "Borne" klopt niet met het magazijn in Vianen; voorstel hieronder.
+
+### Werkpakket C: wat er nu staat (alles als concept, niets gepubliceerd)
+
+**Metafield-definities**, namespace `bline`, eigenaar product, bruikbaar voor dons, lyocell en zijde: afmetingen, vulling, hoesstof, wasvoorschrift, gewicht, inhoud_doos, certificaten.
+
+**Collecties** (handmatig, op geen enkel verkoopkanaal): "Leeskussens" met beide producten, "Slapen" leeg voor later.
+
+**Product "Leeskussen Bline"**, status concept, handle `leeskussen`, merk Bline, optie Kleur:
+
+| Kleur | SKU | EAN | Prijs | Voorraad | Gewicht |
+|---|---|---|---|---|---|
+| Wit | BLINE-LK-WIT | 8720892179074 | €69,99 | 241 | 3,9 kg |
+| Beige | BLINE-LK-BEIGE | 8720892687241 | €79,99 | 39 | 3,9 kg |
+| Blauw | BLINE-LK-BLAUW | 8720892687258 | €79,99 | 86 | 3,9 kg |
+| Grijs | BLINE-LK-GRIJS | 8720892687265 | €79,99 | 78 | 3,9 kg |
+| Zwart | BLINE-LK-ZWART | 8720892687272 | €79,99 | 80 | 3,9 kg |
+
+**Product "Hoes voor leeskussen Bline"**, status concept, handle `hoes-leeskussen`:
+
+| Kleur | SKU | EAN | Prijs | Voorraad |
+|---|---|---|---|---|
+| Wit | BLINE-HOES-WIT | 8720892179098 | €29,99 | 27 |
+| Beige | BLINE-HOES-BEIGE | 8720892687203 | €34,99 | 38 |
+| Blauw | BLINE-HOES-BLAUW | 8720892687210 | €34,99 | 85 |
+| Grijs | BLINE-HOES-GRIJS | 8720892687227 | €34,99 | 77 |
+| Zwart | BLINE-HOES-ZWART | 8720892687234 | €34,99 | 80 |
+
+Gevulde metafields: afmetingen, vulling, hoesstof, wasvoorschrift, gewicht en inhoud doos, alleen met de feiten uit hoofdstuk 3a. Certificaten bewust leeg tot Joost een OEKO-TEX-nummer heeft. Gewicht van de losse hoes is onbekend: `[NAVRAGEN]`, niet ingevuld.
+
+Opmerkingen:
+- Prijzen zijn de bol-prijzen van 04-10 (akkoord Joost). De actuele bol-prijs kon ik vandaag niet nalezen: bol.com geeft vanuit deze sessie 403 en de Bline bol-koppeling in n8n is niet aangesproken. Voor livegang nog één keer per EAN controleren.
+- Voorraad is de ChannelDock-stand van 04-10. Een kleurbundel gebruikt in werkelijkheid een wit kussen plus een hoes; Shopify telt dat los. ChannelDock blijft de bron en zet de voorraad na de koppeling goed.
+- Shopify zette het leeskussen automatisch ook in de collectie "Homepage". Onschuldig zolang het product concept is.
+- Nog geen beelden en geen productomschrijving (volgt bij werkpakket C-beelden en D).
+
+### Werkpakket E: markten
+
+- Markt **België** aangemaakt (handle `be`), status **concept**, dus nog niet actief. Activeren samen met de verzendregels.
+- Btw: prijzen zijn incl. btw, 21% in NL en BE. Let op: verkopen naar België gaan via de OSS-aangifte; in Shopify is daarvoor niets extra nodig.
+
+**Voorstel verzending (akkoordpunt 4, nog niet gewijzigd):**
+- Zone Nederland: één tarief "Gratis verzending", €0, met als tekst "Binnen 1-2 werkdagen in huis". Het tarief van €6,95 eruit.
+- Nieuwe zone België: zelfde gratis tarief.
+- Zones EU (overige landen) en Internationaal: uitzetten. Fase 1 is alleen NL en BE.
+
+**Voorstel locatie:** de locatie hernoemen naar "eFreight Vianen" met het magazijnadres, of laten zoals hij is als ChannelDock een eigen fulfilmentlocatie aanmaakt. Beslist bij de ChannelDock-koppeling.
+
+### Niet gedaan, bewust
+
+- Niets gepubliceerd. Wachtwoord blijft aan. Horizon blijft het gepubliceerde thema; Dawn is niet gepubliceerd.
+- Verzendtarieven niet aangepast (akkoordpunt 4).
+- Geen mails verstuurd, geen nieuwe beelden laten maken, geen Higgsfield-generaties.
+- Geen regel in het Systeemregister (hoort bij de afronding).
+
+### Volgende sessie (zonder Joost mogelijk)
+
+1. Beelden: bestaande Higgsfield-originelen downloaden volgens `koppeling.json`, omzetten naar JPG 2048px, kleurcontrole naast de bol-foto, uploaden en per kleur ordenen met alt-teksten.
+2. Dawn inrichten: logo, kleuren, lettertypes, eigen secties (kleurbolletjes, meelopende knop, specificatietabel uit metafields, levertijdregel, vergelijkingsblok, vragen).
+3. Teksten (werkpakket D) als concept, met de controle op schrapwoorden.
+4. Doorverwijzingen voor uwleeskussen.nl klaarzetten.
+
+### Wacht op Joost
+
+1. Akkoord op het verzendvoorstel (NL en BE gratis, rest uit).
+2. Recht `read_shopify_payments_accounts` toevoegen aan de app (optioneel), of zelf in de admin nakijken of Shopify Payments actief is.
+3. OEKO-TEX-certificaatnummer, als dat er is.
+4. Gewicht van de losse hoes.
+5. DNS van blinesleep.nl (A-record en CNAME www naar Shopify), en uwleeskussen.nl en blinesleep.com.
+6. ChannelDock aan Shopify koppelen.
+7. Shopify Payments activeren, daarna Google- en Meta-app koppelen.
+8. Retouradres bevestigen.
