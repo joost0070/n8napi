@@ -270,3 +270,81 @@ h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4 { font-family: var(--font-heading-family
   .b3-gal__slide:last-child:nth-child(even) { grid-column: span 2; aspect-ratio: 2 / 1; }
   .b3-binnen__getallen { align-content: stretch; }
 }
+
+/* galerij mobiel: stippen en teller in het beeld, geen duimen (meer ruimte voor titel en prijs) */
+.b3-gal { position: relative; }
+.b3-gal__onder, .b3-gal__duims { display: none; }
+.b3-gal__stip { position: absolute; left: 0; right: 0; bottom: 1.2rem; display: flex; justify-content: center; gap: .6rem; pointer-events: none; }
+.b3-gal__stip i { width: .7rem; height: .7rem; border-radius: 50%; background: rgba(255,255,255,.6); box-shadow: 0 0 2px rgba(0,0,0,.25); transition: width .2s, background .2s; }
+.b3-gal__stip i.is-actief { width: 2rem; border-radius: 99px; background: #fff; }
+.b3-gal__teller { position: absolute; right: 1.2rem; bottom: 1rem; font-size: 1.15rem; color: var(--b3-inkt); background: rgba(255,255,255,.9); border-radius: 99px; padding: .4rem .9rem; min-width: 0; }
+.b3-product__info { padding-top: 1.6rem; }
+.b3-product__titel { font-size: 2.7rem; }
+.b3-prijs { margin-bottom: 1rem; }
+.b3-product__pitch { margin-bottom: 1.8rem; font-size: 1.4rem; }
+@media (min-width: 990px) {
+  .b3-gal__stip, .b3-gal__teller { display: none; }
+  .b3-product__titel { font-size: 4rem; }
+  .b3-product__pitch { font-size: 1.5rem; }
+}
+
+/* ---------- groot beeld ---------- */
+.b3-groot { position: relative; color: #fff; background: var(--b3-nacht); }
+.b3-groot__beeld { aspect-ratio: 4 / 5; overflow: hidden; }
+.b3-groot__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-groot::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,22,0) 35%, rgba(10,14,22,.72)); pointer-events: none; }
+.b3-groot__tekst { position: absolute; left: var(--b3-gutter); right: var(--b3-gutter); bottom: 3.2rem; z-index: 1; max-width: 52rem; }
+.b3-groot .b3-oog { color: rgba(255,255,255,.85); }
+.b3-groot .b3-kop { color: #fff; font-size: 3.4rem; }
+.b3-groot__tekst p:not(.b3-oog) { margin: 0 0 2rem; opacity: .92; }
+@media (min-width: 990px) {
+  .b3-groot__beeld { aspect-ratio: 21 / 9; }
+  .b3-groot::after { background: linear-gradient(90deg, rgba(10,14,22,.66) 0%, rgba(10,14,22,.15) 55%, rgba(10,14,22,0) 100%); }
+  .b3-groot--rechts::after { background: linear-gradient(270deg, rgba(10,14,22,.66) 0%, rgba(10,14,22,.15) 55%, rgba(10,14,22,0) 100%); }
+  .b3-groot__tekst { left: 6.4rem; bottom: auto; top: 50%; transform: translateY(-50%); }
+  .b3-groot--rechts .b3-groot__tekst { left: auto; right: 6.4rem; }
+  .b3-groot .b3-kop { font-size: 5.6rem; }
+}
+
+/* ---------- donker vlak ---------- */
+.b3-sectie--donker { background: var(--b3-nacht); color: #fff; }
+.b3-sectie--donker .b3-kop, .b3-sectie--donker .b3-verhaal__punten b, .b3-sectie--donker .b3-verhaal__punten .b3-icoon { color: #fff; }
+.b3-sectie--donker .b3-oog, .b3-sectie--donker .b3-intro, .b3-sectie--donker .b3-verhaal__punten span { color: rgba(255,255,255,.72); }
+.b3-sectie--donker .b3-verhaal__media { background: #2a3646; }
+
+/* ---------- maat ---------- */
+.b3-maat { display: grid; gap: 2.4rem; align-items: center; }
+.b3-maat__tekening { background: var(--b3-zand); border-radius: var(--b3-r); padding: 2.4rem 1.6rem; }
+.b3-maat__tekening svg { display: block; width: 100%; height: auto; }
+.b3-maat__bedden { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.2rem; }
+.b3-maat__bedden li { display: grid; grid-template-columns: 9.6rem 1fr; grid-template-rows: auto auto; column-gap: 1.6rem; align-items: center; }
+.b3-maat__bedden li > b { font-weight: 600; }
+.b3-maat__bedden li > span:last-child { color: var(--b3-sub); font-size: 1.35rem; grid-column: 2; }
+.b3-maat__bed { grid-row: span 2; display: flex; gap: 2px; justify-content: center; align-items: flex-start; width: calc(var(--b) * .5px * 1.15); height: 5.6rem; border: 1.5px solid var(--b3-inkt); border-radius: 6px; padding: 4px; background: #fff; }
+.b3-maat__bed i { display: block; width: calc(65 * .5px * 1.15 - 4px); height: 1.8rem; border-radius: 3px; background: var(--b3-inkt); opacity: .85; }
+@media (min-width: 990px) { .b3-maat { grid-template-columns: 1fr 1fr; gap: 6.4rem; } .b3-maat__tekening { padding: 4rem; } }
+.b3-product__titel em, .b3-kop em { white-space: nowrap; }
+
+/* ---------- Dawn in de v3-stijl (winkelwagen, hoes-pagina, gewone pagina's) ---------- */
+.button, .shopify-payment-button__button--unbranded { font-family: var(--font-body-family); font-weight: 500; letter-spacing: 0; }
+.button--primary, .product-form__submit, .cart__checkout-button { background: var(--b3-knop); color: #fff; }
+.main-page-title, .product__title h1, .title { font-family: var(--font-heading-family); font-weight: 600; letter-spacing: -.01em; }
+.product__title h1 { font-size: clamp(2.6rem, 4vw, 3.8rem); }
+.rte { font-size: 1.5rem; line-height: 1.7; color: var(--b3-sub); }
+.rte h2, .rte h3 { color: var(--b3-inkt); }
+.page-width--narrow .main-page-title { margin-top: 2rem; }
+/* winkelwagen-lade */
+cart-drawer .drawer__inner { background: var(--b3-bg); border-left: 0; }
+cart-drawer .drawer__heading { font-family: var(--font-heading-family); font-weight: 600; font-size: 2.2rem; }
+cart-drawer .cart-item__name { font-weight: 500; text-decoration: none; }
+cart-drawer .cart-item__image { border-radius: 12px; }
+cart-drawer .drawer__footer { background: #fff; border-radius: 18px 18px 0 0; box-shadow: 0 -6px 20px rgba(0,0,0,.05); }
+cart-drawer .totals__total-value { font-weight: 600; }
+cart-drawer .cart__checkout-button { min-height: 5.4rem; font-size: 1.6rem; }
+cart-drawer .quantity { border-radius: 99px; }
+cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px; }
+.bline-upsell { border-radius: 14px; background: var(--b3-zand); border: 0; }
+/* aankondigingsbalk rustiger */
+.announcement-bar__message { font-size: 1.15rem; letter-spacing: .08em; font-weight: 500; }
+/* hoes-pagina: product in het wit, galerij met ronde hoeken */
+.product .product__media-item img, .product__media-wrapper .media { border-radius: var(--b3-r); }

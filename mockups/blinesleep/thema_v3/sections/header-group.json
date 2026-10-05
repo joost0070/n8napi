@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "bericht_1": {
+          "type": "announcement",
+          "settings": {
+            "text": "GRATIS VERZENDING NL EN BE",
+            "link": ""
+          }
+        },
+        "bericht_2": {
+          "type": "announcement",
+          "settings": {
+            "text": "BINNEN 1-2 WERKDAGEN IN HUIS",
+            "link": ""
+          }
+        },
+        "bericht_3": {
+          "type": "announcement",
+          "settings": {
+            "text": "4,5 UIT 5 OP BOL.COM",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "bericht_1",
+        "bericht_2",
+        "bericht_3"
+      ],
+      "settings": {
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "color_scheme": "scheme-3",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "mobile_logo_position": "center",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "always",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "margin_bottom": 0,
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "bline_mega_img_1": "shopify://shop_images/bline-banner-lezen-4x5.jpg",
+        "bline_mega_label_1": "Lezen in bed",
+        "bline_mega_link_1": "shopify://pages/lezen-in-bed",
+        "bline_mega_img_2": "shopify://shop_images/bline-detail-stof-01.jpg",
+        "bline_mega_label_2": "Materialen",
+        "bline_mega_link_2": "shopify://pages/materialen",
+        "bline_tegel_img_1": "shopify://shop_images/bline-banner-lezen-4x5.jpg",
+        "bline_tegel_label_1": "Lezen in bed",
+        "bline_tegel_link_1": "shopify://collections/lezen-in-bed",
+        "bline_tegel_img_2": "shopify://shop_images/bline-sfeer-bank-zwart-4x5.jpg",
+        "bline_tegel_label_2": "Ontspannen op de bank",
+        "bline_tegel_link_2": "shopify://collections/ontspannen-op-de-bank",
+        "bline_tegel_img_3": "shopify://shop_images/bline-banner-kussen-4x5.jpg",
+        "bline_tegel_label_3": "Cadeau",
+        "bline_tegel_link_3": "shopify://collections/cadeau",
+        "bline_tegel_img_4": "shopify://shop_images/bline-hoezen-strip-01.jpg",
+        "bline_tegel_label_4": "Hoezen en sets",
+        "bline_tegel_link_4": "shopify://collections/hoezen-en-sets",
+        "bline_tegel_img_5": "shopify://shop_images/bline-leeskussen-blauw-03.jpg",
+        "bline_tegel_label_5": "Inspiratie",
+        "bline_tegel_link_5": "shopify://pages/lezen-in-bed",
+        "bline_tegel_img_6": "shopify://shop_images/bline-detail-stof-01.jpg",
+        "bline_tegel_label_6": "Materialen",
+        "bline_tegel_link_6": "shopify://pages/materialen"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

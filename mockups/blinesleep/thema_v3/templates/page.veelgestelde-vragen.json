@@ -1,0 +1,168 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "vragen": {
+      "type": "b3-vragen",
+      "blocks": {
+        "v0": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Hoe snel heb ik mijn kussen?",
+            "antwoord": "<p>Binnen 1-2 werkdagen in huis, in Nederland en België. Verzending is gratis. Zodra het pakket onderweg is, krijg je een mail met de track & trace.</p>"
+          }
+        },
+        "v1": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Bezorgen jullie ook buiten Nederland en België?",
+            "antwoord": "<p>Nee, nu nog niet.</p>"
+          }
+        },
+        "v2": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Hoe stevig is het kussen?",
+            "antwoord": "<p>Stevig. Er zit 3,8 kg traagschuim in, dus je zakt er niet doorheen als je leunt. Net uitgepakt? Laat het 24 tot 48 uur luchten en schud het een keer op.</p>"
+          }
+        },
+        "v3": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Past het op mijn bed?",
+            "antwoord": "<p>Het kussen is 65 cm breed, 50 cm hoog en 45 cm diep. Meet even na of dat past, zeker op een smal bed of bankje.</p>"
+          }
+        },
+        "v4": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Hoe was ik de hoes?",
+            "antwoord": "<p>Rits de hoes eraf en was hem op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
+          }
+        },
+        "v5": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan ik een extra hoes kopen?",
+            "antwoord": "<p>Ja. De losse hoes is er in dezelfde vijf kleuren. Wit kost €29,99, de andere kleuren €34,99.</p>"
+          }
+        },
+        "v6": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Wat zit er in de doos?",
+            "antwoord": "<p>Eén leeskussen met de hoes in de kleur die je kiest, en een gebruiks- en wasinstructie.</p>"
+          }
+        },
+        "v7": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Wijkt de kleur af van de foto?",
+            "antwoord": "<p>We hebben de foto's per kleur naast elkaar gelegd en alleen beelden gebruikt die kloppen. Een scherm toont kleuren wel altijd iets anders. Valt hij thuis tegen, dan heb je 14 dagen bedenktijd.</p>"
+          }
+        },
+        "v8": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan ik het kussen terugsturen?",
+            "antwoord": "<p>Ja, binnen 14 dagen na ontvangst. Mail ons eerst, dan krijg je het retouradres. De kosten voor het terugsturen betaal je zelf. Alles staat op de pagina <a href=\"/pages/retourneren\">Retourneren</a>.</p>"
+          }
+        },
+        "v9": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Is er garantie?",
+            "antwoord": "<p>Je hebt de wettelijke garantie: het kussen moet doen wat je er redelijkerwijs van mag verwachten. Is er iets mis, mail ons dan met een foto.</p>"
+          }
+        },
+        "v10": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan ik mijn bestelling nog wijzigen?",
+            "antwoord": "<p>Mail zo snel mogelijk naar mail@blinesleep.nl met je bestelnummer. Is het pakket nog niet weg, dan passen we het aan.</p>"
+          }
+        },
+        "v11": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan het traagschuim in de wasmachine?",
+            "antwoord": "<p>Nee. Alleen de hoes gaat in de was, op 30 °C. Het kussen zelf laat je luchten.</p>"
+          }
+        },
+        "v12": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Hoeveel leeskussens passen er op een tweepersoonsbed?",
+            "antwoord": "<p>Op een bed van 140 cm passen er twee naast elkaar. Elk kussen is 65 cm breed.</p>"
+          }
+        },
+        "v13": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Hoe zwaar is het kussen?",
+            "antwoord": "<p>3,9 kg, waarvan 3,8 kg traagschuim.</p>"
+          }
+        },
+        "v14": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Heeft het kussen een vak voor mijn telefoon?",
+            "antwoord": "<p>Ja. Opzij in de hoes zit een vak voor je boek, bril of telefoon.</p>"
+          }
+        },
+        "v15": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Wat betekent 400 TC?",
+            "antwoord": "<p>TC staat voor thread count: het aantal draden per vierkante inch stof. De hoes is van 100% katoen met 400 draden per vierkante inch.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5",
+        "v6",
+        "v7",
+        "v8",
+        "v9",
+        "v10",
+        "v11",
+        "v12",
+        "v13",
+        "v14",
+        "v15"
+      ],
+      "settings": {
+        "oog": "Vragen",
+        "kop": "Alles over je <em>leeskussen</em>",
+        "intro": "Staat je vraag er niet bij? Bel of app 06 38 66 28 33.",
+        "achtergrond": "warm"
+      }
+    },
+    "kleuren": {
+      "type": "b3-kleuren",
+      "settings": {
+        "basis": "leeskussen-beige",
+        "oog": "Vijf kleuren",
+        "kop": "Welke past bij <em>jouw</em> bed?",
+        "intro": "Zelfde kussen, zelfde kamer: zo zie je het verschil. Tik op een kleur om hem te kiezen.",
+        "achtergrond": "wit"
+      }
+    }
+  },
+  "order": [
+    "vragen",
+    "kleuren"
+  ]
+}

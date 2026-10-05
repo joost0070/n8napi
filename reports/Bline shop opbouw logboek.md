@@ -1003,3 +1003,22 @@ Wachtwoord blijft aan (gecontroleerd: de winkel stuurt door naar `/password`). B
 4. Een echte foto van **losse kussens in bed** (voor de vergelijking) en een **sfeerfoto op de bank met het echte witte kussen** maken het verhaal sterker.
 5. Judge.me: zodra er reviews zijn, twee citaten in de reviewband.
 6. De echte test op een telefoon zodra het wachtwoord eraf mag (megamenu, video, sets in de winkelwagen).
+
+## 5 oktober 2026, sessie 12: v3 in de winkel (één product, speelse afwisseling)
+
+Aanleiding (Joost): "de opbouw van de foto's is heel cheap", "de afbeeldingen die er zijn en Higgsfield is voldoende", "ik wil juist afwisseling, leuke speelse site, maar wel goed converterend". Na de eerste versie: "van een 1 naar een 6,5", daarna "top ga door, akkoord op alles".
+
+**Eerlijke les:** v4 en v5 gebruikten bijna niets van de 9 tot 18 goedgekeurde beelden per kleur (uitgeknipt kussen als hoofdbeeld, witte details in gekleurde galerijen). Een poging om het witte kussen zelf in te kleuren leverde slechte beelden op en is weggegooid. Vanaf nu alleen originele, goedgekeurde beelden zoals ze zijn.
+
+**Onderzoek:** 24 shops met een echte browser (galerijen en lange mobiele pagina's): Ostrichpillow, Bearaby, Cloudpillo, Kip&Co, Hush, Brentwood en anderen. Zie `research_notes/Bline Sleep risicos en voorbeelden/onderzoek_beeldopbouw_2026-10-05.md`.
+
+**In de winkel gezet** (thema Dawn, `themeFilesUpsert`, vooraf gecontroleerd dat de winkel sinds de reservekopie niet was aangepast, achteraf opnieuw opgehaald en inhoudelijk gelijk):
+- Nieuwe secties `b3-product` (alle vijf kleuren op één plek, galerij per kleur met eerst een gebruiksfoto, kleur wisselen zonder te laden, 1 of 2 kussens, extra hoes in dezelfde kleur, knop met totaalprijs, plakbalk op mobiel), `b3-band`, `b3-momenten`, `b3-groot`, `b3-binnenkant`, `b3-maat` (maten getekend in de pagina), `b3-kleuren` (anker `#kleuren`), `b3-verhaal` (video op donker vlak en "Waarom Bline"), `b3-score`, `b3-vergelijk`, `b3-hoezen`, `b3-vragen`. Stijl en script: `bline-v3.css`, `bline-v3.js`; lettertypen Poppins en Instrument Serif lokaal (geen Google).
+- Sjablonen: homepage en productpagina zelfde opbouw; hoes-pagina met band, kleuren en vragen; Over Bline en Veelgestelde vragen in v3-stijl. Judge.me-blok pas zichtbaar vanaf 3 eigen reviews.
+- Instellingen: ronde knoppen en kaarten, menu als gewone uitklap.
+- Menu: Leeskussen, Kleuren, Hoezen, Vragen, Over Bline. Footer zonder Kleurengids, Maatgids, Materialen en Bline Sleep (pagina's bestaan nog voor SEO).
+- Galerijen (`productReorderMedia`, `fileUpdate`): volgorde in `mockups/blinesleep/thema_v3/galerijvolgorde.json`. Ontkoppeld (blijven in Files): maattekening, maatgids-tekening, eigen bewerkte details, liggende beelden. Wit kreeg `wit-gebruik-05` en `-06` erbij.
+
+**Getest** (lokaal gerenderd met de echte winkeldata na upload): 1 kussen €79,99, 2 kussens €149,99, kussen + hoes €104,99, 2 kussens + hoes €184,98 (één korting, zoals Shopify rekent), Wit + hoes €89,99; juiste varianten naar `/cart/add.js`. Screenshots in `mockups/blinesleep/screenshots/v3b/`.
+
+**Niet gedaan:** wachtwoord blijft aan, geen prijzen gewijzigd, geen mails. Nog open: de 27 dubbele uploads (`1.png` tot `27.png`) staan nog in Files; collectiepagina's en inhoudspagina's (Materialen, Lezen in bed, Kleurengids, Maatgids, Bline Sleep) hebben nog de oude stijl en eigen bewerkte beelden, maar staan niet meer in het menu.

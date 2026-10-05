@@ -8,7 +8,7 @@
 
   function Galerij(el) {
     var track = el.querySelector('[data-b3-track]');
-    var duims = el.querySelectorAll('[data-b3-naar]');
+    var duims = el.querySelectorAll('.b3-gal__stip i');
     var nu = el.querySelector('[data-b3-nu]');
     function index() { return Math.round(track.scrollLeft / Math.max(track.clientWidth, 1)); }
     function zet() {
@@ -18,14 +18,6 @@
     }
     var t;
     track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(zet, 60); }, { passive: true });
-    duims.forEach(function (d) {
-      d.addEventListener('click', function () {
-        var i = Number(d.getAttribute('data-b3-naar'));
-        var slide = track.children[i];
-        if (getComputedStyle(track).display === 'grid') slide.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        else track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' });
-      });
-    });
     return { reset: function () { track.scrollLeft = 0; zet(); } };
   }
 

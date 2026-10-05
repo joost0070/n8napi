@@ -1,0 +1,53 @@
+{%- comment -%} Bline v3: maat, getekend in de pagina (geen beeld): het kussen met maten en hoe het op bedden past. {%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in b3-maat">
+    <div>
+      <p class="b3-oog">{{ section.settings.oog }}</p>
+      <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+      <p class="b3-intro">{{ section.settings.intro }}</p>
+      <ul class="b3-maat__bedden" role="list">
+        <li><span class="b3-maat__bed" style="--b: 90"><i></i></span><b>90 cm</b><span>Eenpersoons: ruim genoeg</span></li>
+        <li><span class="b3-maat__bed" style="--b: 140"><i></i><i></i></span><b>140 cm</b><span>Twee naast elkaar</span></li>
+        <li><span class="b3-maat__bed" style="--b: 180"><i></i><i></i></span><b>160 en 180 cm</b><span>Twee naast elkaar, met ruimte over</span></li>
+      </ul>
+    </div>
+    <div class="b3-maat__tekening">
+      <svg viewBox="0 0 460 300" role="img" aria-label="Leeskussen van opzij: 50 cm hoog en 45 cm diep. Van voren: 65 cm breed en 50 cm hoog.">
+        <g font-family="B3 Poppins, sans-serif" fill="#1D2330">
+          <text x="110" y="22" font-size="13" fill="#5A6170" text-anchor="middle">Opzij</text>
+          <text x="340" y="22" font-size="13" fill="#5A6170" text-anchor="middle">Voorkant</text>
+        </g>
+        <!-- zijkant: schuine voorkant, rechte rug -->
+        <path d="M40 230 L175 230 L175 80 Q168 76 160 84 Z" fill="#CDBFA9" stroke="#B5A68D" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M120 230 L120 175 L162 175 L162 230" fill="none" stroke="#B5A68D" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <rect x="165" y="120" width="6" height="22" rx="2" fill="#5A6170"/>
+        <!-- voorkant: breed vlak -->
+        <rect x="255" y="80" width="170" height="150" rx="14" fill="#D9CCB7" stroke="#B5A68D" stroke-width="1.5"/>
+        <path d="M262 92 Q340 70 418 92" fill="none" stroke="#B5A68D" stroke-width="1.5"/>
+        <g stroke="#1D2330" stroke-width="1.5" fill="none">
+          <path d="M40 252 H175 M40 246 v12 M175 246 v12"/>
+          <path d="M197 80 V230 M191 80 h12 M191 230 h12"/>
+          <path d="M255 252 H425 M255 246 v12 M425 246 v12"/>
+        </g>
+        <g font-family="B3 Poppins, sans-serif" font-size="14" font-weight="600" fill="#1D2330" text-anchor="middle">
+          <text x="107" y="278">45 cm diep</text>
+          <text x="340" y="278">65 cm breed</text>
+          <text x="216" y="160" transform="rotate(-90 216 160)">50 cm hoog</text>
+        </g>
+        <text x="141" y="206" font-family="B3 Poppins, sans-serif" font-size="11" fill="#5A6170" text-anchor="middle">vak</text>
+      </svg>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: maat",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Maat" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Past op <em>elk</em> bed" },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "65 cm breed, 50 cm hoog en 45 cm diep. Groot genoeg om echt tegenaan te leunen, klein genoeg voor naast je partner." },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "wit", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "presets": [{ "name": "Bline v3: maat" }]
+}
+{% endschema %}

@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "waarom": {
+      "type": "b3-verhaal",
+      "blocks": {
+        "w0": {
+          "type": "punt",
+          "settings": {
+            "icoon": "check",
+            "kop": "Een Nederlands merk",
+            "tekst": "Bline is een merk van Shop4You uit Borne."
+          }
+        },
+        "w1": {
+          "type": "punt",
+          "settings": {
+            "icoon": "telefoon",
+            "kop": "Echte klantenservice",
+            "tekst": "Bel of app 06 38 66 28 33, gewoon met een mens."
+          }
+        },
+        "w2": {
+          "type": "punt",
+          "settings": {
+            "icoon": "terug",
+            "kop": "14 dagen bedenktijd",
+            "tekst": "Past het toch niet bij je bed, dan stuur je het terug."
+          }
+        }
+      },
+      "block_order": [
+        "w0",
+        "w1",
+        "w2"
+      ],
+      "settings": {
+        "video_product": "",
+        "beeld": "shopify://shop_images/bline-leeskussen-wit-packshot-01.jpg",
+        "oog": "Over Bline",
+        "kop": "Waarom <em>Bline</em>?",
+        "tekst": "We maken één ding, en dat goed: een leeskussen dat blijft staan. We begonnen op bol.com, waar kopers het een 4,5 uit 5 geven. Nu ook in onze eigen winkel, voor dezelfde prijs.",
+        "knop": "Kies je kleur",
+        "knop_kleur": "beige",
+        "om": true,
+        "achtergrond": "warm"
+      }
+    },
+    "kleuren": {
+      "type": "b3-kleuren",
+      "settings": {
+        "basis": "leeskussen-beige",
+        "oog": "Vijf kleuren",
+        "kop": "Welke past bij <em>jouw</em> bed?",
+        "intro": "Zelfde kussen, zelfde kamer: zo zie je het verschil. Tik op een kleur om hem te kiezen.",
+        "achtergrond": "wit"
+      }
+    }
+  },
+  "order": [
+    "waarom",
+    "main",
+    "kleuren"
+  ]
+}

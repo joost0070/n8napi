@@ -19,59 +19,36 @@
       {%- for kp in kleuren -%}
         {%- assign k = kp.handle | remove: 'leeskussen-' -%}
         {%- assign aantal_media = kp.media.size -%}
+        {%- assign is_hoofd = false -%}{%- if kp.id == hoofd.id -%}{%- assign is_hoofd = true -%}{%- endif -%}
         <div class="b3-gal" data-kleur="{{ k }}"{% unless kp.id == hoofd.id %} hidden{% endunless %}>
+          {%- comment -%} Eerst het tweede beeld (iemand die het kussen gebruikt), dan het eerste (het kussen op bed), dan de rest. {%- endcomment -%}
           <div class="b3-gal__track" data-b3-track tabindex="0" aria-label="Foto's leeskussen {{ kp.metafields.bline.kleur_naam.value | downcase }}">
-            {%- for m in kp.media -%}
-              <figure class="b3-gal__slide{% if forloop.first %} b3-gal__slide--eerste{% endif %}{% if m.preview_image.aspect_ratio < 0.98 or m.preview_image.aspect_ratio > 1.02 %} b3-gal__slide--passend{% endif %}">
-                {%- if m.media_type == 'video' -%}
-                  {%- assign bron = m.sources | where: 'format', 'mp4' | sort: 'height' -%}
-                  {%- assign bron_mid = bron | where: 'height', 720 | first | default: bron.last -%}
-                  <video class="b3-gal__video" playsinline muted loop autoplay preload="none" poster="{{ m.preview_image | image_url: width: 1100 }}" aria-label="{{ m.alt | escape }}">
-                    <source src="{{ bron_mid.url }}" type="video/mp4">
-                  </video>
-                  <span class="b3-pil b3-gal__label">Video</span>
-                {%- else -%}
-                  {%- liquid
-                    if forloop.first and kp.id == hoofd.id
-                      assign laden = 'eager'
-                      assign prio = 'high'
-                    else
-                      assign laden = 'lazy'
-                      assign prio = 'auto'
-                    endif
-                  -%}
-                  {{ m.preview_image | image_url: width: 1400 | image_tag: loading: laden, fetchpriority: prio, widths: '480, 720, 960, 1200, 1400', sizes: '(min-width: 990px) 30vw, 100vw', alt: m.alt }}
-                {%- endif -%}
-                {%- if forloop.first -%}
-                  <span class="b3-pil b3-pil--licht b3-gal__badge">{% render 'b3-ster' %} 4,5 op bol.com</span>
-                {%- endif -%}
-              </figure>
-            {%- endfor -%}
+            {%- if aantal_media > 1 -%}
+              {%- render 'b3-slide', m: kp.media[1], eerste: true, voorrang: is_hoofd -%}
+              {%- render 'b3-slide', m: kp.media[0], eerste: false, voorrang: false -%}
+              {%- for m in kp.media offset: 2 -%}{%- render 'b3-slide', m: m, eerste: false, voorrang: false -%}{%- endfor -%}
+            {%- else -%}
+              {%- render 'b3-slide', m: kp.media[0], eerste: true, voorrang: is_hoofd -%}
+            {%- endif -%}
           </div>
-          <div class="b3-gal__onder">
-            <span class="b3-gal__teller" aria-hidden="true"><b data-b3-nu>1</b> / {{ aantal_media }}</span>
-            <div class="b3-gal__duims" role="list">
-              {%- for m in kp.media -%}
-                <button type="button" class="b3-gal__duim{% if forloop.first %} is-actief{% endif %}" data-b3-naar="{{ forloop.index0 }}" aria-label="Foto {{ forloop.index }} van {{ aantal_media }}">
-                  {{ m.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
-                </button>
-              {%- endfor -%}
-            </div>
+          <div class="b3-gal__stip" aria-hidden="true">
+            {%- for m in kp.media -%}<i{% if forloop.first %} class="is-actief"{% endif %}></i>{%- endfor -%}
           </div>
+          <span class="b3-gal__teller" aria-hidden="true"><b data-b3-nu>1</b>/{{ aantal_media }}</span>
         </div>
       {%- endfor -%}
     </div>
 
     <div class="b3-product__info">
-      <p class="b3-oog">Leeskussen met vak voor je telefoon</p>
-      <h1 class="b3-product__titel">Bline <em>leeskussen</em></h1>
+      <p class="b3-oog">Bline leeskussen · 65 x 50 x 45 cm</p>
+      <h1 class="b3-product__titel">Het leeskussen dat <em>blijft staan</em></h1>
       {% render 'bline-score' %}
-      <p class="b3-product__pitch">Rechtop lezen, werken of tv kijken in bed. Stevig traagschuim dat blijft staan, en een katoenen hoes die er met een rits af gaat.</p>
 
       <div class="b3-prijs" aria-live="polite">
         <span class="b3-prijs__nu" data-b3-prijs>{{ hoofd.selected_or_first_available_variant.price | money }}</span>
         <span class="b3-prijs__extra">incl. btw · gratis verzending</span>
       </div>
+      <p class="b3-product__pitch">Rechtop lezen, werken of een serie kijken in bed, zonder stapel kussens. Met een vak voor je telefoon en een hoes die zo in de was kan.</p>
 
       <div class="b3-keuze">
         <p class="b3-keuze__label">Kleur: <b data-b3-kleurnaam>{{ hoofd.metafields.bline.kleur_naam.value }}</b></p>
