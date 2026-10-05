@@ -1,8 +1,8 @@
 from tpl import *
 def kop(d,m,eyebrow,heading,intro):
     return {'type':'bline-paginakop','settings':{'image_desktop':SI(d),'image_mobile':SI(m) if m else '','eyebrow':eyebrow,'heading':heading,'intro':intro,'color_scheme':'scheme-1'}}
-def bt(img,eyebrow,heading,text,points='',right=False,scheme='scheme-1',btn='',link='',video=''):
-    return {'type':'bline-beeld-tekst','settings':{'video_product':video,'image':SI(img) if img else '','image_right':right,'eyebrow':eyebrow,'heading':heading,'text':text,'points':points,'button_label':btn,'button_link':link,'color_scheme':scheme}}
+def bt(img,eyebrow,heading,text,points='',right=False,scheme='scheme-1',btn='',link='',video='',heel=False):
+    return {'type':'bline-beeld-tekst','settings':{'image_contain':heel,'video_product':video,'image':SI(img) if img else '','image_right':right,'eyebrow':eyebrow,'heading':heading,'text':text,'points':points,'button_label':btn,'button_link':link,'color_scheme':scheme}}
 def tg(eyebrow,heading,tiles,cols='3',ratio='vierkant',scheme='scheme-1',intro='',ll='',l=''):
     return {'type':'bline-tegels','settings':{'eyebrow':eyebrow,'heading':heading,'intro':intro,'link_label':ll,'link':l,'columns':cols,'ratio':ratio,'mobile_slider':True,'color_scheme':scheme},**blocks(tiles,'tegel')}
 def lb(eyebrow,heading,intro,items,cols='3',ll='',l=''):
@@ -33,8 +33,8 @@ S={'kop':kop('bline-kleuren-strip-01.jpg','bline-tegel-beige-sfeer.jpg','Kleuren
 write('page.kleurengids.json',S,['kop','kleuren','hoezen','slider','vt'])
 # Maatgids
 S={'kop':kop('bline-banner-kussen-16x9.jpg','bline-banner-kussen-4x5.jpg','Maatgids','Past het op jouw bed?','<p>Het leeskussen is 65 cm breed, 50 cm hoog en 45 cm diep. Hieronder zie je hoeveel ruimte er overblijft op een bed van 140, 160 en 180 cm.</p>'),
- 'maten':bt('bline-leeskussen-maattekening.jpg','De maten','65 x 50 x 45 cm','<p>Breed genoeg om tegenaan te leunen, smal genoeg om naast een kussen te liggen.</p>','Breedte 65 cm\nHoogte 50 cm\nDiepte 45 cm\nGewicht 3,9 kg'),
- 'bedden':bt('bline-maatgids-bedden-01.jpg','Op je bed','Zo veel ruimte blijft er over','<p>Op een bed van 140 cm blijft links en rechts 37,5 cm over. Twee leeskussens naast elkaar zijn samen 130 cm breed: dat past op een bed vanaf 140 cm.</p>','140 cm: links en rechts 37,5 cm\n160 cm: links en rechts 47,5 cm\n180 cm: links en rechts 57,5 cm',right=True,scheme='scheme-7',btn='Twee leeskussens',link='shopify://collections/sets-en-bundels'),
+ 'maten':bt('bline-leeskussen-maattekening.jpg','De maten','65 x 50 x 45 cm','<p>Breed genoeg om tegenaan te leunen, smal genoeg om naast een kussen te liggen.</p>','Breedte 65 cm\nHoogte 50 cm\nDiepte 45 cm\nGewicht 3,9 kg',heel=True),
+ 'bedden':bt('bline-maatgids-bedden-01.jpg','Op je bed','Zo veel ruimte blijft er over','<p>Op een bed van 140 cm blijft links en rechts 37,5 cm over. Twee leeskussens naast elkaar zijn samen 130 cm breed: dat past op een bed vanaf 140 cm.</p>','140 cm: links en rechts 37,5 cm\n160 cm: links en rechts 47,5 cm\n180 cm: links en rechts 57,5 cm',right=True,scheme='scheme-7',btn='Twee leeskussens',link='shopify://collections/sets-en-bundels',heel=True),
  'tips':tg('Tips','Even meten',[tegel('','Hoofdbord','<p>Het kussen staat tegen het hoofdbord of de muur. Zonder hoofdbord werkt het ook.</p>'),tegel('','Diepte','<p>Reken op 45 cm van het hoofdbord naar voren: zo ver schuif je op in bed.</p>'),tegel('','Twijfel?','<p>Je hebt 14 dagen bedenktijd. Bel of app ons gerust: 06 38 66 28 33.</p>','shopify://pages/contact','Contact')]),
  'slider':fc('leeskussens','Het leeskussen in vijf kleuren','',n=5,cols=5),'vt':VT}
 write('page.maatgids.json',S,['kop','maten','bedden','tips','slider','vt'])

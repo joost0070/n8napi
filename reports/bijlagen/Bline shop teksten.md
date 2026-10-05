@@ -491,3 +491,282 @@ Wil je partner er ook een? Bestel twee leeskussens en je krijgt €9,99 korting 
 **Vragenpagina**: de vijf vragen uit `Bline blogteksten.md` staan nu als uitklapblok 12 tot 16. De paginatekst is weer alleen: Staat je vraag er niet bij? Mail naar mail@blinesleep.nl.
 
 **Menu's**: hoofdmenu Leeskussen, Losse hoes, Over Bline, Vragen. Klantenservice: Verzending, Retourneren, Veelgestelde vragen, Blog, Contact, Over Bline.
+
+
+## Shop v2: merkwereld (sessie 11)
+
+Alle nieuwe teksten. Nagelopen met `testpagina/v2/stijl.py` (schrapwoorden, AI-zinnen, gezondheidswoorden, gedachtestreepjes, u en uw, uitroeptekens).
+
+### Homepage
+
+**hero** (bline-hero)
+- eyebrow: Leeskussen met vak voor je boek
+- heading: Rechtop lezen in bed
+- text: Een stevig kussen dat blijft staan, met een vak opzij voor je telefoon of bril.
+- label_1: Shop leeskussens
+- label_2: Bekijk de kleuren
+- score: 4,5 uit 5 op bol.com
+
+**kleuren** (bline-kleurtegels)
+- eyebrow: Vijf kleuren
+- heading: Kies je kleur
+- link_label: Hulp bij kiezen
+
+**blijft_staan** (bline-beeld-tekst)
+- eyebrow: Het leeskussen
+- heading: Het kussen dat blijft staan
+- text: Losse kussens zakken weg. Dit kussen houdt zijn vorm, ook als je er een uur tegenaan leunt.
+- points: 3,8 kg traagschuim, stevig en vormvast / Vak opzij voor je telefoon, bril of boek / Katoenen hoes met rits, wasbaar op 30 °C
+- button_label: Shop leeskussens
+
+**details** (bline-tegels)
+- eyebrow: Details
+- heading: Gemaakt om in te lezen
+  - Vak opzij | Je telefoon, bril of boek binnen handbereik. Het vak zit aan de zijkant, uit de weg.
+  - Hoes met rits | Katoen 400 TC met een bies langs de naden. De rits zit uit het zicht, de hoes gaat zo in de was.
+  - Afgewerkt tot het label | Stevige naden en het Bline-label aan de zijkant. Zo herken je het kussen.
+
+**vergelijk** (bline-vergelijk)
+- eyebrow: Vergelijk
+- heading: Losse kussens of een leeskussen
+- button_label: Lees de hele vergelijking
+- col_a: Losse kussens
+- col_b: Leeskussen Bline
+  - Steun | Zakken weg, steeds opschudden | Blijft staan door 3,8 kg traagschuim
+  - Spullen | Telefoon en bril liggen los op bed | Vak opzij voor telefoon, bril of boek
+  - Ruimte | Drie of vier kussens in bed | Eén kussen van 65 cm breed
+  - Wassen | Elke sloop apart | Eén hoes met rits, wasbaar op 30 °C
+
+**sets** (featured-collection)
+- title: Sets met €9,99 korting
+- description: Een leeskussen met een extra hoes, of twee leeskussens. De korting gaat er in de winkelwagen automatisch af.
+
+**reviews** (bline-reviewband)
+- heading: Zo beoordelen kopers het kussen
+- text: Het leeskussen is ook te koop bij bol.com. Daar komen deze reviews vandaan.
+- score: 4,5
+- bron: op basis van 13 reviews op bol.com
+
+**lookbook** (bline-lookbook)
+- eyebrow: Inspiratie
+- heading: Lezen in bed
+- intro: Met een boek, een serie of je laptop. Tik op een foto voor het kussen in die kleur.
+- link_label: Meer inspiratie
+
+**materialen** (bline-tegels)
+- eyebrow: Materialen
+- heading: Waar het kussen van gemaakt is
+- link_label: Alles over de materialen
+  - Katoen 400 TC | Een dichte, zachte katoenen hoes in vijf kleuren.
+  - 3,8 kg traagschuim | Geeft steun en houdt zijn vorm, ook na lang leunen.
+  - Onzichtbare rits | De hoes gaat er in één keer af en kan op 30 °C in de was.
+
+**over** (bline-beeld-tekst)
+- eyebrow: Over Bline
+- heading: Een klein merk uit Borne
+- text: Bline is een Nederlands merk voor lezen en slapen in bed. Het leeskussen verkopen we ook via bol.com, waar het 4,5 uit 5 sterren heeft.
+- button_label: Over Bline
+
+**verhalen** (featured-blog)
+- heading: Verhalen
+
+**vragen** (collapsible-content)
+- heading: Vragen
+  - Hoe snel heb ik het kussen? | Binnen 1-2 werkdagen, in Nederland en België. Verzending is gratis.
+  - Kan de hoes in de was? | Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.
+  - Hoe stevig is het kussen? | Stevig: 3,8 kg traagschuim. Laat het na het uitpakken 24 tot 48 uur luchten en schud het op.
+  - Is er een losse hoes? | Ja, in dezelfde vijf kleuren.
+  - Kan ik het terugsturen? | Ja, binnen 14 dagen na ontvangst. Mail ons, dan krijg je het retouradres. De kosten voor het terugsturen zijn voor jou.
+
+### Productpagina leeskussen (aanvullingen)
+
+**in_gebruik** (bline-in-gebruik)
+- eyebrow: In gebruik
+- heading: Zo zit je ermee
+- text: Zet het kussen tegen het hoofdbord en leun achterover. Het traagschuim houdt je rechtop, je telefoon of bril gaat in het vak opzij.
+- link_label: Meer inspiratie
+
+**waarom** (bline-waarom)
+- heading: Goed om te weten
+
+**sets** (featured-collection)
+- title: Sets met €9,99 korting
+
+**gemaakt** (bline-gemaakt)
+- heading: Gemaakt door Bline uit Borne
+- link_label: Over Bline
+
+**disclosures** (disclosures)
+- heading: Toelichtingen
+
+### Collectiepagina
+
+**ingangen** (bline-tegels)
+- eyebrow: Shop op moment
+- heading: Waar lees jij?
+  - Lezen in bed
+  - Ontspannen op de bank
+  - Werken in bed
+  - Cadeau
+
+**lookbook_link** (bline-beeld-tekst)
+- eyebrow: Materialen
+- heading: Katoen, traagschuim en een vak opzij
+- text: Hoe de hoes, de vulling en het zijvak gemaakt zijn, met foto's van dichtbij.
+- button_label: Bekijk de materialen
+
+### Pagina Materialen
+
+**kop** (bline-paginakop)
+- eyebrow: Materialen
+- heading: Waar het kussen van gemaakt is
+- intro: Een katoenen hoes, een vulling van traagschuim en een vak opzij. Hieronder per onderdeel wat het is en hoe je het verzorgt.
+
+**hoes** (bline-beeld-tekst)
+- eyebrow: De hoes
+- heading: Katoen 400 TC
+- text: De hoes is van 100% katoen met 400 draden per vierkante inch. Dicht geweven, glad en zacht.
+- points: 100% katoen, 400 TC / Bies langs de naden / Volledig afneembaar met een onzichtbare rits / In vijf kleuren, ook los te koop
+
+**vulling** (bline-beeld-tekst)
+- eyebrow: De vulling
+- heading: 3,8 kg traagschuim
+- text: Binnenin zit 3,8 kg traagschuim. Daardoor blijft het kussen staan als je ertegenaan leunt.
+- points: Stevig en vormvast / Het hele kussen weegt 3,9 kg / Net uitgepakt? Laat het 24 tot 48 uur luchten en schud het op
+
+**zijvak** (bline-beeld-tekst)
+- eyebrow: Rits en zijvak
+- heading: Alles binnen handbereik
+- text: Aan de zijkant zit een vak voor je boek, bril of telefoon. De rits zit uit het zicht, het label aan de zijkant.
+- points: Zijvak voor boek, bril of telefoon / Onzichtbare rits / Bline-label aan de zijkant
+
+**wassen** (bline-tegels)
+- eyebrow: Verzorging
+- heading: Zo was je de hoes
+  - Op 30 °C | Machinewas, normaal programma. Haal de hoes er met de rits af.
+  - Niet bleken | Gebruik een gewoon wasmiddel zonder bleekmiddel.
+  - Niet in de droger | Laat de hoes aan de lucht drogen. Een extra hoes is handig om te wisselen.
+
+**slider** (featured-collection)
+- title: Het leeskussen in vijf kleuren
+
+### Pagina Lezen in bed
+
+**kop** (bline-paginakop)
+- eyebrow: Inspiratie
+- heading: Lezen in bed
+- intro: Met een boek, een serie of je laptop. Tik op een foto voor het kussen in die kleur.
+
+**in_bed** (bline-lookbook)
+- eyebrow: In bed
+- heading: Rechtop met een boek
+
+**video** (bline-beeld-tekst)
+- eyebrow: Zo gebruik je het
+- heading: Leunen, lezen, wegleggen
+- text: Zet het kussen tegen het hoofdbord, leun achterover en leg je telefoon in het vak opzij.
+- points: Blijft staan door 3,8 kg traagschuim / Hoes eraf met één rits / In vijf kleuren
+- button_label: Shop leeskussens
+
+**werken** (bline-lookbook)
+- eyebrow: Werken, kijken, op de bank
+- heading: Ook om te werken en te kijken
+
+**slider** (featured-collection)
+- title: Shop de looks
+
+### Pagina Kleurengids
+
+**kop** (bline-paginakop)
+- eyebrow: Kleurengids
+- heading: Welke kleur past bij jouw bed?
+- intro: Vijf kleuren naast elkaar, met het beddengoed waar ze goed bij staan. Twijfel je? Je hebt 14 dagen bedenktijd.
+
+**kleuren** (bline-tegels)
+- eyebrow: Vijf kleuren
+- heading: Naast elkaar
+  - Wit | Licht en fris. Past bij wit, lichtgrijs en zachtgroen beddengoed.
+  - Beige | Warm en rustig. Mooi bij wit, zand, oudroze en linnen in naturel.
+  - Blauw | Een rustig leiblauw. Mooi bij wit, lichtblauw en grijs, met een warm accent.
+  - Grijs | Neutraal en zacht. Past bij wit, antraciet, roze en mosgroen.
+  - Zwart | Strak en donker. Mooi bij wit, grijs en een streep of ruit.
+
+**hoezen** (bline-beeld-tekst)
+- eyebrow: Wisselen
+- heading: Liever afwisselen?
+- text: Neem een tweede hoes in een andere kleur. Met een leeskussen krijg je €9,99 korting op de extra hoes.
+- button_label: Bekijk de hoezen
+
+**slider** (featured-collection)
+- title: Kies je kleur
+
+### Pagina Maatgids
+
+**kop** (bline-paginakop)
+- eyebrow: Maatgids
+- heading: Past het op jouw bed?
+- intro: Het leeskussen is 65 cm breed, 50 cm hoog en 45 cm diep. Hieronder zie je hoeveel ruimte er overblijft op een bed van 140, 160 en 180 cm.
+
+**maten** (bline-beeld-tekst)
+- eyebrow: De maten
+- heading: 65 x 50 x 45 cm
+- text: Breed genoeg om tegenaan te leunen, smal genoeg om naast een kussen te liggen.
+- points: Breedte 65 cm / Hoogte 50 cm / Diepte 45 cm / Gewicht 3,9 kg
+
+**bedden** (bline-beeld-tekst)
+- eyebrow: Op je bed
+- heading: Zo veel ruimte blijft er over
+- text: Op een bed van 140 cm blijft links en rechts 37,5 cm over. Twee leeskussens naast elkaar zijn samen 130 cm breed: dat past op een bed vanaf 140 cm.
+- points: 140 cm: links en rechts 37,5 cm / 160 cm: links en rechts 47,5 cm / 180 cm: links en rechts 57,5 cm
+- button_label: Twee leeskussens
+
+**tips** (bline-tegels)
+- eyebrow: Tips
+- heading: Even meten
+  - Hoofdbord | Het kussen staat tegen het hoofdbord of de muur. Zonder hoofdbord werkt het ook.
+  - Diepte | Reken op 45 cm van het hoofdbord naar voren: zo ver schuif je op in bed.
+  - Twijfel? | Je hebt 14 dagen bedenktijd. Bel of app ons gerust: 06 38 66 28 33.
+
+**slider** (featured-collection)
+- title: Het leeskussen in vijf kleuren
+
+### Pagina Bline Sleep
+
+**kop** (bline-paginakop)
+- eyebrow: Binnenkort
+- heading: Bline Sleep
+- intro: Na het leeskussen werken we aan meer voor in bed. We laten het pas zien als het goed genoeg is.
+
+**wat** (bline-tegels)
+- eyebrow: Wat er komt
+- heading: Voor in bed
+  - Zijden kussensloop | Een sloop van zijde voor je hoofdkussen.
+  - Beddengoed van lyocell | Lyocell wordt gemaakt van houtvezel.
+  - Dekbed | Een dekbed dat past bij de rest van Bline.
+
+**aanmelden** (newsletter)
+  - Als eerste weten wanneer Bline Sleep er is
+  - Laat je e-mailadres achter. We mailen alleen als er iets nieuws is.
+
+**slider** (featured-collection)
+- title: Nu al te koop: het leeskussen
+
+### Sets (8 producten)
+
+- **Leeskussen Wit + extra hoes Beige** (set-leeskussen-wit-hoes-beige, €94,99): Het Bline leeskussen in wit met een extra hoes in beige. Zo ligt er altijd een schone hoes klaar, en wissel je van kleur wanneer je wilt.   Leeskussen Bline Wit: 65 x 50 x 45 cm, 3,8 kg traagschuim, katoenen hoes met zijvak  Losse hoes Beige: katoen 400 TC, onzichtbare rits, wasbaar op 30 °C   Los kost dit €104,98. Als set betaal je €94,99: in de winkelwagen zie je beide producten en gaat de korting van €9,99 er automatisch af.
+- **Leeskussen Beige + extra hoes Wit** (set-leeskussen-beige-hoes-wit, €99,99): Het Bline leeskussen in beige met een extra hoes in wit. Zo ligt er altijd een schone hoes klaar, en wissel je van kleur wanneer je wilt.   Leeskussen Bline Beige: 65 x 50 x 45 cm, 3,8 kg traagschuim, katoenen hoes met zijvak  Losse hoes Wit: katoen 400 TC, onzichtbare rits, wasbaar op 30 °C   Los kost dit €109,98. Als set betaal je €99,99: in de winkelwagen zie je beide producten en gaat de korting van €9,99 er automatisch af.
+- **Leeskussen Blauw + extra hoes Grijs** (set-leeskussen-blauw-hoes-grijs, €104,99): Het Bline leeskussen in blauw met een extra hoes in grijs. Zo ligt er altijd een schone hoes klaar, en wissel je van kleur wanneer je wilt.   Leeskussen Bline Blauw: 65 x 50 x 45 cm, 3,8 kg traagschuim, katoenen hoes met zijvak  Losse hoes Grijs: katoen 400 TC, onzichtbare rits, wasbaar op 30 °C   Los kost dit €114,98. Als set betaal je €104,99: in de winkelwagen zie je beide producten en gaat de korting van €9,99 er automatisch af.
+- **Leeskussen Grijs + extra hoes Blauw** (set-leeskussen-grijs-hoes-blauw, €104,99): Het Bline leeskussen in grijs met een extra hoes in blauw. Zo ligt er altijd een schone hoes klaar, en wissel je van kleur wanneer je wilt.   Leeskussen Bline Grijs: 65 x 50 x 45 cm, 3,8 kg traagschuim, katoenen hoes met zijvak  Losse hoes Blauw: katoen 400 TC, onzichtbare rits, wasbaar op 30 °C   Los kost dit €114,98. Als set betaal je €104,99: in de winkelwagen zie je beide producten en gaat de korting van €9,99 er automatisch af.
+- **Leeskussen Zwart + extra hoes Grijs** (set-leeskussen-zwart-hoes-grijs, €104,99): Het Bline leeskussen in zwart met een extra hoes in grijs. Zo ligt er altijd een schone hoes klaar, en wissel je van kleur wanneer je wilt.   Leeskussen Bline Zwart: 65 x 50 x 45 cm, 3,8 kg traagschuim, katoenen hoes met zijvak  Losse hoes Grijs: katoen 400 TC, onzichtbare rits, wasbaar op 30 °C   Los kost dit €114,98. Als set betaal je €104,99: in de winkelwagen zie je beide producten en gaat de korting van €9,99 er automatisch af.
+- **Twee leeskussens Wit** (set-twee-leeskussens-wit, €129,99): Twee Bline leeskussens in wit. Voor allebei een eigen kussen in bed, of één voor in bed en één voor op de bank.   2 x Leeskussen Bline Wit: 65 x 50 x 45 cm, 3,8 kg traagschuim  Katoenen hoes met zijvak en onzichtbare rits, wasbaar op 30 °C   Los kost dit €139,98. Als set betaal je €129,99: in de winkelwagen zie je twee kussens en gaat de korting van €9,99 er automatisch af.
+- **Twee leeskussens Beige** (set-twee-leeskussens-beige, €149,99): Twee Bline leeskussens in beige. Voor allebei een eigen kussen in bed, of één voor in bed en één voor op de bank.   2 x Leeskussen Bline Beige: 65 x 50 x 45 cm, 3,8 kg traagschuim  Katoenen hoes met zijvak en onzichtbare rits, wasbaar op 30 °C   Los kost dit €159,98. Als set betaal je €149,99: in de winkelwagen zie je twee kussens en gaat de korting van €9,99 er automatisch af.
+- **Twee leeskussens Zwart** (set-twee-leeskussens-zwart, €149,99): Twee Bline leeskussens in zwart. Voor allebei een eigen kussen in bed, of één voor in bed en één voor op de bank.   2 x Leeskussen Bline Zwart: 65 x 50 x 45 cm, 3,8 kg traagschuim  Katoenen hoes met zijvak en onzichtbare rits, wasbaar op 30 °C   Los kost dit €159,98. Als set betaal je €149,99: in de winkelwagen zie je twee kussens en gaat de korting van €9,99 er automatisch af.
+
+### Vaste regels in snippets
+
+- Maak het compleet: "Maak het compleet" / "Extra hoes {kleur}" / "{prijs} {prijs min €9,99} met dit kussen" / knop "+ Erbij".
+- Set: "In deze set" / "Los {som}. Als set betaal je {prijs}: de €9,99 korting gaat er in de winkelwagen automatisch af." / knop "Set in winkelwagen" of "Tijdelijk uitverkocht".
+- Productkaart van een set: "Los {som}, als set {verschil} minder".
+- Uitklapblok Materialen: "Hoes van katoen 400 TC, met onzichtbare rits" / "Vulling: 3,8 kg traagschuim" (niet bij hoezen) / "Wasbaar op 30 °C, niet in de droger" / "Alles over de materialen".
+- Vertrouwensband: "Gratis verzending in NL en BE" / levertijd uit de thema-instelling / "Hoes wasbaar op 30 °C" / "14 dagen bedenktijd".
+- Voettekst: "Als eerste weten wanneer Bline Sleep er is" (Shopify-klantformulier, aanmelding voor marketing).

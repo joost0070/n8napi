@@ -888,3 +888,118 @@ Opdracht van Joost (05-10, via de hoofdsessie): geen naam noemen op de site. Toe
 **Niet gedaan, bewust:** wachtwoord blijft aan; geen prijzen, mails, betaalinstellingen, apps of beelden.
 
 **Vervalt uit sessie 9, Wacht op Joost:** punt 1 (foto) en punt 4 (achternaam).
+
+## 5 oktober 2026, sessie 11: shop v2, van productlijst naar merkwereld
+
+Opdracht: `prompts/bline-shop-v2-merkwereld.md` (Joost 05-10: "Hooijer als bodem, de lat ligt veel hoger", "niet alleen de leeskussens", "het mag niet opvallen dat er maar weinig producten zijn", "geen theme kopen", "geen naam noemen", "jij kan zelf ook gave beelden bewerken").
+
+Toegang: de vaste winkelnaam die Joost doorgaf (niet de waarde in `BLINE_SHOPIFY_STORE`), sleutel via client credentials met `BLINE_SHOPIFY_CLIENT_ID` en `BLINE_SHOPIFY_CLIENT_SECRET`. Alleen de namen gecontroleerd. Geen SHOPIFY_*- of BOL_*-variabelen. Admin GraphQL, versie 2026-10. Vooraf een kopie van alle 370 themabestanden van Dawn (lokaal, map `backup_voor_s11`) en van menu's, collecties en producten (`data.json`).
+
+Gelezen vooraf: de opdracht, het beelden logboek, dit logboek (sessies 6 tot 10), het beeld- en vertrouwensplan, de kritische review v1, `look_and_feel_env_stores.md` en de benchmarks in `env_screens/` (Yumeko).
+
+### 1. Beelden
+
+38 bewerkte beelden gemaakt uit de goedgekeurde originelen (vooral de echte fotoshoot en de video) en geüpload. Bron, bewerking en controle per beeld: `reports/Bline beelden logboek.md`, sessie 11.
+
+### 2. Producten (prijzen zoals afgesproken, bestaande prijzen niet gewijzigd)
+
+Acht sets als eigen product, sjabloon `product.bundel`, kanaal Online Store, actief:
+
+| Set | Prijs | Los | Onderdelen |
+|---|---|---|---|
+| Leeskussen Wit + extra hoes Beige | €94,99 | €104,98 | leeskussen-wit, hoes-beige |
+| Leeskussen Beige + extra hoes Wit | €99,99 | €109,98 | leeskussen-beige, hoes-wit |
+| Leeskussen Blauw + extra hoes Grijs | €104,99 | €114,98 | leeskussen-blauw, hoes-grijs |
+| Leeskussen Grijs + extra hoes Blauw | €104,99 | €114,98 | leeskussen-grijs, hoes-blauw |
+| Leeskussen Zwart + extra hoes Grijs | €104,99 | €114,98 | leeskussen-zwart, hoes-grijs |
+| Twee leeskussens Wit | €129,99 | €139,98 | 2 x leeskussen-wit |
+| Twee leeskussens Beige | €149,99 | €159,98 | 2 x leeskussen-beige |
+| Twee leeskussens Zwart | €149,99 | €159,98 | 2 x leeskussen-zwart |
+
+- **Hoe de korting rekent**: de knop "Set in winkelwagen" legt de losse producten in de winkelwagen (via `/cart/add.js`), niet het setproduct zelf. Daardoor kloppen voorraad en ChannelDock, en rekent de bestaande automatische korting van €9,99 zoals altijd. De setprijs is precies losse prijs min €9,99. Gecontroleerd met `draftOrderCalculate` (alleen berekend, geen order): alle 8 sets komen uit op de setprijs.
+- Het setproduct zelf heeft geen voorraadbeheer (SKU `BLINE-SET-...`) en geen knop. Kan iemand het toch direct bestellen (alleen met een zelfgemaakt verzoek), dan is het een order zonder voorraad: ChannelDock niet laten koppelen aan de SKU's `BLINE-SET-*`.
+- **Geen doorgestreepte van-prijs**: eerst gezet, daarna weggehaald. Een van-voor-prijs op een nieuw product kan in strijd zijn met de regels voor prijsverlaging. De kaart toont nu "Los €114,98, als set €9,99 minder", dat zijn de echte losse prijzen.
+- Metafield-definitie `bline.set_onderdelen` (lijst met producten). De sets zitten niet in de collecties Leeskussens en Hoezen, zodat de voorwaarden van de kortingen niet veranderen.
+- **Cadeaubon niet aangemaakt.** Shopify weigert: "Gift card products can only be created after they have been activated". Cadeaubonnen moeten eerst in de admin aan (zie Wacht op Joost). Het beeld `bline-cadeaubon-01.jpg` staat klaar.
+
+### 3. Collecties (nooit minder dan 4 kaarten, geen tellers)
+
+| Collectie | Kaarten | Banner |
+|---|---|---|
+| Leeskussens (bestaand, lidmaatschap ongewijzigd) | 5 kussens + 7 sets als extra kaart = 12 | kleurenstrip |
+| Hoezen (bestaand, lidmaatschap ongewijzigd) | 5 hoezen + 5 sets = 10 | hoezenstrip |
+| Bestsellers | 8 | lezen 16:9 |
+| Cadeau | 8 | kussen met boek |
+| Sets en bundels | 8 | werken 16:9 |
+| Lezen in bed | 8 | lezen 16:9 |
+| Ontspannen op de bank | 8 | bank 16:9 |
+| Hoezen en sets | 10 | hoezenstrip |
+| Wit, Beige, Grijs | 5 | sfeertegel in die kleur |
+| Blauw, Zwart | 4 | sfeertegel in die kleur |
+
+- Extra kaarten: metafield `bline.extra_kaarten` op de collectie; het raster toont die sets na de echte producten. Zo blijven de kortingscollecties zuiver.
+- Sjabloon `collection` (4 kolommen) en `collection.vijf` (5 kolommen, voor Hoezen, Hoezen en sets, Wit, Beige, Grijs), zodat rijen vol zijn.
+- "Nieuw" niet gemaakt: die zou precies gelijk zijn aan Sets en bundels.
+
+### 4. Menu
+
+Hoofdmenu: **Leeskussens** (megamenu: Shop op moment: Lezen in bed, Ontspannen op de bank, Cadeau, Bestsellers / Shop op kleur: Wit, Beige, Blauw, Grijs, Zwart / Sets en hoezen / Hulp bij kiezen: Kleurengids, Maatgids, Materialen, Vragen; rechts twee sfeerfoto's naar Lezen in bed en Materialen) | **Hoezen** | **Lezen in bed** | **Materialen** | **Over Bline**. Mobiel: bovenin het menu zes beeldtegels (Lezen in bed, Ontspannen op de bank, Cadeau, Hoezen en sets, Inspiratie, Materialen), daaronder de gewone lijst. Voettekst Klantenservice: Kleurengids, Maatgids, Materialen en Bline Sleep erbij.
+
+### 5. Pagina's (nieuw, gepubliceerd achter het wachtwoord, eigen sjabloon, eigen SEO-titel en metabeschrijving)
+
+| Pagina | Wat erop staat | Eindigt met |
+|---|---|---|
+| Materialen | paginakop, hoes (katoen 400 TC, macro), vulling (3,8 kg traagschuim), rits en zijvak (beeld uit de video), wassen (3 tegels) | slider leeskussens, vertrouwensband |
+| Lezen in bed | paginakop 21:9, lookbook "Rechtop met een boek" (9 foto's, één groot), video met uitleg, lookbook "Ook om te werken en te kijken" (6 foto's); elke foto linkt naar het kussen in die kleur | slider Bestsellers |
+| Kleurengids | kleurenstrip, vijf kleuren naast elkaar met passend beddengoed (algemeen, geen merken), wisselen met een tweede hoes | slider leeskussens |
+| Maatgids | maattekening, tekening op schaal op 140, 160 en 180 cm (37,5 / 47,5 / 57,5 cm vrij), tips | slider leeskussens |
+| Bline Sleep | wat er komt (zijden kussensloop, beddengoed van lyocell, dekbed), zonder data of prijzen, aanmelding | slider leeskussens |
+
+Geen claims zonder bewijs: geen OEKO-TEX, geen gezondheidsbeloftes.
+
+### 6. Thema (Dawn, gepubliceerd)
+
+**Homepage** (volgorde uit de opdracht): balk, hero (echte foto, "Rechtop lezen in bed", één zin, "Shop leeskussens" en "Bekijk de kleuren", "4,5 uit 5 op bol.com"), vertrouwensband (4 iconen), Kies je kleur (5 sfeertegels, bij hover het packshot, kleurnaam en prijs; mobiel een veegrij), Het kussen dat blijft staan (de echte video, automatisch zonder geluid, met drie punten), Gemaakt om in te lezen (zijvak, hoes met rits, label), vergelijking losse kussens en Bline (tabel, er is geen goedgekeurde foto van losse kussens), slider Sets met €9,99 korting, reviewband in zand (groot 4,5, sterren, verdeling 9/3/0/1/0, "op basis van 13 reviews op bol.com"), lookbook Lezen in bed (6 foto's met shop the look), Materialen (3 tegels in zand), Over Bline (zonder persoon en zonder naam), Verhalen (3 blogkaarten met foto), Vragen (5), voettekst met de aanmelding "Als eerste weten wanneer Bline Sleep er is" (inline, geen pop-up).
+
+**Productpagina leeskussen**: onder de knop "Maak het compleet" (de hoes in de kleur van de upsell, €9,99 korting, knop "+ Erbij"); de losse bundelregel is daarmee vervangen. Uitklapblok Materialen met kleine stoffoto. Daaronder: In gebruik (groot sfeerbeeld van deze kleur met twee zinnen), Goed om te weten, slider sets, reviews (Judge.me), Gemaakt door Bline uit Borne, meelopende knop. Galerij Wit: packshot, video, twee echte foto's, zijvak, stof, ...
+
+**Hoes**: na het product een slider met de vijf kussens. **Set**: inhoud met foto's en losse prijzen, uitleg van de korting, knop "Set in winkelwagen", geen meelopende knop.
+
+**Collectiepagina**: banner met sfeerfoto en één zin (zand), vertrouwensband, raster met tweede beeld bij hover, kleurbolletjes onder elke kussen- en hoeskaart (links naar die kleur), setkaarten met "Los ..., als set €9,99 minder", ingangen "Waar lees jij?" (4 beeldtegels), blok Materialen.
+
+**Vormgeving**: wit, inktblauw, Nunito Sans, rechte hoeken; nieuw kleurschema `scheme-7` (zand #CDBFA9 op 20% = #F5F2EE) voor hero, reviewband, materialen en afwisselende banden. Koppen in zinsvorm met een klein label in hoofdletters erboven.
+
+Nieuwe bestanden: `assets/bline-v2.css`, `assets/bline-v2.js`, secties `bline-hero`, `bline-vertrouwen`, `bline-kleurtegels`, `bline-beeld-tekst`, `bline-tegels`, `bline-vergelijk`, `bline-reviewband`, `bline-lookbook`, `bline-paginakop`, `bline-in-gebruik`, snippets `bline-sterren`, `bline-compleet`, `bline-set-inhoud`, `bline-kaart-extra`, `bline-mega-beelden`, `bline-menu-tegels`, sjablonen `product.bundel`, `collection.vijf`, `page.materialen`, `page.lezen-in-bed`, `page.kleurengids`, `page.maatgids`, `page.bline-sleep`. Aangepast: `layout/theme.liquid` (css en js erbij), `config/settings_data.json` (scheme-7), `sections/header.liquid` (instellingen voor megamenu-beelden en menutegels), `header-group.json` (megamenu aan), `footer-group.json` (aanmelding aan), `main-collection-product-grid.liquid` (extra kaarten), `snippets/card-product.liquid`, `header-mega-menu.liquid`, `header-drawer.liquid`, `bline-uitklap.liquid`, sjablonen `index`, `product`, `product.hoes`, `collection`.
+
+**Controle met de Admin API**: elke `themeFilesUpsert` gaf nul fouten. Daarna het hele thema (395 bestanden) opnieuw opgehaald en elk verstuurd bestand vergeleken met wat ik verstuurde (JSON inhoudelijk): alles gelijk.
+
+### 7. Rondes en testpagina-screenshots (benadering, werkwijze sessie 6 tot 9)
+
+Lokaal gerenderd met de echte Liquid, CSS en JavaScript van het thema en de echte data (producten, sets, collecties, menu, pagina's, blog, Files), Chromium op 390 x 844 (2x) en 1366 x 800. Scripts in `mockups/blinesleep/testpagina/v2/` (`render2.js` kan nu video, sets, collectie-metafields, `images[...]` en de nieuwe pagina's). Screenshots in `mockups/blinesleep/screenshots/shop/v2/ronde1/` en `ronde3/`, met `metingen.json` en drie vergelijkingsbeelden naast Yumeko en de ENV-stores.
+
+- Ronde 1: alles gebouwd. Gevonden: veegrij op mobiel begon tegen de rand, kleurtegels te breed op mobiel (1,3 zichtbaar), labels in het lookbook liepen over twee regels, "VEELGESTELDE VRAGEN" nog in oude stijl en smal gecentreerd, reviewblok (nog leeg) te hoog op de productpagina.
+- Ronde 2: opgelost; megamenu en mobiel menu apart gefotografeerd: de beelden in het megamenu waren te hoog (hoogte-attribuut won), opgelost. Maattekening en bedtekening werden in een vierkant afgesneden: nieuwe instelling "Beeld helemaal tonen".
+- Ronde 3: dubbel kruimelpad op inhoudspagina's weg, dubbele aanmelding op Bline Sleep weg (alleen het grote formulier), labels in het lookbook 14 px.
+
+Gemeten in de laatste ronde op alle 12 pagina's, mobiel en desktop: 0 kapotte beelden, geen "Translation missing", nergens breder dan het scherm. Tekst onder 14 px alleen in de kleine labels boven koppen op desktop (13 px hoofdletters, zoals de balk), de teller van Dawn-sliders (10 tot 12 px) en verborgen tekst voor schermlezers.
+
+**De 12 reviewpunten**: allemaal nog "ja" (titel 24/28 px en prijs 24 px vet, ondertitel, "Incl. btw", "Kleur: Beige", rechte hoeken ook op alle nieuwe tegels, bijna zwarte tekst, rustige balk, menu uitgeschreven op desktop, betaaliconen bij de knop, knoppen en kleurvlakken 4 px). Punt 10 (witruimte): tussen de nieuwe banden staat meer ruimte (mobiel 40, desktop 80 px), bewust, omdat de banden nu afwisselend wit en zand zijn en Yumeko dezelfde maat gebruikt. Punt 12: homepage volgt nu de opdracht in plaats van het korte rijtje uit sessie 9.
+
+**Naast Yumeko**: zelfde opbouw (hero met belofte en knop, beeldtegels in plaats van packshots, band met groot cijfer in gedempte kleur, materialen, verhalen met foto). Verschil: Yumeko heeft een volle foto met de kop erop; Bline heeft tekst naast de foto, zodat het gezicht en het zijvak vrij blijven. Er is nog geen "Gekozen door" (geen pers) en geen reviewcitaten (de bol-teksten nemen we niet over).
+
+### Stijlcontrole
+
+Script `stijl.py` over alle sjablonen, de nieuwe secties en snippets, de sets, collecties en pagina's: schrapwoorden en AI-zinnen uit de gids, gezondheidswoorden (ook "rug"), gedachtestreepjes (lang, half, los), "u" en "uw", uitroeptekens, de naam. Gevonden en aangepast: "steun in je rug" (collectie Ontspannen op de bank) en de kop "Niet alleen voor boeken". Overige treffers zijn vals ("beste" in "bestelling") of bestaande teksten. Nieuwe teksten in `reports/bijlagen/Bline shop teksten.md`.
+
+### Niet gedaan, bewust
+
+Wachtwoord blijft aan (gecontroleerd: de winkel stuurt door naar `/password`). Bestaande productprijzen niet gewijzigd. Geen mails, geen betaalinstellingen, geen nieuwe apps, geen gegenereerde of niet-goedgekeurde beelden, geen persoonsnamen, niets uit Files verwijderd.
+
+### Wacht op Joost
+
+1. **Cadeaubonnen aanzetten** (Instellingen > Cadeaubonnen, of Producten > Cadeaubonnen > aan de slag). Daarna maak ik de cadeaubon (€25, €50, €75, €100) met het klaargezette beeld en zet ik hem in Cadeau en Sets.
+2. **ChannelDock**: de SKU's `BLINE-SET-*` niet koppelen; een set komt altijd als losse producten in de order.
+3. **Feed (Google en Meta)**: beslissen of de 8 sets in de feed mogen. Ze hebben geen EAN; mijn advies is ze uit de feed te laten tot er een bundel-EAN is.
+4. Een echte foto van **losse kussens in bed** (voor de vergelijking) en een **sfeerfoto op de bank met het echte witte kussen** maken het verhaal sterker.
+5. Judge.me: zodra er reviews zijn, twee citaten in de reviewband.
+6. De echte test op een telefoon zodra het wachtwoord eraf mag (megamenu, video, sets in de winkelwagen).

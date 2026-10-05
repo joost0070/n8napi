@@ -192,3 +192,75 @@ Reserve (goed, nu niet op een product): wit 4 (`wit-packshot-02`, `wit-gebruik-0
 ## Akkoord Joost 05-10: opruimen in Files
 
 Joost gaf op 05-10 akkoord ("Ja") om de 28 dubbele uploads en de afgekeurde bestanden uit Shopify Files te verwijderen. Uitvoeren nadat sessie 14 (v2) klaar is, zodat er niets verdwijnt dat v2 gebruikt. Voor verwijderen per bestand controleren: niet gekoppeld aan een product, niet gebruikt in het thema (settings_data, templates), niet in pagina's of artikelen. Video en echte DSC-foto's nooit verwijderen.
+
+
+## 5 oktober 2026, sessie 11: beelden bewerkt voor shop v2
+
+Opdracht: `prompts/bline-shop-v2-merkwereld.md`, hoofdstuk "Beelden bewerken mag". Alleen goedgekeurde originelen uit Shopify Files (de 74 bestanden zonder `-niet` of `-afgekeurd`, plus de video). Lokaal bewerkt met Python (Pillow, numpy) en ffmpeg voor één stilstaand beeld uit de video. Geen generatieve AI, geen nieuwe scènes, geen afgekeurde of niet-gebruikte beelden.
+
+### Werkwijze
+
+- Bronnen eerst op volle grootte bekeken. De echte fotoshoot (`wit-gebruik-01`, `-02`, `-03`, `wit-packshot-01`, 6000 x 4000) is de basis voor hero, banners en macro's. De video (1080 x 1080) is per 0,4 s doorgelopen en op scherpte gemeten; het beeld op 22,0 s (zijvak, telefoon, bies en label) is gekozen.
+- Bewerkingen: uitsnijden, verkleinen (Lanczos), licht verscherpen (onscherp masker), helderheid gelijktrekken binnen de set kleurtegels (alleen helderheid, factor tussen 0,94 en 1,06, gemeten op de muur; de stofkleur zelf is niet verschoven), naast elkaar zetten met 12 px wit, en voor de maatgids een eigen tekening op schaal. Op de cadeaubon staat een witte kaart met het logo en tekst.
+- Eén poging is weggegooid: een 21:9-banner waarbij links een effen vlak in de muurkleur werd bijgeplakt. Op ware grootte zag de overgang er grijs en onecht uit. Vervangen door een zuivere uitsnede; de rustige ruimte voor de kop komt nu uit de opbouw van de pagina (tekst naast de foto), niet uit het beeld.
+- Vier vulling-uitsneden in beige, blauw, grijs en zwart zijn gemaakt maar niet geüpload: ze waren bijna gelijk aan die in wit. Ook een tweede zijvak-uitsnede (haar aan de rand) is niet gebruikt.
+- Elk beeld zelf gecontroleerd op contactbladen en op ware grootte: vorm van het kussen, kleur naast het origineel, naden en bies, label, randen van uitsneden, gezichten en handen niet afgesneden. Gecorrigeerd na controle: de maattekening (bed van 180 cm viel buiten beeld, decimaalpunt werd komma) en de cadeaubon (kussen was bovenaan afgesneden).
+- Geüpload met `stagedUploadsCreate` en `fileCreate`, bestandsnaam volgens de afspraak (`bline-<soort>-<onderwerp>-<nr>.jpg`), alt-tekst in gewoon Nederlands. Alle 38 hebben status READY en behouden hun naam. Kopieën in `mockups/blinesleep/beelden_bewerkt/`, script in `mockups/blinesleep/testpagina/v2/edit.py`.
+
+### Bewerkte beelden (38)
+
+| Nr | Nieuw bestand | Bron | Bewerking | Pixels | Gebruikt op | Controle |
+|---|---|---|---|---|---|---|
+| 1 | `bline-banner-lezen-21x9.jpg` | bline-leeskussen-wit-gebruik-02.jpg (echte foto) | uitsnede 21:9 over de volle breedte, 3200 x 1371, licht verscherpt | 3200 x 1371 | paginakop Lezen in bed (desktop) | ok |
+| 2 | `bline-banner-lezen-4x3.jpg` | bline-leeskussen-wit-gebruik-02.jpg (echte foto) | uitsnede 4:3 met kussen, zijvak, gezicht en boek, 2400 x 1800, licht verscherpt | 2400 x 1800 | hero homepage (desktop) | ok |
+| 3 | `bline-banner-lezen-16x9.jpg` | bline-leeskussen-wit-gebruik-02.jpg (echte foto) | uitsnede 16:9, verkleind naar 2400 x 1350, licht verscherpt | 2400 x 1350 | banner collecties Bestsellers en Lezen in bed | ok |
+| 4 | `bline-banner-lezen-4x5.jpg` | bline-leeskussen-wit-gebruik-02.jpg (echte foto) | uitsnede 4:5 rond gezicht, boek en kussen, 1600 x 2000, licht verscherpt | 1600 x 2000 | hero homepage en Lezen in bed (mobiel), megamenu, menutegel, ingang collectie | ok |
+| 5 | `bline-banner-werken-16x9.jpg` | bline-leeskussen-wit-gebruik-01.jpg (echte foto) | uitsnede 16:9, 2400 x 1350, licht verscherpt | 2400 x 1350 | banner collectie Sets en bundels | ok |
+| 6 | `bline-banner-werken-4x5.jpg` | bline-leeskussen-wit-gebruik-01.jpg (echte foto) | uitsnede 4:5, 1600 x 2000 | 1600 x 2000 | ingang Werken in bed (collectie), reserve voor de video | ok |
+| 7 | `bline-sfeer-wit-4x5.jpg` | bline-leeskussen-wit-gebruik-03.jpg (echte foto) | uitsnede 4:5, 1600 x 2000 | 1600 x 2000 | reserve | ok |
+| 8 | `bline-banner-kussen-16x9.jpg` | bline-leeskussen-wit-packshot-01.jpg (echte foto) | uitsnede 16:9, 2400 x 1350 | 2400 x 1350 | banner Cadeau, paginakop Materialen, Maatgids en Bline Sleep | ok |
+| 9 | `bline-banner-kussen-4x5.jpg` | bline-leeskussen-wit-packshot-01.jpg (echte foto) | uitsnede 4:5, 1600 x 2000 | 1600 x 2000 | Over Bline (home), ingang Cadeau, menutegel Cadeau, mobiel Maatgids en Bline Sleep | ok |
+| 10 | `bline-detail-zijvak-01.jpg` | bline-leeskussen-wit-gebruik-02.jpg (echte foto) | uitsnede van het zijvak met telefoon en het label, 1600 x 1422, verscherpt | 1600 x 1422 | detailtegel home, galerij Leeskussen Wit, blok Materialen op collectie | ok |
+| 11 | `bline-detail-stof-01.jpg` | bline-leeskussen-wit-packshot-01.jpg (echte foto) | vierkante uitsnede van stof, bies en rits, 1600 x 1600, verscherpt | 1600 x 1600 | detailtegel home, Materialen, galerij Wit en hoes Wit, uitklapblok Materialen, megamenu, menutegel | ok |
+| 12 | `bline-detail-label-01.jpg` | bline-leeskussen-wit-07.jpg (bol-foto) | licht verscherpt, verder gelijk | 1200 x 1200 | detailtegel home, galerij hoes Wit | ok |
+| 13 | `bline-detail-zijvak-03.jpg` | video leeskussen.mp4 (echte video, beeld op 22,0 s) | stilstaand beeld uit de video, 1080 x 1080, verscherpt | 1080 x 1080 | Materialen (rits en zijvak) | ok |
+| 14 | `bline-detail-vulling-wit.jpg` | bline-leeskussen-wit-06.jpg (bol-foto) | vierkante uitsnede van de open rits met traagschuim, 1200 x 1200 | 1200 x 1200 | materialentegel home, Materialen (vulling) | ok |
+| 15 | `bline-tegel-wit-sfeer.jpg` | bline-leeskussen-wit-gebruik-02.jpg (echte foto) | uitsnede 4:5 in dezelfde kader voor alle vijf kleuren, 1088 x 1360, helderheid x0.99 gelijkgetrokken op de muur, licht verscherpt | 1088 x 1360 | kleurtegel homepage, Kleurengids, kleurcollectie, tweede beeld setkaart | ok |
+| 16 | `bline-tegel-beige-sfeer.jpg` | bline-leeskussen-beige-gebruik-01.png | uitsnede 4:5 in dezelfde kader voor alle vijf kleuren, 1088 x 1360, helderheid x1.00 gelijkgetrokken op de muur, licht verscherpt | 1088 x 1360 | kleurtegel homepage, Kleurengids, kleurcollectie, tweede beeld setkaart | ok |
+| 17 | `bline-tegel-blauw-sfeer.jpg` | bline-leeskussen-blauw-gebruik-01.png | uitsnede 4:5 in dezelfde kader voor alle vijf kleuren, 1088 x 1360, helderheid x1.00 gelijkgetrokken op de muur, licht verscherpt | 1088 x 1360 | kleurtegel homepage, Kleurengids, kleurcollectie, tweede beeld setkaart | ok |
+| 18 | `bline-tegel-grijs-sfeer.jpg` | bline-leeskussen-grijs-gebruik-01.png | uitsnede 4:5 in dezelfde kader voor alle vijf kleuren, 1088 x 1360, helderheid x1.00 gelijkgetrokken op de muur, licht verscherpt | 1088 x 1360 | kleurtegel homepage, Kleurengids, kleurcollectie, tweede beeld setkaart | ok |
+| 19 | `bline-tegel-zwart-sfeer.jpg` | bline-leeskussen-zwart-gebruik-01.png | uitsnede 4:5 in dezelfde kader voor alle vijf kleuren, 1088 x 1360, helderheid x1.00 gelijkgetrokken op de muur, licht verscherpt | 1088 x 1360 | kleurtegel homepage, Kleurengids, kleurcollectie, tweede beeld setkaart | ok |
+| 20 | `bline-tegel-wit-packshot.jpg` | bline-leeskussen-wit-01.jpg (bol-beeld) | uitsnede 4:5 uit het midden, 1088 x 1360 | 1088 x 1360 | kleurtegel homepage (bij hover), setkaart | ok |
+| 21 | `bline-tegel-beige-packshot.jpg` | bline-leeskussen-beige-01.jpg (bol-beeld) | uitsnede 4:5 uit het midden, 1088 x 1360 | 1088 x 1360 | kleurtegel homepage (bij hover), setkaart | ok |
+| 22 | `bline-tegel-blauw-packshot.jpg` | bline-leeskussen-blauw-01.jpg (bol-beeld) | uitsnede 4:5 uit het midden, 1088 x 1360 | 1088 x 1360 | kleurtegel homepage (bij hover), setkaart | ok |
+| 23 | `bline-tegel-grijs-packshot.jpg` | bline-leeskussen-grijs-01.jpg (bol-beeld) | uitsnede 4:5 uit het midden, 1088 x 1360 | 1088 x 1360 | kleurtegel homepage (bij hover), setkaart | ok |
+| 24 | `bline-tegel-zwart-packshot.jpg` | bline-leeskussen-zwart-01.jpg (bol-beeld) | uitsnede 4:5 uit het midden, 1088 x 1360 | 1088 x 1360 | kleurtegel homepage (bij hover), setkaart | ok |
+| 25 | `bline-kleuren-strip-01.jpg` | bline-leeskussen-wit-01.jpg, -beige-01, -blauw-01, -grijs-01, -zwart-01 (bol-beelden, zelfde scène) | vijf smalle uitsneden naast elkaar met 12 px wit ertussen, 3000 x 1481 | 3000 x 1481 | banner collectie Leeskussens, paginakop Kleurengids | ok |
+| 26 | `bline-hoezen-strip-01.jpg` | bline-hoes-<kleur>-packshot-01.png (vijf kleuren) | vijf uitsneden uit het midden naast elkaar met 12 px wit ertussen, 3448 x 1361 | 3448 x 1361 | banner Hoezen en Hoezen en sets, menutegel | ok |
+| 27 | `bline-banner-bank-16x9.jpg` | bline-leeskussen-wit-03.jpg (bol-beeld) | uitsnede 16:9, 2048 x 1152 | 2048 x 1152 | banner Ontspannen op de bank | ok |
+| 28 | `bline-sfeer-bank-zwart-4x5.jpg` | bline-leeskussen-zwart-02.jpg (bol-beeld) | uitsnede 4:5, 1600 x 2000 | 1600 x 2000 | ingang en menutegel Ontspannen op de bank | ok |
+| 29 | `bline-set-wit-hoes-beige.jpg` | bline-leeskussen-wit-01.jpg en bline-hoes-beige-packshot-01.png | twee helften naast elkaar op 2048 x 2048 met 12 px wit ertussen | 2048 x 2048 | hoofdbeeld van de set | ok |
+| 30 | `bline-set-beige-hoes-wit.jpg` | bline-leeskussen-beige-01.jpg en bline-hoes-wit-packshot-01.png | twee helften naast elkaar op 2048 x 2048 met 12 px wit ertussen | 2048 x 2048 | hoofdbeeld van de set | ok |
+| 31 | `bline-set-blauw-hoes-grijs.jpg` | bline-leeskussen-blauw-01.jpg en bline-hoes-grijs-packshot-01.png | twee helften naast elkaar op 2048 x 2048 met 12 px wit ertussen | 2048 x 2048 | hoofdbeeld van de set | ok |
+| 32 | `bline-set-grijs-hoes-blauw.jpg` | bline-leeskussen-grijs-01.jpg en bline-hoes-blauw-packshot-01.png | twee helften naast elkaar op 2048 x 2048 met 12 px wit ertussen | 2048 x 2048 | hoofdbeeld van de set | ok |
+| 33 | `bline-set-zwart-hoes-grijs.jpg` | bline-leeskussen-zwart-01.jpg en bline-hoes-grijs-packshot-01.png | twee helften naast elkaar op 2048 x 2048 met 12 px wit ertussen | 2048 x 2048 | hoofdbeeld van de set | ok |
+| 34 | `bline-set-twee-wit.jpg` | bline-leeskussen-wit-01.jpg en bline-tegel-wit-sfeer.jpg | twee helften naast elkaar op 2048 x 2048 met 12 px wit ertussen | 2048 x 2048 | hoofdbeeld van de set | ok |
+| 35 | `bline-set-twee-beige.jpg` | bline-leeskussen-beige-01.jpg en bline-tegel-beige-sfeer.jpg | twee helften naast elkaar op 2048 x 2048 met 12 px wit ertussen | 2048 x 2048 | hoofdbeeld van de set | ok |
+| 36 | `bline-set-twee-zwart.jpg` | bline-leeskussen-zwart-01.jpg en bline-tegel-zwart-sfeer.jpg | twee helften naast elkaar op 2048 x 2048 met 12 px wit ertussen | 2048 x 2048 | hoofdbeeld van de set | ok |
+| 37 | `bline-cadeaubon-01.jpg` | bline-leeskussen-wit-packshot-01.jpg (echte foto) en bline-logo.png | vierkante uitsnede over de volle hoogte, 2048 x 2048, met een witte kaart (logo, CADEAUBON en de bedragen) eroverheen | 2048 x 2048 | klaar voor de cadeaubon (nog niet in gebruik, zie Wacht op Joost) | ok |
+| 38 | `bline-maatgids-bedden-01.jpg` | eigen tekening (geen foto), maten uit de productgegevens | bovenaanzicht van drie bedden (140, 160 en 180 x 200 cm) met het kussen van 65 x 45 cm op schaal, 2400 x 1500 | 2400 x 1260 | Maatgids, galerij van de vijf kussens | ok |
+
+### Bestaande goedgekeurde beelden die nu ook op inhoudspagina's staan
+
+Lookbook (homepage en Lezen in bed): `wit-gebruik-01` en `-03` (echte foto's), `wit-02`, `-03`, `-04`, `blauw-03`, `-05`, `-06`, `beige-02`, `-03`, `grijs-02`, `-03`, `-05`, `zwart-02`, `-03`, `-05` (bol-beelden). Materialen: `bline-hoes-beige-packshot-01.png`, `bline-leeskussen-blauw-04.jpg`. Kleurengids: `bline-leeskussen-wit-gebruik-04.png`. Maatgids: `bline-leeskussen-maattekening.jpg`. Homepage: de video `video leeskussen.mp4` (automatisch, zonder geluid, in een lus).
+
+### Nieuw op de producten
+
+| Product | Toegevoegd |
+|---|---|
+| Leeskussen Wit | `bline-detail-zijvak-01` en `bline-detail-stof-01` op plek 5 en 6 (na packshot, video en twee echte foto's), `bline-maatgids-bedden-01` na de maattekening |
+| Leeskussen Beige, Blauw, Grijs, Zwart | `bline-maatgids-bedden-01` na de maattekening |
+| Losse hoes Wit | `bline-detail-stof-01` en `bline-detail-label-01` op plek 2 en 3 |
+| 8 sets (nieuw) | setcollage, sfeertegel van het kussen, packshot van de hoes of het kussen |
+
+Niets uit Files verwijderd. De witte macro's staan alleen bij Wit; bij de andere kleuren zou een wit detail verwarren.
