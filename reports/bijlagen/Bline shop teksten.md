@@ -433,3 +433,13 @@ Je pakket is onderweg. Met de track & trace hieronder zie je wanneer de bezorger
 **Terugbetaling.** Onderwerp: We hebben je geld teruggestort
 
 We hebben {{ amount }} teruggestort, op dezelfde manier als je betaalde. Het kan een paar werkdagen duren voor je het op je rekening ziet. Vragen? Mail naar mail@blinesleep.nl.
+
+## Bundels
+
+**Extra hoes: €9,99 korting**
+
+Neem er een tweede hoes bij in een andere kleur en je krijgt €9,99 korting op die hoes, zodat je altijd een frisse hoes klaarliggen hebt.
+
+**Twee leeskussens: €9,99 korting**
+
+Wil je partner er ook een? Bestel twee leeskussens en je krijgt €9,99 korting op je bestelling.
