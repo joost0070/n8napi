@@ -30,7 +30,7 @@ Technisch: vierkant 1:1 of staand 4:5, minimaal 2048 px breed, JPG, geen tekst o
 |---|---|---|---|
 | 1 | **"Ook te koop bij bol.com"** met de score: "4,5 uit 5 op bol.com (13 reviews)" | Nederlanders vertrouwen bol; bewijst dat het product al verkocht en gewaardeerd wordt | Claude |
 | 2 | **Over Bline met een gezicht**: foto van Joost (of het team), twee alinea's: wie, waar (Borne), waarom dit kussen | een mens achter het merk is het sterkste signaal tegen "is dit een dropshipper?" | Joost: één foto; Claude: tekst |
-| 3 | **Contact zichtbaar**: telefoon of WhatsApp, mail, KvK en adres in de voettekst | wettelijk nodig en het wekt vertrouwen | Joost: nummer bevestigen |
+| 3 | **Contact zichtbaar**: telefoon 06 38 66 28 33 (akkoord Joost 05-10, zelfde nummer als in de bol-gegevens), mail, KvK en adres in de voettekst, op Contact en in de contactgegevens (beleid) | wettelijk nodig en het wekt vertrouwen | Claude |
 | 4 | **Eigen reviews** via Judge.me vanaf de eerste bestelling, met foto | na 5 tot 10 reviews met foto valt de grootste drempel weg | automatisch na live |
 | 5 | **Echte foto's van klanten en creators** (Collabs, met toestemming) | echte mensen in echte slaapkamers | Collabs |
 | 6 | **Betaal veilig**: iDEAL, Bancontact, Apple Pay; 14 dagen bedenktijd; gratis retourafhandeling uitleggen | neemt risico weg | staat |
