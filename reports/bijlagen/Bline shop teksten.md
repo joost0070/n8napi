@@ -1,10 +1,14 @@
-# Bline shop: teksten (stand 5 oktober 2026, sessie 5)
+# Bline shop: teksten (stand 5 oktober 2026, sessie 6)
 
 Alle teksten zoals ze in de winkel staan. Bron voor de stijlcontrole. Geschreven volgens de schrijfstijlgids (hoofdstuk 7 van `webshop_themas_en_schrijfstijl.md`) en de aanvulling "Taal" in `look_and_feel_env_stores.md`: kort, winkeltaal, feiten in lijstjes.
 
 ## Aankondigingsbalk
 
-GRATIS VERZENDING NL EN BE | BINNEN 1-2 WERKDAGEN IN HUIS | 4,5 UIT 5 OP BOL.COM
+Drie berichten. Op mobiel wisselen ze om de 5 seconden (één tegelijk, één regel); op desktop staan ze naast elkaar met een streep ertussen.
+
+- GRATIS VERZENDING NL EN BE
+- BINNEN 1-2 WERKDAGEN IN HUIS
+- 4,5 UIT 5 OP BOL.COM
 
 Bron van de score: bol Ratings API, 05-10-2026, 13 reviews op de productfamilie (9 x 5, 3 x 4, 1 x 2), gemiddeld 4,54.
 
@@ -31,7 +35,15 @@ Paginatitel: Leeskussen met vak voor je boek | Bline
 
 Metabeschrijving: Leeskussen van 65 x 50 x 45 cm met 3,8 kg traagschuim en een katoenen hoes die in de was kan. Vijf kleuren. Gratis verzending in NL en BE.
 
-Volgorde: titel, prijs, kleurkeuze, knop "In winkelwagen", vier vinkjes, "Beschrijving", "Kenmerken".
+Volgorde: titel, score "4,5 uit 5 op bol.com (13)" met sterren, prijs, kleurkeuze, knop "In winkelwagen", vier vinkjes, daarna vier uitklapblokken: "Beschrijving" (open), "Kenmerken", "Verzending en retour", "Vragen". Daaronder "Goed om te weten".
+
+**Verzending en retour** (uitklapblok)
+
+- Gratis verzending in Nederland en België
+- Binnen 1-2 werkdagen in huis, met track & trace
+- 14 dagen bedenktijd, vanaf de dag dat je het ontvangt
+
+Terugsturen? Mail ons binnen 14 dagen, dan krijg je het retouradres. De kosten voor het terugsturen zijn voor jou. Met links naar Verzending en Retourneren.
 
 **Beschrijving**
 
@@ -53,7 +65,7 @@ Een stevig leeskussen met een vak opzij voor je boek, bril of telefoon. Binnenin
 - Maat: 65 cm breed, 50 cm hoog en 45 cm diep. Meet je bed even op voor je bestelt.
 - Kleur: Vijf kleuren. Valt de kleur thuis anders uit, dan heb je 14 dagen bedenktijd.
 
-**Veelgestelde vragen** (ook op de homepage en bij de hoes)
+**Vragen** (uitklapblok op de productpagina, met link "Alle vragen"; ook op de homepage en bij de hoes)
 
 - Hoe snel heb ik het kussen? Binnen 1-2 werkdagen, in Nederland en België. Verzending is gratis.
 - Kan de hoes in de was? Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.
@@ -68,7 +80,7 @@ Paginatitel: Losse hoes voor het leeskussen | Bline
 
 Metabeschrijving: Katoenen hoes (400 TC) met onzichtbare rits voor het Bline leeskussen. Wasbaar op 30 °C. Vijf kleuren. Gratis verzending in NL en BE.
 
-Zelfde opbouw als het leeskussen (vier vinkjes, Beschrijving, Kenmerken, vragen), zonder "Goed om te weten".
+Zelfde opbouw als het leeskussen (vier vinkjes en dezelfde vier uitklapblokken), zonder score en zonder "Goed om te weten". De score hoort bij het leeskussen, niet bij de losse hoes.
 
 **Beschrijving**
 

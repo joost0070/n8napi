@@ -450,3 +450,84 @@ Verder geen treffers. Geen "Translation missing": de nieuwe secties en snippets 
 
 1. Home en productpagina bekijken in Online Store > Thema's > Dawn > Aanpassen (mobiel en desktop), of het winkelwachtwoord als omgevingsvariabele geven voor screenshots en Lighthouse.
 2. De overige punten uit sessie 4 blijven open (privacybeleid, telefoonnummer en retouradres, e-mailmeldingen, domeinen, Payments, ChannelDock, Google- en Meta-app, cookiemelding, "live").
+
+## 5 oktober 2026, sessie 6: mobiel
+
+Opdracht van Joost (05-10): 90% van het verkeer is mobiel, de shop moet op een telefoon perfect werken. Leidend: de checklist van 13 punten onder "Mobiel" in `research_notes/Bline Sleep risicos en voorbeelden/look_and_feel_env_stores.md`.
+
+Toegang: de vaste winkelnaam die Joost doorgaf (niet de waarde in `BLINE_SHOPIFY_STORE`), sleutel via client credentials met `BLINE_SHOPIFY_CLIENT_ID` en `BLINE_SHOPIFY_CLIENT_SECRET`. Alleen de namen gecontroleerd. Geen SHOPIFY_*- of BOL_*-variabelen gebruikt. Vooraf een kopie gemaakt van alle thema-bestanden van Dawn.
+
+### Wat er in Dawn is veranderd
+
+| Bestand | Wijziging |
+|---|---|
+| `sections/header-group.json` | Balk: drie losse berichten (GRATIS VERZENDING NL EN BE / BINNEN 1-2 WERKDAGEN IN HUIS / 4,5 UIT 5 OP BOL.COM), wisselen om de 5 seconden. Header: ruimte boven en onder van 20 naar 8 px, header blijft altijd bovenaan staan (was: alleen bij omhoog scrollen). |
+| `templates/product.json` | Score onder de titel. Beschrijving, Kenmerken, Verzending en retour en Vragen als uitklapblokken. Galerij op mobiel zonder miniaturen (veegslider met teller). De losse sectie "Veelgestelde vragen" onder de productpagina is weg: de zes vragen staan nu in het uitklapblok "Vragen". "Goed om te weten" blijft. |
+| `templates/product.hoes.json` | Zelfde, maar zonder score (die hoort bij het leeskussen). |
+| `snippets/bline-score.liquid` (nieuw) | Sterren en "4,5 uit 5 op bol.com (13)". Bron in de code en hieronder. |
+| `snippets/bline-uitklap.liquid` (nieuw) | De vier uitklapblokken, in dezelfde opbouw als de uitklapblokken van Dawn. Beschrijving staat open. |
+| `snippets/product-thumbnail.liquid` | Het eerste beeld laadt direct en met voorrang (`loading="eager"`, `fetchpriority="high"`), de rest later. |
+| `sections/bline-sticky-atc.liquid` | Meelopende knop: op mobiel alleen prijs plus knop. |
+| `assets/bline.js` | Teller van de veegslider telt opnieuw na een kleurkeuze (alleen de beelden van die kleur). Meelopende knop verschijnt op mobiel ook als de hoofdknop nog onder de vouw staat. |
+| `assets/bline.css` | Een blok met mobiele regels (tot 749 px breed), zie de checklist hieronder. Op desktop staan de drie balkberichten naast elkaar op één regel. |
+
+Shopify heeft alle negen bestanden zonder fouten opgeslagen. Daarna elk bestand opnieuw opgehaald en vergeleken met wat ik verstuurde: alle negen gelijk. Dawn blijft het gepubliceerde thema. Het wachtwoord staat nog aan (gecontroleerd: de productpagina stuurt door naar /password).
+
+**Bron van de score:** bol Ratings API, opgevraagd 05-10-2026: 13 reviews op de productfamilie van het Bline leeskussen, 9 x 5 sterren, 3 x 4, 1 x 2, gemiddeld 4,54, afgerond 4,5 uit 5 (zie sessie 5). Bij een nieuwe stand van de reviews bijwerken in `snippets/bline-score.liquid` en in de balk.
+
+### Hoe getest, en wat dat waard is
+
+**Dit is een benadering. De echte test op de live winkel moet nog.** Het winkelwachtwoord heb ik niet, dus de echte pagina's kon ik niet openen. Daarom een statische testpagina gebouwd met:
+- de echte CSS- en JavaScript-bestanden van het gepubliceerde Dawn-thema (zoals ze nu in Shopify staan, inclusief `bline.css` en `bline.js`);
+- de kleurvariabelen en lettergroottes die `theme.liquid` uit de thema-instellingen maakt, met de hand nagerekend;
+- dezelfde HTML-opbouw als de Liquid van Dawn en de eigen snippets oplevert, met de echte productgegevens (titel, prijs, beschrijving, kenmerken en de beelden van kleur Wit van de Shopify-CDN);
+- Nunito Sans 400 en 700.
+
+Screenshots op 390 x 844 (Chromium via Playwright, mobiele weergave) in `mockups/blinesleep/screenshots/shop/mobiel/`, met de metingen in `metingen.json`:
+
+| Bestand | Wat je ziet |
+|---|---|
+| `01_eerste_scherm.png` | Balk, header, foto, teller, titel, score, prijs, kleurkeuze, meelopende knop |
+| `02_balk_wisselend_bericht.png` | Balk na 6 seconden: tweede bericht |
+| `03_galerij_tweede_beeld.png` | Na één keer vegen: teller 2/9 |
+| `04_kleurkeuze_knop_vinkjes.png` | Kleurkeuze, knop, vier vinkjes, Beschrijving open |
+| `05_uitklapblokken.png`, `06_kenmerken_open.png` | De vier uitklapblokken, Kenmerken open |
+| `07_meelopende_knop.png` | Meelopende knop onderaan bij "Goed om te weten" |
+| `08_voettekst.png` | Voettekst met tikdoelen van 44 px |
+| `09_winkelwagenlade.png` | Lade over de volle breedte, Afrekenen onderaan in beeld |
+| `10_desktop_controle.png` | Controle op desktop (1366 px): balk op één regel |
+
+Wat de testpagina niet laat zien: het echte gedrag van Shopify (winkelwagen vullen, variant wisselen via de server, de cookiemelding van Shopify, apps of scripts die Shopify zelf toevoegt), andere pagina's dan de productpagina, en de echte laadtijd. De tekst in de lade onder het totaal is een benadering van de standaardtekst van Dawn.
+
+### Checklist mobiel, per punt
+
+| Nr | Punt | Stand | Gemeten op de testpagina |
+|---|---|---|---|
+| 1 | Balk op één regel, wisselende berichten | Gedaan | 37 px hoog, één regel, 16 px, bericht 2 na 6 s. Geen pijltjes op mobiel. |
+| 2 | Header max ongeveer 60 px, winkelwagen altijd zichtbaar | Gedaan | 60 px. Header staat altijd bovenaan; het winkelwagen-icoon (44 x 44) toont het aantal zodra er iets in ligt (zo werkt Dawn). |
+| 3 | Veegslider over de volle breedte met teller, geen miniaturen, eerste foto direct | Gedaan | Foto 390 px breed, teller "1/9", na vegen "2/9", pijltjes 44 x 44. Eerste beeld `eager` en `fetchpriority="high"`, de rest `lazy`. |
+| 4 | Eerste scherm: foto, titel, score, prijs | Gedaan | Foto tot 499 px, titel 553, score 592, prijs 622 tot 674. De hoofdknop staat net onder de vouw (846); de meelopende knop staat dan al onderaan. |
+| 5 | Kleurkeuze minimaal 44 x 44 met kleurnaam | Gedaan | Vlakken met kleurbolletje en naam, 44 px hoog en 88 tot 109 px breed. Geen productfoto's als keuze: dat vraagt tekstloze packshots (akkoordpunt 2). |
+| 6 | Knop volle breedte, minimaal 48 px | Gedaan | 360 x 50 px. Ook Afrekenen in de lade 50 px. |
+| 7 | Vier vinkjes direct onder de knop | Gedaan | Stonden er al, nu 16 px. |
+| 8 | Uitklapblokken, Beschrijving open | Gedaan | Beschrijving (open), Kenmerken, Verzending en retour, Vragen; elke kop 51 px hoog. |
+| 9 | Meelopende knop: volle breedte, prijs plus knop, max 64 px, niets anders dat zweeft | Gedaan, cookiemelding nog te testen | 390 x 64 px, knop 48 px. Ligt met z-index 20 onder de winkelwagenlade (1000) en verdwijnt zodra de lade, het menu of het zoekvenster open is. Houdt rekening met de onderrand van de iPhone. Er zweeft verder niets (geen chat, geen badge). De cookiemelding van Shopify staat nog uit (punt 9 van de Joost-lijst, sessie 4); zet Joost die aan, dan nakijken of de melding boven de knop ligt en weggaat na een keuze. |
+| 10 | Geen pop-ups | Gedaan (gecontroleerd) | Geen app-embeds in het thema, geen nieuwsbrief-pop-up, geen apps toegevoegd. |
+| 11 | Tekst en invoervelden 16 px, tikdoelen 44 px, ruimte in de voettekst | Gedaan | Op productpagina, balk, lade en voettekst geen enkele tekst onder 16 px. Invoervelden (aantal, zoeken, notitie) 16 px. Links in de voettekst 44 px hoog. Andere pagina's dan de productpagina niet gemeten; de regels gelden wel voor de hele winkel. |
+| 12 | Snelheid, Lighthouse 80+ | Deels | Eén letter in twee gewichten (Nunito Sans 400 en 700), foto's via de Shopify-CDN met srcset (deed Dawn al), eerste foto niet lazy, geen apps. **Lighthouse niet gemeten**: kan pas met het winkelwachtwoord. |
+| 13 | Winkelwagenlade volle breedte, Afrekenen altijd zichtbaar | Gedaan | Lade 390 px breed, Afrekenen op 778 tot 828 px, dus in beeld; het onderste deel van de lade blijft staan terwijl de producten scrollen. |
+
+### Stijlcontrole
+
+Nieuwe teksten (score, uitklapblokken Verzending en retour en Vragen, balkberichten) nagelopen op gedachtestreepjes, "u" en "uw", de schrapwoorden en gezondheidswoorden: geen treffers. De vragen zijn dezelfde als in sessie 5. Tekstenbestand bijgewerkt: `reports/bijlagen/Bline shop teksten.md`.
+
+### Niet gedaan, bewust
+
+- Wachtwoord blijft aan, geen prijzen gewijzigd, geen mails, geen betaalinstellingen, geen apps, geen nieuwe beelden, geen pop-ups.
+
+### Wacht op Joost
+
+1. **De echte test op een telefoon**: het winkelwachtwoord als omgevingsvariabele, of zelf de productpagina op je telefoon openen via Online Store > Thema's > Dawn > Voorbeeld. Daarna maak ik de echte screenshots en draai ik Lighthouse mobiel.
+2. **Cookiemelding** aanzetten (Instellingen > Klantprivacy), daarna controleer ik punt 9 opnieuw.
+3. Tekstloze packshots per kleur blijven nodig als we de kleurkeuze met foto's willen (akkoordpunt 2).
+4. De overige punten uit sessie 4 en 5 blijven open.
