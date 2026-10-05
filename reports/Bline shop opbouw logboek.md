@@ -768,3 +768,106 @@ Script over alle nieuwe teksten (10 titels, SEO-titels en metabeschrijvingen, tw
 2. Google- en Meta-app: na het koppelen controleren dat de feed 10 producten toont en de 2 oude niet.
 3. Gewicht van de losse hoes (staat nog op 0).
 4. De echte test op de telefoon zodra het wachtwoord eraf mag, en de overige punten uit sessie 4 tot en met 7.
+
+## 5 oktober 2026, sessie 9: oude producten weg, telefoon en vertrouwensblokken
+
+Opdracht van Joost (05-10, via de hoofdsessie): "ja verwijder de oude producten, ga door" en "telefoonnummer mag erop". Uitvoering van hoofdstuk 2 en 4 van `reports/Bline beeld- en vertrouwensplan.md` (zonder de nieuwe beelden).
+
+Toegang: de vaste winkelnaam die Joost doorgaf (niet de waarde in `BLINE_SHOPIFY_STORE`), sleutel via client credentials met `BLINE_SHOPIFY_CLIENT_ID` en `BLINE_SHOPIFY_CLIENT_SECRET`. Alleen de namen gecontroleerd. Geen SHOPIFY_*- of BOL_*-variabelen gebruikt. Admin GraphQL, versie 2026-10. Vooraf een kopie van alle 365 themabestanden van Dawn (lokaal, map `backup_voor_s9`) en van de pagina's, het beleid, de collecties, kortingen, menu's en doorverwijzingen.
+
+### 1. Oude producten verwijderd
+
+**Vooraf gecontroleerd**
+- Export `reports/bijlagen/Bline export oude producten 2026-10-05.json` bestaat en is compleet: per product beschrijving, SEO, alle metafields (10 en 8), alle beelden (31 en 10), vijf varianten met SKU, EAN, prijs, gewicht en voorraad per locatie. Vergeleken met de live producten: alles gelijk.
+- Beide producten op **concept**, op **0** verkoopkanalen.
+- Geen verwijzingen meer in: collecties Leeskussens en Hoezen, beide bundelkortingen, hoofd- en voettekstmenu, het thema (alle 365 bestanden doorzocht), de pagina's, artikelen en beleidsteksten, en de metafields `bline.kleuren` van de 10 producten. Alleen de oude collectie "Homepage" (`frontpage`, niet gebruikt in het thema) bevatte het oude kussen nog; die koppeling verdween met het verwijderen.
+- **Beelden**: de 41 beeldbestanden van de oude producten zijn dezelfde bestanden als die van de 10 nieuwe producten (gedeeld, sessie 8). Om ze niet mee te verwijderen eerst de koppeling met de oude producten losgemaakt (`fileUpdate`, `referencesToRemove`), gecontroleerd dat de 10 nieuwe producten nog precies dezelfde beelden hadden, en pas daarna verwijderd.
+
+**Verwijderd** (`productDelete`, geen fouten): "Leeskussen Bline" (`leeskussen`) en "Hoes voor leeskussen Bline" (`hoes-leeskussen`).
+
+**Gecontroleerd na afloop**
+- 10 producten, elk met dezelfde beelden als vooraf (alle beelden status READY).
+- 10 varianten; elke SKU en elke EAN komt precies één keer voor.
+- Doorverwijzingen staan nog: `/products/leeskussen` naar `/products/leeskussen-beige`, `/products/hoes-leeskussen` naar `/products/hoes-beige`. (Zelf openen kan pas als het wachtwoord eraf is; nu sturen beide paden door naar `/password`.)
+- Opmerking voor ChannelDock (sessie 8): de dubbele SKU's zijn weg, dus koppelen kan zonder op te letten.
+
+### 2. Telefoonnummer
+
+Tekst overal: "Bel of app ons: 06 38 66 28 33", met een link `tel:+31638662833`.
+
+| Plek | Wat |
+|---|---|
+| Voettekst (blok Bline, bedrijfsgegevens) | eigen regel onder het mailadres |
+| Pagina Contact | onder de eerste alinea, en bij Gegevens tussen e-mail en KvK |
+| Beleid Contactgegevens (Instellingen > Beleid) | tussen e-mail en KvK |
+| Pagina Verzending | onder "Pakket beschadigd?" (na de mailzin) |
+| Pagina Retourneren | stap 1: "Liever eerst even overleggen? Bel of app ons: 06 38 66 28 33." en bij "Iets kapot of niet goed?" na "Mail ons, met een foto." |
+| Pagina Over Bline | onderaan, onder de mailzin |
+
+**Winkelinstellingen**: het telefoonnummer staat al in het winkeladres (Instellingen > Algemeen), als 31638662833. De Admin API heeft geen mutatie om het winkeladres of de winkeltelefoon te wijzigen, dus de schrijfwijze heb ik niet aangepast. Wil Joost hem als "+31 6 38 66 28 33" zien: in Instellingen > Algemeen > Winkeladres aanpassen.
+
+### 3. "Ook te koop bij bol.com"
+
+Eén rustige regel, 16 px, grijs (75%), zonder logo en zonder link: "Ook te koop bij bol.com. 4,5 uit 5 op basis van 13 reviews." Bron gelijk aan de score (bol Ratings API, 05-10-2026, 13 reviews, gemiddeld 4,54).
+- **Homepage**: eigen sectie `bline-bol` direct onder het raster Leeskussens, boven Losse hoezen.
+- **Productpagina's van de 5 kussens** (`templates/product.json`): direct onder de betaaliconen (gemeten: het element direct na de betaalrij). Niet op de hoezen (die hebben ook geen score).
+
+### 4. Over Bline en "Gemaakt door Bline uit Borne"
+
+- **Over Bline** heeft een eigen sjabloon `page.over-bline` met bovenaan de sectie "Bline foto". Die toont niets zolang er geen beeld is gekozen (geen plaatsvervanger; gemeten: 0 beelden op de pagina). Foto kiezen: Online Store > Thema's > Dawn > Aanpassen > pagina Over Bline > "Bline foto".
+- **Tekst** in de vorm van het plan: wie (Joost, klein bedrijf), waar (Borne, Brasem), waarom dit kussen (wat het doet: blijft staan, 3,8 kg traagschuim, vak opzij, hoes in de was), al verkocht via bol.com (4,5 uit 5, 13 reviews), magazijn Vianen, de vier beloftes, mail en telefoon. Alleen feiten uit de productgegevens, het masterprompt en de bol-score. Joosts eigen reden om met dit kussen te beginnen staat nergens: **[NAVRAGEN]**, dan zet ik er één zin bij. Alleen de voornaam gebruikt; de achternaam kan erbij als Joost dat wil.
+- **Productpagina's van de kussens**, onderaan (na "Goed om te weten"): sectie `bline-gemaakt`, "Gemaakt door Bline uit Borne" (vet, 16 px) en de link "Over Bline" (16 px, tikdoel 44 px hoog). Er kan in de themaeditor dezelfde foto bij (96 x 96 px); zonder foto toont het blok alleen tekst.
+
+### Gewijzigde themabestanden
+
+Nieuw: `snippets/bline-bol.liquid`, `sections/bline-bol.liquid`, `sections/bline-foto.liquid`, `sections/bline-gemaakt.liquid`, `templates/page.over-bline.json`. Gewijzigd: `templates/index.json`, `templates/product.json`, `sections/footer-group.json`, `assets/bline.css`. Ook gewijzigd via de API: pagina's Contact, Over Bline (tekst en sjabloon), Verzending, Retourneren en het beleid Contactgegevens.
+
+Controle met de Admin API: `themeFilesUpsert` gaf nul fouten voor alle uploads. Daarna het hele thema (370 bestanden) opnieuw opgehaald en vergeleken: alles gelijk aan wat ik verstuurde (JSON-bestanden inhoudelijk gelijk; Shopify zet er alleen een kopcommentaar boven). Pagina's en beleid opnieuw opgehaald: tekst gelijk. Geen "Translation missing" in de gerenderde pagina's.
+
+### Testpagina-screenshots (werkwijze sessie 6 tot 8, benadering)
+
+Thema en data opnieuw opgehaald na alle wijzigingen, lokaal gerenderd met de echte Liquid, CSS en JavaScript, Chromium op 390 x 844 en 1366 x 800. Screenshots en metingen in `mockups/blinesleep/screenshots/shop/ronde4/`: homepage en Leeskussen Beige (eerste scherm en volledig), lade, plus uitsneden van de bol-regel onder het raster en onder de betaaliconen, het blok "Gemaakt door", de voettekst met telefoon en de pagina Over Bline. Dezelfde beperkingen als eerder: Judge.me nagebootst, betaaliconen als plaatsvervangers, winkelwagen niet echt gevuld.
+
+| Meting | Mobiel | Desktop |
+|---|---|---|
+| Bol-regel productpagina | 16 px, direct onder de betaalrij, geen link, geen beeld | idem |
+| Bol-regel homepage | 16 px, tussen raster Leeskussens en Losse hoezen | idem, één regel |
+| "Gemaakt door" | kop 16 px vet #1A1A1A, link 16 px, 44 px hoog | idem |
+| Telefoon in voettekst | 16 px, tel:-link | idem |
+| Over Bline | geen beeld zolang er geen foto is; telefoon onderaan | idem |
+
+**De 12 reviewpunten**
+
+| Nr | Punt | Stand |
+|---|---|---|
+| 1 | Rangorde titel en prijs | ja: titel 24 / 28 px, prijs 24 px, beide 700 |
+| 2 | Ondertitel | ja |
+| 3 | "Incl. btw" | ja |
+| 4 | "Kleur: Beige" | ja |
+| 5 | Rechte hoeken beelden en kaarten | ja, 0 px |
+| 6 | Bijna zwarte, compacte tekst | ja, ongewijzigd |
+| 7 | Rustige balk | ja: 13 px, 600 |
+| 8 | Menu uitgeschreven op desktop | ja (mobiel hamburger 44 x 44) |
+| 9 | Betaaliconen bij de knop | ja, met de bol-regel er direct onder |
+| 10 | Minder witruimte | ja: de bol-regel zit tussen de rasters zonder extra ruimte boven, 24 px onder |
+| 11 | Knoppen en kleurvlakken | ja: 4 px hoeken, gekozen vlak 2 px |
+| 12 | Homepage | ja: foto, kop, "Shop nu", raster Leeskussens, bol-regel, raster Losse hoezen, vinkjes, kenmerken, vragen. Niets zwevends behalve lade en meelopende knop |
+
+Ook nagelopen: op mobiel geen zichtbare tekst onder 16 px behalve kruimelpad en "Incl. btw" (14 px, zoals eerder) en de knop "Shop nu" (15 px, Dawn).
+
+### Stijlcontrole
+
+Script over alle nieuwe teksten (Over Bline, de telefoonregels op Contact, Verzending, Retourneren en het beleid, de bol-regel, "Gemaakt door Bline uit Borne"): schrapwoorden, gedachtestreepjes (lang, half, los streepje), "u" en "uw", uitroeptekens, superlatieven en gezondheidswoorden. 0 echte treffers (het script vond "beste" in "bestelling" en "bestellen"). Tekstenbestand bijgewerkt: `reports/bijlagen/Bline shop teksten.md`.
+
+### Niet gedaan, bewust
+
+- Wachtwoord blijft aan (gecontroleerd: de oude productpaden sturen door naar `/password`). Geen prijzen gewijzigd, geen mails, geen betaalinstellingen, geen nieuwe apps, geen nieuwe beelden, geen Higgsfield-beelden.
+
+### Wacht op Joost
+
+1. **Foto van Joost**: uploaden en kiezen in de sectie "Bline foto" op Over Bline (en eventueel dezelfde in "Bline gemaakt door" op de productpagina). Liever stuur je hem door, dan zet ik hem erop.
+2. **Waarom dit kussen, in je eigen woorden** [NAVRAGEN]: één of twee zinnen, dan voeg ik ze toe aan Over Bline.
+3. **"Gemaakt door"**: het kussen wordt niet in Borne gemaakt. De zin zegt "door Bline uit Borne", niet "in Borne", dus hij klopt; wil je het voorzichtiger, dan wordt het "Van Bline uit Borne".
+4. Achternaam op Over Bline: ja of nee.
+5. Schrijfwijze telefoon in de winkelinstellingen (staat als 31638662833), zie punt 2.
+6. Overige punten uit sessie 4 tot en met 8 blijven open (Judge.me-productgroep, echte telefoontest, gewicht losse hoes).

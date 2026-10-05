@@ -92,11 +92,17 @@ Paginatitel: Over Bline | Bline
 
 Metabeschrijving: Bline is een klein bedrijf uit Borne. We verkopen een leeskussen met een wasbare hoes, in vijf kleuren.
 
-Bline verkoopt een leeskussen met een vak voor je boek. We zijn een klein bedrijf uit Borne, in Overijssel.
+Bovenaan: plek voor een foto van Joost (sectie "Bline foto", toont niets zolang er geen beeld is gekozen). Bijgewerkt in sessie 9.
 
-#### Wie we zijn
+Bline is een klein bedrijf uit Borne, in Overijssel. Achter het merk staat Joost. Je vindt ons aan de Brasem in Borne.
 
-Het kussen verkopen we al via bol. Nu kun je het ook hier bij ons bestellen.
+#### Waarom dit kussen
+
+Lezen in bed met losse kussens achter je rug: na tien minuten lig je weer half. Dit kussen blijft staan. Binnenin zit 3,8 kg traagschuim. Opzij zit een vak voor je boek of je telefoon. De hoes rits je eraf en gaat op 30 °C in de was.
+
+#### Al verkocht via bol.com
+
+Het kussen verkopen we al via bol.com. Kopers geven het daar 4,5 uit 5, op basis van 13 reviews. Nu kun je het ook hier bij ons bestellen.
 
 De kussens liggen in een magazijn in Vianen. Daar wordt je bestelling ingepakt en meegegeven aan de bezorger.
 
@@ -108,6 +114,14 @@ De kussens liggen in een magazijn in Vianen. Daar wordt je bestelling ingepakt e
 - 14 dagen bedenktijd
 
 Een vraag? Mail naar mail@blinesleep.nl. We antwoorden op werkdagen.
+
+Bel of app ons: 06 38 66 28 33
+
+## Telefoon en vertrouwensblokken (sessie 9)
+
+- Telefoonregel, overal met een tel:-link (+31638662833): "Bel of app ons: 06 38 66 28 33". Staat in de voettekst (blok Bline), op Contact (onder de eerste alinea en bij Gegevens), in het beleid Contactgegevens, op Verzending (onder "Pakket beschadigd?"), op Retourneren (stap 1: "Liever eerst even overleggen? Bel of app ons: 06 38 66 28 33." en bij "Iets kapot of niet goed?") en op Over Bline.
+- Homepage onder het raster Leeskussens en op de productpagina's van de kussens direct onder de betaaliconen: "Ook te koop bij bol.com. 4,5 uit 5 op basis van 13 reviews." Geen logo, geen link.
+- Productpagina's van de kussens, onderaan: "Gemaakt door Bline uit Borne" met de link "Over Bline".
 
 ## Pagina Verzending (/pages/verzending)
 

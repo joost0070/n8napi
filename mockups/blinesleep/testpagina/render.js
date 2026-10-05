@@ -278,6 +278,7 @@ function mkSection(id, data) {
     return blk;
   }).filter((b) => !b.disabled);
   const s = wrapSettings(data.settings || {});
+  for (const k of Object.keys(s)) if (typeof s[k] === 'string' && s[k].startsWith('shopify://pages/')) s[k] = '/pages/' + s[k].slice(16);
   for (const k of Object.keys(s)) { s[k] = shopImage(s[k]); if (k === 'product' && typeof s[k] === 'string') s[k] = products[s[k]]; if (k === 'collection' && typeof s[k] === 'string') s[k] = collections[s[k]]; if ((k === 'menu' || k.endsWith('_menu') || k === 'menu') && typeof s[k] === 'string' && linklists[s[k]]) s[k] = linklists[s[k]]; }
   return { id, settings: s, blocks, block_order: data.block_order, index: ++sectionCounter, location: 'template' };
 }
@@ -384,7 +385,8 @@ if (require.main === module) {
     if (pages.includes('collection')) await renderPage({ template: 'collection', out: 'collection_hoezen.html', pageType: 'collection', title: 'Hoezen', extraScope: { collection: collections.hoezen, __path: '/collections/hoezen' } });
     if (pages.includes('page')) {
       const pg = DATA.pages.nodes.find((x) => x.handle === 'over-bline');
-      await renderPage({ template: 'page', out: 'page.html', pageType: 'page', title: pg.title, extraScope: { page: { title: pg.title, handle: pg.handle, url: '/pages/' + pg.handle, content: '<p>Bline maakt een leeskussen met vak voor je boek.</p>' }, __path: '/pages/over-bline' } });
+      const tpl = pg.templateSuffix && fs.existsSync(path.join(THEME, 'templates', 'page.' + pg.templateSuffix + '.json')) ? 'page.' + pg.templateSuffix : 'page';
+      await renderPage({ template: tpl, out: 'page.html', pageType: 'page', title: pg.title, extraScope: { page: { title: pg.title, handle: pg.handle, url: '/pages/' + pg.handle, content: pg.body }, __path: '/pages/over-bline' } });
     }
     const C = JSON.parse(fs.readFileSync(path.join(__dirname, 'content.json'), 'utf8'));
     const B = C.blogs.nodes[0];

@@ -1,0 +1,276 @@
+{
+ "product_mobiel": {
+  "knop": {
+   "top": 945,
+   "h": 50,
+   "w": 360,
+   "font": "16px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "tekst": "In winkelwagen"
+  },
+  "betaal": {
+   "top": 1212,
+   "h": 34,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "iDEAL\nBC\nPay\nVISA\nMC"
+  },
+  "bol": {
+   "top": 1261,
+   "h": 48,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "Ook te koop bij bol.com. 4,5 uit 5 op basis van 13 reviews."
+  },
+  "gemaakt": {
+   "top": 2447,
+   "h": 132,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "Gemaakt door Bline uit Borne\n\nOver Bline"
+  },
+  "gemaakt_kop": {
+   "top": 2479,
+   "h": 24,
+   "w": 220,
+   "font": "16px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "tekst": "Gemaakt door Bline uit Borne"
+  },
+  "gemaakt_link": {
+   "top": 2503,
+   "h": 44,
+   "w": 76,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(31, 42, 55)",
+   "tekst": "Over Bline"
+  },
+  "goed_om_te_weten": {
+   "top": 1927,
+   "h": 520,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "GOED OM TE WETEN\nStevig\n\n3,8 kg traagschuim. Je zakt er niet doorheen als je leunt.\n\nWasba"
+  },
+  "voet_tel": {
+   "top": 3479,
+   "h": 22,
+   "w": 112,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(255, 255, 255, 0.85)",
+   "tekst": "06 38 66 28 33"
+  },
+  "bol_direct_onder_betaal": true,
+  "bol_link": false,
+  "bol_img": false
+ },
+ "home_mobiel": {
+  "raster_leeskussens": {
+   "top": 486,
+   "h": 961,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "tekst": "Leeskussens\n\nHet Bline leeskussen in vijf kleuren: beige, wit, grijs, blauw en zwart. Een "
+  },
+  "bol": {
+   "top": 1447,
+   "h": 72,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "Ook te koop bij bol.com. 4,5 uit 5 op basis van 13 reviews."
+  },
+  "bol_tekst": {
+   "top": 1447,
+   "h": 48,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "Ook te koop bij bol.com. 4,5 uit 5 op basis van 13 reviews."
+  },
+  "raster_hoezen": {
+   "top": 1519,
+   "h": 978,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "tekst": "Losse hoezen\n\nLosse hoezen voor het Bline leeskussen. Katoen 400 TC, met rits en zijvak, w"
+  }
+ },
+ "over_bline_mobiel": {
+  "foto_sectie": 0,
+  "img_in_main": 0,
+  "titel": {
+   "top": 147,
+   "h": 37,
+   "w": 360,
+   "font": "32px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "tekst": "Over Bline"
+  },
+  "tel": {
+   "top": 936,
+   "h": 22,
+   "w": 112,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(31, 42, 55, 0.85)",
+   "tekst": "06 38 66 28 33"
+  }
+ },
+ "product_desktop": {
+  "knop": {
+   "top": 524,
+   "h": 45,
+   "w": 380,
+   "font": "15px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "tekst": "In winkelwagen"
+  },
+  "betaal": {
+   "top": 778,
+   "h": 34,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "iDEAL\nBC\nPay\nVISA\nMC"
+  },
+  "bol": {
+   "top": 827,
+   "h": 48,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "Ook te koop bij bol.com. 4,5 uit 5 op basis van 13 reviews."
+  },
+  "gemaakt": {
+   "top": 1716,
+   "h": 132,
+   "w": 1300,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "Gemaakt door Bline uit Borne\n\nOver Bline"
+  },
+  "gemaakt_kop": {
+   "top": 1748,
+   "h": 24,
+   "w": 220,
+   "font": "16px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "tekst": "Gemaakt door Bline uit Borne"
+  },
+  "gemaakt_link": {
+   "top": 1772,
+   "h": 44,
+   "w": 76,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(31, 42, 55)",
+   "tekst": "Over Bline"
+  },
+  "goed_om_te_weten": {
+   "top": 1429,
+   "h": 288,
+   "w": 1300,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "GOED OM TE WETEN\nStevig\n\n3,8 kg traagschuim. Je zakt er niet doorheen als je leunt.\n\nWasba"
+  },
+  "voet_tel": {
+   "top": 2035,
+   "h": 22,
+   "w": 112,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(255, 255, 255, 0.85)",
+   "tekst": "06 38 66 28 33"
+  },
+  "bol_direct_onder_betaal": true,
+  "bol_link": false,
+  "bol_img": false
+ },
+ "home_desktop": {
+  "raster_leeskussens": {
+   "top": 837,
+   "h": 481,
+   "w": 1366,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "tekst": "Leeskussens\n\nHet Bline leeskussen in vijf kleuren: beige, wit, grijs, blauw en zwart. Een "
+  },
+  "bol": {
+   "top": 1318,
+   "h": 48,
+   "w": 1300,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "Ook te koop bij bol.com. 4,5 uit 5 op basis van 13 reviews."
+  },
+  "bol_tekst": {
+   "top": 1318,
+   "h": 24,
+   "w": 1200,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "tekst": "Ook te koop bij bol.com. 4,5 uit 5 op basis van 13 reviews."
+  },
+  "raster_hoezen": {
+   "top": 1366,
+   "h": 500,
+   "w": 1366,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "tekst": "Losse hoezen\n\nLosse hoezen voor het Bline leeskussen. Katoen 400 TC, met rits en zijvak, w"
+  }
+ },
+ "over_bline_desktop": {
+  "foto_sectie": 0,
+  "img_in_main": 0,
+  "titel": {
+   "top": 181,
+   "h": 46,
+   "w": 726,
+   "font": "40px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "tekst": "Over Bline"
+  },
+  "tel": {
+   "top": 884,
+   "h": 22,
+   "w": 112,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(31, 42, 55, 0.85)",
+   "tekst": "06 38 66 28 33"
+  }
+ }
+}
