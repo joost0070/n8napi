@@ -188,3 +188,7 @@ Reserve (goed, nu niet op een product): wit 4 (`wit-packshot-02`, `wit-gebruik-0
 6. **Video** in een andere kleur dan wit.
 7. **Foto van Joost** voor Over Bline en "Gemaakt door Bline uit Borne".
 8. Beslissen over de 28 dubbele uploads en de afgekeurde bestanden in Files (verwijderen kan, met akkoord).
+
+## Akkoord Joost 05-10: opruimen in Files
+
+Joost gaf op 05-10 akkoord ("Ja") om de 28 dubbele uploads en de afgekeurde bestanden uit Shopify Files te verwijderen. Uitvoeren nadat sessie 14 (v2) klaar is, zodat er niets verdwijnt dat v2 gebruikt. Voor verwijderen per bestand controleren: niet gekoppeld aan een product, niet gebruikt in het thema (settings_data, templates), niet in pagina's of artikelen. Video en echte DSC-foto's nooit verwijderen.
