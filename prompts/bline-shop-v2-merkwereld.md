@@ -72,3 +72,13 @@ Blijft: wit, inktblauw, Nunito Sans, rechte hoeken. Nieuw: één warme bandkleur
 ## Werkwijze en lat
 
 Na elke ronde testpagina-screenshots op 390 x 844 en 1366 x 800 van home, collectie, product, Materialen en Lezen in bed. Leg ze naast `research_notes/Bline Sleep risicos en voorbeelden/env_screens/` en het Yumeko-voorbeeld. Klaar als elke homepagesectie een goedgekeurd echt beeld heeft (of verborgen is), de 12 review-punten blijven gelden en niets er als template uitziet.
+
+## Belangrijk: het mag niet opvallen dat er weinig producten zijn (Joost 05-10)
+
+1. **Navigatie op moment en behoefte, niet op productsoort**: menu met beeldtegels "Lezen in bed", "Ontspannen op de bank", "Cadeau", "Hoezen en sets", "Inspiratie", "Materialen". Elke ingang toont dezelfde producten in een andere volgorde en met een eigen sfeerfoto en tekst.
+2. **Meer collecties uit dezelfde producten**: Bestsellers, Cadeau, Sets en bundels, per kleur (Beige, Wit, Grijs, Blauw, Zwart), Nieuw. Nooit een collectie met minder dan 4 kaarten tonen; anders verbergen of aanvullen met bundels en de cadeaubon.
+3. **Meer kaarten zonder nieuwe voorraad**: bundels als eigen productkaart ("Leeskussen + extra hoes", "Twee leeskussens", per kleurcombinatie de populairste 3), cadeaubon, losse hoezen. Samen 15 tot 20 kaarten.
+4. **Sliders in plaats van halflege rasters**: op de homepage productsliders (zoals Hooijer en Cloudpillo) in plaats van een raster van 5 dat eindigt.
+5. **Inhoud vult de winkel**: lookbook, materialen, kleurengids, maatgids, verhalen. Elke inhoudspagina eindigt met een productslider.
+6. **Mega-menu met beelden** op desktop: links de ingangen, rechts twee sfeerfoto's met link (Lezen in bed, Materialen).
+7. **Geen tellers** die het kleine aantal laten zien ("5 producten" boven een collectie uitzetten).
