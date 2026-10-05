@@ -51,3 +51,33 @@ Onderzoek 05-10-2026. Homepages van tien shops uit de omgeving bekeken (publieke
 3. Geen vetgedrukte drieluiken, geen "Je kent het", geen geforceerde grapjes, geen zinnen over "een mens" of "eerlijk".
 4. Feiten in lijstjes met vinkjes, niet in verhaaltjes.
 5. Een beetje verkoop mag ("Rechtop lezen zonder gedoe"), superlatieven blijven verboden.
+
+## Mobiel (90% van het verkeer, Joost 05-10)
+
+Bekeken: productpagina's van Tofvel, Lazamani, Piedi Nudi, Sockwell en HEYDUDE op 390 px breed (`env_screens/productpaginas_mobiel.jpg`).
+
+**Wat werkt bij hen**
+- Eerste scherm: balk, compacte header (logo, zoeken, account, winkelwagen, menu), grote productfoto over de volle breedte met pijltjes of teller ("1 / 4"), dan titel, sterren met aantal, korte ondertitel en prijs.
+- Kleurkeuze als kleine productfoto's (Tofvel), maatknoppen groot genoeg voor een duim.
+- Knop over de volle breedte, groot en in één kleur ("Bestel Nu!", "Toevoegen aan winkelmand"), direct daaronder vinkjes met voordelen (Tofvel).
+- Beschrijving en kenmerken als uitklapblokken.
+
+**Wat stoort bij hen (niet doen)**
+- Een pop-up met "10% korting" die bij binnenkomst de hele productpagina bedekt (Lazamani, Sockwell, HEYDUDE).
+- Zwevende knopjes over de inhoud: Trusted Shops-badge, chatknop "Hulp" en een cookie-icoon die tegelijk tekst en knoppen afdekken.
+- De balk op twee regels (Tofvel), waardoor het eerste scherm kleiner wordt.
+
+**Checklist mobiel voor Bline**
+1. Balk op één regel: op mobiel wisselende berichten (één tegelijk), niet de lange regel met strepen.
+2. Header maximaal ongeveer 60 px hoog; winkelwagen met aantal altijd zichtbaar.
+3. Galerij als veegslider over de volle breedte met teller ("1 / 8") of puntjes, geen raster met miniaturen op mobiel. Eerste foto direct laden, de rest later.
+4. In het eerste scherm (390 x 844): foto, titel, "4,5 uit 5 op bol.com (13)", prijs. De knop mag net onder de vouw staan, de meelopende knop vangt dat op.
+5. Kleurkeuze met vlakken of foto's van minimaal 44 x 44 px, met de kleurnaam erbij.
+6. Knop "In winkelwagen" over de volle breedte, minimaal 48 px hoog.
+7. Vier vinkjes direct onder de knop.
+8. Beschrijving, Kenmerken, Verzending en retour, Vragen: uitklapblokken, Beschrijving standaard open.
+9. Meelopende knop onderaan: volle breedte, prijs plus knop, maximaal 64 px hoog, niets anders dat zweeft (geen chatknop, geen badge). De cookiemelding mag de knop niet blijvend afdekken.
+10. Geen pop-ups.
+11. Tekst minimaal 16 px (invoervelden ook, anders zoomt iPhone in), tikdoelen minimaal 44 px, genoeg ruimte tussen links in de voettekst.
+12. Snelheid: één lettertype in twee gewichten, foto's via Shopify-CDN met srcset, eerste foto niet lazy, geen zware apps. Doel Lighthouse mobiel 80+ (te meten zodra het wachtwoord beschikbaar is).
+13. Winkelwagenlade op mobiel over de volle breedte, knop "Afrekenen" onderaan altijd zichtbaar.
