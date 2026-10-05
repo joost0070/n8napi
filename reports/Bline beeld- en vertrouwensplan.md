@@ -64,3 +64,7 @@ Technisch: vierkant 1:1 of staand 4:5, minimaal 2048 px breed, JPG, geen tekst o
 | 3 | Vertrouwensblokken 1, 2, 3 en de nieuwe volgorde van product- en homepage | direct na stap 2 |
 | 4 | Echte telefoontest zodra het wachtwoord eraf mag | voor livegang |
 | 5 | Reviews en creatorfoto's | na livegang |
+
+
+## Wijziging 05-10: geen namen
+Joost wil nergens een persoonsnaam op de site. Over Bline wordt het verhaal van het merk in de wij-vorm, zonder naam en zonder persoonsfoto (tenzij Joost er zelf een aanlevert, dan zonder naam).

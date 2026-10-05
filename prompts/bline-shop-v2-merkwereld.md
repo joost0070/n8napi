@@ -82,3 +82,7 @@ Na elke ronde testpagina-screenshots op 390 x 844 en 1366 x 800 van home, collec
 5. **Inhoud vult de winkel**: lookbook, materialen, kleurengids, maatgids, verhalen. Elke inhoudspagina eindigt met een productslider.
 6. **Mega-menu met beelden** op desktop: links de ingangen, rechts twee sfeerfoto's met link (Lezen in bed, Materialen).
 7. **Geen tellers** die het kleine aantal laten zien ("5 producten" boven een collectie uitzetten).
+
+## Geen namen (Joost 05-10)
+
+"Zeker geen naam noemen." Nergens op de site een persoonsnaam: niet op Over Bline, niet bij "Gemaakt door", niet in blogs, mails of de Collabs-tekst. Schrijf als "we" en "Bline". Bedrijfsgegevens (Shop4You, adres, KvK, btw) blijven, want die zijn wettelijk verplicht. Geen persoonsfoto tenzij Joost die zelf voor de site aanlevert; ook dan zonder naam. Over Bline vertelt het verhaal van het merk en het product, niet van een persoon.
