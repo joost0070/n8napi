@@ -1,4 +1,4 @@
-# Bline shop: teksten (stand 5 oktober 2026, sessie 6)
+# Bline shop: teksten (stand 5 oktober 2026, sessie 7)
 
 Alle teksten zoals ze in de winkel staan. Bron voor de stijlcontrole. Geschreven volgens de schrijfstijlgids (hoofdstuk 7 van `webshop_themas_en_schrijfstijl.md`) en de aanvulling "Taal" in `look_and_feel_env_stores.md`: kort, winkeltaal, feiten in lijstjes.
 
@@ -455,3 +455,25 @@ Neem er een tweede hoes bij in een andere kleur en je krijgt €9,99 korting op 
 **Twee leeskussens: €9,99 korting**
 
 Wil je partner er ook een? Bestel twee leeskussens en je krijgt €9,99 korting op je bestelling.
+
+## Nieuw in sessie 7
+
+**Productpagina leeskussen**, volgorde nu: kruimelpad (Home / Leeskussens / Leeskussen Bline), titel, score, ondertitel, prijs met "Incl. btw", "Kleur: Wit", knop "In winkelwagen", vier vinkjes, bundelregel, betaaliconen, uitklapblokken. Daaronder het reviewblok (Judge.me), dan "Goed om te weten".
+
+- Ondertitel leeskussen: Met vak voor je boek, 65 x 50 x 45 cm
+- Ondertitel hoes: Katoen 400 TC, met rits en zijvak
+- Naast de prijs: Incl. btw
+- Knop: In winkelwagen
+- Bundelregel (alleen leeskussen): Extra hoes of tweede leeskussen erbij? Dan krijg je €9,99 korting.
+
+**Winkelwagenlade**
+
+- Onder het eerste leeskussen, zolang er geen hoes in de winkelwagen ligt: "Extra hoes erbij? **€9,99 korting**" met de knop "+ Beige" (schermlezer: "Hoes in beige toevoegen"). Kleur van de hoes: bij Wit Beige, bij Beige Wit, bij Blauw Grijs, bij Grijs Blauw, bij Zwart Grijs.
+- Onder het totaal: Incl. btw. Gratis verzending in NL en BE.
+- Optie: "Kleur: Wit"; totaal zonder "EUR".
+
+**Blogartikel 2**, onder de tabel "De verschillen op een rij": Alle verschillen in vulling, hoes, maat en wassen staan op de pagina [Leeskussen of losse kussens](/pages/leeskussen-of-losse-kussens).
+
+**Vragenpagina**: de vijf vragen uit `Bline blogteksten.md` staan nu als uitklapblok 12 tot 16. De paginatekst is weer alleen: Staat je vraag er niet bij? Mail naar mail@blinesleep.nl.
+
+**Menu's**: hoofdmenu Leeskussen, Losse hoes, Over Bline, Vragen. Klantenservice: Verzending, Retourneren, Veelgestelde vragen, Blog, Contact, Over Bline.

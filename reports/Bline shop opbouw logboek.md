@@ -531,3 +531,95 @@ Nieuwe teksten (score, uitklapblokken Verzending en retour en Vragen, balkberich
 2. **Cookiemelding** aanzetten (Instellingen > Klantprivacy), daarna controleer ik punt 9 opnieuw.
 3. Tekstloze packshots per kleur blijven nodig als we de kleurkeuze met foto's willen (akkoordpunt 2).
 4. De overige punten uit sessie 4 en 5 blijven open.
+
+## 5 oktober 2026, sessie 7: de 12 reviewpunten en de nieuwe functies
+
+Opdracht van Joost (05-10), met akkoord op bundels, review-app en Collabs: de 12 punten uit `research_notes/Bline Sleep risicos en voorbeelden/kritische_review_shop_v1.md` uitvoeren, plus reviews, upsell, bundelregel, kruimelpad, blogs en de Collabs-tekst. "Kritisch zijn dat de webshop er echt goed uit komt te zien."
+
+Toegang: de vaste winkelnaam die Joost doorgaf (niet de waarde in `BLINE_SHOPIFY_STORE`), sleutel via client credentials met `BLINE_SHOPIFY_CLIENT_ID` en `BLINE_SHOPIFY_CLIENT_SECRET`. Alleen de namen gecontroleerd. Geen SHOPIFY_*- of BOL_*-variabelen gebruikt. Vooraf een kopie gemaakt van alle 359 bestanden van Dawn (lokaal, map `backup_voor_s7`).
+
+### Eerst gevonden
+
+- **Judge.me stond al in het thema**: de app-embed (judgeme_core) en **twee** reviewblokken onderaan de productpagina, allebei met voorbeelddata. Het dubbele blok is weg.
+- **De testpagina van sessie 6 week af van de echte winkel.** Die was met de hand nagebouwd. Nu rendert een lokale Liquid-renderer (liquidjs) de echte themabestanden met de echte productdata. Daardoor bleek: de knop heette in de winkel "Aan winkelwagen toevoegen" (niet "In winkelwagen"), onder de prijs stond "Belastingen inbegrepen. Verzendkosten worden berekend bij de checkout." (twee regels), en op desktop stond het menu wel uitgeschreven (de hamburger op de oude screenshot kwam door de testpagina, niet door het thema). Ook de teller toonde in werkelijkheid alle 31 beelden tot de alt-teksten werden gelezen; dat werkt nu wel (1/9 bij Wit).
+
+### Werkwijze screenshots (benadering, lees dit)
+
+De winkel staat achter het wachtwoord, dus de echte pagina's kon ik niet openen. Werkwijze: thema ophalen via de Admin API, lokaal renderen met de echte Liquid, CSS en JavaScript van Dawn en de echte producten, blogs, menu's en beelden van de Shopify-CDN; daarna Chromium via Playwright op 390 x 844 (mobiel, 2x) en 1366 x 800. Scripts in `mockups/blinesleep/testpagina/`.
+
+Benaderd, dus niet echt: de Shopify-filters (nagebouwd), het reviewblok van Judge.me (nagebootst met dezelfde klassen, want app-blokken worden door Shopify zelf gevuld), de betaaliconen (grijze plaatsvervangers met de naam erin; Shopify zet de echte iconen), de winkelwagen (gevuld met testregels) en de datumnotatie op de blog.
+
+Screenshots in `mockups/blinesleep/screenshots/shop/ronde2/`: product, homepage, lade (met en zonder hoes), hoes, collectie, blog, artikel, vergelijkingspagina en vragen, elk mobiel en desktop. Stand vóór deze sessie in `ronde2/voor/`. Naast de ENV-screenshots: `vergelijk_product_mobiel_env.jpg` en `vergelijk_home_env.jpg`. Metingen in `ronde2/metingen.json`.
+
+Gewerkt in drie rondes (wijzigen, renderen, screenshots, punten aflopen). Ronde 1 liet zien: geselecteerd kleurvlak nog zwart gevuld (Dawn won), uitklapteksten nog ingesprongen, witruimte tussen product en reviews 64 tot 80 px, kop op de foto over het gezicht op mobiel, blog als collage met een enorm eerste beeld, Engelse knop "Share" onder artikelen, "Filteren en sorteren" bij 2 producten. Allemaal opgelost in ronde 2 en 3.
+
+### De 12 punten
+
+| Nr | Punt | Gedaan | Meting op de testpagina (mobiel / desktop) |
+|---|---|---|---|
+| 1 | Rangorde titel en prijs | ja | Titel 24 / 28 px, gewicht 700. Prijs 24 / 24 px, gewicht 700 (was 18 px, 400). |
+| 2 | Ondertitel | ja | "Met vak voor je boek, 65 x 50 x 45 cm", 16 px, grijs, onder de score. Hoes: "Katoen 400 TC, met rits en zijvak". Ook op de homepage. |
+| 3 | Geen Dawn-belastingtekst | ja | "Incl. btw", 14 px, grijs (60%), op dezelfde regel als de prijs. De zin over verzendkosten is weg (verzending is gratis). Ook in het uitgelichte product op de homepage. |
+| 4 | "Kleur: Wit" | ja | Label "Kleur: **Wit**", de kleurnaam wisselt mee bij een andere keuze (Shopify ververst het label, `bline.js` doet het meteen). |
+| 5 | Rechte hoeken beelden en kaarten | ja | Afronding beelden, productkaarten, collectiekaarten en blogkaarten 0 px (was 6). |
+| 6 | Bijna zwarte, compacte tekst | ja | Lopende tekst rgb(26,26,26) (was 75%), regelafstand 1,5 (24 px bij 16 px), letterafstand 0, inspringing in de uitklapblokken 0 px (was 10). |
+| 7 | Rustige balk | ja | 13 px, gewicht 600, letterafstand 0,06 em, mobiel en desktop. Balk 35 px hoog op mobiel (was 37). |
+| 8 | Menu uitgeschreven op desktop | ja | Leeskussen, Losse hoes, Over Bline, Vragen naast het logo, 15 px vet; geen hamburger op desktop (gemeten: 0 px). Mobiel hamburger 44 x 44. "Alle leeskussens" en "Contact" uit het hoofdmenu (Contact staat in de voettekst). |
+| 9 | Betaaliconen bij de knop | ja | Rij onder de vinkjes en de bundelregel: iDEAL, Bancontact, Apple Pay, Visa, Mastercard (`payment_type_svg_tag`, standaard Shopify), 38 x 24 px. |
+| 10 | Minder witruimte | ja | Tussen blokken mobiel 32 px, desktop 48 px (gemeten: uitklapblokken naar reviews 32 / 48, foto homepage naar product 32 / 48, kenmerken naar vragen 40 / 48). "Goed om te weten" en de vinkjesbalk blijven in het lichte vlak. |
+| 11 | Knoppen en kleurvlakken | ja | Hoeken 4 px (knoppen, kleurvlakken, invoer). Kleurvlak: rand 1 px 25% grijs, bij hover 1 px #1A1A1A, gekozen 2 px #1A1A1A op wit met vette naam (niet meer zwart gevuld). Mobiel 44 px hoog, 16 px tekst. |
+| 12 | Homepage op dezelfde lat | ja | Foto met mens, kop van 4 woorden onderaan de foto (mobiel niet meer over het gezicht), één knop "Shop nu", daarna product met score en ondertitel, vinkjesbalk, kenmerken, vragen. Geen pop-ups en geen zwevende knoppen (gemeten: alleen de lade en de meelopende knop). |
+
+Alle 12 op "ja", gemeten op de testpagina. De echte test op een telefoon blijft nodig zodra het wachtwoord eraf mag.
+
+### Functies
+
+**1. Reviews (Judge.me).** Eigen sectie `bline-reviews` met alleen het reviewblok van de app, direct onder het product (dus onder Kenmerken) en boven "Goed om te weten". Geen sterrenbadge, geen zwevende tab, geen carrousel, geen pop-up; in `bline.css` staan die onderdelen van Judge.me ook nog eens op verborgen. Huisstijl via CSS: Nunito Sans, kop in hoofdletters, sterren en knop in inktblauw, knop 4 px hoeken en 44 px hoog. De bol-score onder de titel blijft. Let op: de instelling "review_data: sample_data" is volgens Judge.me alleen de voorbeeldweergave in de themaeditor; in de winkel toont het blok altijd de echte reviews (nu nog geen). Shopify controleert de waarden van app-instellingen niet, dus ik heb hem laten staan in plaats van een gok te doen.
+
+**2. Upsell in de lade.** Onder het eerste leeskussen, zolang er geen hoes in de winkelwagen ligt: "Extra hoes erbij? **€9,99 korting**" met een knop (86 x 44 px op mobiel). Hoeskleur: Wit naar Beige, Beige naar Wit, Blauw naar Grijs, Grijs naar Blauw, Zwart naar Grijs; is die uitverkocht, dan een andere beschikbare kleur. De knop voegt de hoes toe via `/cart/add.js` en ververst de lade. Getest: het verzoek vraagt de beige hoes (juiste variant), daarna staan kussen en hoes in de lade, de upsellregel is weg en het totaal is €94,99 (de automatische korting uit het bundellogboek). Snippet `bline-upsell`.
+
+**3. Bundelregel** onder de vinkjes (alleen leeskussen): "Extra hoes of tweede leeskussen erbij? Dan krijg je €9,99 korting." Kort gemaakt uit de twee bundelteksten.
+
+**4. Kruimelpad** met BreadcrumbList (schema.org) op product (Home / Leeskussens / product, boven de titel, op mobiel onder de foto zoals Tofvel), collectie, blog, artikel en pagina's (boven de inhoud). Gecontroleerd in de gerenderde HTML: geldige JSON, posities 1 tot 3, volledige adressen.
+
+**5. Lade.** "Kleur: Wit" met spatie (de spatie staat nu vast in de code), totaal zonder "EUR" (ook op de winkelwagenpagina), en onder het totaal "Incl. btw. Gratis verzending in NL en BE." in plaats van "Kortingen en verzending worden bij de checkout berekend".
+
+**6. Blog en pagina's.** Zes artikelen en de pagina "Leeskussen of losse kussens" gepubliceerd. Artikel 2 linkt onder de tabel naar die pagina. "Blog" in het voettekstmenu Klantenservice. De vijf nieuwe vragen staan als uitklapblok 12 tot 16 op de vragenpagina en zijn uit de paginatekst gehaald. Blog als raster in plaats van collage, de Engelse deelknop onder artikelen weg, het artikelbeeld middelhoog. Filter en sortering op de collectiepagina uit (2 producten). Paginatitels rustiger (32 / 40 px).
+
+**7. Collabs.** Aanmeldtekst (108 woorden) in `reports/bijlagen/Bline collabs aanmeldtekst.md`.
+
+### Gewijzigde themabestanden
+
+`assets/bline.css`, `assets/bline.js`, `config/settings_data.json` (hoeken en sectieruimte), `layout/theme.liquid` (kruimelpad), `locales/nl.json` (knop, "Incl. btw", tekst onder het totaal), `sections/main-product.liquid` en `sections/featured-product.liquid` (regel over verzendkosten weg), `sections/main-cart-footer.liquid` en `snippets/cart-drawer.liquid` (totaal, spatie, upsell), `snippets/product-variant-picker.liquid` (Kleur: Wit), de sjablonen `product`, `product.hoes`, `index`, `collection`, `blog`, `article`, `page.veelgestelde-vragen`. Nieuw: `sections/bline-reviews.liquid`, `snippets/bline-kruimel.liquid`, `bline-upsell.liquid`, `bline-bundelregel.liquid`, `bline-betaal.liquid`.
+
+Controle met de Admin API: elke upload gaf nul fouten; daarna het hele thema opnieuw opgehaald en vergeleken met wat ik verstuurde: alle bestanden gelijk. Geen "Translation missing" in de gerenderde pagina's. Ook via de API: hoofdmenu en voettekstmenu, artikelen en twee pagina's.
+
+### Stijlcontrole
+
+Script over alle nieuwe teksten (ondertitels, btw, knop, lade, bundelregel, upsell, kruimelpad, link in artikel 2, vragen 12 tot 16, Collabs-tekst): schrapwoorden uit de gids, AI-zinnen, gedachtestreepjes (lang, half, los streepje), "u" en "uw", uitroeptekens, superlatieven en gezondheidswoorden. 0 treffers. Het woord "gezondheid" in de Collabs-tekst is bewust: het is de regel voor creators ("zonder beloftes over gezondheid"), geen claim.
+
+### Niet gedaan, bewust
+
+- Wachtwoord blijft aan (gecontroleerd na afloop: home, product, blog en de vergelijkingspagina sturen door naar `/password`). Geen prijzen gewijzigd, geen mails, geen betaalinstellingen, geen nieuwe apps, geen nieuwe beelden.
+
+### Wacht op Joost
+
+**Judge.me** (in de Judge.me-app, niet in het thema):
+1. Instellingen > Widgets > Review Widget > Thema: kies **Default** of **Align**, niet **Slider** (dat is een carrousel).
+2. Zet uit: zwevende reviewtab (Floating Reviews Tab), pop-up (Reviews Pop-up), carrousel (Reviews Carousel), en "Verified Reviews Count Badge" als zwevend element. Het thema verbergt ze ook, maar uit is beter.
+3. Instellingen > Taal: Nederlands. Controleer dat de kop "Klantreviews" is en de knop "Schrijf een review".
+4. Kleuren: sterren en knop #1F2A37 (inktblauw), knoptekst wit.
+5. Reviewverzoek na bezorging: aan, één mail, 14 dagen na fulfilment (past bij funnelstap 5 in het groeiplan). Geen korting als beloning.
+6. Optioneel in de themaeditor (Online Store > Thema's > Dawn > Aanpassen > Leeskussen > sectie "Bline reviews" > blok Review Widget): "(Preview only)" op **Real data** zetten; dit verandert alleen de voorbeeldweergave.
+
+**Shopify Collabs** (Apps > Shopify Collabs):
+1. Programma aanmaken, aanmeldpagina aan, de tekst uit `reports/bijlagen/Bline collabs aanmeldtekst.md` plakken.
+2. Commissie 10%, producten Leeskussen Bline en de losse hoes.
+3. Kortingscode voor volgers: **uit**.
+4. Gratis product: ja, handmatig goedkeuren per creator.
+5. Aanmeldingen handmatig goedkeuren.
+
+**Verder**
+1. Betaaliconen in de voettekst verschijnen pas als Shopify Payments of een andere betaalprovider actief is (Shopify vult ze zelf). De rij bij de knop staat vast in het thema.
+2. De echte test op de telefoon en Lighthouse zodra het wachtwoord eraf mag (zie sessie 6).
+3. De overige punten uit sessie 4 tot en met 6 blijven open.

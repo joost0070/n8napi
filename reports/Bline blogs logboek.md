@@ -100,3 +100,10 @@ Tijdens het schrijven gevonden en aangepast: "het grootste deel van de breedte" 
 4. **De vergelijkingspagina** lezen en zeggen of hij gepubliceerd mag worden, en of er vanuit artikel 2 naartoe gelinkt mag worden.
 5. **Volgorde van publiceren**: voorstel uit het groeiplan is alle zes klaar, daarna één per twee weken. Publiceren pas als de winkel live is, anders staan ze achter het wachtwoord.
 6. Optioneel: de blog in het menu of de voettekst zetten (nu nergens gelinkt).
+
+## Aanvulling 5 oktober 2026 (shopsessie 7)
+
+- Alle zes artikelen en de pagina "Leeskussen of losse kussens" zijn **gepubliceerd** (akkoord Joost 05-10). Het winkelwachtwoord staat nog aan, dus niemand buiten de admin ziet ze (gecontroleerd: `/blogs/blog` en de vergelijkingspagina sturen door naar `/password`).
+- Artikel 2 linkt nu ook naar de vergelijkingspagina, met één zin onder de tabel. Het artikel heeft daarmee twee links: product en vergelijkingspagina.
+- "Blog" staat in het voettekstmenu Klantenservice.
+- De vijf nieuwe vragen staan nu in de uitklapblokken (vraag 12 tot 16) en zijn uit de paginatekst gehaald.
