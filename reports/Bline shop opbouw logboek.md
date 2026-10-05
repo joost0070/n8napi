@@ -365,3 +365,88 @@ Shopify heeft geen API voor de meldingen. De standaard Nederlandse meldingen geb
 9. **Cookiemelding**: Shopify Customer Privacy-banner voor de EU aanzetten (Instellingen > Klantprivacy).
 10. OEKO-TEX-nummer, gewicht van de losse hoes, bol-reviewscore met bron (voor de homepage).
 11. **"Live"**: wachtwoord uit. Pas daarna Merchant Center en advertenties, met apart akkoord.
+
+## 5 oktober 2026, sessie 5: restyle naar de stijl van echte webshops
+
+Opdracht: de tabel "Besluit voor Bline" uit `research_notes/Bline Sleep risicos en voorbeelden/look_and_feel_env_stores.md` volledig uitvoeren in het gepubliceerde Dawn-thema, en de teksten herschrijven volgens "Taal: aanvulling op de schrijfstijlgids".
+
+Toegang: de vaste winkelnaam die Joost doorgaf (niet de waarde in `BLINE_SHOPIFY_STORE`), sleutel via client credentials met `BLINE_SHOPIFY_CLIENT_ID` en `BLINE_SHOPIFY_CLIENT_SECRET`. Alleen de namen gecontroleerd. Geen SHOPIFY_*- of BOL_*-variabelen gebruikt. Vooraf een kopie gemaakt van alle thema-bestanden die zijn aangepast.
+
+### Kleuren en letter (Dawn, thema-instellingen)
+
+| Kleurschema | Achtergrond | Tekst | Knop | Gebruikt voor |
+|---|---|---|---|---|
+| scheme-1 | #FFFFFF | #1A1A1A | #1F2A37, witte tekst | standaard, product, header |
+| scheme-2 | #F4F4F2 | #1A1A1A | #1F2A37, witte tekst | tweede vlak (vinkjes, "Goed om te weten", vragen) |
+| scheme-3 | #1F2A37 | #FFFFFF | wit | aankondigingsbalk en voettekst |
+| scheme-4 | #FFFFFF | #1A1A1A | #1F2A37 | kaarten, meelopende knop |
+| scheme-5 | #1F2A37 | #FFFFFF | wit | labels (was salie #5F6E58) |
+| scheme-6 (nieuw) | #1F2A37 | #FFFFFF | #1F2A37, witte tekst | grote foto op de homepage: witte kop op de foto, inktblauwe knop |
+
+- Crème (#F7F4EF, #FCFAF6), zand (#F1EBE1) en salie (#5F6E58) staan nergens meer, ook niet in `bline.css` of de eigen secties (gecontroleerd met een zoekopdracht over alle thema-bestanden). Goud kwam in het thema niet voor. De kleurcodes van de kleurbolletjes (Wit, Beige, Blauw, Grijs, Zwart) zijn productkleuren en blijven.
+- Letter: **Nunito Sans** uit de Shopify-bibliotheek (bestaat, gecontroleerd op de wachtwoordpagina). Koppen `nunito_sans_n7` (700), tekst `nunito_sans_n4`. Cormorant en Inter zijn weg.
+- Korte koppen in hoofdletters met wat letterafstand: de kop op de foto, sectiekoppen (Kenmerken, Veelgestelde vragen, Goed om te weten, Beschrijving), koppen in de voettekst en de balk.
+- Knoppen: 6 px hoeken, effen inktblauw met witte tekst, geen rand. Kleurkeuze-knoppen, invoervelden, kaarten, beelden en labels ook 6 px (was 14 en 40).
+
+### Homepage
+
+Volgorde nu: grote foto, product, vier vinkjes, kenmerken, vragen.
+
+- Grote foto (beige, vrouw met boek) met kop **RECHTOP LEZEN IN BED** en één knop **Shop nu** naar de productpagina. Ondertitel weg. Witte tekst op de foto (30% donkere laag), ook op mobiel.
+- De drie vetgedrukte blokken (Zondagochtend / Het blijft staan / Wat je krijgt) zijn weg, net als "Waarom dit kussen".
+- Het leeskussen als uitgelicht product, daarna een grijze balk met de vier vinkjes, daarna "Kenmerken" (nieuwe sectie `bline-kenmerken`, leest de metafields) en zes korte vragen.
+- Paginatitel "Leeskussen met vak voor je boek | Bline" (was "... zonder kussenfort").
+
+### Aankondigingsbalk
+
+`GRATIS VERZENDING NL EN BE | BINNEN 1-2 WERKDAGEN IN HUIS | 4,5 UIT 5 OP BOL.COM`, in hoofdletters, vet, op inktblauw.
+
+**Bron van de score:** bol Ratings API, opgevraagd 05-10-2026: 13 reviews op de productfamilie van het Bline leeskussen. Verdeling 9 x 5 sterren, 3 x 4, 1 x 2. Gemiddeld 4,54, afgerond 4,5 uit 5. Geen reviewteksten overgenomen. Bij elke nieuwe stand van de reviews opnieuw nalezen.
+
+### Productpagina (leeskussen en hoes)
+
+- Volgorde: titel, prijs, kleurkeuze, knop, **vier vinkjes** (Gratis verzending in NL en BE / Binnen 1-2 werkdagen in huis / Hoes wasbaar op 30 °C / 14 dagen bedenktijd), **Beschrijving** (5 korte zinnen), **Kenmerken** als lijst uit de metafields.
+- De losse levertijdregel met vrachtwagen boven de kleurkeuze is weg, want hij herhaalde het tweede vinkje. Het tweede vinkje leest dezelfde instelling (thema-instellingen > Bline > levertijdtekst). De snippet `bline-levertijd` met de datumregel blijft bestaan, maar staat nergens meer. Gaat de datumregel later aan (akkoordpunt 5), dan komt hij in de plaats van het tweede vinkje.
+- De aparte tabel "Specificaties" is vervangen door de lijst "Kenmerken" in de productkolom. De oude sectie `bline-specificaties` is verwijderd.
+- "Waarom dit kussen" heet nu "Goed om te weten", met korte koppen (Stevig, Wasbare hoes, Maat, Kleur) en één of twee zinnen per punt.
+- Vragen ingekort tot één of twee zinnen. De hoes toont dezelfde zes vragen.
+
+### Teksten
+
+Herschreven (alleen toon, zie `reports/bijlagen/Bline shop teksten.md`):
+
+| Waar | Weg | Nu |
+|---|---|---|
+| Beschrijving leeskussen | "Je kent het. Twee kussens achter je...", "Hij past niet in je handbagage. Wel achter je in bed." | 5 korte zinnen met de feiten |
+| Beschrijving hoes | 3 alinea's | 5 korte zinnen |
+| Over Bline | "Lezen in bed klinkt gezellig. Tot je...", "Je krijgt antwoord van een mens." | wie we zijn, vier vinkjes als lijst, "We antwoorden op werkdagen." |
+| Verzending | openingszin | lijstje (gratis NL en BE, 1-2 werkdagen, track & trace); "Dan lossen we het op" wordt "We zoeken dan samen een oplossing" |
+| Retourneren | "Valt het kussen thuis anders uit dan je dacht?" | "Je hebt 14 dagen bedenktijd, vanaf de dag dat je het kussen ontvangt." |
+| Homepage | drieluik, ondertitel, "kussenfort" | kop van 4 woorden en "Shop nu" |
+
+Juridische inhoud niet aangeraakt: algemene voorwaarden, retourbeleid, verzendbeleid, contactgegevens, privacy, het modelformulier en de alinea's "Kosten", "Je geld terug", "Uitproberen mag" en "Goed om te weten" (levertermijn 30 dagen) zijn gelijk gebleven.
+
+### Stijlcontrole (opnieuw)
+
+Script over producten (titel, beschrijving, SEO), pagina's, collecties, beleid, de homepage- en productsjablonen, de vragenpagina, de wachtwoordpagina, balk, voettekst, thema-instellingen, de eigen secties en snippets en het Nederlandse taalbestand. Gezocht op de schrapwoorden uit regel 4 van de gids, op de AI-zinnen uit het besluit ("Je kent het", handbagage, "van een mens", "klinkt gezellig", kussenfort, "eerlijk"), op gedachtestreepjes (lang en half), op "u" en "uw", en op pijn, klacht, ergonomisch, rug, nek, houding, gezond, medisch.
+
+| Treffer | Besluit |
+|---|---|
+| "klacht" en "boekhouding" (pagina Privacy) | Blijft, zelfde toelichting als sessie 4. |
+| "Klachten" (voorwaarden, art. 9) | Blijft, wettelijk verplicht (art. 6:230m BW). |
+| "perfect", "ontdekkingen", "klachten" (privacybeleid in Instellingen > Beleid) | Dat is nog de automatische Shopify-tekst; Joost moet het automatisch beheer uitzetten (zie sessie 4, punt 1). Niet onze tekst. |
+
+Verder geen treffers. Geen "Translation missing": de nieuwe secties en snippets gebruiken geen vertaalsleutels, het taalbestand is niet gewijzigd, en de wachtwoordpagina bevat de tekst niet.
+
+### Screenshots
+
+`mockups/blinesleep/screenshots/shop/wachtwoordpagina_desktop.png` en `_mobiel.png` opnieuw gemaakt: witte achtergrond, Nunito Sans 700, geen crème meer. Home en productpagina kon ik weer niet fotograferen: alles staat achter het wachtwoord (zie sessie 4). Shopify heeft alle bestanden zonder fouten opgeslagen.
+
+### Niet gedaan, bewust
+
+- Wachtwoord blijft aan, geen prijzen gewijzigd, geen mails, geen betaalinstellingen, geen apps, geen nieuwe beelden.
+
+### Wacht op Joost
+
+1. Home en productpagina bekijken in Online Store > Thema's > Dawn > Aanpassen (mobiel en desktop), of het winkelwachtwoord als omgevingsvariabele geven voor screenshots en Lighthouse.
+2. De overige punten uit sessie 4 blijven open (privacybeleid, telefoonnummer en retouradres, e-mailmeldingen, domeinen, Payments, ChannelDock, Google- en Meta-app, cookiemelding, "live").
