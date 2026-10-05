@@ -261,3 +261,107 @@ Controle door Shopify: alle bestanden zijn zonder fouten opgeslagen (één inste
 1. De voorbeeldweergave van Dawn bekijken in de admin (Online Store > Thema's > Dawn > Aanpassen), op mobiel en desktop. Of het winkelwachtwoord als omgevingsvariabele geven, dan maak ik zelf screenshots en draai ik Lighthouse.
 2. Eventueel nieuwe tekstloze packshots per kleur (akkoordpunt 2).
 3. De overige punten uit sessie 2 (Payments, certificaat, gewicht hoes, DNS, ChannelDock, retouradres).
+
+## 5 oktober 2026, sessie 4
+
+Joost (05-10): "geef gas op de volledige shop zodat alles er correct inkomt." Nieuwe akkoorden: verzending gelijk aan bol (gratis NL en BE, rest uit), Dawn mag gepubliceerd worden zolang het wachtwoord aan blijft, producten mogen op actief en op het kanaal Online Store, retour 14 dagen met retourkosten voor de klant.
+
+Toegang: de vaste winkelnaam die Joost doorgaf (niet de waarde in `BLINE_SHOPIFY_STORE`), sleutel via client credentials met `BLINE_SHOPIFY_CLIENT_ID` en `BLINE_SHOPIFY_CLIENT_SECRET`. Alleen de namen gecontroleerd. Geen SHOPIFY_*- of BOL_*-variabelen gebruikt.
+
+### Eerst nagekeken wat sessie 3 al deed
+
+| Onderdeel | Stand |
+|---|---|
+| Beelden | Leeskussen 31 beelden, hoes 10. Alle met alt-tekst, allemaal verwerkt, breedte 2048 px (Higgsfield) of 1200 px (bol). Elke variant heeft zijn hoofdbeeld. Niets opnieuw gedaan. |
+| Verzending | Zone Nederland en zone België, elk één tarief "Gratis verzending", €0, "Binnen 1-2 werkdagen in huis". Geen andere zones, geen €6,95. |
+| Markten | Nederland en België, allebei actief. |
+| Vertalingen | Alle sleutels uit het Engelse taalbestand van Dawn staan ook in het Nederlandse. Alle vertaalsleutels die de eigen secties gebruiken, bestaan. |
+
+### Wat er nu staat
+
+**Thema**
+- Dawn is het **gepubliceerde thema**. Horizon staat erachter als reserve. Het wachtwoord staat **aan** (gecontroleerd: elke pagina stuurt door naar /password).
+- Voettekst: twee menu's ("Klantenservice" en "Voorwaarden en beleid") en een blok met de bedrijfsgegevens. De losse beleidsregel onderaan staat uit, want de links staan al in het menu.
+- Homepage: tussen de grote foto en het product drie korte blokken (moment, wat het kussen doet, wat je krijgt).
+- Aparte productsjabloon voor de hoes (zonder "Waarom dit kussen", dat gaat over het kussen).
+- Sjabloon voor de pagina Veelgestelde vragen met uitklapblokken (11 vragen).
+- Paginatitel: Dawn zette er "&ndash; BlineSleep.nl" achter, dus een gedachtestreepje in elke titel. Nu "| Bline", en alleen als "Bline" er nog niet in staat.
+- Paginatitel en metabeschrijving van de homepage staan in thema-instellingen > Bline (de API heeft daar geen andere plek voor).
+- Wachtwoordpagina: was Engels ("Opening soon", "Be the first to know") met een aanmeldveld voor mail. Nu Nederlands, zonder aanmeldveld, met de beige foto.
+- Eén gedachtestreepje in het Nederlandse taalbestand (alt-tekst van de QR-code op een cadeaubon) vervangen door een dubbele punt.
+- Aankondigingsbalk: "Gratis verzending in Nederland en België. Binnen 1-2 werkdagen in huis." Gelijk aan de verzendpagina en de verzendinstelling.
+
+**Producten**
+- Leeskussen Bline en Hoes voor leeskussen Bline: status **actief**, op het kanaal **Online Store**. Niet op Point of Sale of Shop.
+- Productomschrijving geschreven (leeskussen 112 woorden, binnen 80 tot 120).
+- Collectie Leeskussens op Online Store, met omschrijving. Collectie Slapen blijft leeg en verborgen.
+
+**SEO en productfeed**
+| Product | Paginatitel | Shopify-categorie | Google-productcategorie |
+|---|---|---|---|
+| Leeskussen | Leeskussen met vak voor je boek \| Bline | Pillows > Wedge Pillows | 4456 Huis en tuin > Decoratie > Rugkussens |
+| Hoes | Losse hoes voor het leeskussen \| Bline | Pillowcases | 2927 Huis en tuin > Linnengoed > Beddengoed > Kussenhoezen |
+
+- Merk (vendor) Bline, GTIN is de EAN in het streepjescodeveld (stond er al), conditie nieuw.
+- Elke pagina, de collectie en beide producten hebben een eigen paginatitel en metabeschrijving van hooguit 160 tekens.
+- De Google-ID's komen uit de officiële Google-taxonomie (nl-NL). "Rugkussens" past beter dan "Kussens": de ID staat in het metafield `mm-google-shopping.google_product_category`, dat de Google-app leest.
+
+**Pagina's** (alle gepubliceerd, achter het wachtwoord): Over Bline, Verzending, Retourneren (met modelformulier), Contact (met formulier en bedrijfsgegevens), Veelgestelde vragen, Privacy. Volledige teksten in `reports/bijlagen/Bline shop teksten.md`.
+
+**Beleid** (Instellingen > Beleid)
+- Algemene voorwaarden, retourbeleid met modelformulier, verzendbeleid en contactgegevens: geschreven en opgeslagen.
+- Privacybeleid: **niet** te vervangen via de API. Shopify beheert dat beleid automatisch ("Automatic management for Privacy Policy must be turned off"). De herschreven tekst staat daarom als pagina "Privacy" en die staat in het voettekstmenu. De checkout linkt nog naar de tekst van Shopify tot Joost het automatisch beheer uitzet.
+- Bedrijfsgegevens uit 3a: Shop4You, Brasem 12, 7623 KS Borne, KvK 88099865, btw NL004542189B52, mail@blinesleep.nl. Geen telefoonnummer (onbekend, zie Joost-lijst).
+- Retouradres staat nergens. De klant mailt en krijgt het adres van ons (zoals 3a voorschrijft). Op het modelformulier staat het vestigingsadres in Borne, want dat is waar de melding heen gaat, niet het pakket.
+- Het Europese ODR-platform wordt niet genoemd: dat is in juli 2025 gesloten.
+
+**Menu's**
+- Hoofdmenu: Leeskussen (productpagina), Losse hoes, Alle leeskussens (collectie), Over Bline, Vragen, Contact. "Assortiment" naar /collections/all is weg.
+- Klantenservice: Verzending, Retourneren, Veelgestelde vragen, Contact, Over Bline.
+- Voorwaarden en beleid: Algemene voorwaarden, Retourbeleid, Verzendbeleid, Privacy, Contactgegevens.
+
+**Doorverwijzingen** (22 stuks, werken zodra uwleeskussen.nl als domein aan deze winkel hangt)
+- Zeker: `/products/leeskussen-beige` (bekend uit eerder onderzoek) naar het leeskussen met kleur Beige gekozen.
+- Waarschijnlijk, zelfde patroon: `/products/leeskussen-wit`, `-blauw`, `-grijs`, `-zwart` naar de juiste kleur; `/products/hoes-<kleur>` naar de hoes in die kleur.
+- Voor de zekerheid: `/products/leeskussen-met-hoes`, `/products/hoes`, `/collections/leeskussen`, `/collections/hoezen`, `/pages/over-ons`, `/pages/faq`, `/pages/veelgestelde-vragen-faq`, `/pages/verzenden`, `/pages/verzending-en-levering`, `/pages/retour`, `/pages/retourbeleid`, `/pages/klantenservice`.
+- De echte oude paden kon ik niet ophalen: uwleeskussen.nl geeft een foutmelding (409) en het Internet Archive was vanuit deze sessie niet bereikbaar. Heeft Joost een export van de oude winkel of de Search Console van uwleeskussen.nl, dan vul ik de lijst aan.
+
+### Stijlcontrole
+
+Script over alle nieuwe teksten (producten, pagina's, beleid, homepage, balk, vragen, mailconcepten) en over de thema-bestanden met tekst. Gezocht op de schrapwoorden uit regel 4 van de gids, op gedachtestreepjes (lang en half), op "u" en "uw", en op pijn, klacht, ergonomisch, rug, nek, houding, gezond, medisch.
+
+| Treffer | Besluit |
+|---|---|
+| "boekhouding" (privacy) | Valse treffer op "houding". Blijft. |
+| "Klachten" (voorwaarden, art. 9) | Blijft. De wet vraagt informatie over klachtenafhandeling (art. 6:230m BW). Gaat over bestellingen, niet over gezondheid. |
+| "klacht" (privacy, 2 keer) | Blijft. Een retour of klacht afhandelen, en het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens (AVG). |
+
+Verder geen treffers. Geen levertijdbelofte met een tijdstip. Geen reviewscore: er is nog geen bol-cijfer met bron.
+
+### E-mailmeldingen
+
+Shopify heeft geen API voor de meldingen. De standaard Nederlandse meldingen gebruiken al "je". Concepten voor de openingszin van orderbevestiging, verzendbevestiging en terugbetaling staan in `reports/bijlagen/Bline shop teksten.md`; Joost plakt ze in Instellingen > Meldingen (of geeft akkoord dat het zo blijft).
+
+### Screenshots
+
+- Gemaakt: `mockups/blinesleep/screenshots/shop/wachtwoordpagina_desktop.png` en `wachtwoordpagina_mobiel.png`. Daarop zijn logo, kleuren en lettertypes van Dawn te zien. Geen "Translation missing", geen gedachtestreepjes.
+- **Niet gemaakt**: home, product per kleur, winkelwagen en beleidspagina's. Alles, ook /policies/, stuurt door naar de wachtwoordpagina. Een themavoorbeeld via `preview_theme_id` zit ook achter het wachtwoord, en de Admin API kan geen pagina's tonen of het wachtwoord uitlezen. Het wachtwoord heb ik niet uitgezet (harde grens). Met het winkelwachtwoord als omgevingsvariabele maak ik de screenshots en draai ik Lighthouse in een paar minuten.
+
+### Niet gedaan, bewust
+
+- Wachtwoord niet uit, geen prijzen gewijzigd, geen betaalinstellingen, geen mails, geen apps, geen nieuwe beelden.
+- Geen regel in het Systeemregister: de spreadsheet-ID in de masterprompt is afgekort ("1dy1WZ...").
+
+### Wacht op Joost
+
+1. **Privacybeleid**: Instellingen > Beleid > Privacybeleid, automatisch beheer uitzetten en de tekst van de pagina "Privacy" erin plakken (of mij vragen het te doen).
+2. **Winkelwachtwoord** als omgevingsvariabele, voor screenshots, Lighthouse en de controle op dode links. Of zelf in Online Store > Thema's > Dawn > Aanpassen kijken, mobiel en desktop.
+3. **Telefoonnummer** voor de contactgegevens (de wet vraagt het als je er een hebt) en het **retouradres**.
+4. **E-mailmeldingen**: concepten plakken of akkoord dat de standaard blijft.
+5. **Domeinen**: DNS van blinesleep.nl naar Shopify, uwleeskussen.nl en blinesleep.com als doorverwijzing toevoegen. De paddoorverwijzingen staan al klaar.
+6. **Shopify Payments** activeren, daarna testbestelling.
+7. **ChannelDock** aan Shopify koppelen, testorder (bundel = kussen plus hoes).
+8. **Google- en Meta-app** koppelen; de productdata (GTIN, merk, categorie) staat klaar.
+9. **Cookiemelding**: Shopify Customer Privacy-banner voor de EU aanzetten (Instellingen > Klantprivacy).
+10. OEKO-TEX-nummer, gewicht van de losse hoes, bol-reviewscore met bron (voor de homepage).
+11. **"Live"**: wachtwoord uit. Pas daarna Merchant Center en advertenties, met apart akkoord.
