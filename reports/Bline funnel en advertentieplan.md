@@ -28,7 +28,7 @@ flowchart LR
   M3 --> M4[Tweede hoes na 30 dagen]
 ```
 
-**Landingspagina's sinds shop v3:** de homepage is zelf de productpagina (alle vijf kleuren, kleur wisselen zonder te laden). Advertenties zonder kleur landen op `/`; advertenties met één kleur in beeld landen op `/products/leeskussen-<kleur>`. Een advertentie kan de keuze vooraf zetten met parameters: `?kleur=blauw`, `&aantal=2`, `&hoes=1` (getest). Nooit meer op een collectie landen.
+**Landingspagina's (bijgewerkt 06-10):** de homepage is weer een echte homepage (merk, kleuren, momenten, knop naar het product). Advertenties landen op de productpagina, die alle vijf kleuren toont en de kleur laat wisselen zonder te laden: zonder kleur op `/products/leeskussen-beige`, met één kleur in beeld op `/products/leeskussen-<kleur>`. De keuze kan vooraf gezet worden met `?aantal=2` en `?hoes=1` (getest). Alleen de merkcampagne landt op de homepage. Nooit op een collectie.
 
 ## 2. Vertrouwen: wat er staat en wat nog kan
 
@@ -145,6 +145,6 @@ Google Ads gebruikt automatische tagging (gclid); daar geen UTM's aan toevoegen.
 | Blog naar product | (geen UTM: interne links nooit taggen) | | | |
 | bol-verpakking of insert met QR | `insert` | qr | `doos_2026` | kleur, bijvoorbeeld `beige` |
 
-Landingspagina's: de homepage `/` (die is sinds v3 de productpagina met alle kleuren) of het kleurproduct (`/products/leeskussen-beige` enzovoort), eventueel met `?kleur=`, `&aantal=2`, `&hoes=1`. Nooit een collectie.
+Landingspagina's: het kleurproduct (`/products/leeskussen-beige` enzovoort), eventueel met `?aantal=2` of `?hoes=1`; de merkcampagne op de homepage. Nooit een collectie.
 
 Bestandsnamen van beelden: `bline-<product>-<kleur>-<soort>-<nr>.jpg`, bijvoorbeeld `bline-leeskussen-beige-packshot-01.jpg`, `bline-leeskussen-beige-gebruik-02.jpg`, `bline-hoes-blauw-rits-01.jpg`, `bline-over-joost-01.jpg`.

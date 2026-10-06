@@ -1,0 +1,50 @@
+{%- comment -%}
+  Bline v3: het leeskussen in het kort op de homepage. Beeld, naam, score, prijs, kleurbolletjes (links naar de kleur),
+  drie voordelen en een knop naar de productpagina. Geen koopknop hier: kopen gebeurt op de productpagina.
+{%- endcomment -%}
+{%- assign basis = all_products[section.settings.basis] -%}
+{%- assign kleuren = basis.metafields.bline.kleuren.value -%}
+{%- assign vanaf = kleuren | map: 'price' | sort | first -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in b3-kort">
+    {%- liquid
+  if section.settings.beeld != blank
+    assign kort_beeld = section.settings.beeld
+  else
+    assign kort_beeld = basis.featured_media.preview_image
+  endif
+-%}
+    <a href="{{ basis.url }}" class="b3-kort__beeld">{{ kort_beeld | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '480, 720, 1000, 1400', sizes: '(min-width: 990px) 45vw, 100vw', alt: kort_beeld.alt }}</a>
+    <div class="b3-kort__tekst">
+      <p class="b3-oog">{{ section.settings.oog }}</p>
+      <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+      {% render 'bline-score' %}
+      <p class="b3-kort__prijs">Vanaf <b>{{ vanaf | money }}</b> <span>· gratis verzending</span></p>
+      <div class="b3-kort__kleuren" aria-label="Kleuren">
+        {%- for kp in kleuren -%}
+          <a href="{{ kp.url }}" class="b3-kleurknop" style="--k: {{ kp.metafields.bline.kleur_hex.value }}" aria-label="{{ kp.metafields.bline.kleur_naam.value }}" title="{{ kp.metafields.bline.kleur_naam.value }}"><span class="b3-kleurknop__bol"></span></a>
+        {%- endfor -%}
+      </div>
+      <ul class="b3-verhaal__punten" role="list">
+        <li>{% render 'b3-icoon', naam: 'check' %}<div><b>Blijft staan</b><span>3,8 kg traagschuim, je zakt er niet doorheen.</span></div></li>
+        <li>{% render 'b3-icoon', naam: 'telefoon' %}<div><b>Vak opzij</b><span>Voor je telefoon, bril of boek.</span></div></li>
+        <li>{% render 'b3-icoon', naam: 'was' %}<div><b>Hoes wasbaar op 30 °C</b><span>Katoen 400 TC, met een rits eraf.</span></div></li>
+      </ul>
+      <a href="{{ basis.url }}" class="b3-knop">{{ section.settings.knop }}</a>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: product kort",
+  "settings": [
+    { "type": "text", "id": "basis", "label": "Kussen (handle)", "default": "leeskussen-beige" },
+    { "type": "image_picker", "id": "beeld", "label": "Beeld (leeg = eerste beeld van het kussen)" },
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Het leeskussen" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Eén kussen, <em>vijf</em> kleuren" },
+    { "type": "text", "id": "knop", "label": "Knop", "default": "Bekijk en bestel" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "wit", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "presets": [{ "name": "Bline v3: product kort" }]
+}
+{% endschema %}

@@ -7,7 +7,7 @@ Voor het nieuwe Google Ads-account van Bline (aan te maken via de Google & YouTu
 | Bestand | Inhoud |
 |---|---|
 | `bline-google-1_campagnes.csv` | 00 Search Merk (NL+BE, €1/dag, max. klikken, CPC-plafond €0,40) en 02 Search Generiek (NL, €3/dag, CPC-plafond €0,70). Alleen Google Zoeken, taal Nederlands |
-| `bline-google-2_advertentiegroepen.csv` | Merk; Leeskussen algemeen (landt op de homepage, die nu de productpagina is); per kleur een groep die landt op `/products/leeskussen-<kleur>` |
+| `bline-google-2_advertentiegroepen.csv` | Merk; Leeskussen algemeen (landt op `/products/leeskussen-beige`, de productpagina met alle kleuren); Merk landt op de homepage; per kleur een groep die landt op `/products/leeskussen-<kleur>` |
 | `bline-google-3_zoekwoorden.csv` | 44 zoekwoorden, exact en woordgroep; 13 erbij uit de echte bol-zoektermen (aug-sep 2026), zoals rugsteun bed en rugkussen bank |
 | `bline-google-4_advertenties.csv` | 7 responsieve zoekadvertenties, 15 koppen en 4 beschrijvingen elk; lengte automatisch gecontroleerd (koppen ≤ 30, beschrijvingen ≤ 90 tekens) |
 | `bline-google-5_uitsluitingen.csv` | 35 uitsluitingen als gedeelde lijst "Bline uitsluitingen" (baby, zwangerschap, hond, rugpijn, hernia, gratis, marktplaats, ikea, puzzel, kussensloop, elektrisch ...) |

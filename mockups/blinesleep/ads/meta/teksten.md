@@ -32,7 +32,7 @@ Kop: **Geen kussenfort meer** · Beschrijving: Vanaf €69,99, gratis verzending
 
 ### 2. `bl_momenten` (4:5 en 9:16)
 Bestanden: `bline-ad-d_momenten_45.jpg`, `bline-ad-d_momenten_916.jpg`
-Landing: `https://www.blinesleep.nl/`
+Landing: `https://www.blinesleep.nl/products/leeskussen-beige`
 
 Primaire tekst:
 > Lezen, werken, gamen of gewoon even bijkomen. Met Bline zit je rechtop in bed zonder kussens te stapelen.
@@ -81,7 +81,7 @@ Kop: **Stevig van binnen** · Beschrijving: In 5 kleuren, vanaf €69,99
 
 ### 7. `bl_set` (1:1, alleen herinnering)
 Bestand: `bline-ad-f_bundel_11.jpg`
-Landing: `https://www.blinesleep.nl/?kleur=beige&hoes=1` (kleur en hoes staan dan al aangevinkt)
+Landing: `https://www.blinesleep.nl/products/leeskussen-beige?hoes=1` (de extra hoes staat dan al aangevinkt)
 
 Primaire tekst:
 > Je keek naar het leeskussen. Neem er meteen een tweede hoes bij: €9,99 voordeel en gratis verzending.

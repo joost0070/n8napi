@@ -24,7 +24,7 @@
         {%- endfor -%}
       </ul>
       {%- if section.settings.knop != blank -%}
-        <a href="#" class="b3-knop{% if section.settings.achtergrond == 'donker' %} b3-knop--licht{% endif %}" data-b3-zet-kleur="{{ section.settings.knop_kleur }}">{{ section.settings.knop }}</a>
+        <a href="{% if section.settings.knop_link != blank %}{{ section.settings.knop_link }}{% else %}/products/leeskussen-{{ section.settings.knop_kleur }}{% endif %}" class="b3-knop{% if section.settings.achtergrond == 'donker' %} b3-knop--licht{% endif %}" data-b3-zet-kleur="{{ section.settings.knop_kleur }}">{{ section.settings.knop }}</a>
       {%- endif -%}
     </div>
   </div>
@@ -40,6 +40,7 @@
     { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Zie hem <em>in actie</em>" },
     { "type": "text", "id": "tekst", "label": "Tekst" },
     { "type": "text", "id": "knop", "label": "Knop" },
+    { "type": "url", "id": "knop_link", "label": "Knop gaat naar (leeg = kussen in de kleur hieronder)" },
     { "type": "text", "id": "knop_kleur", "label": "Knop zet kleur", "default": "beige" },
     { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "wit", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" }, { "value": "donker", "label": "Donker" } ] }
   ],

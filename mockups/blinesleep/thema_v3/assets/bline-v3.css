@@ -418,3 +418,53 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
 @media (max-width: 989px) { .b3-lookbook__item--groot ~ .b3-lookbook__item:last-child:nth-child(even) { grid-column: span 2; aspect-ratio: 2 / 1; } }
 .footer-block__details-content, .footer-block__details-content p, .footer__content-bottom { color: rgba(255,255,255,.78); }
 .footer-block__details-content a { color: #fff; }
+
+/* ---------- homepage: hero ---------- */
+.b3-hero { background: var(--b3-bg); }
+.b3-hero__in { display: grid; max-width: 144rem; margin: 0 auto; }
+.b3-hero__beeld { position: relative; aspect-ratio: 1 / 1; overflow: hidden; }
+.b3-hero__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-hero__badge { position: absolute; left: 1.2rem; top: 1.2rem; }
+.b3-hero__tekst { padding: 2.4rem var(--b3-gutter) 3.2rem; }
+.b3-hero__kop { font-size: 3.4rem; line-height: 1.08; font-weight: 600; letter-spacing: -.015em; margin: 0 0 1.2rem; }
+.b3-hero__kop em { font-family: 'B3 Serif', Georgia, serif; font-style: italic; font-weight: 400; font-size: 1.12em; white-space: nowrap; }
+.b3-hero__sub { color: var(--b3-sub); font-size: 1.55rem; margin: 0 0 2rem; max-width: 46ch; }
+.b3-hero__knoppen { display: flex; flex-wrap: wrap; gap: 1rem; }
+.b3-hero__knoppen .b3-knop { flex: 1 1 auto; }
+.b3-knop--rand { background: transparent; color: var(--b3-inkt); box-shadow: inset 0 0 0 1.5px var(--b3-inkt); }
+.b3-knop--rand:hover { background: #fff; }
+.b3-hero__vinkjes { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: .8rem; }
+.b3-hero__vinkjes li { display: flex; gap: .9rem; align-items: center; font-size: 1.35rem; }
+@media (min-width: 990px) {
+  .b3-hero__in { grid-template-columns: 1fr 1.2fr; align-items: center; min-height: 64rem; }
+  .b3-hero__beeld { order: 2; aspect-ratio: auto; height: 100%; min-height: 64rem; }
+  .b3-hero__tekst { padding: 6.4rem 5.6rem 6.4rem max(4.8rem, calc((100vw - 144rem) / 2 + 4.8rem)); }
+  .b3-hero__kop { font-size: 5.6rem; }
+  .b3-hero__sub { font-size: 1.7rem; }
+  .b3-hero__knoppen .b3-knop { flex: 0 0 auto; }
+  .b3-hero__vinkjes { grid-template-columns: repeat(3, auto); gap: 1.6rem; }
+}
+
+/* ---------- homepage: product in het kort ---------- */
+.b3-kort { display: grid; gap: 2rem; align-items: center; }
+.b3-kort__beeld { display: block; border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 1 / 1; background: var(--b3-steen); }
+.b3-kort__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-kort .bline-score__sterren { color: var(--b3-ster); }
+.b3-kort__prijs { font-size: 1.6rem; margin: .4rem 0 1.4rem; }
+.b3-kort__prijs b { font-size: 2.2rem; font-weight: 600; }
+.b3-kort__prijs span { color: var(--b3-sub); font-size: 1.35rem; }
+.b3-kort__kleuren { display: flex; gap: .6rem; margin-bottom: .8rem; }
+.b3-kort__kleuren .b3-kleurknop { width: 4.4rem; height: 4.4rem; }
+.b3-kort__kleuren .b3-kleurknop:hover { border-color: var(--b3-lijn); }
+@media (min-width: 990px) { .b3-kort { grid-template-columns: 1fr 1fr; gap: 6.4rem; } }
+
+/* ---------- homepage: blog ---------- */
+.b3-blogrij { display: grid; grid-auto-flow: column; grid-auto-columns: 80%; gap: 1.2rem; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--b3-gutter) * -1); padding: 0 var(--b3-gutter); }
+.b3-blogrij::-webkit-scrollbar { display: none; }
+.b3-blogkaart { display: block; color: var(--b3-inkt); text-decoration: none; }
+.b3-blogkaart__beeld { display: block; border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 4 / 3; background: var(--b3-steen); margin-bottom: 1.2rem; }
+.b3-blogkaart__beeld img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.b3-blogkaart:hover img { transform: scale(1.03); }
+.b3-blogkaart__titel { display: block; font-weight: 600; font-size: 1.6rem; line-height: 1.3; margin-bottom: .4rem; }
+.b3-blogkaart__tekst { display: block; color: var(--b3-sub); font-size: 1.35rem; }
+@media (min-width: 990px) { .b3-blogrij { grid-auto-flow: initial; grid-template-columns: repeat(3, 1fr); gap: 2.4rem; overflow: visible; margin: 0; padding: 0; } }

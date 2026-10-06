@@ -1,0 +1,33 @@
+{%- comment -%} Bline v3: drie verhalen uit de blog. {%- endcomment -%}
+{%- assign b = blogs[section.settings.blog] -%}
+{%- if b.articles.size > 0 -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in">
+    <div class="b3-kopregel">
+      <div><p class="b3-oog">{{ section.settings.oog }}</p><h2 class="b3-kop">{{ section.settings.kop }}</h2></div>
+      <a href="{{ b.url }}" class="b3-tegelkaart__link">Alle verhalen {% render 'b3-icoon', naam: 'pijl' %}</a>
+    </div>
+    <div class="b3-blogrij">
+      {%- for a in b.articles limit: 3 -%}
+        <a href="{{ a.url }}" class="b3-blogkaart">
+          <span class="b3-blogkaart__beeld">{%- if a.image -%}{{ a.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', sizes: '(min-width: 990px) 30vw, 80vw', alt: a.image.alt }}{%- endif -%}</span>
+          <span class="b3-blogkaart__titel">{{ a.title }}</span>
+          <span class="b3-blogkaart__tekst">{{ a.excerpt_or_content | strip_html | truncatewords: 18 }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Bline v3: blog",
+  "settings": [
+    { "type": "text", "id": "blog", "label": "Blog (handle)", "default": "blog" },
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Verhalen" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Lezen in bed, <em>tips</em> en meer" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "wit", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "presets": [{ "name": "Bline v3: blog" }]
+}
+{% endschema %}

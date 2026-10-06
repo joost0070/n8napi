@@ -9,10 +9,18 @@
  */
 {
  "sections": {
-  "product": {
-   "type": "b3-product",
+  "hero": {
+   "type": "b3-hero",
    "settings": {
-    "standaard": "leeskussen-beige"
+    "beeld": "shopify://shop_images/bline-leeskussen-wit-gebruik-02.jpg",
+    "beeld_mobiel": "shopify://shop_images/bline-leeskussen-beige-gebruik-01.png",
+    "oog": "Bline leeskussen",
+    "kop": "Lezen in bed, zonder <em>kussenfort</em>",
+    "tekst": "Het leeskussen dat blijft staan als je leunt. Met een vak voor je telefoon en een hoes die zo in de was kan. In vijf kleuren.",
+    "knop": "Bekijk het leeskussen",
+    "knop_link": "/products/leeskussen-beige",
+    "knop2": "Kies je kleur",
+    "knop2_link": "#kleuren"
    }
   },
   "band": {
@@ -121,6 +129,20 @@
     "achtergrond": "warm"
    }
   },
+  "groot": {
+   "type": "b3-groot",
+   "settings": {
+    "beeld": "shopify://shop_images/bline-leeskussen-blauw-03.jpg",
+    "focus": "60% 45%",
+    "oog": "Voor het slapengaan",
+    "kop": "Nog één <em>hoofdstuk</em>",
+    "tekst": "Je rug tegen het kussen, je telefoon in het vak. Zo lees je ontspannen door.",
+    "knop": "Bekijk blauw",
+    "knop_kleur": "blauw",
+    "uitlijning": "links",
+    "knop_link": ""
+   }
+  },
   "binnenkant": {
    "type": "b3-binnenkant",
    "blocks": {
@@ -172,17 +194,7 @@
     "kop": "Stevig van <em>binnen</em>, zacht van buiten",
     "intro": "",
     "beeld": "shopify://shop_images/bline-leeskussen-beige-04.jpg",
-    "achtergrond": "wit"
-   }
-  },
-  "kleuren": {
-   "type": "b3-kleuren",
-   "settings": {
-    "basis": "leeskussen-beige",
-    "oog": "Vijf kleuren",
-    "kop": "Welke past bij <em>jouw</em> bed?",
-    "intro": "Zelfde kussen, zelfde kamer: zo zie je het verschil. Tik op een kleur om hem te kiezen.",
-    "achtergrond": "wit"
+    "achtergrond": "warm"
    }
   },
   "video": {
@@ -223,10 +235,11 @@
     "oog": "In 25 seconden",
     "kop": "Zie hem <em>in actie</em>",
     "tekst": "",
-    "knop": "Kies je kleur",
-    "knop_kleur": "beige",
+    "knop": "Bekijk het leeskussen",
+    "knop_kleur": "wit",
     "om": false,
-    "achtergrond": "donker"
+    "achtergrond": "donker",
+    "knop_link": "/products/leeskussen-wit"
    }
   },
   "score": {
@@ -285,13 +298,50 @@
     "achtergrond": "wit"
    }
   },
-  "hoezen": {
-   "type": "b3-hoezen",
+  "waarom": {
+   "type": "b3-verhaal",
+   "blocks": {
+    "w0": {
+     "type": "punt",
+     "settings": {
+      "icoon": "check",
+      "kop": "Een Nederlands merk",
+      "tekst": "Bline is een merk van Shop4You uit Borne."
+     }
+    },
+    "w1": {
+     "type": "punt",
+     "settings": {
+      "icoon": "telefoon",
+      "kop": "Echte klantenservice",
+      "tekst": "Bel of app 06 38 66 28 33, gewoon met een mens."
+     }
+    },
+    "w2": {
+     "type": "punt",
+     "settings": {
+      "icoon": "terug",
+      "kop": "14 dagen bedenktijd",
+      "tekst": "Past het toch niet bij je bed, dan stuur je het terug."
+     }
+    }
+   },
+   "block_order": [
+    "w0",
+    "w1",
+    "w2"
+   ],
    "settings": {
-    "oog": "Handig om erbij te hebben",
-    "kop": "Een <em>tweede</em> hoes",
-    "intro": "Eén in de was, één om het kussen. Of wissel van kleur wanneer je wilt.",
-    "achtergrond": "wit"
+    "video_product": "",
+    "beeld": "shopify://shop_images/bline-leeskussen-wit-packshot-01.jpg",
+    "oog": "Over Bline",
+    "kop": "Waarom <em>Bline</em>?",
+    "tekst": "We maken één ding, en dat goed: een leeskussen dat blijft staan. We begonnen op bol.com, waar kopers het een 4,5 uit 5 geven. Nu ook in onze eigen winkel, voor dezelfde prijs.",
+    "knop": "Bekijk het leeskussen",
+    "knop_kleur": "beige",
+    "om": true,
+    "achtergrond": "warm",
+    "knop_link": "/products/leeskussen-beige"
    }
   },
   "vragen": {
@@ -347,87 +397,50 @@
     "achtergrond": "warm"
    }
   },
-  "groot": {
-   "type": "b3-groot",
+  "kleuren": {
+   "type": "b3-kleuren",
    "settings": {
-    "beeld": "shopify://shop_images/bline-leeskussen-blauw-03.jpg",
-    "focus": "60% 45%",
-    "oog": "Voor het slapengaan",
-    "kop": "Nog één <em>hoofdstuk</em>",
-    "tekst": "Je rug tegen het kussen, je telefoon in het vak. Zo lees je ontspannen door.",
-    "knop": "Kies je kleur",
-    "knop_kleur": "blauw",
-    "uitlijning": "links"
+    "basis": "leeskussen-beige",
+    "oog": "Vijf kleuren",
+    "kop": "Welke past bij <em>jouw</em> bed?",
+    "intro": "Zelfde kussen, zelfde kamer: zo zie je het verschil. Tik op een kleur om hem te kiezen.",
+    "achtergrond": "wit"
    }
   },
-  "maat": {
-   "type": "b3-maat",
+  "kort": {
+   "type": "b3-product-kort",
    "settings": {
-    "oog": "Maat",
-    "kop": "Past op <em>elk</em> bed",
-    "intro": "65 cm breed, 50 cm hoog en 45 cm diep. Groot genoeg om echt tegenaan te leunen, klein genoeg om naast je partner te liggen.",
-    "achtergrond": "warm"
+    "basis": "leeskussen-beige",
+    "oog": "Het leeskussen",
+    "kop": "Eén kussen, <em>vijf</em> kleuren",
+    "knop": "Bekijk en bestel",
+    "achtergrond": "wit",
+    "beeld": "shopify://shop_images/bline-leeskussen-beige-02.jpg"
    }
   },
-  "waarom": {
-   "type": "b3-verhaal",
-   "blocks": {
-    "w0": {
-     "type": "punt",
-     "settings": {
-      "icoon": "check",
-      "kop": "Een Nederlands merk",
-      "tekst": "Bline is een merk van Shop4You uit Borne."
-     }
-    },
-    "w1": {
-     "type": "punt",
-     "settings": {
-      "icoon": "telefoon",
-      "kop": "Echte klantenservice",
-      "tekst": "Bel of app 06 38 66 28 33, gewoon met een mens."
-     }
-    },
-    "w2": {
-     "type": "punt",
-     "settings": {
-      "icoon": "terug",
-      "kop": "14 dagen bedenktijd",
-      "tekst": "Past het toch niet bij je bed, dan stuur je het terug."
-     }
-    }
-   },
-   "block_order": [
-    "w0",
-    "w1",
-    "w2"
-   ],
+  "blog": {
+   "type": "b3-blog",
    "settings": {
-    "video_product": "",
-    "beeld": "shopify://shop_images/bline-leeskussen-wit-packshot-01.jpg",
-    "oog": "Over Bline",
-    "kop": "Waarom <em>Bline</em>?",
-    "tekst": "We maken één ding, en dat goed: een leeskussen dat blijft staan. We begonnen op bol.com, waar kopers het een 4,5 uit 5 geven. Nu ook in onze eigen winkel, voor dezelfde prijs.",
-    "knop": "Kies je kleur",
-    "knop_kleur": "beige",
-    "om": true,
-    "achtergrond": "warm"
+    "blog": "blog",
+    "oog": "Verhalen",
+    "kop": "Lezen in bed, <em>tips</em> en meer",
+    "achtergrond": "wit"
    }
   }
  },
  "order": [
-  "product",
+  "hero",
   "band",
+  "kleuren",
   "momenten",
+  "kort",
   "groot",
   "binnenkant",
-  "maat",
-  "kleuren",
   "video",
   "score",
   "vergelijk",
   "waarom",
-  "hoezen",
+  "blog",
   "vragen"
  ]
 }
