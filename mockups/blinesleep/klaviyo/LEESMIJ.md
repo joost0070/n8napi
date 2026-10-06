@@ -1,6 +1,6 @@
 # Bline Klaviyo-flows (stand 6 oktober 2026)
 
-Gemaakt via de Klaviyo-API op het gratis abonnement (max. 3 live flows). Alleen flows die naar een aankoop leiden. Alle drie staan **live**.
+Gemaakt via de Klaviyo-API op het gratis abonnement (max. 3 live flows). Alleen flows die naar een aankoop leiden. Alle drie staan **live** (opnieuw aangemaakt op 06-10 zonder telefoonnummer; ID's in `flow_ids.json`). Aanmeldingen komen binnen via de eigen pop-up op de site (`snippets/bline-aanmeldpop.liquid`), die rechtstreeks aanmeldt bij "Email List" met dubbele bevestiging.
 
 | Flow | Trigger | Mails | Korting |
 |---|---|---|---|
@@ -32,5 +32,5 @@ De kortingscodes zelf staan niet in de repo.
 
 1. **Eigen verzenddomein** (Settings > Domains), bijvoorbeeld `send.blinesleep.nl`. blinesleep.nl heeft een DMARC-regel met `p=quarantine`, dus zonder eigen domein komen mails van mail@blinesleep.nl waarschijnlijk in de spam.
 2. **Accountinstellingen:** tijdzone Europe/Amsterdam en valuta EUR. Nu staan die op US/Eastern en USD. Zet de website-URL op https://blinesleep.nl zodra het domein gekoppeld is: alle links in de mails gebruiken die URL.
-3. **Aanmeldformulier** (1 live formulier inbegrepen): een pop-up met "10% op je eerste bestelling" die aanmeldingen in "Email List" zet. Controleer ook dat de Shopify-integratie nieuwsbriefaanmeldingen naar "Email List" synchroniseert.
+3. **Aanmeldformulier**: niet meer nodig, de site heeft een eigen pop-up. Controleer wel dat de Shopify-integratie nieuwsbriefaanmeldingen uit de footer naar "Email List" synchroniseert.
 4. **Shopify:** zet de eigen mail voor verlaten checkouts in Shopify uit (Marketing > Automatiseringen), anders krijgen klanten twee herinneringen.

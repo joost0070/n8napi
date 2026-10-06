@@ -13,13 +13,31 @@
     </div>
   </div>
 </section>
+{%- if section.blocks.size > 0 -%}
+  {%- comment -%} vragen als FAQ-data voor zoekmachines en AI-assistenten {%- endcomment -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.vraag | strip_html | strip | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.antwoord | strip_html | strip | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
 {% schema %}
 {
   "name": "Bline v3: vragen",
   "settings": [
     { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Vragen" },
     { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Goed om te <em>weten</em>" },
-    { "type": "text", "id": "intro", "label": "Intro", "default": "Staat je vraag er niet bij? Bel of app 06 38 66 28 33." },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "Staat je vraag er niet bij? Mail ons op mail@blinesleep.nl." },
     { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "warm", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
   ],
   "blocks": [

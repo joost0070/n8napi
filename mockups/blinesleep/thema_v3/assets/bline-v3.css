@@ -507,3 +507,40 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
 .b3-hoeskleur span { display: block; width: 100%; height: 100%; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.2); }
 .b3-hoeskleur.is-gekozen { border-color: var(--b3-inkt); }
 .b3-hoeskleur:focus-visible { outline: 2px solid var(--b3-accent); outline-offset: 1px; }
+
+/* ---------- aanmeldpop-up (Klaviyo, 10%) ---------- */
+.b3-pop { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: flex-end; justify-content: center; }
+.b3-pop[hidden] { display: none; }
+.b3-pop__achter { position: absolute; inset: 0; background: rgba(20, 24, 33, .45); opacity: 0; transition: opacity .25s ease; }
+.b3-pop__vak { position: relative; width: 100%; max-height: 92vh; overflow: auto; background: #fff; border-radius: var(--b3-r) var(--b3-r) 0 0; transform: translateY(24px); opacity: 0; transition: transform .25s ease, opacity .25s ease; padding-bottom: env(safe-area-inset-bottom); }
+.b3-pop.is-open .b3-pop__achter { opacity: 1; }
+.b3-pop.is-open .b3-pop__vak { transform: none; opacity: 1; }
+.b3-pop__beeld { display: none; }
+.b3-pop__tekst { padding: 2.8rem var(--b3-gutter) 2rem; text-align: center; }
+.b3-pop__tekst .b3-kop { font-size: 2.6rem; outline: none; }
+.b3-pop__intro { color: var(--b3-sub); margin: 0 0 1.8rem; }
+.b3-pop__form { display: grid; gap: 1rem; }
+.b3-pop__form input { width: 100%; box-sizing: border-box; min-height: 5rem; padding: 0 1.6rem; border: 1px solid var(--b3-lijn); border-radius: 999px; font: inherit; font-size: 1.6rem; color: var(--b3-inkt); background: #fff; }
+.b3-pop__form input:focus { outline: 2px solid var(--b3-knop); outline-offset: 1px; }
+.b3-pop__form .b3-knop { width: 100%; justify-content: center; margin-top: 0; }
+.b3-pop__fout { color: #B42318; font-size: 1.3rem; margin: 0; }
+.b3-pop__klein { font-size: 1.2rem; color: var(--b3-sub); margin: 1.4rem 0 0; }
+.b3-pop__klein a { color: inherit; }
+.b3-pop__nee { margin-top: 1rem; background: none; border: 0; padding: .8rem; font: inherit; font-size: 1.3rem; color: var(--b3-sub); text-decoration: underline; cursor: pointer; }
+.b3-pop__x { position: absolute; top: 1rem; right: 1rem; z-index: 2; width: 4rem; height: 4rem; border: 0; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--b3-inkt); display: grid; place-items: center; cursor: pointer; }
+.b3-pop-open, .b3-pop-open body { overflow: hidden; }
+@media (min-width: 750px) {
+  .b3-pop { align-items: center; padding: 2.4rem; }
+  .b3-pop__vak { max-width: 76rem; display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--b3-r); transform: translateY(12px) scale(.98); }
+  .b3-pop__beeld { display: block; background: var(--b3-zand); }
+  .b3-pop__beeld img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .b3-pop__tekst { padding: 4rem 3.6rem 3rem; text-align: left; align-self: center; }
+  .b3-pop__tekst .b3-kop { font-size: 3.2rem; }
+}
+@media (prefers-reduced-motion: reduce) { .b3-pop__vak, .b3-pop__achter { transition: none; } }
+
+/* ---------- voorraadmelding (alleen bij weinig voorraad) ---------- */
+.b3-voorraad { display: flex; align-items: center; gap: .8rem; margin: 1.6rem 0 0; font-size: 1.4rem; font-weight: 500; color: var(--b3-accent); }
+.b3-voorraad[hidden] { display: none; }
+.b3-voorraad__stip { width: .8rem; height: .8rem; border-radius: 50%; background: var(--b3-accent); box-shadow: 0 0 0 4px rgba(196, 98, 62, .15); }
+.b3-voorraad + .b3-knop--groot { margin-top: 1rem; }

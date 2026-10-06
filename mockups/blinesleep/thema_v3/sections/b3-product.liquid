@@ -105,10 +105,11 @@
         </div>
       </div>
 
+      <p class="b3-voorraad" data-b3-voorraad hidden><span class="b3-voorraad__stip" aria-hidden="true"></span><span data-b3-voorraadtekst></span></p>
       <button type="button" class="b3-knop b3-knop--groot" data-b3-koop>
         <span data-b3-knoptekst>In winkelwagen</span><span class="b3-knop__prijs" data-b3-knopprijs>{{ hoofd.selected_or_first_available_variant.price | money }}</span>
       </button>
-      <p class="b3-product__fout" data-b3-fout hidden role="alert">Dat lukte niet. Probeer het nog eens of bel 06 38 66 28 33.</p>
+      <p class="b3-product__fout" data-b3-fout hidden role="alert">Dat lukte niet. Probeer het nog eens of mail ons op mail@blinesleep.nl.</p>
 
       <ul class="b3-vinkjes" role="list">
         <li>{% render 'b3-icoon', naam: 'truck' %}Gratis verzending in NL en BE</li>
@@ -117,9 +118,9 @@
         <li>{% render 'b3-icoon', naam: 'was' %}Hoes wasbaar op 30 °C</li>
       </ul>
       {% render 'bline-betaal' %}
-      <a class="b3-app" href="https://wa.me/31638662833?text={{ 'Hoi Bline, ik heb een vraag over het leeskussen.' | url_encode }}" target="_blank" rel="noopener">
-        <span class="b3-app__bol" aria-hidden="true">{% render 'b3-icoon', naam: 'telefoon' %}</span>
-        <span><b>Twijfel over maat of kleur?</b><br>App ons op 06 38 66 28 33, we reageren op werkdagen.</span>
+      <a class="b3-app" href="/pages/contact">
+        <span class="b3-app__bol" aria-hidden="true">{% render 'b3-icoon', naam: 'mail' %}</span>
+        <span><b>Twijfel over maat of kleur?</b><br>Stuur ons een bericht, we reageren op werkdagen.</span>
       </a>
 
       <div class="b3-uitklap">
@@ -142,7 +143,7 @@
         </details>
         <details>
           <summary>Verzending en retour</summary>
-          <div><p>Gratis verzending in Nederland en België, binnen 1-2 werkdagen in huis. Je mag hem 30 dagen proberen. Vragen? Bel of app 06 38 66 28 33.</p></div>
+          <div><p>Gratis verzending in Nederland en België, binnen 1-2 werkdagen in huis. Je mag hem 30 dagen proberen. Vragen? Mail ons op mail@blinesleep.nl.</p></div>
         </details>
       </div>
     </div>
@@ -156,6 +157,7 @@
   <script type="application/json" data-b3-data>
     {
       "korting": {{ korting }},
+      "voorraadGrens": {{ section.settings.voorraad_grens | default: 10 }},
       "kleuren": {
         {%- for kp in kleuren -%}
           {%- assign k = kp.handle | remove: 'leeskussen-' -%}
@@ -169,6 +171,7 @@
             "url": {{ kp.url | json }},
             "variant": {{ v.id | json }},
             "beschikbaar": {{ v.available | json }},
+            "voorraad": {% if v.inventory_management == 'shopify' and v.inventory_policy == 'deny' %}{{ v.inventory_quantity | json }}{% else %}null{% endif %},
             "prijs": {{ v.price | json }},
             "hoes": {{ hv.id | json }},
             "hoesBeschikbaar": {{ hv.available | json }},
@@ -229,6 +232,16 @@
       "id": "standaard",
       "label": "Kleur op de homepage (handle)",
       "default": "leeskussen-beige"
+    },
+    {
+      "type": "range",
+      "id": "voorraad_grens",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 10,
+      "label": "Toon 'nog X op voorraad' vanaf",
+      "info": "Alleen de echte voorraad (uit de wekelijkse ChannelDock-sync). 0 = nooit tonen."
     }
   ],
   "presets": [{ "name": "Bline v3: leeskussen" }]

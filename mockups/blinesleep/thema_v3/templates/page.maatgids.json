@@ -98,9 +98,9 @@
     "b2": {
      "type": "tegel",
      "settings": {
-      "icoon": "telefoon",
+      "icoon": "mail",
       "titel": "Twijfel?",
-      "tekst": "<p>Je mag hem 30 dagen proberen. Bel of app ons gerust: 06 38 66 28 33.</p>",
+      "tekst": "<p>Je mag hem 30 dagen proberen. Twijfel je nog? Mail ons gerust op mail@blinesleep.nl.</p>",
       "link": "/pages/contact",
       "link_label": "Contact"
      }

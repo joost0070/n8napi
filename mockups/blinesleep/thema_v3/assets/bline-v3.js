@@ -67,6 +67,13 @@
       var pb = $('[data-b3-plakbol]'); if (pb && k.hex) pb.style.setProperty('--k', k.hex);
       $('[data-b3-plakprijs]').textContent = geld(totaal());
       $('[data-b3-hint2]').hidden = staat.aantal !== 2;
+      // eerlijke voorraadmelding: alleen als het echt weinig is (grens instelbaar in de sectie)
+      var vr = $('[data-b3-voorraad]');
+      if (vr) {
+        var n = k.voorraad, laag = typeof n === 'number' && n > 0 && n <= D.voorraadGrens;
+        vr.hidden = !laag;
+        if (laag) $('[data-b3-voorraadtekst]').textContent = 'Nog ' + n + ' op voorraad in ' + k.naam.toLowerCase();
+      }
       $$('[data-b3-koop]').forEach(function (b) { b.disabled = !k.beschikbaar; });
       $('[data-b3-knoptekst]').textContent = k.beschikbaar ? 'In winkelwagen' : 'Tijdelijk uitverkocht';
     }

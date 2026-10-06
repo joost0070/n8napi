@@ -334,7 +334,7 @@
    "settings": {
     "oog": "Vragen",
     "kop": "Goed om te <em>weten</em>",
-    "intro": "Staat je vraag er niet bij? Bel of app 06 38 66 28 33.",
+    "intro": "Staat je vraag er niet bij? Mail ons op mail@blinesleep.nl.",
     "achtergrond": "warm"
    }
   },
@@ -394,9 +394,9 @@
     "w1": {
      "type": "punt",
      "settings": {
-      "icoon": "telefoon",
+      "icoon": "mail",
       "kop": "Echte klantenservice",
-      "tekst": "Bel of app 06 38 66 28 33, gewoon met een mens."
+      "tekst": "Mail ons op mail@blinesleep.nl, je krijgt antwoord van een mens."
      }
     },
     "w2": {

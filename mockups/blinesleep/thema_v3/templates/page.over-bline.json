@@ -30,9 +30,9 @@
         "w1": {
           "type": "punt",
           "settings": {
-            "icoon": "telefoon",
+            "icoon": "mail",
             "kop": "Echte klantenservice",
-            "tekst": "Bel of app 06 38 66 28 33, gewoon met een mens."
+            "tekst": "Mail ons op mail@blinesleep.nl, je krijgt antwoord van een mens."
           }
         },
         "w2": {

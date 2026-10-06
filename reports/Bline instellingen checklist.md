@@ -19,6 +19,9 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | Menu en footer | Leeskussen, Kleuren, Hoezen, Vragen, Over Bline; footer zonder oude pagina's |
 | Wachtwoord | uit sinds 06-10, winkel is open |
 | Betaaliconen | iDEAL (via Mollie) staat vooraan bij de knop en in de footer |
+| Contact | geen telefoonnummer meer: overal mail@blinesleep.nl of de contactpagina (06-10) |
+| Klaviyo | 3 flows live (checkout, bekeken/winkelwagen, welkom 10%), eigen aanmeldpop-up op de site; zie `mockups/blinesleep/klaviyo/LEESMIJ.md` |
+| n8n | voorraadsync ChannelDock → Shopify (ma 07:15) en weekrapport naar tabblad "📊 Bline week" in Shop4You_CEO_Workbook (ma 08:00) |
 
 ## Joost: in de Shopify-admin
 
@@ -29,6 +32,7 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | 3 | Instellingen > Betalingen | Klarna staat al aan (live gezien 06-10) | gedaan |
 | 4 | Instellingen > Checkout | marketing-vinkje vooraf aangevinkt: **opgelost 06-10** (live gecontroleerd: alleen "Bezorgadres en factuuradres zijn hetzelfde" staat nog aan). Gastcheckout aan, telefoon optioneel | gedaan |
 | 5 | Instellingen > Klantprivacy | cookiebanner aan voor de EU; automatisch privacybeheer uit (zoals afgesproken) | ja |
+| 5b | Instellingen > Winkelgegevens | **telefoonnummer weghalen**: het is van de site, pagina's, contactbeleid en mails gehaald (06-10), maar het automatische privacybeleid van Shopify haalt het nog uit de winkelgegevens | nu |
 | 6 | Instellingen > Meldingen | afzender mail@blinesleep.nl, na het domein het e-maildomein verifiëren (SPF en DKIM) | na stap 1 |
 | 7 | Onlinewinkel > Voorkeuren | afbeelding voor delen op sociale media: `bline-leeskussen-beige-01.jpg` | ja |
 | 8 | Producten > hoezen | gewicht van een losse hoes invullen (staat op 0 kg) | het echte gewicht is nodig voor verzendlabels |
