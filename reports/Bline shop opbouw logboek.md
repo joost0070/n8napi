@@ -1052,3 +1052,10 @@ Bewust anders dan het onderzoek: het rapport adviseert de homepage als productpa
 - Teksten doorzocht op oude verwijzingen, namen, gedachtestreepjes en kortingsclaims. Gevonden: 5 blogartikelen linkten naar de collectie; nu naar de productpagina (`/products/leeskussen-beige`). Reservekopie van de artikelen vooraf gemaakt.
 - Alt-teksten van alle productbeelden: allemaal aanwezig, Nederlands, met kleur.
 - Hoes-pagina's: oude meelopende balk weg (die verscheen te vroeg), regel "€25,00 samen met een leeskussen, je bespaart €9,99" met link naar het kussen in dezelfde kleur bij de prijs, uitklapkoppen in de v3-stijl (geen hoofdletters).
+
+### Sessie 12f (06-10): 30 dagen proberen en kleurkeuze voor de extra hoes
+
+Akkoord Joost 06-10: "30 dagen proberen" (gratis retour en besteltijd nog niet) en "voor de upsell sloop moet ik ook kleur kunnen kiezen".
+- **Extra hoes in elke kleur:** onder het vinkje vijf kleurbolletjes; standaard dezelfde kleur als het kussen, eigen keuze blijft staan bij kleurwissel van het kussen; een bolletje kiezen vinkt de hoes aan (eigen handeling van de klant). Prijs per kleur klopt (wit €20,00, andere €25,00 met een kussen). Getest: kussen zwart met hoes wit naar de winkelwagen met de juiste varianten, knop €99,99.
+- **30 dagen proberen** overal: vinkjes op product, hero, hoes-pagina's, FAQ's (alle templates), Over Bline, Retourneren, twee blogartikelen, structuurdata (`merchantReturnDays` 30), Google-advertenties (kop, beschrijving, highlight), Meta-teksten en mails. In het retourbeleid en de voorwaarden: "Je mag de koop binnen 30 dagen zonder opgave van reden ontbinden. Dat is langer dan de wettelijke bedenktijd van 14 dagen." De termijnen voor terugsturen (14 dagen na melding) en terugbetalen (14 dagen) blijven. Retourkosten blijven voor de klant. Reservekopie van beleid, pagina's en artikelen vooraf gemaakt.
+- **Wachtwoord:** Joost besloot live te gaan. Shopify heeft geen API om de wachtwoordbeveiliging uit te zetten; dit moet in de admin (Onlinewinkel > Voorkeuren). Advies: eerst Shopify Payments, anders kan niemand afrekenen.

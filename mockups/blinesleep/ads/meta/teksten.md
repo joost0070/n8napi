@@ -26,7 +26,7 @@ Primaire tekst:
 >
 > ✓ 4,5 uit 5 op bol.com
 > ✓ Gratis verzending in NL en BE
-> ✓ 14 dagen bedenktijd
+> ✓ 30 dagen proberen
 
 Kop: **Geen kussenfort meer** · Beschrijving: Vanaf €69,99, gratis verzending
 
@@ -67,7 +67,7 @@ Landing: `https://www.blinesleep.nl/products/leeskussen-blauw`
 Primaire tekst:
 > Al verkocht via bol.com, waar kopers hem een 4,5 uit 5 geven. Nu ook in onze eigen winkel, voor dezelfde prijs.
 
-Kop: **4,5 uit 5 op bol.com** · Beschrijving: Gratis verzending, 14 dagen bedenktijd
+Kop: **4,5 uit 5 op bol.com** · Beschrijving: Gratis verzending, 30 dagen proberen
 
 ### 6. `bl_stevig` (4:5)
 Bestand: `bline-ad-g_stevig_45.jpg`
@@ -94,7 +94,7 @@ Landing: `https://www.blinesleep.nl/products/leeskussen-grijs`
 
 Primaire tekst:
 > Waarom Bline meer kost dan een fluwelen kussen van €40: 3,8 kg traagschuim dat blijft staan, een hoes van katoen 400 TC die zo in de was kan, en een vak voor je telefoon.
-> Gratis verzending in NL en BE, 14 dagen bedenktijd.
+> Gratis verzending in NL en BE, 30 dagen proberen.
 
 Kop: **Gemaakt om te blijven staan** · Beschrijving: Vanaf €69,99
 

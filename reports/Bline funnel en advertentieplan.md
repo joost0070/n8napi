@@ -34,7 +34,7 @@ flowchart LR
 
 **Staat er nu:**
 - 4,5 uit 5 op bol.com met bron en verdeling; eigen Judge.me-reviews zodra er 3 zijn.
-- "Waarom Bline": een Nederlands merk (Shop4You, Borne), een echte klantenservice, 14 dagen bedenktijd.
+- "Waarom Bline": een Nederlands merk (Shop4You, Borne), een echte klantenservice, 30 dagen proberen (besluit Joost 06-10, langer dan de wettelijke 14 dagen).
 - App-link bij de koopknop ("Twijfel over maat of kleur? App ons"), telefoon in footer en vragen.
 - Bedrijfsgegevens, KvK en btw in de footer; betaaliconen; gratis verzending en levertijd bij de knop.
 - Video, getekende maten en vergelijking met losse kussens.
@@ -45,7 +45,7 @@ flowchart LR
 |---|---|---|---|---|
 | 1 | Achteraf betalen (Klarna of Riverty) aanzetten in Shopify Payments | in NL een van de sterkste vertrouwensknoppen bij een onbekende winkel | transactiekosten iets hoger | ja, bij livegang |
 | 2 | Keurmerk WebwinkelKeur | bekend schildje, onafhankelijke reviews | ongeveer €10 tot €15 per maand | na de eerste 4 weken beslissen |
-| 3 | Gratis retour | nu betaalt de klant de retour | gemiddeld enkele euro's per verkoop | eerst niet; testen als de conversie achterblijft |
+| 3 | Gratis retour | nu betaalt de klant de retour | gemiddeld enkele euro's per verkoop | eerst niet; testen als de conversie achterblijft (30 dagen proberen staat sinds 06-10) |
 | 4 | Kaartje in de doos met QR naar de reviewpagina | eigen reviews komen sneller | drukwerk | ja |
 | 5 | Google Klantenreviews (Merchant Center) | sterren in Shopping na genoeg reviews | gratis | ja, na koppeling |
 

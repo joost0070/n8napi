@@ -34,16 +34,17 @@
 
   function Product(root) {
     var D = JSON.parse(root.querySelector('[data-b3-data]').textContent);
-    var staat = { kleur: D.gekozen, aantal: 1, hoes: false };
+    var staat = { kleur: D.gekozen, aantal: 1, hoes: false, hoesKleur: D.gekozen, hoesZelf: false };
+    function hoesVan() { return (D.hoezen && D.hoezen[staat.hoesKleur]) || { naam: D.kleuren[staat.kleur].naam, variant: D.kleuren[staat.kleur].hoes, beschikbaar: D.kleuren[staat.kleur].hoesBeschikbaar, prijs: D.kleuren[staat.kleur].hoesPrijs, beeld: D.kleuren[staat.kleur].hoesBeeld }; }
     var gal = {};
     root.querySelectorAll('.b3-gal').forEach(function (g) { gal[g.getAttribute('data-kleur')] = Galerij(g); });
     var $ = function (s) { return root.querySelector(s); };
     var $$ = function (s) { return root.querySelectorAll(s); };
 
-    function hoesPrijs(k) { return staat.aantal === 2 ? k.hoesPrijs : k.hoesPrijs - D.korting; }
+    function hoesPrijs() { var h = hoesVan(); return staat.aantal === 2 ? h.prijs : h.prijs - D.korting; }
     function totaal() {
       var k = D.kleuren[staat.kleur];
-      var som = k.prijs * staat.aantal + (staat.hoes ? k.hoesPrijs : 0);
+      var som = k.prijs * staat.aantal + (staat.hoes ? hoesVan().prijs : 0);
       return (staat.aantal === 2 || staat.hoes) ? som - D.korting : som;
     }
     function teken() {
@@ -53,12 +54,14 @@
       $('[data-b3-prijs1]').textContent = geld(k.prijs);
       $('[data-b3-prijs2]').textContent = geld(k.prijs * 2 - D.korting);
       $('[data-b3-prijsper]').textContent = geld(Math.floor((k.prijs * 2 - D.korting) / 2)) + ' per kussen';
-      $('[data-b3-hoesnaam]').textContent = k.naam.toLowerCase();
-      $('[data-b3-hoesprijs]').textContent = geld(hoesPrijs(k));
+      var h = hoesVan();
+      $('[data-b3-hoesnaam]').textContent = h.naam.toLowerCase();
+      $('[data-b3-hoesprijs]').textContent = geld(hoesPrijs());
+      $$('[data-b3-hoeskleur]').forEach(function (b) { var aan = b.getAttribute('data-b3-hoeskleur') === staat.hoesKleur; b.classList.toggle('is-gekozen', aan); b.setAttribute('aria-checked', aan ? 'true' : 'false'); });
       var hb2 = $('[data-b3-hoesbespaar]'); if (hb2) hb2.textContent = staat.aantal === 2 ? 'Eén in de was, één om het kussen' : 'Je bespaart ' + geld(D.korting) + ' · één in de was, één om het kussen';
-      var oud = $('[data-b3-hoesoud]'); oud.textContent = '(los ' + geld(k.hoesPrijs) + ')'; oud.hidden = staat.aantal === 2;
-      var hb = $('[data-b3-hoesbeeld] img'); if (hb && k.hoesBeeld) hb.src = k.hoesBeeld;
-      $('[data-b3-hoes]').closest('.b3-hoes').hidden = !k.hoesBeschikbaar;
+      var oud = $('[data-b3-hoesoud]'); oud.textContent = '(los ' + geld(h.prijs) + ')'; oud.hidden = staat.aantal === 2;
+      var hb = $('[data-b3-hoesbeeld] img'); if (hb && h.beeld) { hb.src = h.beeld; hb.removeAttribute('srcset'); }
+      $('[data-b3-hoes]').disabled = !h.beschikbaar;
       $('[data-b3-knopprijs]').textContent = geld(totaal());
       $('[data-b3-plaknaam]').textContent = k.naam;
       var pb = $('[data-b3-plakbol]'); if (pb && k.hex) pb.style.setProperty('--k', k.hex);
@@ -70,6 +73,7 @@
     function kies(kleur, scroll) {
       if (!D.kleuren[kleur]) return;
       staat.kleur = kleur;
+      if (!staat.hoesZelf) staat.hoesKleur = kleur;
       $$('.b3-gal').forEach(function (g) { g.hidden = g.getAttribute('data-kleur') !== kleur; });
       $$('[data-b3-kleur]').forEach(function (b) {
         var aan = b.getAttribute('data-b3-kleur') === kleur;
@@ -97,13 +101,21 @@
         teken();
       });
     });
+    $$('[data-b3-hoeskleur]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        staat.hoesKleur = b.getAttribute('data-b3-hoeskleur'); staat.hoesZelf = true;
+        if (!staat.hoes) { var vk = $('[data-b3-hoes]'); vk.checked = true; staat.hoes = true; }
+        teken(); meet('bline_hoeskleur_gekozen', { hoes: staat.hoesKleur, kussen: staat.kleur });
+      });
+    });
     $('[data-b3-hoes]').addEventListener('change', function (e) { staat.hoes = e.target.checked; teken(); meet('bline_hoes_aangevinkt', { aan: staat.hoes, kleur: staat.kleur }); });
 
     function koop(knop) {
       var k = D.kleuren[staat.kleur];
       meet('bline_in_winkelwagen', { kleur: staat.kleur, aantal: staat.aantal, hoes: staat.hoes, via: knop.closest('[data-b3-plak]') ? 'plakbalk' : 'knop' });
       var items = [{ id: k.variant, quantity: staat.aantal }];
-      if (staat.hoes && k.hoesBeschikbaar) items.push({ id: k.hoes, quantity: 1 });
+      var hk = hoesVan();
+      if (staat.hoes && hk.beschikbaar) items.push({ id: hk.variant, quantity: 1 });
       var lade = document.querySelector('cart-drawer');
       var secties = lade && typeof lade.getSectionsToRender === 'function' ? lade.getSectionsToRender().map(function (s) { return s.id; }) : [];
       var fout = $('[data-b3-fout]'); fout.hidden = true;

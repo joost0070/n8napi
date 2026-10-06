@@ -39,7 +39,7 @@
           "type": "punt",
           "settings": {
             "icoon": "terug",
-            "kop": "14 dagen bedenktijd",
+            "kop": "30 dagen proberen",
             "tekst": "Past het toch niet bij je bed, dan stuur je het terug."
           }
         }

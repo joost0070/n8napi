@@ -65,14 +65,14 @@
           "type": "vraag",
           "settings": {
             "vraag": "Wijkt de kleur af van de foto?",
-            "antwoord": "<p>We hebben de foto's per kleur naast elkaar gelegd en alleen beelden gebruikt die kloppen. Een scherm toont kleuren wel altijd iets anders. Valt hij thuis tegen, dan heb je 14 dagen bedenktijd.</p>"
+            "antwoord": "<p>We hebben de foto's per kleur naast elkaar gelegd en alleen beelden gebruikt die kloppen. Een scherm toont kleuren wel altijd iets anders. Valt hij thuis tegen, dan heb je 30 dagen proberen.</p>"
           }
         },
         "v8": {
           "type": "vraag",
           "settings": {
             "vraag": "Kan ik het kussen terugsturen?",
-            "antwoord": "<p>Ja, binnen 14 dagen na ontvangst. Mail ons eerst, dan krijg je het retouradres. De kosten voor het terugsturen betaal je zelf. Alles staat op de pagina <a href=\"/pages/retourneren\">Retourneren</a>.</p>"
+            "antwoord": "<p>Ja, je mag hem 30 dagen proberen. Past hij toch niet, mail ons dan binnen 30 dagen na ontvangst; je krijgt het retouradres van ons. De kosten voor het terugsturen betaal je zelf. Alles staat op de pagina <a href=\"/pages/retourneren\">Retourneren</a>.</p>"
           }
         },
         "v9": {

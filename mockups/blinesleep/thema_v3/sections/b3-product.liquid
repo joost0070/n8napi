@@ -81,16 +81,29 @@
       {%- assign hk = hoofd.handle | remove: 'leeskussen-' -%}
       {%- assign hoes_handle = 'hoes-' | append: hk -%}
       {%- assign hoes = all_products[hoes_handle] -%}
-      <label class="b3-hoes">
-        <input type="checkbox" class="b3-hoes__vink" data-b3-hoes>
-        <span class="b3-hoes__vakje" aria-hidden="true"></span>
-        <span class="b3-hoes__beeld" data-b3-hoesbeeld>{{ hoes.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}</span>
-        <span class="b3-hoes__tekst">
-          <b>Extra hoes erbij</b> in <span data-b3-hoesnaam>{{ hoofd.metafields.bline.kleur_naam.value | downcase }}</span><br>
-          <span class="b3-hoes__prijs"><span data-b3-hoesprijs>{{ hoes.selected_or_first_available_variant.price | minus: korting | money }}</span> <span class="b3-hoes__los" data-b3-hoesoud>(los {{ hoes.selected_or_first_available_variant.price | money }})</span></span>
-          <span class="b3-hoes__sub" data-b3-hoesbespaar>Je bespaart €9,99 · één in de was, één om het kussen</span>
-        </span>
-      </label>
+      <div class="b3-hoes">
+        <label class="b3-hoes__regel">
+          <input type="checkbox" class="b3-hoes__vink" data-b3-hoes>
+          <span class="b3-hoes__vakje" aria-hidden="true"></span>
+          <span class="b3-hoes__beeld" data-b3-hoesbeeld>{{ hoes.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}</span>
+          <span class="b3-hoes__tekst">
+            <b>Extra hoes erbij</b> in <span data-b3-hoesnaam>{{ hoofd.metafields.bline.kleur_naam.value | downcase }}</span><br>
+            <span class="b3-hoes__prijs"><span data-b3-hoesprijs>{{ hoes.selected_or_first_available_variant.price | minus: korting | money }}</span> <span class="b3-hoes__los" data-b3-hoesoud>(los {{ hoes.selected_or_first_available_variant.price | money }})</span></span>
+            <span class="b3-hoes__sub" data-b3-hoesbespaar>Je bespaart €9,99 · één in de was, één om het kussen</span>
+          </span>
+        </label>
+        <div class="b3-hoes__kleuren" role="radiogroup" aria-label="Kleur van de extra hoes">
+          <span class="b3-hoes__kleurlabel">Kleur hoes:</span>
+          {%- assign hoeslijst = 'wit,beige,blauw,grijs,zwart' | split: ',' -%}
+          {%- for hk2 in hoeslijst -%}
+            {%- assign hh2 = 'hoes-' | append: hk2 -%}
+            {%- assign hp2 = all_products[hh2] -%}
+            {%- if hp2 != blank -%}
+              <button type="button" class="b3-hoeskleur{% if hk2 == hk %} is-gekozen{% endif %}" role="radio" aria-checked="{% if hk2 == hk %}true{% else %}false{% endif %}" data-b3-hoeskleur="{{ hk2 }}" style="--k: {{ hp2.metafields.bline.kleur_hex.value }}" aria-label="Hoes {{ hp2.metafields.bline.kleur_naam.value | downcase }}" title="{{ hp2.metafields.bline.kleur_naam.value }}"><span></span></button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
 
       <button type="button" class="b3-knop b3-knop--groot" data-b3-koop>
         <span data-b3-knoptekst>In winkelwagen</span><span class="b3-knop__prijs" data-b3-knopprijs>{{ hoofd.selected_or_first_available_variant.price | money }}</span>
@@ -100,7 +113,7 @@
       <ul class="b3-vinkjes" role="list">
         <li>{% render 'b3-icoon', naam: 'truck' %}Gratis verzending in NL en BE</li>
         <li>{% render 'b3-icoon', naam: 'klok' %}Binnen 1-2 werkdagen in huis</li>
-        <li>{% render 'b3-icoon', naam: 'terug' %}14 dagen bedenktijd</li>
+        <li>{% render 'b3-icoon', naam: 'terug' %}30 dagen proberen</li>
         <li>{% render 'b3-icoon', naam: 'was' %}Hoes wasbaar op 30 °C</li>
       </ul>
       {% render 'bline-betaal' %}
@@ -129,7 +142,7 @@
         </details>
         <details>
           <summary>Verzending en retour</summary>
-          <div><p>Gratis verzending in Nederland en België, binnen 1-2 werkdagen in huis. Je hebt 14 dagen bedenktijd. Vragen? Bel of app 06 38 66 28 33.</p></div>
+          <div><p>Gratis verzending in Nederland en België, binnen 1-2 werkdagen in huis. Je mag hem 30 dagen proberen. Vragen? Bel of app 06 38 66 28 33.</p></div>
         </details>
       </div>
     </div>
@@ -164,6 +177,15 @@
           }{% unless forloop.last %},{% endunless %}
         {%- endfor -%}
       },
+      "hoezen": {
+        {%- assign hoeslijst = 'wit,beige,blauw,grijs,zwart' | split: ',' -%}
+        {%- for hk2 in hoeslijst -%}
+          {%- assign hh2 = 'hoes-' | append: hk2 -%}
+          {%- assign hp2 = all_products[hh2] -%}
+          {%- assign hv2 = hp2.selected_or_first_available_variant -%}
+          {{ hk2 | json }}: { "naam": {{ hp2.metafields.bline.kleur_naam.value | json }}, "variant": {{ hv2.id | json }}, "beschikbaar": {{ hv2.available | json }}, "prijs": {{ hv2.price | json }}, "beeld": {{ hp2.featured_image | image_url: width: 160 | json }} }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      },
       "gekozen": {{ hoofd.handle | remove: 'leeskussen-' | json }}
     }
   </script>
@@ -191,7 +213,7 @@
         "itemCondition": "https://schema.org/NewCondition",
         "url": {{ request.origin | append: hoofd.url | json }},
         "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": "EUR" }, "shippingDestination": [{ "@type": "DefinedRegion", "addressCountry": "NL" }, { "@type": "DefinedRegion", "addressCountry": "BE" }], "deliveryTime": { "@type": "ShippingDeliveryTime", "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" }, "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY" } } },
-        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": ["NL", "BE"], "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 14, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility" }
+        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": ["NL", "BE"], "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility" }
       }
     }
   </script>

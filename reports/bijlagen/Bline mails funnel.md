@@ -28,7 +28,7 @@ Nog twijfels over de maat of de kleur? App of bel ons op 06 38 66 28 33. We denk
 
 - Gratis verzending in Nederland en België
 - Binnen 1-2 werkdagen in huis
-- 14 dagen bedenktijd
+- 30 dagen proberen
 
 Groet,
 Bline

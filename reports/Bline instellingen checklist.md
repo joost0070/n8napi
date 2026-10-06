@@ -35,5 +35,5 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | 10 | Apps | ChannelDock koppelen en het retouradres vastleggen | voor livegang |
 | 11 | Marketing > Automatiseringen | de mails uit `reports/bijlagen/Bline mails funnel.md` zetten | na livegang |
 | 12 | Belastingen | btw voor België nagaan met de boekhouder (OSS zodra de EU-drempel van €10.000 per jaar wordt overschreden) | navragen |
-| 13 | Beslissingen | 30 in plaats van 14 dagen bedenktijd; "voor ... besteld, vandaag verzonden" als ChannelDock dat haalt | zie funnelplan hoofdstuk 2 |
-| 14 | Onlinewinkel > Voorkeuren | wachtwoord uit | pas bij "live" |
+| 13 | Beslissingen | 30 dagen proberen: **gedaan 06-10** (beleid, voorwaarden, site, advertenties, mails); "voor ... besteld, vandaag verzonden" als ChannelDock dat haalt | open |
+| 14 | Onlinewinkel > Voorkeuren | wachtwoord uit: **Joost besloot op 06-10 live te gaan**; kan alleen in de admin (Shopify heeft hier geen API voor). Eerst stap 2 (betalingen), anders kan niemand afrekenen | nu |

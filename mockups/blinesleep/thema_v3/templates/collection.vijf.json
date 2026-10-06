@@ -65,7 +65,7 @@
     "b3": {
      "type": "item",
      "settings": {
-      "tekst": "14 dagen bedenktijd",
+      "tekst": "30 dagen proberen",
       "icoon": "terug"
      }
     },
@@ -121,7 +121,7 @@
      "type": "vraag",
      "settings": {
       "vraag": "Kan ik het terugsturen?",
-      "antwoord": "<p>Ja, binnen 14 dagen na ontvangst. Mail ons, dan krijg je het retouradres. De kosten voor het terugsturen zijn voor jou.</p>"
+      "antwoord": "<p>Ja, je mag hem 30 dagen proberen. Past hij toch niet, mail ons dan binnen 30 dagen na ontvangst; je krijgt het retouradres van ons. De kosten voor het terugsturen zijn voor jou.</p>"
      }
     }
    },

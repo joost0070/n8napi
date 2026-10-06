@@ -1,0 +1,9 @@
+{% comment %}
+  Vier vinkjes onder de knop. De levertijd komt uit thema-instellingen > Bline.
+{% endcomment %}
+<ul class="bline-vinkjes{% if rij %} bline-vinkjes--rij{% endif %}">
+  <li>Gratis verzending in NL en BE</li>
+  <li>{{ settings.bline_levertijd_tekst | default: 'Binnen 1-2 werkdagen in huis' | escape }}</li>
+  <li>Hoes wasbaar op 30 °C</li>
+  <li>30 dagen proberen</li>
+</ul>

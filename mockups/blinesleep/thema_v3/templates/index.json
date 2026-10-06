@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
  "sections": {
   "hero": {
@@ -50,7 +41,7 @@
     "b3": {
      "type": "item",
      "settings": {
-      "tekst": "14 dagen bedenktijd",
+      "tekst": "30 dagen proberen",
       "icoon": "terug"
      }
     },
@@ -321,7 +312,7 @@
      "type": "punt",
      "settings": {
       "icoon": "terug",
-      "kop": "14 dagen bedenktijd",
+      "kop": "30 dagen proberen",
       "tekst": "Past het toch niet bij je bed, dan stuur je het terug."
      }
     }
@@ -379,7 +370,7 @@
      "type": "vraag",
      "settings": {
       "vraag": "Kan ik het terugsturen?",
-      "antwoord": "<p>Ja, binnen 14 dagen na ontvangst. Mail ons, dan krijg je het retouradres. De kosten voor het terugsturen zijn voor jou.</p>"
+      "antwoord": "<p>Ja, je mag hem 30 dagen proberen. Past hij toch niet, mail ons dan binnen 30 dagen na ontvangst; je krijgt het retouradres van ons. De kosten voor het terugsturen zijn voor jou.</p>"
      }
     }
    },
