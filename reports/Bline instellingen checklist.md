@@ -24,9 +24,9 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | Nr | Waar | Wat | Advies |
 |---|---|---|---|
 | 1 | Instellingen > Domeinen | blinesleep.nl koppelen als hoofddomein; uwleeskussen.nl en blinesleep.com laten doorsturen | eerst |
-| 2 | Instellingen > Betalingen | Shopify Payments activeren: iDEAL, Bancontact, kaarten, Apple Pay, Google Pay | eerst |
-| 3 | Instellingen > Betalingen | Klarna of Riverty (achteraf betalen) aanzetten | ja, sterke vertrouwensknop in NL |
-| 4 | Instellingen > Checkout | gastcheckout aan, account optioneel, telefoon optioneel, bedrijfsnaam verborgen, adres automatisch aanvullen aan, fooi uit, marketing-vinkje niet vooraf aangevinkt | ja |
+| 2 | Instellingen > Betalingen | **iDEAL staat nog uit** (live getest 06-10: checkout toont alleen Klarna, creditcard en PayPal; Bancontact staat aan voor België). iDEAL aanzetten in Shopify Payments | **eerst, voor het wachtwoord eraf gaat** |
+| 3 | Instellingen > Betalingen | Klarna staat al aan (live gezien 06-10) | gedaan |
+| 4 | Instellingen > Checkout | **marketing-vinkje "Stuur mij een e-mail met nieuws en aanbiedingen" staat vooraf aangevinkt** (live gezien 06-10); dat mag niet, uitzetten bij Marketingopties. Verder: gastcheckout aan (staat), telefoon optioneel (staat), fooi uit | **eerst, voor het wachtwoord eraf gaat** |
 | 5 | Instellingen > Klantprivacy | cookiebanner aan voor de EU; automatisch privacybeheer uit (zoals afgesproken) | ja |
 | 6 | Instellingen > Meldingen | afzender mail@blinesleep.nl, na het domein het e-maildomein verifiëren (SPF en DKIM) | na stap 1 |
 | 7 | Onlinewinkel > Voorkeuren | afbeelding voor delen op sociale media: `bline-leeskussen-beige-01.jpg` | ja |
