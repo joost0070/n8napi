@@ -1030,3 +1030,17 @@ Akkoord Joost: "doe de pagina's". Nieuwe secties `b3-kop`, `b3-lookbook`, `b3-kl
 ### Sessie 12c (06-10): echte homepage
 
 Joost: "Je hebt geen homepage, dit moet wel." De homepage is nu los van de productpagina: hero (beeld, kop "Lezen in bed, zonder kussenfort", knoppen naar het leeskussen en de kleuren, drie vinkjes, score), band, kies je kleur (anker `#kleuren`), momenten, "Eén kussen, vijf kleuren" (score, vanaf-prijs, kleurbolletjes, voordelen, knop), groot beeld, binnenkant, video, score, vergelijking, Waarom Bline, blog (3 verhalen), vragen. Nieuwe secties `b3-hero`, `b3-product-kort`, `b3-blog`; knoppen in `b3-groot` en `b3-verhaal` linken nu naar de productpagina (instelbaar). Menu "Leeskussen" gaat naar `/products/leeskussen-beige`. Advertenties (Google algemeen, Meta) en de doorverwijzingen van de sets landen nu op de productpagina, met `?hoes=1` of `?aantal=2` waar nodig. Na upload opgehaald: gelijk aan de geteste versie.
+
+### Sessie 12d (06-10): verbeteringen na het onderzoek naar best practices
+
+Onderzoek: `research_notes/Bline Sleep risicos en voorbeelden/webshop_best_practices_2026-10-06.md` (14 facetten, met bronnen en bewijssterkte). Doorgevoerd in de winkel:
+- Galerij begint weer met het kussen zelf (beeld 01), daarna gebruik, andere mensen en details; op mobiel duimnagels onder de foto's in plaats van stippen, teller rechtsboven.
+- Video's laden en spelen pas na een tik (sneller, minder data).
+- Extra hoes en 2 kussens worden nooit vooraf aangevinkt of gekozen; links uit advertenties (`?hoes=1`, `?aantal=2`) lichten de optie alleen uit (ACM: geen vooraf aangevinkte betaalde opties).
+- Geen doorgestreepte prijzen meer: 2 kussens met prijs per kussen, hoes met "(los €34,99)"; set-advertentie met "je bespaart €9,99".
+- Productgegevens voor Google (Product-structuurdata) terug op de productpagina, met EAN, prijs, voorraad, gratis verzending NL/BE, levertijd en retourbeleid; geen beoordeling (de bol-score hoort daar niet in). Dawn zet de bedrijfsgegevens zelf.
+- Snelle betaalknoppen (Shop Pay, Apple Pay, Google Pay zodra actief) in de winkelwagen-lade.
+- Meelopende balk met kleurbolletje, knop 48 px.
+- Mail bij verlaten checkout: eerste na ongeveer 1 uur, tweede na 24 uur.
+
+Bewust anders dan het onderzoek: het rapport adviseert de homepage als productpagina; Joost wil een echte homepage (06-10). Advertenties landen daarom op de productpagina.

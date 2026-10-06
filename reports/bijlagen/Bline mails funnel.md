@@ -4,7 +4,8 @@ In de wij-vorm, zonder persoonsnamen, zonder kortingscodes (die vragen eerst akk
 
 | Nr | Mail | Wanneer | Waar |
 |---|---|---|---|
-| 1 | Je leeskussen staat nog klaar | 10 uur na een verlaten checkout, 1 keer | Shopify-automatisering "Verlaten checkout" |
+| 1 | Je leeskussen staat nog klaar | ongeveer 1 uur na een verlaten checkout | Shopify-automatisering "Verlaten checkout" |
+| 1b | Nog vragen over je leeskussen? | ongeveer 24 uur na de verlaten checkout, alleen als er nog niet besteld is | zelfde automatisering, tweede mail |
 | 2 | Zo haal je het meeste uit je Bline | 2 dagen na verzending | Shopify-automatisering "Na aankoop" met wachttijd |
 | 3 | Hoe bevalt je leeskussen? | 14 dagen na verzending | Judge.me reviewverzoek (1 mail, geen herinnering) |
 | 4 | Een tweede hoes | 30 dagen na aankoop, alleen als er geen hoes bij de bestelling zat | Shopify-automatisering "Na aankoop" met voorwaarde |
@@ -31,6 +32,28 @@ Nog twijfels over de maat of de kleur? App of bel ons op 06 38 66 28 33. We denk
 
 Groet,
 Bline
+
+## 1b. Verlaten checkout, tweede mail (na ongeveer 24 uur)
+
+**Onderwerp:** Nog vragen over je leeskussen?
+**Voorbeeldtekst:** Drie antwoorden die vaak helpen.
+
+Hoi,
+
+Twijfel je nog? Dit vragen mensen het vaakst:
+
+- **Past hij op mijn bed?** Hij is 65 cm breed, 50 cm hoog en 45 cm diep. Twee passen naast elkaar op een bed vanaf 140 cm.
+- **Hoe stevig is hij?** Er zit 3,8 kg traagschuim in. Je zakt er niet doorheen als je leunt.
+- **Kan de hoes in de was?** Ja, met een rits eraf en op 30 °C.
+
+Kopers op bol.com geven hem een 4,5 uit 5 (13 reviews). Nog iets anders? App ons op 06 38 66 28 33.
+
+[Knop: Verder met bestellen]
+
+Groet,
+Bline
+
+*(Timing volgens het onderzoek van 06-10: eerste mail na ongeveer 1 uur, tweede na ongeveer 24 uur, geen korting.)*
 
 ## 2. Na verzending: tips
 

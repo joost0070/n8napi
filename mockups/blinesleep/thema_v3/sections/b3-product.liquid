@@ -21,20 +21,20 @@
         {%- assign aantal_media = kp.media.size -%}
         {%- assign is_hoofd = false -%}{%- if kp.id == hoofd.id -%}{%- assign is_hoofd = true -%}{%- endif -%}
         <div class="b3-gal" data-kleur="{{ k }}"{% unless kp.id == hoofd.id %} hidden{% endunless %}>
-          {%- comment -%} Eerst het tweede beeld (iemand die het kussen gebruikt), dan het eerste (het kussen op bed), dan de rest. {%- endcomment -%}
+          {%- comment -%} Eerst het kussen zelf in deze kleur, dan mensen, kamers en details (volgorde van Shopify). {%- endcomment -%}
           <div class="b3-gal__track" data-b3-track tabindex="0" aria-label="Foto's leeskussen {{ kp.metafields.bline.kleur_naam.value | downcase }}">
-            {%- if aantal_media > 1 -%}
-              {%- render 'b3-slide', m: kp.media[1], eerste: true, voorrang: is_hoofd -%}
-              {%- render 'b3-slide', m: kp.media[0], eerste: false, voorrang: false -%}
-              {%- for m in kp.media offset: 2 -%}{%- render 'b3-slide', m: m, eerste: false, voorrang: false -%}{%- endfor -%}
-            {%- else -%}
-              {%- render 'b3-slide', m: kp.media[0], eerste: true, voorrang: is_hoofd -%}
-            {%- endif -%}
-          </div>
-          <div class="b3-gal__stip" aria-hidden="true">
-            {%- for m in kp.media -%}<i{% if forloop.first %} class="is-actief"{% endif %}></i>{%- endfor -%}
+            {%- for m in kp.media -%}
+              {%- if forloop.first -%}{%- render 'b3-slide', m: m, eerste: true, voorrang: is_hoofd -%}{%- else -%}{%- render 'b3-slide', m: m, eerste: false, voorrang: false -%}{%- endif -%}
+            {%- endfor -%}
           </div>
           <span class="b3-gal__teller" aria-hidden="true"><b data-b3-nu>1</b>/{{ aantal_media }}</span>
+          <div class="b3-gal__duimrij" role="group" aria-label="Kies een foto">
+            {%- for m in kp.media -%}
+              <button type="button" class="b3-gal__duim{% if forloop.first %} is-actief{% endif %}" data-b3-naar="{{ forloop.index0 }}" aria-label="Foto {{ forloop.index }} van {{ aantal_media }}">
+                {{ m.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
+              </button>
+            {%- endfor -%}
+          </div>
         </div>
       {%- endfor -%}
     </div>
@@ -72,7 +72,7 @@
           <button type="button" class="b3-aantal__optie" role="radio" aria-checked="false" data-b3-aantal="2">
             <span class="b3-pil b3-pil--accent b3-aantal__badge">Bespaar {{ korting | money }}</span>
             <span class="b3-aantal__kop">2 leeskussens</span>
-            <span class="b3-aantal__prijs"><span data-b3-prijs2>{{ hoofd.selected_or_first_available_variant.price | times: 2 | minus: korting | money }}</span> <s data-b3-prijs2oud>{{ hoofd.selected_or_first_available_variant.price | times: 2 | money }}</s></span>
+            <span class="b3-aantal__prijs"><span data-b3-prijs2>{{ hoofd.selected_or_first_available_variant.price | times: 2 | minus: korting | money }}</span><span class="b3-aantal__per" data-b3-prijsper>{{ hoofd.selected_or_first_available_variant.price | times: 2 | minus: korting | divided_by: 2 | money }} per kussen</span></span>
           </button>
         </div>
         <p class="b3-keuze__hint" data-b3-hint2 hidden>Twee in dezelfde kleur. Liever twee kleuren? Voeg er één toe, kies de andere kleur en voeg die ook toe: de korting rekent dan net zo.</p>
@@ -87,7 +87,7 @@
         <span class="b3-hoes__beeld" data-b3-hoesbeeld>{{ hoes.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}</span>
         <span class="b3-hoes__tekst">
           <b>Extra hoes erbij</b> in <span data-b3-hoesnaam>{{ hoofd.metafields.bline.kleur_naam.value | downcase }}</span><br>
-          <span class="b3-hoes__prijs"><span data-b3-hoesprijs>{{ hoes.selected_or_first_available_variant.price | minus: korting | money }}</span> <s data-b3-hoesoud>{{ hoes.selected_or_first_available_variant.price | money }}</s></span>
+          <span class="b3-hoes__prijs"><span data-b3-hoesprijs>{{ hoes.selected_or_first_available_variant.price | minus: korting | money }}</span> <span class="b3-hoes__los" data-b3-hoesoud>(los {{ hoes.selected_or_first_available_variant.price | money }})</span></span>
           <span class="b3-hoes__sub">Eén in de was, één om het kussen</span>
         </span>
       </label>
@@ -136,7 +136,7 @@
   </div>
 
   <div class="b3-plak" data-b3-plak hidden>
-    <span class="b3-plak__info"><b data-b3-plaknaam>{{ hoofd.metafields.bline.kleur_naam.value }}</b> <span data-b3-plakprijs>{{ hoofd.selected_or_first_available_variant.price | money }}</span></span>
+    <span class="b3-plak__info"><i class="b3-plak__bol" data-b3-plakbol style="--k: {{ hoofd.metafields.bline.kleur_hex.value }}"></i><b data-b3-plaknaam>{{ hoofd.metafields.bline.kleur_naam.value }}</b> <span data-b3-plakprijs>{{ hoofd.selected_or_first_available_variant.price | money }}</span></span>
     <button type="button" class="b3-knop" data-b3-koop>In winkelwagen</button>
   </div>
 
@@ -152,6 +152,7 @@
           {%- assign hv = h.selected_or_first_available_variant -%}
           {{ k | json }}: {
             "naam": {{ kp.metafields.bline.kleur_naam.value | json }},
+            "hex": {{ kp.metafields.bline.kleur_hex.value | json }},
             "url": {{ kp.url | json }},
             "variant": {{ v.id | json }},
             "beschikbaar": {{ v.available | json }},
@@ -167,6 +168,34 @@
     }
   </script>
 </section>
+
+{%- if request.page_type == 'product' -%}
+  {%- assign v = hoofd.selected_or_first_available_variant -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": {{ hoofd.title | json }},
+      "description": {{ hoofd.description | strip_html | truncate: 500 | json }},
+      "brand": { "@type": "Brand", "name": "Bline" },
+      "sku": {{ v.sku | json }},
+      "gtin13": {{ v.barcode | json }},
+      "color": {{ hoofd.metafields.bline.kleur_naam.value | json }},
+      "image": [{% for m in hoofd.media limit: 5 %}{{ m.preview_image | image_url: width: 1600 | prepend: 'https:' | replace: 'https:https:', 'https:' | json }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+      "url": {{ request.origin | append: hoofd.url | json }},
+      "offers": {
+        "@type": "Offer",
+        "price": {{ v.price | divided_by: 100.0 | json }},
+        "priceCurrency": {{ cart.currency.iso_code | default: 'EUR' | json }},
+        "availability": "https://schema.org/{% if v.available %}InStock{% else %}OutOfStock{% endif %}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "url": {{ request.origin | append: hoofd.url | json }},
+        "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": "EUR" }, "shippingDestination": [{ "@type": "DefinedRegion", "addressCountry": "NL" }, { "@type": "DefinedRegion", "addressCountry": "BE" }], "deliveryTime": { "@type": "ShippingDeliveryTime", "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" }, "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY" } } },
+        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": ["NL", "BE"], "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 14, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility" }
+      }
+    }
+  </script>
+{%- endif -%}
 
 {% schema %}
 {

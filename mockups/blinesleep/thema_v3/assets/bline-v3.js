@@ -8,13 +8,20 @@
 
   function Galerij(el) {
     var track = el.querySelector('[data-b3-track]');
-    var duims = el.querySelectorAll('.b3-gal__stip i');
+    var duims = el.querySelectorAll('.b3-gal__stip i, .b3-gal__duim');
+    el.querySelectorAll('[data-b3-naar]').forEach(function (d) {
+      d.addEventListener('click', function () {
+        var i = Number(d.getAttribute('data-b3-naar'));
+        track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' });
+      });
+    });
     var nu = el.querySelector('[data-b3-nu]');
     function index() { return Math.round(track.scrollLeft / Math.max(track.clientWidth, 1)); }
     function zet() {
       var i = index();
       if (nu) nu.textContent = i + 1;
-      duims.forEach(function (d, j) { d.classList.toggle('is-actief', i === j); });
+      el.querySelectorAll('.b3-gal__stip i').forEach(function (d, j) { d.classList.toggle('is-actief', i === j); });
+      el.querySelectorAll('.b3-gal__duim').forEach(function (d, j) { d.classList.toggle('is-actief', i === j); });
     }
     var t;
     track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(zet, 60); }, { passive: true });
@@ -41,14 +48,15 @@
       $('[data-b3-prijs]').textContent = geld(k.prijs);
       $('[data-b3-prijs1]').textContent = geld(k.prijs);
       $('[data-b3-prijs2]').textContent = geld(k.prijs * 2 - D.korting);
-      $('[data-b3-prijs2oud]').textContent = geld(k.prijs * 2);
+      $('[data-b3-prijsper]').textContent = geld(Math.round((k.prijs * 2 - D.korting) / 2)) + ' per kussen';
       $('[data-b3-hoesnaam]').textContent = k.naam.toLowerCase();
       $('[data-b3-hoesprijs]').textContent = geld(hoesPrijs(k));
-      var oud = $('[data-b3-hoesoud]'); oud.textContent = geld(k.hoesPrijs); oud.hidden = staat.aantal === 2;
+      var oud = $('[data-b3-hoesoud]'); oud.textContent = '(los ' + geld(k.hoesPrijs) + ')'; oud.hidden = staat.aantal === 2;
       var hb = $('[data-b3-hoesbeeld] img'); if (hb && k.hoesBeeld) hb.src = k.hoesBeeld;
       $('[data-b3-hoes]').closest('.b3-hoes').hidden = !k.hoesBeschikbaar;
       $('[data-b3-knopprijs]').textContent = geld(totaal());
       $('[data-b3-plaknaam]').textContent = k.naam;
+      var pb = $('[data-b3-plakbol]'); if (pb && k.hex) pb.style.setProperty('--k', k.hex);
       $('[data-b3-plakprijs]').textContent = geld(totaal());
       $('[data-b3-hint2]').hidden = staat.aantal !== 2;
       $$('[data-b3-koop]').forEach(function (b) { b.disabled = !k.beschikbaar; });
@@ -118,22 +126,24 @@
     }
     var zoek = new URLSearchParams(location.search);
     var q = zoek.get('kleur');
-    // advertenties kunnen de keuze vooraf zetten: ?kleur=blauw&aantal=2&hoes=1
-    if (zoek.get('aantal') === '2') { var b2 = root.querySelector('[data-b3-aantal="2"]'); if (b2) b2.click(); }
-    if (zoek.get('hoes') === '1') { var hv = $('[data-b3-hoes]'); hv.checked = true; staat.hoes = true; }
+    // advertenties kunnen een keuze uitlichten (?aantal=2, ?hoes=1), maar nooit vooraf aanvinken of kiezen:
+    // een betaalde extra optie mag niet standaard aan staan (consumentenregels, ACM)
+    if (zoek.get('aantal') === '2') { var b2 = root.querySelector('[data-b3-aantal="2"]'); if (b2) b2.classList.add('is-uitgelicht'); }
+    if (zoek.get('hoes') === '1') { var hl = $('[data-b3-hoes]'); if (hl) hl.closest('.b3-hoes').classList.add('is-uitgelicht'); }
     if (q && D.kleuren[q] && q !== staat.kleur) kies(q); else teken();
   }
 
+  // video pas laden en afspelen na een tik (sneller laden, minder data op mobiel)
   function videos() {
-    if (!('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        var v = e.target;
-        if (e.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-        else v.pause();
+    document.querySelectorAll('[data-b3-speel]').forEach(function (knop) {
+      knop.addEventListener('click', function () {
+        var v = knop.parentNode.querySelector('video[data-b3-video]');
+        if (!v) return;
+        if (!v.src) { v.src = v.getAttribute('data-b3-video'); v.controls = true; }
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+        knop.hidden = true;
       });
-    }, { threshold: .35 });
-    document.querySelectorAll('.b3 video').forEach(function (v) { io.observe(v); });
+    });
   }
 
   function start() {

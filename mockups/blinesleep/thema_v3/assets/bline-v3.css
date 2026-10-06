@@ -468,3 +468,21 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
 .b3-blogkaart__titel { display: block; font-weight: 600; font-size: 1.6rem; line-height: 1.3; margin-bottom: .4rem; }
 .b3-blogkaart__tekst { display: block; color: var(--b3-sub); font-size: 1.35rem; }
 @media (min-width: 990px) { .b3-blogrij { grid-auto-flow: initial; grid-template-columns: repeat(3, 1fr); gap: 2.4rem; overflow: visible; margin: 0; padding: 0; } }
+
+/* ---------- verbeteringen na onderzoek (06-10) ---------- */
+.b3-gal__stip { display: none; }
+.b3-gal__duimrij { display: flex; gap: .8rem; overflow-x: auto; scrollbar-width: none; padding: 1rem var(--b3-gutter) 0; }
+.b3-gal__duimrij::-webkit-scrollbar { display: none; }
+.b3-gal__duimrij .b3-gal__duim { width: 5.6rem; height: 5.6rem; }
+.b3-gal__teller { bottom: auto; top: 1.2rem; right: 1.2rem; }
+@media (min-width: 990px) { .b3-gal__duimrij { display: none; } }
+.b3-aantal__per { display: block; font-size: 1.2rem; color: var(--b3-sub); }
+.b3-hoes__los { font-weight: 400; color: var(--b3-sub); }
+.b3-is-uitgelicht, .b3-aantal__optie.is-uitgelicht, .b3-hoes.is-uitgelicht { box-shadow: 0 0 0 2px var(--b3-accent); }
+.b3-plak__bol { display: inline-block; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); vertical-align: -2px; margin-right: .6rem; }
+.b3-plak .b3-knop { min-height: 4.8rem; }
+.b3-speel { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 6.4rem; height: 6.4rem; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: var(--b3-inkt); display: grid; place-items: center; cursor: pointer; box-shadow: 0 4px 18px rgba(0,0,0,.15); z-index: 2; }
+.b3-speel[hidden] { display: none; }
+.b3-verhaal__media { position: relative; }
+.b3-snel { margin-top: 1rem; }
+.b3-snel .additional-checkout-buttons, .b3-snel > div { margin: 0; }

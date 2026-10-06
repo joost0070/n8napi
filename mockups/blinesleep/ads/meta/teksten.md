@@ -81,7 +81,7 @@ Kop: **Stevig van binnen** · Beschrijving: In 5 kleuren, vanaf €69,99
 
 ### 7. `bl_set` (1:1, alleen herinnering)
 Bestand: `bline-ad-f_bundel_11.jpg`
-Landing: `https://www.blinesleep.nl/products/leeskussen-beige?hoes=1` (de extra hoes staat dan al aangevinkt)
+Landing: `https://www.blinesleep.nl/products/leeskussen-beige?hoes=1` (de extra hoes wordt uitgelicht; niet vooraf aangevinkt, dat mag niet volgens de consumentenregels)
 
 Primaire tekst:
 > Je keek naar het leeskussen. Neem er meteen een tweede hoes bij: €9,99 voordeel en gratis verzending.

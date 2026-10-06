@@ -3,9 +3,8 @@
   {%- if m.media_type == 'video' -%}
     {%- assign bron = m.sources | where: 'format', 'mp4' | where: 'height', 720 | first -%}
     {%- unless bron -%}{%- assign bron = m.sources | where: 'format', 'mp4' | last -%}{%- endunless -%}
-    <video class="b3-gal__video" playsinline muted loop autoplay preload="none" poster="{{ m.preview_image | image_url: width: 1100 }}" aria-label="{{ m.alt | escape }}">
-      <source src="{{ bron.url }}" type="video/mp4">
-    </video>
+    <video class="b3-gal__video" playsinline muted loop preload="none" poster="{{ m.preview_image | image_url: width: 1100 }}" aria-label="{{ m.alt | escape }}" data-b3-video="{{ bron.url }}"></video>
+    <button type="button" class="b3-speel" data-b3-speel aria-label="Video afspelen"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button>
     <span class="b3-pil b3-gal__label">Video</span>
   {%- else -%}
     {%- if voorrang -%}

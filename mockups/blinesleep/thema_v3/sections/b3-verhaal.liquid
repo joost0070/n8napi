@@ -9,7 +9,8 @@
       {%- if section.settings.video_product != blank and video -%}
         {%- assign bron = video.sources | where: 'format', 'mp4' | where: 'height', 720 | first -%}
         {%- unless bron -%}{%- assign bron = video.sources | where: 'format', 'mp4' | last -%}{%- endunless -%}
-        <video playsinline muted loop autoplay preload="none" poster="{{ video.preview_image | image_url: width: 1100 }}" aria-label="{{ video.alt | escape }}"><source src="{{ bron.url }}" type="video/mp4"></video>
+        <video playsinline muted loop preload="none" poster="{{ video.preview_image | image_url: width: 1100 }}" aria-label="{{ video.alt | escape }}" data-b3-video="{{ bron.url }}"></video>
+        <button type="button" class="b3-speel" data-b3-speel aria-label="Video afspelen"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button>
       {%- elsif section.settings.beeld != blank -%}
         {{ section.settings.beeld | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '480, 720, 1000, 1400', sizes: '(min-width: 990px) 45vw, 100vw', alt: section.settings.beeld.alt }}
       {%- endif -%}
