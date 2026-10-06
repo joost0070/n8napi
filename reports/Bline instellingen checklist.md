@@ -17,14 +17,15 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | Files | 95 bestanden weg (dubbele, afgekeurde en mijn eigen bewerkingen); collecties hebben originele beelden |
 | Thema | favicon, logo, winkelwagen als lade, zoeken met prijs, SEO-titel homepage "Leeskussen dat blijft staan, met telefoonvak \| Bline" |
 | Menu en footer | Leeskussen, Kleuren, Hoezen, Vragen, Over Bline; footer zonder oude pagina's |
-| Wachtwoord | staat aan (tot "live") |
+| Wachtwoord | uit sinds 06-10, winkel is open |
+| Betaaliconen | iDEAL (via Mollie) staat vooraan bij de knop en in de footer |
 
 ## Joost: in de Shopify-admin
 
 | Nr | Waar | Wat | Advies |
 |---|---|---|---|
 | 1 | Instellingen > Domeinen | blinesleep.nl koppelen als hoofddomein; uwleeskussen.nl en blinesleep.com laten doorsturen | eerst |
-| 2 | Instellingen > Betalingen | **iDEAL \| Wero kan nog niet**: Shopify Payments geeft iDEAL in Nederland pas vrij na ongeveer 90 dagen, 100+ bestellingen via Shopify Payments, euro en NL als actieve markt (Joost probeerde 06-10, lukte niet). Nu actief: creditcard, Apple Pay, Google Pay, Klarna, PayPal, Bancontact (BE). Keuze: wachten tot Shopify het vrijgeeft, of een iDEAL-app (bijv. Mollie of Stripe) installeren, alleen met akkoord van Joost. Het betaalicoon op de site verschijnt vanzelf zodra iDEAL aan staat | wachten of app kiezen |
+| 2 | Mollie (app in Shopify) | iDEAL via Mollie gekoppeld (06-10). Testbestelling #1001 met iDEAL gelukt en daarna geannuleerd, voorraad teruggezet. **Mollie staat nog in testmodus: meteen op live zetten**, anders "betalen" klanten zonder dat er geld binnenkomt. Op de Mollie-betaalpagina staat nu "Shop4you": in Mollie een apart websiteprofiel "Bline" (blinesleep.nl) maken en de Shopify-app aan dat profiel koppelen. iDEAL staat in de checkout als laatste en Klarna staat vooraf gekozen; de volgorde regelt Shopify | **nu** |
 | 3 | Instellingen > Betalingen | Klarna staat al aan (live gezien 06-10) | gedaan |
 | 4 | Instellingen > Checkout | marketing-vinkje vooraf aangevinkt: **opgelost 06-10** (live gecontroleerd: alleen "Bezorgadres en factuuradres zijn hetzelfde" staat nog aan). Gastcheckout aan, telefoon optioneel | gedaan |
 | 5 | Instellingen > Klantprivacy | cookiebanner aan voor de EU; automatisch privacybeheer uit (zoals afgesproken) | ja |
@@ -32,7 +33,7 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | 7 | Onlinewinkel > Voorkeuren | afbeelding voor delen op sociale media: `bline-leeskussen-beige-01.jpg` | ja |
 | 8 | Producten > hoezen | gewicht van een losse hoes invullen (staat op 0 kg) | het echte gewicht is nodig voor verzendlabels |
 | 9 | Apps | Google & YouTube en Facebook & Instagram koppelen; Judge.me (Nederlands, de 5 kussens als één productgroep, reviewverzoek 14 dagen na verzending); Collabs | voor de advertenties |
-| 10 | Apps | ChannelDock koppelen en het retouradres vastleggen | voor livegang |
+| 10 | Apps | ChannelDock koppelen voor de bestellingen en het retouradres vastleggen. Voorraad: n8n-flow "Bline voorraad ChannelDock → Shopify (wekelijks)" zet elke maandag 07:15 de beschikbare ChannelDock-voorraad in Shopify (op EAN; eerste keer gedaan op 06-10). Zet bij het koppelen van de ChannelDock-app de voorraadsync daar uit, of zet deze flow uit: niet allebei | voor livegang |
 | 11 | Marketing > Automatiseringen | de mails uit `reports/bijlagen/Bline mails funnel.md` zetten | na livegang |
 | 12 | Belastingen | btw voor België nagaan met de boekhouder (OSS zodra de EU-drempel van €10.000 per jaar wordt overschreden) | navragen |
 | 13 | Beslissingen | 30 dagen proberen: **gedaan 06-10** (beleid, voorwaarden, site, advertenties, mails); "voor ... besteld, vandaag verzonden" als ChannelDock dat haalt | open |

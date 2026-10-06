@@ -2,7 +2,8 @@
   Rij met betaaliconen onder de knop. Toont alleen de betaalmethoden die in Shopify echt aan staan
   (shop.enabled_payment_types), in een vaste volgorde: iDEAL en Bancontact eerst, dan Apple Pay, Google Pay, Visa, Mastercard, Klarna, PayPal (maximaal acht).
 {% endcomment %}
-{%- assign bline_aan = shop.enabled_payment_types -%}
+{%- comment -%} iDEAL loopt via de Mollie-app en staat daardoor niet in enabled_payment_types {%- endcomment -%}
+{%- assign bline_aan = shop.enabled_payment_types | join: ',' | append: ',ideal' | split: ',' -%}
 {%- assign bline_volgorde = 'ideal,bancontact,apple_pay,google_pay,visa,master,klarna,paypal' | split: ',' -%}
 <ul class="bline-betaal list-unstyled" role="list" aria-label="Betaalmethoden">
   {%- for type in bline_volgorde -%}
