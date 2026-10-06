@@ -491,3 +491,8 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
 .b3-kleurknop[data-b3-kleur="wit"] .b3-kleurknop__bol, .b3-kort__kleuren a[aria-label="Wit"] .b3-kleurknop__bol { box-shadow: inset 0 0 0 1.5px rgba(0,0,0,.28); }
 .b3-band { cursor: pointer; }
 .b3-band:hover .b3-band__rij, .b3-band:focus-within .b3-band__rij, .b3-band.is-gepauzeerd .b3-band__rij { animation-play-state: paused; }
+
+/* hoes-pagina: voordeel bij de prijs, uitklapkoppen in de v3-stijl */
+.b3-hoes-voordeel { margin: -.4rem 0 1.6rem; padding: 1rem 1.4rem; border-radius: var(--b3-r-klein); background: var(--b3-zand); font-size: 1.4rem; line-height: 1.45; }
+.b3-hoes-voordeel a { color: var(--b3-inkt); font-weight: 500; }
+.bline-uitklap .accordion__title { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 1.6rem; }

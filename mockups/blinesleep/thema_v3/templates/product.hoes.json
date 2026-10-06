@@ -56,6 +56,12 @@
           "settings": {
             "custom_liquid": "{% render 'bline-kleurkeuze', product: product %}"
           }
+        },
+        "voordeel": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- assign bline_hoes_bij = product.selected_or_first_available_variant.price | minus: 999 -%}<p class=\"b3-hoes-voordeel\"><b>{{ bline_hoes_bij | money }}</b> samen met een leeskussen, je bespaart €9,99. <a href=\"/products/leeskussen-{{ product.handle | remove: 'hoes-' }}\">Bekijk het leeskussen</a></p>"
+          }
         }
       },
       "block_order": [
@@ -63,6 +69,7 @@
         "title",
         "ondertitel",
         "price",
+        "voordeel",
         "kleurkeuze",
         "buy_buttons",
         "vinkjes",
@@ -82,12 +89,6 @@
         "enable_video_looping": false,
         "padding_top": 24,
         "padding_bottom": 48
-      }
-    },
-    "sticky": {
-      "type": "bline-sticky-atc",
-      "settings": {
-        "color_scheme": "scheme-4"
       }
     },
     "band": {
@@ -206,7 +207,6 @@
     "main",
     "band",
     "kleuren",
-    "vragen",
-    "sticky"
+    "vragen"
   ]
 }

@@ -1045,3 +1045,10 @@ Onderzoek: `research_notes/Bline Sleep risicos en voorbeelden/webshop_best_pract
 
 Bewust anders dan het onderzoek: het rapport adviseert de homepage als productpagina; Joost wil een echte homepage (06-10). Advertenties landen daarom op de productpagina.
 - (06-10, vervolg) Wit kleurbolletje met duidelijke rand; bij de hoes "Je bespaart €9,99" (vervalt bij 2 kussens, omdat de kortingen niet stapelen); bewegende band pauzeert bij aanraken, muis of toetsenbord; eigen meetgebeurtenissen via Shopify (`bline_kleur_gekozen`, `bline_hoes_aangevinkt`, `bline_in_winkelwagen` met `via: knop/plakbalk`) voor de trechter en latere tests. Prijs per kussen afgerond naar beneden (€74,99).
+
+### Sessie 12e (06-10): volledige controle van de winkel
+
+- Alle 27 paginatypen lokaal gerenderd (home, 5 kussens, 5 hoezen, 12 pagina's, collecties, blog, artikel) en alle interne links gecontroleerd tegen de echte producten, collecties, pagina's, blog en beleid: geen kapotte links.
+- Teksten doorzocht op oude verwijzingen, namen, gedachtestreepjes en kortingsclaims. Gevonden: 5 blogartikelen linkten naar de collectie; nu naar de productpagina (`/products/leeskussen-beige`). Reservekopie van de artikelen vooraf gemaakt.
+- Alt-teksten van alle productbeelden: allemaal aanwezig, Nederlands, met kleur.
+- Hoes-pagina's: oude meelopende balk weg (die verscheen te vroeg), regel "€25,00 samen met een leeskussen, je bespaart €9,99" met link naar het kussen in dezelfde kleur bij de prijs, uitklapkoppen in de v3-stijl (geen hoofdletters).
