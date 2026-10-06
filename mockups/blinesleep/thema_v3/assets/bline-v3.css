@@ -298,11 +298,12 @@ h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4 { font-family: var(--font-heading-family
 .b3-groot .b3-kop { color: #fff; font-size: 3.4rem; }
 .b3-groot__tekst p:not(.b3-oog) { margin: 0 0 2rem; opacity: .92; }
 @media (min-width: 990px) {
-  .b3-groot__beeld { aspect-ratio: 21 / 9; }
+  .b3-groot__beeld { aspect-ratio: 16 / 9; max-height: 88vh; width: 100%; }
   .b3-groot::after { background: linear-gradient(90deg, rgba(10,14,22,.66) 0%, rgba(10,14,22,.15) 55%, rgba(10,14,22,0) 100%); }
   .b3-groot--rechts::after { background: linear-gradient(270deg, rgba(10,14,22,.66) 0%, rgba(10,14,22,.15) 55%, rgba(10,14,22,0) 100%); }
-  .b3-groot__tekst { left: 6.4rem; bottom: auto; top: 50%; transform: translateY(-50%); }
-  .b3-groot--rechts .b3-groot__tekst { left: auto; right: 6.4rem; }
+  /* zelfde linkerlijn als de andere secties (max 124rem breed, 4.8rem rand) */
+  .b3-groot__tekst { left: max(4.8rem, calc((100% - 124rem) / 2)); bottom: auto; top: 50%; transform: translateY(-50%); }
+  .b3-groot--rechts .b3-groot__tekst { left: auto; right: max(4.8rem, calc((100% - 124rem) / 2)); }
   .b3-groot .b3-kop { font-size: 5.6rem; }
 }
 
