@@ -6,6 +6,10 @@
     return '€' + String(e).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + ct;
   }
 
+  function meet(naam, data) {
+    try { if (window.Shopify && Shopify.analytics && Shopify.analytics.publish) Shopify.analytics.publish(naam, data || {}); } catch (e) {}
+  }
+
   function Galerij(el) {
     var track = el.querySelector('[data-b3-track]');
     var duims = el.querySelectorAll('.b3-gal__stip i, .b3-gal__duim');
@@ -48,9 +52,10 @@
       $('[data-b3-prijs]').textContent = geld(k.prijs);
       $('[data-b3-prijs1]').textContent = geld(k.prijs);
       $('[data-b3-prijs2]').textContent = geld(k.prijs * 2 - D.korting);
-      $('[data-b3-prijsper]').textContent = geld(Math.round((k.prijs * 2 - D.korting) / 2)) + ' per kussen';
+      $('[data-b3-prijsper]').textContent = geld(Math.floor((k.prijs * 2 - D.korting) / 2)) + ' per kussen';
       $('[data-b3-hoesnaam]').textContent = k.naam.toLowerCase();
       $('[data-b3-hoesprijs]').textContent = geld(hoesPrijs(k));
+      var hb2 = $('[data-b3-hoesbespaar]'); if (hb2) hb2.textContent = staat.aantal === 2 ? 'Eén in de was, één om het kussen' : 'Je bespaart ' + geld(D.korting) + ' · één in de was, één om het kussen';
       var oud = $('[data-b3-hoesoud]'); oud.textContent = '(los ' + geld(k.hoesPrijs) + ')'; oud.hidden = staat.aantal === 2;
       var hb = $('[data-b3-hoesbeeld] img'); if (hb && k.hoesBeeld) hb.src = k.hoesBeeld;
       $('[data-b3-hoes]').closest('.b3-hoes').hidden = !k.hoesBeschikbaar;
@@ -79,6 +84,7 @@
         else { var u = new URL(location.href); u.searchParams.set('kleur', kleur); history.replaceState(null, '', u); }
       } catch (e) {}
       if (scroll) root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      meet('bline_kleur_gekozen', { kleur: kleur });
     }
     $$('[data-b3-kleur]').forEach(function (b) { b.addEventListener('click', function () { kies(b.getAttribute('data-b3-kleur')); }); });
     document.querySelectorAll('[data-b3-zet-kleur]').forEach(function (b) {
@@ -91,10 +97,11 @@
         teken();
       });
     });
-    $('[data-b3-hoes]').addEventListener('change', function (e) { staat.hoes = e.target.checked; teken(); });
+    $('[data-b3-hoes]').addEventListener('change', function (e) { staat.hoes = e.target.checked; teken(); meet('bline_hoes_aangevinkt', { aan: staat.hoes, kleur: staat.kleur }); });
 
     function koop(knop) {
       var k = D.kleuren[staat.kleur];
+      meet('bline_in_winkelwagen', { kleur: staat.kleur, aantal: staat.aantal, hoes: staat.hoes, via: knop.closest('[data-b3-plak]') ? 'plakbalk' : 'knop' });
       var items = [{ id: k.variant, quantity: staat.aantal }];
       if (staat.hoes && k.hoesBeschikbaar) items.push({ id: k.hoes, quantity: 1 });
       var lade = document.querySelector('cart-drawer');
@@ -146,7 +153,16 @@
     });
   }
 
+  function band() {
+    document.querySelectorAll('[data-b3-band]').forEach(function (b) {
+      var stop = function () { b.classList.toggle('is-gepauzeerd'); };
+      b.addEventListener('click', stop);
+      b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stop(); } });
+    });
+  }
+
   function start() {
+    band();
     document.querySelectorAll('[data-b3-product]').forEach(Product);
     videos();
   }

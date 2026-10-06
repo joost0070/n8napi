@@ -1,5 +1,5 @@
 {%- comment -%} Bline v3: bewegende band met beloftes (stopt bij "minder beweging"). {%- endcomment -%}
-<div class="b3 b3-band" role="region" aria-label="Beloftes">
+<div class="b3 b3-band" role="region" aria-label="Beloftes" data-b3-band tabindex="0" title="Tik om te pauzeren">
   <div class="b3-band__rij">
     {%- for ronde in (1..2) -%}
       <div class="b3-band__groep"{% if ronde == 2 %} aria-hidden="true"{% endif %}>

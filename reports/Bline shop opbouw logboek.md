@@ -1044,3 +1044,4 @@ Onderzoek: `research_notes/Bline Sleep risicos en voorbeelden/webshop_best_pract
 - Mail bij verlaten checkout: eerste na ongeveer 1 uur, tweede na 24 uur.
 
 Bewust anders dan het onderzoek: het rapport adviseert de homepage als productpagina; Joost wil een echte homepage (06-10). Advertenties landen daarom op de productpagina.
+- (06-10, vervolg) Wit kleurbolletje met duidelijke rand; bij de hoes "Je bespaart €9,99" (vervalt bij 2 kussens, omdat de kortingen niet stapelen); bewegende band pauzeert bij aanraken, muis of toetsenbord; eigen meetgebeurtenissen via Shopify (`bline_kleur_gekozen`, `bline_hoes_aangevinkt`, `bline_in_winkelwagen` met `via: knop/plakbalk`) voor de trechter en latere tests. Prijs per kussen afgerond naar beneden (€74,99).
