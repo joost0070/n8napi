@@ -24,9 +24,9 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | Nr | Waar | Wat | Advies |
 |---|---|---|---|
 | 1 | Instellingen > Domeinen | blinesleep.nl koppelen als hoofddomein; uwleeskussen.nl en blinesleep.com laten doorsturen | eerst |
-| 2 | Instellingen > Betalingen | **iDEAL staat nog uit** (live getest 06-10: checkout toont alleen Klarna, creditcard en PayPal; Bancontact staat aan voor België). iDEAL aanzetten in Shopify Payments | **eerst, voor het wachtwoord eraf gaat** |
+| 2 | Instellingen > Betalingen | **iDEAL \| Wero kan nog niet**: Shopify Payments geeft iDEAL in Nederland pas vrij na ongeveer 90 dagen, 100+ bestellingen via Shopify Payments, euro en NL als actieve markt (Joost probeerde 06-10, lukte niet). Nu actief: creditcard, Apple Pay, Google Pay, Klarna, PayPal, Bancontact (BE). Keuze: wachten tot Shopify het vrijgeeft, of een iDEAL-app (bijv. Mollie of Stripe) installeren, alleen met akkoord van Joost. Het betaalicoon op de site verschijnt vanzelf zodra iDEAL aan staat | wachten of app kiezen |
 | 3 | Instellingen > Betalingen | Klarna staat al aan (live gezien 06-10) | gedaan |
-| 4 | Instellingen > Checkout | **marketing-vinkje "Stuur mij een e-mail met nieuws en aanbiedingen" staat vooraf aangevinkt** (live gezien 06-10); dat mag niet, uitzetten bij Marketingopties. Verder: gastcheckout aan (staat), telefoon optioneel (staat), fooi uit | **eerst, voor het wachtwoord eraf gaat** |
+| 4 | Instellingen > Checkout | marketing-vinkje vooraf aangevinkt: **opgelost 06-10** (live gecontroleerd: alleen "Bezorgadres en factuuradres zijn hetzelfde" staat nog aan). Gastcheckout aan, telefoon optioneel | gedaan |
 | 5 | Instellingen > Klantprivacy | cookiebanner aan voor de EU; automatisch privacybeheer uit (zoals afgesproken) | ja |
 | 6 | Instellingen > Meldingen | afzender mail@blinesleep.nl, na het domein het e-maildomein verifiëren (SPF en DKIM) | na stap 1 |
 | 7 | Onlinewinkel > Voorkeuren | afbeelding voor delen op sociale media: `bline-leeskussen-beige-01.jpg` | ja |
@@ -36,4 +36,4 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | 11 | Marketing > Automatiseringen | de mails uit `reports/bijlagen/Bline mails funnel.md` zetten | na livegang |
 | 12 | Belastingen | btw voor België nagaan met de boekhouder (OSS zodra de EU-drempel van €10.000 per jaar wordt overschreden) | navragen |
 | 13 | Beslissingen | 30 dagen proberen: **gedaan 06-10** (beleid, voorwaarden, site, advertenties, mails); "voor ... besteld, vandaag verzonden" als ChannelDock dat haalt | open |
-| 14 | Onlinewinkel > Voorkeuren | wachtwoord uit: **Joost besloot op 06-10 live te gaan**; kan alleen in de admin (Shopify heeft hier geen API voor). Eerst stap 2 (betalingen), anders kan niemand afrekenen | nu |
+| 14 | Onlinewinkel > Voorkeuren | wachtwoord uit: **Joost besloot op 06-10 live te gaan**; kan alleen in de admin (Shopify heeft hier geen API voor). Afrekenen werkt (creditcard, Apple Pay, Google Pay, Klarna, PayPal, Bancontact); iDEAL volgt later | nu |
