@@ -33,7 +33,8 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | 4 | Instellingen > Checkout | marketing-vinkje vooraf aangevinkt: **opgelost 06-10** (live gecontroleerd: alleen "Bezorgadres en factuuradres zijn hetzelfde" staat nog aan). Gastcheckout aan, telefoon optioneel | gedaan |
 | 5 | Instellingen > Klantprivacy | cookiebanner aan voor de EU; automatisch privacybeheer uit (zoals afgesproken) | ja |
 | 5b | Instellingen > Winkelgegevens | **telefoonnummer weghalen**: het is van de site, pagina's, contactbeleid en mails gehaald (06-10), maar het automatische privacybeleid van Shopify haalt het nog uit de winkelgegevens | nu |
-| 6 | Instellingen > Meldingen | afzender mail@blinesleep.nl, na het domein het e-maildomein verifiëren (SPF en DKIM): Shopify toont de CNAME-records, die toevoegen bij Cloud86 | nu |
+| 6 | Instellingen > Meldingen | afzender mail@blinesleep.nl; e-maildomein **geauthenticeerd (07-10)** met 6 CNAME-records bij Cloud86 (mailer4u4, mailerw0e en 4 DKIM-regels); DMARC stond al (`p=quarantine`). TLS-certificaat actief, www en myshopify sturen door naar blinesleep.nl | gedaan |
+| 6a | Plesk (Cloud86) | Let's Encrypt-certificaat opnieuw aanvragen voor alleen mail.blinesleep.nl en webmail.blinesleep.nl (blinesleep.nl en www uitvinken), anders mislukt de verlenging omdat die nu naar Shopify wijzen; domein in Plesk niet verwijderen (mailbox) | binnen 2 weken |
 | 6b | Klaviyo > Instellingen > Organisatie | website staat nog op `zaiap0-jj.myshopify.com` (links in mails sturen wel door): wijzigen in `https://blinesleep.nl`; tijdzone Europe/Amsterdam en valuta EUR (nu US/Eastern en USD) | nu |
 | 7 | Onlinewinkel > Voorkeuren | afbeelding voor delen op sociale media: `bline-leeskussen-beige-01.jpg` | ja |
 | 8 | Producten > hoezen | gewicht van een losse hoes invullen (staat op 0 kg) | het echte gewicht is nodig voor verzendlabels |
