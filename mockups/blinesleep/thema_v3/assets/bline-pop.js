@@ -112,12 +112,16 @@
     if (e.target && e.target.matches && e.target.matches('form[action*="/cart/add"]')) stopWachten();
   }, true);
   document.addEventListener('click', function (e) {
-    var t = e.target && e.target.closest && e.target.closest('[name="add"], [data-bline-upsell]');
+    var t = e.target && e.target.closest && e.target.closest('[name="add"], [data-b3-koop], [data-bline-upsell]');
     if (t && !pop.contains(t)) stopWachten();
   }, true);
 
   // wacht op de cookiekeuze (Shopify Customer Privacy API), met de banner zelf als reservecontrole
-  function bannerOpen() { var b = document.getElementById('shopify-pc__banner'); return !!(b && b.offsetParent !== null); }
+  function bannerOpen() {
+    var b = document.getElementById('shopify-pc__banner'); if (!b) return false;
+    var cs = getComputedStyle(b);
+    return b.getClientRects().length > 0 && cs.display !== 'none' && cs.visibility !== 'hidden' && cs.opacity !== '0';
+  }
   function keuzeGemaakt() {
     try {
       var cp = window.Shopify && Shopify.customerPrivacy;
