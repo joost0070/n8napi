@@ -339,12 +339,14 @@ cart-drawer .drawer__inner { background: var(--b3-bg); border-left: 0; }
 cart-drawer .drawer__heading { font-family: var(--font-heading-family); font-weight: 600; font-size: 2.2rem; }
 cart-drawer .cart-item__name { font-weight: 500; text-decoration: none; }
 cart-drawer .cart-item__image { border-radius: 12px; }
-cart-drawer .drawer__footer { background: #fff; border-radius: 18px 18px 0 0; box-shadow: 0 -6px 20px rgba(0,0,0,.05); }
+cart-drawer .drawer__footer { background: #fff; border-radius: 18px 18px 0 0; box-shadow: 0 -6px 20px rgba(0,0,0,.05); padding-left: 1.6rem; padding-right: 1.6rem; margin-left: -1.6rem; margin-right: -1.6rem; }
 cart-drawer .totals__total-value { font-weight: 600; }
 cart-drawer .cart__checkout-button { min-height: 5.4rem; font-size: 1.6rem; }
 cart-drawer .quantity { border-radius: 99px; }
 cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px; }
-.bline-upsell { border-radius: 14px; background: var(--b3-zand); border: 0; }
+.bline-upsell { border-radius: 14px; background: var(--b3-zand); border: 0; margin-bottom: 1.6rem; }
+.bline-upsell .bline-upsell__cel { padding: 0; }
+.bline-upsell .bline-upsell__binnen { background: transparent; padding: 1rem 1rem 1rem 1.6rem; }
 /* aankondigingsbalk rustiger */
 .announcement-bar__message { font-size: 1.15rem; letter-spacing: .08em; font-weight: 500; }
 /* hoes-pagina: product in het wit, galerij met ronde hoeken */
@@ -486,6 +488,10 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
 .b3-speel[hidden] { display: none; }
 .b3-verhaal__media { position: relative; }
 .b3-snel { margin-top: 1rem; }
+/* winkelwagenlade: knoppen onder elkaar, ook op desktop (anders worden de snelle betaalknoppen platgedrukt) */
+.cart-drawer .cart__ctas { display: block; }
+.cart-drawer .cart__checkout-button { max-width: none; min-height: 5.2rem; height: auto; }
+.cart-drawer .b3-snel { width: 100%; }
 .b3-snel .additional-checkout-buttons, .b3-snel > div { margin: 0; }
 
 /* witte kleurknop beter zichtbaar; band te pauzeren */
