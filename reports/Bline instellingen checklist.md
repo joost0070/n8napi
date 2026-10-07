@@ -40,7 +40,7 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | 6c | Instellingen > Checkout > Aanpassen | logo, kleuren (#1F2A37, overzicht #FBF8F4) en Poppins: **gedaan 07-10** door Joost (via de API kan dit alleen op Shopify Plus) | gedaan |
 | 6b | Klaviyo > Instellingen > Account | website `https://blinesleep.nl`, tijdzone Europe/Amsterdam, valuta EUR: **gedaan 07-10** (via API gecontroleerd) | gedaan |
 | 7 | Onlinewinkel > Voorkeuren | afbeelding voor delen op sociale media: `bline-leeskussen-beige-01.jpg` | ja |
-| 8 | Producten > hoezen | gewicht van een losse hoes invullen (staat op 0 kg) | het echte gewicht is nodig voor verzendlabels |
+| 8 | Producten > hoezen | gewicht losse hoes: **0,14 kg** gezet (07-10, uit de bol-gegevens van de zwarte hoes; verpakt 34,8 × 24 × 5,3 cm, gaat als brievenbuspakje). Oude sets (offline): 4,04 kg | gedaan |
 | 9 | Apps | Google & YouTube en Facebook & Instagram koppelen; Judge.me (Nederlands, de 5 kussens als één productgroep, reviewverzoek 14 dagen na verzending); Collabs | voor de advertenties |
 | 10 | Apps | ChannelDock koppelen voor de bestellingen en het retouradres vastleggen. Voorraad: n8n-flow "Bline voorraad ChannelDock → Shopify (wekelijks)" zet elke maandag 07:15 de beschikbare ChannelDock-voorraad in Shopify (op EAN; eerste keer gedaan op 06-10). Zet bij het koppelen van de ChannelDock-app de voorraadsync daar uit, of zet deze flow uit: niet allebei | voor livegang |
 | 11 | Marketing > Automatiseringen | de mails uit `reports/bijlagen/Bline mails funnel.md` zetten | na livegang |
