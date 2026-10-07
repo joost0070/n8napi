@@ -1,5 +1,5 @@
 {% comment %}
-  Upsell in de winkelwagenlade, onder het eerste leeskussen: een losse hoes in een andere kleur (elke kleur is een eigen product).
+  Upsell in de winkelwagenlade, onder het eerste leeskussen: een reservehoes in dezelfde kleur als het kussen (voor de wasdag), als compacte productregel. Is die kleur op, dan een andere kleur.
   De automatische korting "Extra hoes: €9,99 korting" rekent zelf. Niet tonen als er al een hoes in de winkelwagen ligt of als er meer dan één kussen in ligt.
   Gebruik: render 'bline-upsell', item: item
 {% endcomment %}
@@ -15,18 +15,7 @@
     endif
   endfor
   assign kleur = item.product.metafields.bline.kleur_naam.value
-  case kleur
-    when 'Wit'
-      assign doel = 'beige'
-    when 'Beige'
-      assign doel = 'wit'
-    when 'Blauw'
-      assign doel = 'grijs'
-    when 'Grijs'
-      assign doel = 'blauw'
-    else
-      assign doel = 'grijs'
-  endcase
+  assign doel = kleur | downcase
   assign hoes = null
   assign hoes_handle = 'hoes-' | append: doel
   if all_products[hoes_handle].available
@@ -48,18 +37,24 @@
 -%}
 {%- comment -%} De hoeskorting geldt alleen bij precies één kussen: bij twee kussens geldt al de kussenkorting en die stapelen niet. {%- endcomment -%}
 {%- if heeft_hoes == false and hoes != null and kussens == 1 -%}
+  {%- assign hoes_prijs_na = hoes_variant.price | minus: 999 -%}
   <tr class="bline-upsell" role="row">
     <td class="bline-upsell__cel" colspan="4" role="cell">
-      <div class="bline-upsell__binnen">
-        <p class="bline-upsell__tekst">Extra hoes erbij? <strong>€9,99 korting</strong></p>
+      <div class="bline-upsell__kaart">
+        <a href="{{ hoes.url }}" class="bline-upsell__foto" tabindex="-1" aria-hidden="true">
+          {%- if hoes.featured_image -%}{{ hoes.featured_image | image_url: width: 140 | image_tag: width: 64, height: 64, loading: 'lazy', alt: '' }}{%- endif -%}
+        </a>
+        <div class="bline-upsell__info">
+          <span class="bline-upsell__oog">Reservehoes voor de wasdag</span>
+          <a href="{{ hoes.url }}" class="bline-upsell__naam">Hoes {{ hoes_kleur | downcase }}</a>
+          <span class="bline-upsell__prijs"><s>{{ hoes_variant.price | money }}</s> <b>{{ hoes_prijs_na | money }}</b></span>
+        </div>
         <button
           type="button"
-          class="button button--secondary bline-upsell__knop"
+          class="bline-upsell__knop"
           data-bline-upsell="{{ hoes_variant.id }}"
-          aria-label="Hoes in {{ hoes_kleur | downcase }} toevoegen"
-        >
-          + {{ hoes_kleur }}
-        </button>
+          aria-label="Hoes {{ hoes_kleur | downcase }} toevoegen voor {{ hoes_prijs_na | money }}"
+        >+</button>
       </div>
     </td>
   </tr>
