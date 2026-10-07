@@ -349,7 +349,8 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
 .bline-upsell__kaart { display: flex; align-items: center; gap: 1.2rem; padding: .8rem 1rem .8rem .8rem; border-radius: 14px; background: var(--b3-zand); }
 .bline-upsell__foto { flex: none; width: 6.4rem; height: 6.4rem; border-radius: 10px; overflow: hidden; background: #fff; }
 .bline-upsell__foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bline-upsell__info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .2rem; line-height: 1.3; }
+.bline-upsell__info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .3rem; line-height: 1.3; }
+.bline-upsell__regel { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .8rem; }
 .bline-upsell__oog { font-size: 1.15rem; letter-spacing: .04em; color: rgba(var(--color-foreground), .65); }
 .bline-upsell__naam { font-size: 1.4rem; font-weight: 500; color: inherit; text-decoration: none; }
 .bline-upsell__prijs { font-size: 1.35rem; }
@@ -358,6 +359,11 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
 .bline-upsell__knop:hover { background: var(--b3-knop-hover); }
 .bline-upsell__knop:focus-visible { outline: 2px solid var(--b3-accent); outline-offset: 2px; }
 .bline-upsell__knop[aria-busy="true"] { opacity: .6; }
+.bline-upsell__kleuren { display: flex; gap: .2rem; margin-top: .2rem; }
+.bline-upsell__kleur { width: 2.8rem; height: 2.8rem; padding: .3rem; border-radius: 50%; border: 1.5px solid transparent; background: none; cursor: pointer; }
+.bline-upsell__kleur::before { content: ""; display: block; width: 100%; height: 100%; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+.bline-upsell__kleur.is-gekozen { border-color: var(--b3-inkt); }
+.bline-upsell__kleur:focus-visible { outline: 2px solid var(--b3-accent); outline-offset: 1px; }
 /* aankondigingsbalk rustiger */
 .announcement-bar__message { font-size: 1.15rem; letter-spacing: .08em; font-weight: 500; }
 /* hoes-pagina: product in het wit, galerij met ronde hoeken */

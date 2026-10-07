@@ -1,5 +1,5 @@
 {% comment %}
-  Upsell in de winkelwagenlade, onder het eerste leeskussen: een reservehoes in dezelfde kleur als het kussen (voor de wasdag), als compacte productregel. Is die kleur op, dan een andere kleur.
+  Upsell in de winkelwagenlade, onder het eerste leeskussen: een extra hoes in een andere kleur, als compacte productregel met kleurbolletjes; de klant kiest zelf. Standaard staat een kleur die goed combineert.
   De automatische korting "Extra hoes: €9,99 korting" rekent zelf. Niet tonen als er al een hoes in de winkelwagen ligt of als er meer dan één kussen in ligt.
   Gebruik: render 'bline-upsell', item: item
 {% endcomment %}
@@ -15,7 +15,19 @@
     endif
   endfor
   assign kleur = item.product.metafields.bline.kleur_naam.value
-  assign doel = kleur | downcase
+  case kleur
+    when 'Wit'
+      assign doel = 'beige'
+    when 'Beige'
+      assign doel = 'wit'
+    when 'Blauw'
+      assign doel = 'grijs'
+    when 'Grijs'
+      assign doel = 'blauw'
+    else
+      assign doel = 'grijs'
+  endcase
+  assign kandidaten = 'hoes-wit,hoes-beige,hoes-blauw,hoes-grijs,hoes-zwart' | split: ','
   assign hoes = null
   assign hoes_handle = 'hoes-' | append: doel
   if all_products[hoes_handle].available
@@ -38,16 +50,35 @@
 {%- comment -%} De hoeskorting geldt alleen bij precies één kussen: bij twee kussens geldt al de kussenkorting en die stapelen niet. {%- endcomment -%}
 {%- if heeft_hoes == false and hoes != null and kussens == 1 -%}
   {%- assign hoes_prijs_na = hoes_variant.price | minus: 999 -%}
+  {%- assign eigen_hoes = 'hoes-' | append: kleur | downcase -%}
   <tr class="bline-upsell" role="row">
     <td class="bline-upsell__cel" colspan="4" role="cell">
-      <div class="bline-upsell__kaart">
-        <a href="{{ hoes.url }}" class="bline-upsell__foto" tabindex="-1" aria-hidden="true">
+      <div class="bline-upsell__kaart" data-up-kaart>
+        <a href="{{ hoes.url }}" class="bline-upsell__foto" tabindex="-1" aria-hidden="true" data-up-link>
           {%- if hoes.featured_image -%}{{ hoes.featured_image | image_url: width: 140 | image_tag: width: 64, height: 64, loading: 'lazy', alt: '' }}{%- endif -%}
         </a>
         <div class="bline-upsell__info">
-          <span class="bline-upsell__oog">Reservehoes voor de wasdag</span>
-          <a href="{{ hoes.url }}" class="bline-upsell__naam">Hoes {{ hoes_kleur | downcase }}</a>
-          <span class="bline-upsell__prijs"><s>{{ hoes_variant.price | money }}</s> <b>{{ hoes_prijs_na | money }}</b></span>
+          <span class="bline-upsell__oog">Extra hoes in een andere kleur</span>
+          <span class="bline-upsell__regel">
+            <a href="{{ hoes.url }}" class="bline-upsell__naam" data-up-naam data-up-link>Hoes {{ hoes_kleur | downcase }}</a>
+            <span class="bline-upsell__prijs"><s data-up-was>{{ hoes_variant.price | money }}</s> <b data-up-prijs>{{ hoes_prijs_na | money }}</b></span>
+          </span>
+          <span class="bline-upsell__kleuren" role="radiogroup" aria-label="Kleur van de extra hoes">
+            {%- for h in kandidaten -%}
+              {%- if h != eigen_hoes and all_products[h].available -%}
+                {%- liquid
+                  assign hp = all_products[h]
+                  assign hv = hp.selected_or_first_available_variant
+                  assign hn = hp.metafields.bline.kleur_naam.value
+                  assign hpn = hv.price | minus: 999
+                -%}
+                <button type="button" class="bline-upsell__kleur{% if hp.id == hoes.id %} is-gekozen{% endif %}" role="radio" aria-checked="{% if hp.id == hoes.id %}true{% else %}false{% endif %}" aria-label="{{ hn }}"
+                  style="--k: {{ hp.metafields.bline.kleur_hex.value }}"
+                  data-up-kleur="{{ hv.id }}" data-up-naamtekst="Hoes {{ hn | downcase }}" data-up-url="{{ hp.url }}"
+                  data-up-beeld="{{ hp.featured_image | image_url: width: 140 }}" data-up-was="{{ hv.price | money }}" data-up-prijstekst="{{ hpn | money }}"></button>
+              {%- endif -%}
+            {%- endfor -%}
+          </span>
         </div>
         <button
           type="button"
