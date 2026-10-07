@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<title>Bline testset v8</title>
+<title>Bline testset v8 (definitief)</title>
 <style>
 @font-face{font-family:Poppins;font-weight:400;src:url(bron/b3-poppins-400.woff2)}
 @font-face{font-family:Poppins;font-weight:500;src:url(bron/b3-poppins-500.woff2)}
@@ -43,31 +43,29 @@ body{background:#ddd;font-family:Poppins,sans-serif;padding:40px;display:flex;fl
 .tijd{align-self:center;font-size:24px;color:rgba(255,255,255,.85);font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;text-shadow:0 1px 8px rgba(0,0,0,.4)}
 .story{position:absolute;left:64px;right:0;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 .story span{background:#111;color:#fff;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;font-weight:600;font-size:38px;padding:6px 18px;border-radius:10px}
+.ckop{position:absolute;left:64px;right:64px;top:84px}
+.ckop h1,.ckop p{position:static}
+.ckop p{margin-top:28px}
 </style>
 </head>
 <body>
 
-<!-- B1: rustig premium, lezende vrouw beige -->
+<!-- b1-lekkerzitten -->
 <div class="ad b" id="b1-lekkerzitten">
   <div class="foto" style="background-image:url(../../beelden_higgsfield/beige_04_9d9bf3d0.png);background-position:42% 50%"></div>
   <div class="waas" style="background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(20,24,32,.45) 100%)"></div>
   <h1 style="bottom:150px">Eindelijk lekker zitten<br>in je eigen bed.</h1>
   <div class="logo" style="left:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
 </div>
-<!-- B2: rustig premium, bank -->
+
+<!-- b2-bank -->
 <div class="ad b" id="b2-bank">
   <div class="foto" style="background-image:url(../../beelden_higgsfield/wit_06_dd51760c.png);background-position:38% 50%"></div>
   <div class="waas" style="background:linear-gradient(180deg,rgba(20,24,32,.50) 0%,rgba(0,0,0,0) 40%)"></div>
   <h1 style="top:84px">Te diepe bank?<br>Zo zit je wél rechtop.</h1>
   <div class="logo" style="right:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
 </div>
-<!-- C2: omgekeerd, koop dit niet als -->
-<div class="ad c" id="c2-echtlezen">
-  <div class="foto" style="background-image:url(../../beelden_higgsfield/blauw_04_b6493bcc.png);background-position:55% 50%"></div>
-  <div class="waas" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,30,.70) 0%,rgba(15,20,30,0) 42%)"></div>
-  <h1 style="top:84px;color:var(--wit)">Alleen voor wie echt<br>in bed leest.</h1>
-  <div class="logo" style="right:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
-</div>
+
 <!-- b3-avondbed -->
 <div class="ad b" id="b3-avondbed">
   <div class="foto" style="background-image:url(../../beelden_higgsfield/grijs_02_7b3bc80b.png);background-position:50% 50%"></div>
@@ -92,11 +90,35 @@ body{background:#ddd;font-family:Poppins,sans-serif;padding:40px;display:flex;fl
   <div class="logo" style="left:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
 </div>
 
-<!-- c3-nietslapen -->
-<div class="ad c" id="c3-nietslapen">
+<!-- c2a-elkeavond -->
+<div class="ad c" id="c2a-elkeavond">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/blauw_04_b6493bcc.png);background-position:55% 50%"></div>
+  <div class="waas" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,30,.70) 0%,rgba(15,20,30,0) 42%)"></div>
+  <div class="ckop"><h1 style="color:var(--wit)">Elke avond lezen?</h1><p style="color:rgba(255,255,255,.9)">Dan wil je een kussen dat niet wegzakt.</p></div>
+  <div class="logo" style="right:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
+</div>
+
+<!-- c2b-leesjeinbed -->
+<div class="ad c" id="c2b-leesjeinbed">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/blauw_04_b6493bcc.png);background-position:55% 50%"></div>
+  <div class="waas" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,30,.70) 0%,rgba(15,20,30,0) 42%)"></div>
+  <div class="ckop"><h1 style="color:var(--wit)">Lees je in bed?<br>Dan wil je dit.</h1><p style="color:rgba(255,255,255,.9)">Groot en stevig, en het blijft staan.</p></div>
+  <div class="logo" style="right:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
+</div>
+
+<!-- c3a-scrollen -->
+<div class="ad c" id="c3a-scrollen">
   <div class="foto" style="background-image:url(../../beelden_higgsfield/zwart_04_6cf345ff.png);background-position:50% 50%"></div>
   <div class="waas" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,30,.70) 0%,rgba(15,20,30,0) 42%)"></div>
-  <h1 style="top:84px;color:var(--wit)">Niet voor wie meteen<br>gaat slapen.</h1>
+  <div class="ckop"><h1 style="color:var(--wit)">Nog even scrollen?</h1><p style="color:rgba(255,255,255,.9)">Doe het rechtop, met 3,8 kg traagschuim in je rug.</p></div>
+  <div class="logo" style="right:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
+</div>
+
+<!-- c3b-laatsteuur -->
+<div class="ad c" id="c3b-laatsteuur">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/zwart_04_6cf345ff.png);background-position:50% 50%"></div>
+  <div class="waas" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,30,.70) 0%,rgba(15,20,30,0) 42%)"></div>
+  <div class="ckop"><h1 style="color:var(--wit)">Het laatste uur<br>van je dag.</h1><p style="color:rgba(255,255,255,.9)">Rechtop, zonder kussens te stapelen.</p></div>
   <div class="logo" style="right:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
 </div>
 
@@ -104,8 +126,7 @@ body{background:#ddd;font-family:Poppins,sans-serif;padding:40px;display:flex;fl
 <div class="ad c" id="c4-werkbed">
   <div class="foto" style="background-image:url(../../beelden_higgsfield/grijs_04_e88bcb0c.png);background-position:40% 50%"></div>
   <div class="waas" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,30,.70) 0%,rgba(15,20,30,0) 42%)"></div>
-  <h1 style="top:84px;color:var(--wit)">Werk je vaak vanuit bed?<br>Zo zit je wél rechtop.</h1>
-  <p style="top:270px;color:rgba(255,255,255,.9)">3,8 kg traagschuim dat niet wegzakt.</p>
+  <div class="ckop"><h1 style="color:var(--wit)">Werk je vaak vanuit bed?<br>Zo zit je wél rechtop.</h1><p style="color:rgba(255,255,255,.9)">3,8 kg traagschuim dat niet wegzakt.</p></div>
   <div class="logo" style="right:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
 </div>
 

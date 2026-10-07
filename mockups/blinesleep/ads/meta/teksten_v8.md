@@ -13,9 +13,9 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 ## Twee stijlen
 
 - **Rustig (B):** serifletter, één zin over het moment. B1 t/m B5.
-- **Kwalificerend (C):** strakke letter, zegt voor wie het kussen is, met één ondersteunende regel. C2 t/m C4.
+- **Kwalificerend (C):** strakke letter, zegt voor wie het kussen is, met één ondersteunende regel. C2a, C2b, C3a, C3b, C4 (Joost koos op 07-10 twee teksten voor C2 en twee voor C3).
 
-## De 8 advertenties
+## De 10 advertenties
 
 ### B1 `bl_b1_lekkerzitten` · beige · /products/leeskussen-beige
 **In beeld:** Eindelijk lekker zitten in je eigen bed.
@@ -79,8 +79,19 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 
 **Kop:** Eén kussen in plaats van vier
 
-### C2 `bl_c2_echtlezen` · blauw · /products/leeskussen-blauw
-**In beeld:** Alleen voor wie echt in bed leest.
+### C2a `bl_c2a_elkeavond` · blauw · /products/leeskussen-blauw
+**In beeld:** Elke avond lezen? · Dan wil je een kussen dat niet wegzakt.
+**Tekst:**
+> Lees je elke avond, en zit je na tien minuten onderuitgezakt tegen het hoofdbord?
+>
+> Dit leeskussen is gevuld met 3,8 kg traagschuim en zakt niet weg. Groot (50 x 65 x 45 cm), stevig, met een vak voor je telefoon.
+>
+> €79,99, gratis verzonden. Twijfel je? 30 dagen proberen.
+
+**Kop:** Voor wie elke avond leest
+
+### C2b `bl_c2b_leesjeinbed` · blauw · /products/leeskussen-blauw
+**In beeld:** Lees je in bed? Dan wil je dit. · Groot en stevig, en het blijft staan.
 **Tekst:**
 > Lees je één keer per maand een bladzijde? Dan heb je dit niet nodig.
 >
@@ -89,16 +100,29 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 > Groot (50 x 65 x 45 cm) en stevig: 3,8 kg traagschuim.
 > Twijfel je? 30 dagen proberen, gratis verzonden.
 
-**Kop:** Voor wie elke avond leest
+**Kop:** Leeskussen dat blijft staan
 
-### C3 `bl_c3_nietslapen` · zwart · /products/leeskussen-zwart
-**In beeld:** Niet voor wie meteen gaat slapen.
+### C3a `bl_c3a_scrollen` · zwart · /products/leeskussen-zwart
+**In beeld:** Nog even scrollen? · Doe het rechtop, met 3,8 kg traagschuim in je rug.
 **Tekst:**
-> Val je om half elf als een blok in slaap? Dan heb je dit kussen niet nodig.
+> Nog even scrollen, nog één filmpje, en ondertussen zak je steeds verder onderuit?
 >
-> Lig je nog een uur te lezen, kijken of scrollen? Dan wel. 3,8 kg traagschuim houdt je rechtop en je telefoon zit in het zijvak.
+> Met 3,8 kg traagschuim in je rug zit je rechtop. Je telefoon ligt tussendoor in het zijvak.
 >
-> €79,99, gratis verzonden. Twijfel je? 30 dagen proberen.
+> €79,99, gratis verzonden.
+> 👉 30 dagen proberen.
+
+**Kop:** Rechtop in bed, ook met je telefoon
+
+### C3b `bl_c3b_laatsteuur` · zwart · /products/leeskussen-zwart
+**In beeld:** Het laatste uur van je dag. · Rechtop, zonder kussens te stapelen.
+**Tekst:**
+> Het laatste uur van je dag is voor jezelf: lezen, kijken, scrollen. Dan wil je goed zitten.
+>
+> Eén leeskussen in plaats van een stapel: 3,8 kg traagschuim, blijft staan.
+>
+> In zwart en nog 4 kleuren, gratis verzonden.
+> 👉 30 dagen proberen.
 
 **Kop:** Voor de avondmens
 
@@ -125,7 +149,7 @@ Knop bij alle advertenties: **Nu kopen**. UTM volgens `reports/Bline meetplan.md
 | Onderdeel | Keuze |
 |---|---|
 | Campagne | `bl_meta_sales_nlbe`, doel Verkopen, optimaliseren op Aankoop (Pixel 1) |
-| Opbouw | 1 advertentieset met alle 8 advertenties. Met €150 budget is splitsen per stijl te dun; Meta verdeelt zelf over de advertenties en we lezen per advertentie af |
+| Opbouw | 1 advertentieset met alle 10 advertenties. Met €150 budget is splitsen per stijl te dun; Meta verdeelt zelf over de advertenties en we lezen per advertentie af |
 | Doelgroep | Nederland en België, 30 tot 65+, breed, Advantage+ plaatsingen |
 | Budget | €10 per dag, 14 dagen (€140, past in het vooraf betaalde saldo van €150) |
 | Uitzetten | advertentie na €8 uitgave met link-klikratio onder 0,6%; na 7 dagen advertenties zonder winkelwagen |
