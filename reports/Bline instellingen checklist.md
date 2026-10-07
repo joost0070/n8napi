@@ -42,3 +42,14 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | 12 | Belastingen | btw voor België nagaan met de boekhouder (OSS zodra de EU-drempel van €10.000 per jaar wordt overschreden) | navragen |
 | 13 | Beslissingen | 30 dagen proberen: **gedaan 06-10** (beleid, voorwaarden, site, advertenties, mails); "voor ... besteld, vandaag verzonden" als ChannelDock dat haalt | open |
 | 14 | Onlinewinkel > Voorkeuren | wachtwoord uit: **Joost besloot op 06-10 live te gaan**; kan alleen in de admin (Shopify heeft hier geen API voor). Afrekenen werkt (creditcard, Apple Pay, Google Pay, Klarna, PayPal, Bancontact); iDEAL volgt later | nu |
+
+## Advertenties (stand 7 oktober 2026)
+
+| Onderdeel | Stand |
+|---|---|
+| Google Ads | managementaccount "Bline Beheer" (561-758-3392) met Bline (860-535-9447) eronder; API-sleutels in de omgeving (`GOOGLE_ADS_*`); basistoegang voor de developer token aangevraagd |
+| Meta | systeemgebruiker "Claude API" met volledige toegang tot pagina Bline (372306072632771), advertentieaccount Bline (414180534444868), app Joost en Pixel 1 (488144327490376); sleutels in de omgeving (`META_*`); Shopify-app Facebook & Instagram gekoppeld aan Pixel 1 met uitgebreid delen |
+| Meta betalen | **vooraf betalen (optie A):** bij de eerste campagne €150 saldo via iDEAL, automatisch opwaarderen uit. Na de testweken eventueel naar automatisch betalen met bestedingslimiet |
+| Campagnes | worden in een nieuwe sessie klaargezet, allemaal op pauze; niets gaat aan zonder akkoord van Joost per campagne |
+| Voor livegang | cookiebanner aan in Shopify (Klantprivacy); oude Meta-catalogus en dataset van de vorige winkel pas verwijderen als de nieuwe werken |
+
