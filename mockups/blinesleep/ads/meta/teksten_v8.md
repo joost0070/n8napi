@@ -80,7 +80,7 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 **Kop:** Eén kussen in plaats van vier
 
 ### C2 `bl_c2_echtlezen` · blauw · /products/leeskussen-blauw
-**In beeld:** Alleen voor wie echt in bed leest. · Groot en stevig: 50 x 65 x 45 cm.
+**In beeld:** Alleen voor wie echt in bed leest.
 **Tekst:**
 > Lees je één keer per maand een bladzijde? Dan heb je dit niet nodig.
 >
@@ -92,7 +92,7 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 **Kop:** Voor wie elke avond leest
 
 ### C3 `bl_c3_nietslapen` · zwart · /products/leeskussen-zwart
-**In beeld:** Niet voor wie meteen gaat slapen. · Wel voor wie in bed leest, kijkt of scrolt.
+**In beeld:** Niet voor wie meteen gaat slapen.
 **Tekst:**
 > Val je om half elf als een blok in slaap? Dan heb je dit kussen niet nodig.
 >
