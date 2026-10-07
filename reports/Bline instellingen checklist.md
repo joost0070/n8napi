@@ -35,6 +35,7 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 | 5b | Instellingen > Winkelgegevens | **telefoonnummer weghalen**: het is van de site, pagina's, contactbeleid en mails gehaald (06-10), maar het automatische privacybeleid van Shopify haalt het nog uit de winkelgegevens | nu |
 | 6 | Instellingen > Meldingen | afzender mail@blinesleep.nl; e-maildomein **geauthenticeerd (07-10)** met 6 CNAME-records bij Cloud86 (mailer4u4, mailerw0e en 4 DKIM-regels); DMARC stond al (`p=quarantine`). TLS-certificaat actief, www en myshopify sturen door naar blinesleep.nl | gedaan |
 | 6a | Plesk (Cloud86) | Let's Encrypt-certificaat opnieuw aanvragen voor alleen mail.blinesleep.nl en webmail.blinesleep.nl (blinesleep.nl en www uitvinken), anders mislukt de verlenging omdat die nu naar Shopify wijzen; domein in Plesk niet verwijderen (mailbox) | gedaan 07-10 |
+| 6c | Instellingen > Checkout > Aanpassen | logo, kleuren (#1F2A37, overzicht #FBF8F4) en Poppins: **gedaan 07-10** door Joost (via de API kan dit alleen op Shopify Plus) | gedaan |
 | 6b | Klaviyo > Instellingen > Account | website `https://blinesleep.nl`, tijdzone Europe/Amsterdam, valuta EUR: **gedaan 07-10** (via API gecontroleerd) | gedaan |
 | 7 | Onlinewinkel > Voorkeuren | afbeelding voor delen op sociale media: `bline-leeskussen-beige-01.jpg` | ja |
 | 8 | Producten > hoezen | gewicht van een losse hoes invullen (staat op 0 kg) | het echte gewicht is nodig voor verzendlabels |
