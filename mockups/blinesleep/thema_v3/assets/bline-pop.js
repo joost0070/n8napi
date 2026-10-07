@@ -14,14 +14,38 @@
 
   var staat = lees();
   if (staat.aangemeld) return;
-  if (staat.dicht && Date.now() - staat.dicht < DAGEN_NA_SLUITEN * 864e5) return;
+  var recent = function (t) { return t && Date.now() - t < DAGEN_NA_SLUITEN * 864e5; };
+  // pop-up niet vanzelf na wegklikken; de teaser blijft dan wel, tenzij die zelf is weggeklikt
+  var popMag = !recent(staat.dicht);
+  var teaserMag = !recent(staat.teaserDicht);
+  if (!popMag && !teaserMag) return;
   // wie uit een Bline-mail komt, staat al op de lijst
   if (/[?&]utm_source=klaviyo/i.test(location.search) || /[?&]_kx=/.test(location.search)) return;
+
+  var teaser = document.querySelector('[data-b3-teaser]');
+  function teaserToon() {
+    if (!teaser || !teaserMag || open) return;
+    teaser.hidden = false;
+    requestAnimationFrame(function () { teaser.classList.add('is-zichtbaar'); });
+  }
+  function teaserWeg() {
+    if (!teaser) return;
+    teaser.classList.remove('is-zichtbaar');
+    setTimeout(function () { if (!teaser.classList.contains('is-zichtbaar')) teaser.hidden = true; }, 250);
+  }
+  if (teaser) {
+    teaser.querySelector('[data-b3-teaser-open]').addEventListener('click', function () { toon('teaser'); });
+    teaser.querySelector('[data-b3-teaser-x]').addEventListener('click', function () {
+      teaserMag = false; teaserWeg();
+      var s2 = lees(); s2.teaserDicht = Date.now(); bewaar(s2);
+    });
+  }
 
   var vorigeFocus = null, open = false;
   function toon(bron) {
     if (open || document.querySelector('cart-drawer.active, .drawer.active')) return;
     open = true; vorigeFocus = document.activeElement;
+    teaserWeg();
     pop.hidden = false;
     requestAnimationFrame(function () { pop.classList.add('is-open'); });
     document.documentElement.classList.add('b3-pop-open');
@@ -39,6 +63,8 @@
     document.documentElement.classList.remove('b3-pop-open', 'b3-pop-compact-open');
     setTimeout(function () { pop.hidden = true; }, 250);
     var s = lees(); if (!s.aangemeld) { s.dicht = Date.now(); bewaar(s); }
+    popMag = false;
+    if (!s.aangemeld) setTimeout(teaserToon, 400);
     if (vorigeFocus && vorigeFocus.focus) vorigeFocus.focus();
   }
   pop.querySelectorAll('[data-b3-pop-dicht]').forEach(function (b) { b.addEventListener('click', sluit); });
@@ -71,7 +97,8 @@
     document.removeEventListener('mouseout', opVerlaten);
   }
   function startWachten() {
-    if (gestopt) return;
+    setTimeout(teaserToon, 2500);
+    if (gestopt || !popMag) return;
     if (parseInt(pop.getAttribute('data-kar') || '0', 10) > 0) return;
     if (desktop) {
       document.addEventListener('mouseout', opVerlaten);
@@ -138,6 +165,7 @@
     }).then(function (r) {
       if (!r.ok) throw new Error('status ' + r.status);
       bewaar({ aangemeld: Date.now() });
+      teaserMag = false;
       // bezoeker herkennen, zodat bekeken producten ook bij Klaviyo binnenkomen
       try {
         if (window.klaviyo && typeof window.klaviyo.identify === 'function') window.klaviyo.identify({ email: mail });

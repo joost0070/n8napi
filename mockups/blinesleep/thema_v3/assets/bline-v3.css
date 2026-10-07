@@ -620,3 +620,14 @@ html body #shopify-pc__banner .shopify-pc__banner__btns-granular .shopify-pc__ba
 /* voorkeurenscherm van Shopify in dezelfde stijl */
 html body #shopify-pc__prefs__dialog, html body .shopify-pc__prefs__dialog { font-family: var(--font-body-family); border-radius: 18px; }
 html body .shopify-pc__prefs__dialog button { border-radius: 999px; font-family: inherit; min-height: 4.4rem; }
+
+/* Teaser voor de 10%: smal tabje aan de linkerrand, opent de aanmeldpop-up */
+.b3-teaser { position: fixed; left: 0; top: 58%; z-index: 990; transform: translate(-110%, -50%); transition: transform .25s ease; }
+.b3-teaser.is-zichtbaar { transform: translate(0, -50%); }
+.b3-teaser[hidden] { display: none; }
+.b3-teaser__knop { writing-mode: vertical-rl; transform: rotate(180deg); background: var(--b3-knop); color: #fff; border: 0; border-radius: 10px 0 0 10px; padding: 1.6rem .9rem; font: 600 1.35rem/1 var(--font-body-family); letter-spacing: .02em; cursor: pointer; box-shadow: 0 6px 18px rgba(20, 24, 33, .18); }
+.b3-teaser__knop:hover { background: var(--b3-knop-hover); }
+.b3-teaser__knop:focus-visible, .b3-teaser__x:focus-visible { outline: 2px solid var(--b3-accent); outline-offset: 2px; }
+.b3-teaser__x { position: absolute; top: -1rem; right: -1rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1px solid var(--b3-lijn); background: #fff; color: var(--b3-inkt); display: grid; place-items: center; cursor: pointer; padding: 0; }
+@media (max-width: 749px) { .b3-teaser { top: 42%; } .b3-teaser__knop { padding: 1.3rem .75rem; font-size: 1.25rem; } }
+@media (prefers-reduced-motion: reduce) { .b3-teaser { transition: none; } }
