@@ -14,6 +14,18 @@ Gebouwd op `research_notes/Bline advertenties/google_strategie_2026-10-07.md` (c
 - Weg: "2 kussens: €9,99 voordeel" (geen bevestigde bundelprijs), "Bel of app ons" (er is geen telefoonnummer meer), de hoes-sitelink naar de collectie.
 - Nieuw: cadeaucampagne (13-11 t/m 21-12-2026), prijs-asset, meer sitelinks en highlights, bodplan voor Shopping.
 
+## Snelste weg: script `campagnes_aanmaken.js` (7 oktober 2026)
+
+In plaats van de CSV's via Editor te importeren: plak `campagnes_aanmaken.js` in **Google Ads > Tools > Bulkacties > Scripts**, klik eerst op **Voorbeeld** en dan op **Uitvoeren**. Het maakt in Bline 860-535-9447 aan, alles op **pauze**:
+
+| Campagne | Budget | Inhoud |
+|---|---|---|
+| 00 Search \| Merk \| NL+BE | €1 | groepen Merk en Hoes |
+| 01 Shopping \| Leeskussen \| NL+BE | €5 | Merchant Center 5871227119, item-ID's `shopify_zz_...`, kleur €0,45, wit €0,40, België -10%, hoezen en sets uitgesloten |
+| 02 Search \| Generiek \| NL+BE | €4 | 10 groepen |
+
+Zoekwoorden prioriteit 1 aan, prioriteit 2 op pauze; 12 advertenties; 4 uitsluitingslijsten (273); sitelinks, highlights en fragmenten. De cadeaucampagne (03) zit er bewust niet in: die komt half november. Landingspagina's zonder `www` (direct op blinesleep.nl). Het script is gemaakt met `scratchpad/maak_gads_script.py` uit de CSV's hierboven.
+
 ## Bestanden
 
 | Bestand | Regels | Wat | Importeren? |
