@@ -27,13 +27,14 @@ Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door C
 
 | Nr | Waar | Wat | Advies |
 |---|---|---|---|
-| 1 | Instellingen > Domeinen | blinesleep.nl koppelen als hoofddomein; uwleeskussen.nl en blinesleep.com laten doorsturen | eerst |
+| 1 | Instellingen > Domeinen | **blinesleep.nl gekoppeld en hoofddomein (07-10)**. DNS bij Cloud86: `@` A 23.227.38.65, `www` CNAME shops.myshopify.com; mail blijft bij Cloud86 via `mail`, `smtp` en `ftp` als A-record naar 45.82.188.190, MX `mail.blinesleep.nl`, SPF met `include:shops.shopify.com`. Nog: uwleeskussen.nl en blinesleep.com laten doorsturen | gedaan |
 | 2 | Mollie (app in Shopify) | iDEAL via Mollie gekoppeld (06-10). Testbestelling #1001 met iDEAL gelukt en daarna geannuleerd, voorraad teruggezet. **Mollie staat nog in testmodus: meteen op live zetten**, anders "betalen" klanten zonder dat er geld binnenkomt. Op de Mollie-betaalpagina staat nu "Shop4you": in Mollie een apart websiteprofiel "Bline" (blinesleep.nl) maken en de Shopify-app aan dat profiel koppelen. iDEAL staat in de checkout als laatste en Klarna staat vooraf gekozen; de volgorde regelt Shopify | **nu** |
 | 3 | Instellingen > Betalingen | Klarna staat al aan (live gezien 06-10) | gedaan |
 | 4 | Instellingen > Checkout | marketing-vinkje vooraf aangevinkt: **opgelost 06-10** (live gecontroleerd: alleen "Bezorgadres en factuuradres zijn hetzelfde" staat nog aan). Gastcheckout aan, telefoon optioneel | gedaan |
 | 5 | Instellingen > Klantprivacy | cookiebanner aan voor de EU; automatisch privacybeheer uit (zoals afgesproken) | ja |
 | 5b | Instellingen > Winkelgegevens | **telefoonnummer weghalen**: het is van de site, pagina's, contactbeleid en mails gehaald (06-10), maar het automatische privacybeleid van Shopify haalt het nog uit de winkelgegevens | nu |
-| 6 | Instellingen > Meldingen | afzender mail@blinesleep.nl, na het domein het e-maildomein verifiëren (SPF en DKIM) | na stap 1 |
+| 6 | Instellingen > Meldingen | afzender mail@blinesleep.nl, na het domein het e-maildomein verifiëren (SPF en DKIM): Shopify toont de CNAME-records, die toevoegen bij Cloud86 | nu |
+| 6b | Klaviyo > Instellingen > Organisatie | website staat nog op `zaiap0-jj.myshopify.com` (links in mails sturen wel door): wijzigen in `https://blinesleep.nl`; tijdzone Europe/Amsterdam en valuta EUR (nu US/Eastern en USD) | nu |
 | 7 | Onlinewinkel > Voorkeuren | afbeelding voor delen op sociale media: `bline-leeskussen-beige-01.jpg` | ja |
 | 8 | Producten > hoezen | gewicht van een losse hoes invullen (staat op 0 kg) | het echte gewicht is nodig voor verzendlabels |
 | 9 | Apps | Google & YouTube en Facebook & Instagram koppelen; Judge.me (Nederlands, de 5 kussens als één productgroep, reviewverzoek 14 dagen na verzending); Collabs | voor de advertenties |
