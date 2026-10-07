@@ -304,6 +304,7 @@
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }} <a href="{{ routes.root_url }}">Bline</a>, een merk van Shop4You
         </small>
+        <small class="copyright__content"><a href="#" data-bline-cookies onclick="if(window.privacyBanner&&window.privacyBanner.showPreferences){window.privacyBanner.showPreferences();}return false;">Cookie-instellingen</a></small>
         {%- if section.settings.show_policy -%}
           <ul class="policies list-unstyled">
             {%- for policy in shop.policies -%}
