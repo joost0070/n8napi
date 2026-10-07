@@ -14,7 +14,11 @@ Gebouwd op `research_notes/Bline advertenties/google_strategie_2026-10-07.md` (c
 - Weg: "2 kussens: €9,99 voordeel" (geen bevestigde bundelprijs), "Bel of app ons" (er is geen telefoonnummer meer), de hoes-sitelink naar de collectie.
 - Nieuw: cadeaucampagne (13-11 t/m 21-12-2026), prijs-asset, meer sitelinks en highlights, bodplan voor Shopping.
 
-## Snelste weg: script `campagnes_aanmaken.js` (7 oktober 2026)
+## Aangemaakt op 7 oktober 2026 via de API (Explorer-toegang)
+
+De drie campagnes hieronder staan in Bline 860-535-9447, op **pauze**, aangemaakt met `scratchpad/gads_bouw.py` (zelfde inhoud als het script). Het script `campagnes_aanmaken.js` is alleen nog nodig als de API niet werkt; het stopt vanzelf omdat de campagnes al bestaan.
+
+### Script `campagnes_aanmaken.js` (reserve)
 
 In plaats van de CSV's via Editor te importeren: plak `campagnes_aanmaken.js` in **Google Ads > Tools > Bulkacties > Scripts**, klik eerst op **Voorbeeld** en dan op **Uitvoeren**. Het maakt in Bline 860-535-9447 aan, alles op **pauze**:
 
