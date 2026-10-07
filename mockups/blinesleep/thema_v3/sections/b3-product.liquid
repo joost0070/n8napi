@@ -115,7 +115,7 @@
         <li>{% render 'b3-icoon', naam: 'truck' %}Gratis verzending in NL en BE</li>
         <li>{% render 'b3-icoon', naam: 'klok' %}Binnen 1-2 werkdagen in huis</li>
         <li>{% render 'b3-icoon', naam: 'terug' %}30 dagen proberen</li>
-        <li>{% render 'b3-icoon', naam: 'was' %}Hoes wasbaar op 30 °C</li>
+        <li>{% render 'b3-icoon', naam: 'was' %}Hoes wasbaar op 30 °C</li>
       </ul>
       {% render 'bline-betaal' %}
       <a class="b3-app" href="/pages/contact">
@@ -143,7 +143,7 @@
         </details>
         <details>
           <summary>Verzending en retour</summary>
-          <div><p>Gratis verzending in Nederland en België, binnen 1-2 werkdagen in huis. Je mag hem 30 dagen proberen. Vragen? Mail ons op mail@blinesleep.nl.</p></div>
+          <div><p>Gratis verzending in Nederland en België, binnen 1-2 werkdagen in huis. Je mag het kussen 30 dagen proberen. Vragen? Mail ons op mail@blinesleep.nl.</p></div>
         </details>
       </div>
     </div>
@@ -169,6 +169,7 @@
             "naam": {{ kp.metafields.bline.kleur_naam.value | json }},
             "hex": {{ kp.metafields.bline.kleur_hex.value | json }},
             "url": {{ kp.url | json }},
+            "titel": {{ kp.metafields.global.title_tag.value | default: kp.metafields.global.title_tag | default: kp.title | json }},
             "variant": {{ v.id | json }},
             "beschikbaar": {{ v.available | json }},
             "voorraad": {% if v.inventory_management == 'shopify' and v.inventory_policy == 'deny' %}{{ v.inventory_quantity | json }}{% else %}null{% endif %},
@@ -216,7 +217,7 @@
         "itemCondition": "https://schema.org/NewCondition",
         "url": {{ request.origin | append: hoofd.url | json }},
         "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": "EUR" }, "shippingDestination": [{ "@type": "DefinedRegion", "addressCountry": "NL" }, { "@type": "DefinedRegion", "addressCountry": "BE" }], "deliveryTime": { "@type": "ShippingDeliveryTime", "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" }, "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY" } } },
-        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": ["NL", "BE"], "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility" }
+        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": ["NL", "BE"], "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn" }
       }
     }
   </script>

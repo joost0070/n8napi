@@ -9,8 +9,8 @@
     <div class="b3-score">
       <div>
         <div class="b3-score__groot">4,5</div>
-        <div class="b3-score__sterren" aria-hidden="true">{% for i in (1..5) %}{% render 'b3-ster' %}{% endfor %}</div>
-        <div class="b3-score__bron">13 reviews op bol.com</div>
+        <div class="b3-score__sterren" aria-hidden="true">{% for i in (1..4) %}{% render 'b3-ster' %}{% endfor %}<svg class="b3-ster" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><defs><linearGradient id="b3-ster-half"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="currentColor" stop-opacity=".25"/></linearGradient></defs><path fill="url(#b3-ster-half)" d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.1 6-5.3-3-5.3 3 1.1-6L1.4 7.7l6-.7z"/></svg></div>
+        <div class="b3-score__bron"><a href="https://www.bol.com/nl/nl/s/?searchtext=8720892687241" target="_blank" rel="noopener">13 reviews op bol.com</a></div>
       </div>
       <div aria-label="Verdeling van de sterren">
         {%- assign rijen = '5 sterren:9,4 sterren:3,3 sterren:0,2 sterren:1,1 ster:0' | split: ',' -%}

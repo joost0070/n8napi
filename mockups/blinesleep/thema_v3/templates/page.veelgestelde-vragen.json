@@ -44,7 +44,7 @@
           "type": "vraag",
           "settings": {
             "vraag": "Hoe was ik de hoes?",
-            "antwoord": "<p>Rits de hoes eraf en was hem op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
+            "antwoord": "<p>Rits de hoes eraf en was hem op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
           }
         },
         "v5": {
@@ -65,14 +65,14 @@
           "type": "vraag",
           "settings": {
             "vraag": "Wijkt de kleur af van de foto?",
-            "antwoord": "<p>We hebben de foto's per kleur naast elkaar gelegd en alleen beelden gebruikt die kloppen. Een scherm toont kleuren wel altijd iets anders. Valt hij thuis tegen, dan heb je 30 dagen proberen.</p>"
+            "antwoord": "<p>We hebben de foto's per kleur naast elkaar gelegd en alleen beelden gebruikt die kloppen. Een scherm toont kleuren wel altijd iets anders. Valt de kleur thuis tegen, dan kun je het kussen binnen 30 dagen terugsturen.</p>"
           }
         },
         "v8": {
           "type": "vraag",
           "settings": {
             "vraag": "Kan ik het kussen terugsturen?",
-            "antwoord": "<p>Ja, je mag hem 30 dagen proberen. Past hij toch niet, mail ons dan binnen 30 dagen na ontvangst; je krijgt het retouradres van ons. De kosten voor het terugsturen betaal je zelf. Alles staat op de pagina <a href=\"/pages/retourneren\">Retourneren</a>.</p>"
+            "antwoord": "<p>Ja. Je mag het kussen 30 dagen gewoon gebruiken, met de hoes erom. Niet tevreden? Meld het binnen 30 dagen (vanaf de dag na ontvangst), stuur het compleet en schoon terug en je krijgt het aankoopbedrag terug. Een reden geven hoeft niet. Terugsturen is gratis: je krijgt van ons een retourlabel van PostNL. Alles staat op de pagina <a href=\"/pages/retourneren\">Retourneren</a>.</p>"
           }
         },
         "v9": {
@@ -93,7 +93,7 @@
           "type": "vraag",
           "settings": {
             "vraag": "Kan het traagschuim in de wasmachine?",
-            "antwoord": "<p>Nee. Alleen de hoes gaat in de was, op 30 °C. Het kussen zelf laat je luchten.</p>"
+            "antwoord": "<p>Nee. Alleen de hoes gaat in de was, op 30 °C. Het kussen zelf laat je luchten.</p>"
           }
         },
         "v12": {

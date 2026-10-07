@@ -3,7 +3,7 @@
   <div class="b3-sectie__in b3-vragen-wrap">
     <div>
       <p class="b3-oog">{{ section.settings.oog }}</p>
-      <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+      {%- if template.name == 'page' and page.handle == 'veelgestelde-vragen' -%}<h1 class="b3-kop">{{ section.settings.kop }}</h1>{%- else -%}<h2 class="b3-kop">{{ section.settings.kop }}</h2>{%- endif -%}
       <p class="b3-intro">{{ section.settings.intro }}</p>
     </div>
     <div class="b3-vragen">
@@ -13,8 +13,8 @@
     </div>
   </div>
 </section>
-{%- if section.blocks.size > 0 -%}
-  {%- comment -%} vragen als FAQ-data voor zoekmachines en AI-assistenten {%- endcomment -%}
+{%- if section.blocks.size > 0 and template.name == 'index' or section.blocks.size > 0 and page.handle == 'veelgestelde-vragen' or section.blocks.size > 0 and template.name == 'product' -%}
+  {%- comment -%} vragen als FAQ-data, alleen op home, de vragenpagina en productpagina's (niet dubbel op elke pagina) {%- endcomment -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",

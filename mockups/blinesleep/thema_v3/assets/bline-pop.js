@@ -1,4 +1,4 @@
-/* Bline aanmeldpop-up: meldt aan bij Klaviyo (dubbele bevestiging) en start zo de welkomstflow met 10%. */
+/* Bline aanmeldpop-up: meldt aan bij Klaviyo (enkele aanmelding) en start zo de welkomstflow met de 10%-code. */
 (function () {
   'use strict';
   var pop = document.querySelector('[data-b3-pop]');
@@ -25,6 +25,7 @@
     pop.hidden = false;
     requestAnimationFrame(function () { pop.classList.add('is-open'); });
     document.documentElement.classList.add('b3-pop-open');
+    if (pop.classList.contains('b3-pop--compact')) document.documentElement.classList.add('b3-pop-compact-open');
     var veld = pop.querySelector('#b3-pop-mail');
     if (veld && window.matchMedia('(min-width: 750px)').matches) setTimeout(function () { veld.focus(); }, 250);
     else { var x = pop.querySelector('.b3-pop__x'); if (x) x.focus(); }
@@ -35,7 +36,7 @@
     if (!open) return;
     open = false;
     pop.classList.remove('is-open');
-    document.documentElement.classList.remove('b3-pop-open');
+    document.documentElement.classList.remove('b3-pop-open', 'b3-pop-compact-open');
     setTimeout(function () { pop.hidden = true; }, 250);
     var s = lees(); if (!s.aangemeld) { s.dicht = Date.now(); bewaar(s); }
     if (vorigeFocus && vorigeFocus.focus) vorigeFocus.focus();
@@ -52,20 +53,68 @@
     else if (!e.shiftKey && document.activeElement === laatste) { e.preventDefault(); eerste.focus(); }
   });
 
-  // tonen na 25 seconden, na de helft van de pagina, of (desktop) als de muis naar boven het venster uit gaat
-  var timer = setTimeout(function () { toon('tijd'); }, 25000);
-  function opScroll() {
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    if (h > 400 && window.scrollY / h > 0.5) toon('scroll');
-  }
+  /* Wanneer: pas na een cookiekeuze, nooit tegelijk met de cookiebanner.
+     Desktop: bij verlaten van de pagina; op andere pagina's dan een productpagina ook na 12 s.
+     Mobiel: niet op de eerste pagina van een bezoek; vanaf de tweede pagina na 10 s, als compacte balk onderin.
+     Nooit als er al iets in de winkelwagen ligt of iemand net een product toevoegt. */
+  var desktop = window.matchMedia('(min-width: 750px)').matches;
+  var opProduct = pop.getAttribute('data-template') === 'product';
+  var paginas = 1;
+  try { paginas = (parseInt(sessionStorage.getItem('bline_pv') || '0', 10) || 0) + 1; sessionStorage.setItem('bline_pv', String(paginas)); } catch (e) {}
+  if (!desktop) pop.classList.add('b3-pop--compact');
+
+  var timer = null, gestopt = false;
   function opVerlaten(e) { if (!e.relatedTarget && e.clientY <= 0) toon('verlaten'); }
-  window.addEventListener('scroll', opScroll, { passive: true });
-  document.addEventListener('mouseout', opVerlaten);
   function stopWachten() {
+    gestopt = true;
     clearTimeout(timer);
-    window.removeEventListener('scroll', opScroll);
     document.removeEventListener('mouseout', opVerlaten);
   }
+  function startWachten() {
+    if (gestopt) return;
+    if (parseInt(pop.getAttribute('data-kar') || '0', 10) > 0) return;
+    if (desktop) {
+      document.addEventListener('mouseout', opVerlaten);
+      if (!opProduct) timer = setTimeout(function () { toon('tijd'); }, 12000);
+    } else if (paginas >= 2) {
+      timer = setTimeout(function () { toon('tijd'); }, 10000);
+    }
+  }
+  // wie een product in de winkelwagen legt, krijgt geen pop-up meer
+  document.addEventListener('submit', function (e) {
+    if (e.target && e.target.matches && e.target.matches('form[action*="/cart/add"]')) stopWachten();
+  }, true);
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest && e.target.closest('[name="add"], [data-bline-upsell]');
+    if (t && !pop.contains(t)) stopWachten();
+  }, true);
+
+  // wacht op de cookiekeuze (Shopify Customer Privacy API), met de banner zelf als reservecontrole
+  function bannerOpen() { var b = document.getElementById('shopify-pc__banner'); return !!(b && b.offsetParent !== null); }
+  function keuzeGemaakt() {
+    try {
+      var cp = window.Shopify && Shopify.customerPrivacy;
+      if (cp && typeof cp.shouldShowBanner === 'function') {
+        if (!cp.shouldShowBanner()) return true;
+        var c = cp.currentVisitorConsent && cp.currentVisitorConsent();
+        return !!(c && (c.marketing !== '' || c.analytics !== ''));
+      }
+    } catch (e) {}
+    return null;
+  }
+  var gestart = false;
+  function start() { if (gestart) return; gestart = true; setTimeout(startWachten, 800); }
+  document.addEventListener('visitorConsentCollected', start);
+  var pogingen = 0;
+  (function wacht() {
+    if (gestart) return;
+    var k = keuzeGemaakt();
+    if (k === true && !bannerOpen()) return start();
+    pogingen++;
+    // geen privacy-API na 8 s en geen banner in beeld: gewoon starten
+    if (k === null && pogingen > 16 && !bannerOpen()) return start();
+    setTimeout(wacht, 500);
+  })();
 
   var form = pop.querySelector('[data-b3-pop-form]');
   var fout = pop.querySelector('[data-b3-pop-fout]');

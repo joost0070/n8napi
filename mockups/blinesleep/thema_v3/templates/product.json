@@ -26,21 +26,21 @@
     "b2": {
      "type": "item",
      "settings": {
-      "tekst": "4,5 uit 5 op bol.com",
+      "tekst": "4,5 uit 5 op bol.com (13 reviews)",
       "icoon": "check"
      }
     },
     "b3": {
      "type": "item",
      "settings": {
-      "tekst": "30 dagen proberen",
+      "tekst": "30 dagen proberen, gratis retour",
       "icoon": "terug"
      }
     },
     "b4": {
      "type": "item",
      "settings": {
-      "tekst": "Hoes wasbaar op 30 °C",
+      "tekst": "Hoes wasbaar op 30 °C",
       "icoon": "was"
      }
     }
@@ -159,7 +159,7 @@
     "g3"
    ],
    "settings": {
-    "oog": "Zo zit hij in elkaar",
+    "oog": "Zo zit het in elkaar",
     "kop": "Stevig van <em>binnen</em>, zacht van buiten",
     "intro": "",
     "beeld": "shopify://shop_images/bline-leeskussen-beige-04.jpg",
@@ -199,7 +199,7 @@
      "type": "punt",
      "settings": {
       "icoon": "was",
-      "kop": "Wasbaar op 30 °C",
+      "kop": "Wasbaar op 30 °C",
       "tekst": "Gewoon in de machine, normaal programma."
      }
     }
@@ -259,7 +259,7 @@
      "type": "rij",
      "settings": {
       "wat": "Wassen",
-      "bline": "Eén hoes met rits, wasbaar op 30 °C",
+      "bline": "Eén hoes met rits, wasbaar op 30 °C",
       "los": "Elke sloop apart"
      }
     }
@@ -299,7 +299,7 @@
      "type": "vraag",
      "settings": {
       "vraag": "Kan de hoes in de was?",
-      "antwoord": "<p>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
+      "antwoord": "<p>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
      }
     },
     "v2": {
@@ -320,7 +320,7 @@
      "type": "vraag",
      "settings": {
       "vraag": "Kan ik het terugsturen?",
-      "antwoord": "<p>Ja, je mag hem 30 dagen proberen. Past hij toch niet, mail ons dan binnen 30 dagen na ontvangst; je krijgt het retouradres van ons. De kosten voor het terugsturen zijn voor jou.</p>"
+      "antwoord": "<p>Ja. Je mag het kussen 30 dagen gewoon gebruiken, met de hoes erom. Niet tevreden? Meld het binnen 30 dagen (vanaf de dag na ontvangst), stuur het compleet en schoon terug en je krijgt het aankoopbedrag terug. Een reden geven hoeft niet. Terugsturen is gratis: je krijgt van ons een retourlabel van PostNL.</p>"
      }
     }
    },
@@ -404,7 +404,7 @@
      "settings": {
       "icoon": "terug",
       "kop": "30 dagen proberen",
-      "tekst": "Past het toch niet bij je bed, dan stuur je het terug."
+      "tekst": "Valt het tegen? Dan stuur je het gratis terug, met een retourlabel van ons."
      }
     }
    },
@@ -418,7 +418,7 @@
     "beeld": "shopify://shop_images/bline-leeskussen-wit-packshot-01.jpg",
     "oog": "Over Bline",
     "kop": "Waarom <em>Bline</em>?",
-    "tekst": "We maken één ding, en dat goed: een leeskussen dat blijft staan. We begonnen op bol.com, waar kopers het een 4,5 uit 5 geven. Nu ook in onze eigen winkel, voor dezelfde prijs.",
+    "tekst": "We maken één ding, en dat goed: een leeskussen dat blijft staan. We begonnen op bol.com, waar kopers het een 4,5 uit 5 geven. Nu ook in onze eigen winkel, met het kussen voor dezelfde prijs als op bol.",
     "knop": "Kies je kleur",
     "knop_kleur": "beige",
     "om": true,

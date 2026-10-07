@@ -40,7 +40,7 @@
           "settings": {
             "icoon": "terug",
             "kop": "30 dagen proberen",
-            "tekst": "Past het toch niet bij je bed, dan stuur je het terug."
+            "tekst": "Valt het tegen? Dan stuur je het gratis terug, met een retourlabel van ons."
           }
         }
       },
@@ -54,7 +54,7 @@
         "beeld": "shopify://shop_images/bline-leeskussen-wit-packshot-01.jpg",
         "oog": "Over Bline",
         "kop": "Waarom <em>Bline</em>?",
-        "tekst": "We maken één ding, en dat goed: een leeskussen dat blijft staan. We begonnen op bol.com, waar kopers het een 4,5 uit 5 geven. Nu ook in onze eigen winkel, voor dezelfde prijs.",
+        "tekst": "We maken één ding, en dat goed: een leeskussen dat blijft staan. We begonnen op bol.com, waar kopers het een 4,5 uit 5 geven. Nu ook in onze eigen winkel, met het kussen voor dezelfde prijs als op bol.",
         "knop": "Kies je kleur",
         "knop_kleur": "beige",
         "om": true,

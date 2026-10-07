@@ -1,9 +1,22 @@
 {%- comment -%}
-  Aanmeldpop-up: meldt rechtstreeks aan bij Klaviyo (lijst "Email List", dubbele bevestiging) en start daarmee de welkomstflow met 10%.
+  Aanmeldpop-up: meldt rechtstreeks aan bij Klaviyo (lijst "Email List", enkele aanmelding) en start daarmee de welkomstflow met 10%.
   Geen Klaviyo-formulier, dus het ene gratis formulier blijft over. Niet op winkelwagen, wachtwoord- en accountpagina's.
 {%- endcomment -%}
-{%- unless template.name == 'cart' or template.name == 'password' or template contains 'customers' -%}
-  <div class="b3 b3-pop" data-b3-pop data-bedrijf="VGJhRR" data-lijst="SAeiP6" hidden>
+{%- liquid
+  assign pop_uit = false
+  if template.name == 'cart' or template.name == 'password' or template contains 'customers' or request.path contains '/policies/'
+    assign pop_uit = true
+  endif
+  if template.name == 'page'
+    assign stil = 'contact,retourneren,verzending,privacy,ontbinden,algemene-voorwaarden'
+    assign stil_lijst = stil | split: ','
+    if stil_lijst contains page.handle
+      assign pop_uit = true
+    endif
+  endif
+-%}
+{%- unless pop_uit -%}
+  <div class="b3 b3-pop" data-b3-pop data-bedrijf="VGJhRR" data-lijst="SAeiP6" data-template="{{ template.name }}" data-kar="{{ cart.item_count }}" hidden>
     <div class="b3-pop__achter" data-b3-pop-dicht></div>
     <div class="b3-pop__vak" role="dialog" aria-modal="true" aria-labelledby="b3-pop-kop">
       <button type="button" class="b3-pop__x" data-b3-pop-dicht aria-label="Sluiten">
@@ -22,13 +35,13 @@
           <button type="submit" class="b3-knop b3-knop--groot">Stuur mijn code</button>
           <p class="b3-pop__fout" data-b3-pop-fout role="alert" hidden></p>
         </form>
-        <p class="b3-pop__klein">Je krijgt eerst een mail om je aanmelding te bevestigen. Afmelden kan altijd. Lees ons <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">privacybeleid</a>.</p>
+        <p class="b3-pop__klein">Je code komt direct in je mail. Afmelden kan altijd. Lees onze <a href="/pages/privacy">privacyverklaring</a>.</p>
         <button type="button" class="b3-pop__nee" data-b3-pop-dicht>Nee, bedankt</button>
       </div>
       <div class="b3-pop__tekst" data-b3-pop-stap="klaar" hidden>
-        <p class="b3-oog">Bijna klaar</p>
-        <h2 class="b3-kop" tabindex="-1">Check je <em>mail</em></h2>
-        <p class="b3-pop__intro">We hebben je een mail gestuurd. Bevestig je aanmelding, dan sturen we direct je persoonlijke code voor 10% korting.</p>
+        <p class="b3-oog">Gelukt</p>
+        <h2 class="b3-kop" tabindex="-1">Je code is <em>onderweg</em></h2>
+        <p class="b3-pop__intro">Kijk over een minuutje in je mail (soms staat hij bij Reclame of Spam). Je code geeft 10% op je eerste bestelling.</p>
         <button type="button" class="b3-knop" data-b3-pop-dicht>Verder kijken</button>
       </div>
     </div>

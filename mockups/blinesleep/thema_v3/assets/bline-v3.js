@@ -91,7 +91,15 @@
       gal[kleur].reset();
       teken();
       try {
-        if (root.getAttribute('data-pagina') === 'product') history.replaceState(null, '', D.kleuren[kleur].url + location.search.replace(/([?&])kleur=[^&]*/, '$1').replace(/[?&]$/, ''));
+        if (root.getAttribute('data-pagina') === 'product') {
+          history.replaceState(null, '', D.kleuren[kleur].url + location.search.replace(/([?&])kleur=[^&]*/, '$1').replace(/[?&]$/, ''));
+          // paginatitel en canonical meenemen naar de gekozen kleur
+          var vorige = staat.titelKleur || D.gekozen;
+          var oud = vorige && D.kleuren[vorige] && D.kleuren[vorige].titel, nieuw = D.kleuren[kleur].titel;
+          if (oud && nieuw && document.title.indexOf(oud) > -1) document.title = document.title.replace(oud, nieuw);
+          staat.titelKleur = kleur;
+          var can = document.querySelector('link[rel="canonical"]'); if (can) can.href = location.origin + D.kleuren[kleur].url;
+        }
         else { var u = new URL(location.href); u.searchParams.set('kleur', kleur); history.replaceState(null, '', u); }
       } catch (e) {}
       if (scroll) root.scrollIntoView({ behavior: 'smooth', block: 'start' });

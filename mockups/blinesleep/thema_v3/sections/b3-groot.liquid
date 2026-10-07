@@ -2,7 +2,8 @@
 <section class="b3 b3-groot b3-groot--{{ section.settings.uitlijning }}">
   <div class="b3-groot__beeld">
     {%- if section.settings.beeld != blank -%}
-      {{ section.settings.beeld | image_url: width: 2400 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600, 2000, 2400', sizes: '100vw', alt: section.settings.beeld.alt, style: 'object-position: ' | append: section.settings.focus }}
+      {%- assign b3_stijl = 'object-position: ' | append: section.settings.focus -%}
+      {{ section.settings.beeld | image_url: width: 2400 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600, 2000, 2400', sizes: '100vw', alt: section.settings.beeld.alt, style: b3_stijl }}
     {%- endif -%}
   </div>
   <div class="b3-groot__tekst">

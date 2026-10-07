@@ -544,9 +544,79 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
   .b3-pop__tekst .b3-kop { font-size: 3.2rem; }
 }
 @media (prefers-reduced-motion: reduce) { .b3-pop__vak, .b3-pop__achter { transition: none; } }
+/* compacte pop-up op mobiel: balk onderin, zonder donkere achtergrond, maximaal ongeveer een derde van het scherm */
+@media (max-width: 749px) {
+  .b3-pop--compact { inset: auto 0 0 0; }
+  .b3-pop--compact .b3-pop__achter { display: none; }
+  .b3-pop--compact .b3-pop__vak { box-shadow: 0 -8px 30px rgba(20, 24, 33, .18); max-height: 42vh; }
+  .b3-pop--compact .b3-pop__tekst { padding: 1.8rem var(--b3-gutter) 1.2rem; }
+  .b3-pop--compact .b3-oog { display: none; }
+  .b3-pop--compact .b3-pop__tekst .b3-kop { font-size: 2.2rem; margin-bottom: .6rem; }
+  .b3-pop--compact .b3-pop__intro { font-size: 1.4rem; margin-bottom: 1.2rem; }
+  .b3-pop--compact .b3-pop__form { grid-template-columns: 1fr auto; gap: .8rem; }
+  .b3-pop--compact .b3-pop__form input { min-height: 4.6rem; }
+  .b3-pop--compact .b3-pop__form .b3-knop { width: auto; min-height: 4.6rem; padding: 0 1.8rem; }
+  .b3-pop--compact .b3-pop__fout { grid-column: 1 / -1; }
+  .b3-pop--compact .b3-pop__klein { margin-top: .8rem; }
+  .b3-pop--compact .b3-pop__nee { display: none; }
+  .b3-pop-open.b3-pop-compact-open, .b3-pop-open.b3-pop-compact-open body { overflow: auto; }
+}
+
 
 /* ---------- voorraadmelding (alleen bij weinig voorraad) ---------- */
 .b3-voorraad { display: flex; align-items: center; gap: .8rem; margin: 1.6rem 0 0; font-size: 1.4rem; font-weight: 500; color: var(--b3-accent); }
 .b3-voorraad[hidden] { display: none; }
 .b3-voorraad__stip { width: .8rem; height: .8rem; border-radius: 50%; background: var(--b3-accent); box-shadow: 0 0 0 4px rgba(196, 98, 62, .15); }
 .b3-voorraad + .b3-knop--groot { margin-top: 1rem; }
+
+/* ===== Cookiebanner (Shopify) in Bline-stijl. Accepteren en Weigeren bewust even groot en gelijk van vorm. ===== */
+html body #shopify-pc__banner.shopify-pc__banner__dialog {
+  font-family: var(--font-body-family);
+  left: 2.4rem; right: auto; bottom: 2.4rem; width: 40rem; min-width: 0; max-width: calc(100vw - 4.8rem);
+  padding: 2.2rem 2.2rem 1.8rem; border-radius: 18px;
+  background: #fff; border: 1px solid var(--b3-lijn, #E8E2D9);
+  box-shadow: 0 18px 50px rgba(20, 24, 33, .18);
+}
+html body #shopify-pc__banner .shopify-pc__banner__wrapper { align-items: stretch; }
+html body #shopify-pc__banner .shopify-pc__banner__body { margin: 0; }
+html body #shopify-pc__banner h2 {
+  font-family: inherit; font-size: 1.8rem; font-weight: 600; letter-spacing: -.01em;
+  color: var(--b3-inkt, #1D2330); margin: 0 0 .6rem;
+}
+html body #shopify-pc__banner p { font-family: inherit; font-size: 1.4rem; line-height: 1.5; color: var(--b3-sub, #5A6170); }
+html body #shopify-pc__banner p a { color: var(--b3-inkt, #1D2330); text-underline-offset: 2px; }
+html body #shopify-pc__banner .shopify-pc__banner__btns {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1.6rem; flex-direction: row;
+}
+html body #shopify-pc__banner .shopify-pc__banner__btns button {
+  margin: 0; min-height: 4.6rem; padding: 0 1.6rem; border-radius: 999px;
+  font-family: inherit; font-size: 1.5rem; font-weight: 500; line-height: 1;
+  transition: background-color .15s ease;
+}
+html body #shopify-pc__banner .shopify-pc__banner__btns button.shopify-pc__banner__btn-accept,
+html body #shopify-pc__banner .shopify-pc__banner__btns button.shopify-pc__banner__btn-decline {
+  background: var(--b3-knop, #1F2A37); color: #fff; border: 1px solid var(--b3-knop, #1F2A37);
+}
+html body #shopify-pc__banner .shopify-pc__banner__btns button.shopify-pc__banner__btn-accept:hover,
+html body #shopify-pc__banner .shopify-pc__banner__btns button.shopify-pc__banner__btn-decline:hover {
+  background: var(--b3-knop-hover, #2E3B4C);
+}
+html body #shopify-pc__banner .shopify-pc__banner__btns button:focus-visible { outline: 2px solid var(--b3-accent, #C4623E); outline-offset: 2px; box-shadow: none; }
+html body #shopify-pc__banner .shopify-pc__banner__btns-granular .shopify-pc__banner__btn-decline { order: 1; }
+html body #shopify-pc__banner .shopify-pc__banner__btns-granular .shopify-pc__banner__btn-accept { order: 2; }
+html body #shopify-pc__banner .shopify-pc__banner__btns-granular .shopify-pc__banner__btn-manage-prefs {
+  order: 3; grid-column: 1 / -1; min-height: 3.6rem; background: none; border: 0; color: var(--b3-sub, #5A6170);
+  font-size: 1.3rem; font-weight: 400; text-decoration: underline; text-underline-offset: 2px;
+}
+@media (max-width: 749px) {
+  html body #shopify-pc__banner.shopify-pc__banner__dialog {
+    left: 0; right: 0; bottom: 0; width: 100%; max-width: none; max-height: 45vh;
+    border-radius: 18px 18px 0 0; border-width: 1px 0 0; padding: 1.8rem 1.6rem calc(1.2rem + env(safe-area-inset-bottom));
+  }
+  html body #shopify-pc__banner h2 { font-size: 1.7rem; margin-bottom: .4rem; }
+  html body #shopify-pc__banner p { font-size: 1.35rem; line-height: 1.45; }
+  html body #shopify-pc__banner .shopify-pc__banner__btns { margin-top: 1.2rem; }
+}
+/* voorkeurenscherm van Shopify in dezelfde stijl */
+html body #shopify-pc__prefs__dialog, html body .shopify-pc__prefs__dialog { font-family: var(--font-body-family); border-radius: 18px; }
+html body .shopify-pc__prefs__dialog button { border-radius: 999px; font-family: inherit; min-height: 4.4rem; }

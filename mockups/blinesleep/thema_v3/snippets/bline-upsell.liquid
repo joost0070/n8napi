@@ -1,0 +1,66 @@
+{% comment %}
+  Upsell in de winkelwagenlade, onder het eerste leeskussen: een losse hoes in een andere kleur (elke kleur is een eigen product).
+  De automatische korting "Extra hoes: €9,99 korting" rekent zelf. Niet tonen als er al een hoes in de winkelwagen ligt of als er meer dan één kussen in ligt.
+  Gebruik: render 'bline-upsell', item: item
+{% endcomment %}
+{%- liquid
+  assign heeft_hoes = false
+  assign kussens = 0
+  for regel in cart.items
+    if regel.product.handle contains 'hoes-'
+      assign heeft_hoes = true
+    endif
+    if regel.product.handle contains 'leeskussen-'
+      assign kussens = kussens | plus: regel.quantity
+    endif
+  endfor
+  assign kleur = item.product.metafields.bline.kleur_naam.value
+  case kleur
+    when 'Wit'
+      assign doel = 'beige'
+    when 'Beige'
+      assign doel = 'wit'
+    when 'Blauw'
+      assign doel = 'grijs'
+    when 'Grijs'
+      assign doel = 'blauw'
+    else
+      assign doel = 'grijs'
+  endcase
+  assign hoes = null
+  assign hoes_handle = 'hoes-' | append: doel
+  if all_products[hoes_handle].available
+    assign hoes = all_products[hoes_handle]
+  endif
+  if hoes == null
+    assign eigen = 'hoes-' | append: kleur | downcase
+    assign kandidaten = 'hoes-wit,hoes-beige,hoes-blauw,hoes-grijs,hoes-zwart' | split: ','
+    for h in kandidaten
+      if hoes == null and h != eigen and all_products[h].available
+        assign hoes = all_products[h]
+      endif
+    endfor
+  endif
+  if hoes != null
+    assign hoes_variant = hoes.selected_or_first_available_variant
+    assign hoes_kleur = hoes.metafields.bline.kleur_naam.value
+  endif
+-%}
+{%- comment -%} De hoeskorting geldt alleen bij precies één kussen: bij twee kussens geldt al de kussenkorting en die stapelen niet. {%- endcomment -%}
+{%- if heeft_hoes == false and hoes != null and kussens == 1 -%}
+  <tr class="bline-upsell" role="row">
+    <td class="bline-upsell__cel" colspan="4" role="cell">
+      <div class="bline-upsell__binnen">
+        <p class="bline-upsell__tekst">Extra hoes erbij? <strong>€9,99 korting</strong></p>
+        <button
+          type="button"
+          class="button button--secondary bline-upsell__knop"
+          data-bline-upsell="{{ hoes_variant.id }}"
+          aria-label="Hoes in {{ hoes_kleur | downcase }} toevoegen"
+        >
+          + {{ hoes_kleur }}
+        </button>
+      </div>
+    </td>
+  </tr>
+{%- endif -%}

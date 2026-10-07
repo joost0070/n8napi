@@ -1,0 +1,150 @@
+{%- comment -%}
+  Bline: online ontbindingsfunctie (herroepingsknop, art. 6:230oa BW, sinds juni 2026).
+  Stap 1 gegevens, stap 2 "Bevestig ontbinding". Daarna:
+  - een kopie (bcc) van de bevestiging gaat naar mail@blinesleep.nl;
+  - Klaviyo-event "Ontbinding gemeld", waarop een flow de klant direct een ontvangstbevestiging met inhoud, datum en tijd mailt;
+  - bevestiging op het scherm met datum en tijd.
+{%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in b3-ontb" data-b3-ontb data-bedrijf="VGJhRR">
+    <p class="b3-oog">{{ section.settings.oog }}</p>
+    <h1 class="b3-kop">{{ section.settings.kop }}</h1>
+    <div class="b3-ontb__intro rte">{{ section.settings.intro }}</div>
+
+    {%- form 'contact', id: 'b3-ontb-form', class: 'b3-ontb__form', data-b3-ontb-form: '' -%}
+      <input type="hidden" name="contact[onderwerp]" value="Retour aangemeld via de website">
+      <div data-b3-ontb-stap="1">
+        <div class="b3-ontb__veld">
+          <label for="b3-ontb-naam">Naam</label>
+          <input id="b3-ontb-naam" type="text" name="contact[name]" autocomplete="name" required>
+        </div>
+        <div class="b3-ontb__veld">
+          <label for="b3-ontb-mail">E-mailadres <span>(hierop krijg je de bevestiging)</span></label>
+          <input id="b3-ontb-mail" type="email" name="contact[email]" autocomplete="email" inputmode="email" required>
+        </div>
+        <div class="b3-ontb__veld">
+          <label for="b3-ontb-nr">Bestelnummer <span>(staat in je bevestigingsmail, bijvoorbeeld #1001)</span></label>
+          <input id="b3-ontb-nr" type="text" name="contact[bestelnummer]" required>
+        </div>
+        <div class="b3-ontb__veld">
+          <label for="b3-ontb-wat">Welke producten? <span>(laat leeg als het om de hele bestelling gaat)</span></label>
+          <input id="b3-ontb-wat" type="text" name="contact[producten]" placeholder="De hele bestelling">
+        </div>
+        <p class="b3-ontb__fout" data-b3-ontb-fout role="alert" hidden></p>
+        <button type="button" class="b3-knop b3-knop--groot" data-b3-ontb-verder>Retour aanmelden</button>
+      </div>
+
+      <div data-b3-ontb-stap="2" hidden>
+        <p class="b3-ontb__check"><strong>Controleer je gegevens</strong></p>
+        <dl class="b3-ontb__lijst" data-b3-ontb-samenvatting></dl>
+        <button type="submit" class="b3-knop b3-knop--groot" data-b3-ontb-bevestig>Bevestig mijn retour</button>
+        <p class="b3-ontb__klein">Hiermee maak je de koop ongedaan. Je krijgt direct een bevestiging in je mail.</p>
+        <button type="button" class="b3-ontb__terug" data-b3-ontb-terug>Gegevens aanpassen</button>
+      </div>
+    {%- endform -%}
+
+    <div class="b3-ontb__klaar" data-b3-ontb-klaar tabindex="-1" hidden>
+      <h2 class="b3-kop">Je retour is <em>aangemeld</em></h2>
+      <p>Ontvangen op <strong data-b3-ontb-tijd></strong>. Je krijgt zo een bevestiging in je mail, en binnen een werkdag je gratis retourlabel.</p>
+      <dl class="b3-ontb__lijst" data-b3-ontb-samenvatting-klaar></dl>
+      <p class="b3-ontb__klein">Geen mail ontvangen? Kijk ook bij Reclame of Spam, of mail ons op <a href="mailto:mail@blinesleep.nl">mail@blinesleep.nl</a>.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .b3-ontb { max-width: 64rem; }
+  .b3-ontb__intro { margin: 0 0 2.4rem; color: var(--b3-sub); }
+  .b3-ontb__form { display: grid; gap: 1.6rem; }
+  .b3-ontb__veld { display: grid; gap: .6rem; margin-bottom: 1.4rem; }
+  .b3-ontb__veld label { font-weight: 500; font-size: 1.5rem; }
+  .b3-ontb__veld label span { font-weight: 400; color: var(--b3-sub); font-size: 1.3rem; }
+  .b3-ontb__veld input { min-height: 5rem; padding: 0 1.6rem; border: 1px solid var(--b3-lijn); border-radius: 12px; font: inherit; font-size: 1.6rem; background: #fff; color: var(--b3-inkt); }
+  .b3-ontb__veld input:focus { outline: 2px solid var(--b3-knop); outline-offset: 1px; }
+  .b3-ontb__fout { color: #B42318; margin: 0 0 1rem; }
+  .b3-ontb__lijst { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.6rem; margin: 0 0 1.6rem; padding: 1.6rem; background: var(--b3-zand); border-radius: 14px; }
+  .b3-ontb__lijst dt { color: var(--b3-sub); }
+  .b3-ontb__lijst dd { margin: 0; font-weight: 500; word-break: break-word; }
+  .b3-ontb__klein { font-size: 1.4rem; color: var(--b3-sub); }
+  .b3-ontb__terug { margin-top: 1rem; background: none; border: 0; padding: .8rem 0; font: inherit; color: var(--b3-sub); text-decoration: underline; cursor: pointer; }
+  .b3-ontb__klaar { outline: none; }
+</style>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-b3-ontb]');
+    if (!root) return;
+    var form = root.querySelector('[data-b3-ontb-form]');
+    var stap1 = root.querySelector('[data-b3-ontb-stap="1"]'), stap2 = root.querySelector('[data-b3-ontb-stap="2"]');
+    var fout = root.querySelector('[data-b3-ontb-fout]');
+    function v(id) { var el = document.getElementById(id); return el ? (el.value || '').trim() : ''; }
+    function gegevens() {
+      return { naam: v('b3-ontb-naam'), email: v('b3-ontb-mail'), bestelnummer: v('b3-ontb-nr'), producten: v('b3-ontb-wat') || 'De hele bestelling' };
+    }
+    function vul(dl, g, tijd) {
+      dl.innerHTML = '';
+      var rijen = [['Naam', g.naam], ['E-mail', g.email], ['Bestelnummer', g.bestelnummer], ['Producten', g.producten]];
+      if (tijd) rijen.push(['Ontvangen op', tijd]);
+      rijen.forEach(function (r) {
+        var dt = document.createElement('dt'); dt.textContent = r[0];
+        var dd = document.createElement('dd'); dd.textContent = r[1];
+        dl.appendChild(dt); dl.appendChild(dd);
+      });
+    }
+    root.querySelector('[data-b3-ontb-verder]').addEventListener('click', function () {
+      var g = gegevens(); fout.hidden = true;
+      if (!g.naam || !g.bestelnummer || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(g.email)) {
+        fout.textContent = 'Vul je naam, een geldig e-mailadres en je bestelnummer in.'; fout.hidden = false; return;
+      }
+      vul(root.querySelector('[data-b3-ontb-samenvatting]'), g);
+      stap1.hidden = true; stap2.hidden = false;
+      root.querySelector('[data-b3-ontb-bevestig]').focus();
+    });
+    root.querySelector('[data-b3-ontb-terug]').addEventListener('click', function () { stap2.hidden = true; stap1.hidden = false; });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var knop = root.querySelector('[data-b3-ontb-bevestig]'); knop.disabled = true;
+      var g = gegevens();
+      var nu = new Date();
+      var tijd = nu.toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+      var naarKlaviyo = fetch('https://a.klaviyo.com/client/events/?company_id=' + root.getAttribute('data-bedrijf'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/vnd.api+json', revision: '2026-07-15' },
+        body: JSON.stringify({ data: { type: 'event', attributes: {
+          properties: { naam: g.naam, bestelnummer: g.bestelnummer, producten: g.producten, ontvangen_op: tijd },
+          metric: { data: { type: 'metric', attributes: { name: 'Ontbinding gemeld' } } },
+          profile: { data: { type: 'profile', attributes: { email: g.email } } },
+          time: nu.toISOString(),
+          unique_id: 'ontb-' + g.bestelnummer.replace(/\W/g, '') + '-' + nu.getTime()
+        } } })
+      });
+      naarKlaviyo.then(function (k) {
+        if (k && !k.ok) throw new Error('klaviyo ' + k.status);
+        form.hidden = true;
+        var klaar = root.querySelector('[data-b3-ontb-klaar]');
+        root.querySelector('[data-b3-ontb-tijd]').textContent = tijd;
+        vul(root.querySelector('[data-b3-ontb-samenvatting-klaar]'), g, tijd);
+        klaar.hidden = false; klaar.focus();
+        try { if (window.Shopify && Shopify.analytics) Shopify.analytics.publish('bline_ontbinding', {}); } catch (x) {}
+      }).catch(function () {
+        knop.disabled = false;
+        stap2.hidden = true; stap1.hidden = false;
+        fout.textContent = 'Dat lukte even niet. Probeer het opnieuw of mail ons op mail@blinesleep.nl; ook dan is je retour op tijd gemeld.'; fout.hidden = false;
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Bline: ontbinden",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Retour" },
+    { "type": "text", "id": "kop", "label": "Kop", "default": "Retour aanmelden" },
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "options": [{ "value": "wit", "label": "Wit" }, { "value": "warm", "label": "Warm" }], "default": "wit" }
+  ],
+  "presets": [{ "name": "Bline: ontbinden" }]
+}
+{% endschema %}

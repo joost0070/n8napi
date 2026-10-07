@@ -58,21 +58,21 @@
     "b2": {
      "type": "item",
      "settings": {
-      "tekst": "4,5 uit 5 op bol.com",
+      "tekst": "4,5 uit 5 op bol.com (13 reviews)",
       "icoon": "check"
      }
     },
     "b3": {
      "type": "item",
      "settings": {
-      "tekst": "30 dagen proberen",
+      "tekst": "30 dagen proberen, gratis retour",
       "icoon": "terug"
      }
     },
     "b4": {
      "type": "item",
      "settings": {
-      "tekst": "Hoes wasbaar op 30 °C",
+      "tekst": "Hoes wasbaar op 30 °C",
       "icoon": "was"
      }
     }
@@ -100,7 +100,7 @@
      "type": "vraag",
      "settings": {
       "vraag": "Kan de hoes in de was?",
-      "antwoord": "<p>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
+      "antwoord": "<p>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
      }
     },
     "v2": {
@@ -121,7 +121,7 @@
      "type": "vraag",
      "settings": {
       "vraag": "Kan ik het terugsturen?",
-      "antwoord": "<p>Ja, je mag hem 30 dagen proberen. Past hij toch niet, mail ons dan binnen 30 dagen na ontvangst; je krijgt het retouradres van ons. De kosten voor het terugsturen zijn voor jou.</p>"
+      "antwoord": "<p>Ja. Je mag het kussen 30 dagen gewoon gebruiken, met de hoes erom. Niet tevreden? Meld het binnen 30 dagen (vanaf de dag na ontvangst), stuur het compleet en schoon terug en je krijgt het aankoopbedrag terug. Een reden geven hoeft niet. Terugsturen is gratis: je krijgt van ons een retourlabel van PostNL.</p>"
      }
     }
    },

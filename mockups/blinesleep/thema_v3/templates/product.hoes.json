@@ -60,7 +60,7 @@
         "voordeel": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{%- assign bline_hoes_bij = product.selected_or_first_available_variant.price | minus: 999 -%}<p class=\"b3-hoes-voordeel\"><b>{{ bline_hoes_bij | money }}</b> samen met een leeskussen, je bespaart €9,99. <a href=\"/products/leeskussen-{{ product.handle | remove: 'hoes-' }}\">Bekijk het leeskussen</a></p>"
+            "custom_liquid": "{%- assign bline_hoes_bij = product.selected_or_first_available_variant.price | minus: 999 -%}<p class=\"b3-hoes-voordeel\"><b>{{ bline_hoes_bij | money }}</b> samen met één leeskussen, je bespaart €9,99 (niet samen met de korting op twee kussens). <a href=\"/products/leeskussen-{{ product.handle | remove: 'hoes-' }}\">Bekijk het leeskussen</a></p>"
           }
         }
       },
@@ -111,7 +111,7 @@
         "b2": {
           "type": "item",
           "settings": {
-            "tekst": "4,5 uit 5 op bol.com",
+            "tekst": "4,5 uit 5 op bol.com (13 reviews)",
             "icoon": "check"
           }
         },
@@ -125,7 +125,7 @@
         "b4": {
           "type": "item",
           "settings": {
-            "tekst": "Hoes wasbaar op 30 °C",
+            "tekst": "Hoes wasbaar op 30 °C",
             "icoon": "was"
           }
         }
@@ -145,7 +145,7 @@
         "basis": "leeskussen-beige",
         "oog": "Nog geen kussen?",
         "kop": "De hoes hoort bij <em>het leeskussen</em>",
-        "intro": "Kies je kleur en voeg de hoes toe voor €9,99 minder.",
+        "intro": "Kies je kleur en voeg de hoes toe: bij één leeskussen betaal je €9,99 minder.",
         "achtergrond": "warm"
       }
     },
@@ -155,7 +155,7 @@
         "v0": {
           "type": "vraag",
           "settings": {
-            "vraag": "Hoe snel heb ik het kussen?",
+            "vraag": "Hoe snel heb ik de hoes?",
             "antwoord": "<p>Binnen 1-2 werkdagen, in Nederland en België. Verzending is gratis.</p>"
           }
         },
@@ -163,28 +163,28 @@
           "type": "vraag",
           "settings": {
             "vraag": "Kan de hoes in de was?",
-            "antwoord": "<p>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
+            "antwoord": "<p>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
           }
         },
         "v2": {
           "type": "vraag",
           "settings": {
-            "vraag": "Hoe stevig is het kussen?",
-            "antwoord": "<p>Stevig: 3,8 kg traagschuim. Laat het na het uitpakken 24 tot 48 uur luchten en schud het op.</p>"
+            "vraag": "Past de hoes op mijn Bline-kussen?",
+            "antwoord": "<p>Ja. De hoes is gemaakt voor het Bline-leeskussen (65 x 50 x 45 cm), met een onzichtbare rits en een zijvak.</p>"
           }
         },
         "v3": {
           "type": "vraag",
           "settings": {
-            "vraag": "Past het op mijn bed?",
-            "antwoord": "<p>Het kussen is 65 cm breed, 50 cm hoog en 45 cm diep. Op een tweepersoonsbed passen er twee naast elkaar.</p>"
+            "vraag": "Wat zit er in de doos?",
+            "antwoord": "<p>Eén losse hoes in de kleur die je kiest. Het kussen zelf zit er niet bij.</p>"
           }
         },
         "v4": {
           "type": "vraag",
           "settings": {
             "vraag": "Kan ik het terugsturen?",
-            "antwoord": "<p>Ja, je mag hem 30 dagen proberen. Past hij toch niet, mail ons dan binnen 30 dagen na ontvangst; je krijgt het retouradres van ons. De kosten voor het terugsturen zijn voor jou.</p>"
+            "antwoord": "<p>Ja. Je kunt de hoes binnen 30 dagen na ontvangst terugsturen, ongewassen en in de verpakking. Je krijgt het aankoopbedrag terug; de kosten voor het terugsturen zijn voor jou.</p>"
           }
         }
       },

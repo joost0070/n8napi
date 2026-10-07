@@ -35,7 +35,7 @@
      "settings": {
       "icoon": "maat",
       "kop": "140 cm",
-      "tekst": "Links en rechts 37,5 cm over."
+      "tekst": "Eén kussen: links en rechts 37,5 cm over. Twee kussens: links en rechts 5 cm over."
      }
     },
     "b1": {
@@ -43,7 +43,7 @@
      "settings": {
       "icoon": "maat",
       "kop": "160 cm",
-      "tekst": "Links en rechts 47,5 cm over."
+      "tekst": "Eén kussen: links en rechts 47,5 cm over. Twee kussens: links en rechts 15 cm over."
      }
     },
     "b2": {
@@ -51,7 +51,7 @@
      "settings": {
       "icoon": "maat",
       "kop": "180 cm",
-      "tekst": "Links en rechts 57,5 cm over."
+      "tekst": "Eén kussen: links en rechts 57,5 cm over. Twee kussens: links en rechts 25 cm over."
      }
     }
    },
@@ -100,7 +100,7 @@
      "settings": {
       "icoon": "mail",
       "titel": "Twijfel?",
-      "tekst": "<p>Je mag hem 30 dagen proberen. Twijfel je nog? Mail ons gerust op mail@blinesleep.nl.</p>",
+      "tekst": "<p>Je mag het kussen 30 dagen proberen. Twijfel je nog? Mail ons gerust op mail@blinesleep.nl.</p>",
       "link": "/pages/contact",
       "link_label": "Contact"
      }
