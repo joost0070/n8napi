@@ -9,86 +9,33 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-product",
-      "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "vinkjes": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'bline-vinkjes' %}{% render 'bline-betaal' %}"
-          }
-        },
-        "uitklap": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'bline-uitklap', product: product, section_id: section.id %}"
-          }
-        },
-        "kruimel": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'bline-kruimel' %}"
-          }
-        },
-        "ondertitel": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<p class=\"bline-ondertitel\">Katoen 400 TC, met rits en zijvak</p>"
-          }
-        },
-        "kleurkeuze": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'bline-kleurkeuze', product: product %}"
-          }
-        },
-        "voordeel": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- assign bline_hoes_bij = product.selected_or_first_available_variant.price | minus: 999 -%}<p class=\"b3-hoes-voordeel\"><b>{{ bline_hoes_bij | money }}</b> samen met één leeskussen, je bespaart €9,99 (niet samen met de korting op twee kussens). <a href=\"/products/leeskussen-{{ product.handle | remove: 'hoes-' }}\">Bekijk het leeskussen</a></p>"
-          }
-        }
-      },
-      "block_order": [
-        "kruimel",
-        "title",
-        "ondertitel",
-        "price",
-        "voordeel",
-        "kleurkeuze",
-        "buy_buttons",
-        "vinkjes",
-        "uitklap"
-      ],
+    "kop": {
+      "type": "b3-kop",
       "settings": {
-        "enable_sticky_info": true,
+        "oog": "Bline",
+        "kop": "",
+        "intro": "",
+        "achtergrond": "warm"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 5,
         "color_scheme": "scheme-1",
-        "media_size": "large",
-        "constrain_to_viewport": true,
-        "media_fit": "cover",
-        "gallery_layout": "thumbnail_slider",
-        "mobile_thumbnails": "hide",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 24,
-        "padding_bottom": 48
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 40,
+        "padding_bottom": 56
       }
     },
     "band": {
@@ -111,14 +58,14 @@
         "b2": {
           "type": "item",
           "settings": {
-            "tekst": "4,5 uit 5 op bol.com (13 reviews)",
+            "tekst": "Katoen 400 TC, met rits",
             "icoon": "check"
           }
         },
         "b3": {
           "type": "item",
           "settings": {
-            "tekst": "30 dagen proberen",
+            "tekst": "30 dagen om terug te sturen",
             "icoon": "terug"
           }
         },
@@ -138,16 +85,6 @@
         "b4"
       ],
       "settings": {}
-    },
-    "kleuren": {
-      "type": "b3-kleuren",
-      "settings": {
-        "basis": "leeskussen-beige",
-        "oog": "Nog geen kussen?",
-        "kop": "De hoes hoort bij <em>het leeskussen</em>",
-        "intro": "Kies je kleur en voeg de hoes toe: bij één leeskussen betaal je €9,99 minder.",
-        "achtergrond": "warm"
-      }
     },
     "vragen": {
       "type": "b3-vragen",
@@ -199,14 +136,14 @@
         "oog": "Vragen",
         "kop": "Goed om te <em>weten</em>",
         "intro": "Staat je vraag er niet bij? Mail ons op mail@blinesleep.nl.",
-        "achtergrond": "wit"
+        "achtergrond": "warm"
       }
     }
   },
   "order": [
-    "main",
+    "kop",
+    "product-grid",
     "band",
-    "kleuren",
     "vragen"
   ]
 }

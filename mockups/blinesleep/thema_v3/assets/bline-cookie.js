@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   var TITEL = 'Cookies';
-  var TEKST = 'We gebruiken cookies zodat de winkel goed werkt. Met jouw toestemming meten we ook wat werkt en tonen we je relevante advertenties, met hulp van onder andere Shopify, Meta en Klaviyo. Meer lees je in onze ';
+  var TEKST = 'We gebruiken cookies zodat de winkel goed werkt. Met jouw toestemming meten we ook wat werkt en tonen we je relevante advertenties, met hulp van onder andere Shopify, Google, Meta, Microsoft (Clarity) en Klaviyo. Meer lees je in onze ';
   var LINK = 'privacyverklaring';
 
   function pasAan(banner) {

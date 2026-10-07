@@ -23,12 +23,11 @@
         assign bline_description = settings.bline_home_omschrijving | default: page_description
       endif
     -%}
-    <title>
-      {{ bline_title }}
-      {%- if current_tags %} | {{ current_tags | join: ', ' }}{% endif -%}
-      {%- if current_page != 1 %} | pagina {{ current_page }}{% endif -%}
-      {%- unless bline_title contains 'Bline' %} | Bline{% endunless -%}
-    </title>
+    {%- if request.page_type == 'search' or request.page_type == 'list-collections' or request.path == '/collections/all' or request.path contains '/collections/vendors' or request.path contains '/collections/types' or request.path == '/pages/bline-sleep' or request.path == '/pages/privacy' -%}
+      <meta name="robots" content="noindex, follow">
+    {%- endif -%}
+    {%- capture bline_titel_vol -%}{{ bline_title | strip_newlines | strip }}{% if current_tags %} | {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} | pagina {{ current_page }}{% endif %}{% unless bline_title contains 'Bline' %} | Bline{% endunless %}{%- endcapture -%}
+    <title>{{ bline_titel_vol | strip_newlines | strip }}</title>
 
     {% if bline_description %}
       <meta name="description" content="{{ bline_description | escape }}">

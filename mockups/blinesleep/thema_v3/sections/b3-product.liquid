@@ -41,7 +41,7 @@
 
     <div class="b3-product__info">
       <p class="b3-oog">Bline leeskussen · 65 x 50 x 45 cm</p>
-      <h1 class="b3-product__titel">Het leeskussen dat <em>blijft staan</em></h1>
+      <h1 class="b3-product__titel"><span class="visually-hidden">{{ product.title }}: </span>Het leeskussen dat <em>blijft staan</em></h1>
       {% render 'bline-score' %}
 
       <div class="b3-prijs" aria-live="polite">
@@ -207,6 +207,13 @@
 {%- if request.page_type == 'product' -%}
   {%- assign v = hoofd.selected_or_first_available_variant -%}
   <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": {{ request.origin | append: '/' | json }}},
+    {"@type": "ListItem", "position": 2, "name": "Leeskussens", "item": {{ request.origin | append: '/collections/leeskussens' | json }}},
+    {"@type": "ListItem", "position": 3, "name": {{ product.title | json }}, "item": {{ request.origin | append: product.url | json }}}
+  ]}
+</script>
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Product",
