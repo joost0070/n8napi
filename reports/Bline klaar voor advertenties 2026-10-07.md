@@ -31,6 +31,16 @@ Bline houdt ongeveer €34 per kussen over vóór advertenties. Break-even ROAS 
 
 Beoordelen op Shopify-omzet gedeeld door alle advertentie-uitgaven, niet alleen op Meta's eigen cijfer (door de cookiebanner ziet Meta 40 tot 70% van de aankopen). Gevestigde merken sturen vaak op veel hogere ROAS; dat komt door merkzoekverkeer, retargeting en vaste klanten en is voor een nieuw merk niet het juiste doel.
 
+### Fasedoelen (afgesproken 7 oktober, puur performance)
+
+| Fase | Doel | Bijsturen |
+|---|---|---|
+| Test (dag 1-14) | leren welke 2-3 advertenties en zoekwoorden verkopen; blended ROAS ≥ 1,5 | advertentie of zoekwoord uit na €35 zonder verkoop |
+| Optimaliseren (week 3-6) | blended ROAS ≥ 2,35 (break-even), Google ≥ 2,4 | budget van verliezers naar winnaars |
+| Opschalen | ROAS 3,0+, dan budget +20% per week | alleen na 2 weken boven 3,0 |
+
+Blended = Shopify-omzet gedeeld door alle advertentiekosten. Verwachting test: 5-12 verkopen in 14 dagen bij €20 per dag; Google Shopping en Merk boven break-even, Meta koud eerst eronder.
+
 ## 4. Wat er is opgelost (7 oktober, live getest)
 
 **Eerste indruk en conversie**
