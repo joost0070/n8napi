@@ -1,4 +1,6 @@
-# Bline: instellingen checklist (stand 6 oktober 2026)
+# Bline: instellingen checklist (stand 7 oktober 2026)
+
+Zie voor de stand vóór advertenties ook `reports/Bline klaar voor advertenties 2026-10-07.md`.
 
 Gecontroleerd via de Shopify Admin API. **Staat goed** = gecontroleerd of door Claude ingesteld. **Joost** = kan alleen in de Shopify-admin of vraagt een beslissing.
 
