@@ -1,0 +1,214 @@
+{
+ "campagne": {
+  "naam": "bl_meta_sales_nlbe",
+  "type": "Advantage+ verkoop",
+  "budget_per_dag_eur": 10,
+  "event": "Purchase",
+  "pixel": "488144327490376",
+  "status": "PAUSED",
+  "locaties": "NL + Vlaanderen (Antwerpen, Limburg, Oost-Vlaanderen, Vlaams-Brabant, West-Vlaanderen)",
+  "leeftijd_min": 25,
+  "utm": "utm_source={{site_source_name}}&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+  "cta": "SHOP_NOW"
+ },
+ "advertenties": [
+  {
+   "naam": "bl_b1_niet",
+   "golf": 1,
+   "beeld_4x5": "uit/bline-meta-b1-niet-45.jpg",
+   "beeld_9x16": "uit/bline-meta-b1-niet-916.jpg",
+   "primaire_tekst": [
+    "Koop dit leeskussen niet als je het fijn vindt om elke avond je kussens opnieuw op te bouwen. Bline is één wigvormig kussen van 3,8 kg traagschuim. Het blijft staan als je leunt, je telefoon past in het vak aan de zijkant en de hoes gaat in de was. Probeer hem 30 dagen in je eigen bed.",
+    "Drie kussens achter je rug en na tien minuten lig je weer half? Dan is dit je kussen. Blauw leeskussen €79,99, gratis verzending in Nederland en België."
+   ],
+   "kop": "30 dagen proberen in je eigen bed",
+   "beschrijving": "Blauw, €79,99",
+   "link": "https://www.blinesleep.nl/products/leeskussen-blauw",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b2_kleur",
+   "golf": 1,
+   "beeld_4x5": "uit/bline-meta-b2-kleur-45.jpg",
+   "beeld_9x16": "uit/bline-meta-b2-kleur-916.jpg",
+   "primaire_tekst": [
+    "Wit, beige, blauw, grijs of zwart: welke past bij jouw bed? Elk Bline-kussen heeft 3,8 kg traagschuim, een vak voor je telefoon en een katoenen hoes met rits die in de was kan.",
+    "Zelfde kussen, vijf kleuren. Kies er één die bij je dekbed past, wij versturen hem binnen 1-2 werkdagen, gratis."
+   ],
+   "kop": "Kies je kleur",
+   "beschrijving": "Blauw €79,99 · gratis verzending",
+   "link": "https://www.blinesleep.nl/products/leeskussen-blauw",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_a02_stapel",
+   "golf": 1,
+   "beeld_4x5": "uit/bline-meta-a02-stapel-45.jpg",
+   "beeld_9x16": "uit/bline-meta-a02-stapel-916.jpg",
+   "primaire_tekst": [
+    "Drie kussens achter je rug en na tien minuten lig je weer half plat. Bline is één wigvormig kussen van 3,8 kg traagschuim. Het blijft staan als je leunt, heeft een vak voor je telefoon en een hoes die in de was kan.",
+    "Elke avond je kussens opbouwen, elke avond schuiven ze weer weg. Eén Bline leeskussen en je zit rechtop tot het laatste hoofdstuk."
+   ],
+   "kop": "Eén kussen in plaats van drie",
+   "beschrijving": "Gratis verzending NL en BE",
+   "link": "https://www.blinesleep.nl/products/leeskussen-blauw",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b3_prijs",
+   "golf": 1,
+   "beeld_4x5": "uit/bline-meta-b3-prijs-45.jpg",
+   "beeld_9x16": "uit/bline-meta-b3-prijs-916.jpg",
+   "primaire_tekst": [
+    "Eén kussen dat blijft staan als je ertegenaan leunt. Wit leeskussen €69,99, inclusief katoenen hoes die in de was kan. Gratis verzending in Nederland en België, binnen 1-2 werkdagen in huis, 30 dagen proberen.",
+    "Lezen, een serie of nog even mailen: met Bline zit je rechtop in bed zonder kussenstapel. Wit, €69,99."
+   ],
+   "kop": "Wit leeskussen, €69,99",
+   "beschrijving": "30 dagen proberen",
+   "link": "https://www.blinesleep.nl/products/leeskussen-wit",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b6_katoen",
+   "golf": 1,
+   "beeld_4x5": "uit/bline-meta-b6-katoen-45.jpg",
+   "beeld_9x16": "uit/bline-meta-b6-katoen-916.jpg",
+   "primaire_tekst": [
+    "De meeste leeskussens hebben een fluwelen hoes. Bline niet: katoen van 400 TC, koel aan je rug en met een rits in een paar tellen eraf. Wassen op 30 °C en weer om het kussen.",
+    "Koel katoen in plaats van fluweel, en 3,8 kg traagschuim dat blijft staan. Grijs leeskussen €79,99, gratis verzending."
+   ],
+   "kop": "Katoenen hoes, gewoon in de was",
+   "beschrijving": "Grijs, €79,99",
+   "link": "https://www.blinesleep.nl/products/leeskussen-grijs",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b4_vraag",
+   "golf": 2,
+   "beeld_4x5": "uit/bline-meta-b4-vraag-45.jpg",
+   "beeld_9x16": "uit/bline-meta-b4-vraag-916.jpg",
+   "primaire_tekst": [
+    "Lezen in bed zonder dat er steeds een kussen wegglijdt. Bline is één leeskussen van 3,8 kg traagschuim dat blijft staan, met een vak voor je telefoon of bril.",
+    "Je bed heeft geen rugleuning. Dit is er één. Beige leeskussen €79,99, gratis verzending in Nederland en België."
+   ],
+   "kop": "Rechtop in bed, zonder kussenberg",
+   "beschrijving": "Beige, €79,99",
+   "link": "https://www.blinesleep.nl/products/leeskussen-beige",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b7_maat",
+   "golf": 2,
+   "beeld_4x5": "uit/bline-meta-b7-maat-45.jpg",
+   "beeld_9x16": "uit/bline-meta-b7-maat-916.jpg",
+   "primaire_tekst": [
+    "Geen armleuningen, dus je armen zijn vrij voor je boek en je houdt je bed. 65 cm breed, 50 cm hoog, 45 cm diep: twee passen naast elkaar op een bed vanaf 140 cm.",
+    "Twijfel je over de maat? 65 cm breed: ruim genoeg om tegen te leunen, smal genoeg om naast elkaar te lezen."
+   ],
+   "kop": "65 cm breed, past op elk bed",
+   "beschrijving": "Wit, €69,99",
+   "link": "https://www.blinesleep.nl/products/leeskussen-wit",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b11_hoes",
+   "golf": 2,
+   "beeld_4x5": "uit/bline-meta-b11-hoes-45.jpg",
+   "beeld_9x16": "uit/bline-meta-b11-hoes-916.jpg",
+   "primaire_tekst": [
+    "Eén hoes in de was, één om het kussen. Neem bij je leeskussen een tweede hoes en je krijgt €9,99 korting op die hoes. In alle vijf kleuren.",
+    "Je leeskussen altijd fris: een tweede katoenen hoes met €9,99 korting, bij elk Bline leeskussen."
+   ],
+   "kop": "Tweede hoes €9,99 korting",
+   "beschrijving": "Bij een leeskussen",
+   "link": "https://www.blinesleep.nl/products/leeskussen-wit?hoes=1",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_a03_uitleg",
+   "golf": 2,
+   "beeld_4x5": "uit/bline-meta-a03-uitleg-45.jpg",
+   "beeld_9x16": "uit/bline-meta-a03-uitleg-916.jpg",
+   "primaire_tekst": [
+    "Je bed heeft geen rugleuning. Dit is er één. Wat je krijgt voor €79,99: 3,8 kg traagschuim in stukjes zodat hij blijft staan, een vak voor je telefoon, een katoenen hoes (400 TC) met rits, wasbaar op 30 °C. 65 x 50 x 45 cm."
+   ],
+   "kop": "Wat zit erin, wat krijg je",
+   "beschrijving": "Beige, €79,99",
+   "link": "https://www.blinesleep.nl/products/leeskussen-beige",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_a04_werken",
+   "golf": 2,
+   "beeld_4x5": "uit/bline-meta-a04-werken-45.jpg",
+   "beeld_9x16": "uit/bline-meta-a04-werken-916.jpg",
+   "primaire_tekst": [
+    "Laptop op schoot, rug tegen iets stevigs. Voor de avonden dat je nog even iets afmaakt in bed: Bline blijft staan, je telefoon zit in het vak en de hoes gaat in de was. Wit leeskussen €69,99."
+   ],
+   "kop": "Rechtop in bed, zonder kussenberg",
+   "beschrijving": "Wit, €69,99",
+   "link": "https://www.blinesleep.nl/products/leeskussen-wit",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_a05_bank",
+   "golf": 2,
+   "beeld_4x5": "uit/bline-meta-a05-bank-45.jpg",
+   "beeld_9x16": "uit/bline-meta-a05-bank-916.jpg",
+   "primaire_tekst": [
+    "Niet alleen voor in bed: ook op de bank. Zet Bline tegen de leuning en je zit rechtop met je boek, zonder dat er kussens wegglijden. Zwart leeskussen €79,99."
+   ],
+   "kop": "In bed en op de bank",
+   "beschrijving": "Zwart, €79,99",
+   "link": "https://www.blinesleep.nl/products/leeskussen-zwart",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_a06_carrousel",
+   "golf": 1,
+   "type": "carrousel",
+   "status": "PAUSED",
+   "primaire_tekst": [
+    "Zelfde kussen, vijf kleuren. Welke past bij jouw bed? Elk Bline-kussen heeft 3,8 kg traagschuim, een vak voor je telefoon en een katoenen hoes met rits die in de was kan. Wit €69,99, de andere kleuren €79,99."
+   ],
+   "kaarten": [
+    {
+     "beeld": "uit/bline-meta-a06-kaart1-beige.jpg",
+     "kop": "Beige",
+     "beschrijving": "€79,99",
+     "link": "https://www.blinesleep.nl/products/leeskussen-beige"
+    },
+    {
+     "beeld": "uit/bline-meta-a06-kaart2-blauw.jpg",
+     "kop": "Blauw",
+     "beschrijving": "€79,99",
+     "link": "https://www.blinesleep.nl/products/leeskussen-blauw"
+    },
+    {
+     "beeld": "uit/bline-meta-a06-kaart3-grijs.jpg",
+     "kop": "Grijs",
+     "beschrijving": "€79,99",
+     "link": "https://www.blinesleep.nl/products/leeskussen-grijs"
+    },
+    {
+     "beeld": "uit/bline-meta-a06-kaart4-zwart.jpg",
+     "kop": "Zwart",
+     "beschrijving": "€79,99",
+     "link": "https://www.blinesleep.nl/products/leeskussen-zwart"
+    },
+    {
+     "beeld": "uit/bline-meta-a06-kaart5-wit.jpg",
+     "kop": "Wit",
+     "beschrijving": "€69,99",
+     "link": "https://www.blinesleep.nl/products/leeskussen-wit"
+    },
+    {
+     "beeld": "uit/bline-meta-a06-kaart6-kleuren.jpg",
+     "kop": "Vergelijk de kleuren",
+     "beschrijving": "Gratis verzending",
+     "link": "https://www.blinesleep.nl/products/leeskussen-beige"
+    }
+   ]
+  }
+ ]
+}
