@@ -1,0 +1,16 @@
+Campaign,Ad Group,Level,Product Group,Item ID,Color,Country,Max CPC,Product Group Status,Comment
+01 Shopping | Leeskussen | NL+BE,Leeskussens,1,Alle producten,,,,,Subdivided,Onderverdelen op Aangepast label 0
+01 Shopping | Leeskussen | NL+BE,Leeskussens,2,Custom label 0 = leeskussen,,,,,Subdivided,Onderverdelen op Item-ID
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_NL_10913990181203_55210456514899,shopify_NL_10913990181203_55210456514899,Beige,NL,0.45,Biddable,kleur
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_BE_10913990181203_55210456514899,shopify_BE_10913990181203_55210456514899,Beige,BE,0.41,Biddable,kleur; BE 10% lager (verzendkosten)
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_NL_10913990639955_55210457170259,shopify_NL_10913990639955_55210457170259,Wit,NL,0.40,Biddable,wit lager bieden
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_BE_10913990639955_55210457170259,shopify_BE_10913990639955_55210457170259,Wit,BE,0.36,Biddable,wit lager bieden; BE 10% lager (verzendkosten)
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_NL_10913990869331_55210458448211,shopify_NL_10913990869331_55210458448211,Blauw,NL,0.45,Biddable,kleur
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_BE_10913990869331_55210458448211,shopify_BE_10913990869331_55210458448211,Blauw,BE,0.41,Biddable,kleur; BE 10% lager (verzendkosten)
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_NL_10913991131475_55210458710355,shopify_NL_10913991131475_55210458710355,Grijs,NL,0.45,Biddable,kleur
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_BE_10913991131475_55210458710355,shopify_BE_10913991131475_55210458710355,Grijs,BE,0.41,Biddable,kleur; BE 10% lager (verzendkosten)
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_NL_10913991393619_55210459332947,shopify_NL_10913991393619_55210459332947,Zwart,NL,0.45,Biddable,kleur
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Item ID = shopify_BE_10913991393619_55210459332947,shopify_BE_10913991393619_55210459332947,Zwart,BE,0.41,Biddable,kleur; BE 10% lager (verzendkosten)
+01 Shopping | Leeskussen | NL+BE,Leeskussens,3,Overig in custom label 0 = leeskussen,,,,0.40,Biddable,Vangnet als een item-ID afwijkt; zoektermen en producten controleren
+01 Shopping | Leeskussen | NL+BE,Leeskussens,2,Custom label 0 = hoes,,,,,Excluded,Hoezen uitgesloten; na 4 weken eventueel testen met 0.15
+01 Shopping | Leeskussen | NL+BE,Leeskussens,2,Overig in alle producten,,,,,Excluded,Producten zonder label niet tonen

@@ -1,0 +1,4 @@
+Campaign,Campaign Type,Campaign Status,Budget,Budget type,Bid Strategy Type,Networks,Languages,Targeting method,Exclusion method,Start Date,End Date,EU political ads
+00 Search | Merk | NL+BE,Search,Paused,1.00,Daily,Manual CPC,Google search,nl,Location of presence,Location of presence,,,Doesn't have EU political ads
+02 Search | Generiek | NL+BE,Search,Paused,4.00,Daily,Manual CPC,Google search,nl,Location of presence,Location of presence,,,Doesn't have EU political ads
+03 Search | Cadeau | NL+BE,Search,Paused,2.00,Daily,Manual CPC,Google search,nl,Location of presence,Location of presence,2026-11-13,2026-12-21,Doesn't have EU political ads
