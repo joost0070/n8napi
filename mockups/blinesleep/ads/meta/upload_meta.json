@@ -71,14 +71,21 @@
   },
   {
    "naam": "bl_c2a_elkeavond",
-   "beeld_4x5": "uit/v8/bline-v8-c2a-elkeavond.jpg",
-   "beeld_9x16": "uit/v8_916/bline-v8-c2a-elkeavond-916.jpg",
+   "beeld_4x5": [
+    "uit/v8/bline-v8-c2a1-elkeavond.jpg",
+    "uit/v8/bline-v8-c2a2-elkeavond.jpg"
+   ],
+   "beeld_9x16": [
+    "uit/v8_916/bline-v8-c2a1-elkeavond-916.jpg",
+    "uit/v8_916/bline-v8-c2a2-elkeavond-916.jpg"
+   ],
    "primaire_tekst": [
     "Lees je elke avond, en zit je na tien minuten onderuitgezakt tegen het hoofdbord?\n\nDit leeskussen is gevuld met 3,8 kg traagschuim en zakt niet weg. Groot (50 x 65 x 45 cm), stevig, met een vak voor je telefoon.\n\n€79,99, gratis verzonden. Twijfel je? 30 dagen proberen."
    ],
    "kop": "Voor wie elke avond leest",
    "link": "https://blinesleep.nl/products/leeskussen-blauw",
-   "status": "PAUSED"
+   "status": "PAUSED",
+   "formaat": "flexibel"
   },
   {
    "naam": "bl_c2b_leesjeinbed",
@@ -104,25 +111,41 @@
   },
   {
    "naam": "bl_c3b_laatsteuur",
-   "beeld_4x5": "uit/v8/bline-v8-c3b-laatsteuur.jpg",
-   "beeld_9x16": "uit/v8_916/bline-v8-c3b-laatsteuur-916.jpg",
+   "beeld_4x5": [
+    "uit/v8/bline-v8-c3b1-laatsteuur.jpg",
+    "uit/v8/bline-v8-c3b2-laatsteuur.jpg",
+    "uit/v8/bline-v8-c3b3-laatsteuur.jpg"
+   ],
+   "beeld_9x16": [
+    "uit/v8_916/bline-v8-c3b1-laatsteuur-916.jpg",
+    "uit/v8_916/bline-v8-c3b2-laatsteuur-916.jpg",
+    "uit/v8_916/bline-v8-c3b3-laatsteuur-916.jpg"
+   ],
    "primaire_tekst": [
     "Het laatste uur van je dag is voor jezelf: lezen, kijken, scrollen. Dan wil je goed zitten.\n\nEén leeskussen in plaats van een stapel: 3,8 kg traagschuim, blijft staan.\n\nIn zwart en nog 4 kleuren, gratis verzonden.\n👉 30 dagen proberen."
    ],
    "kop": "Voor de avondmens",
    "link": "https://blinesleep.nl/products/leeskussen-zwart",
-   "status": "PAUSED"
+   "status": "PAUSED",
+   "formaat": "flexibel"
   },
   {
    "naam": "bl_c4_werkbed",
-   "beeld_4x5": "uit/v8/bline-v8-c4-werkbed.jpg",
-   "beeld_9x16": "uit/v8_916/bline-v8-c4-werkbed-916.jpg",
+   "beeld_4x5": [
+    "uit/v8/bline-v8-c4a-werkbed.jpg",
+    "uit/v8/bline-v8-c4b-werkbed.jpg"
+   ],
+   "beeld_9x16": [
+    "uit/v8_916/bline-v8-c4a-werkbed-916.jpg",
+    "uit/v8_916/bline-v8-c4b-werkbed-916.jpg"
+   ],
    "primaire_tekst": [
     "Werken vanuit bed klinkt lekker, tot je na tien minuten tegen het hoofdbord hangt.\n\nDit leeskussen heeft 3,8 kg traagschuim en blijft staan, ook met je laptop op schoot.\n\n✅ Zijvak voor je telefoon\n✅ 50 x 65 x 45 cm\n✅ Hoes met rits, gaat in de was\n\nGratis verzonden.\n👉 30 dagen proberen."
    ],
    "kop": "Werken vanuit bed, maar rechtop",
    "link": "https://blinesleep.nl/products/leeskussen-grijs",
-   "status": "PAUSED"
+   "status": "PAUSED",
+   "formaat": "flexibel"
   }
  ]
 }

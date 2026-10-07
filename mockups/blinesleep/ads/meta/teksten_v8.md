@@ -13,9 +13,9 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 ## Twee stijlen
 
 - **Rustig (B):** serifletter, één zin over het moment. B1 t/m B5.
-- **Kwalificerend (C):** strakke letter, zegt voor wie het kussen is, met één ondersteunende regel. C2a, C2b, C3a, C3b, C4 (Joost koos op 07-10 twee teksten voor C2 en twee voor C3).
+- **Kwalificerend (C):** strakke letter, zegt voor wie het kussen is, met één ondersteunende regel. C2a, C2b, C3a, C3b, C4. Joost koos op 07-10 de koppen en de onderteksten; waar hij meerdere onderteksten koos, zijn dat varianten binnen één advertentie.
 
-## De 10 advertenties
+## De 10 advertenties (14 beelden)
 
 ### B1 `bl_b1_lekkerzitten` · beige · /products/leeskussen-beige
 **In beeld:** Eindelijk lekker zitten in je eigen bed.
@@ -80,7 +80,7 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 **Kop:** Eén kussen in plaats van vier
 
 ### C2a `bl_c2a_elkeavond` · blauw · /products/leeskussen-blauw
-**In beeld:** Elke avond lezen? · Dan wil je een kussen dat niet wegzakt.
+**In beeld (2 varianten):** Elke avond lezen? · a1: Dan verdien je een kussen dat blijft staan. · a2: Dit kussen houdt je rechtop tot de laatste bladzijde.
 **Tekst:**
 > Lees je elke avond, en zit je na tien minuten onderuitgezakt tegen het hoofdbord?
 >
@@ -91,7 +91,7 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 **Kop:** Voor wie elke avond leest
 
 ### C2b `bl_c2b_leesjeinbed` · blauw · /products/leeskussen-blauw
-**In beeld:** Lees je in bed? Dan wil je dit. · Groot en stevig, en het blijft staan.
+**In beeld:** Lees je in bed? Dan wil je dit. · Rechtop tot de laatste bladzijde.
 **Tekst:**
 > Lees je één keer per maand een bladzijde? Dan heb je dit niet nodig.
 >
@@ -103,7 +103,7 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 **Kop:** Leeskussen dat blijft staan
 
 ### C3a `bl_c3a_scrollen` · zwart · /products/leeskussen-zwart
-**In beeld:** Nog even scrollen? · Doe het rechtop, met 3,8 kg traagschuim in je rug.
+**In beeld:** Nog even scrollen? · Dan wel rechtop, niet onderuitgezakt.
 **Tekst:**
 > Nog even scrollen, nog één filmpje, en ondertussen zak je steeds verder onderuit?
 >
@@ -115,7 +115,7 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 **Kop:** Rechtop in bed, ook met je telefoon
 
 ### C3b `bl_c3b_laatsteuur` · zwart · /products/leeskussen-zwart
-**In beeld:** Het laatste uur van je dag. · Rechtop, zonder kussens te stapelen.
+**In beeld (3 varianten):** Het laatste uur van je dag. · b1: Zit er dan ook goed bij. · b2: Lezen, kijken, scrollen. Rechtop. · b3: Zonder kussens te schuiven.
 **Tekst:**
 > Het laatste uur van je dag is voor jezelf: lezen, kijken, scrollen. Dan wil je goed zitten.
 >
@@ -127,7 +127,7 @@ Bron: `ads_v8.html`, beelden: `uit/v8/`, overzicht: `overzicht_v8.jpg`. Schrijfr
 **Kop:** Voor de avondmens
 
 ### C4 `bl_c4_werkbed` · grijs · /products/leeskussen-grijs
-**In beeld:** Werk je vaak vanuit bed? Zo zit je wél rechtop. · 3,8 kg traagschuim dat niet wegzakt.
+**In beeld (2 varianten):** Werk je vaak vanuit bed? Zo zit je wél rechtop. · a: Ook met je laptop op schoot. · b: Zonder tegen het hoofdbord te hangen.
 **Tekst:**
 > Werken vanuit bed klinkt lekker, tot je na tien minuten tegen het hoofdbord hangt.
 >
@@ -149,7 +149,7 @@ Knop bij alle advertenties: **Nu kopen**. UTM volgens `reports/Bline meetplan.md
 | Onderdeel | Keuze |
 |---|---|
 | Campagne | `bl_meta_sales_nlbe`, doel Verkopen, optimaliseren op Aankoop (Pixel 1) |
-| Opbouw | 1 advertentieset met alle 10 advertenties. Met €150 budget is splitsen per stijl te dun; Meta verdeelt zelf over de advertenties en we lezen per advertentie af |
+| Opbouw | 1 advertentieset met 10 advertenties. C2a, C3b en C4 zijn flexibele advertenties met 2 of 3 beelden (zelfde kop, andere ondertekst); Meta kiest per persoon het beeld en rapporteert per beeld. Met €150 budget is splitsen per stijl te dun |
 | Doelgroep | Nederland en België, 30 tot 65+, breed, Advantage+ plaatsingen |
 | Budget | €10 per dag, 14 dagen (€140, past in het vooraf betaalde saldo van €150) |
 | Uitzetten | advertentie na €8 uitgave met link-klikratio onder 0,6%; na 7 dagen advertenties zonder winkelwagen |
