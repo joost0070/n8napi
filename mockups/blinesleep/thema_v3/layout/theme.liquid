@@ -11,9 +11,8 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
-    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    {%- endunless -%}
+    {%- comment -%} Bline: fonts staan in het thema (B3 Poppins); scripts van Shopify komen van cdn.shopify.com {%- endcomment -%}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
     {%- liquid
       assign bline_title = page_title
@@ -290,10 +289,11 @@
 
     {%- if settings.cart_type == 'drawer' -%}
       {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
-      {{ 'component-cart.css' | asset_url | stylesheet_tag }}
-      {{ 'component-totals.css' | asset_url | stylesheet_tag }}
       {{ 'component-price.css' | asset_url | stylesheet_tag }}
-      {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+      {%- comment -%} Bline: inhoud van de lade pas na het laden; de lade zelf blijft verborgen via component-cart-drawer.css {%- endcomment -%}
+      <link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}" media="print" onload="this.media='all'">
+      <link rel="stylesheet" href="{{ 'component-totals.css' | asset_url }}" media="print" onload="this.media='all'">
+      <link rel="stylesheet" href="{{ 'component-discounts.css' | asset_url }}" media="print" onload="this.media='all'">
     {%- endif -%}
 
     {%- comment -%} Bline: geen preload van het standaardfont van Dawn; de winkel gebruikt B3 Poppins (zie b3-head). {%- endcomment -%}

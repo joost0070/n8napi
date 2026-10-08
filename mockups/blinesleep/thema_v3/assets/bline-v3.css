@@ -30,7 +30,7 @@ h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4 { font-family: var(--font-heading-family
 .b3-oog { font-size: 1.2rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--b3-sub); margin: 0 0 .6rem; }
 .b3-pil { display: inline-flex; align-items: center; gap: .4rem; font-size: 1.2rem; font-weight: 500; line-height: 1; padding: .7rem 1.1rem; border-radius: 99px; background: var(--b3-inkt); color: #fff; white-space: nowrap; }
 .b3-pil--licht { background: rgba(255,255,255,.92); color: var(--b3-inkt); box-shadow: 0 1px 6px rgba(0,0,0,.08); }
-.b3-pil--accent { background: var(--b3-accent); color: #fff; }
+.b3-pil--accent { background: #B5562F; color: #fff; }
 .b3-ster { color: var(--b3-ster); }
 .b3-knop { display: inline-flex; align-items: center; justify-content: center; gap: 1rem; min-height: 5.2rem; padding: 0 2.4rem; border: 0; border-radius: 99px; background: var(--b3-knop); color: #fff; font: 500 1.6rem/1 var(--font-body-family); cursor: pointer; text-decoration: none; transition: background .2s, transform .1s; }
 .b3-knop:hover { background: var(--b3-knop-hover); }

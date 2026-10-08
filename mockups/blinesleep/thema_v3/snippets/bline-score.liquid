@@ -1,0 +1,21 @@
+{% comment %}
+  Score onder de titel. Bron: bol Ratings API, opgevraagd 05-10-2026,
+  13 reviews op de productfamilie van het Bline leeskussen (9 x 5, 3 x 4, 1 x 2), gemiddeld 4,54.
+  Bij een nieuwe stand van de reviews hier en in de aankondigingsbalk bijwerken.
+{% endcomment %}
+<p class="bline-score">
+  <span class="visually-hidden">4,5 uit 5 sterren op bol.com, 13 reviews</span>
+  <span class="bline-score__sterren" aria-hidden="true">
+    {%- for i in (1..5) -%}
+      <svg width="16" height="16" viewBox="0 0 20 20" focusable="false">
+        {%- if i == 5 -%}
+          <defs><linearGradient id="bline-half"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="currentColor" stop-opacity=".25"/></linearGradient></defs>
+          <path fill="url(#bline-half)" d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.1 6-5.3-3-5.3 3 1.1-6L1.4 7.7l6-.7z"/>
+        {%- else -%}
+          <path fill="currentColor" d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.1 6-5.3-3-5.3 3 1.1-6L1.4 7.7l6-.7z"/>
+        {%- endif -%}
+      </svg>
+    {%- endfor -%}
+  </span>
+  <span aria-hidden="true">4,5 uit 5 op bol.com (13)</span>
+</p>
