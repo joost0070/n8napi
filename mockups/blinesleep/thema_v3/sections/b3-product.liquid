@@ -1,6 +1,7 @@
 {%- comment -%}
   Bline v3: het leeskussen op één plek, alle vijf kleuren.
-  Galerij per kleur (de media van elk kleurproduct, in de volgorde van Shopify), kleur wisselen zonder
+  Galerij per kleur (de media van elk kleurproduct, in de volgorde van Shopify); alleen de gekozen kleur staat meteen in de pagina,
+  de andere kleuren staan in een <template> en worden pas bij het wisselen ingevoegd (lichtere pagina). Kleur wisselen zonder
   de pagina te verlaten, keuze 1 of 2 kussens, extra hoes in dezelfde kleur, knop met prijs.
   Op een productpagina is de kleur van die pagina gekozen; op de homepage de kleur uit de instelling.
   Kortingen rekenen automatisch in Shopify (2 kussens: 9,99 korting; hoes bij kussen: 9,99 korting).
@@ -20,6 +21,7 @@
         {%- assign k = kp.handle | remove: 'leeskussen-' -%}
         {%- assign aantal_media = kp.media.size -%}
         {%- assign is_hoofd = false -%}{%- if kp.id == hoofd.id -%}{%- assign is_hoofd = true -%}{%- endif -%}
+        {%- unless is_hoofd -%}<template data-b3-gal-later="{{ k }}">{%- endunless -%}
         <div class="b3-gal" data-kleur="{{ k }}"{% unless kp.id == hoofd.id %} hidden{% endunless %}>
           {%- comment -%} Eerst het kussen zelf in deze kleur, dan mensen, kamers en details (volgorde van Shopify). {%- endcomment -%}
           <div class="b3-gal__track" data-b3-track tabindex="0" aria-label="Foto's leeskussen {{ kp.metafields.bline.kleur_naam.value | downcase }}">
@@ -36,6 +38,7 @@
             {%- endfor -%}
           </div>
         </div>
+        {%- unless is_hoofd -%}</template>{%- endunless -%}
       {%- endfor -%}
     </div>
 

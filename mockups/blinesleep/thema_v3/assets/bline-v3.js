@@ -38,6 +38,27 @@
     function hoesVan() { return (D.hoezen && D.hoezen[staat.hoesKleur]) || { naam: D.kleuren[staat.kleur].naam, variant: D.kleuren[staat.kleur].hoes, beschikbaar: D.kleuren[staat.kleur].hoesBeschikbaar, prijs: D.kleuren[staat.kleur].hoesPrijs, beeld: D.kleuren[staat.kleur].hoesBeeld }; }
     var gal = {};
     root.querySelectorAll('.b3-gal').forEach(function (g) { gal[g.getAttribute('data-kleur')] = Galerij(g); });
+    // Galerijen van de andere kleuren staan in een <template>; pas invoegen als die kleur gekozen wordt
+    function zorgGal(kleur) {
+      if (gal[kleur]) return;
+      var tpl = root.querySelector('template[data-b3-gal-later="' + kleur + '"]');
+      if (!tpl) return;
+      var frag = document.importNode(tpl.content, true);
+      var el = frag.firstElementChild;
+      tpl.parentNode.insertBefore(frag, tpl);
+      tpl.remove();
+      gal[kleur] = Galerij(el);
+    }
+    // Alvast klaarzetten bij aanwijzen of aanraken van een kleur, en na het laden op de achtergrond
+    root.querySelectorAll('[data-b3-kleur]').forEach(function (b) {
+      var vooraf = function () { zorgGal(b.getAttribute('data-b3-kleur')); };
+      b.addEventListener('pointerenter', vooraf, { passive: true });
+      b.addEventListener('touchstart', vooraf, { passive: true });
+      b.addEventListener('focus', vooraf);
+    });
+    var later = function () { root.querySelectorAll('template[data-b3-gal-later]').forEach(function (tp) { zorgGal(tp.getAttribute('data-b3-gal-later')); }); };
+    if (document.readyState === 'complete') setTimeout(later, 4000);
+    else window.addEventListener('load', function () { setTimeout(later, 4000); });
     var $ = function (s) { return root.querySelector(s); };
     var $$ = function (s) { return root.querySelectorAll(s); };
 
@@ -81,6 +102,7 @@
       if (!D.kleuren[kleur]) return;
       staat.kleur = kleur;
       if (!staat.hoesZelf) staat.hoesKleur = kleur;
+      zorgGal(kleur);
       $$('.b3-gal').forEach(function (g) { g.hidden = g.getAttribute('data-kleur') !== kleur; });
       $$('[data-b3-kleur]').forEach(function (b) {
         var aan = b.getAttribute('data-b3-kleur') === kleur;
