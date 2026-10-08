@@ -65,6 +65,7 @@ h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4 { font-family: var(--font-heading-family
 .b3-product__info { padding: 2rem var(--b3-gutter) 3.2rem; }
 .b3-product__titel { font-size: 3rem; line-height: 1.1; font-weight: 600; margin: 0 0 .6rem; }
 .b3-product__titel em { font-size: 1.12em; }
+@media (max-width: 749px) { .b3-product__titel { min-height: 6.3rem; } } /* titel staat op mobiel op 2 regels: geen verspringing als het lettertype laadt */
 .b3-product .bline-score { margin: 0 0 1rem; }
 .b3-product__pitch { color: var(--b3-sub); margin: 0 0 1.4rem; max-width: 48ch; }
 .b3-prijs { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
