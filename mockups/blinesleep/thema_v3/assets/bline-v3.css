@@ -414,7 +414,7 @@ cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px;
 .b3-tegelkaart h3 { font-size: 1.8rem; font-weight: 600; margin: 0 0 .6rem; }
 .b3-tegelkaart div { color: var(--b3-sub); font-size: 1.4rem; }
 .b3-tegelkaart div p { margin: 0; }
-.b3-tegelkaart__link { display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.2rem; color: var(--b3-inkt); font-weight: 500; text-decoration: none; }
+.b3-tegelkaart__link { display: inline-flex; align-items: center; min-height: 2.4rem; gap: .6rem; margin-top: 1.2rem; color: var(--b3-inkt); font-weight: 500; text-decoration: none; }
 @media (min-width: 750px) { .b3-tegels { grid-template-columns: repeat(3, 1fr); gap: 1.6rem; } }
 
 /* ---------- aanmelden ---------- */
