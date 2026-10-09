@@ -164,6 +164,8 @@ def controleer_en_voer_uit(v, cfg, logboek, vandaag, google, meta, echt):
                     raise Weigering('geen eigen bod op dit niveau')
                 van_klopt(oud)
                 stap(oud, nieuw)
+                if not cfg.get('bod_min', 0.15) - 0.005 <= nieuw <= cfg.get('bod_max', 1.0) + 0.005:
+                    raise Weigering(f'bod {nieuw:.2f} buiten de grenzen {cfg.get("bod_min", 0.15):.2f} tot {cfg.get("bod_max", 1.0):.2f}')
                 op = {'adGroupCriterionOperation': {'update': {'resourceName': v['object'],
                                                                'cpcBidMicros': str(round(nieuw * 1e6))},
                                                     'updateMask': 'cpcBidMicros'}}
@@ -208,11 +210,19 @@ def main():
     cfg = regels.lees_config(sheet['Config'])
     logboek = logboek_uit_sheet(sheet.get('Logboek', [[]]))
     gedaan = {r['id'] for r in logboek if r['status'] == 'uitgevoerd'}
-    te_doen = [v for v in voorstellen_uit_sheet(sheet.get('Voorstellen', [[]]))
-               if v['akkoord'] == 'JA' and not v['uitgevoerd'] and v['id'] not in gedaan]
+    alles_aan = str(cfg.get('automatisering_aan', 'NEE')).upper() == 'JA'
+    mandaat = str(cfg.get('mandaat_biedingen', 'NEE')).upper() == 'JA'
+    open_ = [v for v in voorstellen_uit_sheet(sheet.get('Voorstellen', [[]]))
+             if not v['uitgevoerd'] and v['id'] not in gedaan]
+    # Akkoord JA: alles (alleen als de noodstop op JA staat). Akkoord MANDAAT: alleen biedingen, met het
+    # biedmandaat van Joost (09-10), ook als de noodstop op NEE staat. NEE of leeg: niets.
+    te_doen = [v for v in open_ if (v['akkoord'] == 'JA' and alles_aan)
+               or (v['akkoord'] in ('JA', 'MANDAAT') and mandaat and v['actie'] == 'bod')]
     uit = {'logboek': [], 'voorstellen_updates': [], 'bericht': ''}
-    if str(cfg.get('automatisering_aan', 'NEE')).upper() != 'JA':
-        uit['bericht'] = f'Noodstop staat op NEE: niets uitgevoerd ({len(te_doen)} goedgekeurd en wachtend).'
+    if not te_doen:
+        wachtend = sum(1 for v in open_ if v['akkoord'] in ('JA', 'MANDAAT'))
+        uit['bericht'] = (f'Niets uit te voeren (noodstop {"JA" if alles_aan else "NEE"}, biedmandaat '
+                          f'{"JA" if mandaat else "NEE"}; {wachtend} goedgekeurd en wachtend).')
         json.dump(uit, open(a.uit, 'w'), ensure_ascii=False, indent=1)
         print(uit['bericht'])
         return
@@ -226,7 +236,7 @@ def main():
             oud, nieuw, antwoord, status = v['van'], v['naar'], str(e), 'geweigerd'
         except Exception as e:  # onverwacht: niet opnieuw proberen zonder blik van een mens
             oud, nieuw, antwoord, status = v['van'], v['naar'], f'fout: {str(e)[:200]}', 'fout'
-        rij = [nu, v['id'], v['kanaal'], v['wat'], v['object'], v['actie'], oud, nieuw, 'JA', status, antwoord]
+        rij = [nu, v['id'], v['kanaal'], v['wat'], v['object'], v['actie'], oud, nieuw, v['akkoord'], status, antwoord]
         uit['logboek'].append(rij)
         if a.echt or status == 'geweigerd':
             uit['voorstellen_updates'].append({'rij': v['rij'], 'waarden': [nu if status == 'uitgevoerd' else '',

@@ -266,6 +266,33 @@ class Beslisser:
                 if bod:
                     self.stel_voor('Google', niveau, naam, z['rn'], 'bod', bod, round(bod * 0.7, 2),
                                    f"€{z['kosten']:.2f} zonder aankoop: bod −30%.")
+        self._biedingen_op_conversie(items)
+
+    def doelbod(self, klikken, conversies):
+        """Bod dat bij de break-even kosten per verkoop past: (geschatte) conversie x bijdrage x veiligheidsmarge.
+        De conversie is Bayesiaans afgevlakt naar de aanname uit Config (prior_cvr met gewicht prior_klikken)."""
+        p, w = self.c.get('prior_cvr', 0.02), self.c.get('prior_klikken', 50)
+        cvr = (conversies + p * w) / (klikken + w)
+        return cvr * self.bijdrage * self.c.get('bod_marge', 0.9)
+
+    def _biedingen_op_conversie(self, items):
+        """Biedingen richting het doelbod bewegen, pas vanaf genoeg klikken, in stappen van hooguit +20%/−30%."""
+        c = self.c
+        for niveau, z, naam in items:
+            bod = z.get('bod') or 0
+            if not bod or z['klik'] < c.get('bod_min_klikken', 30) or not self._mag_wijzigen(z['rn']):
+                continue
+            if any(v['object'] == z['rn'] for v in self.voorstellen):
+                continue
+            doel = self.doelbod(z['klik'], z['conv'])
+            naar = min(max(doel, bod * (1 - c['max_stap_omlaag'])), bod * (1 + c['max_stap_omhoog']))
+            naar = round(min(max(naar, c.get('bod_min', 0.15)), c.get('bod_max', 1.0)), 2)
+            if abs(naar - bod) / bod < 0.1:
+                continue
+            cvr = (z['conv'] / z['klik']) if z['klik'] else 0
+            self.stel_voor('Google', niveau, naam, z['rn'], 'bod', bod, naar,
+                           f"{z['klik']:.0f} klikken, {z['conv']:.0f} aankopen ({cvr:.1%}); bod dat bij €{self.bijdrage:.0f} "
+                           f"per verkoop past is €{doel:.2f}.")
 
     def _meta_ads(self):
         c = self.c

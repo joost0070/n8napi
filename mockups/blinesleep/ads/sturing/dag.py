@@ -138,8 +138,11 @@ def main():
     for v in b.voorstellen:
         vid = f"V{a.vandaag.replace('-', '')}-{nr:02d}"
         nr += 1
+        # Biedingen vallen onder het mandaat van Joost: vooraf op MANDAAT, uitvoering pas de volgende ochtend,
+        # zodat Joost een dag heeft om NEE te zetten.
+        akkoord = 'MANDAAT' if (v['actie'] == 'bod' and str(cfg.get('mandaat_biedingen', 'NEE')).upper() == 'JA') else ''
         rijen_v.append([vid, a.vandaag, v['kanaal'], v['niveau'], v['wat'], v['object'], v['actie'], v['van'],
-                        v['naar'], v['reden'], v['kans'], '', '', ''])
+                        v['naar'], v['reden'], v['kans'], akkoord, '', ''])
 
     t = kpi['totaal']
     w = kpi['7 dagen']

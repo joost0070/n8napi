@@ -146,3 +146,48 @@ def test_uitvoerder_weigert_te_snel_opnieuw_en_verouderd():
         uitvoer.controleer_en_voer_uit(_v(van=8.0, naar=9.0), CFG, [], '2026-10-15', g, NepMeta(), True)
     with pytest.raises(uitvoer.Weigering):
         uitvoer.controleer_en_voer_uit(_v(actie='biedstrategie'), CFG, [], '2026-10-15', g, NepMeta(), True)
+
+
+def test_doelbod_volgt_conversie():
+    b = regels.Beslisser(CFG, _data(0.0), '2026-10-15')
+    # zonder data: prior 2% x 26 x 0,9 = 0,47
+    assert abs(b.doelbod(0, 0) - 0.468) < 0.01
+    # 100 klikken, 4 aankopen: (4 + 1) / 150 = 3,3% -> 0,78
+    assert abs(b.doelbod(100, 4) - 0.78) < 0.01
+
+
+def test_bod_naar_doel_binnen_stapgrens():
+    zw = [{'campagne': '1', 'rn': 'k/3', 'tekst': 'leeskussen bed', 'match': 'EXACT', 'bod': 0.5, 'kosten': 30,
+           'klik': 60, 'conv': 4, 'waarde': 320}]
+    b = regels.Beslisser(CFG, _data(2.0, zoekwoorden=zw), '2026-10-15')
+    b.regels()
+    v = [v for v in b.voorstellen if v['object'] == 'k/3']
+    assert v and v[0]['actie'] == 'bod' and v[0]['naar'] == 0.6  # doel ~1,03, maar hooguit +20%
+
+
+def test_mandaat_voert_alleen_biedingen_uit(tmp_path):
+    import json
+    kop = ['ID', 'Datum', 'Kanaal', 'Niveau', 'Wat', 'Object-ID', 'Actie', 'Van', 'Naar', 'Reden', 'Kans', 'Akkoord',
+           'Uitgevoerd', 'Resultaat']
+    cfg = [['Sleutel', 'Waarde'], ['automatisering_aan', 'NEE'], ['mandaat_biedingen', 'JA']] + \
+        [[k, v] for k, v in CFG.items() if k not in ('automatisering_aan',)]
+    vandaag = dt.date.today().isoformat()
+    sheet = {'Config': cfg, 'Logboek': [['Tijd']], 'Voorstellen': [kop,
+             ['V1', vandaag, 'Google', 'campagne', 'x', '1', 'budget', 10, 12, '', '', 'MANDAAT', '', ''],
+             ['V2', vandaag, 'Google', 'campagne', 'x', '1', 'budget', 10, 12, '', '', 'JA', '', '']]}
+    p = tmp_path / 's.json'
+    p.write_text(json.dumps(sheet))
+    import subprocess, sys, os
+    uit = tmp_path / 'u.json'
+    subprocess.run([sys.executable, os.path.join(os.path.dirname(__file__), 'uitvoer.py'), str(p), str(uit)], check=True)
+    assert json.loads(uit.read_text())['logboek'] == []  # budget nooit via het biedmandaat, en noodstop staat op NEE
+
+
+def test_uitvoerder_houdt_bod_binnen_grenzen():
+    class G(NepGoogle):
+        def criterium(self, rn):
+            return {'cpcBidMicros': '1000000', 'status': 'ENABLED'}
+    cfg = dict(CFG, bod_max=1.0)
+    with pytest.raises(uitvoer.Weigering):
+        uitvoer.controleer_en_voer_uit(_v(niveau='zoekwoord', object='k/1', actie='bod', van=1.0, naar=1.15),
+                                       cfg, [], '2026-10-15', G(), NepMeta(), True)
