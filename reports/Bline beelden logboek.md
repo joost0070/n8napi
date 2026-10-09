@@ -276,3 +276,7 @@ Akkoord Joost (05-10): "ruim de bestanden op". Werkwijze: alle bestanden opgehaa
 ## 6 oktober 2026: eigen bewerkingen verwijderd
 
 Akkoord Joost (06-10): "je eigen bewerkte beelden mogen ook weg". Verwijderd: 38 bestanden (banners, tegels, stroken, details, setcollages, cadeaubon, sfeer-uitsneden, maatgids-tekening). Vooraf: de enige thema-verwijzing (`snippets/bline-uitklap.liquid`, klein stofbeeld) weggehaald; de 8 sets (die de collages als beeld hadden) uit de webwinkel gehaald met doorverwijzing naar de productpagina; hoes Wit verloor zijn twee bewerkte details. De 13 collecties kregen een origineel beeld (Shopify houdt de oude bestandsnaam aan, de inhoud is vervangen; gecontroleerd op afmetingen). Files telt nu 93 bestanden: alleen originelen, de video, logo's en de `-niet`-bestanden.
+
+## 09-10-2026: bijgekleurde gebruiksbeelden uit de galerijen
+
+Op verzoek van Joost (stof te glad, geen bies, kussen lijkt opgeblazen, zelfde beeld in vijf kleuren) zijn `gebruik-01` en `gebruik-02` van beige, blauw, grijs en zwart (8 beelden) losgekoppeld van de productgalerijen. Ze staan nog in Files. Wit `gebruik-05` en `-06` en `wit-gebruik-02.jpg` blijven: echte stof, bies en zijvak zichtbaar (Joost akkoord). Op de pagina Materialen (blok "Rits en zijvak") is `beige-gebruik-01.png` vervangen door `beige-03.jpg`. Per kleur staan nu 5 echte foto's in de galerij, bij wit 9.
