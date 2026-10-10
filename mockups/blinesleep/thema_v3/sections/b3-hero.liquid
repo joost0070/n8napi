@@ -1,0 +1,50 @@
+{%- comment -%}
+  Bline v3: hero van de homepage. Tekst en beeld naast elkaar (desktop), beeld boven en tekst eronder (mobiel).
+  Twee knoppen: naar het leeskussen en naar de kleuren. Score met bron eronder.
+{%- endcomment -%}
+<section class="b3 b3-hero">
+  <div class="b3-hero__in">
+    <div class="b3-hero__beeld">
+      {%- if section.settings.beeld_mobiel != blank -%}
+        <picture>
+          <source media="(min-width: 990px)" srcset="{{ section.settings.beeld | image_url: width: 1600 }} 1600w, {{ section.settings.beeld | image_url: width: 2400 }} 2400w" sizes="55vw">
+          {{ section.settings.beeld_mobiel | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '480, 720, 800, 960, 1200', sizes: '100vw', alt: section.settings.beeld_mobiel.alt }}
+        </picture>
+      {%- elsif section.settings.beeld != blank -%}
+        {{ section.settings.beeld | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1600, 2400', sizes: '(min-width: 990px) 55vw, 100vw', alt: section.settings.beeld.alt }}
+      {%- endif -%}
+      <span class="b3-pil b3-pil--licht b3-hero__badge">{% render 'b3-ster' %} 4,5 op bol.com (13 reviews)</span>
+    </div>
+    <div class="b3-hero__tekst">
+      {%- if section.settings.oog != blank -%}<p class="b3-oog">{{ section.settings.oog }}</p>{%- endif -%}
+      <h1 class="b3-hero__kop">{{ section.settings.kop }}</h1>
+      <p class="b3-hero__sub">{{ section.settings.tekst }}</p>
+      <div class="b3-hero__knoppen">
+        <a href="{{ section.settings.knop_link | default: '/products/leeskussen-beige' }}" class="b3-knop b3-knop--groot-hero">{{ section.settings.knop }}</a>
+        {%- if section.settings.knop2 != blank -%}<a href="{{ section.settings.knop2_link | default: '#kleuren' }}" class="b3-knop b3-knop--rand">{{ section.settings.knop2 }}</a>{%- endif -%}
+      </div>
+      <ul class="b3-hero__vinkjes" role="list">
+        <li>{% render 'b3-icoon', naam: 'truck' %}Gratis verzending NL en BE</li>
+        <li>{% render 'b3-icoon', naam: 'klok' %}Binnen 1-2 werkdagen in huis</li>
+        <li>{% render 'b3-icoon', naam: 'terug' %}30 dagen proberen, gratis retour</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: hero",
+  "settings": [
+    { "type": "image_picker", "id": "beeld", "label": "Beeld (desktop)" },
+    { "type": "image_picker", "id": "beeld_mobiel", "label": "Beeld (mobiel, optioneel)" },
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Bline leeskussen" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Lezen in bed, zonder <em>kussenfort</em>" },
+    { "type": "text", "id": "tekst", "label": "Tekst" },
+    { "type": "text", "id": "knop", "label": "Knop", "default": "Bekijk het leeskussen" },
+    { "type": "url", "id": "knop_link", "label": "Knop gaat naar" },
+    { "type": "text", "id": "knop2", "label": "Tweede knop", "default": "Bekijk de kleuren" },
+    { "type": "url", "id": "knop2_link", "label": "Tweede knop gaat naar" }
+  ],
+  "presets": [{ "name": "Bline v3: hero" }]
+}
+{% endschema %}

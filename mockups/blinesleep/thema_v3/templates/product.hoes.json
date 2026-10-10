@@ -1,0 +1,212 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "vinkjes": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'bline-vinkjes' %}{% render 'bline-betaal' %}"
+          }
+        },
+        "uitklap": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'bline-uitklap', product: product, section_id: section.id %}"
+          }
+        },
+        "kruimel": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'bline-kruimel' %}"
+          }
+        },
+        "ondertitel": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p class=\"bline-ondertitel\">Katoen 400 TC, met rits en zijvak</p>"
+          }
+        },
+        "kleurkeuze": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'bline-kleurkeuze', product: product %}"
+          }
+        },
+        "voordeel": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- assign bline_hoes_bij = product.selected_or_first_available_variant.price | minus: 999 -%}<p class=\"b3-hoes-voordeel\"><b>{{ bline_hoes_bij | money }}</b> samen met één leeskussen, je bespaart €9,99 (niet samen met de korting op twee kussens). <a href=\"/products/leeskussen-{{ product.handle | remove: 'hoes-' }}\">Bekijk het leeskussen</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "kruimel",
+        "title",
+        "ondertitel",
+        "price",
+        "voordeel",
+        "kleurkeuze",
+        "buy_buttons",
+        "vinkjes",
+        "uitklap"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    },
+    "band": {
+      "type": "b3-band",
+      "blocks": {
+        "b0": {
+          "type": "item",
+          "settings": {
+            "tekst": "Gratis verzending in NL en BE",
+            "icoon": "truck"
+          }
+        },
+        "b1": {
+          "type": "item",
+          "settings": {
+            "tekst": "Binnen 1-2 werkdagen in huis",
+            "icoon": "klok"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "tekst": "4,5 uit 5 op bol.com (13 reviews)",
+            "icoon": "check"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "tekst": "30 dagen proberen",
+            "icoon": "terug"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "tekst": "Hoes wasbaar op 30 °C",
+            "icoon": "was"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {}
+    },
+    "kleuren": {
+      "type": "b3-kleuren",
+      "settings": {
+        "basis": "leeskussen-beige",
+        "oog": "Nog geen kussen?",
+        "kop": "De hoes hoort bij <em>het leeskussen</em>",
+        "intro": "Kies je kleur en voeg de hoes toe: bij één leeskussen betaal je €9,99 minder.",
+        "achtergrond": "warm"
+      }
+    },
+    "vragen": {
+      "type": "b3-vragen",
+      "blocks": {
+        "v0": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Hoe snel heb ik de hoes?",
+            "antwoord": "<p>Binnen 1-2 werkdagen, in Nederland en België. Verzending is gratis.</p>"
+          }
+        },
+        "v1": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan de hoes in de was?",
+            "antwoord": "<p>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
+          }
+        },
+        "v2": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Past de hoes op mijn Bline leeskussen?",
+            "antwoord": "<p>Ja. De hoes is gemaakt voor het Bline leeskussen (65 x 50 x 45 cm), met een onzichtbare rits en een zijvak.</p>"
+          }
+        },
+        "v3": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Wat zit er in de doos?",
+            "antwoord": "<p>Eén losse hoes in de kleur die je kiest. Het kussen zelf zit er niet bij.</p>"
+          }
+        },
+        "v4": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan ik het terugsturen?",
+            "antwoord": "<p>Ja. Je kunt de hoes binnen 30 dagen na ontvangst terugsturen. Doe dat het liefst ongewassen en in de originele verpakking. Je krijgt het aankoopbedrag terug; de kosten voor het terugsturen zijn voor jou.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "oog": "Vragen",
+        "kop": "Goed om te <em>weten</em>",
+        "intro": "Staat je vraag er niet bij? Mail ons op mail@blinesleep.nl.",
+        "achtergrond": "wit"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "band",
+    "kleuren",
+    "vragen"
+  ]
+}

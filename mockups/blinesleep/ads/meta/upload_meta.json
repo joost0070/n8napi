@@ -1,0 +1,151 @@
+{
+ "campagne": {
+  "naam": "bl_meta_sales_nlbe",
+  "type": "Advantage+ verkoop",
+  "budget_per_dag_eur": 10,
+  "event": "Purchase",
+  "pixel": "488144327490376",
+  "status": "PAUSED",
+  "locaties": "NL + Vlaanderen (Antwerpen, Limburg, Oost-Vlaanderen, Vlaams-Brabant, West-Vlaanderen)",
+  "leeftijd_min": 30,
+  "utm": "utm_source={{site_source_name}}&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+  "cta": "SHOP_NOW",
+  "looptijd_dagen": 14,
+  "opmerking": "Meta's AI-tekstvarianten en het herschrijven van tekst in beelden uitzetten. Niets aanzetten zonder akkoord van Joost."
+ },
+ "advertenties": [
+  {
+   "naam": "bl_b1_lekkerzitten",
+   "beeld_4x5": "uit/v8/bline-v8-b1-lekkerzitten.jpg",
+   "beeld_9x16": "uit/v8_916/bline-v8-b1-lekkerzitten-916.jpg",
+   "primaire_tekst": [
+    "Voor wie elke avond leest, maar nooit echt goed zit.\n\nDit leeskussen houdt je rechtop: 3,8 kg traagschuim dat niet wegzakt, met een zachte katoenen hoes van 400 TC.\n\nIn beige en nog 4 kleuren. €79,99, gratis verzonden.\n👉 30 dagen proberen in je eigen bed."
+   ],
+   "kop": "Rechtop lezen in bed",
+   "link": "https://blinesleep.nl/products/leeskussen-beige",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b2_bank",
+   "beeld_4x5": "uit/v8/bline-v8-b2-bank.jpg",
+   "beeld_9x16": "uit/v8_916/bline-v8-b2-bank-916.jpg",
+   "primaire_tekst": [
+    "Zak je op de bank altijd een beetje onderuit als je leest?\n\nZet dit leeskussen achter je rug. 3,8 kg traagschuim, het blijft staan. Met een vakje voor je bril, boek of telefoon.\n\nWit €69,99 · gratis verzonden · 30 dagen proberen."
+   ],
+   "kop": "Vanaf €69,99, gratis verzonden",
+   "link": "https://blinesleep.nl/products/leeskussen-wit",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b3_avondbed",
+   "beeld_4x5": "uit/v8/bline-v8-b3-avondbed.jpg",
+   "beeld_9x16": "uit/v8_916/bline-v8-b3-avondbed-916.jpg",
+   "primaire_tekst": [
+    "Laptop op schoot, serie aan, en na een kwartier zit je toch weer onderuitgezakt?\n\nDit leeskussen houdt je rechtop: 3,8 kg traagschuim dat niet wegzakt. Je telefoon zit in het zijvak.\n\nIn grijs en nog 4 kleuren. €79,99, gratis verzonden.\n👉 30 dagen proberen in je eigen bed."
+   ],
+   "kop": "Rechtop in bed, de hele avond",
+   "link": "https://blinesleep.nl/products/leeskussen-grijs",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b4_eenuur",
+   "beeld_4x5": "uit/v8/bline-v8-b4-eenuur.jpg",
+   "beeld_9x16": "uit/v8_916/bline-v8-b4-eenuur-916.jpg",
+   "primaire_tekst": [
+    "Gewone kussens worden plat zodra je erop leunt. Na een uur lig je weer half.\n\nDit leeskussen is gevuld met 3,8 kg traagschuim in stukjes en zakt niet weg.\n\n✅ Vakje voor je telefoon\n✅ Hoes met rits, wasbaar op 30 °C\n\n€79,99, gratis verzonden.\n👉 Probeer 'm 30 dagen."
+   ],
+   "kop": "Leeskussen dat niet wegzakt",
+   "link": "https://blinesleep.nl/products/leeskussen-blauw",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_b5_doorlezen",
+   "beeld_4x5": "uit/v8/bline-v8-b5-doorlezen.jpg",
+   "beeld_9x16": "uit/v8_916/bline-v8-b5-doorlezen-916.jpg",
+   "primaire_tekst": [
+    "Nog één hoofdstuk, en dan nog één. En ondertussen steeds je kussens opnieuw goed leggen?\n\nEén leeskussen in plaats van een stapel: 3,8 kg traagschuim, blijft staan. Zachte katoenen hoes van 400 TC.\n\nIn beeld beige, er zijn 5 kleuren. Gratis verzonden.\n👉 30 dagen proberen."
+   ],
+   "kop": "Eén kussen in plaats van vier",
+   "link": "https://blinesleep.nl/products/leeskussen-beige",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_c2a_elkeavond",
+   "beeld_4x5": [
+    "uit/v8/bline-v8-c2a1-elkeavond.jpg",
+    "uit/v8/bline-v8-c2a2-elkeavond.jpg"
+   ],
+   "beeld_9x16": [
+    "uit/v8_916/bline-v8-c2a1-elkeavond-916.jpg",
+    "uit/v8_916/bline-v8-c2a2-elkeavond-916.jpg"
+   ],
+   "primaire_tekst": [
+    "Lees je elke avond, en zit je na tien minuten onderuitgezakt tegen het hoofdbord?\n\nDit leeskussen is gevuld met 3,8 kg traagschuim en zakt niet weg. Groot (50 x 65 x 45 cm), stevig, met een vak voor je telefoon.\n\n€79,99, gratis verzonden. Twijfel je? 30 dagen proberen."
+   ],
+   "kop": "Voor wie elke avond leest",
+   "link": "https://blinesleep.nl/products/leeskussen-blauw",
+   "status": "PAUSED",
+   "formaat": "flexibel"
+  },
+  {
+   "naam": "bl_c2b_leesjeinbed",
+   "beeld_4x5": "uit/v8/bline-v8-c2b-leesjeinbed.jpg",
+   "beeld_9x16": "uit/v8_916/bline-v8-c2b-leesjeinbed-916.jpg",
+   "primaire_tekst": [
+    "Lees je één keer per maand een bladzijde? Dan heb je dit niet nodig.\n\nLees je elke avond, en zit je na tien minuten onderuitgezakt tegen het hoofdbord? Dan wel.\n\nGroot (50 x 65 x 45 cm) en stevig: 3,8 kg traagschuim.\nTwijfel je? 30 dagen proberen, gratis verzonden."
+   ],
+   "kop": "Leeskussen dat blijft staan",
+   "link": "https://blinesleep.nl/products/leeskussen-blauw",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_c3a_scrollen",
+   "beeld_4x5": "uit/v8/bline-v8-c3a-scrollen.jpg",
+   "beeld_9x16": "uit/v8_916/bline-v8-c3a-scrollen-916.jpg",
+   "primaire_tekst": [
+    "Nog even scrollen, nog één filmpje, en ondertussen zak je steeds verder onderuit?\n\nMet 3,8 kg traagschuim in je rug zit je rechtop. Je telefoon ligt tussendoor in het zijvak.\n\n€79,99, gratis verzonden.\n👉 30 dagen proberen."
+   ],
+   "kop": "Rechtop in bed, ook met je telefoon",
+   "link": "https://blinesleep.nl/products/leeskussen-zwart",
+   "status": "PAUSED"
+  },
+  {
+   "naam": "bl_c3b_laatsteuur",
+   "beeld_4x5": [
+    "uit/v8/bline-v8-c3b1-laatsteuur.jpg",
+    "uit/v8/bline-v8-c3b2-laatsteuur.jpg",
+    "uit/v8/bline-v8-c3b3-laatsteuur.jpg"
+   ],
+   "beeld_9x16": [
+    "uit/v8_916/bline-v8-c3b1-laatsteuur-916.jpg",
+    "uit/v8_916/bline-v8-c3b2-laatsteuur-916.jpg",
+    "uit/v8_916/bline-v8-c3b3-laatsteuur-916.jpg"
+   ],
+   "primaire_tekst": [
+    "Het laatste uur van je dag is voor jezelf: lezen, kijken, scrollen. Dan wil je goed zitten.\n\nEén leeskussen in plaats van een stapel: 3,8 kg traagschuim, blijft staan.\n\nIn zwart en nog 4 kleuren, gratis verzonden.\n👉 30 dagen proberen."
+   ],
+   "kop": "Voor de avondmens",
+   "link": "https://blinesleep.nl/products/leeskussen-zwart",
+   "status": "PAUSED",
+   "formaat": "flexibel"
+  },
+  {
+   "naam": "bl_c4_werkbed",
+   "beeld_4x5": [
+    "uit/v8/bline-v8-c4a-werkbed.jpg",
+    "uit/v8/bline-v8-c4b-werkbed.jpg"
+   ],
+   "beeld_9x16": [
+    "uit/v8_916/bline-v8-c4a-werkbed-916.jpg",
+    "uit/v8_916/bline-v8-c4b-werkbed-916.jpg"
+   ],
+   "primaire_tekst": [
+    "Werken vanuit bed klinkt lekker, tot je na tien minuten tegen het hoofdbord hangt.\n\nDit leeskussen heeft 3,8 kg traagschuim en blijft staan, ook met je laptop op schoot.\n\n✅ Zijvak voor je telefoon\n✅ 50 x 65 x 45 cm\n✅ Hoes met rits, gaat in de was\n\nGratis verzonden.\n👉 30 dagen proberen."
+   ],
+   "kop": "Werken vanuit bed, maar rechtop",
+   "link": "https://blinesleep.nl/products/leeskussen-grijs",
+   "status": "PAUSED",
+   "formaat": "flexibel"
+  }
+ ]
+}

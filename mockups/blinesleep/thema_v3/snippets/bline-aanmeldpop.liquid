@@ -1,0 +1,56 @@
+{%- comment -%}
+  Aanmeldpop-up: meldt rechtstreeks aan bij Klaviyo (lijst "Email List", enkele aanmelding) en start daarmee de welkomstflow met 10%.
+  Geen Klaviyo-formulier, dus het ene gratis formulier blijft over. Niet op winkelwagen, wachtwoord- en accountpagina's.
+{%- endcomment -%}
+{%- liquid
+  assign pop_uit = false
+  if template.name == 'cart' or template.name == 'password' or template contains 'customers' or request.path contains '/policies/'
+    assign pop_uit = true
+  endif
+  if template.name == 'page'
+    assign stil = 'contact,retourneren,verzending,privacy,ontbinden,algemene-voorwaarden'
+    assign stil_lijst = stil | split: ','
+    if stil_lijst contains page.handle
+      assign pop_uit = true
+    endif
+  endif
+-%}
+{%- unless pop_uit -%}
+  <div class="b3 b3-pop" data-b3-pop data-bedrijf="VGJhRR" data-lijst="SAeiP6" data-template="{{ template.name }}" data-kar="{{ cart.item_count }}" hidden>
+    <div class="b3-pop__achter" data-b3-pop-dicht></div>
+    <div class="b3-pop__vak" role="dialog" aria-modal="true" aria-labelledby="b3-pop-kop">
+      <button type="button" class="b3-pop__x" data-b3-pop-dicht aria-label="Sluiten">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="b3-pop__beeld">
+        <img src="{{ 'bline-leeskussen-beige-01.jpg' | file_img_url: '600x' }}" alt="Bline leeskussen in beige op bed" width="600" height="600" loading="lazy">
+      </div>
+      <div class="b3-pop__tekst" data-b3-pop-stap="vraag">
+        <p class="b3-oog">Welkom bij Bline</p>
+        <h2 class="b3-kop" id="b3-pop-kop">10% op je eerste <em>bestelling</em></h2>
+        <p class="b3-pop__intro">Meld je aan voor onze nieuwsbrief en ontvang je persoonlijke code. We mailen alleen als het de moeite waard is.</p>
+        <form class="b3-pop__form" data-b3-pop-form novalidate>
+          <label class="visually-hidden" for="b3-pop-mail">E-mailadres</label>
+          <input id="b3-pop-mail" type="email" name="email" placeholder="Je e-mailadres" autocomplete="email" inputmode="email" required>
+          <button type="submit" class="b3-knop b3-knop--groot">Stuur mijn code</button>
+          <p class="b3-pop__fout" data-b3-pop-fout role="alert" hidden></p>
+        </form>
+        <p class="b3-pop__klein">Je code komt direct in je mail. Afmelden kan altijd. Lees onze <a href="/pages/privacy">privacyverklaring</a>.</p>
+        <button type="button" class="b3-pop__nee" data-b3-pop-dicht>Nee, bedankt</button>
+      </div>
+      <div class="b3-pop__tekst" data-b3-pop-stap="klaar" hidden>
+        <p class="b3-oog">Gelukt</p>
+        <h2 class="b3-kop" tabindex="-1">Je code is <em>onderweg</em></h2>
+        <p class="b3-pop__intro">Kijk over een minuutje in je mail (soms staat hij bij Reclame of Spam). Je code geeft 10% op je eerste bestelling.</p>
+        <button type="button" class="b3-knop" data-b3-pop-dicht>Verder kijken</button>
+      </div>
+    </div>
+  </div>
+  <div class="b3 b3-teaser" data-b3-teaser hidden>
+    <button type="button" class="b3-teaser__knop" data-b3-teaser-open>10% korting</button>
+    <button type="button" class="b3-teaser__x" data-b3-teaser-x aria-label="Korting-tab verbergen">
+      <svg width="8" height="8" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <script src="{{ 'bline-pop.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}

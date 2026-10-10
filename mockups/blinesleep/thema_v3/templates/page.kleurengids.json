@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+ "sections": {
+  "kop": {
+   "type": "b3-kop",
+   "settings": {
+    "oog": "Kleurengids",
+    "kop": "Welke kleur past bij <em>jouw</em> bed?",
+    "intro": "<p>Vijf kleuren, met het beddengoed waar ze goed bij staan. Twijfel je? Je mag het kussen 30 dagen proberen.</p>",
+    "achtergrond": "warm"
+   }
+  },
+  "gids": {
+   "type": "b3-kleurgids",
+   "blocks": {
+    "b0": {
+     "type": "kleur",
+     "settings": {
+      "kleur": "leeskussen-wit",
+      "beeld": "shopify://shop_images/bline-leeskussen-wit-03.jpg",
+      "tekst": "<p>Licht en fris. Past bij wit, lichtgrijs en zachtgroen beddengoed.</p>"
+     }
+    },
+    "b1": {
+     "type": "kleur",
+     "settings": {
+      "kleur": "leeskussen-beige",
+      "beeld": "shopify://shop_images/bline-leeskussen-beige-02.jpg",
+      "tekst": "<p>Warm en rustig. Mooi bij wit, zand, oudroze en linnen in naturel.</p>"
+     }
+    },
+    "b2": {
+     "type": "kleur",
+     "settings": {
+      "kleur": "leeskussen-blauw",
+      "beeld": "shopify://shop_images/bline-leeskussen-blauw-05.jpg",
+      "tekst": "<p>Een rustig leiblauw. Mooi bij wit, lichtblauw en grijs, met een warm accent.</p>"
+     }
+    },
+    "b3": {
+     "type": "kleur",
+     "settings": {
+      "kleur": "leeskussen-grijs",
+      "beeld": "shopify://shop_images/bline-leeskussen-grijs-03.jpg",
+      "tekst": "<p>Neutraal en zacht. Past bij wit, antraciet, roze en mosgroen.</p>"
+     }
+    },
+    "b4": {
+     "type": "kleur",
+     "settings": {
+      "kleur": "leeskussen-zwart",
+      "beeld": "shopify://shop_images/bline-leeskussen-zwart-03.jpg",
+      "tekst": "<p>Strak en donker. Mooi bij wit, grijs en een streep of ruit.</p>"
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2",
+    "b3",
+    "b4"
+   ],
+   "settings": {
+    "achtergrond": "wit"
+   }
+  },
+  "hoezen": {
+   "type": "b3-hoezen",
+   "settings": {
+    "oog": "Wisselen",
+    "kop": "Liever <em>afwisselen</em>?",
+    "intro": "Neem een tweede hoes in een andere kleur. Bij een leeskussen krijg je €9,99 korting op de extra hoes.",
+    "achtergrond": "warm"
+   }
+  }
+ },
+ "order": [
+  "kop",
+  "gids",
+  "hoezen"
+ ]
+}

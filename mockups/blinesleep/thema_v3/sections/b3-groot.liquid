@@ -1,0 +1,32 @@
+{%- comment -%} Bline v3: groot sfeerbeeld over de volle breedte met een kop erin. {%- endcomment -%}
+<section class="b3 b3-groot b3-groot--{{ section.settings.uitlijning }}">
+  <div class="b3-groot__beeld">
+    {%- if section.settings.beeld != blank -%}
+      {%- assign b3_stijl = 'object-position: ' | append: section.settings.focus -%}
+      {{ section.settings.beeld | image_url: width: 2400 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600, 2000, 2400', sizes: '100vw', alt: section.settings.beeld.alt, style: b3_stijl }}
+    {%- endif -%}
+  </div>
+  <div class="b3-groot__tekst">
+    {%- if section.settings.oog != blank -%}<p class="b3-oog">{{ section.settings.oog }}</p>{%- endif -%}
+    <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+    {%- if section.settings.tekst != blank -%}<p>{{ section.settings.tekst }}</p>{%- endif -%}
+    {%- if section.settings.knop != blank -%}<a href="{% if section.settings.knop_link != blank %}{{ section.settings.knop_link }}{% else %}/products/leeskussen-{{ section.settings.knop_kleur }}{% endif %}" class="b3-knop b3-knop--licht" data-b3-zet-kleur="{{ section.settings.knop_kleur }}">{{ section.settings.knop }}</a>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: groot beeld",
+  "settings": [
+    { "type": "image_picker", "id": "beeld", "label": "Beeld" },
+    { "type": "text", "id": "focus", "label": "Focuspunt (object-position)", "default": "50% 40%" },
+    { "type": "text", "id": "oog", "label": "Bovenregel" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Nog even <em>doorlezen</em>" },
+    { "type": "text", "id": "tekst", "label": "Tekst" },
+    { "type": "text", "id": "knop", "label": "Knop", "default": "Kies je kleur" },
+    { "type": "url", "id": "knop_link", "label": "Knop gaat naar (leeg = kussen in de kleur hieronder)" },
+    { "type": "text", "id": "knop_kleur", "label": "Knop zet kleur", "default": "blauw" },
+    { "type": "select", "id": "uitlijning", "label": "Tekst", "default": "links", "options": [ { "value": "links", "label": "Links" }, { "value": "rechts", "label": "Rechts" } ] }
+  ],
+  "presets": [{ "name": "Bline v3: groot beeld" }]
+}
+{% endschema %}

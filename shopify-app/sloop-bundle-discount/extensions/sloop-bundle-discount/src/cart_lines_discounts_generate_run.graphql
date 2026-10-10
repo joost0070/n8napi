@@ -1,0 +1,24 @@
+query CartLinesDiscountsGenerateRun {
+  cart {
+    lines {
+      id
+      quantity
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          product {
+            isKussen: inAnyCollection(
+              ids: ["gid://shopify/Collection/668768207197"]
+            )
+            isSloop: inAnyCollection(
+              ids: ["gid://shopify/Collection/668768174429"]
+            )
+          }
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+  }
+}

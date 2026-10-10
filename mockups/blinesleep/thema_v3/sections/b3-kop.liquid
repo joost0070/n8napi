@@ -1,0 +1,37 @@
+{%- comment -%} Bline v3: kop van een pagina, collectie of blog. Zonder ingevulde kop de titel van de pagina zelf. {%- endcomment -%}
+{%- liquid
+  assign titel = section.settings.kop
+  if titel == blank
+    if collection
+      assign titel = collection.title
+    elsif blog
+      assign titel = blog.title
+    elsif page
+      assign titel = page.title
+    endif
+  endif
+  assign intro = section.settings.intro
+  if intro == blank and collection and collection.description != blank
+    assign intro = collection.description
+  endif
+-%}
+{%- if blog -%}<style>.main-blog .title--primary { display: none; }</style>{%- endif -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }} b3-kopblok">
+  <div class="b3-sectie__in">
+    {%- if section.settings.oog != blank -%}<p class="b3-oog">{{ section.settings.oog }}</p>{%- endif -%}
+    <h1 class="b3-kop b3-kopblok__kop">{{ titel }}</h1>
+    {%- if intro != blank -%}<div class="b3-intro b3-kopblok__intro">{{ intro }}</div>{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: paginakop",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop (leeg = titel van de pagina)" },
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "warm", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "presets": [{ "name": "Bline v3: paginakop" }]
+}
+{% endschema %}

@@ -1,0 +1,437 @@
+{
+  "sections": {
+    "hero": {
+      "type": "b3-hero",
+      "settings": {
+        "beeld": "shopify://shop_images/bline-leeskussen-beige-02.jpg",
+        "beeld_mobiel": "shopify://shop_images/bline-leeskussen-beige-02.jpg",
+        "oog": "Bline leeskussen",
+        "kop": "Lezen in bed, zonder <em>kussenfort</em>",
+        "tekst": "Het leeskussen dat blijft staan als je leunt. Met een vak voor je telefoon en een hoes die zo in de was kan. In vijf kleuren.",
+        "knop": "Bekijk het leeskussen",
+        "knop_link": "/products/leeskussen-beige",
+        "knop2": "Kies je kleur",
+        "knop2_link": "#kleuren"
+      }
+    },
+    "band": {
+      "type": "b3-band",
+      "blocks": {
+        "b0": {
+          "type": "item",
+          "settings": {
+            "tekst": "Gratis verzending in NL en BE",
+            "icoon": "truck"
+          }
+        },
+        "b1": {
+          "type": "item",
+          "settings": {
+            "tekst": "Binnen 1-2 werkdagen in huis",
+            "icoon": "klok"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "tekst": "4,5 uit 5 op bol.com (13 reviews)",
+            "icoon": "check"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "tekst": "30 dagen proberen, gratis retour",
+            "icoon": "terug"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "tekst": "Hoes wasbaar op 30 °C",
+            "icoon": "was"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {}
+    },
+    "momenten": {
+      "type": "b3-momenten",
+      "blocks": {
+        "t0": {
+          "type": "tegel",
+          "settings": {
+            "beeld": "shopify://shop_images/bline-leeskussen-grijs-02.jpg",
+            "kop": "Werken in bed",
+            "kleur": "leeskussen-grijs"
+          }
+        },
+        "t1": {
+          "type": "tegel",
+          "settings": {
+            "beeld": "shopify://shop_images/bline-leeskussen-beige-03.jpg",
+            "kop": "Lezen bij het raam",
+            "kleur": "leeskussen-beige"
+          }
+        },
+        "t2": {
+          "type": "tegel",
+          "settings": {
+            "beeld": "shopify://shop_images/bline-leeskussen-blauw-03.jpg",
+            "kop": "Voor het slapengaan",
+            "kleur": "leeskussen-blauw"
+          }
+        },
+        "t3": {
+          "type": "tegel",
+          "settings": {
+            "beeld": "shopify://shop_images/bline-leeskussen-zwart-05.jpg",
+            "kop": "Gamen en series",
+            "kleur": "leeskussen-zwart"
+          }
+        },
+        "t4": {
+          "type": "tegel",
+          "settings": {
+            "beeld": "shopify://shop_images/bline-leeskussen-wit-04.jpg",
+            "kop": "Studeren",
+            "kleur": "leeskussen-wit"
+          }
+        }
+      },
+      "block_order": [
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "oog": "Voor iedereen",
+        "kop": "Voor elk <em>moment</em> in bed",
+        "intro": "Een stapel kussens zakt weg zodra je gaat zitten. Bline blijft staan, of je nu leest, werkt of een serie kijkt.",
+        "achtergrond": "warm"
+      }
+    },
+    "groot": {
+      "type": "b3-groot",
+      "settings": {
+        "beeld": "shopify://shop_images/bline-leeskussen-zwart-02.jpg",
+        "focus": "62% 35%",
+        "oog": "Op de bank of in bed",
+        "kop": "Nog één <em>hoofdstuk</em>",
+        "tekst": "Je rug tegen het kussen, je telefoon in het vak. Zo lees je ontspannen door.",
+        "knop": "Bekijk zwart",
+        "knop_kleur": "zwart",
+        "uitlijning": "links",
+        "knop_link": ""
+      }
+    },
+    "binnenkant": {
+      "type": "b3-binnenkant",
+      "blocks": {
+        "g0": {
+          "type": "getal",
+          "settings": {
+            "groot": "3,8",
+            "eenheid": "kg",
+            "tekst": "traagschuim: blijft staan als je leunt",
+            "tint": "zand"
+          }
+        },
+        "g1": {
+          "type": "getal",
+          "settings": {
+            "groot": "65",
+            "eenheid": "cm",
+            "tekst": "breed, 50 hoog en 45 diep",
+            "tint": "mist"
+          }
+        },
+        "g2": {
+          "type": "getal",
+          "settings": {
+            "groot": "30",
+            "eenheid": "°C",
+            "tekst": "de hoes gaat er met een rits af en zo in de was",
+            "tint": "steen"
+          }
+        },
+        "g3": {
+          "type": "getal",
+          "settings": {
+            "groot": "400",
+            "eenheid": "TC",
+            "tekst": "zacht, stevig geweven katoen",
+            "tint": "zand"
+          }
+        }
+      },
+      "block_order": [
+        "g0",
+        "g1",
+        "g2",
+        "g3"
+      ],
+      "settings": {
+        "oog": "Zo zit het in elkaar",
+        "kop": "Stevig van <em>binnen</em>, zacht van buiten",
+        "intro": "",
+        "beeld": "shopify://shop_images/bline-leeskussen-beige-04.jpg",
+        "achtergrond": "warm"
+      }
+    },
+    "video": {
+      "type": "b3-verhaal",
+      "blocks": {
+        "p0": {
+          "type": "punt",
+          "settings": {
+            "icoon": "telefoon",
+            "kop": "Vak opzij",
+            "tekst": "Telefoon, bril of boek binnen handbereik."
+          }
+        },
+        "p1": {
+          "type": "punt",
+          "settings": {
+            "icoon": "rits",
+            "kop": "Hoes met rits",
+            "tekst": "Eraf in een paar tellen, zonder gedoe."
+          }
+        },
+        "p2": {
+          "type": "punt",
+          "settings": {
+            "icoon": "was",
+            "kop": "Wasbaar op 30 °C",
+            "tekst": "Gewoon in de machine, normaal programma."
+          }
+        }
+      },
+      "block_order": [
+        "p0",
+        "p1",
+        "p2"
+      ],
+      "settings": {
+        "video_product": "leeskussen-wit",
+        "oog": "In 25 seconden",
+        "kop": "Zie het <em>in actie</em>",
+        "tekst": "",
+        "knop": "Bekijk het leeskussen",
+        "knop_kleur": "wit",
+        "om": false,
+        "achtergrond": "donker",
+        "knop_link": "/products/leeskussen-wit"
+      }
+    },
+    "score": {
+      "type": "b3-score",
+      "settings": {
+        "oog": "Wat kopers vinden",
+        "kop": "Al <em>gewaardeerd</em> op bol.com",
+        "achtergrond": "warm"
+      }
+    },
+    "vergelijk": {
+      "type": "b3-vergelijk",
+      "blocks": {
+        "r0": {
+          "type": "rij",
+          "settings": {
+            "wat": "Steun",
+            "bline": "Blijft staan door 3,8 kg traagschuim",
+            "los": "Zakken weg, steeds opschudden"
+          }
+        },
+        "r1": {
+          "type": "rij",
+          "settings": {
+            "wat": "Spullen",
+            "bline": "Vak opzij voor telefoon, bril of boek",
+            "los": "Telefoon en bril liggen los op bed"
+          }
+        },
+        "r2": {
+          "type": "rij",
+          "settings": {
+            "wat": "Ruimte",
+            "bline": "Eén kussen van 65 cm breed",
+            "los": "Drie of vier kussens in bed"
+          }
+        },
+        "r3": {
+          "type": "rij",
+          "settings": {
+            "wat": "Wassen",
+            "bline": "Eén hoes met rits, wasbaar op 30 °C",
+            "los": "Elke sloop apart"
+          }
+        }
+      },
+      "block_order": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "oog": "Waarom niet gewoon kussens?",
+        "kop": "Geen <em>kussenfort</em> meer",
+        "achtergrond": "wit"
+      }
+    },
+    "waarom": {
+      "type": "b3-verhaal",
+      "blocks": {
+        "w0": {
+          "type": "punt",
+          "settings": {
+            "icoon": "check",
+            "kop": "Een Nederlands merk",
+            "tekst": "Bline is een merk van Shop4You uit Borne."
+          }
+        },
+        "w1": {
+          "type": "punt",
+          "settings": {
+            "icoon": "mail",
+            "kop": "Echte klantenservice",
+            "tekst": "Mail ons op mail@blinesleep.nl, je krijgt antwoord van een mens."
+          }
+        },
+        "w2": {
+          "type": "punt",
+          "settings": {
+            "icoon": "terug",
+            "kop": "30 dagen proberen",
+            "tekst": "Valt het tegen? Dan stuur je het gratis terug, met een retourlabel van ons."
+          }
+        }
+      },
+      "block_order": [
+        "w0",
+        "w1",
+        "w2"
+      ],
+      "settings": {
+        "video_product": "",
+        "beeld": "shopify://shop_images/bline-leeskussen-wit-packshot-01.jpg",
+        "oog": "Over Bline",
+        "kop": "Waarom <em>Bline</em>?",
+        "tekst": "We maken één ding, en dat goed: een leeskussen dat blijft staan. We begonnen op bol.com, waar kopers het een 4,5 uit 5 geven. Nu ook in onze eigen winkel, met het kussen voor dezelfde prijs als op bol.",
+        "knop": "Bekijk het leeskussen",
+        "knop_kleur": "beige",
+        "om": true,
+        "achtergrond": "warm",
+        "knop_link": "/products/leeskussen-beige"
+      }
+    },
+    "vragen": {
+      "type": "b3-vragen",
+      "blocks": {
+        "v0": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Hoe snel heb ik het kussen?",
+            "antwoord": "<p>Binnen 1-2 werkdagen, in Nederland en België. Verzending is gratis.</p>"
+          }
+        },
+        "v1": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan de hoes in de was?",
+            "antwoord": "<p>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
+          }
+        },
+        "v2": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Hoe stevig is het kussen?",
+            "antwoord": "<p>Stevig: 3,8 kg traagschuim. Laat het na het uitpakken 24 tot 48 uur luchten en schud het op.</p>"
+          }
+        },
+        "v3": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Past het op mijn bed?",
+            "antwoord": "<p>Het kussen is 65 cm breed, 50 cm hoog en 45 cm diep. Op een tweepersoonsbed passen er twee naast elkaar.</p>"
+          }
+        },
+        "v4": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan ik het terugsturen?",
+            "antwoord": "<p>Ja. Je mag het kussen 30 dagen gewoon gebruiken, met de hoes erom. Niet tevreden? Meld het binnen 30 dagen (vanaf de dag na ontvangst), stuur het compleet en schoon terug en je krijgt het aankoopbedrag terug. Een reden geven hoeft niet. Terugsturen is gratis: je krijgt van ons een retourlabel van PostNL.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "oog": "Vragen",
+        "kop": "Goed om te <em>weten</em>",
+        "intro": "Staat je vraag er niet bij? Mail ons op mail@blinesleep.nl.",
+        "achtergrond": "warm"
+      }
+    },
+    "kleuren": {
+      "type": "b3-kleuren",
+      "settings": {
+        "basis": "leeskussen-beige",
+        "oog": "Vijf kleuren",
+        "kop": "Welke past bij <em>jouw</em> bed?",
+        "intro": "Zelfde kussen, zelfde kamer: zo zie je het verschil. Tik op een kleur om hem te kiezen.",
+        "achtergrond": "wit"
+      }
+    },
+    "kort": {
+      "type": "b3-product-kort",
+      "settings": {
+        "basis": "leeskussen-blauw",
+        "oog": "Het leeskussen",
+        "kop": "Eén kussen, <em>vijf</em> kleuren",
+        "knop": "Bekijk en bestel",
+        "achtergrond": "wit",
+        "beeld": "shopify://shop_images/bline-leeskussen-blauw-05.jpg"
+      }
+    },
+    "blog": {
+      "type": "b3-blog",
+      "settings": {
+        "blog": "blog",
+        "oog": "Verhalen",
+        "kop": "Lezen in bed, <em>tips</em> en meer",
+        "achtergrond": "wit"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "band",
+    "kleuren",
+    "momenten",
+    "kort",
+    "groot",
+    "binnenkant",
+    "video",
+    "score",
+    "vergelijk",
+    "waarom",
+    "blog",
+    "vragen"
+  ]
+}

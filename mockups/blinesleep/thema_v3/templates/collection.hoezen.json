@@ -1,0 +1,149 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "kop": {
+      "type": "b3-kop",
+      "settings": {
+        "oog": "Bline",
+        "kop": "",
+        "intro": "",
+        "achtergrond": "warm"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 40,
+        "padding_bottom": 56
+      }
+    },
+    "band": {
+      "type": "b3-band",
+      "blocks": {
+        "b0": {
+          "type": "item",
+          "settings": {
+            "tekst": "Gratis verzending in NL en BE",
+            "icoon": "truck"
+          }
+        },
+        "b1": {
+          "type": "item",
+          "settings": {
+            "tekst": "Binnen 1-2 werkdagen in huis",
+            "icoon": "klok"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "tekst": "Katoen 400 TC, met rits",
+            "icoon": "check"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "tekst": "30 dagen om terug te sturen",
+            "icoon": "terug"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "tekst": "Hoes wasbaar op 30 °C",
+            "icoon": "was"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {}
+    },
+    "vragen": {
+      "type": "b3-vragen",
+      "blocks": {
+        "v0": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Hoe snel heb ik de hoes?",
+            "antwoord": "<p>Binnen 1-2 werkdagen, in Nederland en België. Verzending is gratis.</p>"
+          }
+        },
+        "v1": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan de hoes in de was?",
+            "antwoord": "<p>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>"
+          }
+        },
+        "v2": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Past de hoes op mijn Bline leeskussen?",
+            "antwoord": "<p>Ja. De hoes is gemaakt voor het Bline leeskussen (65 x 50 x 45 cm), met een onzichtbare rits en een zijvak.</p>"
+          }
+        },
+        "v3": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Wat zit er in de doos?",
+            "antwoord": "<p>Eén losse hoes in de kleur die je kiest. Het kussen zelf zit er niet bij.</p>"
+          }
+        },
+        "v4": {
+          "type": "vraag",
+          "settings": {
+            "vraag": "Kan ik het terugsturen?",
+            "antwoord": "<p>Ja. Je kunt de hoes binnen 30 dagen na ontvangst terugsturen. Doe dat het liefst ongewassen en in de originele verpakking. Je krijgt het aankoopbedrag terug; de kosten voor het terugsturen zijn voor jou.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "v0",
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "oog": "Vragen",
+        "kop": "Goed om te <em>weten</em>",
+        "intro": "Staat je vraag er niet bij? Mail ons op mail@blinesleep.nl.",
+        "achtergrond": "warm"
+      }
+    }
+  },
+  "order": [
+    "kop",
+    "product-grid",
+    "band",
+    "vragen"
+  ]
+}

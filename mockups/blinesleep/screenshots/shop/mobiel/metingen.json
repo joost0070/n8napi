@@ -1,0 +1,153 @@
+{
+ "metingen": {
+  "balk": {
+   "top": 0,
+   "h": 37,
+   "w": 390,
+   "bottom": 37
+  },
+  "balk_lineheight": "20.3636px",
+  "balk_bericht_hoogte": 22,
+  "header": {
+   "top": 37,
+   "h": 60,
+   "w": 390,
+   "bottom": 97
+  },
+  "cart_icon": {
+   "top": 45,
+   "h": 44,
+   "w": 44,
+   "bottom": 89
+  },
+  "foto": {
+   "top": 101,
+   "h": 400,
+   "w": 390,
+   "bottom": 501
+  },
+  "teller": {
+   "top": 520,
+   "h": 27,
+   "w": 44,
+   "bottom": 547
+  },
+  "titel": {
+   "top": 555,
+   "h": 31,
+   "w": 360,
+   "bottom": 587
+  },
+  "score": {
+   "top": 595,
+   "h": 22,
+   "w": 360,
+   "bottom": 617
+  },
+  "prijs": {
+   "top": 625,
+   "h": 51,
+   "w": 360,
+   "bottom": 676
+  },
+  "kleur_tikvlakken": [
+   [
+    88,
+    44
+   ],
+   [
+    104,
+    44
+   ],
+   [
+    109,
+    44
+   ],
+   [
+    95,
+    44
+   ],
+   [
+    106,
+    44
+   ]
+  ],
+  "knop": {
+   "top": 846,
+   "h": 50,
+   "w": 360,
+   "bottom": 896
+  },
+  "vinkjes": {
+   "top": 921,
+   "h": 118,
+   "w": 360,
+   "bottom": 1039
+  },
+  "eerste_foto_loading": "eager",
+  "eerste_foto_fetchpriority": "high",
+  "tekst_kleiner_dan_16px": [],
+  "pagina_breder_dan_scherm": false,
+  "sticky_zindex": "20",
+  "lade_zindex": "1000",
+  "header_zindex": "3"
+ },
+ "balk_na_6s": {
+  "scrollLeft": 334,
+  "breed": 330
+ },
+ "teller_na_vegen": "2 / van9",
+ "uitklap": [
+  [
+   "Beschrijving",
+   true,
+   51
+  ],
+  [
+   "Kenmerken",
+   false,
+   51
+  ],
+  [
+   "Verzending en retour",
+   false,
+   51
+  ],
+  [
+   "Vragen",
+   false,
+   51
+  ]
+ ],
+ "sticky": {
+  "zichtbaar": true,
+  "hoogte": 64,
+  "breed": 390,
+  "bottom": 844,
+  "knop_h": 48,
+  "knop_w": 284
+ },
+ "voettekst_links": [
+  44,
+  44,
+  44,
+  44,
+  44,
+  44,
+  44,
+  44,
+  44,
+  44
+ ],
+ "lade": {
+  "klein_in_lade_en_balk": [],
+  "breed": 390,
+  "afrekenen_top": 778,
+  "afrekenen_bottom": 828,
+  "afrekenen_h": 50,
+  "in_beeld": true,
+  "sticky_top_na_openen": 850,
+  "aantal_fontsize": "16px"
+ },
+ "js_fouten": []
+}

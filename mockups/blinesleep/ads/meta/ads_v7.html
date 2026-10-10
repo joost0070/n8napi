@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Bline testset v7</title>
+<style>
+@font-face{font-family:Poppins;font-weight:400;src:url(bron/b3-poppins-400.woff2)}
+@font-face{font-family:Poppins;font-weight:500;src:url(bron/b3-poppins-500.woff2)}
+@font-face{font-family:Poppins;font-weight:600;src:url(bron/b3-poppins-600.woff2)}
+@font-face{font-family:InstrSerif;font-style:italic;src:url(bron/b3-instrument-serif-400i.woff2)}
+:root{--nacht:#1F2A37;--zand:#F2EADF;--terra:#C4623E;--wit:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#ddd;font-family:Poppins,sans-serif;padding:40px;display:flex;flex-direction:column;gap:40px}
+.ad{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--nacht)}
+.foto{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat}
+.logo{position:absolute;width:150px}
+.logo img{width:100%;display:block}
+
+/* A: echte foto boven, effen kleurvlak onder met kop en aanbod */
+.a .foto{bottom:auto;height:1000px}
+.a .vlak{position:absolute;left:0;right:0;bottom:0;height:350px;padding:56px 64px 0}
+.a h1{font-weight:600;font-size:78px;line-height:1.02;letter-spacing:-1.5px}
+.a .aanbod{margin-top:26px;font-size:28px;font-weight:500;display:flex;gap:18px;align-items:center}
+.a .prijs{font-weight:600;font-size:40px}
+.a .stip{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.5}
+.a .logo{right:64px;bottom:64px;width:130px}
+
+/* B: alleen foto, een regel serif, klein logo */
+.b h1{position:absolute;left:64px;right:64px;font-family:InstrSerif;font-style:italic;font-weight:400;font-size:92px;line-height:1;letter-spacing:-1px;color:var(--wit);text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.b .waas{position:absolute;inset:0}
+
+/* C: bewijs */
+.c h1{position:absolute;left:64px;right:64px;font-weight:600;font-size:76px;line-height:1.04;letter-spacing:-1.5px}
+.c p{position:absolute;left:64px;right:64px;font-size:32px;line-height:1.35}
+.label{position:absolute;background:var(--wit);color:var(--nacht);font-weight:500;font-size:34px;padding:16px 28px;border-radius:40px;box-shadow:0 6px 24px rgba(0,0,0,.12);display:flex;align-items:center;gap:12px}
+.label::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--terra)}
+
+/* D: native */
+.bubbels{position:absolute;left:48px;right:48px;display:flex;flex-direction:column;gap:14px;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif}
+.bel{max-width:78%;font-size:33px;line-height:1.25;padding:16px 28px;border-radius:40px}
+.bel.in{background:#E9E9EB;color:#111;align-self:flex-start;border-bottom-left-radius:10px}
+.bel.uit{background:#0B84FF;color:#fff;align-self:flex-end;border-bottom-right-radius:10px}
+.tijd{align-self:center;font-size:24px;color:rgba(255,255,255,.85);font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.story{position:absolute;left:64px;right:0;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.story span{background:#111;color:#fff;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;font-weight:600;font-size:38px;padding:6px 18px;border-radius:10px}
+</style>
+</head>
+<body>
+
+<!-- A1: product op kleur, navy kussen + terracotta vlak -->
+<div class="ad a" id="a1-zakkenweg">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/blauw_05_2a75b663.png);background-position:50% 62%"></div>
+  <div class="vlak" style="background:var(--terra);color:var(--wit)">
+    <h1>Je kussens zakken weg.<br>Deze niet.</h1>
+    <div class="aanbod"><span class="prijs">€79,99</span><span class="stip"></span><span>Gratis verzending</span><span class="stip"></span><span>30 dagen proberen</span></div>
+  </div>
+  <div class="logo"><img src="bron/bline-logo-wit.svg" alt=""></div>
+</div>
+
+<!-- A2: product op kleur, zwart kussen + zand vlak -->
+<div class="ad a" id="a2-stapelen">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/zwart_05_fe50e2b8.png);background-position:50% 60%"></div>
+  <div class="vlak" style="background:var(--zand);color:var(--nacht)">
+    <h1>Stop met kussens<br>stapelen in bed.</h1>
+    <div class="aanbod"><span>Eén leeskussen</span><span class="stip"></span><span class="prijs">€79,99</span><span class="stip"></span><span>Gratis verzending</span></div>
+  </div>
+  <div class="logo"><img src="bron/bline-logo.svg" alt=""></div>
+</div>
+
+<!-- B1: rustig premium, lezende vrouw beige -->
+<div class="ad b" id="b1-lekkerzitten">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/beige_04_9d9bf3d0.png);background-position:42% 50%"></div>
+  <div class="waas" style="background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(20,24,32,.45) 100%)"></div>
+  <h1 style="bottom:150px">Eindelijk lekker zitten<br>in je eigen bed.</h1>
+  <div class="logo" style="left:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
+</div>
+
+<!-- B2: rustig premium, bank -->
+<div class="ad b" id="b2-bank">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/wit_06_dd51760c.png);background-position:38% 50%"></div>
+  <div class="waas" style="background:linear-gradient(180deg,rgba(20,24,32,.50) 0%,rgba(0,0,0,0) 40%)"></div>
+  <h1 style="top:84px">Te diepe bank?<br>Zo zit je wél rechtop.</h1>
+  <div class="logo" style="right:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
+</div>
+
+<!-- C1: bewijs, binnenkant -->
+<div class="ad c" id="c1-ditziterin">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/beige_06_3e5030c6.png);background-position:30% 50%;background-size:auto 112%"></div>
+  <h1 style="top:84px;color:var(--nacht)">Dit zit erin:<br>3,8 kg traagschuim.</h1>
+  <div class="label" style="left:64px;top:1080px">In stukjes, vormt mee</div>
+  <div class="label" style="left:64px;top:1180px">Zakt niet weg als je leunt</div>
+  <div class="label" style="right:64px;top:430px">Hoes met rits, wasbaar</div>
+  <div class="logo" style="right:64px;top:96px;width:120px"><img src="bron/bline-logo.svg" alt=""></div>
+</div>
+
+<!-- C2: omgekeerd, koop dit niet als -->
+<div class="ad c" id="c2-echtlezen">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/blauw_04_b6493bcc.png);background-position:55% 50%"></div>
+  <div class="waas" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,30,.70) 0%,rgba(15,20,30,0) 42%)"></div>
+  <h1 style="top:84px;color:var(--wit)">Alleen voor wie echt<br>in bed leest.</h1>
+  <p style="top:270px;color:rgba(255,255,255,.9)">Groot en stevig: 50 x 65 x 45 cm.</p>
+  <div class="logo" style="right:64px;bottom:72px;width:120px"><img src="bron/bline-logo-wit.svg" alt=""></div>
+</div>
+
+<!-- D1: native, chatbericht -->
+<div class="ad d" id="d1-werkvanuitbed">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/grijs_02_7b3bc80b.png);background-position:50% 50%"></div>
+  <div class="waas" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 50%)"></div>
+  <div class="bubbels" style="bottom:56px">
+    <div class="tijd">Vandaag 22:41</div>
+    <div class="bel in">ben je nou wéér aan het werk vanuit bed 😩</div>
+    <div class="bel uit">ja maar ik zit rechtop</div>
+    <div class="bel in">met je rug tegen dat harde hoofdbord?</div>
+    <div class="bel uit">nee, leeskussen. zakt niet weg 🙌</div>
+    <div class="bel in">stuur link</div>
+  </div>
+</div>
+
+<!-- D2: native, story-tekst -->
+<div class="ad d" id="d2-nietmeer">
+  <div class="foto" style="background-image:url(../../beelden_higgsfield/wit_02_df4ead40.png);background-position:55% 50%"></div>
+  <div class="story" style="bottom:70px">
+    <span>dingen die je niet meer doet:</span>
+    <span>❌ 4 kussens stapelen</span>
+    <span>❌ elke 10 min rechtop schuiven</span>
+    <span>❌ tegen het hoofdbord hangen</span>
+  </div>
+</div>
+
+</body>
+</html>

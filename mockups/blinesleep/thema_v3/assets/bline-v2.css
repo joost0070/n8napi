@@ -1,0 +1,94 @@
+/* Bline v2: merkwereld. Wit, inktblauw #1F2A37, zand #CDBFA9 op 20% (#F5F2EE), Nunito Sans, rechte hoeken. */
+:root{--bline-zand:245,242,238;--bline-zand-30:240,236,229;--bline-tekst:26,26,26}
+
+/* Typografie van de nieuwe secties */
+
+.button--secondary{--color-button-text:31,42,55}
+
+/* Sterren */
+
+/* Hero */
+
+/* Vertrouwensband */
+
+/* Veegrij op mobiel (sliders in plaats van halflege rasters) */
+
+/* Kleurtegels */
+
+/* Beeld met tekst */
+
+/* Tegels */
+
+/* Vergelijking */
+
+/* Reviewband */
+
+/* Lookbook */
+
+/* Paginakop */
+
+/* Productkaarten: kleurbolletjes en setvoordeel; geen tellers */
+.bline-kaart-dots{display:flex;gap:.6rem;list-style:none;margin:.8rem 0 0;padding:0;position:relative;z-index:2}
+.bline-kaart-dot{display:block;width:2rem;height:2rem;border-radius:50%;background:var(--bline-dot);box-shadow:inset 0 0 0 1px rgba(26,26,26,.25)}
+.bline-kaart-dot.is-gekozen{outline:1px solid rgb(var(--color-foreground));outline-offset:2px}
+@media (pointer:coarse){.bline-kaart-dots li{padding:.4rem 0}}
+.bline-kaart-set{margin:.6rem 0 0;font-size:1.4rem;font-weight:700;color:rgb(31,42,55)}
+.product-count,.product-count-vertical,#ProductCountDesktop,#ProductCount{display:none!important}
+@media screen and (max-width:749px){.bline-kaart-set{font-size:1.5rem}}
+
+/* Maak het compleet */
+.bline-compleet{margin:1.6rem 0 0}
+.bline-compleet__kop{margin:0 0 .6rem;font-size:1.4rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.bline-compleet__kaart{display:grid;grid-template-columns:7.2rem 1fr auto;gap:1.2rem;align-items:center;padding:1rem;border:1px solid rgba(var(--color-foreground),.15);background:rgb(var(--bline-zand))}
+.bline-compleet__beeld img{display:block;width:7.2rem;height:7.2rem;object-fit:cover}
+.bline-compleet__titel{font-size:1.6rem;font-weight:700;color:inherit;text-decoration:none}
+.bline-compleet__prijs{margin:.2rem 0 0;font-size:1.5rem}
+.bline-compleet__prijs s{color:rgba(var(--color-foreground),.6)}
+.bline-compleet__knop{min-height:4.4rem;padding:0 1.4rem;font-size:1.5rem;white-space:nowrap}
+.bline-compleet__knop[aria-busy=true],.bline-set__knop[aria-busy=true]{opacity:.6;pointer-events:none}
+
+/* Set */
+.bline-set{margin:1.6rem 0 0}
+.bline-set__kop{margin:0 0 .8rem;font-size:1.4rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.bline-set__lijst{list-style:none;margin:0;padding:0;border-top:1px solid rgba(var(--color-foreground),.12)}
+.bline-set__lijst li{display:flex;gap:1.2rem;align-items:center;padding:1rem 0;border-bottom:1px solid rgba(var(--color-foreground),.12);font-size:1.6rem;line-height:1.35}
+.bline-set__lijst img{display:block;width:6.4rem;height:6.4rem;object-fit:cover}
+.bline-set__lijst a{color:inherit;text-decoration:none;font-weight:700}
+.bline-set__los{color:rgba(var(--color-foreground),.7)}
+.bline-set__som{margin:1.2rem 0 0;font-size:1.6rem;line-height:1.45}
+.bline-set__knop{width:100%;min-height:5rem;margin-top:1.6rem;font-size:1.6rem}
+
+/* Megamenu met beelden */
+.bline-mega{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:start}
+.bline-mega .mega-menu__list{padding:0}
+.bline-mega__beelden{display:grid;grid-template-columns:repeat(2,22rem);gap:1.6rem}
+.bline-mega__beeld{display:block;color:inherit;text-decoration:none;font-weight:700;font-size:1.5rem}
+.bline-mega__beeld img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;margin-bottom:.8rem}
+.mega-menu__link--level-2{font-weight:700;font-size:1.5rem}
+
+/* Beeldtegels in het mobiele menu */
+.bline-menu-tegels{list-style:none;margin:0;padding:1.6rem 1.6rem .8rem;display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+.bline-menu-tegels a{display:block;position:relative;aspect-ratio:1/1;overflow:hidden;color:#fff;text-decoration:none}
+.bline-menu-tegels img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bline-menu-tegels a:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0) 55%)}
+.bline-menu-tegels span{position:absolute;left:1rem;right:1rem;bottom:.9rem;z-index:1;font-size:1.6rem;font-weight:700;line-height:1.2}
+
+/* Collectiebanner: sfeerfoto en één zin */
+
+/* Voettekst: aanmelding inline */
+.footer-block--newsletter .footer-block__heading{text-transform:none;letter-spacing:0;font-size:2rem}
+.footer__newsletter .field__input{font-size:1.6rem}
+
+/* Materialen-uitklapblok met kleine foto */
+.bline-materialen-klein{display:grid;grid-template-columns:9.6rem 1fr;gap:0 1.6rem;align-items:start}
+
+.bline-materialen-klein .bline-vinkjes{margin:0}
+
+/* Ronde 2 */
+
+.bline-mega .mega-menu__list{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.8rem 3.2rem}
+.bline-mega .mega-menu__link{padding:.5rem 0}
+.bline-mega__beeld img{height:auto!important}
+
+body:has(.newsletter__wrapper) .footer-block--newsletter{display:none}
+

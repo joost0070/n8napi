@@ -1,0 +1,76 @@
+Campaign,Ad Group,Keyword,Criterion Type,Max CPC,Final URL,Status,Labels,Comment
+00 Search | Merk | NL+BE,Merk,blin leeskussen,Exact,0.30,,Paused,Bline prio 3,Tikfout; bol zag 'blin' en 'blins'
+02 Search | Generiek | NL+BE,Leeskussen,leeskussen review,Phrase,0.30,,Paused,Bline prio 3,"Vergelijkers (Slimgetest, Rustige Nacht) winnen hier; laag bod"
+02 Search | Generiek | NL+BE,Leeskussen,beste leeskussen,Exact,0.30,,Paused,Bline prio 3,Zoekwoord mag; 'beste' nooit in de advertentie. Laag bod.
+02 Search | Generiek | NL+BE,Leeskussen,leeskussen aanbieding,Exact,0.30,,Paused,Bline prio 3,Alleen bieden als er een echte aanbieding loopt; anders uitsluiten in Search
+02 Search | Generiek | NL+BE,Leeskussen bed,zit leeskussen bed,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Rugkussen bed,rugkussen wig,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Rugkussen bed,rugkussen schuin,Exact,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Rugkussen bank en zetel,rugsteun bank,Exact,0.30,,Paused,Bline prio 3,Dubbelzinnig (bankstel)
+02 Search | Generiek | NL+BE,Rugkussen bank en zetel,rugkussen traagschuim bank,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Rechtop zitten in bed,zitkussen op bed,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Rechtop zitten in bed,rechtop zitkussen bed,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Rechtop zitten in bed,bedkussen om te zitten,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Rechtop zitten in bed,zitkussen bed rugleuning,Phrase,0.30,,Paused,Bline prio 3,Stond al in de huidige opzet
+02 Search | Generiek | NL+BE,Rechtop zitten in bed,kussen met rugleuning voor bed,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Lezen en tv in bed,comfortabel lezen in bed,Phrase,0.30,,Paused,Bline prio 3,Informatief; alleen als blog of goede uitleg op de pagina staat
+02 Search | Generiek | NL+BE,Lezen en tv in bed,lezen in bed hulpmiddel,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Lezen en tv in bed,steun om in bed te lezen,Phrase,0.30,,Paused,Bline prio 3,Ook boekstandaarden; zoektermen nalopen
+02 Search | Generiek | NL+BE,Lezen en tv in bed,comfortabel tv kijken in bed,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Lezen en tv in bed,series kijken in bed kussen,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Lezen en tv in bed,kussen om te werken in bed,Phrase,0.30,,Paused,Bline prio 3,Laptop-gebruik; geen 'ergonomisch' in tekst
+02 Search | Generiek | NL+BE,Kenmerken,traagschuim rugkussen,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Kenmerken,leeskussen met telefoonvak,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Kenmerken,leeskussen wasbare hoes,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Kenmerken,leeskussen hoog,Phrase,0.30,,Paused,Bline prio 3,45 cm hoog
+02 Search | Generiek | NL+BE,Kenmerken,ergonomisch leeskussen,Exact,0.30,,Paused,Bline prio 3,"Zoekwoord mag, maar 'ergonomisch' nooit in de advertentie of op de pagina als claim. Alleen exact, laag bod."
+02 Search | Generiek | NL+BE,Kenmerken,leeskussen ergonomisch,Exact,0.30,,Paused,Bline prio 3,Idem
+02 Search | Generiek | NL+BE,Kenmerken,ergonomisch rugkussen bed,Exact,0.30,,Paused,Bline prio 3,Idem
+02 Search | Generiek | NL+BE,Kleuren,leeskussen antraciet,Phrase,0.30,https://www.blinesleep.nl/products/leeskussen-grijs,Paused,Bline prio 3,Kleurnaam die mensen gebruiken; landt op /products/leeskussen-grijs. Alleen als de kleur echt zo oogt.
+02 Search | Generiek | NL+BE,Kleuren,leeskussen zand,Phrase,0.30,https://www.blinesleep.nl/products/leeskussen-beige,Paused,Bline prio 3,Kleurnaam die mensen gebruiken; landt op /products/leeskussen-beige. Alleen als de kleur echt zo oogt.
+02 Search | Generiek | NL+BE,Kleuren,leeskussen donkerblauw,Phrase,0.30,https://www.blinesleep.nl/products/leeskussen-blauw,Paused,Bline prio 3,Kleurnaam die mensen gebruiken; landt op /products/leeskussen-blauw. Alleen als de kleur echt zo oogt.
+02 Search | Generiek | NL+BE,Kleuren,leeskussen creme,Phrase,0.30,https://www.blinesleep.nl/products/leeskussen-wit,Paused,Bline prio 3,Kleurnaam die mensen gebruiken; landt op /products/leeskussen-wit. Alleen als de kleur echt zo oogt.
+02 Search | Generiek | NL+BE,Kleuren,rugkussen bed wit,Phrase,0.30,https://www.blinesleep.nl/products/leeskussen-wit,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Kleuren,rugkussen bed beige,Phrase,0.30,https://www.blinesleep.nl/products/leeskussen-beige,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Kleuren,rugkussen bed grijs,Phrase,0.30,https://www.blinesleep.nl/products/leeskussen-grijs,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Kleuren,rugkussen bed zwart,Phrase,0.30,https://www.blinesleep.nl/products/leeskussen-zwart,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Kleuren,rugkussen bed blauw,Phrase,0.30,https://www.blinesleep.nl/products/leeskussen-blauw,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Kleuren,wit leeskussen,Exact,0.30,https://www.blinesleep.nl/products/leeskussen-wit,Paused,Bline prio 3,Omgekeerde volgorde; exact vangt ook 'leeskussen wit'
+02 Search | Generiek | NL+BE,Kleuren,beige leeskussen,Exact,0.30,https://www.blinesleep.nl/products/leeskussen-beige,Paused,Bline prio 3,Omgekeerde volgorde; exact vangt ook 'leeskussen beige'
+02 Search | Generiek | NL+BE,Kleuren,blauw leeskussen,Exact,0.30,https://www.blinesleep.nl/products/leeskussen-blauw,Paused,Bline prio 3,Omgekeerde volgorde; exact vangt ook 'leeskussen blauw'
+02 Search | Generiek | NL+BE,Kleuren,grijs leeskussen,Exact,0.30,https://www.blinesleep.nl/products/leeskussen-grijs,Paused,Bline prio 3,Omgekeerde volgorde; exact vangt ook 'leeskussen grijs'
+02 Search | Generiek | NL+BE,Kleuren,zwart leeskussen,Exact,0.30,https://www.blinesleep.nl/products/leeskussen-zwart,Paused,Bline prio 3,Omgekeerde volgorde; exact vangt ook 'leeskussen zwart'
+02 Search | Generiek | NL+BE,Bookseat en wigkussen,bookseat,Exact,0.30,,Paused,Bline prio 3,"'The Bookseat' is een boekensteun-merk; op bol 221 vertoningen, 2 kliks, 0 aankopen. Merknaam niet in advertentietekst. Shopping dekt dit."
+02 Search | Generiek | NL+BE,Bookseat en wigkussen,book seat,Exact,0.30,,Paused,Bline prio 3,Op Google vooral treinen/vliegtuigstoelen ('book seat'): niet bieden in Search
+02 Search | Generiek | NL+BE,Bookseat en wigkussen,bookseat leeskussen,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Bookseat en wigkussen,boekkussen,Exact,0.30,,Paused,Bline prio 3,Klein; stond al in opzet
+02 Search | Generiek | NL+BE,Bookseat en wigkussen,wigkussen voor in bed,Exact,0.30,,Paused,Bline prio 3,"Wigkussen-zoekers zijn vaak op zoek naar slapen met hoofd omhoog (reflux, snurken); Bline is om te zitten. Alleen exact, na conversiedata."
+02 Search | Generiek | NL+BE,Bookseat en wigkussen,wigkussen bed,Exact,0.30,,Paused,Bline prio 3,"Groot maar gemengd (reflux, benen, onder matras). Fase 3 test, met alle medische uitsluitingen."
+02 Search | Generiek | NL+BE,Bookseat en wigkussen,wigkussen rug,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Bookseat en wigkussen,wigkussen bank,Phrase,0.30,,Paused,Bline prio 3,
+02 Search | Generiek | NL+BE,Hoes (alleen voor Bline),leeskussen hoes,Exact,0.30,,Paused,Bline prio 3,"Wie een hoes zoekt heeft meestal al een ander kussen (Ten Cate, Happybed). Bline-hoes past alleen op Bline (65 x 50 x 45). Pas bieden met tekst 'past op het Bline leeskussen'; concurrent-hoezen uitsluiten."
+02 Search | Generiek | NL+BE,Hoes (alleen voor Bline),hoes leeskussen,Exact,0.30,,Paused,Bline prio 3,Idem
+02 Search | Generiek | NL+BE,Hoes (alleen voor Bline),hoes voor leeskussen,Exact,0.30,,Paused,Bline prio 3,Idem
+02 Search | Generiek | NL+BE,Hoes (alleen voor Bline),leeskussen sloop,Exact,0.30,,Paused,Bline prio 3,Idem
+02 Search | Generiek | NL+BE,Hoes (alleen voor Bline),leeskussen overtrek,Exact,0.30,,Paused,Bline prio 3,Idem
+02 Search | Generiek | NL+BE,Hoes (alleen voor Bline),kussensloop leeskussen,Exact,0.30,,Paused,Bline prio 3,Idem; 'kussensloop' los blijft uitgesloten
+03 Search | Cadeau | NL+BE,Cadeau voor lezers,cadeau voor moeder die graag leest,Phrase,0.30,,Paused,Bline prio 3,Combinatie moeder + lezen; 'cadeau moeder' los is te breed
+03 Search | Cadeau | NL+BE,Cadeau voor lezers,cadeau oma die graag leest,Phrase,0.30,,Paused,Bline prio 3,Idem voor ouderen; geen zorg- of leeftijdsclaims in tekst
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin de lecture,Exact,0.30,,Paused,Bline prio 3,"Pas met Franse productpagina en Franse feed. bol: 51 vertoningen, 1 klik."
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin de lecture,Phrase,0.30,,Paused,Bline prio 3,"Pas met Franse productpagina en Franse feed. bol: 51 vertoningen, 1 klik."
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin de lecture lit,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin lecture lit,Phrase,0.30,,Paused,Bline prio 3,Nr. 1 onder 'coussin lecture'
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin de lecture au lit,Phrase,0.30,,Paused,Bline prio 3,Nr. 1 onder 'coussin de lecture'
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin de lecture pour lit,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin de lecture adulte,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin lecture lit adulte,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin de lecture canapé,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin de lecture pour lit ou canapé,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,oreiller de lecture,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin pour lire au lit,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin triangulaire lit,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin dos lecture lit,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin de lecture,coussin de lecture ergonomique,Exact,0.30,,Paused,Bline prio 3,Alleen exact; 'ergonomique' nooit in tekst
+04 Search | Generiek | BE-FR,Coussin dossier lit,coussin dossier lit,Phrase,0.30,,Paused,Bline prio 3,Ook hoofdbordkussens (tête de lit); zoektermen nalopen
+04 Search | Generiek | BE-FR,Coussin dossier lit,dossier de lit coussin,Phrase,0.30,,Paused,Bline prio 3,
+04 Search | Generiek | BE-FR,Coussin dossier lit,housse coussin de lecture,Exact,0.30,,Paused,Bline prio 3,Alleen met Franse hoes-pagina

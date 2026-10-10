@@ -1,0 +1,29 @@
+{%- comment -%} Bline v3: aanmelden voor nieuws (Shopify-klantformulier met toestemming voor marketing). {%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in b3-aanmelden">
+    <p class="b3-oog">{{ section.settings.oog }}</p>
+    <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+    <p class="b3-intro">{{ section.settings.tekst }}</p>
+    {%- form 'customer', class: 'b3-aanmelden__form', id: 'b3-aanmelden' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter,bline-sleep">
+      <label class="visually-hidden" for="b3-aanmelden-mail">E-mail</label>
+      <input id="b3-aanmelden-mail" type="email" name="contact[email]" placeholder="Je e-mailadres" autocomplete="email" required>
+      <button type="submit" class="b3-knop">Aanmelden</button>
+      {%- if form.posted_successfully? -%}<p class="b3-aanmelden__ok" role="status">Dank je, je staat op de lijst.</p>{%- endif -%}
+      {%- if form.errors -%}<p class="b3-aanmelden__fout" role="alert">Dat ging niet goed. Controleer je e-mailadres.</p>{%- endif -%}
+    {%- endform -%}
+    <p class="b3-aanmelden__klein">We mailen alleen als er iets nieuws is. Afmelden kan altijd.</p>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: aanmelden",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Nieuws" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Als eerste <em>weten</em>" },
+    { "type": "text", "id": "tekst", "label": "Tekst", "default": "Laat je e-mailadres achter. We mailen alleen als er iets nieuws is." },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "warm", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "presets": [{ "name": "Bline v3: aanmelden" }]
+}
+{% endschema %}

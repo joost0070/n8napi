@@ -1,0 +1,17 @@
+{%- comment -%} Testomgeving: benadering van het lege reviewblok van Judge.me (zelfde klassen als de app). {%- endcomment -%}
+{%- if block.type contains 'judge-me' -%}
+<div class="jdgm-widget jdgm-review-widget jdgm--done-setup-widget" data-id="{{ product.id }}">
+  <div class="jdgm-rev-widg" data-number-of-reviews="0">
+    <div class="jdgm-rev-widg__header">
+      <h2 class="jdgm-rev-widg__title">Klantreviews</h2>
+      <div class="jdgm-rev-widg__summary" style="display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;justify-content:space-between">
+        <div class="jdgm-rev-widg__summary-stars" aria-label="Nog geen reviews" style="display:flex;align-items:center;gap:.8rem">
+          <span class="jdgm-star jdgm--off" style="font-size:2rem;letter-spacing:.2rem">☆☆☆☆☆</span>
+          <span class="jdgm-rev-widg__summary-text">Nog geen reviews in onze eigen winkel</span>
+        </div>
+        <a href="#" class="jdgm-write-rev-link" role="button" style="display:inline-flex;align-items:center;text-decoration:none">Schrijf een review</a>
+      </div>
+    </div>
+  </div>
+</div>
+{%- endif -%}

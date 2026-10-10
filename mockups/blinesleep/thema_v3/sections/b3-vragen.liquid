@@ -1,0 +1,51 @@
+{%- comment -%} Bline v3: vragen. {%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in b3-vragen-wrap">
+    <div>
+      <p class="b3-oog">{{ section.settings.oog }}</p>
+      {%- if template.name == 'page' and page.handle == 'veelgestelde-vragen' -%}<h1 class="b3-kop">{{ section.settings.kop }}</h1>{%- else -%}<h2 class="b3-kop">{{ section.settings.kop }}</h2>{%- endif -%}
+      <p class="b3-intro">{{ section.settings.intro }}</p>
+    </div>
+    <div class="b3-vragen">
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}><summary>{{ block.settings.vraag }}</summary><div>{{ block.settings.antwoord }}</div></details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- if section.blocks.size > 0 and template.name == 'index' or section.blocks.size > 0 and page.handle == 'veelgestelde-vragen' or section.blocks.size > 0 and template.name == 'product' -%}
+  {%- comment -%} vragen als FAQ-data, alleen op home, de vragenpagina en productpagina's (niet dubbel op elke pagina) {%- endcomment -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.vraag | strip_html | strip | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.antwoord | strip_html | strip | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Bline v3: vragen",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Vragen" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Goed om te <em>weten</em>" },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "Staat je vraag er niet bij? Mail ons op mail@blinesleep.nl." },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "warm", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "blocks": [
+    { "type": "vraag", "name": "Vraag", "settings": [
+      { "type": "text", "id": "vraag", "label": "Vraag" },
+      { "type": "richtext", "id": "antwoord", "label": "Antwoord" }
+    ] }
+  ],
+  "presets": [{ "name": "Bline v3: vragen" }]
+}
+{% endschema %}

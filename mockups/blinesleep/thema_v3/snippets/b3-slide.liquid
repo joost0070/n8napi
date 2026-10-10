@@ -1,0 +1,19 @@
+{%- comment -%} Eén beeld of video in de galerij van b3-product. {%- endcomment -%}
+<figure class="b3-gal__slide{% if eerste %} b3-gal__slide--eerste{% endif %}{% if m.preview_image.aspect_ratio < 0.98 or m.preview_image.aspect_ratio > 1.02 %} b3-gal__slide--passend{% endif %}">
+  {%- if m.media_type == 'video' -%}
+    {%- assign bron = m.sources | where: 'format', 'mp4' | where: 'height', 720 | first -%}
+    {%- unless bron -%}{%- assign bron = m.sources | where: 'format', 'mp4' | last -%}{%- endunless -%}
+    <video class="b3-gal__video" playsinline muted loop preload="none" poster="{{ m.preview_image | image_url: width: 1100 }}" aria-label="{{ m.alt | escape }}" data-b3-video="{{ bron.url }}"></video>
+    <button type="button" class="b3-speel" data-b3-speel aria-label="Video afspelen"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button>
+    <span class="b3-pil b3-gal__label">Video</span>
+  {%- else -%}
+    {%- if voorrang -%}
+      {{ m.preview_image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '480, 720, 800, 960, 1200, 1400', sizes: '(min-width: 990px) 30vw, 100vw', alt: m.alt }}
+    {%- else -%}
+      {{ m.preview_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '480, 720, 800, 960, 1200, 1400', sizes: '(min-width: 990px) 30vw, 100vw', alt: m.alt }}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if eerste -%}
+    <span class="b3-pil b3-pil--licht b3-gal__badge">{% render 'b3-ster' %} 4,5 op bol.com (13)</span>
+  {%- endif -%}
+</figure>

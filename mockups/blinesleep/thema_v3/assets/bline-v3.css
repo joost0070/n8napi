@@ -1,0 +1,651 @@
+/* Bline v3: speels en rustig. Warme basis, getinte kaarten in de kussenkleuren, ronde hoeken, één schuin woord in koppen. */
+:root {
+  --b3-bg: #FBF8F4;
+  --b3-wit: #FFFFFF;
+  --b3-inkt: #1D2330;
+  --b3-sub: #5A6170;
+  --b3-lijn: #E8E2D9;
+  --b3-knop: #1F2A37;
+  --b3-knop-hover: #2E3B4C;
+  --b3-zand: #F2EADF;
+  --b3-mist: #E5EAF2;
+  --b3-steen: #ECEAE6;
+  --b3-nacht: #1F2A37;
+  --b3-accent: #C4623E;
+  --b3-ster: #E8A317;
+  --b3-groen: #2F7A4B;
+  --b3-r: 18px;
+  --b3-r-klein: 12px;
+  --b3-gutter: 16px;
+  --font-body-family: 'B3 Poppins', -apple-system, 'Segoe UI', sans-serif;
+  --font-heading-family: 'B3 Poppins', -apple-system, 'Segoe UI', sans-serif;
+  --font-heading-weight: 600;
+}
+body { font-family: var(--font-body-family); letter-spacing: 0; }
+h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4 { font-family: var(--font-heading-family); letter-spacing: -0.01em; }
+
+.b3 { color: var(--b3-inkt); font-size: 1.5rem; line-height: 1.55; }
+.b3 em, .b3-schuin { font-family: 'B3 Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: 0; }
+.b3 img { display: block; max-width: 100%; height: auto; }
+.b3-oog { font-size: 1.2rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--b3-sub); margin: 0 0 .6rem; }
+.b3-pil { display: inline-flex; align-items: center; gap: .4rem; font-size: 1.2rem; font-weight: 500; line-height: 1; padding: .7rem 1.1rem; border-radius: 99px; background: var(--b3-inkt); color: #fff; white-space: nowrap; }
+.b3-pil--licht { background: rgba(255,255,255,.92); color: var(--b3-inkt); box-shadow: 0 1px 6px rgba(0,0,0,.08); }
+.b3-pil--accent { background: #B5562F; color: #fff; }
+.b3-ster { color: var(--b3-ster); }
+.b3-knop { display: inline-flex; align-items: center; justify-content: center; gap: 1rem; min-height: 5.2rem; padding: 0 2.4rem; border: 0; border-radius: 99px; background: var(--b3-knop); color: #fff; font: 500 1.6rem/1 var(--font-body-family); cursor: pointer; text-decoration: none; transition: background .2s, transform .1s; }
+.b3-knop:hover { background: var(--b3-knop-hover); }
+.b3-knop:active { transform: scale(.99); }
+.b3-knop[disabled] { opacity: .5; cursor: default; }
+.b3-knop--groot { width: 100%; min-height: 5.8rem; font-size: 1.7rem; margin-top: 1.6rem; }
+.b3-knop__prijs { opacity: .8; font-weight: 400; }
+.b3-knop__prijs::before { content: '·'; margin-right: 1rem; }
+.b3-knop--licht { background: #fff; color: var(--b3-inkt); }
+.b3-knop--licht:hover { background: var(--b3-zand); }
+.b3-icoon { flex: none; }
+
+/* ---------- product ---------- */
+.b3-product { background: var(--b3-wit); }
+.b3-product__in { max-width: 132rem; margin: 0 auto; }
+.b3-gal__track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.b3-gal__track::-webkit-scrollbar { display: none; }
+.b3-gal__slide { position: relative; flex: 0 0 100%; margin: 0; scroll-snap-align: start; aspect-ratio: 1 / 1; background: var(--b3-steen); overflow: hidden; }
+.b3-gal__slide img, .b3-gal__video { width: 100%; height: 100%; object-fit: cover; }
+.b3-gal__slide--passend { background: #fff; }
+.b3-gal__slide--passend img { object-fit: contain; padding: 6%; }
+.b3-gal__badge { position: absolute; left: 1.2rem; top: 1.2rem; }
+.b3-gal__label { position: absolute; right: 1.2rem; top: 1.2rem; background: rgba(29,35,48,.75); }
+.b3-gal__onder { display: flex; align-items: center; gap: 1.2rem; padding: 1rem var(--b3-gutter) 0; }
+.b3-gal__teller { font-size: 1.2rem; color: var(--b3-sub); min-width: 3.6rem; }
+.b3-gal__duims { display: flex; gap: .8rem; overflow-x: auto; scrollbar-width: none; padding: .3rem; }
+.b3-gal__duims::-webkit-scrollbar { display: none; }
+.b3-gal__duim { flex: none; width: 5.2rem; height: 5.2rem; padding: 0; border: 0; border-radius: 10px; overflow: hidden; background: var(--b3-steen); opacity: .55; cursor: pointer; outline: 1px solid var(--b3-lijn); transition: opacity .2s; }
+.b3-gal__duim img { width: 100%; height: 100%; object-fit: cover; }
+.b3-gal__duim.is-actief { opacity: 1; outline: 2px solid var(--b3-inkt); outline-offset: 1px; }
+
+.b3-product__info { padding: 2rem var(--b3-gutter) 3.2rem; }
+.b3-product__titel { font-size: 3rem; line-height: 1.1; font-weight: 600; margin: 0 0 .6rem; }
+.b3-product__titel em { font-size: 1.12em; }
+@media (max-width: 749px) { .b3-product__titel { min-height: 6.3rem; } } /* titel staat op mobiel op 2 regels: geen verspringing als het lettertype laadt */
+.b3-product .bline-score { margin: 0 0 1rem; }
+.b3-product__pitch { color: var(--b3-sub); margin: 0 0 1.4rem; max-width: 48ch; }
+.b3-prijs { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+.b3-prijs__nu { font-size: 2.6rem; font-weight: 600; }
+.b3-prijs__extra { font-size: 1.3rem; color: var(--b3-sub); }
+.b3-keuze { margin-bottom: 1.8rem; }
+.b3-keuze__label { font-size: 1.4rem; margin: 0 0 .9rem; color: var(--b3-sub); }
+.b3-keuze__label b { color: var(--b3-inkt); font-weight: 600; }
+.b3-keuze__hint { font-size: 1.25rem; color: var(--b3-sub); margin: .8rem 0 0; }
+.b3-kleurknoppen { display: flex; gap: 1rem; flex-wrap: wrap; }
+.b3-kleurknop { width: 4.8rem; height: 4.8rem; padding: .4rem; border-radius: 50%; border: 2px solid transparent; background: none; cursor: pointer; transition: border-color .15s; }
+.b3-kleurknop__bol { display: block; width: 100%; height: 100%; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.b3-kleurknop.is-gekozen { border-color: var(--b3-inkt); }
+.b3-kleurknop:focus-visible { outline: 2px solid var(--b3-accent); outline-offset: 2px; }
+.b3-aantal { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.b3-aantal__optie { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: .3rem; padding: 1.4rem 1.4rem 1.2rem; border: 1.5px solid var(--b3-lijn); border-radius: var(--b3-r-klein); background: #fff; color: var(--b3-inkt); font: inherit; text-align: left; cursor: pointer; }
+.b3-aantal__optie.is-gekozen { border-color: var(--b3-inkt); box-shadow: inset 0 0 0 1px var(--b3-inkt); }
+.b3-aantal__kop { font-weight: 600; font-size: 1.45rem; }
+.b3-aantal__prijs { font-size: 1.35rem; color: var(--b3-sub); }
+.b3-aantal__prijs s { opacity: .7; margin-left: .3rem; }
+.b3-aantal__badge { position: absolute; top: -1rem; right: 1rem; font-size: 1.1rem; padding: .5rem .8rem; }
+.b3-hoes { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem; border-radius: var(--b3-r-klein); background: var(--b3-zand); cursor: pointer; position: relative; }
+.b3-hoes__vink { position: absolute; opacity: 0; pointer-events: none; }
+.b3-hoes__vakje { width: 2.2rem; height: 2.2rem; border-radius: 6px; border: 1.5px solid var(--b3-inkt); background: #fff; display: grid; place-items: center; }
+.b3-hoes__vink:checked + .b3-hoes__vakje { background: var(--b3-inkt); }
+.b3-hoes__vink:checked + .b3-hoes__vakje::after { content: ''; width: .6rem; height: 1.1rem; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-1px, -1px); }
+.b3-hoes__vink:focus-visible + .b3-hoes__vakje { outline: 2px solid var(--b3-accent); outline-offset: 2px; }
+.b3-hoes__beeld { width: 5.6rem; height: 5.6rem; border-radius: 10px; overflow: hidden; background: #fff; }
+.b3-hoes__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-hoes__tekst { font-size: 1.35rem; line-height: 1.4; }
+.b3-hoes__prijs { font-weight: 600; }
+.b3-hoes__prijs s { font-weight: 400; color: var(--b3-sub); margin-left: .3rem; }
+.b3-hoes__sub { display: block; color: var(--b3-sub); font-size: 1.2rem; }
+.b3-product__fout { color: #A3332A; font-size: 1.3rem; margin: .8rem 0 0; }
+.b3-vinkjes { list-style: none; padding: 0; margin: 1.8rem 0 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.2rem; }
+.b3-vinkjes li { display: flex; align-items: center; gap: .8rem; font-size: 1.3rem; line-height: 1.3; }
+.b3-vinkjes .b3-icoon { color: var(--b3-inkt); }
+.b3-product .bline-betaal { margin: 0 0 1.6rem; }
+.b3-uitklap details { border-top: 1px solid var(--b3-lijn); }
+.b3-uitklap details:last-child { border-bottom: 1px solid var(--b3-lijn); }
+.b3-uitklap summary { list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; font-weight: 500; cursor: pointer; }
+.b3-uitklap summary::-webkit-details-marker { display: none; }
+.b3-uitklap summary::after { content: '+'; font-size: 2rem; font-weight: 300; line-height: 1; }
+.b3-uitklap details[open] summary::after { content: '−'; }
+.b3-uitklap details > div { padding: 0 0 1.6rem; color: var(--b3-sub); font-size: 1.4rem; }
+.b3-uitklap details > div p { margin: 0 0 .6rem; }
+.b3-uitklap b { color: var(--b3-inkt); font-weight: 500; }
+.b3-plak { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; padding: 1rem var(--b3-gutter) calc(1rem + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--b3-lijn); box-shadow: 0 -4px 18px rgba(0,0,0,.06); }
+.b3-plak__info { font-size: 1.4rem; }
+.b3-plak .b3-knop { min-height: 4.6rem; }
+
+@media (min-width: 990px) {
+  .b3-product__in { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 5.6rem; padding: 3.2rem 4.8rem 6.4rem; }
+  .b3-gal__track { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; overflow: visible; }
+  .b3-gal__slide { border-radius: var(--b3-r); }
+  .b3-gal__slide--eerste { grid-column: span 2; }
+  .b3-gal__onder { display: none; }
+  .b3-product__info { position: sticky; top: 2.4rem; align-self: start; padding: 0; }
+  .b3-product__titel { font-size: 3.8rem; }
+  .b3-plak { display: none !important; }
+}
+
+/* ---------- band ---------- */
+.b3-band { background: var(--b3-nacht); color: #fff; overflow: hidden; padding: 1.4rem 0; }
+.b3-band__rij { display: flex; width: max-content; animation: b3-loop 38s linear infinite; }
+.b3-band__groep { display: flex; gap: 3.6rem; padding-right: 3.6rem; }
+.b3-band__item { display: inline-flex; align-items: center; gap: 1rem; font-size: 1.4rem; font-weight: 500; white-space: nowrap; }
+.b3-band__item .b3-icoon { opacity: .85; }
+@keyframes b3-loop { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .b3-band__rij { animation: none; } }
+
+/* ---------- algemene sectie ---------- */
+.b3-sectie { padding: 5.6rem var(--b3-gutter); }
+.b3-sectie--warm { background: var(--b3-bg); }
+.b3-sectie--wit { background: #fff; }
+.b3-sectie__in { max-width: 124rem; margin: 0 auto; }
+.b3-kop { font-size: 3rem; line-height: 1.12; font-weight: 600; margin: 0 0 1rem; }
+.b3-kop em { font-size: 1.14em; }
+.b3-intro { color: var(--b3-sub); margin: 0 0 2.8rem; max-width: 56ch; }
+.b3-kopregel { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
+@media (min-width: 990px) {
+  .b3-sectie { padding: 9.6rem 4.8rem; }
+  .b3-kop { font-size: 4.4rem; }
+}
+
+/* ---------- momenten (mozaïek) ---------- */
+.b3-mozaiek { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.b3-tegel { position: relative; display: block; border-radius: var(--b3-r); overflow: hidden; background: var(--b3-steen); color: #fff; text-decoration: none; aspect-ratio: 1 / 1; }
+.b3-tegel img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.b3-tegel:hover img { transform: scale(1.03); }
+.b3-tegel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.45)); }
+.b3-tegel__tekst { position: absolute; left: 1.2rem; right: 1.2rem; bottom: 1.2rem; z-index: 1; }
+.b3-tegel__kop { display: block; font-size: 1.6rem; font-weight: 600; line-height: 1.2; }
+.b3-tegel__kleur { display: inline-flex; align-items: center; gap: .6rem; font-size: 1.2rem; opacity: .95; margin-top: .4rem; }
+.b3-tegel__kleur i { width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--k); box-shadow: 0 0 0 1.5px #fff; }
+.b3-tegel--groot { grid-column: span 2; aspect-ratio: 4 / 3; }
+.b3-tegel--groot .b3-tegel__kop { font-size: 2.2rem; }
+@media (min-width: 990px) {
+  .b3-mozaiek { grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: auto auto; gap: 1.6rem; }
+  .b3-tegel--groot { grid-column: 1; grid-row: span 2; aspect-ratio: auto; }
+  .b3-tegel--groot .b3-tegel__kop { font-size: 3rem; }
+  .b3-tegel__tekst { left: 2rem; bottom: 2rem; }
+}
+
+/* ---------- binnenkant (getallen) ---------- */
+.b3-binnen { display: grid; gap: 1.6rem; }
+.b3-binnen__beeld { border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 1 / 1; background: #fff; }
+.b3-binnen__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-binnen__getallen { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.b3-getal { background: #fff; border-radius: var(--b3-r); padding: 1.8rem 1.6rem; }
+.b3-getal__groot { display: block; font-size: 3.6rem; font-weight: 600; line-height: 1; letter-spacing: -.02em; }
+.b3-getal__groot small { font-size: .5em; font-weight: 500; margin-left: .2rem; }
+.b3-getal__tekst { display: block; margin-top: .8rem; font-size: 1.3rem; color: var(--b3-sub); line-height: 1.4; }
+.b3-getal--zand { background: var(--b3-zand); }
+.b3-getal--mist { background: var(--b3-mist); }
+.b3-getal--steen { background: var(--b3-steen); }
+@media (min-width: 990px) {
+  .b3-binnen { grid-template-columns: 1fr 1fr; gap: 2.4rem; align-items: stretch; }
+  .b3-binnen__getallen { gap: 1.6rem; }
+  .b3-getal { padding: 2.8rem 2.4rem; }
+  .b3-getal__groot { font-size: 5.2rem; }
+}
+
+/* ---------- kies je kleur ---------- */
+.b3-kleurrij { display: grid; grid-auto-flow: column; grid-auto-columns: 62%; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(var(--b3-gutter) * -1); padding: 0 var(--b3-gutter); }
+.b3-kleurrij::-webkit-scrollbar { display: none; }
+.b3-kleurkaart { scroll-snap-align: start; display: block; border: 0; padding: 0; border-radius: var(--b3-r); overflow: hidden; background: var(--t, var(--b3-steen)); color: var(--b3-inkt); text-align: left; font: inherit; cursor: pointer; }
+.b3-kleurkaart__beeld { aspect-ratio: 4 / 5; overflow: hidden; }
+.b3-kleurkaart__beeld img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.b3-kleurkaart:hover img { transform: scale(1.04); }
+.b3-kleurkaart__voet { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.4rem 1.4rem; }
+.b3-kleurkaart__naam { font-family: 'B3 Serif', Georgia, serif; font-style: italic; font-size: 2.4rem; line-height: 1; }
+.b3-kleurkaart__prijs { font-size: 1.3rem; color: var(--b3-sub); }
+.b3-kleurkaart__pijl { width: 3.6rem; height: 3.6rem; border-radius: 50%; display: grid; place-items: center; background: #fff; }
+@media (min-width: 990px) {
+  .b3-kleurrij { grid-auto-flow: initial; grid-template-columns: repeat(5, 1fr); gap: 1.6rem; overflow: visible; margin: 0; padding: 0; }
+}
+
+/* ---------- beeld met tekst (verhaal) ---------- */
+.b3-verhaal { display: grid; gap: 2rem; align-items: center; }
+.b3-verhaal__media { position: relative; border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 1 / 1; background: var(--b3-steen); }
+.b3-verhaal__media img, .b3-verhaal__media video { width: 100%; height: 100%; object-fit: cover; }
+.b3-verhaal__punten { list-style: none; padding: 0; margin: 2rem 0 2.4rem; display: grid; gap: 1.2rem; }
+.b3-verhaal__punten li { display: flex; gap: 1.2rem; align-items: flex-start; }
+.b3-verhaal__punten .b3-icoon { margin-top: .1rem; color: var(--b3-inkt); }
+.b3-verhaal__punten b { display: block; font-weight: 600; }
+.b3-verhaal__punten span { color: var(--b3-sub); font-size: 1.4rem; }
+@media (min-width: 990px) {
+  .b3-verhaal { grid-template-columns: 1fr 1fr; gap: 6.4rem; }
+  .b3-verhaal--om .b3-verhaal__media { order: 2; }
+}
+
+/* ---------- score ---------- */
+.b3-score { display: grid; gap: 2rem; background: #fff; border-radius: var(--b3-r); padding: 2.4rem 2rem; }
+.b3-score__groot { font-size: 6.4rem; font-weight: 600; line-height: 1; letter-spacing: -.03em; }
+.b3-score__sterren { display: flex; gap: .2rem; margin: .8rem 0 .6rem; }
+.b3-score__sterren .b3-ster { width: 2rem; height: 2rem; }
+.b3-score__bron { color: var(--b3-sub); font-size: 1.3rem; }
+.b3-score__rij { display: grid; grid-template-columns: 6rem 1fr 2rem; gap: 1rem; align-items: center; font-size: 1.3rem; color: var(--b3-sub); margin: .5rem 0; }
+.b3-score__balk { height: .8rem; border-radius: 99px; background: var(--b3-steen); overflow: hidden; }
+.b3-score__balk i { display: block; height: 100%; background: var(--b3-ster); border-radius: 99px; }
+@media (min-width: 990px) { .b3-score { grid-template-columns: 26rem 1fr; gap: 4.8rem; align-items: center; padding: 4rem 4.8rem; } }
+
+/* ---------- vergelijk ---------- */
+.b3-vergelijk { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; border-radius: var(--b3-r); overflow: hidden; font-size: 1.4rem; }
+.b3-vergelijk th, .b3-vergelijk td { padding: 1.4rem 1.2rem; text-align: left; border-bottom: 1px solid var(--b3-lijn); vertical-align: top; }
+.b3-vergelijk tr:last-child td { border-bottom: 0; }
+.b3-vergelijk thead th { font-weight: 600; background: var(--b3-zand); }
+.b3-vergelijk thead th:nth-child(2) { background: var(--b3-nacht); color: #fff; }
+.b3-vergelijk td:nth-child(2) { font-weight: 500; }
+.b3-vergelijk td:first-child { color: var(--b3-sub); width: 32%; }
+
+/* ---------- hoezen ---------- */
+.b3-hoezen { display: grid; grid-auto-flow: column; grid-auto-columns: 44%; gap: 1rem; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--b3-gutter) * -1); padding: 0 var(--b3-gutter); }
+.b3-hoezen::-webkit-scrollbar { display: none; }
+.b3-hoeskaart { display: block; text-decoration: none; color: var(--b3-inkt); }
+.b3-hoeskaart__beeld { border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 1 / 1; background: var(--b3-steen); }
+.b3-hoeskaart__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-hoeskaart__naam { display: block; font-weight: 500; margin-top: .8rem; font-size: 1.4rem; }
+.b3-hoeskaart__prijs { display: block; color: var(--b3-sub); font-size: 1.3rem; }
+@media (min-width: 990px) { .b3-hoezen { grid-auto-flow: initial; grid-template-columns: repeat(5, 1fr); gap: 1.6rem; overflow: visible; margin: 0; padding: 0; } }
+
+/* ---------- vragen ---------- */
+.b3-vragen { display: grid; gap: 1rem; }
+.b3-vragen details { background: #fff; border-radius: var(--b3-r-klein); padding: 0 1.8rem; }
+.b3-vragen summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1.6rem; padding: 1.8rem 0; font-weight: 500; cursor: pointer; }
+.b3-vragen summary::-webkit-details-marker { display: none; }
+.b3-vragen summary::after { content: '+'; font-size: 2.2rem; font-weight: 300; line-height: 1; }
+.b3-vragen details[open] summary::after { content: '−'; }
+.b3-vragen details > div { padding: 0 0 1.8rem; color: var(--b3-sub); }
+@media (min-width: 990px) { .b3-vragen-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6.4rem; align-items: start; } }
+
+/* Dawn-header en balk rustiger in de v3-stijl */
+.announcement-bar { font-family: var(--font-body-family); }
+
+/* vaste correcties */
+.b3 [hidden], .b3[hidden], .b3-plak[hidden] { display: none !important; }
+.b3-kleurkaart__beeld, .b3-hoeskaart__beeld, .b3-binnen__beeld, .b3-hoes__beeld { display: block; }
+.b3-product .bline-score, .b3-product .bline-score__sterren { color: var(--b3-inkt); }
+.b3-product .bline-score__sterren { color: var(--b3-ster); }
+.b3 a.b3-kleurkaart, .b3 a.b3-hoeskaart, .b3 a.b3-tegel { text-decoration: none; }
+@media (min-width: 990px) {
+  .b3-gal__slide:last-child:nth-child(even) { grid-column: span 2; aspect-ratio: 2 / 1; }
+  .b3-binnen__getallen { align-content: stretch; }
+}
+
+/* galerij mobiel: stippen en teller in het beeld, geen duimen (meer ruimte voor titel en prijs) */
+.b3-gal { position: relative; }
+.b3-gal__onder, .b3-gal__duims { display: none; }
+.b3-gal__stip { position: absolute; left: 0; right: 0; bottom: 1.2rem; display: flex; justify-content: center; gap: .6rem; pointer-events: none; }
+.b3-gal__stip i { width: .7rem; height: .7rem; border-radius: 50%; background: rgba(255,255,255,.6); box-shadow: 0 0 2px rgba(0,0,0,.25); transition: width .2s, background .2s; }
+.b3-gal__stip i.is-actief { width: 2rem; border-radius: 99px; background: #fff; }
+.b3-gal__teller { position: absolute; right: 1.2rem; bottom: 1rem; font-size: 1.15rem; color: var(--b3-inkt); background: rgba(255,255,255,.9); border-radius: 99px; padding: .4rem .9rem; min-width: 0; }
+.b3-product__info { padding-top: 1.6rem; }
+.b3-product__titel { font-size: 2.7rem; }
+.b3-prijs { margin-bottom: 1rem; }
+.b3-product__pitch { margin-bottom: 1.8rem; font-size: 1.4rem; }
+@media (min-width: 990px) {
+  .b3-gal__stip, .b3-gal__teller { display: none; }
+  .b3-product__titel { font-size: 4rem; }
+  .b3-product__pitch { font-size: 1.5rem; }
+}
+
+/* ---------- groot beeld ---------- */
+.b3-groot { position: relative; color: #fff; background: var(--b3-nacht); }
+.b3-groot__beeld { aspect-ratio: 4 / 5; overflow: hidden; }
+.b3-groot__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-groot::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,22,0) 35%, rgba(10,14,22,.72)); pointer-events: none; }
+.b3-groot__tekst { position: absolute; left: var(--b3-gutter); right: var(--b3-gutter); bottom: 3.2rem; z-index: 1; max-width: 52rem; }
+.b3-groot .b3-oog { color: rgba(255,255,255,.85); }
+.b3-groot .b3-kop { color: #fff; font-size: 3.4rem; }
+.b3-groot__tekst p:not(.b3-oog) { margin: 0 0 2rem; opacity: .92; }
+@media (min-width: 990px) {
+  .b3-groot__beeld { aspect-ratio: 16 / 9; max-height: 88vh; width: 100%; }
+  .b3-groot::after { background: linear-gradient(90deg, rgba(10,14,22,.66) 0%, rgba(10,14,22,.15) 55%, rgba(10,14,22,0) 100%); }
+  .b3-groot--rechts::after { background: linear-gradient(270deg, rgba(10,14,22,.66) 0%, rgba(10,14,22,.15) 55%, rgba(10,14,22,0) 100%); }
+  /* zelfde linkerlijn als de andere secties (max 124rem breed, 4.8rem rand) */
+  .b3-groot__tekst { left: max(4.8rem, calc((100% - 124rem) / 2)); bottom: auto; top: 50%; transform: translateY(-50%); }
+  .b3-groot--rechts .b3-groot__tekst { left: auto; right: max(4.8rem, calc((100% - 124rem) / 2)); }
+  .b3-groot .b3-kop { font-size: 5.6rem; }
+}
+
+/* ---------- donker vlak ---------- */
+.b3-sectie--donker { background: var(--b3-nacht); color: #fff; }
+.b3-sectie--donker .b3-kop, .b3-sectie--donker .b3-verhaal__punten b, .b3-sectie--donker .b3-verhaal__punten .b3-icoon { color: #fff; }
+.b3-sectie--donker .b3-oog, .b3-sectie--donker .b3-intro, .b3-sectie--donker .b3-verhaal__punten span { color: rgba(255,255,255,.72); }
+.b3-sectie--donker .b3-verhaal__media { background: #2a3646; }
+
+/* ---------- maat ---------- */
+.b3-maat { display: grid; gap: 2.4rem; align-items: center; }
+.b3-maat__tekening { background: var(--b3-zand); border-radius: var(--b3-r); padding: 2.4rem 1.6rem; }
+.b3-maat__tekening svg { display: block; width: 100%; height: auto; }
+.b3-maat__bedden { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.2rem; }
+.b3-maat__bedden li { display: grid; grid-template-columns: 9.6rem 1fr; grid-template-rows: auto auto; column-gap: 1.6rem; align-items: center; }
+.b3-maat__bedden li > b { font-weight: 600; }
+.b3-maat__bedden li > span:last-child { color: var(--b3-sub); font-size: 1.35rem; grid-column: 2; }
+.b3-maat__bed { grid-row: span 2; display: flex; gap: 2px; justify-content: center; align-items: flex-start; width: calc(var(--b) * .5px * 1.15); height: 5.6rem; border: 1.5px solid var(--b3-inkt); border-radius: 6px; padding: 4px; background: #fff; }
+.b3-maat__bed i { display: block; width: calc(65 * .5px * 1.15 - 4px); height: 1.8rem; border-radius: 3px; background: var(--b3-inkt); opacity: .85; }
+@media (min-width: 990px) { .b3-maat { grid-template-columns: 1fr 1fr; gap: 6.4rem; } .b3-maat__tekening { padding: 4rem; } }
+.b3-product__titel em, .b3-kop em { white-space: nowrap; }
+
+/* ---------- Dawn in de v3-stijl (winkelwagen, hoes-pagina, gewone pagina's) ---------- */
+.button, .shopify-payment-button__button--unbranded { font-family: var(--font-body-family); font-weight: 500; letter-spacing: 0; }
+.button--primary, .product-form__submit, .cart__checkout-button { background: var(--b3-knop); color: #fff; }
+.main-page-title, .product__title h1, .title { font-family: var(--font-heading-family); font-weight: 600; letter-spacing: -.01em; }
+.product__title h1 { font-size: clamp(2.6rem, 4vw, 3.8rem); }
+.rte { font-size: 1.5rem; line-height: 1.7; color: var(--b3-sub); }
+.rte h2, .rte h3 { color: var(--b3-inkt); }
+.page-width--narrow .main-page-title { margin-top: 2rem; }
+/* winkelwagen-lade */
+cart-drawer .drawer__inner { background: var(--b3-bg); border-left: 0; }
+cart-drawer .drawer__heading { font-family: var(--font-heading-family); font-weight: 600; font-size: 2.2rem; }
+cart-drawer .cart-item__name { font-weight: 500; text-decoration: none; }
+cart-drawer .cart-item__image { border-radius: 12px; }
+cart-drawer .drawer__footer { background: #fff; border-radius: 18px 18px 0 0; box-shadow: 0 -6px 20px rgba(0,0,0,.05); padding-left: 1.6rem; padding-right: 1.6rem; margin-left: -1.6rem; margin-right: -1.6rem; }
+cart-drawer .totals__total-value { font-weight: 600; }
+cart-drawer .cart__checkout-button { min-height: 5.4rem; font-size: 1.6rem; }
+cart-drawer .quantity { border-radius: 99px; }
+cart-drawer .quantity:after, cart-drawer .quantity:before { border-radius: 99px; }
+.bline-upsell { border: 0; }
+.bline-upsell .bline-upsell__cel { padding: 0 0 1.6rem; }
+.bline-upsell__kaart { display: flex; align-items: center; gap: 1.2rem; padding: .8rem 1rem .8rem .8rem; border-radius: 14px; background: var(--b3-zand); }
+.bline-upsell__foto { flex: none; width: 6.4rem; height: 6.4rem; border-radius: 10px; overflow: hidden; background: #fff; }
+.bline-upsell__foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bline-upsell__info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .3rem; line-height: 1.3; }
+.bline-upsell__regel { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .8rem; }
+.bline-upsell__oog { font-size: 1.15rem; letter-spacing: .04em; color: rgba(var(--color-foreground), .65); }
+.bline-upsell__naam { font-size: 1.4rem; font-weight: 500; color: inherit; text-decoration: none; }
+.bline-upsell__prijs { font-size: 1.35rem; }
+.bline-upsell__prijs s { color: rgba(var(--color-foreground), .55); margin-right: .3rem; }
+.bline-upsell__knop { flex: none; width: 4.4rem; height: 4.4rem; border-radius: 50%; border: 0; background: var(--b3-knop); color: #fff; font-size: 2.2rem; line-height: 1; cursor: pointer; display: grid; place-items: center; }
+.bline-upsell__knop:hover { background: var(--b3-knop-hover); }
+.bline-upsell__knop:focus-visible { outline: 2px solid var(--b3-accent); outline-offset: 2px; }
+.bline-upsell__knop[aria-busy="true"] { opacity: .6; }
+.bline-upsell__kleuren { display: flex; gap: .2rem; margin-top: .2rem; }
+.bline-upsell__kleur { width: 2.8rem; height: 2.8rem; padding: .3rem; border-radius: 50%; border: 1.5px solid transparent; background: none; cursor: pointer; }
+.bline-upsell__kleur::before { content: ""; display: block; width: 100%; height: 100%; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+.bline-upsell__kleur.is-gekozen { border-color: var(--b3-inkt); }
+.bline-upsell__kleur:focus-visible { outline: 2px solid var(--b3-accent); outline-offset: 1px; }
+/* aankondigingsbalk rustiger */
+.announcement-bar__message { font-size: 1.15rem; letter-spacing: .08em; font-weight: 500; }
+/* hoes-pagina: product in het wit, galerij met ronde hoeken */
+.product .product__media-item img, .product__media-wrapper .media { border-radius: var(--b3-r); }
+
+/* app-link bij de koopknop */
+.b3-app { display: flex; gap: 1.2rem; align-items: center; padding: 1.2rem 1.4rem; margin: 0 0 1.6rem; border-radius: var(--b3-r-klein); background: var(--b3-bg); color: var(--b3-inkt); text-decoration: none; font-size: 1.3rem; line-height: 1.4; }
+.b3-app b { font-weight: 600; }
+.b3-app__bol { flex: none; width: 4rem; height: 4rem; border-radius: 50%; display: grid; place-items: center; background: #fff; }
+
+/* ---------- paginakop ---------- */
+.b3-kopblok { padding-bottom: 3.2rem; }
+.b3-kopblok__kop { margin-bottom: 1.2rem; }
+.b3-kopblok__intro p { margin: 0; }
+@media (min-width: 990px) { .b3-kopblok { padding-top: 7.2rem; padding-bottom: 4.8rem; } }
+
+/* ---------- lookbook ---------- */
+.b3-lookbook { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.b3-lookbook__item { position: relative; display: block; border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 1 / 1; background: var(--b3-steen); }
+.b3-lookbook__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.b3-lookbook__item:hover img { transform: scale(1.03); }
+.b3-lookbook__item--groot { grid-column: span 2; }
+.b3-lookbook__kleur { position: absolute; left: 1rem; bottom: 1rem; font-size: 1.15rem; padding: .6rem .9rem; }
+.b3-lookbook__kleur i { width: 1.1rem; height: 1.1rem; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+@media (min-width: 990px) {
+  .b3-lookbook { grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+  .b3-lookbook__item--groot { grid-column: span 2; grid-row: span 2; }
+}
+
+/* ---------- kleurengids ---------- */
+.b3-gids { display: grid; gap: 4rem; }
+.b3-gids__rij { display: grid; gap: 1.6rem; align-items: center; }
+.b3-gids__beeld { display: block; border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 1 / 1; background: var(--b3-steen); }
+.b3-gids__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-gids__bol { display: block; width: 3.6rem; height: 3.6rem; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); margin-bottom: 1.2rem; }
+.b3-gids .b3-kop em { font-size: 1.3em; }
+.b3-gids .b3-intro p { margin: 0; }
+@media (min-width: 990px) {
+  .b3-gids { gap: 6.4rem; }
+  .b3-gids__rij { grid-template-columns: 1fr 1fr; gap: 6.4rem; }
+  .b3-gids__rij--om .b3-gids__beeld { order: 2; }
+}
+
+/* ---------- tegels ---------- */
+.b3-tegels { display: grid; gap: 1rem; }
+.b3-tegelkaart { border-radius: var(--b3-r); padding: 2.4rem 2rem; }
+.b3-tegelkaart__icoon { width: 4.4rem; height: 4.4rem; border-radius: 50%; display: grid; place-items: center; background: #fff; margin-bottom: 1.4rem; }
+.b3-tegelkaart h3 { font-size: 1.8rem; font-weight: 600; margin: 0 0 .6rem; }
+.b3-tegelkaart div { color: var(--b3-sub); font-size: 1.4rem; }
+.b3-tegelkaart div p { margin: 0; }
+.b3-tegelkaart__link { display: inline-flex; align-items: center; min-height: 2.4rem; gap: .6rem; margin-top: 1.2rem; color: var(--b3-inkt); font-weight: 500; text-decoration: none; }
+@media (min-width: 750px) { .b3-tegels { grid-template-columns: repeat(3, 1fr); gap: 1.6rem; } }
+
+/* ---------- aanmelden ---------- */
+.b3-aanmelden { max-width: 64rem; text-align: center; }
+.b3-aanmelden .b3-intro { margin-left: auto; margin-right: auto; }
+.b3-aanmelden__form { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; }
+.b3-aanmelden__form input[type=email] { flex: 1 1 24rem; min-height: 5.2rem; border-radius: 99px; border: 1.5px solid var(--b3-lijn); padding: 0 2rem; font: inherit; background: #fff; }
+.b3-aanmelden__ok, .b3-aanmelden__fout { width: 100%; margin: .8rem 0 0; }
+.b3-aanmelden__klein { font-size: 1.2rem; color: var(--b3-sub); margin-top: 1.2rem; }
+
+/* ---------- Dawn-pagina's, collecties en blog in de v3-stijl ---------- */
+.main-page-title { font-size: clamp(3rem, 5vw, 4.4rem); margin-bottom: 2.4rem; }
+.template-page .rte, .template-page .page-width--narrow { color: var(--b3-sub); }
+.contact .field__input, .contact .text-area { border-radius: 12px; }
+.contact .button { min-height: 5.2rem; }
+.card-wrapper .card__heading { font-family: var(--font-heading-family); font-weight: 500; }
+.card__media, .card .media { border-radius: var(--b3-r); }
+.blog-articles .card__heading, .article-template__title { font-family: var(--font-heading-family); font-weight: 600; }
+.article-template__hero-container .media { border-radius: var(--b3-r); }
+.collection-hero__title { font-family: var(--font-heading-family); font-weight: 600; }
+@media (max-width: 989px) { .b3-lookbook__item--groot ~ .b3-lookbook__item:last-child:nth-child(even) { grid-column: span 2; aspect-ratio: 2 / 1; } }
+.footer-block__details-content, .footer-block__details-content p, .footer__content-bottom { color: rgba(255,255,255,.78); }
+.footer-block__details-content a { color: #fff; }
+
+/* ---------- homepage: hero ---------- */
+.b3-hero { background: var(--b3-bg); }
+.b3-hero__in { display: grid; max-width: 144rem; margin: 0 auto; }
+.b3-hero__beeld { position: relative; aspect-ratio: 1 / 1; overflow: hidden; }
+.b3-hero__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-hero__badge { position: absolute; left: 1.2rem; top: 1.2rem; }
+.b3-hero__tekst { padding: 2.4rem var(--b3-gutter) 3.2rem; }
+.b3-hero__kop { font-size: 3.4rem; line-height: 1.08; font-weight: 600; letter-spacing: -.015em; margin: 0 0 1.2rem; }
+.b3-hero__kop em { font-family: 'B3 Serif', Georgia, serif; font-style: italic; font-weight: 400; font-size: 1.12em; white-space: nowrap; }
+.b3-hero__sub { color: var(--b3-sub); font-size: 1.55rem; margin: 0 0 2rem; max-width: 46ch; }
+.b3-hero__knoppen { display: flex; flex-wrap: wrap; gap: 1rem; }
+.b3-hero__knoppen .b3-knop { flex: 1 1 auto; }
+.b3-knop--rand { background: transparent; color: var(--b3-inkt); box-shadow: inset 0 0 0 1.5px var(--b3-inkt); }
+.b3-knop--rand:hover { background: #fff; }
+.b3-hero__vinkjes { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: .8rem; }
+.b3-hero__vinkjes li { display: flex; gap: .9rem; align-items: center; font-size: 1.35rem; }
+@media (min-width: 990px) {
+  .b3-hero__in { grid-template-columns: 1fr 1.2fr; align-items: center; min-height: 64rem; }
+  .b3-hero__beeld { order: 2; aspect-ratio: auto; height: 100%; min-height: 64rem; }
+  .b3-hero__tekst { padding: 6.4rem 5.6rem 6.4rem max(4.8rem, calc((100vw - 144rem) / 2 + 4.8rem)); }
+  .b3-hero__kop { font-size: 5.6rem; }
+  .b3-hero__sub { font-size: 1.7rem; }
+  .b3-hero__knoppen .b3-knop { flex: 0 0 auto; }
+  .b3-hero__vinkjes { grid-template-columns: repeat(3, auto); gap: 1.6rem; }
+}
+
+/* ---------- homepage: product in het kort ---------- */
+.b3-kort { display: grid; gap: 2rem; align-items: center; }
+.b3-kort__beeld { display: block; border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 1 / 1; background: var(--b3-steen); }
+.b3-kort__beeld img { width: 100%; height: 100%; object-fit: cover; }
+.b3-kort .bline-score__sterren { color: var(--b3-ster); }
+.b3-kort__prijs { font-size: 1.6rem; margin: .4rem 0 1.4rem; }
+.b3-kort__prijs b { font-size: 2.2rem; font-weight: 600; }
+.b3-kort__prijs span { color: var(--b3-sub); font-size: 1.35rem; }
+.b3-kort__kleuren { display: flex; gap: .6rem; margin-bottom: .8rem; }
+.b3-kort__kleuren .b3-kleurknop { width: 4.4rem; height: 4.4rem; }
+.b3-kort__kleuren .b3-kleurknop:hover { border-color: var(--b3-lijn); }
+@media (min-width: 990px) { .b3-kort { grid-template-columns: 1fr 1fr; gap: 6.4rem; } }
+
+/* ---------- homepage: blog ---------- */
+.b3-blogrij { display: grid; grid-auto-flow: column; grid-auto-columns: 80%; gap: 1.2rem; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--b3-gutter) * -1); padding: 0 var(--b3-gutter); }
+.b3-blogrij::-webkit-scrollbar { display: none; }
+.b3-blogkaart { display: block; color: var(--b3-inkt); text-decoration: none; }
+.b3-blogkaart__beeld { display: block; border-radius: var(--b3-r); overflow: hidden; aspect-ratio: 4 / 3; background: var(--b3-steen); margin-bottom: 1.2rem; }
+.b3-blogkaart__beeld img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.b3-blogkaart:hover img { transform: scale(1.03); }
+.b3-blogkaart__titel { display: block; font-weight: 600; font-size: 1.6rem; line-height: 1.3; margin-bottom: .4rem; }
+.b3-blogkaart__tekst { display: block; color: var(--b3-sub); font-size: 1.35rem; }
+@media (min-width: 990px) { .b3-blogrij { grid-auto-flow: initial; grid-template-columns: repeat(3, 1fr); gap: 2.4rem; overflow: visible; margin: 0; padding: 0; } }
+
+/* ---------- verbeteringen na onderzoek (06-10) ---------- */
+.b3-gal__stip { display: none; }
+.b3-gal__duimrij { display: flex; gap: .8rem; overflow-x: auto; scrollbar-width: none; padding: 1rem var(--b3-gutter) 0; }
+.b3-gal__duimrij::-webkit-scrollbar { display: none; }
+.b3-gal__duimrij .b3-gal__duim { width: 5.6rem; height: 5.6rem; }
+.b3-gal__teller { bottom: auto; top: 1.2rem; right: 1.2rem; }
+@media (min-width: 990px) { .b3-gal__duimrij { display: none; } }
+.b3-aantal__per { display: block; font-size: 1.2rem; color: var(--b3-sub); }
+.b3-hoes__los { font-weight: 400; color: var(--b3-sub); }
+.b3-is-uitgelicht, .b3-aantal__optie.is-uitgelicht, .b3-hoes.is-uitgelicht { box-shadow: 0 0 0 2px var(--b3-accent); }
+.b3-plak__bol { display: inline-block; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); vertical-align: -2px; margin-right: .6rem; }
+.b3-plak .b3-knop { min-height: 4.8rem; }
+.b3-speel { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 6.4rem; height: 6.4rem; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: var(--b3-inkt); display: grid; place-items: center; cursor: pointer; box-shadow: 0 4px 18px rgba(0,0,0,.15); z-index: 2; }
+.b3-speel[hidden] { display: none; }
+.b3-verhaal__media { position: relative; }
+.b3-snel { margin-top: 1rem; }
+/* winkelwagenlade: knoppen onder elkaar, ook op desktop (anders worden de snelle betaalknoppen platgedrukt) */
+.cart-drawer .cart__ctas { display: block; }
+.cart-drawer .cart__checkout-button { max-width: none; min-height: 5.2rem; height: auto; }
+.cart-drawer .b3-snel { width: 100%; }
+.b3-snel .additional-checkout-buttons, .b3-snel > div { margin: 0; }
+
+/* witte kleurknop beter zichtbaar; band te pauzeren */
+.b3-kleurknop[data-b3-kleur="wit"] .b3-kleurknop__bol, .b3-kort__kleuren a[aria-label="Wit"] .b3-kleurknop__bol { box-shadow: inset 0 0 0 1.5px rgba(0,0,0,.28); }
+.b3-band { cursor: pointer; }
+.b3-band:hover .b3-band__rij, .b3-band:focus-within .b3-band__rij, .b3-band.is-gepauzeerd .b3-band__rij { animation-play-state: paused; }
+
+/* hoes-pagina: voordeel bij de prijs, uitklapkoppen in de v3-stijl */
+.b3-hoes-voordeel { margin: -.4rem 0 1.6rem; padding: 1rem 1.4rem; border-radius: var(--b3-r-klein); background: var(--b3-zand); font-size: 1.4rem; line-height: 1.45; }
+.b3-hoes-voordeel a { color: var(--b3-inkt); font-weight: 500; }
+.bline-uitklap .accordion__title { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 1.6rem; }
+
+/* extra hoes: eigen kleur kiezen */
+.b3-hoes { display: block; padding: 0; }
+.b3-hoes__regel { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem .6rem; cursor: pointer; position: relative; }
+.b3-hoes__kleuren { display: flex; align-items: center; gap: .4rem; padding: 0 1.4rem 1.2rem calc(1.4rem + 2.2rem + 1.2rem); flex-wrap: wrap; }
+.b3-hoes__kleurlabel { font-size: 1.2rem; color: var(--b3-sub); margin-right: .4rem; }
+.b3-hoeskleur { width: 4rem; height: 4rem; padding: .5rem; border-radius: 50%; border: 2px solid transparent; background: none; cursor: pointer; }
+.b3-hoeskleur span { display: block; width: 100%; height: 100%; border-radius: 50%; background: var(--k); box-shadow: inset 0 0 0 1px rgba(0,0,0,.2); }
+.b3-hoeskleur.is-gekozen { border-color: var(--b3-inkt); }
+.b3-hoeskleur:focus-visible { outline: 2px solid var(--b3-accent); outline-offset: 1px; }
+
+/* ---------- aanmeldpop-up (Klaviyo, 10%) ---------- */
+.b3-pop { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: flex-end; justify-content: center; }
+.b3-pop[hidden] { display: none; }
+.b3-pop__achter { position: absolute; inset: 0; background: rgba(20, 24, 33, .45); opacity: 0; transition: opacity .25s ease; }
+.b3-pop__vak { position: relative; width: 100%; max-height: 92vh; overflow: auto; background: #fff; border-radius: var(--b3-r) var(--b3-r) 0 0; transform: translateY(24px); opacity: 0; transition: transform .25s ease, opacity .25s ease; padding-bottom: env(safe-area-inset-bottom); }
+.b3-pop.is-open .b3-pop__achter { opacity: 1; }
+.b3-pop.is-open .b3-pop__vak { transform: none; opacity: 1; }
+.b3-pop__beeld { display: none; }
+.b3-pop__tekst { padding: 2.8rem var(--b3-gutter) 2rem; text-align: center; }
+.b3-pop__tekst .b3-kop { font-size: 2.6rem; outline: none; }
+.b3-pop__intro { color: var(--b3-sub); margin: 0 0 1.8rem; }
+.b3-pop__form { display: grid; gap: 1rem; }
+.b3-pop__form input { width: 100%; box-sizing: border-box; min-height: 5rem; padding: 0 1.6rem; border: 1px solid var(--b3-lijn); border-radius: 999px; font: inherit; font-size: 1.6rem; color: var(--b3-inkt); background: #fff; }
+.b3-pop__form input:focus { outline: 2px solid var(--b3-knop); outline-offset: 1px; }
+.b3-pop__form .b3-knop { width: 100%; justify-content: center; margin-top: 0; }
+.b3-pop__fout { color: #B42318; font-size: 1.3rem; margin: 0; }
+.b3-pop__klein { font-size: 1.2rem; color: var(--b3-sub); margin: 1.4rem 0 0; }
+.b3-pop__klein a { color: inherit; }
+.b3-pop__nee { margin-top: 1rem; background: none; border: 0; padding: .8rem; font: inherit; font-size: 1.3rem; color: var(--b3-sub); text-decoration: underline; cursor: pointer; }
+.b3-pop__x { position: absolute; top: 1rem; right: 1rem; z-index: 2; width: 4rem; height: 4rem; border: 0; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--b3-inkt); display: grid; place-items: center; cursor: pointer; }
+.b3-pop-open, .b3-pop-open body { overflow: hidden; }
+@media (min-width: 750px) {
+  .b3-pop { align-items: center; padding: 2.4rem; }
+  .b3-pop__vak { max-width: 76rem; display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--b3-r); transform: translateY(12px) scale(.98); }
+  .b3-pop__beeld { display: block; background: var(--b3-zand); }
+  .b3-pop__beeld img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .b3-pop__tekst { padding: 4rem 3.6rem 3rem; text-align: left; align-self: center; }
+  .b3-pop__tekst .b3-kop { font-size: 3.2rem; }
+}
+@media (prefers-reduced-motion: reduce) { .b3-pop__vak, .b3-pop__achter { transition: none; } }
+/* compacte pop-up op mobiel: balk onderin, zonder donkere achtergrond, maximaal ongeveer een derde van het scherm */
+@media (max-width: 749px) {
+  .b3-pop--compact { inset: auto 0 0 0; }
+  .b3-pop--compact .b3-pop__achter { display: none; }
+  .b3-pop--compact .b3-pop__vak { box-shadow: 0 -8px 30px rgba(20, 24, 33, .18); max-height: 42vh; }
+  .b3-pop--compact .b3-pop__tekst { padding: 1.8rem var(--b3-gutter) 1.2rem; }
+  .b3-pop--compact .b3-oog { display: none; }
+  .b3-pop--compact .b3-pop__tekst .b3-kop { font-size: 2.2rem; margin-bottom: .6rem; }
+  .b3-pop--compact .b3-pop__intro { font-size: 1.4rem; margin-bottom: 1.2rem; }
+  .b3-pop--compact .b3-pop__form { grid-template-columns: 1fr auto; gap: .8rem; }
+  .b3-pop--compact .b3-pop__form input { min-height: 4.6rem; }
+  .b3-pop--compact .b3-pop__form .b3-knop { width: auto; min-height: 4.6rem; padding: 0 1.8rem; }
+  .b3-pop--compact .b3-pop__fout { grid-column: 1 / -1; }
+  .b3-pop--compact .b3-pop__klein { margin-top: .8rem; }
+  .b3-pop--compact .b3-pop__nee { display: none; }
+  .b3-pop-open.b3-pop-compact-open, .b3-pop-open.b3-pop-compact-open body { overflow: auto; }
+}
+
+
+/* ---------- voorraadmelding (alleen bij weinig voorraad) ---------- */
+.b3-voorraad { display: flex; align-items: center; gap: .8rem; margin: 1.6rem 0 0; font-size: 1.4rem; font-weight: 500; color: var(--b3-accent); }
+.b3-voorraad[hidden] { display: none; }
+.b3-voorraad__stip { width: .8rem; height: .8rem; border-radius: 50%; background: var(--b3-accent); box-shadow: 0 0 0 4px rgba(196, 98, 62, .15); }
+.b3-voorraad + .b3-knop--groot { margin-top: 1rem; }
+
+/* ===== Cookiebanner (Shopify) in Bline-stijl. Accepteren en Weigeren bewust even groot en gelijk van vorm. ===== */
+html body #shopify-pc__banner.shopify-pc__banner__dialog {
+  font-family: var(--font-body-family);
+  left: 2.4rem; right: auto; bottom: 2.4rem; width: 40rem; min-width: 0; max-width: calc(100vw - 4.8rem);
+  padding: 2.2rem 2.2rem 1.8rem; border-radius: 18px;
+  background: #fff; border: 1px solid var(--b3-lijn, #E8E2D9);
+  box-shadow: 0 18px 50px rgba(20, 24, 33, .18);
+}
+html body #shopify-pc__banner .shopify-pc__banner__wrapper { align-items: stretch; }
+html body #shopify-pc__banner .shopify-pc__banner__body { margin: 0; }
+html body #shopify-pc__banner h2 {
+  font-family: inherit; font-size: 1.8rem; font-weight: 600; letter-spacing: -.01em;
+  color: var(--b3-inkt, #1D2330); margin: 0 0 .6rem;
+}
+html body #shopify-pc__banner p { font-family: inherit; font-size: 1.4rem; line-height: 1.5; color: var(--b3-sub, #5A6170); }
+html body #shopify-pc__banner p a { color: var(--b3-inkt, #1D2330); text-underline-offset: 2px; }
+html body #shopify-pc__banner .shopify-pc__banner__btns {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1.6rem; flex-direction: row;
+}
+html body #shopify-pc__banner .shopify-pc__banner__btns button {
+  margin: 0; min-height: 4.6rem; padding: 0 1.6rem; border-radius: 999px;
+  font-family: inherit; font-size: 1.5rem; font-weight: 500; line-height: 1;
+  transition: background-color .15s ease;
+}
+html body #shopify-pc__banner .shopify-pc__banner__btns button.shopify-pc__banner__btn-accept,
+html body #shopify-pc__banner .shopify-pc__banner__btns button.shopify-pc__banner__btn-decline {
+  background: var(--b3-knop, #1F2A37); color: #fff; border: 1px solid var(--b3-knop, #1F2A37);
+}
+html body #shopify-pc__banner .shopify-pc__banner__btns button.shopify-pc__banner__btn-accept:hover,
+html body #shopify-pc__banner .shopify-pc__banner__btns button.shopify-pc__banner__btn-decline:hover {
+  background: var(--b3-knop-hover, #2E3B4C);
+}
+html body #shopify-pc__banner .shopify-pc__banner__btns button:focus-visible { outline: 2px solid var(--b3-accent, #C4623E); outline-offset: 2px; box-shadow: none; }
+html body #shopify-pc__banner .shopify-pc__banner__btns-granular .shopify-pc__banner__btn-decline { order: 1; }
+html body #shopify-pc__banner .shopify-pc__banner__btns-granular .shopify-pc__banner__btn-accept { order: 2; }
+html body #shopify-pc__banner .shopify-pc__banner__btns-granular .shopify-pc__banner__btn-manage-prefs {
+  order: 3; grid-column: 1 / -1; min-height: 3.6rem; background: none; border: 0; color: var(--b3-sub, #5A6170);
+  font-size: 1.3rem; font-weight: 400; text-decoration: underline; text-underline-offset: 2px;
+}
+@media (max-width: 749px) {
+  html body #shopify-pc__banner.shopify-pc__banner__dialog {
+    left: 0; right: 0; bottom: 0; width: 100%; max-width: none; max-height: 45vh;
+    border-radius: 18px 18px 0 0; border-width: 1px 0 0; padding: 1.8rem 1.6rem calc(1.2rem + env(safe-area-inset-bottom));
+  }
+  html body #shopify-pc__banner h2 { font-size: 1.7rem; margin-bottom: .4rem; }
+  html body #shopify-pc__banner p { font-size: 1.35rem; line-height: 1.45; }
+  html body #shopify-pc__banner .shopify-pc__banner__btns { margin-top: 1.2rem; }
+}
+/* voorkeurenscherm van Shopify in dezelfde stijl */
+html body #shopify-pc__prefs__dialog, html body .shopify-pc__prefs__dialog { font-family: var(--font-body-family); border-radius: 18px; }
+html body .shopify-pc__prefs__dialog button { border-radius: 999px; font-family: inherit; min-height: 4.4rem; }
+
+/* Teaser voor de 10%: smal tabje aan de linkerrand, opent de aanmeldpop-up */
+.b3-teaser { position: fixed; left: 0; top: 58%; z-index: 990; transform: translate(-110%, -50%); transition: transform .25s ease; }
+.b3-teaser.is-zichtbaar { transform: translate(0, -50%); }
+.b3-teaser[hidden] { display: none; }
+.b3-teaser__knop { writing-mode: vertical-rl; transform: rotate(180deg); background: var(--b3-knop); color: #fff; border: 0; border-radius: 10px 0 0 10px; padding: 1.6rem .9rem; font: 600 1.35rem/1 var(--font-body-family); letter-spacing: .02em; cursor: pointer; box-shadow: 0 6px 18px rgba(20, 24, 33, .18); }
+.b3-teaser__knop:hover { background: var(--b3-knop-hover); }
+.b3-teaser__knop:focus-visible, .b3-teaser__x:focus-visible { outline: 2px solid var(--b3-accent); outline-offset: 2px; }
+.b3-teaser__x { position: absolute; top: -1rem; right: -1rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1px solid var(--b3-lijn); background: #fff; color: var(--b3-inkt); display: grid; place-items: center; cursor: pointer; padding: 0; }
+@media (max-width: 749px) { .b3-teaser { top: 42%; } .b3-teaser__knop { padding: 1.3rem .75rem; font-size: 1.25rem; } }
+@media (prefers-reduced-motion: reduce) { .b3-teaser { transition: none; } }

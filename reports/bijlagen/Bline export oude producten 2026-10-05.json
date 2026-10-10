@@ -1,0 +1,1255 @@
+{
+ "leeskussen": {
+  "id": "gid://shopify/Product/10913138704723",
+  "handle": "leeskussen",
+  "title": "Leeskussen Bline",
+  "status": "ACTIVE",
+  "vendor": "Bline",
+  "productType": "Leeskussen",
+  "descriptionHtml": "<p>Een stevig leeskussen met een vak opzij voor je boek, bril of telefoon. Binnenin zit 3,8 kg traagschuim, dus het kussen blijft staan als je leunt. De katoenen hoes gaat er met een rits af en kan op 30 °C in de was. Rechtop lezen in bed, zonder gedoe. Net uitgepakt? Laat het 24 tot 48 uur luchten.</p>",
+  "templateSuffix": null,
+  "tags": [],
+  "seo": {
+   "title": "Leeskussen met vak voor je boek | Bline",
+   "description": "Leeskussen van 65 x 50 x 45 cm met 3,8 kg traagschuim en een katoenen hoes die in de was kan. Vijf kleuren. Gratis verzending in NL en BE."
+  },
+  "category": {
+   "id": "gid://shopify/TaxonomyCategory/hg-15-1-9-5",
+   "fullName": "Home & Garden > Linens & Bedding > Bedding > Pillows > Wedge Pillows"
+  },
+  "options": [
+   {
+    "name": "Kleur",
+    "position": 1,
+    "optionValues": [
+     {
+      "name": "Wit"
+     },
+     {
+      "name": "Beige"
+     },
+     {
+      "name": "Blauw"
+     },
+     {
+      "name": "Grijs"
+     },
+     {
+      "name": "Zwart"
+     }
+    ]
+   }
+  ],
+  "metafields": {
+   "nodes": [
+    {
+     "namespace": "bline",
+     "key": "afmetingen",
+     "type": "single_line_text_field",
+     "value": "65 x 50 x 45 cm (breed x hoog x diep)"
+    },
+    {
+     "namespace": "bline",
+     "key": "vulling",
+     "type": "single_line_text_field",
+     "value": "Traagschuim (memory foam), stevig"
+    },
+    {
+     "namespace": "bline",
+     "key": "hoesstof",
+     "type": "multi_line_text_field",
+     "value": "100% katoen, 400 TC\nOnzichtbare rits, volledig afneembaar\nZijvak voor boek, bril of telefoon"
+    },
+    {
+     "namespace": "bline",
+     "key": "wasvoorschrift",
+     "type": "multi_line_text_field",
+     "value": "Hoes: machinewas 30 °C, normaal programma\nNiet bleken\nNiet in de droger"
+    },
+    {
+     "namespace": "bline",
+     "key": "gewicht",
+     "type": "single_line_text_field",
+     "value": "3,9 kg, waarvan 3,8 kg vulling"
+    },
+    {
+     "namespace": "bline",
+     "key": "inhoud_doos",
+     "type": "multi_line_text_field",
+     "value": "1 leeskussen met hoes in de gekozen kleur\nGebruiks- en wasinstructie"
+    },
+    {
+     "namespace": "mm-google-shopping",
+     "key": "google_product_category",
+     "type": "single_line_text_field",
+     "value": "4456"
+    },
+    {
+     "namespace": "mm-google-shopping",
+     "key": "condition",
+     "type": "single_line_text_field",
+     "value": "new"
+    },
+    {
+     "namespace": "global",
+     "key": "title_tag",
+     "type": "string",
+     "value": "Leeskussen met vak voor je boek | Bline"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "string",
+     "value": "Leeskussen van 65 x 50 x 45 cm met 3,8 kg traagschuim en een katoenen hoes die in de was kan. Vijf kleuren. Gratis verzending in NL en BE."
+    }
+   ]
+  },
+  "media": {
+   "nodes": [
+    {
+     "id": "gid://shopify/MediaImage/62586644955475",
+     "alt": "Leeskussen Bline, kleur Wit, op een bed met een opengeslagen boek",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-01.jpg?v=1791194739",
+      "width": 1200,
+      "height": 1200
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586644988243",
+     "alt": "Man leunt tegen het leeskussen Bline, kleur Wit, met een laptop op schoot",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-02.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645021011",
+     "alt": "Vrouw leest een boek tegen het leeskussen Bline, kleur Wit, met telefoon in het zijvak",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-03.jpg?v=1791194741",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645053779",
+     "alt": "Vrouw werkt op haar laptop tegen het leeskussen Bline, kleur Wit",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-04.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645086547",
+     "alt": "Vrouw met laptop tegen het leeskussen Bline, kleur Wit",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-05.jpg?v=1791194740",
+      "width": 1200,
+      "height": 1200
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645119315",
+     "alt": "Leeskussen Bline, kleur Wit, rits open met de vulling van traagschuim zichtbaar",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-06.jpg?v=1791194739",
+      "width": 1200,
+      "height": 1200
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645152083",
+     "alt": "Label van Bline op de hoes van het leeskussen, kleur Wit",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-07.jpg?v=1791194739",
+      "width": 1200,
+      "height": 1200
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645184851",
+     "alt": "Vrouw op bed tegen het leeskussen Bline, kleur Wit, met losse hoezen ernaast",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-08.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645217619",
+     "alt": "Leeskussen Bline, kleur Beige, op een bed met een opengeslagen boek",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-beige-01.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645250387",
+     "alt": "Vrouw leest een boek tegen het leeskussen Bline, kleur Beige",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-beige-02.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645283155",
+     "alt": "Vrouw met een boek tegen het leeskussen Bline, kleur Beige, met telefoon in het zijvak",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-beige-03.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645315923",
+     "alt": "Leeskussen Bline, kleur Beige, rits open met de vulling van traagschuim zichtbaar",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-beige-04.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645348691",
+     "alt": "Vrouw met laptop tegen het leeskussen Bline, kleur Beige",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-beige-05.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645381459",
+     "alt": "Leeskussen Bline, kleur Blauw, op een bed met een opengeslagen boek",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-01.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645414227",
+     "alt": "Vrouw leest een boek tegen het leeskussen Bline, kleur Blauw",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-02.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645446995",
+     "alt": "Man leest 's avonds tegen het leeskussen Bline, kleur Blauw, met telefoon in het zijvak",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-03.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645479763",
+     "alt": "Leeskussen Bline, kleur Blauw, rits open met de vulling van traagschuim zichtbaar",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-04.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645512531",
+     "alt": "Vrouw met laptop tegen het leeskussen Bline, kleur Blauw",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-05.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645545299",
+     "alt": "Vrouw leunt ontspannen tegen het leeskussen Bline, kleur Blauw",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-06.jpg?v=1791194740",
+      "width": 1200,
+      "height": 1200
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645578067",
+     "alt": "Leeskussen Bline, kleur Grijs, op een bed met een opengeslagen boek",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-01.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645610835",
+     "alt": "Man met laptop tegen het leeskussen Bline, kleur Grijs",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-02.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645643603",
+     "alt": "Vrouw met laptop tegen het leeskussen Bline, kleur Grijs, met telefoon in het zijvak",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-03.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645676371",
+     "alt": "Leeskussen Bline, kleur Grijs, rits open met de vulling van traagschuim zichtbaar",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-04.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645709139",
+     "alt": "Vrouw werkt 's avonds op haar laptop tegen het leeskussen Bline, kleur Grijs",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-05.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645741907",
+     "alt": "Vrouw leunt ontspannen tegen het leeskussen Bline, kleur Grijs",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-06.jpg?v=1791194740",
+      "width": 1200,
+      "height": 1200
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645774675",
+     "alt": "Leeskussen Bline, kleur Zwart, op een bed met een opengeslagen boek",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-zwart-01.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645807443",
+     "alt": "Vrouw leest een boek tegen het leeskussen Bline, kleur Zwart, op de bank",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-zwart-02.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645840211",
+     "alt": "Man met tablet tegen het leeskussen Bline, kleur Zwart, met telefoon in het zijvak",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-zwart-03.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645872979",
+     "alt": "Leeskussen Bline, kleur Zwart, rits open met de vulling van traagschuim zichtbaar",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-zwart-04.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645905747",
+     "alt": "Jongen met laptop tegen het leeskussen Bline, kleur Zwart",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-zwart-05.jpg?v=1791194740",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586645938515",
+     "alt": "Maattekening van het leeskussen: 65 cm breed, 50 cm hoog en 45 cm diep",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-maattekening.jpg?v=1791194740",
+      "width": 1200,
+      "height": 1129
+     }
+    }
+   ]
+  },
+  "collections": {
+   "nodes": [
+    {
+     "handle": "frontpage"
+    },
+    {
+     "handle": "leeskussens"
+    }
+   ]
+  },
+  "resourcePublications": {
+   "nodes": [
+    {
+     "publication": {
+      "name": "Online Store"
+     },
+     "isPublished": true
+    }
+   ]
+  },
+  "variants": {
+   "nodes": [
+    {
+     "id": "gid://shopify/ProductVariant/55207567917395",
+     "title": "Wit",
+     "sku": "BLINE-LK-WIT",
+     "barcode": "8720892179074",
+     "price": "69.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Wit"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-01.jpg?v=1791194739"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586644955475"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296106651987",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 3.9,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 241
+          },
+          {
+           "name": "on_hand",
+           "quantity": 241
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55207567950163",
+     "title": "Beige",
+     "sku": "BLINE-LK-BEIGE",
+     "barcode": "8720892687241",
+     "price": "79.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Beige"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-beige-01.jpg?v=1791194740"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586645217619"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296106684755",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 3.9,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 39
+          },
+          {
+           "name": "on_hand",
+           "quantity": 39
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55207567982931",
+     "title": "Blauw",
+     "sku": "BLINE-LK-BLAUW",
+     "barcode": "8720892687258",
+     "price": "79.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Blauw"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-01.jpg?v=1791194740"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586645381459"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296106717523",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 3.9,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 86
+          },
+          {
+           "name": "on_hand",
+           "quantity": 86
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55207568015699",
+     "title": "Grijs",
+     "sku": "BLINE-LK-GRIJS",
+     "barcode": "8720892687265",
+     "price": "79.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Grijs"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-01.jpg?v=1791194740"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586645578067"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296106750291",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 3.9,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 78
+          },
+          {
+           "name": "on_hand",
+           "quantity": 78
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55207568048467",
+     "title": "Zwart",
+     "sku": "BLINE-LK-ZWART",
+     "barcode": "8720892687272",
+     "price": "79.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Zwart"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-zwart-01.jpg?v=1791194740"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586645774675"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296106783059",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 3.9,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 80
+          },
+          {
+           "name": "on_hand",
+           "quantity": 80
+          }
+         ]
+        }
+       ]
+      }
+     }
+    }
+   ]
+  }
+ },
+ "hoes-leeskussen": {
+  "id": "gid://shopify/Product/10913138803027",
+  "handle": "hoes-leeskussen",
+  "title": "Hoes voor leeskussen Bline",
+  "status": "ACTIVE",
+  "vendor": "Bline",
+  "productType": "Hoes",
+  "descriptionHtml": "<p>Een losse hoes voor het Bline leeskussen, in vijf kleuren. Van 100% katoen (400 TC), met een onzichtbare rits en een vak opzij. Wasbaar op 30 °C. Handig om te wisselen als de andere in de was zit. Alleen de hoes, zonder kussen.</p>",
+  "templateSuffix": "hoes",
+  "tags": [],
+  "seo": {
+   "title": "Losse hoes voor het leeskussen | Bline",
+   "description": "Katoenen hoes (400 TC) met onzichtbare rits voor het Bline leeskussen. Wasbaar op 30 °C. Vijf kleuren. Gratis verzending in NL en BE."
+  },
+  "category": {
+   "id": "gid://shopify/TaxonomyCategory/hg-15-1-8-2",
+   "fullName": "Home & Garden > Linens & Bedding > Bedding > Pillowcases & Shams > Pillowcases"
+  },
+  "options": [
+   {
+    "name": "Kleur",
+    "position": 1,
+    "optionValues": [
+     {
+      "name": "Wit"
+     },
+     {
+      "name": "Beige"
+     },
+     {
+      "name": "Blauw"
+     },
+     {
+      "name": "Grijs"
+     },
+     {
+      "name": "Zwart"
+     }
+    ]
+   }
+  ],
+  "metafields": {
+   "nodes": [
+    {
+     "namespace": "bline",
+     "key": "hoesstof",
+     "type": "multi_line_text_field",
+     "value": "100% katoen, 400 TC\nOnzichtbare rits, volledig afneembaar\nZijvak voor boek, bril of telefoon"
+    },
+    {
+     "namespace": "bline",
+     "key": "wasvoorschrift",
+     "type": "multi_line_text_field",
+     "value": "Hoes: machinewas 30 °C, normaal programma\nNiet bleken\nNiet in de droger"
+    },
+    {
+     "namespace": "bline",
+     "key": "afmetingen",
+     "type": "single_line_text_field",
+     "value": "Past om het Bline leeskussen van 65 x 50 x 45 cm"
+    },
+    {
+     "namespace": "bline",
+     "key": "inhoud_doos",
+     "type": "multi_line_text_field",
+     "value": "1 hoes in de gekozen kleur"
+    },
+    {
+     "namespace": "mm-google-shopping",
+     "key": "google_product_category",
+     "type": "single_line_text_field",
+     "value": "2927"
+    },
+    {
+     "namespace": "mm-google-shopping",
+     "key": "condition",
+     "type": "single_line_text_field",
+     "value": "new"
+    },
+    {
+     "namespace": "global",
+     "key": "title_tag",
+     "type": "string",
+     "value": "Losse hoes voor het leeskussen | Bline"
+    },
+    {
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "string",
+     "value": "Katoenen hoes (400 TC) met onzichtbare rits voor het Bline leeskussen. Wasbaar op 30 °C. Vijf kleuren. Gratis verzending in NL en BE."
+    }
+   ]
+  },
+  "media": {
+   "nodes": [
+    {
+     "id": "gid://shopify/MediaImage/62586648691027",
+     "alt": "Hoes voor leeskussen Bline, kleur Wit, om het kussen op een bed",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-01_5b129269-f924-45c9-92e9-57e55e31a5ab.jpg?v=1791194756",
+      "width": 1200,
+      "height": 1200
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586648723795",
+     "alt": "Hoes voor leeskussen Bline, kleur Wit, met de onzichtbare rits open",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-06_6f7d207d-89bc-4b28-8aff-da9086b25ca5.jpg?v=1791194754",
+      "width": 1200,
+      "height": 1200
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586648756563",
+     "alt": "Hoes voor leeskussen Bline, kleur Beige, om het kussen op een bed",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-beige-01_7ec4d61f-2c10-4f88-ba28-73a426effaf7.jpg?v=1791194756",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586648789331",
+     "alt": "Hoes voor leeskussen Bline, kleur Beige, met de onzichtbare rits open",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-beige-04_ca5ecf8d-c247-4041-ba6b-16efeb7cfa2d.jpg?v=1791194756",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586648822099",
+     "alt": "Hoes voor leeskussen Bline, kleur Blauw, om het kussen op een bed",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-01_cb93dd1c-bf15-4f48-937e-ba9d93f68492.jpg?v=1791194756",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586648854867",
+     "alt": "Hoes voor leeskussen Bline, kleur Blauw, met de onzichtbare rits open",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-04_545856dc-90e8-4d5f-9242-004784778bd6.jpg?v=1791194756",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586648887635",
+     "alt": "Hoes voor leeskussen Bline, kleur Grijs, om het kussen op een bed",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-01_1a025b89-ae64-4c73-9a68-9979aafa4249.jpg?v=1791194755",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586648920403",
+     "alt": "Hoes voor leeskussen Bline, kleur Grijs, met de onzichtbare rits open",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-04_51dfed32-5940-4dd8-bcd7-c283f3005af4.jpg?v=1791194756",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586648953171",
+     "alt": "Hoes voor leeskussen Bline, kleur Zwart, om het kussen op een bed",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-zwart-01_c5050520-2c2b-4095-b05c-ce0d58a1069a.jpg?v=1791194756",
+      "width": 2048,
+      "height": 2048
+     }
+    },
+    {
+     "id": "gid://shopify/MediaImage/62586648985939",
+     "alt": "Hoes voor leeskussen Bline, kleur Zwart, met de onzichtbare rits open",
+     "mediaContentType": "IMAGE",
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-zwart-04_fff46ab1-9c1d-49ce-919d-969a0821ce91.jpg?v=1791194755",
+      "width": 2048,
+      "height": 2048
+     }
+    }
+   ]
+  },
+  "collections": {
+   "nodes": [
+    {
+     "handle": "leeskussens"
+    }
+   ]
+  },
+  "resourcePublications": {
+   "nodes": [
+    {
+     "publication": {
+      "name": "Online Store"
+     },
+     "isPublished": true
+    }
+   ]
+  },
+  "variants": {
+   "nodes": [
+    {
+     "id": "gid://shopify/ProductVariant/55207568212307",
+     "title": "Wit",
+     "sku": "BLINE-HOES-WIT",
+     "barcode": "8720892179098",
+     "price": "29.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Wit"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-wit-01_5b129269-f924-45c9-92e9-57e55e31a5ab.jpg?v=1791194756"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586648691027"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296106946899",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 0.0,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 27
+          },
+          {
+           "name": "on_hand",
+           "quantity": 27
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55207568245075",
+     "title": "Beige",
+     "sku": "BLINE-HOES-BEIGE",
+     "barcode": "8720892687203",
+     "price": "34.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Beige"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-beige-01_7ec4d61f-2c10-4f88-ba28-73a426effaf7.jpg?v=1791194756"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586648756563"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296106979667",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 0.0,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 38
+          },
+          {
+           "name": "on_hand",
+           "quantity": 38
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55207568277843",
+     "title": "Blauw",
+     "sku": "BLINE-HOES-BLAUW",
+     "barcode": "8720892687210",
+     "price": "34.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Blauw"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-blauw-01_cb93dd1c-bf15-4f48-937e-ba9d93f68492.jpg?v=1791194756"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586648822099"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296107012435",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 0.0,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 85
+          },
+          {
+           "name": "on_hand",
+           "quantity": 85
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55207568310611",
+     "title": "Grijs",
+     "sku": "BLINE-HOES-GRIJS",
+     "barcode": "8720892687227",
+     "price": "34.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Grijs"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-grijs-01_1a025b89-ae64-4c73-9a68-9979aafa4249.jpg?v=1791194755"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586648887635"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296107045203",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 0.0,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 77
+          },
+          {
+           "name": "on_hand",
+           "quantity": 77
+          }
+         ]
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "gid://shopify/ProductVariant/55207568343379",
+     "title": "Zwart",
+     "sku": "BLINE-HOES-ZWART",
+     "barcode": "8720892687234",
+     "price": "34.99",
+     "compareAtPrice": null,
+     "taxable": true,
+     "inventoryPolicy": "DENY",
+     "selectedOptions": [
+      {
+       "name": "Kleur",
+       "value": "Zwart"
+      }
+     ],
+     "image": {
+      "url": "https://cdn.shopify.com/s/files/1/1112/3965/9859/files/bline-leeskussen-zwart-01_c5050520-2c2b-4095-b05c-ce0d58a1069a.jpg?v=1791194756"
+     },
+     "media": {
+      "nodes": [
+       {
+        "id": "gid://shopify/MediaImage/62586648953171"
+       }
+      ]
+     },
+     "inventoryItem": {
+      "id": "gid://shopify/InventoryItem/57296107077971",
+      "tracked": true,
+      "requiresShipping": true,
+      "measurement": {
+       "weight": {
+        "value": 0.0,
+        "unit": "KILOGRAMS"
+       }
+      },
+      "countryCodeOfOrigin": null,
+      "harmonizedSystemCode": null,
+      "inventoryLevels": {
+       "nodes": [
+        {
+         "location": {
+          "id": "gid://shopify/Location/127598494035",
+          "name": "Brasem 7623KS-Borne"
+         },
+         "quantities": [
+          {
+           "name": "available",
+           "quantity": 80
+          },
+          {
+           "name": "on_hand",
+           "quantity": 80
+          }
+         ]
+        }
+       ]
+      }
+     }
+    }
+   ]
+  }
+ }
+}

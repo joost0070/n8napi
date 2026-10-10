@@ -1,0 +1,1954 @@
+{
+ "product_mobiel": {
+  "balk": {
+   "top": 0,
+   "h": 35,
+   "w": 217,
+   "font": "13px",
+   "weight": "600",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "0.78px",
+   "lh": "16.5455px",
+   "tekst": "GRATIS VERZENDING NL EN BE"
+  },
+  "header": {
+   "top": 36,
+   "h": 60,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Inloggen\nWinkelwagen\n1\n1 artikel"
+  },
+  "menu_desktop": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\n          \n            Losse hoezen\n          \n            Over Blin"
+  },
+  "hamburger": {
+   "top": 43,
+   "h": 44,
+   "w": 44,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": ""
+  },
+  "titel": {
+   "top": 600,
+   "h": 29,
+   "w": 360,
+   "font": "24px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "28.8px",
+   "tekst": "Leeskussen Bline Beige"
+  },
+  "ondertitel": {
+   "top": 681,
+   "h": 22,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.7)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Met vak voor je boek, 65 x 50 x 45 cm"
+  },
+  "prijs": {
+   "top": 734,
+   "h": 29,
+   "w": 78,
+   "font": "24px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "28.8px",
+   "tekst": "€79,99"
+  },
+  "btw": {
+   "top": 740,
+   "h": 24,
+   "w": 54,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.6)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "23.8px",
+   "tekst": "Incl. btw"
+  },
+  "kleurlabel": {
+   "top": 797,
+   "h": 22,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Kleur: Beige"
+  },
+  "knop": {
+   "top": 945,
+   "h": 50,
+   "w": 360,
+   "font": "16px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "radius": "4px",
+   "ls": "0.32px",
+   "lh": "19.2px",
+   "tekst": "In winkelwagen"
+  },
+  "vinkjes": {
+   "top": 1020,
+   "h": 118,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Gratis verzending in NL en BE\nBinnen 1-2 werkdagen in huis\nHoes wasbaar op 30 °C"
+  },
+  "bundelregel": {
+   "top": 1152,
+   "h": 45,
+   "w": 360,
+   "font": "16px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Extra hoes of tweede leeskussen erbij? Dan krijg je €9,99 korting."
+  },
+  "betaal": {
+   "top": 1212,
+   "h": 34,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "iDEAL\nBC\nPay\nVISA\nMC"
+  },
+  "foto": {
+   "top": 117,
+   "h": 390,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": ""
+  },
+  "uitklap_tekst": {
+   "top": 1323,
+   "h": 168,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Een stevig leeskussen met een vak opzij voor je boek, bril of telefoon. Binnenin"
+  },
+  "kruimel": {
+   "top": 566,
+   "h": 20,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Home\nLeeskussens\nLeeskussen Bline Beige"
+  },
+  "reviews": {
+   "top": 1695,
+   "h": 169,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "KLANTREVIEWS\n☆☆☆☆☆\nNog geen reviews in onze eigen winkel\nSchrijf een review"
+  },
+  "hero_kop": null,
+  "hero_knop": null,
+  "kleurvlak": {
+   "top": 826,
+   "h": 44,
+   "w": 100,
+   "font": "16px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "4px",
+   "ls": "normal",
+   "lh": "19.2px",
+   "tekst": "Beige"
+  },
+  "kleurvlak_niet": {
+   "top": 826,
+   "h": 44,
+   "w": 85,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "4px",
+   "ls": "normal",
+   "lh": "19.2px",
+   "tekst": "Wit"
+  },
+  "kleurvlak_rand": "1px + rgb(26, 26, 26) 0px 0px 0px 1px inset",
+  "sticky": {
+   "top": 780,
+   "h": 64,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "€79,99\nIn winkelwagen"
+  },
+  "score": {
+   "top": 644,
+   "h": 22,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "4,5 uit 5 op bol.com (13)"
+  },
+  "kaarten": [],
+  "secties": [
+   {
+    "id": "template--1__main",
+    "h": 1583,
+    "pt": "16px",
+    "pb": "0px",
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__reviews",
+    "h": 186,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__waarom",
+    "h": 520,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__disclosures",
+    "h": 0,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__sticky",
+    "h": 0,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   }
+  ],
+  "tekst_onder_16px": [
+   "A.skip-to-content-link button visually-hidden quick-add-hidden 15px Ga direct naar productinformat",
+   "SPAN.visually-hidden 13.3333px Media 1 openen in modaal",
+   "SPAN.visually-hidden 13.3333px Media 2 openen in modaal",
+   "SPAN.visually-hidden 13.3333px Media 3 openen in modaal",
+   "SPAN.visually-hidden 13.3333px Media 4 openen in modaal",
+   "SPAN.visually-hidden 13.3333px Media 5 openen in modaal",
+   "SPAN.visually-hidden 13.3333px Media 6 openen in modaal",
+   "A. 14px Home",
+   "A. 14px Leeskussens",
+   "SPAN. 14px Leeskussen Bline Beige",
+   "DIV.product__tax caption rte 14px Incl. btw"
+  ],
+  "zwevend": [
+   "CART-DRAWER.drawer",
+   "DIV.cart-drawer__overlay",
+   "DIV.drawer__footer",
+   "DIV.bline-sticky color-scheme-4 is-zichtbaar",
+   "PRODUCT-MODAL.product-media-modal media-modal",
+   "BUTTON.product-media-modal__toggle"
+  ],
+  "pagina_hoogte": 3519
+ },
+ "home_mobiel": {
+  "balk": {
+   "top": 0,
+   "h": 35,
+   "w": 217,
+   "font": "13px",
+   "weight": "600",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "0.78px",
+   "lh": "16.5455px",
+   "tekst": "GRATIS VERZENDING NL EN BE"
+  },
+  "header": {
+   "top": 36,
+   "h": 60,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Inloggen\nWinkelwagen\n1\n1 artikel"
+  },
+  "menu_desktop": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\n          \n            Losse hoezen\n          \n            Over Blin"
+  },
+  "hamburger": {
+   "top": 43,
+   "h": 44,
+   "w": 44,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": ""
+  },
+  "titel": null,
+  "ondertitel": null,
+  "prijs": null,
+  "btw": null,
+  "kleurlabel": null,
+  "knop": null,
+  "vinkjes": null,
+  "bundelregel": null,
+  "betaal": null,
+  "foto": null,
+  "uitklap_tekst": null,
+  "kruimel": null,
+  "reviews": null,
+  "hero_kop": {
+   "top": 322,
+   "h": 75,
+   "w": 286,
+   "font": "34px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "1.36px",
+   "lh": "37.4px",
+   "tekst": "RECHTOP LEZEN IN BED"
+  },
+  "hero_knop": {
+   "top": 417,
+   "h": 45,
+   "w": 120,
+   "font": "15px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "radius": "4px",
+   "ls": "0.3px",
+   "lh": "18px",
+   "tekst": "Shop nu"
+  },
+  "kleurvlak": null,
+  "kleurvlak_niet": null,
+  "kleurvlak_rand": null,
+  "sticky": null,
+  "score": null,
+  "kaarten": [
+   "15,637 178x255",
+   "197,637 178x255",
+   "15,896 178x276",
+   "197,896 178x276",
+   "15,1176 178x255",
+   "15,1574 178x276"
+  ],
+  "secties": [
+   {
+    "id": "template--1__banner",
+    "h": 390,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__leeskussens",
+    "h": 961,
+    "pt": "16px",
+    "pb": "16px",
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__hoezen",
+    "h": 978,
+    "pt": "16px",
+    "pb": "16px",
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__vinkjes",
+    "h": 178,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__kenmerken",
+    "h": 611,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__vragen",
+    "h": 418,
+    "pt": "16px",
+    "pb": "16px",
+    "mt": "0px"
+   }
+  ],
+  "tekst_onder_16px": [
+   "A.button button--primary 15px Shop nu"
+  ],
+  "zwevend": [
+   "CART-DRAWER.drawer",
+   "DIV.cart-drawer__overlay",
+   "DIV.drawer__footer"
+  ],
+  "pagina_hoogte": 4729
+ },
+ "lade_mobiel": {
+  "lade": {
+   "top": 0,
+   "h": 844,
+   "w": 390,
+   "font": "16px",
+   "tekst": "Je winkelwagen\nPRODUCTAFBEELDING\n\tPRODUCT\tTOTAAL\t\nAANTAL\nLeeskussen Bline Beige\n€79,99\n€79,99\nAantal verlagen voor Leesk"
+  },
+  "afrekenen": {
+   "top": 778,
+   "h": 50,
+   "w": 360,
+   "font": "16px",
+   "tekst": "Afrekenen"
+  },
+  "totaal": {
+   "top": 704,
+   "h": 18,
+   "w": 58,
+   "font": "18px",
+   "tekst": "€79,99"
+  },
+  "optie": {
+   "top": 170,
+   "h": 24,
+   "w": 165,
+   "font": "16px",
+   "tekst": "€79,99"
+  },
+  "upsell": {
+   "top": 259,
+   "h": 77,
+   "w": 360,
+   "font": "16px",
+   "tekst": "Extra hoes erbij? €9,99 korting\n\n+ Wit"
+  },
+  "upsell_knop": {
+   "top": 284,
+   "h": 44,
+   "w": 72,
+   "font": "16px",
+   "tekst": "+ Wit"
+  },
+  "korting": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "12px",
+   "tekst": ""
+  }
+ },
+ "lade_mobiel_bundel": {
+  "lade": {
+   "top": 0,
+   "h": 844,
+   "w": 390,
+   "font": "16px",
+   "tekst": "Je winkelwagen\nPRODUCTAFBEELDING\n\tPRODUCT\tTOTAAL\t\nAANTAL\nLeeskussen Bline Beige\n€79,99\n€79,99\nAantal verlagen voor Leesk"
+  },
+  "afrekenen": {
+   "top": 778,
+   "h": 50,
+   "w": 360,
+   "font": "16px",
+   "tekst": "Afrekenen"
+  },
+  "totaal": {
+   "top": 704,
+   "h": 18,
+   "w": 58,
+   "font": "18px",
+   "tekst": "€99,99"
+  },
+  "optie": {
+   "top": 170,
+   "h": 24,
+   "w": 165,
+   "font": "16px",
+   "tekst": "€79,99"
+  },
+  "upsell": null,
+  "upsell_knop": null,
+  "korting": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "12px",
+   "tekst": ""
+  }
+ },
+ "hoes_mobiel": {
+  "balk": {
+   "top": 0,
+   "h": 35,
+   "w": 217,
+   "font": "13px",
+   "weight": "600",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "0.78px",
+   "lh": "16.5455px",
+   "tekst": "GRATIS VERZENDING NL EN BE"
+  },
+  "header": {
+   "top": 36,
+   "h": 60,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Inloggen\nWinkelwagen\n0\n0 artikelen"
+  },
+  "menu_desktop": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\n          \n            Losse hoezen\n          \n            Over Blin"
+  },
+  "hamburger": {
+   "top": 43,
+   "h": 44,
+   "w": 44,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": ""
+  },
+  "titel": {
+   "top": 620,
+   "h": 58,
+   "w": 360,
+   "font": "24px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "28.8px",
+   "tekst": "Losse hoes Blauw voor leeskussen Bline"
+  },
+  "ondertitel": {
+   "top": 692,
+   "h": 22,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.7)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Katoen 400 TC, met rits en zijvak"
+  },
+  "prijs": {
+   "top": 745,
+   "h": 29,
+   "w": 78,
+   "font": "24px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "28.8px",
+   "tekst": "€34,99"
+  },
+  "btw": {
+   "top": 751,
+   "h": 24,
+   "w": 54,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.6)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "23.8px",
+   "tekst": "Incl. btw"
+  },
+  "kleurlabel": {
+   "top": 808,
+   "h": 22,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Kleur: Blauw"
+  },
+  "knop": {
+   "top": 956,
+   "h": 50,
+   "w": 360,
+   "font": "16px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "radius": "4px",
+   "ls": "0.32px",
+   "lh": "19.2px",
+   "tekst": "In winkelwagen"
+  },
+  "vinkjes": {
+   "top": 1031,
+   "h": 118,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Gratis verzending in NL en BE\nBinnen 1-2 werkdagen in huis\nHoes wasbaar op 30 °C"
+  },
+  "bundelregel": null,
+  "betaal": {
+   "top": 1163,
+   "h": 34,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "iDEAL\nBC\nPay\nVISA\nMC"
+  },
+  "foto": {
+   "top": 117,
+   "h": 390,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": ""
+  },
+  "uitklap_tekst": {
+   "top": 1274,
+   "h": 120,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Een losse hoes voor het Bline leeskussen, in vijf kleuren. Van 100% katoen (400 "
+  },
+  "kruimel": {
+   "top": 566,
+   "h": 39,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Home\nHoezen\nLosse hoes Blauw voor leeskussen Bline"
+  },
+  "reviews": null,
+  "hero_kop": null,
+  "hero_knop": null,
+  "kleurvlak": {
+   "top": 837,
+   "h": 44,
+   "w": 106,
+   "font": "16px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "4px",
+   "ls": "normal",
+   "lh": "19.2px",
+   "tekst": "Blauw"
+  },
+  "kleurvlak_niet": {
+   "top": 837,
+   "h": 44,
+   "w": 85,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "4px",
+   "ls": "normal",
+   "lh": "19.2px",
+   "tekst": "Wit"
+  },
+  "kleurvlak_rand": "1px + rgb(26, 26, 26) 0px 0px 0px 1px inset",
+  "sticky": {
+   "top": 780,
+   "h": 64,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "€34,99\nIn winkelwagen"
+  },
+  "score": null,
+  "kaarten": [],
+  "secties": [
+   {
+    "id": "template--1__main",
+    "h": 1486,
+    "pt": "16px",
+    "pb": "0px",
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__disclosures",
+    "h": 0,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__sticky",
+    "h": 0,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   }
+  ],
+  "tekst_onder_16px": [
+   "A.skip-to-content-link button visually-hidden quick-add-hidden 15px Ga direct naar productinformat",
+   "SPAN.visually-hidden 13.3333px Media 1 openen in modaal",
+   "SPAN.visually-hidden 13.3333px Media 2 openen in modaal",
+   "A. 14px Home",
+   "A. 14px Hoezen",
+   "SPAN. 14px Losse hoes Blauw voor leeskuss",
+   "DIV.product__tax caption rte 14px Incl. btw"
+  ],
+  "zwevend": [
+   "CART-DRAWER.drawer",
+   "DIV.cart-drawer__overlay",
+   "DIV.drawer__footer",
+   "DIV.bline-sticky color-scheme-4 is-zichtbaar",
+   "PRODUCT-MODAL.product-media-modal media-modal",
+   "BUTTON.product-media-modal__toggle"
+  ],
+  "pagina_hoogte": 2716
+ },
+ "collection_mobiel": {
+  "balk": {
+   "top": 0,
+   "h": 35,
+   "w": 217,
+   "font": "13px",
+   "weight": "600",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "0.78px",
+   "lh": "16.5455px",
+   "tekst": "GRATIS VERZENDING NL EN BE"
+  },
+  "header": {
+   "top": 36,
+   "h": 60,
+   "w": 390,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Inloggen\nWinkelwagen\n0\n0 artikelen"
+  },
+  "menu_desktop": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\n          \n            Losse hoezen\n          \n            Over Blin"
+  },
+  "hamburger": {
+   "top": 43,
+   "h": 44,
+   "w": 44,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": ""
+  },
+  "titel": null,
+  "ondertitel": null,
+  "prijs": null,
+  "btw": null,
+  "kleurlabel": null,
+  "knop": null,
+  "vinkjes": null,
+  "bundelregel": null,
+  "betaal": null,
+  "foto": null,
+  "uitklap_tekst": null,
+  "kruimel": {
+   "top": 112,
+   "h": 20,
+   "w": 360,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Home\nLeeskussens"
+  },
+  "reviews": null,
+  "hero_kop": null,
+  "hero_knop": null,
+  "kleurvlak": null,
+  "kleurvlak_niet": null,
+  "kleurvlak_rand": null,
+  "sticky": null,
+  "score": null,
+  "kaarten": [
+   "15,337 178x255",
+   "197,337 178x255",
+   "15,596 178x276",
+   "197,596 178x276",
+   "15,876 178x255"
+  ],
+  "secties": [
+   {
+    "id": "template--1__banner",
+    "h": 174,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__product-grid",
+    "h": 842,
+    "pt": "16px",
+    "pb": "16px",
+    "mt": "0px"
+   }
+  ],
+  "tekst_onder_16px": [
+   "A. 14px Home",
+   "SPAN. 14px Leeskussens"
+  ],
+  "zwevend": [
+   "CART-DRAWER.drawer",
+   "DIV.cart-drawer__overlay",
+   "DIV.drawer__footer"
+  ],
+  "pagina_hoogte": 2245
+ },
+ "product_desktop": {
+  "balk": {
+   "top": 0,
+   "h": 38,
+   "w": 217,
+   "font": "13px",
+   "weight": "600",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "0.78px",
+   "lh": "16.5455px",
+   "tekst": "GRATIS VERZENDING NL EN BE"
+  },
+  "header": {
+   "top": 39,
+   "h": 78,
+   "w": 1366,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\nLosse hoezen\nOver Bline\nVragen\nInloggen\nWinkelwagen\n1\n1 artikel"
+  },
+  "menu_desktop": {
+   "top": 56,
+   "h": 44,
+   "w": 400,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\nLosse hoezen\nOver Bline\nVragen"
+  },
+  "hamburger": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": ""
+  },
+  "titel": {
+   "top": 176,
+   "h": 34,
+   "w": 380,
+   "font": "28px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "33.6px",
+   "tekst": "Leeskussen Bline Beige"
+  },
+  "ondertitel": {
+   "top": 260,
+   "h": 22,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.7)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Met vak voor je boek, 65 x 50 x 45 cm"
+  },
+  "prijs": {
+   "top": 313,
+   "h": 29,
+   "w": 78,
+   "font": "24px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "28.8px",
+   "tekst": "€79,99"
+  },
+  "btw": {
+   "top": 319,
+   "h": 24,
+   "w": 54,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.6)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "23.8px",
+   "tekst": "Incl. btw"
+  },
+  "kleurlabel": {
+   "top": 376,
+   "h": 22,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Kleur: Beige"
+  },
+  "knop": {
+   "top": 524,
+   "h": 45,
+   "w": 380,
+   "font": "15px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "radius": "4px",
+   "ls": "0.3px",
+   "lh": "18px",
+   "tekst": "In winkelwagen"
+  },
+  "vinkjes": {
+   "top": 594,
+   "h": 112,
+   "w": 380,
+   "font": "15px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": "Gratis verzending in NL en BE\nBinnen 1-2 werkdagen in huis\nHoes wasbaar op 30 °C"
+  },
+  "bundelregel": {
+   "top": 721,
+   "h": 42,
+   "w": 380,
+   "font": "15px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": "Extra hoes of tweede leeskussen erbij? Dan krijg je €9,99 korting."
+  },
+  "betaal": {
+   "top": 778,
+   "h": 34,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "iDEAL\nBC\nPay\nVISA\nMC"
+  },
+  "foto": {
+   "top": 141,
+   "h": 630,
+   "w": 780,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": ""
+  },
+  "uitklap_tekst": {
+   "top": 889,
+   "h": 144,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Een stevig leeskussen met een vak opzij voor je boek, bril of telefoon. Binnenin"
+  },
+  "kruimel": {
+   "top": 141,
+   "h": 20,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Home\nLeeskussens\nLeeskussen Bline Beige"
+  },
+  "reviews": {
+   "top": 1252,
+   "h": 113,
+   "w": 1366,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "KLANTREVIEWS\n☆☆☆☆☆\nNog geen reviews in onze eigen winkel\nSchrijf een review"
+  },
+  "hero_kop": null,
+  "hero_knop": null,
+  "kleurvlak": {
+   "top": 405,
+   "h": 44,
+   "w": 91,
+   "font": "15px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "4px",
+   "ls": "normal",
+   "lh": "18px",
+   "tekst": "Beige"
+  },
+  "kleurvlak_niet": {
+   "top": 405,
+   "h": 44,
+   "w": 77,
+   "font": "15px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "4px",
+   "ls": "normal",
+   "lh": "18px",
+   "tekst": "Wit"
+  },
+  "kleurvlak_rand": "1px + rgb(26, 26, 26) 0px 0px 0px 1px inset",
+  "sticky": {
+   "top": 807,
+   "h": 66,
+   "w": 1366,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussen Bline Beige\n€79,99\nIn winkelwagen"
+  },
+  "score": {
+   "top": 224,
+   "h": 21,
+   "w": 380,
+   "font": "15px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": "4,5 uit 5 op bol.com (13)"
+  },
+  "kaarten": [],
+  "secties": [
+   {
+    "id": "template--1__main",
+    "h": 1119,
+    "pt": "24px",
+    "pb": "16px",
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__reviews",
+    "h": 130,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__waarom",
+    "h": 288,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__disclosures",
+    "h": 0,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__sticky",
+    "h": 0,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   }
+  ],
+  "tekst_onder_16px": [
+   "A.skip-to-content-link button visually-hidden quick-add-hidden 15px Ga direct naar productinformat",
+   "SPAN.visually-hidden 13.3333px Media 1 openen in modaal",
+   "A. 14px Home",
+   "A. 14px Leeskussens",
+   "SPAN. 14px Leeskussen Bline Beige",
+   "SPAN. 15px 4,5 uit 5 op bol.com (13)",
+   "DIV.product__tax caption rte 14px Incl. btw",
+   "A.bline-kleurvlak 15px Wit",
+   "A.bline-kleurvlak is-gekozen 15px Beige",
+   "A.bline-kleurvlak 15px Blauw",
+   "A.bline-kleurvlak 15px Grijs",
+   "A.bline-kleurvlak 15px Zwart",
+   "SPAN. 15px In winkelwagen",
+   "LI. 15px Gratis verzending in NL en BE",
+   "LI. 15px Binnen 1-2 werkdagen in huis",
+   "LI. 15px Hoes wasbaar op 30 °C",
+   "LI. 15px 14 dagen bedenktijd",
+   "P.bline-bundelregel 15px Extra hoes of tweede leeskusse",
+   "SPAN.bline-kenmerken__label 15px Afmetingen",
+   "SPAN.bline-kenmerken__waarde 15px 65 x 50 x 45 cm (breed x hoog ",
+   "SPAN.bline-kenmerken__label 15px Vulling",
+   "SPAN.bline-kenmerken__waarde 15px Traagschuim (memory foam), ste",
+   "SPAN.bline-kenmerken__label 15px Hoes",
+   "SPAN.bline-kenmerken__waarde 15px 100% katoen, 400 TC\nOnzichtbar",
+   "SPAN.bline-kenmerken__label 15px Wassen",
+   "SPAN.bline-kenmerken__waarde 15px Hoes: machinewas 30 °C, normaa",
+   "SPAN.bline-kenmerken__label 15px Gewicht",
+   "SPAN.bline-kenmerken__waarde 15px 3,9 kg, waarvan 3,8 kg vulling",
+   "SPAN.bline-kenmerken__label 15px In de doos",
+   "SPAN.bline-kenmerken__waarde 15px 1 leeskussen met hoes in de ge"
+  ],
+  "zwevend": [
+   "CART-DRAWER.drawer",
+   "DIV.cart-drawer__overlay",
+   "MEDIA-GALLERY.product__column-sticky",
+   "SECTION.product__info-container product__column-sticky",
+   "DIV.bline-sticky color-scheme-4",
+   "PRODUCT-MODAL.product-media-modal media-modal",
+   "BUTTON.product-media-modal__toggle"
+  ],
+  "pagina_hoogte": 2132
+ },
+ "home_desktop": {
+  "balk": {
+   "top": 0,
+   "h": 38,
+   "w": 217,
+   "font": "13px",
+   "weight": "600",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "0.78px",
+   "lh": "16.5455px",
+   "tekst": "GRATIS VERZENDING NL EN BE"
+  },
+  "header": {
+   "top": 39,
+   "h": 78,
+   "w": 1366,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\nLosse hoezen\nOver Bline\nVragen\nInloggen\nWinkelwagen\n1\n1 artikel"
+  },
+  "menu_desktop": {
+   "top": 56,
+   "h": 44,
+   "w": 400,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\nLosse hoezen\nOver Bline\nVragen"
+  },
+  "hamburger": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": ""
+  },
+  "titel": null,
+  "ondertitel": null,
+  "prijs": null,
+  "btw": null,
+  "kleurlabel": null,
+  "knop": null,
+  "vinkjes": null,
+  "bundelregel": null,
+  "betaal": null,
+  "foto": null,
+  "uitklap_tekst": null,
+  "kruimel": null,
+  "reviews": null,
+  "hero_kop": {
+   "top": 372,
+   "h": 146,
+   "w": 480,
+   "font": "57.2px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "2.288px",
+   "lh": "72.8px",
+   "tekst": "RECHTOP LEZEN IN BED"
+  },
+  "hero_knop": {
+   "top": 537,
+   "h": 45,
+   "w": 120,
+   "font": "15px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "radius": "4px",
+   "ls": "0.3px",
+   "lh": "18px",
+   "tekst": "Shop nu"
+  },
+  "kleurvlak": null,
+  "kleurvlak_niet": null,
+  "kleurvlak_rand": null,
+  "sticky": null,
+  "score": null,
+  "kaarten": [
+   "83,978 234x317",
+   "325,978 234x317",
+   "566,978 234x317",
+   "808,978 234x317",
+   "1049,978 234x317",
+   "83,1435 234x335"
+  ],
+  "secties": [
+   {
+    "id": "template--1__banner",
+    "h": 720,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__leeskussens",
+    "h": 481,
+    "pt": "48px",
+    "pb": "24px",
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__hoezen",
+    "h": 500,
+    "pt": "24px",
+    "pb": "48px",
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__vinkjes",
+    "h": 75,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__kenmerken",
+    "h": 480,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__vragen",
+    "h": 449,
+    "pt": "24px",
+    "pb": "48px",
+    "mt": "0px"
+   }
+  ],
+  "tekst_onder_16px": [
+   "A.button button--primary 15px Shop nu",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Beige",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Wit",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Grijs",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Blauw",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Zwart",
+   "A.full-unstyled-link 14.3px Losse hoes Beige voor leeskuss",
+   "A.full-unstyled-link 14.3px Losse hoes Wit voor leeskussen",
+   "A.full-unstyled-link 14.3px Losse hoes Grijs voor leeskuss",
+   "A.full-unstyled-link 14.3px Losse hoes Blauw voor leeskuss",
+   "A.full-unstyled-link 14.3px Losse hoes Zwart voor leeskuss",
+   "LI. 14px Gratis verzending in NL en BE",
+   "LI. 14px Binnen 1-2 werkdagen in huis",
+   "LI. 14px Hoes wasbaar op 30 °C",
+   "LI. 14px 14 dagen bedenktijd",
+   "SPAN.bline-kenmerken__label 15px Afmetingen",
+   "SPAN.bline-kenmerken__waarde 15px 65 x 50 x 45 cm (breed x hoog ",
+   "SPAN.bline-kenmerken__label 15px Vulling",
+   "SPAN.bline-kenmerken__waarde 15px Traagschuim (memory foam), ste",
+   "SPAN.bline-kenmerken__label 15px Hoes",
+   "SPAN.bline-kenmerken__waarde 15px 100% katoen, 400 TC\nOnzichtbar",
+   "SPAN.bline-kenmerken__label 15px Wassen",
+   "SPAN.bline-kenmerken__waarde 15px Hoes: machinewas 30 °C, normaa",
+   "SPAN.bline-kenmerken__label 15px Gewicht",
+   "SPAN.bline-kenmerken__waarde 15px 3,9 kg, waarvan 3,8 kg vulling",
+   "SPAN.bline-kenmerken__label 15px In de doos",
+   "SPAN.bline-kenmerken__waarde 15px 1 leeskussen met hoes in de ge"
+  ],
+  "zwevend": [
+   "CART-DRAWER.drawer",
+   "DIV.cart-drawer__overlay"
+  ],
+  "pagina_hoogte": 3300
+ },
+ "lade_desktop": {
+  "lade": {
+   "top": 0,
+   "h": 800,
+   "w": 400,
+   "font": "16px",
+   "tekst": "Je winkelwagen\nPRODUCTAFBEELDING\n\tPRODUCT\tTOTAAL\t\nAANTAL\nLeeskussen Bline Beige\n€79,99\n€79,99\nAantal verlagen voor Leesk"
+  },
+  "afrekenen": {
+   "top": 739,
+   "h": 45,
+   "w": 369,
+   "font": "15px",
+   "tekst": "Afrekenen"
+  },
+  "totaal": {
+   "top": 670,
+   "h": 18,
+   "w": 58,
+   "font": "18px",
+   "tekst": "€79,99"
+  },
+  "optie": {
+   "top": 176,
+   "h": 21,
+   "w": 159,
+   "font": "14px",
+   "tekst": "€79,99"
+  },
+  "upsell": {
+   "top": 262,
+   "h": 77,
+   "w": 369,
+   "font": "16px",
+   "tekst": "Extra hoes erbij? €9,99 korting\n\n+ Wit"
+  },
+  "upsell_knop": {
+   "top": 287,
+   "h": 44,
+   "w": 66,
+   "font": "14px",
+   "tekst": "+ Wit"
+  },
+  "korting": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "12px",
+   "tekst": ""
+  }
+ },
+ "lade_desktop_bundel": {
+  "lade": {
+   "top": 0,
+   "h": 800,
+   "w": 400,
+   "font": "16px",
+   "tekst": "Je winkelwagen\nPRODUCTAFBEELDING\n\tPRODUCT\tTOTAAL\t\nAANTAL\nLeeskussen Bline Beige\n€79,99\n€79,99\nAantal verlagen voor Leesk"
+  },
+  "afrekenen": {
+   "top": 739,
+   "h": 45,
+   "w": 369,
+   "font": "15px",
+   "tekst": "Afrekenen"
+  },
+  "totaal": {
+   "top": 670,
+   "h": 18,
+   "w": 58,
+   "font": "18px",
+   "tekst": "€99,99"
+  },
+  "optie": {
+   "top": 176,
+   "h": 21,
+   "w": 159,
+   "font": "14px",
+   "tekst": "€79,99"
+  },
+  "upsell": null,
+  "upsell_knop": null,
+  "korting": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "12px",
+   "tekst": ""
+  }
+ },
+ "hoes_desktop": {
+  "balk": {
+   "top": 0,
+   "h": 38,
+   "w": 217,
+   "font": "13px",
+   "weight": "600",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "0.78px",
+   "lh": "16.5455px",
+   "tekst": "GRATIS VERZENDING NL EN BE"
+  },
+  "header": {
+   "top": 39,
+   "h": 78,
+   "w": 1366,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\nLosse hoezen\nOver Bline\nVragen\nInloggen\nWinkelwagen\n0\n0 artikelen"
+  },
+  "menu_desktop": {
+   "top": 56,
+   "h": 44,
+   "w": 400,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\nLosse hoezen\nOver Bline\nVragen"
+  },
+  "hamburger": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": ""
+  },
+  "titel": {
+   "top": 176,
+   "h": 67,
+   "w": 380,
+   "font": "28px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "33.6px",
+   "tekst": "Losse hoes Blauw voor leeskussen Bline"
+  },
+  "ondertitel": {
+   "top": 258,
+   "h": 22,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.7)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Katoen 400 TC, met rits en zijvak"
+  },
+  "prijs": {
+   "top": 310,
+   "h": 29,
+   "w": 78,
+   "font": "24px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "28.8px",
+   "tekst": "€34,99"
+  },
+  "btw": {
+   "top": 316,
+   "h": 24,
+   "w": 54,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.6)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "23.8px",
+   "tekst": "Incl. btw"
+  },
+  "kleurlabel": {
+   "top": 374,
+   "h": 22,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "22.4px",
+   "tekst": "Kleur: Blauw"
+  },
+  "knop": {
+   "top": 521,
+   "h": 45,
+   "w": 380,
+   "font": "15px",
+   "weight": "700",
+   "color": "rgb(255, 255, 255)",
+   "radius": "4px",
+   "ls": "0.3px",
+   "lh": "18px",
+   "tekst": "In winkelwagen"
+  },
+  "vinkjes": {
+   "top": 591,
+   "h": 112,
+   "w": 380,
+   "font": "15px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": "Gratis verzending in NL en BE\nBinnen 1-2 werkdagen in huis\nHoes wasbaar op 30 °C"
+  },
+  "bundelregel": null,
+  "betaal": {
+   "top": 718,
+   "h": 34,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "iDEAL\nBC\nPay\nVISA\nMC"
+  },
+  "foto": {
+   "top": 141,
+   "h": 630,
+   "w": 780,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": ""
+  },
+  "uitklap_tekst": {
+   "top": 829,
+   "h": 120,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Een losse hoes voor het Bline leeskussen, in vijf kleuren. Van 100% katoen (400 "
+  },
+  "kruimel": {
+   "top": 141,
+   "h": 20,
+   "w": 380,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Home\nHoezen\nLosse hoes Blauw voor leeskussen Bline"
+  },
+  "reviews": null,
+  "hero_kop": null,
+  "hero_knop": null,
+  "kleurvlak": {
+   "top": 402,
+   "h": 44,
+   "w": 97,
+   "font": "15px",
+   "weight": "700",
+   "color": "rgb(26, 26, 26)",
+   "radius": "4px",
+   "ls": "normal",
+   "lh": "18px",
+   "tekst": "Blauw"
+  },
+  "kleurvlak_niet": {
+   "top": 402,
+   "h": 44,
+   "w": 77,
+   "font": "15px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "4px",
+   "ls": "normal",
+   "lh": "18px",
+   "tekst": "Wit"
+  },
+  "kleurvlak_rand": "1px + rgb(26, 26, 26) 0px 0px 0px 1px inset",
+  "sticky": {
+   "top": 807,
+   "h": 66,
+   "w": 1366,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Losse hoes Blauw voor leeskussen Bline\n€34,99\nIn winkelwagen"
+  },
+  "score": null,
+  "kaarten": [],
+  "secties": [
+   {
+    "id": "template--1__main",
+    "h": 1067,
+    "pt": "24px",
+    "pb": "48px",
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__disclosures",
+    "h": 0,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__sticky",
+    "h": 0,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   }
+  ],
+  "tekst_onder_16px": [
+   "A.skip-to-content-link button visually-hidden quick-add-hidden 15px Ga direct naar productinformat",
+   "SPAN.visually-hidden 13.3333px Media 1 openen in modaal",
+   "A. 14px Home",
+   "A. 14px Hoezen",
+   "SPAN. 14px Losse hoes Blauw voor leeskuss",
+   "DIV.product__tax caption rte 14px Incl. btw",
+   "A.bline-kleurvlak 15px Wit",
+   "A.bline-kleurvlak 15px Beige",
+   "A.bline-kleurvlak is-gekozen 15px Blauw",
+   "A.bline-kleurvlak 15px Grijs",
+   "A.bline-kleurvlak 15px Zwart",
+   "SPAN. 15px In winkelwagen",
+   "LI. 15px Gratis verzending in NL en BE",
+   "LI. 15px Binnen 1-2 werkdagen in huis",
+   "LI. 15px Hoes wasbaar op 30 °C",
+   "LI. 15px 14 dagen bedenktijd",
+   "SPAN.bline-kenmerken__label 15px Afmetingen",
+   "SPAN.bline-kenmerken__waarde 15px Past om het Bline leeskussen v",
+   "SPAN.bline-kenmerken__label 15px Hoes",
+   "SPAN.bline-kenmerken__waarde 15px 100% katoen, 400 TC\nOnzichtbar",
+   "SPAN.bline-kenmerken__label 15px Wassen",
+   "SPAN.bline-kenmerken__waarde 15px Hoes: machinewas 30 °C, normaa",
+   "SPAN.bline-kenmerken__label 15px In de doos",
+   "SPAN.bline-kenmerken__waarde 15px 1 hoes in de gekozen kleur",
+   "LI. 15px Gratis verzending in Nederland",
+   "LI. 15px Binnen 1-2 werkdagen in huis, ",
+   "LI. 15px 14 dagen bedenktijd, vanaf de ",
+   "DIV.bline-sticky__titel 14px Losse hoes Blauw voor leeskuss",
+   "BUTTON.button button--primary bline-sticky__knop 15px In winkelwagen"
+  ],
+  "zwevend": [
+   "CART-DRAWER.drawer",
+   "DIV.cart-drawer__overlay",
+   "MEDIA-GALLERY.product__column-sticky",
+   "SECTION.product__info-container product__column-sticky",
+   "DIV.bline-sticky color-scheme-4",
+   "PRODUCT-MODAL.product-media-modal media-modal",
+   "BUTTON.product-media-modal__toggle"
+  ],
+  "pagina_hoogte": 1663
+ },
+ "collection_desktop": {
+  "balk": {
+   "top": 0,
+   "h": 38,
+   "w": 217,
+   "font": "13px",
+   "weight": "600",
+   "color": "rgb(255, 255, 255)",
+   "radius": "0px",
+   "ls": "0.78px",
+   "lh": "16.5455px",
+   "tekst": "GRATIS VERZENDING NL EN BE"
+  },
+  "header": {
+   "top": 39,
+   "h": 78,
+   "w": 1366,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\nLosse hoezen\nOver Bline\nVragen\nInloggen\nWinkelwagen\n0\n0 artikelen"
+  },
+  "menu_desktop": {
+   "top": 56,
+   "h": 44,
+   "w": 400,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgba(26, 26, 26, 0.75)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Leeskussens\nLosse hoezen\nOver Bline\nVragen"
+  },
+  "hamburger": {
+   "top": 0,
+   "h": 0,
+   "w": 0,
+   "font": "14px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "21px",
+   "tekst": ""
+  },
+  "titel": null,
+  "ondertitel": null,
+  "prijs": null,
+  "btw": null,
+  "kleurlabel": null,
+  "knop": null,
+  "vinkjes": null,
+  "bundelregel": null,
+  "betaal": null,
+  "foto": null,
+  "uitklap_tekst": null,
+  "kruimel": {
+   "top": 133,
+   "h": 20,
+   "w": 1200,
+   "font": "16px",
+   "weight": "400",
+   "color": "rgb(26, 26, 26)",
+   "radius": "0px",
+   "ls": "normal",
+   "lh": "24px",
+   "tekst": "Home\nLeeskussens"
+  },
+  "reviews": null,
+  "hero_kop": null,
+  "hero_knop": null,
+  "kleurvlak": null,
+  "kleurvlak_niet": null,
+  "kleurvlak_rand": null,
+  "sticky": null,
+  "score": null,
+  "kaarten": [
+   "83,363 234x317",
+   "325,363 234x317",
+   "566,363 234x317",
+   "808,363 234x317",
+   "1049,363 234x317"
+  ],
+  "secties": [
+   {
+    "id": "template--1__banner",
+    "h": 170,
+    "pt": null,
+    "pb": null,
+    "mt": "0px"
+   },
+   {
+    "id": "template--1__product-grid",
+    "h": 405,
+    "pt": "24px",
+    "pb": "48px",
+    "mt": "0px"
+   }
+  ],
+  "tekst_onder_16px": [
+   "A. 14px Home",
+   "SPAN. 14px Leeskussens",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Beige",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Wit",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Grijs",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Blauw",
+   "A.full-unstyled-link 14.3px Leeskussen Bline Zwart"
+  ],
+  "zwevend": [
+   "CART-DRAWER.drawer",
+   "DIV.cart-drawer__overlay"
+  ],
+  "pagina_hoogte": 1206
+ }
+}

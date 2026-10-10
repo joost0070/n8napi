@@ -1,0 +1,98 @@
+{% comment %}
+  Uitklapblokken onder de vinkjes: Beschrijving (open), Kenmerken, Verzending en retour, Vragen.
+  Zelfde opbouw als de Dawn-blokken "collapsible_tab", zodat de stijl van Dawn geldt.
+  Gebruik: render 'bline-uitklap', product: product, section_id: section.id
+{% endcomment %}
+{%- capture kenmerken -%}{% render 'bline-kenmerken', product: product %}{%- endcapture -%}
+<div class="bline-uitklap">
+  {%- if product.description != blank -%}
+    <div class="product__accordion accordion">
+      <details id="Details-beschrijving-{{ section_id }}" open>
+        <summary>
+          <div class="summary__title"><h2 class="h4 accordion__title">Beschrijving</h2></div>
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </summary>
+        <div class="accordion__content rte">{{ product.description }}</div>
+      </details>
+    </div>
+  {%- endif -%}
+  {%- if kenmerken != blank -%}
+    <div class="product__accordion accordion">
+      <details id="Details-kenmerken-{{ section_id }}">
+        <summary>
+          <div class="summary__title"><h2 class="h4 accordion__title">Kenmerken</h2></div>
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </summary>
+        <div class="accordion__content">{{ kenmerken }}</div>
+      </details>
+    </div>
+  {%- endif -%}
+  <div class="product__accordion accordion">
+    <details id="Details-materialen-{{ section_id }}">
+      <summary>
+        <div class="summary__title"><h2 class="h4 accordion__title">Materialen</h2></div>
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </summary>
+      <div class="accordion__content rte bline-materialen-klein">
+        <ul class="bline-vinkjes">
+          <li>Hoes van katoen 400 TC, met onzichtbare rits</li>
+          {%- unless product.handle contains 'hoes-' -%}<li>Vulling: 3,8 kg traagschuim</li>{%- endunless -%}
+          <li>Wasbaar op 30 °C, niet in de droger</li>
+        </ul>
+        <p><a href="/pages/materialen">Alles over de materialen</a></p>
+      </div>
+    </details>
+  </div>
+  <div class="product__accordion accordion">
+    <details id="Details-veiligheid-{{ section_id }}">
+      <summary>
+        <div class="summary__title"><h2 class="h4 accordion__title">Productveiligheid</h2></div>
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </summary>
+      <div class="accordion__content rte">
+        <p><b>Product:</b> {{ product.title }}{% if product.selected_or_first_available_variant.barcode != blank %}, EAN {{ product.selected_or_first_available_variant.barcode }}{% endif %}.</p>
+        <p><b>Fabrikant:</b> Ningbo Megafeat Bedding Co., Ltd., Longshan Industry Zone, Ningbo, Zhejiang, China (mhpillow.com).</p>
+        <p><b>Verantwoordelijk in de EU (importeur):</b> Shop4You (Bline), Brasem 12, 7623 KS Borne, Nederland, <a href="mailto:mail@blinesleep.nl">mail@blinesleep.nl</a>.</p>
+        <p><b>Veilig gebruik:</b> houd de plastic verpakking buiten bereik van kinderen (verstikkingsgevaar). Uit de buurt houden van open vuur en hete warmtebronnen.</p>
+        <p>Je hebt altijd de <a href="/pages/wettelijke-garantie">wettelijke garantie</a> van minimaal twee jaar.</p>
+      </div>
+    </details>
+  </div>
+  <div class="product__accordion accordion">
+    <details id="Details-verzending-{{ section_id }}">
+      <summary>
+        <div class="summary__title"><h2 class="h4 accordion__title">Verzending en retour</h2></div>
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </summary>
+      <div class="accordion__content rte">
+        <ul class="bline-vinkjes">
+          <li>Gratis verzending in Nederland en België</li>
+          <li>{{ settings.bline_levertijd_tekst | default: 'Binnen 1-2 werkdagen in huis' | escape }}, met track &amp; trace</li>
+          <li>30 dagen proberen, vanaf de dag na ontvangst{% unless product.handle contains 'hoes-' %}, gratis retour{% endunless %}</li>
+        </ul>
+        <p>Terugsturen? Meld het binnen 30 dagen via <a href="/pages/ontbinden">Retour aanmelden</a>.{% if product.handle contains 'hoes-' %} De kosten voor het terugsturen van een losse hoes zijn voor jou.{% else %} Je krijgt van ons een gratis retourlabel van PostNL.{% endif %}</p>
+        <p><a href="/pages/verzending">Verzending</a> en <a href="/pages/retourneren">Retourneren</a></p>
+      </div>
+    </details>
+  </div>
+  {%- comment -%} Op de hoespagina staan de vragen al in het blok 'Goed om te weten' {%- endcomment -%}
+  {%- unless product.handle contains 'hoes-' -%}
+  <div class="product__accordion accordion">
+    <details id="Details-vragen-{{ section_id }}">
+      <summary>
+        <div class="summary__title"><h2 class="h4 accordion__title">Vragen</h2></div>
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </summary>
+      <div class="accordion__content rte bline-vragen">
+        <p><strong>Hoe snel heb ik het kussen?</strong><br>Binnen 1-2 werkdagen, in Nederland en België. Verzending is gratis.</p>
+        <p><strong>Kan de hoes in de was?</strong><br>Ja, op 30 °C, normaal programma. Niet bleken en niet in de droger.</p>
+        <p><strong>Hoe stevig is het kussen?</strong><br>Stevig: 3,8 kg traagschuim. Laat het na het uitpakken 24 tot 48 uur luchten en schud het op.</p>
+        <p><strong>Is er een losse hoes?</strong><br>Ja, in dezelfde vijf kleuren.</p>
+        <p><strong>Wat zit er in de doos?</strong><br>Het leeskussen met de hoes in je kleur en een gebruiks- en wasinstructie.</p>
+        <p><strong>Kan ik het terugsturen?</strong><br>Ja. Je mag het kussen 30 dagen gewoon gebruiken, met de hoes erom. Niet tevreden? Meld het binnen 30 dagen (vanaf de dag na ontvangst), stuur het compleet en schoon terug en je krijgt het aankoopbedrag terug. Een reden geven hoeft niet. Terugsturen is gratis: je krijgt van ons een retourlabel van PostNL.</p>
+        <p><a href="/pages/veelgestelde-vragen">Alle vragen</a></p>
+      </div>
+    </details>
+  </div>
+  {%- endunless -%}
+</div>

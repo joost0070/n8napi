@@ -1,0 +1,18 @@
+{%- comment -%} Lijniconen (1.6 px), gebruik: render 'b3-icoon', naam: 'truck' {%- endcomment -%}
+<svg class="b3-icoon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+{%- case naam -%}
+  {%- when 'truck' -%}<path d="M3 6.5h10.5v9H3z"/><path d="M13.5 9.5h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/>
+  {%- when 'klok' -%}<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>
+  {%- when 'terug' -%}<path d="M4 9h11a5 5 0 0 1 0 10H9"/><path d="M8 5L4 9l4 4"/>
+  {%- when 'was' -%}<path d="M3.5 7l1.6 11.5h13.8L20.5 7"/><path d="M3.5 7c1.4 1.3 2.8 1.3 4.2 0s2.8-1.3 4.2 0 2.8 1.3 4.2 0 2.8-1.3 4.2 0"/><text x="12" y="16.3" font-size="5.6" text-anchor="middle" fill="currentColor" stroke="none" font-family="sans-serif">30</text>
+  {%- when 'boek' -%}<path d="M12 6.5c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5z"/><path d="M12 6.5v13"/>
+  {%- when 'telefoon' -%}<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/>
+  {%- when 'mail' -%}<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/>
+  {%- when 'rits' -%}<path d="M12 3v18"/><path d="M9.5 6h2.5M12 9h2.5M9.5 12h2.5M12 15h2.5"/><rect x="10" y="17" width="4" height="4" rx="1"/>
+  {%- when 'veer' -%}<path d="M4 18c4 0 6-2 8-6s4-6 8-6"/><path d="M4 12c3 0 5-1 6.5-3"/><path d="M13.5 15c1.5 2 3.5 3 6.5 3"/>
+  {%- when 'maat' -%}<path d="M3 17L17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/>
+  {%- when 'pijl' -%}<path d="M5 12h14M13 6l6 6-6 6"/>
+  {%- when 'plus' -%}<path d="M12 5v14M5 12h14"/>
+  {%- when 'check' -%}<path d="M5 12.5l4.2 4L19 7"/>
+{%- endcase -%}
+</svg>

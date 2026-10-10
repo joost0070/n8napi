@@ -1,0 +1,138 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+ "sections": {
+  "kop": {
+   "type": "b3-kop",
+   "settings": {
+    "oog": "Maatgids",
+    "kop": "Past het op <em>jouw</em> bed?",
+    "intro": "<p>Het leeskussen is 65 cm breed, 50 cm hoog en 45 cm diep. Hieronder zie je hoeveel ruimte er overblijft op een bed van 140, 160 en 180 cm.</p>",
+    "achtergrond": "warm"
+   }
+  },
+  "maat": {
+   "type": "b3-maat",
+   "settings": {
+    "oog": "Maat",
+    "kop": "Past op <em>elk</em> bed",
+    "intro": "65 cm breed, 50 cm hoog en 45 cm diep. Groot genoeg om echt tegenaan te leunen, klein genoeg om naast je partner te liggen.",
+    "achtergrond": "wit"
+   }
+  },
+  "bedden": {
+   "type": "b3-verhaal",
+   "blocks": {
+    "b0": {
+     "type": "punt",
+     "settings": {
+      "icoon": "maat",
+      "kop": "140 cm",
+      "tekst": "Eén kussen: links en rechts 37,5 cm over. Twee kussens: links en rechts 5 cm over."
+     }
+    },
+    "b1": {
+     "type": "punt",
+     "settings": {
+      "icoon": "maat",
+      "kop": "160 cm",
+      "tekst": "Eén kussen: links en rechts 47,5 cm over. Twee kussens: links en rechts 15 cm over."
+     }
+    },
+    "b2": {
+     "type": "punt",
+     "settings": {
+      "icoon": "maat",
+      "kop": "180 cm",
+      "tekst": "Eén kussen: links en rechts 57,5 cm over. Twee kussens: links en rechts 25 cm over."
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2"
+   ],
+   "settings": {
+    "video_product": "",
+    "beeld": "shopify://shop_images/bline-leeskussen-beige-02.jpg",
+    "oog": "Op je bed",
+    "kop": "Zo veel ruimte blijft er <em>over</em>",
+    "tekst": "Twee leeskussens naast elkaar zijn samen 130 cm breed: dat past op een bed vanaf 140 cm.",
+    "knop": "Twee leeskussens",
+    "knop_kleur": "beige",
+    "om": false,
+    "achtergrond": "warm"
+   }
+  },
+  "tips": {
+   "type": "b3-tegels",
+   "blocks": {
+    "b0": {
+     "type": "tegel",
+     "settings": {
+      "icoon": "boek",
+      "titel": "Hoofdbord",
+      "tekst": "<p>Het kussen staat tegen het hoofdbord of de muur. Zonder hoofdbord werkt het ook.</p>",
+      "link": "",
+      "link_label": ""
+     }
+    },
+    "b1": {
+     "type": "tegel",
+     "settings": {
+      "icoon": "maat",
+      "titel": "Diepte",
+      "tekst": "<p>Reken op 45 cm van het hoofdbord naar voren: zo ver schuif je op in bed.</p>",
+      "link": "",
+      "link_label": ""
+     }
+    },
+    "b2": {
+     "type": "tegel",
+     "settings": {
+      "icoon": "mail",
+      "titel": "Twijfel?",
+      "tekst": "<p>Je mag het kussen 30 dagen proberen. Twijfel je nog? Mail ons gerust op mail@blinesleep.nl.</p>",
+      "link": "/pages/contact",
+      "link_label": "Contact"
+     }
+    }
+   },
+   "block_order": [
+    "b0",
+    "b1",
+    "b2"
+   ],
+   "settings": {
+    "oog": "Tips",
+    "kop": "Even <em>meten</em>",
+    "achtergrond": "wit"
+   }
+  },
+  "kleuren": {
+   "type": "b3-kleuren",
+   "settings": {
+    "basis": "leeskussen-beige",
+    "oog": "Ons leeskussen",
+    "kop": "Kies je <em>kleur</em>",
+    "intro": "Zelfde kussen, vijf kleuren. Tik op een kleur voor het kussen in die kleur.",
+    "achtergrond": "warm"
+   }
+  }
+ },
+ "order": [
+  "kop",
+  "maat",
+  "bedden",
+  "tips",
+  "kleuren"
+ ]
+}

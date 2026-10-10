@@ -1,0 +1,10 @@
+Shared set name,Campaign
+Bline | Algemeen,00 Search | Merk | NL+BE
+Bline | Algemeen,02 Search | Generiek | NL+BE
+Bline | Algemeen,03 Search | Cadeau | NL+BE
+Bline | Merk,02 Search | Generiek | NL+BE
+Bline | Merk,03 Search | Cadeau | NL+BE
+Bline | Concurrenten,02 Search | Generiek | NL+BE
+Bline | Concurrenten,03 Search | Cadeau | NL+BE
+Bline | Productmismatch Search,02 Search | Generiek | NL+BE
+Bline | Productmismatch Search,03 Search | Cadeau | NL+BE

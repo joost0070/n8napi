@@ -1,0 +1,40 @@
+{% comment %}
+  Reviews van Judge.me in de huisstijl. Alleen het reviewblok van de app (geen zwevende knoppen, geen carrousel, geen pop-up).
+{% endcomment %}
+{%- comment -%} Pas tonen vanaf 3 eigen reviews (Judge.me vult reviews.rating_count); daarvoor alleen de bol-score. {%- endcomment -%}
+{%- assign bline_aantal = product.metafields.reviews.rating_count.value | default: 0 | plus: 0 -%}
+{%- if bline_aantal >= 3 or request.design_mode -%}
+<div class="bline-reviews color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {%- for block in section.blocks -%}
+      {% render block %}
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Bline reviews",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Kleurschema",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bline reviews"
+    }
+  ]
+}
+{% endschema %}

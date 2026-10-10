@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "ontbinden": {
+      "type": "b3-ontbinden",
+      "settings": {
+        "oog": "30 dagen proberen",
+        "kop": "Retour aanmelden",
+        "intro": "<p>Toch niet helemaal wat je zocht? Geen probleem. Meld je retour hieronder aan, dan sturen we je binnen een werkdag een gratis retourlabel van PostNL (voor het leeskussen; een losse hoes stuur je op eigen kosten terug). Je hebt 30 dagen, vanaf de dag na ontvangst. Meer over terugsturen lees je bij <a href=\"/pages/retourneren\">Retourneren</a>.</p>",
+        "achtergrond": "wit"
+      }
+    }
+  },
+  "order": [
+    "ontbinden"
+  ]
+}

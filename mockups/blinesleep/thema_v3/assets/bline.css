@@ -1,0 +1,270 @@
+/* Bline: aanvullingen op Dawn. Wit, inktblauw #1F2A37, Nunito Sans. */
+:root{--bline-inkt:31,42,55}
+
+/* Korte koppen en de balk in hoofdletters */
+.banner__heading,.collapsible-content__heading,.footer-block__heading,.bline-kop,.announcement-bar__message{text-transform:uppercase;letter-spacing:.04em}
+.announcement-bar__message{font-weight:600;font-size:1.3rem;letter-spacing:.06em}
+h1,h2,h3,h4,.h0,.h1,.h2,.h3,.h4{font-weight:700}
+.button{font-weight:700}
+
+/* Hero: witte tekst op de foto, effen inktblauwe knop */
+.banner__heading{max-width:14ch}
+
+/* Kleurbolletjes en beelden per kleur */
+.bline-dot{display:inline-block;width:1.4rem;height:1.4rem;border-radius:50%;margin-right:.8rem;vertical-align:-0.2rem;background:var(--bline-dot);box-shadow:inset 0 0 0 1px rgba(26,26,26,.25)}
+.product-form__input--pill input[type=radio]+label{display:inline-flex;align-items:center}
+.bline-media-verborgen{display:none!important}
+
+/* Levertijdregel (snippet bline-levertijd, nu niet in gebruik) */
+.bline-levertijd{display:flex;gap:.8rem;align-items:flex-start;margin:1.2rem 0 0;font-size:1.5rem;line-height:1.5}
+.bline-levertijd svg{flex:0 0 auto;margin-top:.3rem}
+
+/* Vier vinkjes */
+.bline-vinkjes{list-style:none;margin:1.6rem 0 0;padding:0;font-size:1.5rem;line-height:1.4}
+.bline-vinkjes li{padding:.35rem 0 .35rem 2.6rem;position:relative}
+.bline-vinkjes li:before{content:"";position:absolute;left:.3rem;top:.85rem;width:1.1rem;height:.55rem;border-left:2px solid rgb(var(--bline-inkt));border-bottom:2px solid rgb(var(--bline-inkt));transform:rotate(-45deg)}
+.color-scheme-3 .bline-vinkjes li:before{border-color:currentColor}
+.bline-vinkjes--rij{margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem 2rem;font-weight:700;font-size:1.4rem}
+@media (min-width:990px){.bline-vinkjes--rij{grid-template-columns:repeat(4,auto);justify-content:space-between}}
+
+/* Kenmerken als lijst */
+.bline-kop{margin:0 0 1.2rem}
+.bline-kenmerken{margin-top:2.4rem}
+.bline-kenmerken ul{list-style:none;margin:0;padding:0;font-size:1.5rem;line-height:1.5}
+.bline-kenmerken li{display:grid;grid-template-columns:12rem 1fr;gap:1.6rem;padding:1rem 0;border-bottom:1px solid rgba(var(--color-foreground),.12)}
+.bline-kenmerken li:first-child{border-top:1px solid rgba(var(--color-foreground),.12)}
+.bline-kenmerken__label{font-weight:700}
+@media (max-width:749px){.bline-kenmerken li{grid-template-columns:10rem 1fr}}
+
+/* Goed om te weten */
+.bline-waarom__grid{display:grid;gap:2.4rem;grid-template-columns:1fr;margin-top:2.4rem}
+@media (min-width:750px){.bline-waarom__grid{grid-template-columns:repeat(2,1fr);gap:3.2rem 4.8rem}}
+.bline-waarom__item h3{margin:0 0 .6rem}
+.bline-waarom__item p{margin:0}
+
+/* Meelopende knop: onder lades, menu en cookiemelding (z-index 20, lade 1000) */
+.bline-sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;transform:translateY(110%);transition:transform .25s ease;background:rgb(var(--color-background));border-top:1px solid rgba(var(--color-foreground),.12);box-shadow:0 -6px 20px rgba(26,26,26,.08);padding-bottom:env(safe-area-inset-bottom)}
+.bline-sticky.is-zichtbaar{transform:none}
+body[class*="overflow-hidden"] .bline-sticky{transform:translateY(110%)}
+.bline-sticky__binnen{display:flex;align-items:center;gap:1.6rem;padding:1rem 1.6rem;max-width:var(--page-width);margin:0 auto}
+.bline-sticky__info{flex:1;min-width:0;line-height:1.3}
+.bline-sticky__titel{font-size:1.4rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bline-sticky__prijs{font-size:1.6rem;font-weight:700}
+.bline-sticky .button{min-width:0;padding:0 2rem;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.bline-sticky{transition:none}}
+
+/* Score onder de titel */
+.bline-score{display:flex;align-items:center;gap:.8rem;margin:.4rem 0 0;font-size:1.5rem;line-height:1.4}
+.bline-score__sterren{display:inline-flex;gap:.1rem;color:rgb(var(--bline-inkt))}
+.bline-score__sterren svg{width:1.6rem;height:1.6rem}
+
+/* Uitklapblokken */
+.bline-uitklap{margin-top:2.4rem}
+.bline-uitklap .product__accordion + .product__accordion{margin-top:0}
+.bline-uitklap .accordion__title{text-transform:uppercase;letter-spacing:.04em}
+.bline-uitklap .bline-kenmerken{margin-top:0}
+.bline-uitklap .bline-vinkjes{margin-top:0}
+.bline-vragen p{margin:0 0 1.2rem}
+
+/* ===== Mobiel (checklist 05-10, tot 749 px) ===== */
+@media screen and (max-width:749px){
+  /* 11. Tekst en invoervelden minimaal 16 px */
+  body{font-size:1.6rem}
+  input,select,textarea,.field__input,.select__select,.quantity__input,.search__input,.customer input{font-size:1.6rem!important}
+  .bline-vinkjes,.bline-kenmerken ul,.bline-score,.rte,.accordion__content,.product__description,.cart-item__name,.cart-item__details,.totals,.tax-note,.cart__note,.product-form__input .form__label,.footer-block__details-content,.footer-block__details-content .list-menu__item--link,.copyright__content,.price{font-size:1.6rem}
+  .bline-vinkjes--rij{font-size:1.6rem;grid-template-columns:1fr}
+
+  /* 1. Balk: één regel, één bericht tegelijk, geen pijltjes */
+  .utility-bar__grid{grid-template-columns:minmax(0,1fr)}
+  .utility-bar__grid .announcement-bar,.announcement-bar-slider,.announcement-bar-slider .slider{min-width:0;width:100%;max-width:100%}
+  .announcement-bar-slider .slider-button{display:none}
+  .announcement-bar-slider .slider{margin:0}
+  .announcement-bar__message{font-size:1.3rem;min-height:0;padding:.9rem 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.06em}
+  .cart-items th,.caption-with-letter-spacing,.product-option,.cart-item__name,.drawer__heading + *{font-size:1.6rem}
+
+  /* 2. Header: compact (hoogte rond 56 px) */
+  .header__heading-logo-wrapper img{height:3.6rem;max-height:3.6rem;width:auto;aspect-ratio:110/46}
+
+  /* 3. Galerij: veegslider over de volle breedte, teller eronder, geen miniaturen */
+  .product__media-list.slider--mobile{scroll-padding-left:0;padding-left:0;padding-right:0;margin-left:0;gap:0;column-gap:0}
+  .product__media-list.slider--mobile .product__media-item{width:100%!important;margin-left:0!important;padding-left:0}
+  .product__media-list.grid--peek.slider--mobile:after{display:none}
+  .product__media-wrapper .slider-mobile-gutter{margin:0 -1.5rem}
+  .product__media-wrapper .slider-buttons{min-height:4.4rem}
+  .product__media-wrapper .slider-button{width:4.4rem;height:4.4rem}
+  .product__media-wrapper .slider-counter{font-size:1.6rem;min-width:4.4rem}
+  .product__media-icon{display:none}
+  section[id^="MainProduct-"]{padding-top:.4rem!important}
+  .product__media-list{--media-radius:0px}
+  .product__media-list .global-media-settings{border-radius:0}
+
+  /* 4. Eerste scherm: titel, score en prijs dicht op elkaar */
+  .product__info-container > * + *{margin-top:.8rem}
+  .product__title{margin-bottom:0}
+  .product__title h1{font-size:2.4rem;line-height:1.2}
+  .product__info-container .price,.product__info-container .price--large{font-size:2.2rem}
+
+  /* 5. Kleurkeuze: tikvlak minimaal 44 x 44 px, kleurnaam erbij */
+  .product-form__input--pill input[type=radio]+label{min-height:4.4rem;min-width:4.4rem;padding:.8rem 1.4rem;margin:.6rem .6rem .2rem 0;font-size:1.6rem}
+  .bline-dot{width:2rem;height:2rem;margin-right:.8rem}
+
+  /* 6. Knop over de volle breedte, minimaal 48 px */
+  .product-form__submit,.product-form__buttons .button,.cart__checkout-button,.drawer__footer .button{width:100%;min-height:5rem;font-size:1.6rem}
+
+  /* 9. Meelopende knop: prijs plus knop, volle breedte, 64 px */
+  .bline-sticky{border-top:0;box-shadow:0 -1px 0 rgba(var(--color-foreground),.12),0 -6px 20px rgba(26,26,26,.08)}
+  .bline-sticky__binnen{height:6.4rem;box-sizing:border-box;padding:.8rem 1.6rem;gap:1.2rem}
+  .bline-sticky__info{flex:0 0 auto}
+  .bline-sticky__titel{display:none}
+  .bline-sticky__prijs{font-size:1.8rem}
+  .bline-sticky .button{flex:1;min-height:4.8rem;height:4.8rem;font-size:1.6rem}
+  body:has(.bline-sticky.is-zichtbaar) .footer{padding-bottom:6.4rem}
+
+  /* 11. Tikdoelen in de voettekst minimaal 44 px */
+  .footer-block__details-content .list-menu__item--link{display:flex;align-items:center;min-height:4.4rem;padding-top:0;padding-bottom:0}
+  .footer-block__details-content > li{margin:0}
+
+  /* 13. Winkelwagenlade over de volle breedte, Afrekenen altijd zichtbaar */
+  .drawer__inner{width:100vw;max-width:100vw;height:100%;height:100dvh;border-left:0}
+  .cart-drawer .drawer__footer{position:sticky;bottom:0;background:rgb(var(--color-background));padding-bottom:calc(1.5rem + env(safe-area-inset-bottom))}
+  .cart-drawer .drawer__header{padding:1rem 0}
+  .drawer__close{width:4.4rem;height:4.4rem}
+}
+
+/* Balk op desktop: alle drie de berichten naast elkaar op één regel */
+@media screen and (min-width:990px){
+  .announcement-bar-slider .slider-button{display:none}
+  .announcement-bar-slider .slider{display:flex;justify-content:center;overflow:visible;gap:0}
+  .announcement-bar-slider .slideshow__slide{width:auto;flex:0 0 auto;visibility:visible!important}
+  .announcement-bar-slider .slideshow__slide + .slideshow__slide .announcement-bar__message:before{content:"|";margin:0 1.6rem;opacity:.6}
+  .announcement-bar-slider .announcement-bar__message{animation:none!important;opacity:1!important;transform:none!important}
+}
+
+/* ===== Ronde 2: kritische review, 12 punten (05-10) ===== */
+
+/* 6. Lopende tekst bijna zwart, regelafstand 1,5, compact */
+body{color:rgb(var(--color-foreground));line-height:1.5;letter-spacing:0}
+.rte,.accordion__content,.product__description,.form__label,.product-option,.totals__total-value,.tax-note,.bline-vinkjes,.bline-kenmerken,.bline-waarom__item p,.collapsible-content .accordion__content,.cart-item__name,.header__menu-item,.list-menu__item--link{color:rgb(var(--color-foreground))}
+.accordion .accordion__content{padding:0;line-height:1.5}
+.bline-uitklap .accordion__content .bline-kenmerken li{line-height:1.5}
+.accordion__content p{margin:0 0 1rem}
+
+/* 1. Rangorde: titel 28 px, prijs 24 px, beide vet */
+.product__title{margin-bottom:0}
+.product__title h1,.featured-product .product__title h2{font-size:2.8rem;line-height:1.2;font-weight:700;letter-spacing:0}
+.product__info-container .price,.product__info-container .price--large{font-size:2.4rem;font-weight:700;letter-spacing:0;line-height:1.2}
+.product__info-container .price .price-item{font-weight:700}
+
+/* 2. Ondertitel onder de productnaam */
+.bline-ondertitel{margin:0;font-size:1.6rem;line-height:1.4;color:rgba(var(--color-foreground),.7)}
+
+/* 3. "Incl. btw" klein en grijs, naast de prijs */
+.product__info-container [id^="price-"]{display:inline-block;vertical-align:baseline}
+.product__info-container .product__tax{display:inline-block;margin:0 0 0 .8rem!important;font-size:1.4rem;color:rgba(var(--color-foreground),.6);letter-spacing:0;vertical-align:baseline}
+.product__info-container .installment:empty,.product__info-container .installment{margin:0}
+
+/* 4. "Kleur: Wit" */
+.product-form__input--pill .form__label{font-size:1.6rem;color:rgb(var(--color-foreground));margin-bottom:.4rem}
+.bline-gekozen{font-weight:700}
+
+/* 11. Kleurvlakken: 4 px hoeken, rand 1 px #1A1A1A bij hover, 2 px bij gekozen */
+fieldset.product-form__input--pill input[type=radio]+label{border:1px solid rgba(var(--color-foreground),.25);background:rgb(var(--color-background));color:rgb(var(--color-foreground));letter-spacing:0;font-size:1.5rem}
+fieldset.product-form__input--pill input[type=radio]+label:hover{border-color:rgb(var(--color-foreground))}
+fieldset.product-form__input--pill input[type=radio]:checked+label{background:rgb(var(--color-background));color:rgb(var(--color-foreground));border-color:rgb(var(--color-foreground));box-shadow:inset 0 0 0 1px rgb(var(--color-foreground));font-weight:700}
+.button,.shopify-challenge__button,.customer button{letter-spacing:.02em}
+
+/* 7. Balk: 13 px, gewicht 600, letterafstand 0,06 em (zie boven) */
+
+/* 8. Menu op desktop uitgeschreven, vet en donker */
+.header__menu-item{font-size:1.5rem;font-weight:700;letter-spacing:0}
+.header__menu-item span{text-decoration:none}
+.header__active-menu-item{text-decoration:underline;text-underline-offset:.4rem}
+
+/* 9. Betaaliconen onder de vinkjes */
+.bline-betaal{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.2rem 0 0;padding:0}
+.bline-betaal .icon{width:3.8rem;height:2.4rem}
+
+/* B3. Bundelregel */
+.bline-bundelregel{margin:1.2rem 0 0;font-size:1.5rem;line-height:1.4;font-weight:700;color:rgb(var(--color-foreground))}
+
+/* B4. Kruimelpad */
+.bline-kruimel ol{display:flex;flex-wrap:wrap;list-style:none;margin:0;padding:0;font-size:1.4rem;line-height:1.4;color:rgba(var(--color-foreground),.7)}
+.bline-kruimel li+li:before{content:"/";margin:0 .6rem;opacity:.6}
+.bline-kruimel a{color:inherit;text-decoration:none}
+.bline-kruimel a:hover{text-decoration:underline}
+.bline-kruimel [aria-current]{color:rgb(var(--color-foreground))}
+.bline-kruimel-wrap{padding-top:1.6rem;width:100%;box-sizing:border-box;align-self:stretch}
+.product__info-container .bline-kruimel{margin-bottom:.4rem}
+
+/* 10. Sectieruimte: desktop 48 px tussen blokken (via sectie-instellingen), mobiel 32 px */
+@media screen and (max-width:749px){
+  main .shopify-section [class*="section-template--"][class*="-padding"]{padding-top:1.6rem;padding-bottom:1.6rem}
+  main .shopify-section .color-scheme-2 [class*="section-template--"][class*="-padding"],main .shopify-section .color-scheme-2[class*="section-template--"][class*="-padding"]{padding-top:3.2rem;padding-bottom:3.2rem}
+  .product__title h1{font-size:2.4rem}
+  .bline-kruimel ol{font-size:1.4rem}
+  fieldset.product-form__input--pill input[type=radio]+label{font-size:1.6rem}
+  .bline-bundelregel{font-size:1.6rem}
+}
+
+/* B2. Upsell in de lade */
+.bline-upsell{display:block}
+.bline-upsell__cel{display:block;padding:0 0 1.6rem}
+.bline-upsell__binnen{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem .8rem .8rem 1.2rem;background:rgb(244,244,242);border-radius:4px}
+.bline-upsell__tekst{margin:0;font-size:1.5rem;line-height:1.3;white-space:nowrap;color:rgb(var(--color-foreground))}
+.bline-upsell__knop{min-height:4.4rem;min-width:4.4rem;padding:0 1.4rem;font-size:1.4rem;white-space:nowrap;flex:0 0 auto}
+.bline-upsell__knop[aria-busy=true]{opacity:.6;pointer-events:none}
+@media screen and (max-width:749px){.bline-upsell__tekst{font-size:1.6rem}.bline-upsell__knop{font-size:1.6rem}}
+
+/* B1. Judge.me in de huisstijl; geen zwevende knoppen, carrousels of pop-ups */
+.jdgm-widget,.jdgm-rev-widg{font-family:var(--font-body-family)!important;color:rgb(var(--color-foreground))}
+.jdgm-rev-widg{padding:0!important;border:0!important;margin:0 auto}
+.jdgm-rev-widg__title{font-family:var(--font-heading-family)!important;font-weight:700!important;text-transform:uppercase;letter-spacing:.04em;font-size:2rem!important;text-align:left!important;margin-bottom:1.6rem!important}
+.jdgm-star,.jdgm-rev-widg .jdgm-star{color:#1F2A37!important}
+.jdgm-write-rev-link,.jdgm-ask-question-btn,.jdgm-btn--solid,.jdgm-submit-rev{background:#1F2A37!important;color:#fff!important;border:0!important;border-radius:4px!important;font-weight:700!important;min-height:4.4rem;padding:1.2rem 2.4rem!important;text-transform:none!important;letter-spacing:.02em!important}
+.jdgm-revs-tab-btn,.jdgm-revs-tab,.jdgm-carousel-wrapper,.jdgm-carousel,.jdgm-popup-widget,.jdgm-verified-badge-wrapper.jdgm--floating,.jdgm-medals-wrapper.jdgm--floating{display:none!important}
+.bline-reviews{padding:0 0 2.4rem}
+@media screen and (max-width:749px){.bline-reviews{padding:0 0 1.6rem}main[data-template="product"] .shopify-section [class*="__main-padding"]{padding-bottom:0}}
+
+/* 12. Homepage: kop en knop onderaan de foto op mobiel, niet over het gezicht */
+@media screen and (max-width:749px){
+  .banner:not(.banner--mobile-bottom) .banner__content{align-items:flex-end}
+  .banner__content .banner__box{padding-bottom:2.4rem}
+  .banner__heading.h0{font-size:3.4rem;line-height:1.1}
+}
+
+/* Paginatitels rustiger (pagina, blog, artikel, collectie) */
+.main-page-title,.title--primary,.article-template__title,.collection-hero__title,.main-blog h1{font-size:3.2rem;line-height:1.15;letter-spacing:0}
+@media screen and (min-width:750px){.main-page-title,.title--primary,.article-template__title,.collection-hero__title,.main-blog h1{font-size:4rem}}
+
+/* Uitklapblokken zonder inspringing (wint van Dawn) */
+.bline-uitklap .product__accordion .accordion__content{padding-left:0;padding-right:0}
+/* Homepage mobiel: 32 px tussen foto en product */
+@media screen and (max-width:749px){main[data-template="index"] .shopify-section [class*="__product-padding"]{padding-top:3.2rem}}
+
+/* Sessie 8: kleurkeuze als links, elke kleur een eigen product (zelfde maten als punt 5 en 11) */
+.bline-kleurkeuze{margin:1.6rem 0 0}
+.bline-kleurkeuze__label{font-size:1.6rem;line-height:1.4;margin:0 0 .4rem;color:rgb(var(--color-foreground))}
+.bline-kleurkeuze__lijst{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;margin:0;padding:.2rem 0 0}
+.bline-kleurvlak{display:inline-flex;align-items:center;box-sizing:border-box;min-height:4.4rem;min-width:4.4rem;padding:.8rem 1.4rem;border:1px solid rgba(var(--color-foreground),.25);border-radius:var(--variant-pills-radius,4px);background:rgb(var(--color-background));color:rgb(var(--color-foreground));font-size:1.5rem;line-height:1.2;letter-spacing:0;text-decoration:none}
+.bline-kleurvlak:hover{border-color:rgb(var(--color-foreground))}
+.bline-kleurvlak:focus-visible{outline:2px solid rgb(var(--color-foreground));outline-offset:2px}
+.bline-kleurvlak.is-gekozen{border-color:rgb(var(--color-foreground));box-shadow:inset 0 0 0 1px rgb(var(--color-foreground));font-weight:700}
+.bline-kleurvlak.is-uitverkocht{color:rgba(var(--color-foreground),.5);text-decoration:line-through}
+@media screen and (max-width:749px){
+  .bline-kleurvlak{font-size:1.6rem}
+  .bline-kleurvlak .bline-dot{width:2rem;height:2rem}
+}
+/* Sessie 8: productkaarten (collectie en homepage), op mobiel ook 16 px */
+.card__heading{letter-spacing:0}
+@media screen and (max-width:749px){
+  .card__heading,.card-information .price{font-size:1.6rem}
+}
+/* sessie 9: ook bij bol.com, foto Over Bline, gemaakt door */
+.bline-bol{margin:1.2rem 0 0;font-size:1.6rem;line-height:1.5;color:rgba(var(--color-foreground),.75)}
+.bline-bol-sectie .bline-bol{margin:0}
+.bline-foto__beeld{display:block;width:100%;height:auto;border-radius:0}
+.bline-gemaakt{display:flex;align-items:center;gap:1.6rem}
+.bline-gemaakt__foto{width:9.6rem;height:9.6rem;object-fit:cover;border-radius:0;flex:none}
+.bline-gemaakt__tekst p{margin:0;font-size:1.6rem;line-height:1.5}
+.bline-gemaakt__kop{font-weight:700;color:rgb(var(--color-foreground))}
+.bline-gemaakt__tekst a{display:inline-block;min-height:4.4rem;line-height:4.4rem;font-size:1.6rem}

@@ -1,0 +1,45 @@
+{%- comment -%}
+  Bline v3: kies je kleur. Vijf kaarten met hetzelfde beeld in elke kleur (eerste foto van elk kleurproduct),
+  zodat je het verschil echt ziet. Een tik zet de kleur bovenaan.
+{%- endcomment -%}
+{%- assign basis = all_products[section.settings.basis] -%}
+{%- assign kleuren = basis.metafields.bline.kleuren.value -%}
+<section id="kleuren" class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in">
+    <p class="b3-oog">{{ section.settings.oog }}</p>
+    <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+    {%- if section.settings.intro != blank -%}<p class="b3-intro">{{ section.settings.intro }}</p>{%- endif -%}
+    <div class="b3-kleurrij">
+      {%- for kp in kleuren -%}
+        {%- assign k = kp.handle | remove: 'leeskussen-' -%}
+        {%- case k -%}
+          {%- when 'beige' -%}{%- assign tint = '#F2EADF' -%}
+          {%- when 'wit' -%}{%- assign tint = '#F4F2EE' -%}
+          {%- when 'grijs' -%}{%- assign tint = '#ECEAE6' -%}
+          {%- when 'blauw' -%}{%- assign tint = '#E3E8F1' -%}
+          {%- else -%}{%- assign tint = '#E4E3E1' -%}
+        {%- endcase -%}
+        <a href="{{ kp.url }}" class="b3-kleurkaart" style="--t: {{ tint }}" data-b3-zet-kleur="{{ k }}">
+          <span class="b3-kleurkaart__beeld">{{ kp.featured_media.preview_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 500, 800', sizes: '(min-width: 990px) 20vw, 62vw', alt: kp.featured_media.alt }}</span>
+          <span class="b3-kleurkaart__voet">
+            <span><span class="b3-kleurkaart__naam">{{ kp.metafields.bline.kleur_naam.value }}</span><br><span class="b3-kleurkaart__prijs">{{ kp.price | money }}</span></span>
+            <span class="b3-kleurkaart__pijl">{% render 'b3-icoon', naam: 'pijl' %}</span>
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: kleuren",
+  "settings": [
+    { "type": "text", "id": "basis", "label": "Kussen (handle)", "default": "leeskussen-beige" },
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Vijf kleuren" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Welke past bij <em>jouw</em> bed?" },
+    { "type": "text", "id": "intro", "label": "Intro" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "wit", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "presets": [{ "name": "Bline v3: kleuren" }]
+}
+{% endschema %}

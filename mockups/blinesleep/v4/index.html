@@ -1,0 +1,82 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#1F2A37;--cta:#E3A13F;--ctah:#C98A2C;--ink:#080808;--grey:#666;--line:#E5E5E5;--off:#F4F4F4;--ok:#0F9100}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Poppins,sans-serif;color:var(--ink);font-size:14px;line-height:1.6;background:#fff}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.bar{background:var(--brand);color:#fff;font-size:12px;text-align:center;padding:8px 12px}.bar b{font-weight:500}.bar i{opacity:.6;margin:0 10px;font-style:normal}
+.hdr{max-width:1320px;margin:0 auto;padding:16px 24px 0;display:grid;grid-template-columns:200px 1fr 220px;align-items:center;gap:24px}
+.hdr .logo img{height:34px}.search{background:var(--off);border-radius:999px;padding:9px 18px;color:#888;font-size:13px;max-width:420px}
+.ico{display:flex;justify-content:flex-end;gap:22px;font-size:10px;text-align:center;color:#333}.ico div svg{width:22px;height:22px;display:block;margin:0 auto 2px}
+.nav{max-width:1320px;margin:0 auto;padding:14px 24px;display:flex;gap:28px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--line)}
+.wrap{max-width:1320px;margin:0 auto;padding:24px}
+.pdp{display:grid;grid-template-columns:1.35fr 1fr;gap:40px}
+.gal .main{background:var(--off)}.gal .main img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.gal .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.gal .grid img{aspect-ratio:1/1;object-fit:cover;width:100%;background:var(--off)}
+.info{position:sticky;top:12px;align-self:start}.crumb{font-size:11px;color:var(--grey)}.crumb b{color:var(--brand);font-weight:500}
+h1{font-size:24px;line-height:1.25;font-weight:700;margin:6px 0 4px}.stars{color:#F2A900;letter-spacing:1px}.rev{font-size:12px;color:#333}.rev u{color:var(--grey)}
+.sub{font-size:13px;color:#333;margin:6px 0 10px}.price{font-size:22px;font-weight:600}.price small{font-size:12px;color:var(--grey);font-weight:400;margin-left:6px}
+.lab{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin:18px 0 8px}.lab span{font-weight:400;text-transform:none;letter-spacing:0}
+.sw{display:flex;gap:8px}.sw a{width:62px;height:62px;border:1px solid var(--line);background:var(--off);overflow:hidden}.sw a img{width:100%;height:100%;object-fit:cover}.sw a.on{border:2px solid var(--ink)}
+.opt{display:grid;grid-template-columns:1fr 1fr;gap:10px}.opt label{border:1px solid #cfcfcf;border-radius:4px;padding:12px 14px;position:relative;font-size:13px}.opt label.on{border:2px solid var(--ink)}
+.opt b{display:block;font-size:14px}.opt .tag{position:absolute;top:-10px;right:10px;background:var(--brand);color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px;text-transform:uppercase}
+.up{display:flex;gap:12px;align-items:center;border:1px dashed #cfcfcf;border-radius:4px;padding:10px 12px;margin-top:12px;font-size:13px}.up .bx{width:18px;height:18px;border:1.5px solid #333;border-radius:3px;flex:none}.up img{width:44px;height:44px;object-fit:cover}.up s{color:var(--grey)}
+.buy{display:flex;gap:10px;margin-top:16px}.qty{display:flex;align-items:center;border:1px solid #cfcfcf;border-radius:4px}.qty span{padding:0 12px;font-size:16px}
+.cta{flex:1;background:var(--cta);color:#111;font-weight:600;font-size:14px;text-align:center;padding:15px;border-radius:4px;letter-spacing:.02em}
+.heart{width:52px;border:1px solid #cfcfcf;border-radius:4px;display:grid;place-items:center;font-size:20px}
+.checks{list-style:none;margin:16px 0 10px}.checks li{padding-left:26px;position:relative;margin:6px 0;font-size:13px}.checks li:before{content:'✓';position:absolute;left:4px;color:var(--ok);font-weight:700}
+.pay{display:flex;gap:6px;margin:6px 0 16px}.pay span{border:1px solid var(--line);border-radius:3px;font-size:10px;padding:3px 7px;color:#333;font-weight:600}
+.acc{border:1px solid var(--line);margin-top:10px}.acc h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:14px 16px;display:flex;justify-content:space-between}.acc p{padding:0 16px 16px;font-size:13px;color:#222}
+.usp{background:var(--off);margin-top:48px}.usp .in{max-width:1320px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;font-size:13px;font-weight:500}.usp em{display:block;font-style:normal;font-size:22px;margin-bottom:4px}
+h2{font-size:28px;font-weight:600;line-height:1.2;margin-bottom:18px}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.how img{aspect-ratio:4/3;object-fit:cover;width:100%}.how b{display:block;font-size:15px;margin:10px 0 2px}.how p{color:#333;font-size:13px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-top:8px}.cmp div{padding:12px 16px;border-bottom:1px solid var(--line);font-size:13px}.cmp .h{font-weight:600;background:var(--off)}.cmp .y{background:#FFF8EC}
+.reviews{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:center;background:var(--off);padding:32px}.big{font-size:56px;font-weight:700;line-height:1}.barr{display:grid;grid-template-columns:60px 1fr 24px;gap:10px;align-items:center;font-size:12px;margin:5px 0}.barr i{height:8px;background:#ddd;display:block;border-radius:4px;overflow:hidden}.barr i b{display:block;height:100%;background:var(--brand)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.split img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.faq div{border-bottom:1px solid var(--line);padding:14px 0;font-weight:500;display:flex;justify-content:space-between}
+footer{background:var(--brand);color:#fff;margin-top:56px}footer .in{max-width:1320px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-size:13px}footer b{display:block;margin-bottom:8px}
+.sticky{display:none}
+@media(max-width:760px){.bar .more{display:none}.hdr{grid-template-columns:auto 1fr auto;padding:10px 16px 0;gap:12px}.hdr .search{display:none}.ico div:not(:last-child){display:none}.hdr .logo{justify-self:center;order:2}.burger{order:1;font-size:22px}.ico{order:3}
+.msearch{display:block!important;margin:10px 16px 0;background:var(--off);border-radius:999px;padding:9px 16px;color:#888;font-size:13px}.nav{display:none}.wrap{padding:16px}
+.pdp{grid-template-columns:1fr;gap:16px}.gal .grid{display:none}.dots{display:flex!important}.info{position:static}h1{font-size:20px}
+.usp .in{grid-template-columns:1fr 1fr}.how{grid-template-columns:1fr}.reviews{grid-template-columns:1fr;padding:20px}.split{grid-template-columns:1fr}footer .in{grid-template-columns:1fr}
+.sticky{display:flex;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 16px;gap:12px;align-items:center;z-index:9}.sticky b{font-size:15px}.sticky .cta{padding:12px}}
+@media(min-width:761px){.burger,.msearch,.dots{display:none}}
+.msearch,.dots{display:none}.dots{justify-content:center;gap:6px;margin-top:8px}.dots i{width:7px;height:7px;border-radius:50%;background:#ccc;display:block}.dots i:first-child{background:#333}
+</style></head><body>
+<div class="bar"><b>Gratis verzending NL en BE</b><span class="more"><i>/</i>Binnen 1-2 werkdagen in huis<i>/</i>★ 4,5 op bol.com</span></div>
+<div class="hdr"><span class="burger">☰</span><a class="logo"><img src="logo.svg" alt="bline"></a><div class="search">Zoeken</div>
+<div class="ico"><div><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Account</div><div><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>Favorieten</div><div><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><path d="M6 8h12l-1 12H7z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>Mandje</div></div></div>
+<div class="msearch">Zoeken</div>
+<div class="nav"><a>Leeskussen</a><a>Kleuren</a><a>Reviews</a><a>Vragen</a><a>Over Bline</a></div>
+<div class="wrap"><div class="pdp">
+<div class="gal"><div class="main"><img src="../beelden_bewerkt/bline-tegel-beige-packshot.jpg"></div><div class="dots"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="grid"><img src="../beelden_bewerkt/bline-tegel-beige-sfeer.jpg"><img src="../beelden_bewerkt/bline-detail-zijvak-01.jpg"><img src="../beelden_bewerkt/bline-detail-stof-01.jpg"><img src="../beelden_bewerkt/bline-detail-label-01.jpg"></div></div>
+<div class="info"><div class="crumb"><b>Home</b> / Leeskussen Beige</div>
+<h1>Bline Leeskussen Beige</h1><div class="rev"><span class="stars">★★★★★</span> 4,5 <u>(13 reviews op bol.com)</u></div>
+<div class="sub">Leeskussen met vak voor je telefoon, 65 x 50 x 45 cm</div><div class="price">€79,99<small>incl. btw</small></div>
+<div class="lab">Stap 1: kies je kleur <span>· Beige</span></div>
+<div class="sw"><a class="on"><img src="../beelden_bewerkt/bline-tegel-beige-packshot.jpg"></a><a><img src="../beelden_bewerkt/bline-tegel-wit-packshot.jpg"></a><a><img src="../beelden_bewerkt/bline-tegel-grijs-packshot.jpg"></a><a><img src="../beelden_bewerkt/bline-tegel-blauw-packshot.jpg"></a><a><img src="../beelden_bewerkt/bline-tegel-zwart-packshot.jpg"></a></div>
+<div class="lab">Stap 2: hoeveel kussens?</div>
+<div class="opt"><label class="on"><b>1 leeskussen</b>€79,99</label><label><span class="tag">Voordeel</span><b>2 leeskussens</b>€149,99 · je bespaart €9,99</label></div>
+<div class="up"><span class="bx"></span><img src="../beelden_bewerkt/bline-tegel-wit-packshot.jpg"><div><b>+ Extra hoes in Wit</b><br>€25,00 <s>€34,99</s> · handig als de andere in de was zit</div></div>
+<div class="buy"><div class="cta">In mijn winkelwagen</div><div class="heart">♡</div></div>
+<ul class="checks"><li>Gratis verzending in NL en BE</li><li>Binnen 1-2 werkdagen in huis</li><li>14 dagen bedenktijd</li><li>Hoes afneembaar, wasbaar op 30 °C</li></ul>
+<div class="pay"><span>iDEAL</span><span>Bancontact</span><span>Apple Pay</span><span>VISA</span><span>Mastercard</span></div>
+<div class="acc"><h4>Beschrijving <span>−</span></h4><p>Een stevig leeskussen dat blijft staan als je leunt. Binnenin zit 3,8 kg traagschuim, opzij een vak voor je telefoon, bril of boek. De katoenen hoes gaat er met een rits af en kan op 30 °C in de was.</p></div>
+<div class="acc"><h4>Kenmerken <span>+</span></h4></div>
+</div></div></div>
+<div class="usp"><div class="in"><div><em>🚚</em>Gratis verzending NL en BE</div><div><em>⏱</em>Binnen 1-2 werkdagen in huis</div><div><em>🧺</em>Hoes wasbaar op 30 °C</div><div><em>↩</em>14 dagen bedenktijd</div></div></div>
+<div class="wrap" style="margin-top:32px"><h2>Zo werkt het</h2><div class="how">
+<div><img src="../beelden_bewerkt/bline-detail-zijvak-01.jpg"><b>Vak voor je telefoon</b><p>Telefoon, bril of boek altijd binnen handbereik.</p></div>
+<div><img src="../beelden_bewerkt/bline-detail-vulling-wit.jpg"><b>3,8 kg traagschuim</b><p>Leun er tegenaan en het kussen blijft staan.</p></div>
+<div><img src="../beelden_bewerkt/bline-detail-stof-01.jpg"><b>Hoes met rits</b><p>Katoen 400 TC, eraf en op 30 °C in de was.</p></div></div></div>
+<div class="wrap" style="margin-top:24px"><h2>Losse kussens of een leeskussen?</h2><div class="cmp">
+<div class="h">Losse kussens</div><div class="h y">Bline leeskussen</div><div>Zakken weg, steeds opschudden</div><div class="y">Blijft staan door 3,8 kg traagschuim</div><div>Telefoon en bril liggen los op bed</div><div class="y">Vak opzij voor telefoon, bril of boek</div><div>Drie of vier kussens in bed</div><div class="y">Eén kussen van 65 cm breed</div></div></div>
+<div class="wrap" style="margin-top:24px"><div class="reviews"><div><div class="big">4,5</div><div class="stars" style="font-size:20px">★★★★★</div><div class="rev">13 reviews op bol.com</div></div><div><h2 style="font-size:22px">Wat anderen zeggen</h2>
+<div class="barr">5 sterren<i><b style="width:69%"></b></i>9</div><div class="barr">4 sterren<i><b style="width:23%"></b></i>3</div><div class="barr">3 sterren<i><b style="width:0"></b></i>0</div><div class="barr">2 sterren<i><b style="width:8%"></b></i>1</div><div class="barr">1 ster<i><b style="width:0"></b></i>0</div></div></div></div>
+<div class="wrap" style="margin-top:24px"><div class="split"><img src="../beelden_bewerkt/bline-banner-werken-16x9.jpg"><div><h2>Ook voor werken of tv kijken in bed</h2><p style="color:#333">Laptop op schoot, rug tegen het kussen. Je zit rechtop zonder steeds je kussens te verschuiven.</p></div></div></div>
+<div class="wrap faq" style="margin-top:24px"><h2>Veelgestelde vragen</h2><div>Hoe snel heb ik het kussen? <span>+</span></div><div>Kan de hoes in de was? <span>+</span></div><div>Hoe stevig is het kussen? <span>+</span></div><div>Kan ik het terugsturen? <span>+</span></div></div>
+<footer><div class="in"><div><b>Klantenservice</b>Verzending<br>Retourneren<br>Contact</div><div><b>Bline</b>Over Bline<br>Materialen<br>Maatgids</div><div><b>Contact</b>mail@blinesleep.nl<br>06 38 66 28 33</div></div></footer>
+<div class="sticky"><div><b>€79,99</b><br><span style="font-size:12px">Beige</span></div><div class="cta">In mijn winkelwagen</div></div>
+</body></html>

@@ -1,0 +1,219 @@
+/* Bline v3: kleur wisselen, aantal, extra hoes, galerij en in de winkelwagen. */
+(function () {
+  'use strict';
+  function geld(c) {
+    var e = Math.floor(c / 100), ct = String(c % 100).padStart(2, '0');
+    return '€' + String(e).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + ct;
+  }
+
+  function meet(naam, data) {
+    try { if (window.Shopify && Shopify.analytics && Shopify.analytics.publish) Shopify.analytics.publish(naam, data || {}); } catch (e) {}
+  }
+
+  function Galerij(el) {
+    var track = el.querySelector('[data-b3-track]');
+    var duims = el.querySelectorAll('.b3-gal__stip i, .b3-gal__duim');
+    el.querySelectorAll('[data-b3-naar]').forEach(function (d) {
+      d.addEventListener('click', function () {
+        var i = Number(d.getAttribute('data-b3-naar'));
+        track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' });
+      });
+    });
+    var nu = el.querySelector('[data-b3-nu]');
+    function index() { return Math.round(track.scrollLeft / Math.max(track.clientWidth, 1)); }
+    function zet() {
+      var i = index();
+      if (nu) nu.textContent = i + 1;
+      el.querySelectorAll('.b3-gal__stip i').forEach(function (d, j) { d.classList.toggle('is-actief', i === j); });
+      el.querySelectorAll('.b3-gal__duim').forEach(function (d, j) { d.classList.toggle('is-actief', i === j); });
+    }
+    var t;
+    track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(zet, 60); }, { passive: true });
+    return { reset: function () { track.scrollLeft = 0; zet(); } };
+  }
+
+  function Product(root) {
+    var D = JSON.parse(root.querySelector('[data-b3-data]').textContent);
+    var staat = { kleur: D.gekozen, aantal: 1, hoes: false, hoesKleur: D.gekozen, hoesZelf: false };
+    function hoesVan() { return (D.hoezen && D.hoezen[staat.hoesKleur]) || { naam: D.kleuren[staat.kleur].naam, variant: D.kleuren[staat.kleur].hoes, beschikbaar: D.kleuren[staat.kleur].hoesBeschikbaar, prijs: D.kleuren[staat.kleur].hoesPrijs, beeld: D.kleuren[staat.kleur].hoesBeeld }; }
+    var gal = {};
+    root.querySelectorAll('.b3-gal').forEach(function (g) { gal[g.getAttribute('data-kleur')] = Galerij(g); });
+    // Galerijen van de andere kleuren staan in een <template>; pas invoegen als die kleur gekozen wordt
+    function zorgGal(kleur) {
+      if (gal[kleur]) return;
+      var tpl = root.querySelector('template[data-b3-gal-later="' + kleur + '"]');
+      if (!tpl) return;
+      var frag = document.importNode(tpl.content, true);
+      var el = frag.firstElementChild;
+      tpl.parentNode.insertBefore(frag, tpl);
+      tpl.remove();
+      gal[kleur] = Galerij(el);
+    }
+    // Alvast klaarzetten bij aanwijzen of aanraken van een kleur, en na het laden op de achtergrond
+    root.querySelectorAll('[data-b3-kleur]').forEach(function (b) {
+      var vooraf = function () { zorgGal(b.getAttribute('data-b3-kleur')); };
+      b.addEventListener('pointerenter', vooraf, { passive: true });
+      b.addEventListener('touchstart', vooraf, { passive: true });
+      b.addEventListener('focus', vooraf);
+    });
+    var later = function () { root.querySelectorAll('template[data-b3-gal-later]').forEach(function (tp) { zorgGal(tp.getAttribute('data-b3-gal-later')); }); };
+    if (document.readyState === 'complete') setTimeout(later, 4000);
+    else window.addEventListener('load', function () { setTimeout(later, 4000); });
+    var $ = function (s) { return root.querySelector(s); };
+    var $$ = function (s) { return root.querySelectorAll(s); };
+
+    function hoesPrijs() { var h = hoesVan(); return staat.aantal === 2 ? h.prijs : h.prijs - D.korting; }
+    function totaal() {
+      var k = D.kleuren[staat.kleur];
+      var som = k.prijs * staat.aantal + (staat.hoes ? hoesVan().prijs : 0);
+      return (staat.aantal === 2 || staat.hoes) ? som - D.korting : som;
+    }
+    function teken() {
+      var k = D.kleuren[staat.kleur];
+      $('[data-b3-kleurnaam]').textContent = k.naam;
+      $('[data-b3-prijs]').textContent = geld(k.prijs);
+      $('[data-b3-prijs1]').textContent = geld(k.prijs);
+      $('[data-b3-prijs2]').textContent = geld(k.prijs * 2 - D.korting);
+      $('[data-b3-prijsper]').textContent = geld(Math.floor((k.prijs * 2 - D.korting) / 2)) + ' per kussen';
+      var h = hoesVan();
+      $('[data-b3-hoesnaam]').textContent = h.naam.toLowerCase();
+      $('[data-b3-hoesprijs]').textContent = geld(hoesPrijs());
+      $$('[data-b3-hoeskleur]').forEach(function (b) { var aan = b.getAttribute('data-b3-hoeskleur') === staat.hoesKleur; b.classList.toggle('is-gekozen', aan); b.setAttribute('aria-checked', aan ? 'true' : 'false'); });
+      var hb2 = $('[data-b3-hoesbespaar]'); if (hb2) hb2.textContent = staat.aantal === 2 ? 'Eén in de was, één om het kussen' : 'Je bespaart ' + geld(D.korting) + ' · één in de was, één om het kussen';
+      var oud = $('[data-b3-hoesoud]'); oud.textContent = '(los ' + geld(h.prijs) + ')'; oud.hidden = staat.aantal === 2;
+      var hb = $('[data-b3-hoesbeeld] img'); if (hb && h.beeld) { hb.src = h.beeld; hb.removeAttribute('srcset'); }
+      $('[data-b3-hoes]').disabled = !h.beschikbaar;
+      $('[data-b3-knopprijs]').textContent = geld(totaal());
+      $('[data-b3-plaknaam]').textContent = k.naam;
+      var pb = $('[data-b3-plakbol]'); if (pb && k.hex) pb.style.setProperty('--k', k.hex);
+      $('[data-b3-plakprijs]').textContent = geld(totaal());
+      $('[data-b3-hint2]').hidden = staat.aantal !== 2;
+      // eerlijke voorraadmelding: alleen als het echt weinig is (grens instelbaar in de sectie)
+      var vr = $('[data-b3-voorraad]');
+      if (vr) {
+        var n = k.voorraad, laag = typeof n === 'number' && n > 0 && n <= D.voorraadGrens;
+        vr.hidden = !laag;
+        if (laag) $('[data-b3-voorraadtekst]').textContent = 'Nog ' + n + ' op voorraad in ' + k.naam.toLowerCase();
+      }
+      $$('[data-b3-koop]').forEach(function (b) { b.disabled = !k.beschikbaar; });
+      $('[data-b3-knoptekst]').textContent = k.beschikbaar ? 'In winkelwagen' : 'Tijdelijk uitverkocht';
+    }
+    function kies(kleur, scroll) {
+      if (!D.kleuren[kleur]) return;
+      staat.kleur = kleur;
+      if (!staat.hoesZelf) staat.hoesKleur = kleur;
+      zorgGal(kleur);
+      $$('.b3-gal').forEach(function (g) { g.hidden = g.getAttribute('data-kleur') !== kleur; });
+      $$('[data-b3-kleur]').forEach(function (b) {
+        var aan = b.getAttribute('data-b3-kleur') === kleur;
+        b.classList.toggle('is-gekozen', aan); b.setAttribute('aria-checked', aan ? 'true' : 'false');
+      });
+      var g = root.querySelector('.b3-gal[data-kleur="' + kleur + '"]');
+      g.querySelectorAll('img[loading="lazy"]').forEach(function (i, n) { if (n < 3) i.loading = 'eager'; });
+      gal[kleur].reset();
+      teken();
+      try {
+        if (root.getAttribute('data-pagina') === 'product') {
+          history.replaceState(null, '', D.kleuren[kleur].url + location.search.replace(/([?&])kleur=[^&]*/, '$1').replace(/[?&]$/, ''));
+          // paginatitel en canonical meenemen naar de gekozen kleur
+          var vorige = staat.titelKleur || D.gekozen;
+          var oud = vorige && D.kleuren[vorige] && D.kleuren[vorige].titel, nieuw = D.kleuren[kleur].titel;
+          if (oud && nieuw && document.title.indexOf(oud) > -1) document.title = document.title.replace(oud, nieuw);
+          staat.titelKleur = kleur;
+          var can = document.querySelector('link[rel="canonical"]'); if (can) can.href = location.origin + D.kleuren[kleur].url;
+        }
+        else { var u = new URL(location.href); u.searchParams.set('kleur', kleur); history.replaceState(null, '', u); }
+      } catch (e) {}
+      if (scroll) root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      meet('bline_kleur_gekozen', { kleur: kleur });
+    }
+    $$('[data-b3-kleur]').forEach(function (b) { b.addEventListener('click', function () { kies(b.getAttribute('data-b3-kleur')); }); });
+    document.querySelectorAll('[data-b3-zet-kleur]').forEach(function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); kies(b.getAttribute('data-b3-zet-kleur'), true); });
+    });
+    $$('[data-b3-aantal]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        staat.aantal = Number(b.getAttribute('data-b3-aantal'));
+        $$('[data-b3-aantal]').forEach(function (x) { var aan = x === b; x.classList.toggle('is-gekozen', aan); x.setAttribute('aria-checked', aan ? 'true' : 'false'); });
+        teken();
+      });
+    });
+    $$('[data-b3-hoeskleur]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        staat.hoesKleur = b.getAttribute('data-b3-hoeskleur'); staat.hoesZelf = true;
+        if (!staat.hoes) { var vk = $('[data-b3-hoes]'); vk.checked = true; staat.hoes = true; }
+        teken(); meet('bline_hoeskleur_gekozen', { hoes: staat.hoesKleur, kussen: staat.kleur });
+      });
+    });
+    $('[data-b3-hoes]').addEventListener('change', function (e) { staat.hoes = e.target.checked; teken(); meet('bline_hoes_aangevinkt', { aan: staat.hoes, kleur: staat.kleur }); });
+
+    function koop(knop) {
+      var k = D.kleuren[staat.kleur];
+      meet('bline_in_winkelwagen', { kleur: staat.kleur, aantal: staat.aantal, hoes: staat.hoes, via: knop.closest('[data-b3-plak]') ? 'plakbalk' : 'knop' });
+      var items = [{ id: k.variant, quantity: staat.aantal }];
+      var hk = hoesVan();
+      if (staat.hoes && hk.beschikbaar) items.push({ id: hk.variant, quantity: 1 });
+      var lade = document.querySelector('cart-drawer');
+      var secties = lade && typeof lade.getSectionsToRender === 'function' ? lade.getSectionsToRender().map(function (s) { return s.id; }) : [];
+      var fout = $('[data-b3-fout]'); fout.hidden = true;
+      knop.disabled = true; knop.setAttribute('aria-busy', 'true');
+      fetch((window.routes && window.routes.cart_add_url ? window.routes.cart_add_url : '/cart/add') + '.js', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ items: items, sections: secties, sections_url: window.location.pathname })
+      }).then(function (r) { return r.json().then(function (j) { if (!r.ok) throw j; return j; }); })
+        .then(function (state) {
+          if (lade && typeof lade.renderContents === 'function' && state.sections) {
+            lade.classList.remove('is-empty');
+            lade.renderContents(state);
+          } else { window.location.href = (window.routes && window.routes.cart_url) || '/cart'; }
+        })
+        .catch(function () { fout.hidden = false; })
+        .finally(function () { knop.disabled = false; knop.removeAttribute('aria-busy'); });
+    }
+    $$('[data-b3-koop]').forEach(function (b) { b.addEventListener('click', function () { koop(b); }); });
+
+    var plak = $('[data-b3-plak]'), hoofdknop = $('.b3-knop--groot');
+    if (plak && hoofdknop) {
+      // alleen tonen als de grote knop boven uit beeld is gescrold
+      var wacht = false;
+      var meet = function () { wacht = false; plak.hidden = hoofdknop.getBoundingClientRect().bottom > 0; };
+      window.addEventListener('scroll', function () { if (!wacht) { wacht = true; requestAnimationFrame(meet); } }, { passive: true });
+      meet();
+    }
+    var zoek = new URLSearchParams(location.search);
+    var q = zoek.get('kleur');
+    // advertenties kunnen een keuze uitlichten (?aantal=2, ?hoes=1), maar nooit vooraf aanvinken of kiezen:
+    // een betaalde extra optie mag niet standaard aan staan (consumentenregels, ACM)
+    if (zoek.get('aantal') === '2') { var b2 = root.querySelector('[data-b3-aantal="2"]'); if (b2) b2.classList.add('is-uitgelicht'); }
+    if (zoek.get('hoes') === '1') { var hl = $('[data-b3-hoes]'); if (hl) hl.closest('.b3-hoes').classList.add('is-uitgelicht'); }
+    if (q && D.kleuren[q] && q !== staat.kleur) kies(q); else teken();
+  }
+
+  // video pas laden en afspelen na een tik (sneller laden, minder data op mobiel)
+  function videos() {
+    document.querySelectorAll('[data-b3-speel]').forEach(function (knop) {
+      knop.addEventListener('click', function () {
+        var v = knop.parentNode.querySelector('video[data-b3-video]');
+        if (!v) return;
+        if (!v.src) { v.src = v.getAttribute('data-b3-video'); v.controls = true; }
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+        knop.hidden = true;
+      });
+    });
+  }
+
+  function band() {
+    document.querySelectorAll('[data-b3-band]').forEach(function (b) {
+      var stop = function () { b.classList.toggle('is-gepauzeerd'); };
+      b.addEventListener('click', stop);
+      b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stop(); } });
+    });
+  }
+
+  function start() {
+    band();
+    document.querySelectorAll('[data-b3-product]').forEach(Product);
+    videos();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();

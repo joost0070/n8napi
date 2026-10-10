@@ -1,0 +1,42 @@
+{%- comment -%} Bline v3: de binnenkant in grote getallen naast een beeld. {%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in">
+    <p class="b3-oog">{{ section.settings.oog }}</p>
+    <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+    {%- if section.settings.intro != blank -%}<p class="b3-intro">{{ section.settings.intro }}</p>{%- endif -%}
+    <div class="b3-binnen">
+      <div class="b3-binnen__beeld">
+        {%- if section.settings.beeld != blank -%}{{ section.settings.beeld | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '480, 720, 1000, 1400', sizes: '(min-width: 990px) 45vw, 100vw', alt: section.settings.beeld.alt }}{%- endif -%}
+      </div>
+      <div class="b3-binnen__getallen">
+        {%- for block in section.blocks -%}
+          <div class="b3-getal b3-getal--{{ block.settings.tint }}" {{ block.shopify_attributes }}>
+            <span class="b3-getal__groot">{{ block.settings.groot }}{% if block.settings.eenheid != blank %}<small>{{ block.settings.eenheid }}</small>{% endif %}</span>
+            <span class="b3-getal__tekst">{{ block.settings.tekst }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: binnenkant",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Zo zit het in elkaar" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Stevig van <em>binnen</em>" },
+    { "type": "text", "id": "intro", "label": "Intro" },
+    { "type": "image_picker", "id": "beeld", "label": "Beeld" },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "warm", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "blocks": [
+    { "type": "getal", "name": "Getal", "settings": [
+      { "type": "text", "id": "groot", "label": "Getal", "default": "3,8" },
+      { "type": "text", "id": "eenheid", "label": "Eenheid", "default": "kg" },
+      { "type": "text", "id": "tekst", "label": "Tekst", "default": "traagschuim" },
+      { "type": "select", "id": "tint", "label": "Kleur", "default": "zand", "options": [ { "value": "zand", "label": "Zand" }, { "value": "mist", "label": "Mist" }, { "value": "steen", "label": "Steen" }, { "value": "wit", "label": "Wit" } ] }
+    ] }
+  ],
+  "presets": [{ "name": "Bline v3: binnenkant" }]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+{%- comment -%} Bline v3: losse hoezen als aanvulling (alleen upsell, geen eigen winkel). {%- endcomment -%}
+<section class="b3 b3-sectie b3-sectie--{{ section.settings.achtergrond }}">
+  <div class="b3-sectie__in">
+    <div class="b3-kopregel">
+      <div>
+        <p class="b3-oog">{{ section.settings.oog }}</p>
+        <h2 class="b3-kop">{{ section.settings.kop }}</h2>
+        <p class="b3-intro">{{ section.settings.intro }}</p>
+      </div>
+    </div>
+    <div class="b3-hoezen">
+      {%- assign lijst = 'beige,wit,grijs,blauw,zwart' | split: ',' -%}
+      {%- for k in lijst -%}
+        {%- assign h_handle = 'hoes-' | append: k -%}
+          {%- assign h = all_products[h_handle] -%}
+        {%- if h != blank -%}
+          <a href="{{ h.url }}" class="b3-hoeskaart">
+            <span class="b3-hoeskaart__beeld">{{ h.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 450, 600', sizes: '(min-width: 990px) 18vw, 44vw', alt: h.featured_image.alt }}</span>
+            <span class="b3-hoeskaart__naam">Hoes {{ h.metafields.bline.kleur_naam.value | downcase }}</span>
+            <span class="b3-hoeskaart__prijs">{{ h.price | minus: 999 | money }} bij een kussen, los {{ h.price | money }}</span>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bline v3: hoezen",
+  "settings": [
+    { "type": "text", "id": "oog", "label": "Bovenregel", "default": "Handig om erbij te hebben" },
+    { "type": "inline_richtext", "id": "kop", "label": "Kop", "default": "Een <em>tweede</em> hoes" },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "Eén in de was, één om het kussen. Of wissel van kleur wanneer je wilt." },
+    { "type": "select", "id": "achtergrond", "label": "Achtergrond", "default": "warm", "options": [ { "value": "warm", "label": "Warm" }, { "value": "wit", "label": "Wit" } ] }
+  ],
+  "presets": [{ "name": "Bline v3: hoezen" }]
+}
+{% endschema %}

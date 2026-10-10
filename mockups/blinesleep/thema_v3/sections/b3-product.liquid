@@ -1,0 +1,269 @@
+{%- comment -%}
+  Bline v3: het leeskussen op één plek, alle vijf kleuren.
+  Galerij per kleur (de media van elk kleurproduct, in de volgorde van Shopify); alleen de gekozen kleur staat meteen in de pagina,
+  de andere kleuren staan in een <template> en worden pas bij het wisselen ingevoegd (lichtere pagina). Kleur wisselen zonder
+  de pagina te verlaten, keuze 1 of 2 kussens, extra hoes in dezelfde kleur, knop met prijs.
+  Op een productpagina is de kleur van die pagina gekozen; op de homepage de kleur uit de instelling.
+  Kortingen rekenen automatisch in Shopify (2 kussens: 9,99 korting; hoes bij kussen: 9,99 korting).
+{%- endcomment -%}
+{%- liquid
+  assign hoofd = product
+  if hoofd == blank or hoofd.metafields.bline.kleuren == blank
+    assign hoofd = all_products[section.settings.standaard]
+  endif
+  assign kleuren = hoofd.metafields.bline.kleuren.value
+  assign korting = 999
+-%}
+<section class="b3 b3-product" data-b3-product data-section="{{ section.id }}" data-pagina="{{ request.page_type }}">
+  <div class="b3-product__in">
+    <div class="b3-product__media">
+      {%- for kp in kleuren -%}
+        {%- assign k = kp.handle | remove: 'leeskussen-' -%}
+        {%- assign aantal_media = kp.media.size -%}
+        {%- assign is_hoofd = false -%}{%- if kp.id == hoofd.id -%}{%- assign is_hoofd = true -%}{%- endif -%}
+        {%- unless is_hoofd -%}<template data-b3-gal-later="{{ k }}">{%- endunless -%}
+        <div class="b3-gal" data-kleur="{{ k }}"{% unless kp.id == hoofd.id %} hidden{% endunless %}>
+          {%- comment -%} Eerst het kussen zelf in deze kleur, dan mensen, kamers en details (volgorde van Shopify). {%- endcomment -%}
+          <div class="b3-gal__track" data-b3-track tabindex="0" aria-label="Foto's leeskussen {{ kp.metafields.bline.kleur_naam.value | downcase }}">
+            {%- for m in kp.media -%}
+              {%- if forloop.first -%}{%- render 'b3-slide', m: m, eerste: true, voorrang: is_hoofd -%}{%- else -%}{%- render 'b3-slide', m: m, eerste: false, voorrang: false -%}{%- endif -%}
+            {%- endfor -%}
+          </div>
+          <span class="b3-gal__teller" aria-hidden="true"><b data-b3-nu>1</b>/{{ aantal_media }}</span>
+          <div class="b3-gal__duimrij" role="group" aria-label="Kies een foto">
+            {%- for m in kp.media -%}
+              <button type="button" class="b3-gal__duim{% if forloop.first %} is-actief{% endif %}" data-b3-naar="{{ forloop.index0 }}" aria-label="Foto {{ forloop.index }} van {{ aantal_media }}">
+                {{ m.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
+              </button>
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- unless is_hoofd -%}</template>{%- endunless -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="b3-product__info">
+      <p class="b3-oog">Bline leeskussen · 65 x 50 x 45 cm</p>
+      <h1 class="b3-product__titel"><span class="visually-hidden">{{ product.title }}: </span>Het leeskussen dat <em>blijft staan</em></h1>
+      {% render 'bline-score' %}
+
+      <div class="b3-prijs" aria-live="polite">
+        <span class="b3-prijs__nu" data-b3-prijs>{{ hoofd.selected_or_first_available_variant.price | money }}</span>
+        <span class="b3-prijs__extra">incl. btw · gratis verzending</span>
+      </div>
+      <p class="b3-product__pitch">Rechtop lezen, werken of een serie kijken in bed, zonder stapel kussens. Met een vak voor je telefoon en een hoes die zo in de was kan.</p>
+
+      <div class="b3-keuze">
+        <p class="b3-keuze__label">Kleur: <b data-b3-kleurnaam>{{ hoofd.metafields.bline.kleur_naam.value }}</b></p>
+        <div class="b3-kleurknoppen" role="radiogroup" aria-label="Kleur">
+          {%- for kp in kleuren -%}
+            {%- assign k = kp.handle | remove: 'leeskussen-' -%}
+            <button type="button" class="b3-kleurknop{% if kp.id == hoofd.id %} is-gekozen{% endif %}" role="radio" aria-checked="{% if kp.id == hoofd.id %}true{% else %}false{% endif %}" data-b3-kleur="{{ k }}" style="--k: {{ kp.metafields.bline.kleur_hex.value }}" aria-label="{{ kp.metafields.bline.kleur_naam.value }}">
+              <span class="b3-kleurknop__bol"></span>
+            </button>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="b3-keuze">
+        <p class="b3-keuze__label">Aantal</p>
+        <div class="b3-aantal" role="radiogroup" aria-label="Aantal">
+          <button type="button" class="b3-aantal__optie is-gekozen" role="radio" aria-checked="true" data-b3-aantal="1">
+            <span class="b3-aantal__kop">1 leeskussen</span>
+            <span class="b3-aantal__prijs" data-b3-prijs1>{{ hoofd.selected_or_first_available_variant.price | money }}</span>
+          </button>
+          <button type="button" class="b3-aantal__optie" role="radio" aria-checked="false" data-b3-aantal="2">
+            <span class="b3-pil b3-pil--accent b3-aantal__badge">Bespaar {{ korting | money }}</span>
+            <span class="b3-aantal__kop">2 leeskussens</span>
+            <span class="b3-aantal__prijs"><span data-b3-prijs2>{{ hoofd.selected_or_first_available_variant.price | times: 2 | minus: korting | money }}</span><span class="b3-aantal__per" data-b3-prijsper>{{ hoofd.selected_or_first_available_variant.price | times: 2 | minus: korting | divided_by: 2 | money }} per kussen</span></span>
+          </button>
+        </div>
+        <p class="b3-keuze__hint" data-b3-hint2 hidden>Twee in dezelfde kleur. Liever twee kleuren? Voeg er één toe, kies de andere kleur en voeg die ook toe: de korting rekent dan net zo.</p>
+      </div>
+
+      {%- assign hk = hoofd.handle | remove: 'leeskussen-' -%}
+      {%- assign hoes_handle = 'hoes-' | append: hk -%}
+      {%- assign hoes = all_products[hoes_handle] -%}
+      <div class="b3-hoes">
+        <label class="b3-hoes__regel">
+          <input type="checkbox" class="b3-hoes__vink" data-b3-hoes>
+          <span class="b3-hoes__vakje" aria-hidden="true"></span>
+          <span class="b3-hoes__beeld" data-b3-hoesbeeld>{{ hoes.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}</span>
+          <span class="b3-hoes__tekst">
+            <b>Extra hoes erbij</b> in <span data-b3-hoesnaam>{{ hoofd.metafields.bline.kleur_naam.value | downcase }}</span><br>
+            <span class="b3-hoes__prijs"><span data-b3-hoesprijs>{{ hoes.selected_or_first_available_variant.price | minus: korting | money }}</span> <span class="b3-hoes__los" data-b3-hoesoud>(los {{ hoes.selected_or_first_available_variant.price | money }})</span></span>
+            <span class="b3-hoes__sub" data-b3-hoesbespaar>Je bespaart €9,99 · één in de was, één om het kussen</span>
+          </span>
+        </label>
+        <div class="b3-hoes__kleuren" role="radiogroup" aria-label="Kleur van de extra hoes">
+          <span class="b3-hoes__kleurlabel">Kleur hoes:</span>
+          {%- assign hoeslijst = 'wit,beige,blauw,grijs,zwart' | split: ',' -%}
+          {%- for hk2 in hoeslijst -%}
+            {%- assign hh2 = 'hoes-' | append: hk2 -%}
+            {%- assign hp2 = all_products[hh2] -%}
+            {%- if hp2 != blank -%}
+              <button type="button" class="b3-hoeskleur{% if hk2 == hk %} is-gekozen{% endif %}" role="radio" aria-checked="{% if hk2 == hk %}true{% else %}false{% endif %}" data-b3-hoeskleur="{{ hk2 }}" style="--k: {{ hp2.metafields.bline.kleur_hex.value }}" aria-label="Hoes {{ hp2.metafields.bline.kleur_naam.value | downcase }}" title="{{ hp2.metafields.bline.kleur_naam.value }}"><span></span></button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <p class="b3-voorraad" data-b3-voorraad hidden><span class="b3-voorraad__stip" aria-hidden="true"></span><span data-b3-voorraadtekst></span></p>
+      <button type="button" class="b3-knop b3-knop--groot" data-b3-koop>
+        <span data-b3-knoptekst>In winkelwagen</span><span class="b3-knop__prijs" data-b3-knopprijs>{{ hoofd.selected_or_first_available_variant.price | money }}</span>
+      </button>
+      <p class="b3-product__fout" data-b3-fout hidden role="alert">Dat lukte niet. Probeer het nog eens of mail ons op mail@blinesleep.nl.</p>
+
+      <ul class="b3-vinkjes" role="list">
+        <li>{% render 'b3-icoon', naam: 'truck' %}Gratis verzending in NL en BE</li>
+        <li>{% render 'b3-icoon', naam: 'klok' %}Binnen 1-2 werkdagen in huis</li>
+        <li>{% render 'b3-icoon', naam: 'terug' %}30 dagen proberen, gratis retour</li>
+        <li>{% render 'b3-icoon', naam: 'was' %}Hoes wasbaar op 30 °C</li>
+      </ul>
+      {% render 'bline-betaal' %}
+      <a class="b3-app" href="/pages/contact">
+        <span class="b3-app__bol" aria-hidden="true">{% render 'b3-icoon', naam: 'mail' %}</span>
+        <span><b>Twijfel over maat of kleur?</b><br>Stuur ons een bericht, we reageren op werkdagen.</span>
+      </a>
+
+      <div class="b3-uitklap">
+        <details open>
+          <summary>Wat je krijgt</summary>
+          <div>{{ hoofd.metafields.bline.inhoud_doos.value | newline_to_br }}</div>
+        </details>
+        <details>
+          <summary>Maat en materiaal</summary>
+          <div>
+            <p><b>Maat:</b> {{ hoofd.metafields.bline.afmetingen.value }}</p>
+            <p><b>Vulling:</b> {{ hoofd.metafields.bline.vulling.value }}</p>
+            <p><b>Gewicht:</b> {{ hoofd.metafields.bline.gewicht.value }}</p>
+            <p><b>Hoes:</b><br>{{ hoofd.metafields.bline.hoesstof.value | newline_to_br }}</p>
+          </div>
+        </details>
+        <details>
+          <summary>Wassen</summary>
+          <div>{{ hoofd.metafields.bline.wasvoorschrift.value | newline_to_br }}</div>
+        </details>
+        <details>
+          <summary>Verzending en retour</summary>
+          <div><p>Gratis verzending in Nederland en België, binnen 1-2 werkdagen in huis. Je mag het kussen 30 dagen proberen, en terugsturen is gratis. Daarnaast heb je altijd de <a href="/pages/wettelijke-garantie">wettelijke garantie</a> van minimaal twee jaar. Vragen? Mail ons op mail@blinesleep.nl.</p></div>
+        </details>
+        <details>
+          <summary>Productveiligheid</summary>
+          <div>
+            <p><b>Product:</b> Bline leeskussen (wigkussen), 65 x 50 x 45 cm.<br><b>EAN:</b> {% for kp in kleuren %}{{ kp.metafields.bline.kleur_naam.value }} {{ kp.selected_or_first_available_variant.barcode }}{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+            <p><b>Fabrikant:</b> Ningbo Megafeat Bedding Co., Ltd., Longshan Industry Zone, Ningbo, Zhejiang, China (mhpillow.com).</p>
+            <p><b>Verantwoordelijk in de EU (importeur):</b> Shop4You (Bline), Brasem 12, 7623 KS Borne, Nederland, <a href="mailto:mail@blinesleep.nl">mail@blinesleep.nl</a>.</p>
+            <p><b>Veilig gebruik:</b> houd de plastic verpakking buiten bereik van kinderen (verstikkingsgevaar). Niet geschikt als kussen of matras voor baby's en peuters. Houd het kussen uit de buurt van open vuur en hete warmtebronnen. Laat het na het uitpakken 24 tot 48 uur luchten; een lichte geur van nieuw traagschuim verdwijnt vanzelf.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <div class="b3-plak" data-b3-plak hidden>
+    <span class="b3-plak__info"><i class="b3-plak__bol" data-b3-plakbol style="--k: {{ hoofd.metafields.bline.kleur_hex.value }}"></i><b data-b3-plaknaam>{{ hoofd.metafields.bline.kleur_naam.value }}</b> <span data-b3-plakprijs>{{ hoofd.selected_or_first_available_variant.price | money }}</span></span>
+    <button type="button" class="b3-knop" data-b3-koop>In winkelwagen</button>
+  </div>
+
+  <script type="application/json" data-b3-data>
+    {
+      "korting": {{ korting }},
+      "voorraadGrens": {{ section.settings.voorraad_grens | default: 10 }},
+      "kleuren": {
+        {%- for kp in kleuren -%}
+          {%- assign k = kp.handle | remove: 'leeskussen-' -%}
+          {%- assign v = kp.selected_or_first_available_variant -%}
+          {%- assign h_handle = 'hoes-' | append: k -%}
+          {%- assign h = all_products[h_handle] -%}
+          {%- assign hv = h.selected_or_first_available_variant -%}
+          {{ k | json }}: {
+            "naam": {{ kp.metafields.bline.kleur_naam.value | json }},
+            "hex": {{ kp.metafields.bline.kleur_hex.value | json }},
+            "url": {{ kp.url | json }},
+            "titel": {{ kp.metafields.global.title_tag.value | default: kp.metafields.global.title_tag | default: kp.title | json }},
+            "variant": {{ v.id | json }},
+            "beschikbaar": {{ v.available | json }},
+            "voorraad": {% if v.inventory_management == 'shopify' and v.inventory_policy == 'deny' %}{{ v.inventory_quantity | json }}{% else %}null{% endif %},
+            "prijs": {{ v.price | json }},
+            "hoes": {{ hv.id | json }},
+            "hoesBeschikbaar": {{ hv.available | json }},
+            "hoesPrijs": {{ hv.price | json }},
+            "hoesBeeld": {{ h.featured_image | image_url: width: 160 | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      },
+      "hoezen": {
+        {%- assign hoeslijst = 'wit,beige,blauw,grijs,zwart' | split: ',' -%}
+        {%- for hk2 in hoeslijst -%}
+          {%- assign hh2 = 'hoes-' | append: hk2 -%}
+          {%- assign hp2 = all_products[hh2] -%}
+          {%- assign hv2 = hp2.selected_or_first_available_variant -%}
+          {{ hk2 | json }}: { "naam": {{ hp2.metafields.bline.kleur_naam.value | json }}, "variant": {{ hv2.id | json }}, "beschikbaar": {{ hv2.available | json }}, "prijs": {{ hv2.price | json }}, "beeld": {{ hp2.featured_image | image_url: width: 160 | json }} }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      },
+      "gekozen": {{ hoofd.handle | remove: 'leeskussen-' | json }}
+    }
+  </script>
+</section>
+
+{%- if request.page_type == 'product' -%}
+  {%- assign v = hoofd.selected_or_first_available_variant -%}
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": {{ request.origin | append: '/' | json }}},
+    {"@type": "ListItem", "position": 2, "name": "Leeskussens", "item": {{ request.origin | append: '/collections/leeskussens' | json }}},
+    {"@type": "ListItem", "position": 3, "name": {{ product.title | json }}, "item": {{ request.origin | append: product.url | json }}}
+  ]}
+</script>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": {{ hoofd.title | json }},
+      "description": {{ hoofd.description | strip_html | truncate: 500 | json }},
+      "brand": { "@type": "Brand", "name": "Bline" },
+      "sku": {{ v.sku | json }},
+      "gtin13": {{ v.barcode | json }},
+      "color": {{ hoofd.metafields.bline.kleur_naam.value | json }},
+      "image": [{% for m in hoofd.media limit: 5 %}{{ m.preview_image | image_url: width: 1600 | prepend: 'https:' | replace: 'https:https:', 'https:' | json }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+      "url": {{ request.origin | append: hoofd.url | json }},
+      "offers": {
+        "@type": "Offer",
+        "price": {{ v.price | divided_by: 100.0 | json }},
+        "priceCurrency": {{ cart.currency.iso_code | default: 'EUR' | json }},
+        "availability": "https://schema.org/{% if v.available %}InStock{% else %}OutOfStock{% endif %}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "url": {{ request.origin | append: hoofd.url | json }},
+        "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": "EUR" }, "shippingDestination": [{ "@type": "DefinedRegion", "addressCountry": "NL" }, { "@type": "DefinedRegion", "addressCountry": "BE" }], "deliveryTime": { "@type": "ShippingDeliveryTime", "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" }, "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY" } } },
+        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": ["NL", "BE"], "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/FreeReturn" }
+      }
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Bline v3: leeskussen",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "standaard",
+      "label": "Kleur op de homepage (handle)",
+      "default": "leeskussen-beige"
+    },
+    {
+      "type": "range",
+      "id": "voorraad_grens",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 10,
+      "label": "Toon 'nog X op voorraad' vanaf",
+      "info": "Alleen de echte voorraad (uit de wekelijkse ChannelDock-sync). 0 = nooit tonen."
+    }
+  ],
+  "presets": [{ "name": "Bline v3: leeskussen" }]
+}
+{% endschema %}
