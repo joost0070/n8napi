@@ -9,6 +9,7 @@ B=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..') + '/'
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 D=json.load(open(B+'upload_meta.json')); H=json.load(open('hashes.json')); st=json.load(open('ids.json'))
 st.setdefault('ads',{})
+IG='17841467484362024'
 UTM='utm_source={{site_source_name}}&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}'
 # Geen AI-bewerkingen van beeld of tekst door Meta: alleen echte, goedgekeurde beelden en eigen teksten.
 UIT = sys.argv[2] if len(sys.argv) > 2 else ('image_touchups,image_uncrop,image_templates,image_brightness_and_contrast,'
@@ -35,7 +36,8 @@ for naam,h45,h916,body,kop,link in plan:
             'image_label':{'name':'f916'},'body_label':{'name':'tekst'},'title_label':{'name':'kop'},'link_url_label':{'name':'url'},'priority':1},
            {'customization_spec':{'publisher_platforms':['facebook','instagram','messenger','audience_network']},
             'image_label':{'name':'f45'},'body_label':{'name':'tekst'},'title_label':{'name':'kop'},'link_url_label':{'name':'url'},'priority':2}]}
-    cr={'name':naam,'object_story_spec':{'page_id':PAGE},'asset_feed_spec':afs,'url_tags':UTM}
+    # Bline heeft geen eigen Instagram-account: de pagina is de Instagram-identiteit (page-backed account).
+    cr={'name':naam,'object_story_spec':{'page_id':PAGE,'instagram_user_id':IG},'asset_feed_spec':afs,'url_tags':UTM}
     if DOF: cr['degrees_of_freedom_spec']=DOF
     r=post(A+'/adcreatives', cr)
     if 'id' not in r: print('FOUT creative', naam, json.dumps(r.get('error',r))[:600]); continue
