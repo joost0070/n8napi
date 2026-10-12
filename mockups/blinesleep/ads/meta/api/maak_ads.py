@@ -12,8 +12,8 @@ st.setdefault('ads',{})
 UTM='utm_source={{site_source_name}}&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}'
 # Geen AI-bewerkingen van beeld of tekst door Meta: alleen echte, goedgekeurde beelden en eigen teksten.
 UIT = sys.argv[2] if len(sys.argv) > 2 else ('image_touchups,image_uncrop,image_templates,image_brightness_and_contrast,'
-       'image_background_gen,image_animation,3d_animation,text_optimizations,text_generation,description_automation,'
-       'inline_comment,enhance_cta,music,product_extensions,site_extensions')
+       'image_background_gen,image_animation,text_optimizations,text_generation,description_automation,'
+       'inline_comment,enhance_cta,product_extensions,site_extensions')
 DOF={'creative_features_spec':{k:{'enroll_status':'OPT_OUT'} for k in UIT.split(',') if k}} if UIT else None
 def lijst(x): return x if isinstance(x,list) else [x]
 plan=[]

@@ -1,0 +1,42 @@
+Log aanmaken Meta-advertenties Bline - 2026-10-12
+==================================================
+
+Resultaat: GESTOPT na de testadvertentie. Er is GEEN advertentie aangemaakt.
+Niets is op ACTIVE gezet, geen budgetten gewijzigd.
+
+Wat ik deed
+-----------
+1. Branch claude/lucid-hopper-Mn8M6; omgevingsvariabele META_SMAP_TOKEN bestaat (waarde niet bekeken).
+2. Test: python3 maak_ads.py bl_b1_lekkerzitten
+   - Poging 1: fout (#100) "Param key '3d_animation' in
+     degrees_of_freedom_spec[creative_features_spec] must be one of {IG_VIDEO_NATIVE_SUBTITLE,
+     IMAGE_ANIMATION, PRODUCT_BROWSING, PRODUCT_METADATA_AUTOMATION, PROFILE_CARD,
+     STANDARD_ENHANCEMENTS_CATALOG, TEXT_OVERLAY_TRANSLATION}"
+     -> '3d_animation' uit de UIT-lijst gehaald.
+   - Poging 2: zelfde fout voor 'music' -> 'music' uit de UIT-lijst gehaald.
+   - Poging 3: creative geaccepteerd, maar het aanmaken van de advertentie faalde:
+       code 100, error_subcode 1772103, "Invalid parameter"
+       error_user_title: "Instagram-account ontbreekt"
+       error_user_msg: "Selecteer een Instagram-account of Facebook-pagina om je bedrijf op
+                        Instagram te vertegenwoordigen."
+     Dit is een andere fout dan in de opdracht voorzien -> gestopt; 'alle' is NIET gedraaid.
+
+Uit de UIT-lijst gehaalde features (maak_ads.py)
+-----------------------------------------------
+- 3d_animation
+- music
+
+Advertenties (GET /act_414180534444868/ads)
+-------------------------------------------
+Geen advertenties in het account (lege lijst). ids.json is ongewijzigd
+(campaign 120247500366670160, adset 120247500367970160, geen ads).
+
+Let op
+------
+- Bij poging 3 heeft Meta de creative 'bl_b1_lekkerzitten' wel aangemaakt; het id is niet
+  teruggegeven in de uitvoer en een GET op /adcreatives liet hem niet onder die naam zien.
+  Een losse creative zonder advertentie doet niets, maar kan later opgeruimd worden.
+- Oplossing voor de fout: koppel een Instagram-account aan de pagina/het advertentieaccount
+  (of geef instagram_user_id / gebruik de pagina als Instagram-identiteit in
+  object_story_spec), of haal 'instagram' uit de plaatsingen van de advertentieset.
+  Draai daarna opnieuw de test.
