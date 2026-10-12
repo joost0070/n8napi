@@ -1,0 +1,14 @@
+Test Moneybird API-sleutel — 2026-10-12
+(alleen-lezen test; er is niets gewijzigd in Moneybird; de sleutel staat niet in dit bestand)
+
+Omgevingsvariabele Authorization_Bearer_Moneybird: aanwezig
+
+GET /api/v2/administrations.json
+  HTTP-status: 200
+  Administratie(s): Shop4you (id 397133333975271048)
+
+GET /api/v2/397133333975271048/financial_accounts.json
+  HTTP-status: 200
+  Aantal financiële rekeningen: 3
+
+Conclusie: de sleutel werkt (leestoegang tot administratie en financiële rekeningen).
