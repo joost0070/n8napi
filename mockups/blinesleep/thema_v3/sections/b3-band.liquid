@@ -5,7 +5,11 @@
       <div class="b3-band__groep"{% if ronde == 2 %} aria-hidden="true"{% endif %}>
         {%- for i in (1..2) -%}
           {%- for block in section.blocks -%}
-            <span class="b3-band__item" {{ block.shopify_attributes }}>{% render 'b3-icoon', naam: block.settings.icoon %}{{ block.settings.tekst }}</span>
+            {%- if block.settings.tekst contains 'bol.com' -%}
+              <a class="b3-band__item" href="{% render 'b3-bol-url' %}" target="_blank" rel="noopener"{% if ronde == 2 %} tabindex="-1"{% endif %} {{ block.shopify_attributes }}>{% render 'b3-icoon', naam: block.settings.icoon %}{{ block.settings.tekst }}</a>
+            {%- else -%}
+              <span class="b3-band__item" {{ block.shopify_attributes }}>{% render 'b3-icoon', naam: block.settings.icoon %}{{ block.settings.tekst }}</span>
+            {%- endif -%}
           {%- endfor -%}
         {%- endfor -%}
       </div>

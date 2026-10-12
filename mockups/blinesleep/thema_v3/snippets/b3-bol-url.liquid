@@ -1,0 +1,21 @@
+{%- comment -%}
+  Geeft de bol.com-productpagina van het getoonde kussen of de getoonde hoes (op EAN van de gekozen variant).
+  Zonder product (homepage, collectie, aankondigingsbalk): de beige bundel, die heeft de meeste bezoeken.
+  De reviews op bol gelden voor de hele productfamilie, dus elke kleur toont dezelfde 13 reviews.
+  bolProductId's uit de bol Retailer API (products/{ean}/product-ids), opgevraagd 12-10-2026.
+{%- endcomment -%}
+{%- assign bol_ean = '' -%}
+{%- if product -%}{%- assign bol_ean = product.selected_or_first_available_variant.barcode | default: '' -%}{%- endif -%}
+{%- case bol_ean -%}
+  {%- when '8720892179074' -%}{%- assign bol_id = '9300000170650506' -%}
+  {%- when '8720892687258' -%}{%- assign bol_id = '9300000234235254' -%}
+  {%- when '8720892687265' -%}{%- assign bol_id = '9300000234235614' -%}
+  {%- when '8720892687272' -%}{%- assign bol_id = '9300000234237780' -%}
+  {%- when '8720892179098' -%}{%- assign bol_id = '9300000233113893' -%}
+  {%- when '8720892687203' -%}{%- assign bol_id = '9300000233114860' -%}
+  {%- when '8720892687210' -%}{%- assign bol_id = '9300000233114859' -%}
+  {%- when '8720892687227' -%}{%- assign bol_id = '9300000233114861' -%}
+  {%- when '8720892687234' -%}{%- assign bol_id = '9300000233114858' -%}
+  {%- else -%}{%- assign bol_id = '9300000234235421' -%}
+{%- endcase -%}
+{{- 'https://www.bol.com/nl/nl/p/bline-leeskussen/' | append: bol_id | append: '/' -}}

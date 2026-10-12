@@ -206,7 +206,7 @@
     document.querySelectorAll('[data-b3-band]').forEach(function (b) {
       var stop = function () { b.classList.toggle('is-gepauzeerd'); };
       b.addEventListener('click', stop);
-      b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stop(); } });
+      b.addEventListener('keydown', function (e) { if (e.target.closest('a')) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stop(); } });
     });
   }
 
