@@ -1,0 +1,40 @@
+Log aanmaken Meta-advertenties Bline - 2026-10-12 (poging c)
+=============================================================
+
+Resultaat: GESTOPT na de testadvertentie. Er is GEEN advertentie aangemaakt.
+Niets is op ACTIVE gezet, geen budgetten gewijzigd.
+
+Wat ik deed
+-----------
+1. Branch claude/lucid-hopper-Mn8M6 bijgewerkt (git pull); omgevingsvariabele
+   META_SMAP_TOKEN bestaat (waarde niet bekeken).
+2. Test: python3 maak_ads.py bl_b1_lekkerzitten
+   - De creative (met instagram_user_id 17841467484362024) werd geaccepteerd: geen fout
+     over creative_features_spec en geen fout over instagram_user_id.
+   - Het aanmaken van de advertentie (status PAUSED) faalde:
+       OAuthException, code 31, error_subcode 3858385, is_transient false
+       "This request requires the user to take a pending action"
+       error_user_title: "Verifieer je account"
+       error_user_msg: "We denken dat iemand probeerde om toegang te krijgen tot je account
+         zonder je toestemming. Voor jouw bescherming kun je geen advertenties maken of
+         aanpassen tot je je account verifieert in Advertentiebeheer. Je bestaande
+         advertenties blijven normaal worden uitgevoerd."
+     Dit is geen voorziene fout (geen feature-fout, geen instagram_user_id-fout, geen code 190)
+     -> foutmelding gelogd en gestopt; 'alle' is NIET gedraaid.
+
+Aanpassingen
+------------
+Geen. maak_ads.py en ids.json zijn ongewijzigd.
+
+Advertenties (GET /act_414180534444868/ads?fields=name,status,effective_status,ad_review_feedback)
+--------------------------------------------------------------------------------------------------
+Lege lijst: geen advertenties in het account.
+ids.json: campaign 120247500366670160, adset 120247500367970160, geen ads.
+
+Let op / volgende stap
+----------------------
+- Joost moet het account verifiëren in Advertentiebeheer (Meta vraagt een openstaande
+  actie/beveiligingscontrole). Daarna kan de test opnieuw gedraaid worden.
+- Ook deze poging heeft de creative 'bl_b1_lekkerzitten' waarschijnlijk wel aangemaakt
+  (zonder advertentie); het id wordt door het script niet gelogd bij een ad-fout. Een losse
+  creative doet niets, maar kan later opgeruimd worden.
