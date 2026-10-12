@@ -1,0 +1,54 @@
+Log aanmaken Meta-advertenties Bline - 2026-10-12 (poging d)
+=============================================================
+
+Resultaat: GELUKT. Alle 14 advertenties aangemaakt, allemaal met status PAUSED.
+Niets op ACTIVE gezet, geen budgetten gewijzigd, geen andere campagnes/concepten aangeraakt.
+
+Wat ik deed
+-----------
+1. Branch claude/lucid-hopper-Mn8M6 bijgewerkt (git pull); META_SMAP_TOKEN bestaat (waarde niet bekeken).
+2. Tokencheck GET /me?fields=id: geldig.
+3. Test: python3 maak_ads.py bl_b1_lekkerzitten -> ok (geen fout; accountverificatie is dus afgerond).
+   maak_ads.py ongewijzigd (geen feature- of instagram_user_id-fout).
+4. python3 maak_ads.py alle -> 13 extra advertenties, "14 gepland; 14 klaar".
+5. Controle GET /act_414180534444868/ads?fields=name,status,effective_status,ad_review_feedback
+
+Advertenties (naam | ad-id | status | effective_status | creative-id)
+---------------------------------------------------------------------
+bl_b1_lekkerzitten   | 120247567800250160 | PAUSED | PENDING_REVIEW | 3354992091466184
+bl_b2_bank           | 120247567801860160 | PAUSED | PENDING_REVIEW | 2294153304770066
+bl_b3_avondbed       | 120247567802840160 | PAUSED | PENDING_REVIEW | 1107794084943675
+bl_b4_eenuur         | 120247567803400160 | PAUSED | PENDING_REVIEW | 1118787837307910
+bl_b5_doorlezen      | 120247567805180160 | PAUSED | IN_PROCESS     | 1664063701733912
+bl_c2a_elkeavond_v1  | 120247567806530160 | PAUSED | PENDING_REVIEW | 1056610664082623
+bl_c2a_elkeavond_v2  | 120247567807030160 | PAUSED | IN_PROCESS     | 3631280507043650
+bl_c2b_leesjeinbed   | 120247567808210160 | PAUSED | IN_PROCESS     | 28736724075937291
+bl_c3a_scrollen      | 120247567811810160 | PAUSED | IN_PROCESS     | 1651490816620201
+bl_c3b_laatsteuur_v1 | 120247567813430160 | PAUSED | IN_PROCESS     | 996756633456548
+bl_c3b_laatsteuur_v2 | 120247567814650160 | PAUSED | IN_PROCESS     | 2200170603861930
+bl_c3b_laatsteuur_v3 | 120247567815810160 | PAUSED | IN_PROCESS     | 1729650764762309
+bl_c4_werkbed_v1     | 120247567816650160 | PAUSED | IN_PROCESS     | 1635909911480207
+bl_c4_werkbed_v2     | 120247567818300160 | PAUSED | IN_PROCESS     | 1417048020538380
+ad_review_feedback: overal leeg (nog geen beoordeling).
+Campagne 120247500366670160: PAUSED. Advertentieset 120247500367970160: PAUSED.
+
+Opgeruimde creatives
+--------------------
+Verwijderd (naam bl_b1_lekkerzitten, 2026-10-12, niet in ids.json, aan geen enkele advertentie
+gekoppeld - ook niet gearchiveerd/verwijderd):
+- 1845700449917770 -> success
+- 1712742790852254 -> success
+Opmerking: created_time kwam niet mee in de lijst; de datum is gehaald uit de naam die Meta
+toont ("bl_b1_lekkerzitten 2026-10-12-<hash>").
+
+Laten staan (andere naam, dus buiten de opdracht; vermoedelijk van een eerder/ander concept,
+aangemaakt 2026-10-12, niet gekoppeld aan de 14 advertenties hierboven):
+2392214504939155 "Rechtop in bed, de hele avond", 2062347621314488 "Voor wie elke avond leest",
+1770413180915077 "Rechtop lezen in bed", 1645167794065165 "Vanaf €69,99, gratis verzonden",
+1622240912641485 "Voor wie elke avond leest", 1434640598063330 "Eén kussen in plaats van vier",
+1120847267065873 "Leeskussen dat niet wegzakt", 1046253981798754 "Rechtop in bed, ook met je telefoon",
+998822673247112 "Leeskussen dat blijft staan". Oudere creatives (2024) ongemoeid.
+
+Fouten
+------
+Geen.
